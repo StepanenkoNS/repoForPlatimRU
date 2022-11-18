@@ -1,0 +1,34 @@
+{
+  "version": "21.0.0",
+  "files": {
+    "e3330fe65adb499eabb9de1c44ac6ade1f11d2d9a54de0774bd6db5fecd08421": {
+      "source": {
+        "path": "/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-My-BotFather",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "993738567487-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-993738567487-us-east-1",
+          "objectKey": "e3330fe65adb499eabb9de1c44ac6ade1f11d2d9a54de0774bd6db5fecd08421.zip",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-file-publishing-role-993738567487-us-east-1"
+        }
+      }
+    },
+    "e3983f774ee88152a32c047e914319389b6802d5dd581faa341c4a7e7ab39e00": {
+      "source": {
+        "path": "BotFatherTelegramFacingStuff.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "993738567487-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-993738567487-us-east-1",
+          "objectKey": "e3983f774ee88152a32c047e914319389b6802d5dd581faa341c4a7e7ab39e00.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-file-publishing-role-993738567487-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

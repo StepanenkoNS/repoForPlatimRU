@@ -1,0 +1,468 @@
+{
+ "Resources": {
+  "BotFatherTelegramFacingAPIGWD674289B": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "BotFather-TelegramFacingAPI-GW"
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Resource"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWCloudWatchRole87AA1AC6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/CloudWatchRole/Resource"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWAccountDBD5223F": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "BotFatherTelegramFacingAPIGWCloudWatchRole87AA1AC6",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "BotFatherTelegramFacingAPIGWD674289B"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Account"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWproxy20E26B03": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "BotFatherTelegramFacingAPIGWD674289B",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "{proxy+}",
+    "RestApiId": {
+     "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/Resource"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWproxyANYApiPermissionBotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2CANYproxy8D414378": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "BotFatherqueueIncomingBotEventLambda867A445B",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+       },
+       "/*/*/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWproxyANYApiPermissionTestBotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2CANYproxyEF882CB9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "BotFatherqueueIncomingBotEventLambda867A445B",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+       },
+       "/test-invoke-stage/*/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.Test.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWproxyANYE01C0E02": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "ANY",
+    "ResourceId": {
+     "Ref": "BotFatherTelegramFacingAPIGWproxy20E26B03"
+    },
+    "RestApiId": {
+     "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "BotFatherqueueIncomingBotEventLambda867A445B",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/Resource"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWANYCD22AAA1": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "ANY",
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "BotFatherTelegramFacingAPIGWD674289B",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "Type": "MOCK"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/ANY/Resource"
+   }
+  },
+  "BotFatherincomingBotEventsdlqfifoA21DCF6C": {
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+    "DeduplicationScope": "messageGroup",
+    "FifoQueue": true,
+    "FifoThroughputLimit": "perMessageGroupId",
+    "QueueName": "BotFather-incomingBotEvents_dlq.fifo",
+    "VisibilityTimeout": 10
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-incomingBotEvents_dlq.fifo/Resource"
+   }
+  },
+  "BotFatherincomingBotEventsfifo329343C3": {
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+    "DeduplicationScope": "messageGroup",
+    "FifoQueue": true,
+    "FifoThroughputLimit": "perMessageGroupId",
+    "QueueName": "BotFather-incomingBotEvents.fifo",
+    "RedrivePolicy": {
+     "deadLetterTargetArn": {
+      "Fn::GetAtt": [
+       "BotFatherincomingBotEventsdlqfifoA21DCF6C",
+       "Arn"
+      ]
+     },
+     "maxReceiveCount": 3
+    },
+    "VisibilityTimeout": 10
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-incomingBotEvents.fifo/Resource"
+   }
+  },
+  "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/Resource"
+   }
+  },
+  "BotFatherqueueIncomingBotEventLambdaServiceRoleDefaultPolicy399E9AFB": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "sqs:SendMessage",
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "BotFatherincomingBotEventsfifo329343C3",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "BotFatherqueueIncomingBotEventLambdaServiceRoleDefaultPolicy399E9AFB",
+    "Roles": [
+     {
+      "Ref": "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "BotFatherqueueIncomingBotEventLambda867A445B": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "e3330fe65adb499eabb9de1c44ac6ade1f11d2d9a54de0774bd6db5fecd08421.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "api_version": "v1",
+      "incomingBotEvents_SQS": {
+       "Ref": "BotFatherincomingBotEventsfifo329343C3"
+      },
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "tg_api_serverURI": "https://api.zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "BotFather-queueIncomingTelegramBotEvents-Lambda",
+    "Handler": "index.queueIncomingTelegramBotEvents",
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "BotFatherqueueIncomingBotEventLambdaServiceRoleDefaultPolicy399E9AFB",
+    "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Resource",
+    "aws:asset:path": "/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-My-BotFather",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWdeployment60BC1FEFb51cc318107c59e73380d0484703d22a": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+    },
+    "Description": ""
+   },
+   "DependsOn": [
+    "BotFatherTelegramFacingAPIGWproxyANYE01C0E02",
+    "BotFatherTelegramFacingAPIGWANYCD22AAA1"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-deployment/Resource"
+   }
+  },
+  "BotFatherTelegramFacingAPIGWstageproduction84C6AEA4": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+    },
+    "DeploymentId": {
+     "Ref": "BotFatherTelegramFacingAPIGWdeployment60BC1FEFb51cc318107c59e73380d0484703d22a"
+    },
+    "MethodSettings": [
+     {
+      "DataTraceEnabled": false,
+      "HttpMethod": "*",
+      "LoggingLevel": "INFO",
+      "MetricsEnabled": true,
+      "ResourcePath": "/*"
+     }
+    ],
+    "StageName": "prod"
+   },
+   "DependsOn": [
+    "BotFatherTelegramFacingAPIGWAccountDBD5223F"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-stage-production/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02QwU7DMBBEv6V3ZyGFAxxTEDdQKR8Quc6SbuLYIWtToij/ju00Uk4z++QZ7XoPj89wv5NXzlTVZprOMH05qVoRUDnJnmrp8CpHmE7IruhJvHybjS2Ust44EZD1g8KDZBTHwf6NK7kFFv+O7mKriG7uFXttxw5DRYCbKWxRp2wysyDZhR2sXvqiHq0mNcZxcbPQsjtXEqaIcOiImayJD968US74WfAPw/Tp0aeeZNZcaWyFDcNHkjUi+KGUzOgYiihhhoNXLbp46iwSjDuSqbenziLWQcN3v/kT5HvIdw0TZUP4LeoQTov+AzSbZPKBAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "BotFatherTelegramFacingStuff/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4": {
+   "Value": {
+    "Fn::GetAtt": [
+     "BotFatherincomingBotEventsfifo329343C3",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "BotFatherTelegramFacingStuff:ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4"
+   }
+  },
+  "ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F": {
+   "Value": {
+    "Fn::GetAtt": [
+     "BotFatherincomingBotEventsdlqfifoA21DCF6C",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "BotFatherTelegramFacingStuff:ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

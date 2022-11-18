@@ -1,0 +1,382 @@
+import {MenuTemplate, createBackMainMenuButtons, deleteMenuFromContext, resendMenuToContext, replyMenuToContext} from 'grammy-inline-menu';
+import { TextBody } from 'grammy-inline-menu/dist/source/body';
+import { BotManager } from 'services/Models/BotManager';
+import {MyContext} from "../helpers/types";
+import {getMenuOfPath} from 'grammy-inline-menu'
+import {StatelessQuestion} from '@grammyjs/stateless-question';
+// @ts-ignore: Unreachable code error
+import * as i18n from "/opt/i18n";
+import { BotConfigurator } from 'services/Models/BotConfigurator';
+import { BotSubscriptionConfigurator } from 'services/Models/BotSubscriptionConfigurator';
+import { EAvailableCurrency, EIntegrationPaymentProviders, EManualPaymentProviders, EPaymentTypes, PaymentOptionDirectCardTransfer, PaymentOptionPaymentIntegration } from 'services/Types/SubscriptionTypes';
+
+export class BotsSubMenu {
+
+
+    private botsMenu: MenuTemplate<MyContext>;
+    private botDetailedMenu: MenuTemplate<MyContext>;
+    private botManager: BotManager;
+    private botConfigurator: BotConfigurator;
+    private botSubscriptionConfigurator: BotSubscriptionConfigurator;    
+
+    private botsMenuTitle (ctx:MyContext){
+        return {
+            text: i18n.getTranslation("mainMenu.bots.menuTitle", {ns:'botManagerMenu'}),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }   
+    private async botDetailedMenuTitle (ctx:MyContext){
+        const botId = ctx.match![ctx.match!.length-1];
+        ctx.session.chosenBotId = botId;
+        this.botConfigurator = await BotConfigurator.GetExistingBot(botId);
+        this.botSubscriptionConfigurator = await BotSubscriptionConfigurator.GetExistingBot(botId);
+        return {
+            text: i18n.getTranslation("mainMenu.bots.botDetails.menuTitle", {
+                ns:'botManagerMenu',
+                botId: botId
+            }),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }       
+    private async pressAddBot(ctx:MyContext, key:string){
+        await ctx.conversation.enter("bound AddNewBot");
+        return true;
+    } 
+
+    private async getMyBots(ctx:MyContext){
+        return this.botManager.GetMyBots();
+    }
+
+    private async pressAddSubscription(ctx:MyContext, key:string){
+        await ctx.conversation.enter("bound AdminAddSubscriptionPlan");
+        return true;
+    }
+
+    private async pressAddCardPayment(ctx:MyContext, key:string){
+        console.log(key);
+        const p:PaymentOptionDirectCardTransfer={
+            provider: EManualPaymentProviders.TINKOFF,
+            currency:  EAvailableCurrency.USD,
+            type: EPaymentTypes.CARD,
+            description: 'Оплатите на номер карты: 2222 2222 2222 2222 и пришлите в ответ скриншот чека'
+        }
+        this.botConfigurator.AddBotPaymentMethod(p);
+        return true;
+    }    
+
+    private async pressAddPaymentIntegrationPayment(ctx:MyContext, key:string){
+        const p:PaymentOptionPaymentIntegration={
+            provider: EIntegrationPaymentProviders.YOUKASSA,
+            token: 'sadfasdfasdfsadfdsa',
+            type: EPaymentTypes.INTEGRATION,
+            currency:  EAvailableCurrency.RUB,
+            description: 'Youkassa transfer to me'
+        }
+        this.botConfigurator.AddBotPaymentMethod(p);
+        return true;
+    }    
+
+
+    private async pressViewSubscription(ctx:MyContext, key:string){
+        const details = await this.botSubscriptionConfigurator.GetSubscription(key);
+        const s = JSON.stringify(details, null, "\t"); 
+        await ctx.reply(s);
+
+        return true;
+    }    
+
+
+    public GetInstance(){
+        return this.botsMenu;
+    }
+
+    private async GetSubscriptionsList(ctx:MyContext){
+        const map = await this.botSubscriptionConfigurator.GetSubscriptionsAsMap();
+        return Array.from(map.keys());
+    }
+
+    private async GetPaymentMethodsList(ctx:MyContext){
+        const map = await this.botConfigurator.GetBotPaymentMethodsAsMap();
+        let resultArray = [];
+        for (const item of map){
+            resultArray.push(item[1].provider+' '+item[1].currency);
+        }
+        return resultArray;
+    }    
+    private backMenuButton (ctx:MyContext){
+        return i18n.getTranslation("buttons.backMenu", {ns:'menu'})
+    }      
+    private mainMenuButton (ctx:MyContext){
+        return i18n.getTranslation("buttons.mainMenu", {ns:'menu'})
+    } 
+
+    private adminMenuTitle (ctx:MyContext){
+        return {
+            text: i18n.getTranslation("admin.menuTitle", {ns:'menu'}),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    } 
+    private subscriptionsMenuTitle (ctx:MyContext){
+        return {
+            text: i18n.getTranslation("admin.subscriptions.menuTitle", {ns:'menu'}),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }   
+    private subscriptionDetailsMenuTitle (ctx:MyContext){
+        const subscriptionDetails = this.botSubscriptionConfigurator.GetSubscription(ctx.match![ctx.match!.length-1]);
+        const subscriptionOptions = (subscriptionDetails?.subscriptionOptions! as any);
+        let subscriptionDetailsText = '';
+        for (const key in subscriptionOptions){
+            const x = subscriptionOptions[key];
+            subscriptionDetailsText =  subscriptionDetailsText + i18n.getTranslation("admin.subscriptions.details.subscriptionOption", {
+                ns:'menu',
+                length: key,
+                price: subscriptionOptions[key].price,
+                currency: subscriptionOptions[key].currency,
+                enabled: i18n.translateTrueFalse(subscriptionOptions[key].enabled,"boolean")                         
+            })
+        }
+        const constSubscriptionActive = i18n.translateTrueFalse(subscriptionDetails?.enabled!, "active")
+        const text = i18n.getTranslation("admin.subscriptions.details.menuTitle", {
+            ns:'menu',
+            planName: ctx.match![ctx.match!.length-1],
+            enabled: constSubscriptionActive
+        }) + subscriptionDetailsText;
+        return {
+            text: text,
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }  
+    
+    private paymentsMenuTitle (ctx:MyContext){
+        return {
+            text: i18n.getTranslation("admin.payments.menuTitle", {ns:'menu'}),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }    
+
+    
+    private paymentsListMenuTitle (ctx:MyContext){
+        return {
+            text: i18n.getTranslation("admin.payments.list.menuTitle", {ns:'menu'}),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }        
+
+    private paymentOptionsMenuTitle (ctx:MyContext){
+        return {
+            text: i18n.getTranslation("admin.subscriptions.paymentOptions.menuTitle", {ns:'menu'}),
+            parse_mode:'HTML',
+            disable_web_page_preview: false
+        } as TextBody;
+    }       
+
+    private subscriptionsButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("admin.subscriptions.buttonCaption", {ns:'menu'})]
+    }   
+    private ListButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("buttons.list", {ns:'menu'})]
+    }      
+    private AddButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("buttons.add", {ns:'menu'})]
+    }  
+    private EditButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("buttons.edit", {ns:'menu'})]
+    }    
+    
+    private DeleteButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("buttons.delete", {ns:'menu'})]
+    }         
+    private async DeactivateButtonCaption (ctx:MyContext){
+        const SK = ctx.match![ctx.match!.length-1];
+        const subscription = this.botSubscriptionConfigurator.GetSubscription(SK);
+        if (subscription?.enabled) {
+            return [i18n.getTranslation("buttons.deactivate", {ns:'menu'})]
+        }
+        return [i18n.getTranslation("buttons.activate", {ns:'menu'})]
+
+    }  
+    private RenameButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("buttons.rename", {ns:'menu'})]
+    }               
+    private PaymentsButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("admin.payments.buttonCaption", {ns:'menu'})]
+    }    
+    private usersButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("admin.users.buttonCaption", {ns:'menu'})]
+    }
+    private async processUsersButtonPress(ctx:MyContext, key:string){
+        await ctx.reply('');
+
+        return true;
+    }  
+    
+    private contentButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("admin.content.buttonCaption", {ns:'menu'})]
+    }
+    private async processContentButtonPress(ctx:MyContext, key:string){
+        await ctx.reply('');
+        return true;
+    }     
+
+    private privateMessageButtonCaption (ctx:MyContext){
+        //todo
+        return [i18n.getTranslation("admin.privateMessage.buttonCaption", {ns:'menu'})]
+    }
+    private async processPrivateMessageButtonPress(ctx:MyContext, key:string){
+        //todo
+        return true;
+    }       
+
+    private accountingButtonCaption (ctx:MyContext){
+        return [i18n.getTranslation("admin.accounting.buttonCaption", {ns:'menu'})]
+    }
+    private async processAccountingPress(ctx:MyContext, key:string){
+        await ctx.reply('');
+        return true;
+    }         
+
+    private async pressDeactivateSubscription(ctx:MyContext, key:string){
+        const SK = ctx.match![ctx.match!.length-2];
+        const subscription = this.botSubscriptionConfigurator.GetSubscription(SK);
+
+        await this.botSubscriptionConfigurator.ActivateSubscription(SK,!(subscription!.enabled));
+        return true;
+    }     
+
+    private async pressRenameSubscription(ctx:MyContext, key:string){
+        const replyMessage = i18n.getTranslation("admin.subscriptions.details.renameMessage", {ns:'menu'})
+        + i18n.getTranslation("cancelAction", {ns:'basicMessages'})
+        await ctx.reply(replyMessage,{parse_mode: "HTML"});
+        //todo
+        return true;
+    }         
+    
+    private async pressDeleteSubscription(ctx:MyContext, key:string){
+        await ctx.reply(i18n.getTranslation("admin.subscriptions.details.canNotDeleteMessage", {ns:'menu'}),{parse_mode: "HTML"});
+        return true;
+    }     
+
+    private async pressEditSubscriptionOption(ctx:MyContext, key:string){
+        let replyText = '';
+        const subscriptionDetails = this.botSubscriptionConfigurator.GetSubscription(ctx.match![ctx.match!.length-2]);
+        let subscriptionDetailsText = '';
+        const subscriptionOptions = (subscriptionDetails?.subscriptionOptions! as any);
+        // if (key in subscriptionOptions){
+        //     const x = subscriptionOptions[key];
+        //     subscriptionDetailsText =  subscriptionDetailsText + i18n.getTranslation("admin.subscriptions.details.subscriptionOption", {
+        //         ns:'menu',
+        //         length: key,
+        //         price: subscriptionOptions[key].price,
+        //         currency: subscriptionOptions[key].currency,
+        //         enabled: i18n.translateTrueFalse(subscriptionOptions[key].enabled,"boolean")                         
+        //     })
+        // };
+        if (!(key in subscriptionOptions)) {
+            //новая опция
+            replyText = i18n.getTranslation("admin.subscriptions.details.newOptionMessage", {
+                ns:'menu',
+                optionName: key
+            })
+        } else {
+            replyText = i18n.getTranslation("admin.subscriptions.details.editOptionMessage", {
+                ns:'menu',
+                optionName: key})
+            //replyText = replyText + subscriptionDetailsText;
+        }
+        replyText = replyText + i18n.getTranslation("admin.subscriptions.details.editSubscriptionOption", {ns:'menu'})
+        replyText = replyText + i18n.cancelPS();
+
+        await ctx.reply(replyText ,{parse_mode: "HTML",disable_web_page_preview:true});
+        ctx.session.adminAddSubscriptionPlanOption = {
+            planName:ctx.match![ctx.match!.length-2],
+            optionKey: key
+        }
+        await ctx.conversation.enter("bound AdminAddSubscriptionPlanOption");
+        return true;
+    }       
+        
+    constructor(botManager: BotManager) {
+        this.botManager = botManager;
+        this.botsMenu = new MenuTemplate<MyContext>(this.botsMenuTitle.bind(this));
+        this.botDetailedMenu = new MenuTemplate<MyContext>(this.botDetailedMenuTitle.bind(this));
+        const mainSubMenu = new MenuTemplate<MyContext>( 'mainSubMenu');
+        const messagingSubMenu = new MenuTemplate<MyContext>('messagingSubMenu');
+
+        this.botsMenu.choose('1', this.AddButtonCaption.bind(this), { do: (this.pressAddBot.bind(this)),columns:1});
+        this.botsMenu.chooseIntoSubmenu('12',this.getMyBots.bind(this), this.botDetailedMenu, {columns:1} )
+        
+        const subscriptionsMenu = new MenuTemplate<MyContext>(this.subscriptionsMenuTitle.bind(this));
+        const subscriptionDetailsMenu = new MenuTemplate<MyContext>(this.subscriptionDetailsMenuTitle.bind(this));
+        const subscriptionsMenuItems = new MenuTemplate<MyContext>('subscriptionsMenuItems');
+        
+        //планы подписок
+        this.botDetailedMenu.chooseIntoSubmenu('1', this.subscriptionsButtonCaption.bind(this), subscriptionsMenu, {columns:1}); 
+
+            subscriptionsMenu.choose('11', this.AddButtonCaption.bind(this), { do: (this.pressAddSubscription.bind(this)),columns:1});
+            subscriptionsMenu.chooseIntoSubmenu('12',this.GetSubscriptionsList.bind(this), subscriptionDetailsMenu, {columns:1} )
+                subscriptionDetailsMenu.choose('121', ['oneDay', 'oneWeek', 'oneMonth', 'oneYear', 'lifeTime'], { do: (this.pressEditSubscriptionOption.bind(this)),columns:3, disableChoiceExistsCheck:true});
+                subscriptionDetailsMenu.choose('122', this.RenameButtonCaption.bind(this), { do: (this.pressRenameSubscription.bind(this)),columns:1, disableChoiceExistsCheck:true});
+                subscriptionDetailsMenu.choose('123', this.DeactivateButtonCaption.bind(this), { do: (this.pressDeactivateSubscription.bind(this)),columns:1, disableChoiceExistsCheck:true});
+                subscriptionDetailsMenu.choose('124', this.DeleteButtonCaption.bind(this), { do: (this.pressDeleteSubscription.bind(this)),columns:1, disableChoiceExistsCheck:true});
+
+
+        //subscriptionsMenu.choose('111', this.GetSubscriptionsList.bind(this),  { do: (this.pressViewSubscription.bind(this)),columns:1, disableChoiceExistsCheck:true});
+                    //subscriptionsMenuItems.choose('1111', ['View', 'Edit', 'Delete'], { do: (this.pressEditSubscription.bind(this)),columns:1, disableChoiceExistsCheck:true});
+            
+        //платежные интеграции 
+        const paymentsOptionsMenu = new MenuTemplate<MyContext>(this.paymentsMenuTitle.bind(this));
+        const paymentsOptionsMenuList = new MenuTemplate<MyContext>(this.paymentsListMenuTitle.bind(this));
+        const paymentsOptionsMenuItems = new MenuTemplate<MyContext>(this.paymentOptionsMenuTitle.bind(this));
+        this.botDetailedMenu.chooseIntoSubmenu('2', this.PaymentsButtonCaption.bind(this), paymentsOptionsMenu, {columns:1}); 
+            paymentsOptionsMenu.chooseIntoSubmenu('21', this.ListButtonCaption.bind(this), paymentsOptionsMenuItems, {columns:1});
+                paymentsOptionsMenuItems.choose('211', this.GetPaymentMethodsList.bind(this) ,{columns:1, do: (ctx) => {return true}});
+            paymentsOptionsMenu.choose('22', ['Add card'], { do: (this.pressAddCardPayment.bind(this)),columns:1});
+            paymentsOptionsMenu.choose('23', ['Add integration'], { do: (this.pressAddPaymentIntegrationPayment.bind(this)),columns:1});
+        //подписчики
+        this.botDetailedMenu.choose('3', this.usersButtonCaption.bind(this) ,{
+            do: this.processUsersButtonPress.bind(this),
+            columns:1 });
+        //контент    
+        this.botDetailedMenu.choose('4', this.contentButtonCaption.bind(this) ,{
+            do: this.processContentButtonPress.bind(this),
+            columns:1 });
+        //персональные сообщения
+        this.botDetailedMenu.choose('5', this.privateMessageButtonCaption.bind(this) ,{
+            do: this.processPrivateMessageButtonPress.bind(this),
+            columns:1 }); 
+            
+        //бухгалтерия 
+        this.botDetailedMenu.choose('6', this.accountingButtonCaption.bind(this) ,{
+            do: this.processAccountingPress.bind(this),
+            columns:1 });          
+
+        //subscriptionsMenuList.choose('111', this.GetSubscriptionsList.bind(this),  { do: (this.pressViewSubscription.bind(this)),columns:1, disableChoiceExistsCheck:true});
+
+
+        
+
+        mainSubMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        messagingSubMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        subscriptionsMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        subscriptionDetailsMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        subscriptionsMenuItems.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        paymentsOptionsMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        paymentsOptionsMenuList.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        paymentsOptionsMenuItems.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));                
+        
+
+
+        this.botsMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+        this.botDetailedMenu.manualRow(createBackMainMenuButtons(this.backMenuButton.bind(this),this.mainMenuButton.bind(this)));
+
+      
+    }
+}

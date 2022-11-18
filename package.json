@@ -1,0 +1,57 @@
+{
+  "name": "TGBot-My-BotFather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec 'ts-node' tsconfig-paths/register test/playground/testBot/testChatBot.ts",
+    "deploy:all": "cdk deploy --require-approval never --all --outputs-file ./cdk-outputs.json",
+    "git": "git add . ; git commit -m \"automated commit\" ; git push "
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-personal:StepanenkoNS/TGBot-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-cdk/aws-redshift-alpha": "^2.49.0-alpha.0",
+    "@aws-sdk/lib-dynamodb": "^3.198.0",
+    "@grammyjs/conversations": "^1.0.3",
+    "@grammyjs/menu": "^1.1.2",
+    "@types/aws-lambda": "^8.10.108",
+    "@types/i18next-fs-backend": "^1.1.2",
+    "@types/luxon": "^3.0.2",
+    "@types/node": "^18.7.15",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "aws-cdk": "^2.49.0",
+    "aws-cdk-lib": "^2.49.0",
+    "aws-lambda": "^1.0.7",
+    "constructs": "^10.1.94",
+    "esbuild": "^0.15.7",
+    "eslint": "^8.23.0",
+    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.31.7",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1213.0",
+    "axios": "^0.27.2",
+    "grammy": "^1.11.2",
+    "i18next": "^22.0.2",
+    "i18next-fs-backend": "^1.1.5",
+    "luxon": "^3.0.4",
+    "node-fetch": "^3.2.10",
+    "telegram-format": "^2.1.0",
+    "uuid": "^9.0.0"
+  }
+}

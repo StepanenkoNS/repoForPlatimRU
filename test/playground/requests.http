@@ -1,0 +1,90 @@
+@BotFatherUrl = https://voqtngsjpf.execute-api.us-east-1.amazonaws.com/prod/
+@registrationUrl = https://l7btaauu3g.execute-api.us-east-1.amazonaws.com/test/
+@bot_sendShortMessage_test = https://wvc2lclj6c.execute-api.us-east-1.amazonaws.com/test/
+
+@bot_registartion_api_key = mape0trhAr53LCf9gPA5Q1SRNh55VcQsaRRj0i6q
+
+@botToken = 5647754848:AAGoCADAcu0oDjvsVcWnWEJcazWg_kcCnvI
+@botId = 5647754848
+
+//nick 
+//telegram id 199163834
+//bot token 5647754848:AAGoCADAcu0oDjvsVcWnWEJcazWg_kcCnvI
+//tanya
+//telegram id 1862254
+//botToken 5129177159:AAFAS4_GBLgK9d4CNUb1re6U5qw43y0t70M
+
+//registerBotFather bot
+POST https://api.telegram.org/bot{{botToken}}/setWebHook?url={{BotFatherUrl}}{{botId}}
+
+###
+
+
+//add bot
+POST {{registrationUrl}}BotManagement/v1
+x-api-key: {{bot_registartion_api_key}}
+
+{
+    "botToken": "{{botToken}}",
+    "admin": [
+        "199163834"
+    ]
+}
+###
+
+//delete bot
+DELETE {{registrationUrl}}BotManagement/v1
+x-api-key: {{bot_registartion_api_key}}
+
+{
+    "botToken": "{{botToken}}",
+        "admins": [
+        "likeahurricane", "radiojoy"
+    ]
+}
+###
+
+//get bot
+GET {{registrationUrl}}BotManagement/v1?botToken={{botToken}}
+x-api-key: {{bot_registartion_api_key}}
+
+###
+
+
+
+POST {{bot_sendShortMessage_test}}v1
+x-api-key: {{bot_registartion_api_key}}
+
+{
+    "botId": "5647754848",
+    "chatIds": ["admin"],
+    "sender": "199163834",
+    "method": "sendMessage",
+    "text": "hello <b>world</b>",
+    "messageAttachment": "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg",
+    "reply_markup": {
+            "inline_keyboard": [[
+                {
+                    "text": "Confirm",
+                    "callback_data": "subscription/id=1312312312?action=rejectasdfsdfsdfsdafsdafasdfd5a"
+                }, 
+                {
+                    "text": "Reject",
+                    "callback_data": "subscription/id=1312312312?action=rejectasdfsdfsdfsdafsdafasdfd5a"
+                }]
+            ]
+        }
+}
+
+###
+POST {{bot_sendShortMessage_test}}v1
+x-api-key: {{bot_registartion_api_key}}
+
+{
+    "botId": "5647754848",
+    "chatIds": ["accountant"],
+    "sender": "199163834",
+    "method": "sendPhoto",
+    "caption": "photo",
+    "photo": "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+}

@@ -1,0 +1,250 @@
+{
+  "version": "21.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "BotFatherTelegramFacingStuff.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "BotFatherTelegramFacingStuff.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "BotFatherTelegramFacingStuff": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://993738567487/us-east-1",
+      "properties": {
+        "templateFile": "BotFatherTelegramFacingStuff.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e3983f774ee88152a32c047e914319389b6802d5dd581faa341c4a7e7ab39e00.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "BotFatherTelegramFacingStuff.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "BotFatherTelegramFacingStuff.assets"
+      ],
+      "metadata": {
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWD674289B"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWCloudWatchRole87AA1AC6"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWAccountDBD5223F"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWproxy20E26B03"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWproxyANYApiPermissionBotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2CANYproxy8D414378"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.Test.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWproxyANYApiPermissionTestBotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2CANYproxyEF882CB9"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWproxyANYE01C0E02"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWANYCD22AAA1"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-incomingBotEvents_dlq.fifo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherincomingBotEventsdlqfifoA21DCF6C"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-incomingBotEvents.fifo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherincomingBotEventsfifo329343C3"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherqueueIncomingBotEventLambdaServiceRoleDefaultPolicy399E9AFB"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherqueueIncomingBotEventLambda867A445B"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWdeployment60BC1FEFb51cc318107c59e73380d0484703d22a"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-stage-production/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherTelegramFacingAPIGWstageproduction84C6AEA4"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/Exports/Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsfifo329343C3\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/Exports/Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsdlqfifoA21DCF6C\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/BotFatherTelegramFacingStuff/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "BotFatherTelegramFacingStuff"
+    },
+    "BotFatherTheBot.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "BotFatherTheBot.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "BotFatherTheBot": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://993738567487/us-east-1",
+      "properties": {
+        "templateFile": "BotFatherTheBot.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/804d3e9c729f33002be292a3d5fc36d11314af49e11fd43d056f878d8ee04882.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "BotFatherTheBot.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "BotFatherTelegramFacingStuff",
+        "BotFatherTheBot.assets"
+      ],
+      "metadata": {
+        "/BotFatherTheBot/BotFather-Lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherLambdaServiceRole2E79358E"
+          }
+        ],
+        "/BotFatherTheBot/BotFather-Lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherLambdaServiceRoleDefaultPolicy77C60D99"
+          }
+        ],
+        "/BotFatherTheBot/BotFather-Lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherLambdaDEDED5B3"
+          }
+        ],
+        "/BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F00/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherLambdaSqsEventSourceBotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F000A14BE4E"
+          }
+        ],
+        "/BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B28562/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BotFatherLambdaSqsEventSourceBotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B2856266C2E942"
+          }
+        ],
+        "/BotFatherTheBot/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/BotFatherTheBot/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/BotFatherTheBot/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "BotFatherTheBot"
+    }
+  }
+}
