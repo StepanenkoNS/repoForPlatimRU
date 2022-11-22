@@ -1,0 +1,1131 @@
+{
+ "Resources": {
+  "LambdaJWTAuthorizerServiceRole5D71D691": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/ServiceRole/Resource"
+   }
+  },
+  "LambdaJWTAuthorizerF61869D9": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "048b0f02bc14c4214f9d344708a5d4ca2bfe8b46a7d8776c3861e59eb59e6106.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "LambdaJWTAuthorizerServiceRole5D71D691",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "accessTokenExpirationMinutes": "1",
+      "refreshTokenExpirationDays": "365",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "WebRestService-JWTAuthorizer-Lambda",
+    "Handler": "index.LambdaJWTAuthorizerHandler",
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "LambdaJWTAuthorizerServiceRole5D71D691"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/Resource",
+    "aws:asset:path": "asset.048b0f02bc14c4214f9d344708a5d4ca2bfe8b46a7d8776c3861e59eb59e6106",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "LambdaJWTAuthorizerLogRetention603A8E46": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "LambdaJWTAuthorizerF61869D9"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/LogRetention/Resource"
+   }
+  },
+  "LambdaJWTAuthorizerWebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FAPermissions0F9F394F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "LambdaJWTAuthorizerF61869D9",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/authorizers/",
+       {
+        "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/WebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FA:Permissions"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:PutRetentionPolicy",
+        "logs:DeleteRetentionPolicy"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "Roles": [
+     {
+      "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Handler": "index.handler",
+    "Runtime": "nodejs14.x",
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
+    "aws:asset:path": "asset.eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "WebRestServiceLambdaJWTAuthorizerObject90D15D2F": {
+   "Type": "AWS::ApiGateway::Authorizer",
+   "Properties": {
+    "Name": "WebRestService-LambdaJWTAuthorizerObject",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "Type": "REQUEST",
+    "AuthorizerResultTtlInSeconds": 0,
+    "AuthorizerUri": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           ":",
+           {
+            "Fn::GetAtt": [
+             "LambdaJWTAuthorizerF61869D9",
+             "Arn"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       ":apigateway:",
+       {
+        "Fn::Select": [
+         3,
+         {
+          "Fn::Split": [
+           ":",
+           {
+            "Fn::GetAtt": [
+             "LambdaJWTAuthorizerF61869D9",
+             "Arn"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       ":lambda:path/2015-03-31/functions/",
+       {
+        "Fn::GetAtt": [
+         "LambdaJWTAuthorizerF61869D9",
+         "Arn"
+        ]
+       },
+       "/invocations"
+      ]
+     ]
+    },
+    "IdentitySource": "method.request.header.cookie"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-LambdaJWTAuthorizerObject/Resource"
+   }
+  },
+  "WebRestServiceGWAPID1BA5018": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "WebRestService-GWAPI"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Resource"
+   }
+  },
+  "WebRestServiceGWAPICloudWatchRoleDB7C4E5F": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/CloudWatchRole/Resource"
+   }
+  },
+  "WebRestServiceGWAPIAccountDC3CB312": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "WebRestServiceGWAPICloudWatchRoleDB7C4E5F",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "WebRestServiceGWAPID1BA5018"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Account"
+   }
+  },
+  "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "Description": "Automatically created by the RestApi construct"
+   },
+   "DependsOn": [
+    "WebRestServiceGWAPIBotsGetMyBotsGET0773596C",
+    "WebRestServiceGWAPIBotsGetMyBotsOPTIONSA63AD8BA",
+    "WebRestServiceGWAPIBotsGetMyBotsA76DBF06",
+    "WebRestServiceGWAPIBotsOPTIONSB0668A3B",
+    "WebRestServiceGWAPIBots64472057",
+    "WebRestServiceGWAPIOPTIONS622B6CF2"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Deployment/Resource"
+   }
+  },
+  "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "DeploymentId": {
+     "Ref": "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4"
+    },
+    "MethodSettings": [
+     {
+      "DataTraceEnabled": false,
+      "HttpMethod": "*",
+      "LoggingLevel": "INFO",
+      "MetricsEnabled": true,
+      "ResourcePath": "/*"
+     }
+    ],
+    "StageName": "SecureAPI"
+   },
+   "DependsOn": [
+    "WebRestServiceGWAPIAccountDC3CB312"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource"
+   }
+  },
+  "WebRestServiceGWAPIOPTIONS622B6CF2": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "WebRestServiceGWAPID1BA5018",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBots64472057": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebRestServiceGWAPID1BA5018",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "Bots",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsOPTIONSB0668A3B": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetMyBotsA76DBF06": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "GetMyBots",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetMyBotsOPTIONSA63AD8BA": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetMyBotsGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetMyBots65F6DEA7": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ListBotsLambdaC9B0E149",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/GET/Bots/GetMyBots"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetMyBotsGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetMyBots6B7F325F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ListBotsLambdaC9B0E149",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/GET/Bots/GetMyBots"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetMyBotsGET0773596C": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ListBotsLambdaC9B0E149",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIWebRestServiceGWAPIUsagePlan476AD6E9": {
+   "Type": "AWS::ApiGateway::UsagePlan",
+   "Properties": {
+    "ApiStages": [
+     {
+      "ApiId": {
+       "Ref": "WebRestServiceGWAPID1BA5018"
+      },
+      "Stage": {
+       "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+      },
+      "Throttle": {}
+     }
+    ],
+    "Quota": {
+     "Limit": 10000000,
+     "Period": "MONTH"
+    },
+    "Throttle": {
+     "BurstLimit": 2,
+     "RateLimit": 100
+    },
+    "UsagePlanName": "WebRestService-GWAPI-UsagePlan"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan/Resource"
+   }
+  },
+  "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1": {
+   "Type": "AWS::ApiGateway::DomainName",
+   "Properties": {
+    "DomainName": "secure-api.zuzona.com",
+    "EndpointConfiguration": {
+     "Types": [
+      "REGIONAL"
+     ]
+    },
+    "RegionalCertificateArn": "arn:aws:acm:us-east-1:993738567487:certificate/664961d6-43be-4044-b8e6-fdfb850ddbed"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Resource"
+   }
+  },
+  "WebRestServiceGWAPIWebRestServiceGWSubDomainMapWebRestServiceWebRestServiceGWAPIA25BC9C13DA8860E": {
+   "Type": "AWS::ApiGateway::BasePathMapping",
+   "Properties": {
+    "DomainName": {
+     "Ref": "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "Stage": {
+     "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Map:--=>WebRestServiceWebRestServiceGWAPIA25BC9C1/Resource"
+   }
+  },
+  "ListBotsLambdaServiceRoleA6E24787": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListBotsLambda/ServiceRole/Resource"
+   }
+  },
+  "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4",
+    "Roles": [
+     {
+      "Ref": "ListBotsLambdaServiceRoleA6E24787"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListBotsLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "ListBotsLambdaC9B0E149": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "5177104439319ce944da63bcd7347c67d13fd5ee09af531e202564d7deacdac5.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "ListBotsLambdaServiceRoleA6E24787",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-ListBotsLambda-Lambda",
+    "Handler": "index.ListMyBotsHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4",
+    "ListBotsLambdaServiceRoleA6E24787"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListBotsLambda/Resource",
+    "aws:asset:path": "asset.5177104439319ce944da63bcd7347c67d13fd5ee09af531e202564d7deacdac5",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "WebRestServiceARecord98E8B946": {
+   "Type": "AWS::Route53::RecordSet",
+   "Properties": {
+    "Name": "secure-api.zuzona.com.",
+    "Type": "A",
+    "AliasTarget": {
+     "DNSName": {
+      "Fn::GetAtt": [
+       "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1",
+       "RegionalDomainName"
+      ]
+     },
+     "HostedZoneId": {
+      "Fn::GetAtt": [
+       "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1",
+       "RegionalHostedZoneId"
+      ]
+     }
+    },
+    "HostedZoneId": "Z08669732ES7CY5LRF03T"
+   },
+   "DependsOn": [
+    "WebRestServiceARecordDeleteExistingRecordSetCustomResource7B895BB7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-ARecord/Resource"
+   }
+  },
+  "WebRestServiceARecordDeleteExistingRecordSetCustomResource7B895BB7": {
+   "Type": "Custom::DeleteExistingRecordSet",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E",
+      "Arn"
+     ]
+    },
+    "HostedZoneId": "Z08669732ES7CY5LRF03T",
+    "RecordName": "secure-api.zuzona.com.",
+    "RecordType": "A"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-ARecord/DeleteExistingRecordSetCustomResource/Default"
+   }
+  },
+  "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyName": "Inline",
+      "PolicyDocument": {
+       "Version": "2012-10-17",
+       "Statement": [
+        {
+         "Effect": "Allow",
+         "Action": "route53:GetChange",
+         "Resource": "*"
+        },
+        {
+         "Effect": "Allow",
+         "Action": "route53:ListResourceRecordSets",
+         "Resource": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":route53:::hostedzone/Z08669732ES7CY5LRF03T"
+           ]
+          ]
+         }
+        },
+        {
+         "Effect": "Allow",
+         "Action": "route53:ChangeResourceRecordSets",
+         "Resource": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":route53:::hostedzone/Z08669732ES7CY5LRF03T"
+           ]
+          ]
+         },
+         "Condition": {
+          "ForAllValues:StringEquals": {
+           "route53:ChangeResourceRecordSetsRecordTypes": [
+            "A"
+           ],
+           "route53:ChangeResourceRecordSetsActions": [
+            "DELETE"
+           ]
+          }
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role"
+   }
+  },
+  "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a",
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hG7BJ27EM7TRYVbQzMqlXAk3SxQmIVf33JSmDbie/Z8fP9suUPzzz+xGcaCzKw7iWW96uHYgDK5CMtwJZqG3aGtS2hI02Je6Jr1J49Vo4aTSToHhbmBrZy6dOMTe1FOdIe9Qxmm2ACB3xLIbA+dyLA7o5ELJenreh4aoam9EqSRRYx2pTEX8zVYEOdXoAjazA4QnOYTp+eSSXebczVn6jje0DVsRiI9OCN5gJYbx2bIFNbc4q6MbsgAUrqnRVD349STsvMaiXsXhBV8f6IT3+oNCY15DuuZGFUSD1ClR6PWBROge3W0LTSF3F6r9Ux6zxDh9nvM0KFMaW/cCI1ui6jiWH48YXgeFi7941PpzpyRl1K/yhuTVHWaLtWPxvvqe74+SJT6Z8MtqTlGMbPJMKedHHHyAANPREAgAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "WebRestServiceGWAPIEndpoint497456A8": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "WebRestServiceGWAPID1BA5018"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "WebRestServiceAPIGWSecureAPI": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "WebRestServiceGWAPID1BA5018"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+      },
+      "/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "WebRestService-APIGW-SecureAPI"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

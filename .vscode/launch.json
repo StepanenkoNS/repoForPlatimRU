@@ -1,0 +1,54 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "deno.enable": true,
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Local file",
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register",
+                "-r",
+                "${workspaceFolder}/node_modules/tsconfig-paths/register"
+                //"-r",
+                // "-r",
+                // "tsconfig-paths/register",
+                // //"ts-node/register",
+            ],
+            "args": [
+                //"test/playground/testBot/testFatherBot.ts"
+                "${relativeFile}"
+            ],
+            "env": {
+                "region": "us-east-1",
+                "TABLE_NAME": "SpacesTable",
+                "PRIMARY_KEY": "spaceId",
+                "telegramFacingAPIurl": "https://vxwfkbxl0i.execute-api.us-east-1.amazonaws.com/test/",
+                "sendMessageGWAPI": "https://s6myi3fwfd.execute-api.us-east-1.amazonaws.com/test/",
+                "APIKeyValue": "mape0trhAr53LCf9gPA5Q1SRNh55VcQsaRRj0i6q",
+                "api_version": "BotManagement/v1",
+                "botsTable": "bots",
+                "chatsTable": "chats",
+                "sessionsTable": "sessions",
+                "sqsToQueueMessages": "https://sqs.us-east-1.amazonaws.com/993738567487/sendMessageToBot-sqs.fifo",
+                "s3BotsBucket": "bots-bucket",
+                "incomingMessagesSQSURL": "https://sqs.us-east-1.amazonaws.com/993738567487/ProcessAsyncMessages-incomingMessages.fifo",
+                "NODE_ENV": "test",
+                "botFatherId": "5645439521",
+                "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+                "messageBotTelegramFacingGW": "https://za0mlxpoqe.execute-api.us-east-1.amazonaws.com/prod/",
+
+                "createPostTemplateSQSURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SendMessage-CreatePostTemplate.fifo",
+                //"tg_api_serverURI": "http://localhost"
+                "tg_api_serverURI": "https://telegram-api.zuzona.com",
+                "native_tg_api_serverURI": "https://api.telegram.org",
+                "accessTokenExpirationMinutes": "60",
+                "refreshTokenExpirationDays": "365"
+            }
+        }
+    ]
+}

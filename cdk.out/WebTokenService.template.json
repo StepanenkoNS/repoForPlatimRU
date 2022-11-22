@@ -1,0 +1,716 @@
+{
+ "Resources": {
+  "TokenServiceLambdaServiceRoleBC560DEB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/TokenServiceLambda/ServiceRole/Resource"
+   }
+  },
+  "TokenServiceLambdaServiceRoleDefaultPolicy87F48249": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "TokenServiceLambdaServiceRoleDefaultPolicy87F48249",
+    "Roles": [
+     {
+      "Ref": "TokenServiceLambdaServiceRoleBC560DEB"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/TokenServiceLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "TokenServiceLambdaA04CF86C": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "937f0b5c41066b454060367e7c7a985e5e1217cba311bb5a9542807390f31ee1.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaServiceRoleBC560DEB",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "accessTokenExpirationMinutes": "1",
+      "refreshTokenExpirationDays": "365",
+      "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "WebTokenService-Lambda",
+    "Handler": "index.LambdaTokenServiceHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "TokenServiceLambdaServiceRoleDefaultPolicy87F48249",
+    "TokenServiceLambdaServiceRoleBC560DEB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
+    "aws:asset:path": "asset.937f0b5c41066b454060367e7c7a985e5e1217cba311bb5a9542807390f31ee1",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "WebTokenServiceGWAPIAFE5A254": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "WebTokenService-GWAPI"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Resource"
+   }
+  },
+  "WebTokenServiceGWAPICloudWatchRole2C04FD27": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/CloudWatchRole/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIAccount852D4E01": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "WebTokenServiceGWAPICloudWatchRole2C04FD27",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "WebTokenServiceGWAPIAFE5A254"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Account"
+   }
+  },
+  "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "Description": "Automatically created by the RestApi construct"
+   },
+   "DependsOn": [
+    "WebTokenServiceGWAPIOPTIONSE6785683",
+    "WebTokenServiceGWAPIPOSTD3E68602"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Deployment/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "DeploymentId": {
+     "Ref": "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1"
+    },
+    "MethodSettings": [
+     {
+      "DataTraceEnabled": false,
+      "HttpMethod": "*",
+      "LoggingLevel": "INFO",
+      "MetricsEnabled": true,
+      "ResourcePath": "/*"
+     }
+    ],
+    "StageName": "GetToken"
+   },
+   "DependsOn": [
+    "WebTokenServiceGWAPIAccount852D4E01"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIOPTIONSE6785683": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "WebTokenServiceGWAPIAFE5A254",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/OPTIONS/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POST65275471": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaA04CF86C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebTokenServiceGWAPIAFE5A254"
+       },
+       "/",
+       {
+        "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+       },
+       "/POST/"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST.."
+   }
+  },
+  "WebTokenServiceGWAPIPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POST4468E18B": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaA04CF86C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebTokenServiceGWAPIAFE5A254"
+       },
+       "/test-invoke-stage/POST/"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST.."
+   }
+  },
+  "WebTokenServiceGWAPIPOSTD3E68602": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "WebTokenServiceGWAPIAFE5A254",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "TokenServiceLambdaA04CF86C",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/POST/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIWebTokenServiceGWAPIUsagePlanFFD4474E": {
+   "Type": "AWS::ApiGateway::UsagePlan",
+   "Properties": {
+    "ApiStages": [
+     {
+      "ApiId": {
+       "Ref": "WebTokenServiceGWAPIAFE5A254"
+      },
+      "Stage": {
+       "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+      },
+      "Throttle": {}
+     }
+    ],
+    "Quota": {
+     "Limit": 10000000,
+     "Period": "MONTH"
+    },
+    "Throttle": {
+     "BurstLimit": 2,
+     "RateLimit": 100
+    },
+    "UsagePlanName": "WebTokenService-GWAPI-UsagePlan"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/WebTokenService-GWAPI-UsagePlan/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C": {
+   "Type": "AWS::ApiGateway::DomainName",
+   "Properties": {
+    "DomainName": "auth.zuzona.com",
+    "EndpointConfiguration": {
+     "Types": [
+      "REGIONAL"
+     ]
+    },
+    "RegionalCertificateArn": "arn:aws:acm:us-east-1:993738567487:certificate/664961d6-43be-4044-b8e6-fdfb850ddbed"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIWebTokenServiceGWSubDomainMapWebTokenServiceWebTokenServiceGWAPID1F20FE968DF6B8B": {
+   "Type": "AWS::ApiGateway::BasePathMapping",
+   "Properties": {
+    "DomainName": {
+     "Ref": "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C"
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "Stage": {
+     "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9/Resource"
+   }
+  },
+  "TokenServiceAPIGWARecordE9A60854": {
+   "Type": "AWS::Route53::RecordSet",
+   "Properties": {
+    "Name": "auth.zuzona.com.",
+    "Type": "A",
+    "AliasTarget": {
+     "DNSName": {
+      "Fn::GetAtt": [
+       "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C",
+       "RegionalDomainName"
+      ]
+     },
+     "HostedZoneId": {
+      "Fn::GetAtt": [
+       "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C",
+       "RegionalHostedZoneId"
+      ]
+     }
+    },
+    "HostedZoneId": "Z08669732ES7CY5LRF03T"
+   },
+   "DependsOn": [
+    "TokenServiceAPIGWARecordDeleteExistingRecordSetCustomResource3B5F67CF"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/TokenServiceAPIGWARecord/Resource"
+   }
+  },
+  "TokenServiceAPIGWARecordDeleteExistingRecordSetCustomResource3B5F67CF": {
+   "Type": "Custom::DeleteExistingRecordSet",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E",
+      "Arn"
+     ]
+    },
+    "HostedZoneId": "Z08669732ES7CY5LRF03T",
+    "RecordName": "auth.zuzona.com.",
+    "RecordType": "A"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/TokenServiceAPIGWARecord/DeleteExistingRecordSetCustomResource/Default"
+   }
+  },
+  "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyName": "Inline",
+      "PolicyDocument": {
+       "Version": "2012-10-17",
+       "Statement": [
+        {
+         "Effect": "Allow",
+         "Action": "route53:GetChange",
+         "Resource": "*"
+        },
+        {
+         "Effect": "Allow",
+         "Action": "route53:ListResourceRecordSets",
+         "Resource": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":route53:::hostedzone/Z08669732ES7CY5LRF03T"
+           ]
+          ]
+         }
+        },
+        {
+         "Effect": "Allow",
+         "Action": "route53:ChangeResourceRecordSets",
+         "Resource": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":route53:::hostedzone/Z08669732ES7CY5LRF03T"
+           ]
+          ]
+         },
+         "Condition": {
+          "ForAllValues:StringEquals": {
+           "route53:ChangeResourceRecordSetsRecordTypes": [
+            "A"
+           ],
+           "route53:ChangeResourceRecordSetsActions": [
+            "DELETE"
+           ]
+          }
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role"
+   }
+  },
+  "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a",
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu7BG7BJ27EM7TRYVbQzMqlXAk1S1QkIVf33JSkDtpPfi+2X95IpPL3C4whPPJblYVyrLXRrh/IgCmLrW0ki9DZdjXpb4sbYkvYMq1TevZFOWSMUaugKW5N4+zap5rZW8hzpgHrBsw0yk2PIYgkc5l4eyM2RSQzy0IWFq2pcplYr5sB6gY2q0NEJz9B9pPHg0GWNSpfeYCal9caJBTW1PWsKMJzesRCvSk4H8Jsz+ViS29kyNi/oi8NMXmOycyMLq1GZFeokdMeiSo5ut8SmUaaK3X9HvWitd/Q8gy4rSNq2HAJEtCbX9yI9UDR3Efj0rvEhhWdn9fVbhtQX/KeVt/aoSmp7Eb8L9vxwnLzAZAqT0Z6VGrfheZQmKIb6AxCu6okDAgAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "WebTokenServiceGWAPIEndpoint9329497D": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "WebTokenServiceGWAPIAFE5A254"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "WebTokenServiceGWAPItokenApi": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "WebTokenServiceGWAPIAFE5A254"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+      },
+      "/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "WebTokenService-GWAPI-tokenApi"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

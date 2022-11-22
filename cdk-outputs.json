@@ -1,6 +1,10 @@
 {
-  "BotFatherTelegramFacingStuff": {
-    "ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4": "arn:aws:sqs:us-east-1:993738567487:BotFather-incomingBotEvents.fifo",
-    "ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F": "arn:aws:sqs:us-east-1:993738567487:BotFather-incomingBotEvents_dlq.fifo"
+  "WebRestService": {
+    "WebRestServiceGWAPIEndpoint497456A8": "https://mrlqnbbfg4.execute-api.us-east-1.amazonaws.com/SecureAPI/",
+    "WebRestServiceAPIGWSecureAPI": "https://mrlqnbbfg4.execute-api.us-east-1.amazonaws.com/SecureAPI/"
+  },
+  "WebTokenService": {
+    "WebTokenServiceGWAPItokenApi": "https://huwxtcxfyc.execute-api.us-east-1.amazonaws.com/GetToken/",
+    "WebTokenServiceGWAPIEndpoint9329497D": "https://huwxtcxfyc.execute-api.us-east-1.amazonaws.com/GetToken/"
   }
 }

@@ -1,38 +1,33 @@
-
 import { App } from "aws-cdk-lib";
-//import { RegisterBotAPIKeyStack } from "./APIKey/RegisterBotAPIKeyStack";
-import { BotFatherTelegramFacingInfrastructureStack } from "./BotFatherTelegramFacingInfrastructure/BotFatherTelegramFacingInfrastructure";
-//import { RegisterBotStack } from "./BotManagementAPI/RegisterBotStack";
-import { MyBotFatherStack } from "./MyBotFatherBot/MyBotFatherBotStack";
 //@ts-ignore
-import * as StaticEnvironment from '../../ReadmeAndConfig/StaticEnvironment';
-
-
+import * as StaticEnvironment from "../../ReadmeAndConfig/StaticEnvironment";
+import { RestServicesStack } from "./RestServices/RestServices";
+import { TokenServiceStack } from "./TokenService/TokenService";
 
 const app = new App();
 
-
-const telegramFacingAPIandQueueStack = new BotFatherTelegramFacingInfrastructureStack(app, StaticEnvironment.StackName.BotFatherTelegramFacingStuff.toString(), {
-    stackName: StaticEnvironment.StackName.BotFatherTelegramFacingStuff.toString(),
-    redeployGateWayEachTime: false,
+const tokenService = new TokenServiceStack(
+  app,
+  StaticEnvironment.StackName.WebTokenService.toString(),
+  {
+    stackName: StaticEnvironment.StackName.WebTokenService.toString(),
+    redeployGateWayEachTime: true,
     env: {
-        account: StaticEnvironment.GlobalAWSEnvironment.account,
-        region: StaticEnvironment.GlobalAWSEnvironment.region
-    }    
-})
+      account: StaticEnvironment.GlobalAWSEnvironment.account,
+      region: StaticEnvironment.GlobalAWSEnvironment.region,
+    },
+  }
+);
 
-const myBotFatherStack = new MyBotFatherStack(app, StaticEnvironment.StackName.BotFatherTheBot.toString(), {
-    stackName: StaticEnvironment.StackName.BotFatherTheBot.toString(),
-    incomingBotEventsSQS: telegramFacingAPIandQueueStack.incomingBotEvents_SQS,
-    incomingBotEventsSQSdlq: telegramFacingAPIandQueueStack.incomingBotEvents_SQSdlq,
+const restServicesStack = new RestServicesStack(
+  app,
+  StaticEnvironment.StackName.WebRestService.toString(),
+  {
+    stackName: StaticEnvironment.StackName.WebRestService.toString(),
+    redeployGateWayEachTime: true,
     env: {
-        account: StaticEnvironment.GlobalAWSEnvironment.account,
-        region: StaticEnvironment.GlobalAWSEnvironment.region
-    }    
-})
-
-
-
-
-
-
+      account: StaticEnvironment.GlobalAWSEnvironment.account,
+      region: StaticEnvironment.GlobalAWSEnvironment.region,
+    },
+  }
+);

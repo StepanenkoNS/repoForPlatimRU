@@ -12,21 +12,276 @@
           "version": "10.1.142"
         }
       },
-      "BotFatherTelegramFacingStuff": {
-        "id": "BotFatherTelegramFacingStuff",
-        "path": "BotFatherTelegramFacingStuff",
+      "WebTokenService": {
+        "id": "WebTokenService",
+        "path": "WebTokenService",
         "children": {
-          "BotFather-TelegramFacingAPI-GW": {
-            "id": "BotFather-TelegramFacingAPI-GW",
-            "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW",
+          "Zone": {
+            "id": "Zone",
+            "path": "WebTokenService/Zone",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "imported-certificate": {
+            "id": "imported-certificate",
+            "path": "WebTokenService/imported-certificate",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "imported-BotsTable": {
+            "id": "imported-BotsTable",
+            "path": "WebTokenService/imported-BotsTable",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "modelsLayer-imported": {
+            "id": "modelsLayer-imported",
+            "path": "WebTokenService/modelsLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "utilsLayer-imported": {
+            "id": "utilsLayer-imported",
+            "path": "WebTokenService/utilsLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "typesLayer-imported": {
+            "id": "typesLayer-imported",
+            "path": "WebTokenService/typesLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "i18nLayer-imported": {
+            "id": "i18nLayer-imported",
+            "path": "WebTokenService/i18nLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "TokenServiceLambda": {
+            "id": "TokenServiceLambda",
+            "path": "WebTokenService/TokenServiceLambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "WebTokenService/TokenServiceLambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebTokenService/TokenServiceLambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "WebTokenService/TokenServiceLambda/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebTokenService/TokenServiceLambda/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "dynamodb:BatchGetItem",
+                                    "dynamodb:GetRecords",
+                                    "dynamodb:GetShardIterator",
+                                    "dynamodb:Query",
+                                    "dynamodb:GetItem",
+                                    "dynamodb:Scan",
+                                    "dynamodb:ConditionCheckItem",
+                                    "dynamodb:BatchWriteItem",
+                                    "dynamodb:PutItem",
+                                    "dynamodb:UpdateItem",
+                                    "dynamodb:DeleteItem",
+                                    "dynamodb:DescribeTable"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":dynamodb:us-east-1:993738567487:table/bots"
+                                        ]
+                                      ]
+                                    },
+                                    {
+                                      "Ref": "AWS::NoValue"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "TokenServiceLambdaServiceRoleDefaultPolicy87F48249",
+                            "roles": [
+                              {
+                                "Ref": "TokenServiceLambdaServiceRoleBC560DEB"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.49.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.49.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "WebTokenService/TokenServiceLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "WebTokenService/TokenServiceLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "WebTokenService/TokenServiceLambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.49.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "WebTokenService/TokenServiceLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+                      "s3Key": "937f0b5c41066b454060367e7c7a985e5e1217cba311bb5a9542807390f31ee1.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "TokenServiceLambdaServiceRoleBC560DEB",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "botsTable": "bots",
+                        "region": "us-east-1",
+                        "NODE_ENV": "production",
+                        "botFatherId": "5645439521",
+                        "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+                        "accessTokenExpirationMinutes": "1",
+                        "refreshTokenExpirationDays": "365",
+                        "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
+                        "cookieDomain": "zuzona.com",
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "functionName": "WebTokenService-Lambda",
+                    "handler": "index.LambdaTokenServiceHandler",
+                    "layers": [
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6"
+                    ],
+                    "runtime": "nodejs16.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
+              "version": "2.49.0"
+            }
+          },
+          "WebTokenService-GWAPI": {
+            "id": "WebTokenService-GWAPI",
+            "path": "WebTokenService/WebTokenService-GWAPI",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Resource",
+                "path": "WebTokenService/WebTokenService-GWAPI/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
                   "aws:cdk:cloudformation:props": {
-                    "name": "BotFather-TelegramFacingAPI-GW"
+                    "name": "WebTokenService-GWAPI"
                   }
                 },
                 "constructInfo": {
@@ -36,11 +291,11 @@
               },
               "CloudWatchRole": {
                 "id": "CloudWatchRole",
-                "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/CloudWatchRole",
+                "path": "WebTokenService/WebTokenService-GWAPI/CloudWatchRole",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/CloudWatchRole/Resource",
+                    "path": "WebTokenService/WebTokenService-GWAPI/CloudWatchRole/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -85,13 +340,13 @@
               },
               "Account": {
                 "id": "Account",
-                "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Account",
+                "path": "WebTokenService/WebTokenService-GWAPI/Account",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
                   "aws:cdk:cloudformation:props": {
                     "cloudWatchRoleArn": {
                       "Fn::GetAtt": [
-                        "BotFatherTelegramFacingAPIGWCloudWatchRole87AA1AC6",
+                        "WebTokenServiceGWAPICloudWatchRole2C04FD27",
                         "Arn"
                       ]
                     }
@@ -102,194 +357,272 @@
                   "version": "2.49.0"
                 }
               },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "WebTokenService/WebTokenService-GWAPI/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebTokenService/WebTokenService-GWAPI/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "WebTokenServiceGWAPIAFE5A254"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.49.0"
+                }
+              },
+              "DeploymentStage.GetToken": {
+                "id": "DeploymentStage.GetToken",
+                "path": "WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "WebTokenServiceGWAPIAFE5A254"
+                        },
+                        "deploymentId": {
+                          "Ref": "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1"
+                        },
+                        "methodSettings": [
+                          {
+                            "httpMethod": "*",
+                            "resourcePath": "/*",
+                            "dataTraceEnabled": false,
+                            "loggingLevel": "INFO",
+                            "metricsEnabled": true
+                          }
+                        ],
+                        "stageName": "GetToken"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.49.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "WebTokenService/WebTokenService-GWAPI/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.49.0"
+                }
+              },
               "Default": {
                 "id": "Default",
-                "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default",
+                "path": "WebTokenService/WebTokenService-GWAPI/Default",
                 "children": {
-                  "{proxy+}": {
-                    "id": "{proxy+}",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}",
+                  "OPTIONS": {
+                    "id": "OPTIONS",
+                    "path": "WebTokenService/WebTokenService-GWAPI/Default/OPTIONS",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/Resource",
+                        "path": "WebTokenService/WebTokenService-GWAPI/Default/OPTIONS/Resource",
                         "attributes": {
-                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                           "aws:cdk:cloudformation:props": {
-                            "parentId": {
+                            "httpMethod": "OPTIONS",
+                            "resourceId": {
                               "Fn::GetAtt": [
-                                "BotFatherTelegramFacingAPIGWD674289B",
+                                "WebTokenServiceGWAPIAFE5A254",
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "{proxy+}",
                             "restApiId": {
-                              "Ref": "BotFatherTelegramFacingAPIGWD674289B"
-                            }
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
-                          "version": "2.49.0"
-                        }
-                      },
-                      "ANY": {
-                        "id": "ANY",
-                        "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY",
-                        "children": {
-                          "ApiPermission.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}": {
-                            "id": "ApiPermission.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}",
-                            "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": [
-                                    "BotFatherqueueIncomingBotEventLambda867A445B",
-                                    "Arn"
-                                  ]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":execute-api:us-east-1:993738567487:",
-                                      {
-                                        "Ref": "BotFatherTelegramFacingAPIGWD674289B"
-                                      },
-                                      "/*/*/*"
-                                    ]
-                                  ]
-                                }
-                              }
+                              "Ref": "WebTokenServiceGWAPIAFE5A254"
                             },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.49.0"
-                            }
-                          },
-                          "ApiPermission.Test.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}": {
-                            "id": "ApiPermission.Test.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}",
-                            "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.Test.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": [
-                                    "BotFatherqueueIncomingBotEventLambda867A445B",
-                                    "Arn"
-                                  ]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":execute-api:us-east-1:993738567487:",
-                                      {
-                                        "Ref": "BotFatherTelegramFacingAPIGWD674289B"
-                                      },
-                                      "/test-invoke-stage/*/*"
-                                    ]
-                                  ]
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.49.0"
-                            }
-                          },
-                          "Resource": {
-                            "id": "Resource",
-                            "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/Resource",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
-                              "aws:cdk:cloudformation:props": {
-                                "httpMethod": "ANY",
-                                "resourceId": {
-                                  "Ref": "BotFatherTelegramFacingAPIGWproxy20E26B03"
-                                },
-                                "restApiId": {
-                                  "Ref": "BotFatherTelegramFacingAPIGWD674289B"
-                                },
-                                "authorizationType": "NONE",
-                                "integration": {
-                                  "type": "AWS_PROXY",
-                                  "uri": {
-                                    "Fn::Join": [
-                                      "",
-                                      [
-                                        "arn:",
-                                        {
-                                          "Ref": "AWS::Partition"
-                                        },
-                                        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
-                                        {
-                                          "Fn::GetAtt": [
-                                            "BotFatherqueueIncomingBotEventLambda867A445B",
-                                            "Arn"
-                                          ]
-                                        },
-                                        "/invocations"
-                                      ]
-                                    ]
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "MOCK",
+                              "requestTemplates": {
+                                "application/json": "{ statusCode: 200 }"
+                              },
+                              "integrationResponses": [
+                                {
+                                  "statusCode": "204",
+                                  "responseParameters": {
+                                    "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                    "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+                                    "method.response.header.Vary": "'Origin'",
+                                    "method.response.header.Access-Control-Allow-Methods": "'POST'",
+                                    "method.response.header.Access-Control-Allow-Credentials": "'true'"
                                   },
-                                  "integrationHttpMethod": "POST"
+                                  "responseTemplates": {
+                                    "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+                                  }
+                                }
+                              ]
+                            },
+                            "methodResponses": [
+                              {
+                                "statusCode": "204",
+                                "responseParameters": {
+                                  "method.response.header.Access-Control-Allow-Headers": true,
+                                  "method.response.header.Access-Control-Allow-Origin": true,
+                                  "method.response.header.Vary": true,
+                                  "method.response.header.Access-Control-Allow-Methods": true,
+                                  "method.response.header.Access-Control-Allow-Credentials": true
                                 }
                               }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
-                              "version": "2.49.0"
-                            }
+                            ]
                           }
                         },
                         "constructInfo": {
-                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
                           "version": "2.49.0"
                         }
                       }
                     },
                     "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_apigateway.ProxyResource",
+                      "fqn": "aws-cdk-lib.aws_apigateway.Method",
                       "version": "2.49.0"
                     }
                   },
-                  "ANY": {
-                    "id": "ANY",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/ANY",
+                  "POST": {
+                    "id": "POST",
+                    "path": "WebTokenService/WebTokenService-GWAPI/Default/POST",
                     "children": {
+                      "ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..": {
+                        "id": "ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..",
+                        "path": "WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "TokenServiceLambdaA04CF86C",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-east-1:993738567487:",
+                                  {
+                                    "Ref": "WebTokenServiceGWAPIAFE5A254"
+                                  },
+                                  "/",
+                                  {
+                                    "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+                                  },
+                                  "/POST/"
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                          "version": "2.49.0"
+                        }
+                      },
+                      "ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..": {
+                        "id": "ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..",
+                        "path": "WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "TokenServiceLambdaA04CF86C",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-east-1:993738567487:",
+                                  {
+                                    "Ref": "WebTokenServiceGWAPIAFE5A254"
+                                  },
+                                  "/test-invoke-stage/POST/"
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                          "version": "2.49.0"
+                        }
+                      },
                       "Resource": {
                         "id": "Resource",
-                        "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/ANY/Resource",
+                        "path": "WebTokenService/WebTokenService-GWAPI/Default/POST/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                           "aws:cdk:cloudformation:props": {
-                            "httpMethod": "ANY",
+                            "httpMethod": "POST",
                             "resourceId": {
                               "Fn::GetAtt": [
-                                "BotFatherTelegramFacingAPIGWD674289B",
+                                "WebTokenServiceGWAPIAFE5A254",
                                 "RootResourceId"
                               ]
                             },
                             "restApiId": {
-                              "Ref": "BotFatherTelegramFacingAPIGWD674289B"
+                              "Ref": "WebTokenServiceGWAPIAFE5A254"
                             },
                             "authorizationType": "NONE",
                             "integration": {
-                              "type": "MOCK"
+                              "type": "AWS_PROXY",
+                              "uri": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                    {
+                                      "Fn::GetAtt": [
+                                        "TokenServiceLambdaA04CF86C",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "/invocations"
+                                  ]
+                                ]
+                              },
+                              "integrationHttpMethod": "POST"
                             }
                           }
                         },
@@ -309,89 +642,486 @@
                   "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
                   "version": "2.49.0"
                 }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
-              "version": "2.49.0"
-            }
-          },
-          "BotFather-incomingBotEvents_dlq.fifo": {
-            "id": "BotFather-incomingBotEvents_dlq.fifo",
-            "path": "BotFatherTelegramFacingStuff/BotFather-incomingBotEvents_dlq.fifo",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "BotFatherTelegramFacingStuff/BotFather-incomingBotEvents_dlq.fifo/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
-                  "aws:cdk:cloudformation:props": {
-                    "deduplicationScope": "messageGroup",
-                    "fifoQueue": true,
-                    "fifoThroughputLimit": "perMessageGroupId",
-                    "queueName": "BotFather-incomingBotEvents_dlq.fifo",
-                    "visibilityTimeout": 10
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
-                  "version": "2.49.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_sqs.Queue",
-              "version": "2.49.0"
-            }
-          },
-          "BotFather-incomingBotEvents.fifo": {
-            "id": "BotFather-incomingBotEvents.fifo",
-            "path": "BotFatherTelegramFacingStuff/BotFather-incomingBotEvents.fifo",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "BotFatherTelegramFacingStuff/BotFather-incomingBotEvents.fifo/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
-                  "aws:cdk:cloudformation:props": {
-                    "deduplicationScope": "messageGroup",
-                    "fifoQueue": true,
-                    "fifoThroughputLimit": "perMessageGroupId",
-                    "queueName": "BotFather-incomingBotEvents.fifo",
-                    "redrivePolicy": {
-                      "deadLetterTargetArn": {
-                        "Fn::GetAtt": [
-                          "BotFatherincomingBotEventsdlqfifoA21DCF6C",
-                          "Arn"
-                        ]
-                      },
-                      "maxReceiveCount": 3
-                    },
-                    "visibilityTimeout": 10
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
-                  "version": "2.49.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_sqs.Queue",
-              "version": "2.49.0"
-            }
-          },
-          "BotFather-queueIncomingBotEvent-Lambda": {
-            "id": "BotFather-queueIncomingBotEvent-Lambda",
-            "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda",
-            "children": {
-              "ServiceRole": {
-                "id": "ServiceRole",
-                "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole",
+              },
+              "WebTokenService-GWAPI-UsagePlan": {
+                "id": "WebTokenService-GWAPI-UsagePlan",
+                "path": "WebTokenService/WebTokenService-GWAPI/WebTokenService-GWAPI-UsagePlan",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/Resource",
+                    "path": "WebTokenService/WebTokenService-GWAPI/WebTokenService-GWAPI-UsagePlan/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::UsagePlan",
+                      "aws:cdk:cloudformation:props": {
+                        "apiStages": [
+                          {
+                            "apiId": {
+                              "Ref": "WebTokenServiceGWAPIAFE5A254"
+                            },
+                            "stage": {
+                              "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+                            },
+                            "throttle": {}
+                          }
+                        ],
+                        "quota": {
+                          "limit": 10000000,
+                          "period": "MONTH"
+                        },
+                        "throttle": {
+                          "burstLimit": 2,
+                          "rateLimit": 100
+                        },
+                        "usagePlanName": "WebTokenService-GWAPI-UsagePlan"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnUsagePlan",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.UsagePlan",
+                  "version": "2.49.0"
+                }
+              },
+              "WebTokenServiceGW-SubDomain": {
+                "id": "WebTokenServiceGW-SubDomain",
+                "path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::DomainName",
+                      "aws:cdk:cloudformation:props": {
+                        "domainName": "auth.zuzona.com",
+                        "endpointConfiguration": {
+                          "types": [
+                            "REGIONAL"
+                          ]
+                        },
+                        "regionalCertificateArn": "arn:aws:acm:us-east-1:993738567487:certificate/664961d6-43be-4044-b8e6-fdfb850ddbed"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDomainName",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9": {
+                    "id": "Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9",
+                    "path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::BasePathMapping",
+                          "aws:cdk:cloudformation:props": {
+                            "domainName": {
+                              "Ref": "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C"
+                            },
+                            "restApiId": {
+                              "Ref": "WebTokenServiceGWAPIAFE5A254"
+                            },
+                            "stage": {
+                              "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnBasePathMapping",
+                          "version": "2.49.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.BasePathMapping",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.DomainName",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.LambdaRestApi",
+              "version": "2.49.0"
+            }
+          },
+          "TokenServiceAPIGWARecord": {
+            "id": "TokenServiceAPIGWARecord",
+            "path": "WebTokenService/TokenServiceAPIGWARecord",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "WebTokenService/TokenServiceAPIGWARecord/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "auth.zuzona.com.",
+                    "type": "A",
+                    "aliasTarget": {
+                      "dnsName": {
+                        "Fn::GetAtt": [
+                          "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C",
+                          "RegionalDomainName"
+                        ]
+                      },
+                      "hostedZoneId": {
+                        "Fn::GetAtt": [
+                          "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C",
+                          "RegionalHostedZoneId"
+                        ]
+                      }
+                    },
+                    "hostedZoneId": "Z08669732ES7CY5LRF03T"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_route53.CfnRecordSet",
+                  "version": "2.49.0"
+                }
+              },
+              "DeleteExistingRecordSetCustomResource": {
+                "id": "DeleteExistingRecordSetCustomResource",
+                "path": "WebTokenService/TokenServiceAPIGWARecord/DeleteExistingRecordSetCustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "WebTokenService/TokenServiceAPIGWARecord/DeleteExistingRecordSetCustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_route53.ARecord",
+              "version": "2.49.0"
+            }
+          },
+          "Custom::DeleteExistingRecordSetCustomResourceProvider": {
+            "id": "Custom::DeleteExistingRecordSetCustomResourceProvider",
+            "path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider",
+            "children": {
+              "Staging": {
+                "id": "Staging",
+                "path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Staging",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.AssetStaging",
+                  "version": "2.49.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.49.0"
+                }
+              },
+              "Handler": {
+                "id": "Handler",
+                "path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CustomResourceProvider",
+              "version": "2.49.0"
+            }
+          },
+          "WebTokenService-GWAPI-tokenApi": {
+            "id": "WebTokenService-GWAPI-tokenApi",
+            "path": "WebTokenService/WebTokenService-GWAPI-tokenApi",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.49.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "WebTokenService/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "WebTokenService/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.1.142"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.49.0"
+        }
+      },
+      "WebRestService": {
+        "id": "WebRestService",
+        "path": "WebRestService",
+        "children": {
+          "imported-BotsTable": {
+            "id": "imported-BotsTable",
+            "path": "WebRestService/imported-BotsTable",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "Zone": {
+            "id": "Zone",
+            "path": "WebRestService/Zone",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "LambdaJWTAuthorizer": {
+            "id": "LambdaJWTAuthorizer",
+            "path": "WebRestService/LambdaJWTAuthorizer",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "WebRestService/LambdaJWTAuthorizer/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/LambdaJWTAuthorizer/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.49.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "WebRestService/LambdaJWTAuthorizer/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "WebRestService/LambdaJWTAuthorizer/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "WebRestService/LambdaJWTAuthorizer/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.49.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "WebRestService/LambdaJWTAuthorizer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+                      "s3Key": "048b0f02bc14c4214f9d344708a5d4ca2bfe8b46a7d8776c3861e59eb59e6106.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "LambdaJWTAuthorizerServiceRole5D71D691",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "region": "us-east-1",
+                        "NODE_ENV": "production",
+                        "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+                        "accessTokenExpirationMinutes": "1",
+                        "refreshTokenExpirationDays": "365",
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "functionName": "WebRestService-JWTAuthorizer-Lambda",
+                    "handler": "index.LambdaJWTAuthorizerHandler",
+                    "runtime": "nodejs16.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.49.0"
+                }
+              },
+              "LogRetention": {
+                "id": "LogRetention",
+                "path": "WebRestService/LambdaJWTAuthorizer/LogRetention",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/LambdaJWTAuthorizer/LogRetention/Resource",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_logs.LogRetention",
+                  "version": "2.49.0"
+                }
+              },
+              "LogGroup": {
+                "id": "LogGroup",
+                "path": "WebRestService/LambdaJWTAuthorizer/LogGroup",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.49.0"
+                }
+              },
+              "WebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FA:Permissions": {
+                "id": "WebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FA:Permissions",
+                "path": "WebRestService/LambdaJWTAuthorizer/WebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FA:Permissions",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "LambdaJWTAuthorizerF61869D9",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "apigateway.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:",
+                          {
+                            "Ref": "AWS::Partition"
+                          },
+                          ":execute-api:us-east-1:993738567487:",
+                          {
+                            "Ref": "WebRestServiceGWAPID1BA5018"
+                          },
+                          "/authorizers/",
+                          {
+                            "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
+              "version": "2.49.0"
+            }
+          },
+          "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a": {
+            "id": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a",
+            "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.49.0"
+                }
+              },
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -430,11 +1160,11 @@
                   },
                   "DefaultPolicy": {
                     "id": "DefaultPolicy",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/DefaultPolicy",
+                    "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/DefaultPolicy/Resource",
+                        "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                           "aws:cdk:cloudformation:props": {
@@ -442,25 +1172,19 @@
                               "Statement": [
                                 {
                                   "Action": [
-                                    "sqs:SendMessage",
-                                    "sqs:GetQueueAttributes",
-                                    "sqs:GetQueueUrl"
+                                    "logs:PutRetentionPolicy",
+                                    "logs:DeleteRetentionPolicy"
                                   ],
                                   "Effect": "Allow",
-                                  "Resource": {
-                                    "Fn::GetAtt": [
-                                      "BotFatherincomingBotEventsfifo329343C3",
-                                      "Arn"
-                                    ]
-                                  }
+                                  "Resource": "*"
                                 }
                               ],
                               "Version": "2012-10-17"
                             },
-                            "policyName": "BotFatherqueueIncomingBotEventLambdaServiceRoleDefaultPolicy399E9AFB",
+                            "policyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
                             "roles": [
                               {
-                                "Ref": "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427"
+                                "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
                               }
                             ]
                           }
@@ -482,150 +1206,9 @@
                   "version": "2.49.0"
                 }
               },
-              "Code": {
-                "id": "Code",
-                "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Code",
-                "children": {
-                  "Stage": {
-                    "id": "Stage",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Code/Stage",
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.AssetStaging",
-                      "version": "2.49.0"
-                    }
-                  },
-                  "AssetBucket": {
-                    "id": "AssetBucket",
-                    "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Code/AssetBucket",
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
-                      "version": "2.49.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
-                  "version": "2.49.0"
-                }
-              },
               "Resource": {
                 "id": "Resource",
-                "path": "BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
-                  "aws:cdk:cloudformation:props": {
-                    "code": {
-                      "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "e3330fe65adb499eabb9de1c44ac6ade1f11d2d9a54de0774bd6db5fecd08421.zip"
-                    },
-                    "role": {
-                      "Fn::GetAtt": [
-                        "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427",
-                        "Arn"
-                      ]
-                    },
-                    "environment": {
-                      "variables": {
-                        "api_version": "v1",
-                        "incomingBotEvents_SQS": {
-                          "Ref": "BotFatherincomingBotEventsfifo329343C3"
-                        },
-                        "region": "us-east-1",
-                        "NODE_ENV": "production",
-                        "tg_api_serverURI": "https://api.zuzona.com",
-                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
-                      }
-                    },
-                    "functionName": "BotFather-queueIncomingTelegramBotEvents-Lambda",
-                    "handler": "index.queueIncomingTelegramBotEvents",
-                    "runtime": "nodejs16.x",
-                    "timeout": 3
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
-                  "version": "2.49.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
-              "version": "2.49.0"
-            }
-          },
-          "BotFather-TelegramFacingAPI-GW-deployment": {
-            "id": "BotFather-TelegramFacingAPI-GW-deployment",
-            "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-deployment",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-deployment/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
-                  "aws:cdk:cloudformation:props": {
-                    "restApiId": {
-                      "Ref": "BotFatherTelegramFacingAPIGWD674289B"
-                    },
-                    "description": ""
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
-                  "version": "2.49.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
-              "version": "2.49.0"
-            }
-          },
-          "BotFather-TelegramFacingAPI-GW-stage-production": {
-            "id": "BotFather-TelegramFacingAPI-GW-stage-production",
-            "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-stage-production",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-stage-production/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
-                  "aws:cdk:cloudformation:props": {
-                    "restApiId": {
-                      "Ref": "BotFatherTelegramFacingAPIGWD674289B"
-                    },
-                    "deploymentId": {
-                      "Ref": "BotFatherTelegramFacingAPIGWdeployment60BC1FEFb51cc318107c59e73380d0484703d22a"
-                    },
-                    "methodSettings": [
-                      {
-                        "httpMethod": "*",
-                        "resourcePath": "/*",
-                        "dataTraceEnabled": false,
-                        "loggingLevel": "INFO",
-                        "metricsEnabled": true
-                      }
-                    ],
-                    "stageName": "prod"
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
-                  "version": "2.49.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_apigateway.Stage",
-              "version": "2.49.0"
-            }
-          },
-          "CDKMetadata": {
-            "id": "CDKMetadata",
-            "path": "BotFatherTelegramFacingStuff/CDKMetadata",
-            "children": {
-              "Default": {
-                "id": "Default",
-                "path": "BotFatherTelegramFacingStuff/CDKMetadata/Default",
+                "path": "WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.49.0"
@@ -637,85 +1220,810 @@
               "version": "10.1.142"
             }
           },
-          "Exports": {
-            "id": "Exports",
-            "path": "BotFatherTelegramFacingStuff/Exports",
+          "WebRestService-LambdaJWTAuthorizerObject": {
+            "id": "WebRestService-LambdaJWTAuthorizerObject",
+            "path": "WebRestService/WebRestService-LambdaJWTAuthorizerObject",
             "children": {
-              "Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsfifo329343C3\",\"Arn\"]}": {
-                "id": "Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsfifo329343C3\",\"Arn\"]}",
-                "path": "BotFatherTelegramFacingStuff/Exports/Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsfifo329343C3\",\"Arn\"]}",
+              "Resource": {
+                "id": "Resource",
+                "path": "WebRestService/WebRestService-LambdaJWTAuthorizerObject/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Authorizer",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "WebRestService-LambdaJWTAuthorizerObject",
+                    "restApiId": {
+                      "Ref": "WebRestServiceGWAPID1BA5018"
+                    },
+                    "type": "REQUEST",
+                    "authorizerResultTtlInSeconds": 0,
+                    "authorizerUri": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:",
+                          {
+                            "Fn::Select": [
+                              1,
+                              {
+                                "Fn::Split": [
+                                  ":",
+                                  {
+                                    "Fn::GetAtt": [
+                                      "LambdaJWTAuthorizerF61869D9",
+                                      "Arn"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          ":apigateway:",
+                          {
+                            "Fn::Select": [
+                              3,
+                              {
+                                "Fn::Split": [
+                                  ":",
+                                  {
+                                    "Fn::GetAtt": [
+                                      "LambdaJWTAuthorizerF61869D9",
+                                      "Arn"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          ":lambda:path/2015-03-31/functions/",
+                          {
+                            "Fn::GetAtt": [
+                              "LambdaJWTAuthorizerF61869D9",
+                              "Arn"
+                            ]
+                          },
+                          "/invocations"
+                        ]
+                      ]
+                    },
+                    "identitySource": "method.request.header.cookie"
+                  }
+                },
                 "constructInfo": {
-                  "fqn": "aws-cdk-lib.CfnOutput",
-                  "version": "2.49.0"
-                }
-              },
-              "Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsdlqfifoA21DCF6C\",\"Arn\"]}": {
-                "id": "Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsdlqfifoA21DCF6C\",\"Arn\"]}",
-                "path": "BotFatherTelegramFacingStuff/Exports/Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsdlqfifoA21DCF6C\",\"Arn\"]}",
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAuthorizer",
                   "version": "2.49.0"
                 }
               }
             },
             "constructInfo": {
-              "fqn": "constructs.Construct",
-              "version": "10.1.142"
-            }
-          }
-        },
-        "constructInfo": {
-          "fqn": "aws-cdk-lib.Stack",
-          "version": "2.49.0"
-        }
-      },
-      "BotFatherTheBot": {
-        "id": "BotFatherTheBot",
-        "path": "BotFatherTheBot",
-        "children": {
-          "i18n-imported": {
-            "id": "i18n-imported",
-            "path": "BotFatherTheBot/i18n-imported",
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.Resource",
+              "fqn": "aws-cdk-lib.aws_apigateway.RequestAuthorizer",
               "version": "2.49.0"
             }
           },
-          "SendPost-imported": {
-            "id": "SendPost-imported",
-            "path": "BotFatherTheBot/SendPost-imported",
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.Resource",
-              "version": "2.49.0"
-            }
-          },
-          "Conversations-imported": {
-            "id": "Conversations-imported",
-            "path": "BotFatherTheBot/Conversations-imported",
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.Resource",
-              "version": "2.49.0"
-            }
-          },
-          "Types-imported": {
-            "id": "Types-imported",
-            "path": "BotFatherTheBot/Types-imported",
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.Resource",
-              "version": "2.49.0"
-            }
-          },
-          "BotFather-Lambda": {
-            "id": "BotFather-Lambda",
-            "path": "BotFatherTheBot/BotFather-Lambda",
+          "WebRestService-GWAPI": {
+            "id": "WebRestService-GWAPI",
+            "path": "WebRestService/WebRestService-GWAPI",
             "children": {
-              "ServiceRole": {
-                "id": "ServiceRole",
-                "path": "BotFatherTheBot/BotFather-Lambda/ServiceRole",
+              "Resource": {
+                "id": "Resource",
+                "path": "WebRestService/WebRestService-GWAPI/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "WebRestService-GWAPI"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.49.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "WebRestService/WebRestService-GWAPI/CloudWatchRole",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BotFatherTheBot/BotFather-Lambda/ServiceRole/Resource",
+                    "path": "WebRestService/WebRestService-GWAPI/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.49.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "WebRestService/WebRestService-GWAPI/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "WebRestServiceGWAPICloudWatchRoleDB7C4E5F",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.49.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "WebRestService/WebRestService-GWAPI/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/WebRestService-GWAPI/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "WebRestServiceGWAPID1BA5018"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.49.0"
+                }
+              },
+              "DeploymentStage.SecureAPI": {
+                "id": "DeploymentStage.SecureAPI",
+                "path": "WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "WebRestServiceGWAPID1BA5018"
+                        },
+                        "deploymentId": {
+                          "Ref": "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4"
+                        },
+                        "methodSettings": [
+                          {
+                            "httpMethod": "*",
+                            "resourcePath": "/*",
+                            "dataTraceEnabled": false,
+                            "loggingLevel": "INFO",
+                            "metricsEnabled": true
+                          }
+                        ],
+                        "stageName": "SecureAPI"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.49.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "WebRestService/WebRestService-GWAPI/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.49.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "WebRestService/WebRestService-GWAPI/Default",
+                "children": {
+                  "OPTIONS": {
+                    "id": "OPTIONS",
+                    "path": "WebRestService/WebRestService-GWAPI/Default/OPTIONS",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/OPTIONS/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "OPTIONS",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "WebRestServiceGWAPID1BA5018",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "WebRestServiceGWAPID1BA5018"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "MOCK",
+                              "requestTemplates": {
+                                "application/json": "{ statusCode: 200 }"
+                              },
+                              "integrationResponses": [
+                                {
+                                  "statusCode": "204",
+                                  "responseParameters": {
+                                    "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                    "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+                                    "method.response.header.Vary": "'Origin'",
+                                    "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+                                    "method.response.header.Access-Control-Allow-Credentials": "'true'"
+                                  },
+                                  "responseTemplates": {
+                                    "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+                                  }
+                                }
+                              ]
+                            },
+                            "methodResponses": [
+                              {
+                                "statusCode": "204",
+                                "responseParameters": {
+                                  "method.response.header.Access-Control-Allow-Headers": true,
+                                  "method.response.header.Access-Control-Allow-Origin": true,
+                                  "method.response.header.Vary": true,
+                                  "method.response.header.Access-Control-Allow-Methods": true,
+                                  "method.response.header.Access-Control-Allow-Credentials": true
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                          "version": "2.49.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "Bots": {
+                    "id": "Bots",
+                    "path": "WebRestService/WebRestService-GWAPI/Default/Bots",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/Bots/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "WebRestServiceGWAPID1BA5018",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "Bots",
+                            "restApiId": {
+                              "Ref": "WebRestServiceGWAPID1BA5018"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.49.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/Bots/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/Bots/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "WebRestServiceGWAPIBots64472057"
+                                },
+                                "restApiId": {
+                                  "Ref": "WebRestServiceGWAPID1BA5018"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "204",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+                                        "method.response.header.Vary": "'Origin'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+                                        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+                                      },
+                                      "responseTemplates": {
+                                        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "204",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Vary": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true,
+                                      "method.response.header.Access-Control-Allow-Credentials": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.49.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.49.0"
+                        }
+                      },
+                      "GetMyBots": {
+                        "id": "GetMyBots",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                              "aws:cdk:cloudformation:props": {
+                                "parentId": {
+                                  "Ref": "WebRestServiceGWAPIBots64472057"
+                                },
+                                "pathPart": "GetMyBots",
+                                "restApiId": {
+                                  "Ref": "WebRestServiceGWAPID1BA5018"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                              "version": "2.49.0"
+                            }
+                          },
+                          "OPTIONS": {
+                            "id": "OPTIONS",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/OPTIONS",
+                            "children": {
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/OPTIONS/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "httpMethod": "OPTIONS",
+                                    "resourceId": {
+                                      "Ref": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "WebRestServiceGWAPID1BA5018"
+                                    },
+                                    "authorizationType": "NONE",
+                                    "integration": {
+                                      "type": "MOCK",
+                                      "requestTemplates": {
+                                        "application/json": "{ statusCode: 200 }"
+                                      },
+                                      "integrationResponses": [
+                                        {
+                                          "statusCode": "204",
+                                          "responseParameters": {
+                                            "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                            "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+                                            "method.response.header.Vary": "'Origin'",
+                                            "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+                                            "method.response.header.Access-Control-Allow-Credentials": "'true'"
+                                          },
+                                          "responseTemplates": {
+                                            "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "methodResponses": [
+                                      {
+                                        "statusCode": "204",
+                                        "responseParameters": {
+                                          "method.response.header.Access-Control-Allow-Headers": true,
+                                          "method.response.header.Access-Control-Allow-Origin": true,
+                                          "method.response.header.Vary": true,
+                                          "method.response.header.Access-Control-Allow-Methods": true,
+                                          "method.response.header.Access-Control-Allow-Credentials": true
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.49.0"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.49.0"
+                            }
+                          },
+                          "GET": {
+                            "id": "GET",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET",
+                            "children": {
+                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots": {
+                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "ListBotsLambdaC9B0E149",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:us-east-1:993738567487:",
+                                          {
+                                            "Ref": "WebRestServiceGWAPID1BA5018"
+                                          },
+                                          "/",
+                                          {
+                                            "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+                                          },
+                                          "/GET/Bots/GetMyBots"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.49.0"
+                                }
+                              },
+                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots": {
+                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "ListBotsLambdaC9B0E149",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:us-east-1:993738567487:",
+                                          {
+                                            "Ref": "WebRestServiceGWAPID1BA5018"
+                                          },
+                                          "/test-invoke-stage/GET/Bots/GetMyBots"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.49.0"
+                                }
+                              },
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "httpMethod": "GET",
+                                    "resourceId": {
+                                      "Ref": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "WebRestServiceGWAPID1BA5018"
+                                    },
+                                    "authorizationType": "CUSTOM",
+                                    "authorizerId": {
+                                      "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+                                    },
+                                    "integration": {
+                                      "type": "AWS_PROXY",
+                                      "uri": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:",
+                                            {
+                                              "Ref": "AWS::Partition"
+                                            },
+                                            ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                            {
+                                              "Fn::GetAtt": [
+                                                "ListBotsLambdaC9B0E149",
+                                                "Arn"
+                                              ]
+                                            },
+                                            "/invocations"
+                                          ]
+                                        ]
+                                      },
+                                      "integrationHttpMethod": "POST"
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.49.0"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.49.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                          "version": "2.49.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.49.0"
+                }
+              },
+              "WebRestService-GWAPI-UsagePlan": {
+                "id": "WebRestService-GWAPI-UsagePlan",
+                "path": "WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::UsagePlan",
+                      "aws:cdk:cloudformation:props": {
+                        "apiStages": [
+                          {
+                            "apiId": {
+                              "Ref": "WebRestServiceGWAPID1BA5018"
+                            },
+                            "stage": {
+                              "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+                            },
+                            "throttle": {}
+                          }
+                        ],
+                        "quota": {
+                          "limit": 10000000,
+                          "period": "MONTH"
+                        },
+                        "throttle": {
+                          "burstLimit": 2,
+                          "rateLimit": 100
+                        },
+                        "usagePlanName": "WebRestService-GWAPI-UsagePlan"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnUsagePlan",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.UsagePlan",
+                  "version": "2.49.0"
+                }
+              },
+              "WebRestService-GW-SubDomain": {
+                "id": "WebRestService-GW-SubDomain",
+                "path": "WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::DomainName",
+                      "aws:cdk:cloudformation:props": {
+                        "domainName": "secure-api.zuzona.com",
+                        "endpointConfiguration": {
+                          "types": [
+                            "REGIONAL"
+                          ]
+                        },
+                        "regionalCertificateArn": "arn:aws:acm:us-east-1:993738567487:certificate/664961d6-43be-4044-b8e6-fdfb850ddbed"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDomainName",
+                      "version": "2.49.0"
+                    }
+                  },
+                  "Map:--=>WebRestServiceWebRestServiceGWAPIA25BC9C1": {
+                    "id": "Map:--=>WebRestServiceWebRestServiceGWAPIA25BC9C1",
+                    "path": "WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Map:--=>WebRestServiceWebRestServiceGWAPIA25BC9C1",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Map:--=>WebRestServiceWebRestServiceGWAPIA25BC9C1/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::BasePathMapping",
+                          "aws:cdk:cloudformation:props": {
+                            "domainName": {
+                              "Ref": "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1"
+                            },
+                            "restApiId": {
+                              "Ref": "WebRestServiceGWAPID1BA5018"
+                            },
+                            "stage": {
+                              "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnBasePathMapping",
+                          "version": "2.49.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.BasePathMapping",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.DomainName",
+                  "version": "2.49.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+              "version": "2.49.0"
+            }
+          },
+          "imported-certificate": {
+            "id": "imported-certificate",
+            "path": "WebRestService/imported-certificate",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "modelsLayer-imported": {
+            "id": "modelsLayer-imported",
+            "path": "WebRestService/modelsLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "utilsLayer-imported": {
+            "id": "utilsLayer-imported",
+            "path": "WebRestService/utilsLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "typesLayer-imported": {
+            "id": "typesLayer-imported",
+            "path": "WebRestService/typesLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "i18nLayer-imported": {
+            "id": "i18nLayer-imported",
+            "path": "WebRestService/i18nLayer-imported",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.49.0"
+            }
+          },
+          "ListBotsLambda": {
+            "id": "ListBotsLambda",
+            "path": "WebRestService/ListBotsLambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "WebRestService/ListBotsLambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/ListBotsLambda/ServiceRole/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -754,52 +2062,16 @@
                   },
                   "DefaultPolicy": {
                     "id": "DefaultPolicy",
-                    "path": "BotFatherTheBot/BotFather-Lambda/ServiceRole/DefaultPolicy",
+                    "path": "WebRestService/ListBotsLambda/ServiceRole/DefaultPolicy",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "BotFatherTheBot/BotFather-Lambda/ServiceRole/DefaultPolicy/Resource",
+                        "path": "WebRestService/ListBotsLambda/ServiceRole/DefaultPolicy/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                           "aws:cdk:cloudformation:props": {
                             "policyDocument": {
                               "Statement": [
-                                {
-                                  "Action": [
-                                    "sqs:ReceiveMessage",
-                                    "sqs:ChangeMessageVisibility",
-                                    "sqs:GetQueueUrl",
-                                    "sqs:DeleteMessage",
-                                    "sqs:GetQueueAttributes"
-                                  ],
-                                  "Effect": "Allow",
-                                  "Resource": {
-                                    "Fn::ImportValue": "BotFatherTelegramFacingStuff:ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4"
-                                  }
-                                },
-                                {
-                                  "Action": [
-                                    "sqs:ReceiveMessage",
-                                    "sqs:ChangeMessageVisibility",
-                                    "sqs:GetQueueUrl",
-                                    "sqs:DeleteMessage",
-                                    "sqs:GetQueueAttributes"
-                                  ],
-                                  "Effect": "Allow",
-                                  "Resource": {
-                                    "Fn::ImportValue": "BotFatherTelegramFacingStuff:ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F"
-                                  }
-                                },
-                                {
-                                  "Action": "secretsmanager:*",
-                                  "Effect": "Allow",
-                                  "Resource": "*"
-                                },
-                                {
-                                  "Action": "s3:*",
-                                  "Effect": "Allow",
-                                  "Resource": "arn:aws:s3:::bots-bucket/*"
-                                },
                                 {
                                   "Action": [
                                     "dynamodb:BatchGetItem",
@@ -833,48 +2105,14 @@
                                       "Ref": "AWS::NoValue"
                                     }
                                   ]
-                                },
-                                {
-                                  "Action": [
-                                    "dynamodb:BatchGetItem",
-                                    "dynamodb:GetRecords",
-                                    "dynamodb:GetShardIterator",
-                                    "dynamodb:Query",
-                                    "dynamodb:GetItem",
-                                    "dynamodb:Scan",
-                                    "dynamodb:ConditionCheckItem",
-                                    "dynamodb:BatchWriteItem",
-                                    "dynamodb:PutItem",
-                                    "dynamodb:UpdateItem",
-                                    "dynamodb:DeleteItem",
-                                    "dynamodb:DescribeTable"
-                                  ],
-                                  "Effect": "Allow",
-                                  "Resource": [
-                                    {
-                                      "Fn::Join": [
-                                        "",
-                                        [
-                                          "arn:",
-                                          {
-                                            "Ref": "AWS::Partition"
-                                          },
-                                          ":dynamodb:us-east-1:993738567487:table/sessions"
-                                        ]
-                                      ]
-                                    },
-                                    {
-                                      "Ref": "AWS::NoValue"
-                                    }
-                                  ]
                                 }
                               ],
                               "Version": "2012-10-17"
                             },
-                            "policyName": "BotFatherLambdaServiceRoleDefaultPolicy77C60D99",
+                            "policyName": "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4",
                             "roles": [
                               {
-                                "Ref": "BotFatherLambdaServiceRole2E79358E"
+                                "Ref": "ListBotsLambdaServiceRoleA6E24787"
                               }
                             ]
                           }
@@ -898,11 +2136,11 @@
               },
               "Code": {
                 "id": "Code",
-                "path": "BotFatherTheBot/BotFather-Lambda/Code",
+                "path": "WebRestService/ListBotsLambda/Code",
                 "children": {
                   "Stage": {
                     "id": "Stage",
-                    "path": "BotFatherTheBot/BotFather-Lambda/Code/Stage",
+                    "path": "WebRestService/ListBotsLambda/Code/Stage",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.AssetStaging",
                       "version": "2.49.0"
@@ -910,7 +2148,7 @@
                   },
                   "AssetBucket": {
                     "id": "AssetBucket",
-                    "path": "BotFatherTheBot/BotFather-Lambda/Code/AssetBucket",
+                    "path": "WebRestService/ListBotsLambda/Code/AssetBucket",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_s3.BucketBase",
                       "version": "2.49.0"
@@ -924,106 +2162,44 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "BotFatherTheBot/BotFather-Lambda/Resource",
+                "path": "WebRestService/ListBotsLambda/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d993f0e07dff89011bbb71bb2e9e1ba40349d7311c9685af12334986588fb988.zip"
+                      "s3Key": "5177104439319ce944da63bcd7347c67d13fd5ee09af531e202564d7deacdac5.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
-                        "BotFatherLambdaServiceRole2E79358E",
+                        "ListBotsLambdaServiceRoleA6E24787",
                         "Arn"
                       ]
                     },
                     "environment": {
                       "variables": {
                         "botsTable": "bots",
-                        "messagesTable": "messages",
-                        "sessionsTable": "sessions",
-                        "s3BotsBucket": "bots-bucket",
                         "region": "us-east-1",
                         "NODE_ENV": "production",
-                        "BOT_FATHER_TOKEN": "5647754848:AAGoCADAcu0oDjvsVcWnWEJcazWg_kcCnvI",
-                        "botFatherId": "5647754848",
-                        "createPostTemplateSQSSURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SendMessage-CreatePostTemplate.fifo",
-                        "tg_api_serverURI": "https://api.zuzona.com",
+                        "botFatherId": "5645439521",
+                        "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
+                        "cookieDomain": "zuzona.com",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
                       }
                     },
-                    "functionName": "BotFather-Lambda",
-                    "handler": "index.botFatherHandler",
-                    "layers": [],
-                    "runtime": "nodejs16.x",
-                    "timeout": 10
+                    "functionName": "react-ListBotsLambda-Lambda",
+                    "handler": "index.ListMyBotsHandler",
+                    "layers": [
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6"
+                    ],
+                    "runtime": "nodejs16.x"
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
-                  "version": "2.49.0"
-                }
-              },
-              "SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F00": {
-                "id": "SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F00",
-                "path": "BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F00",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F00/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
-                      "aws:cdk:cloudformation:props": {
-                        "functionName": {
-                          "Ref": "BotFatherLambdaDEDED5B3"
-                        },
-                        "batchSize": 1,
-                        "enabled": true,
-                        "eventSourceArn": {
-                          "Fn::ImportValue": "BotFatherTelegramFacingStuff:ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_lambda.CfnEventSourceMapping",
-                      "version": "2.49.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_lambda.EventSourceMapping",
-                  "version": "2.49.0"
-                }
-              },
-              "SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B28562": {
-                "id": "SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B28562",
-                "path": "BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B28562",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B28562/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
-                      "aws:cdk:cloudformation:props": {
-                        "functionName": {
-                          "Ref": "BotFatherLambdaDEDED5B3"
-                        },
-                        "batchSize": 1,
-                        "enabled": false,
-                        "eventSourceArn": {
-                          "Fn::ImportValue": "BotFatherTelegramFacingStuff:ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_lambda.CfnEventSourceMapping",
-                      "version": "2.49.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_lambda.EventSourceMapping",
                   "version": "2.49.0"
                 }
               }
@@ -1033,29 +2209,113 @@
               "version": "2.49.0"
             }
           },
-          "imported-BotsTable": {
-            "id": "imported-BotsTable",
-            "path": "BotFatherTheBot/imported-BotsTable",
+          "WebRestService-ARecord": {
+            "id": "WebRestService-ARecord",
+            "path": "WebRestService/WebRestService-ARecord",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "WebRestService/WebRestService-ARecord/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "secure-api.zuzona.com.",
+                    "type": "A",
+                    "aliasTarget": {
+                      "dnsName": {
+                        "Fn::GetAtt": [
+                          "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1",
+                          "RegionalDomainName"
+                        ]
+                      },
+                      "hostedZoneId": {
+                        "Fn::GetAtt": [
+                          "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1",
+                          "RegionalHostedZoneId"
+                        ]
+                      }
+                    },
+                    "hostedZoneId": "Z08669732ES7CY5LRF03T"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_route53.CfnRecordSet",
+                  "version": "2.49.0"
+                }
+              },
+              "DeleteExistingRecordSetCustomResource": {
+                "id": "DeleteExistingRecordSetCustomResource",
+                "path": "WebRestService/WebRestService-ARecord/DeleteExistingRecordSetCustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "WebRestService/WebRestService-ARecord/DeleteExistingRecordSetCustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.49.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.49.0"
+                }
+              }
+            },
             "constructInfo": {
-              "fqn": "aws-cdk-lib.Resource",
+              "fqn": "aws-cdk-lib.aws_route53.ARecord",
               "version": "2.49.0"
             }
           },
-          "imported-telegrafSessionsTable": {
-            "id": "imported-telegrafSessionsTable",
-            "path": "BotFatherTheBot/imported-telegrafSessionsTable",
+          "Custom::DeleteExistingRecordSetCustomResourceProvider": {
+            "id": "Custom::DeleteExistingRecordSetCustomResourceProvider",
+            "path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider",
+            "children": {
+              "Staging": {
+                "id": "Staging",
+                "path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Staging",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.AssetStaging",
+                  "version": "2.49.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.49.0"
+                }
+              },
+              "Handler": {
+                "id": "Handler",
+                "path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.49.0"
+                }
+              }
+            },
             "constructInfo": {
-              "fqn": "aws-cdk-lib.Resource",
+              "fqn": "aws-cdk-lib.CustomResourceProvider",
+              "version": "2.49.0"
+            }
+          },
+          "WebRestService-APIGW-SecureAPI": {
+            "id": "WebRestService-APIGW-SecureAPI",
+            "path": "WebRestService/WebRestService-APIGW-SecureAPI",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.49.0"
             }
           },
           "CDKMetadata": {
             "id": "CDKMetadata",
-            "path": "BotFatherTheBot/CDKMetadata",
+            "path": "WebRestService/CDKMetadata",
             "children": {
               "Default": {
                 "id": "Default",
-                "path": "BotFatherTheBot/CDKMetadata/Default",
+                "path": "WebRestService/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.49.0"

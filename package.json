@@ -8,7 +8,6 @@
     "start": "nodemon --exec 'ts-node' tsconfig-paths/register test/playground/testBot/testChatBot.ts",
     "deploy:all": "cdk deploy --require-approval never --all --outputs-file ./cdk-outputs.json",
     "git": "git add . ; git commit -m \"automated commit\" ; git push "
-
   },
   "repository": {
     "type": "git",
@@ -23,7 +22,9 @@
     "@grammyjs/conversations": "^1.0.3",
     "@grammyjs/menu": "^1.1.2",
     "@types/aws-lambda": "^8.10.108",
+    "@types/crypto-js": "^4.1.1",
     "@types/i18next-fs-backend": "^1.1.2",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/luxon": "^3.0.2",
     "@types/node": "^18.7.15",
     "@types/uuid": "^8.3.4",
@@ -46,9 +47,11 @@
   "dependencies": {
     "aws-sdk": "^2.1213.0",
     "axios": "^0.27.2",
+    "crypto-js": "^4.1.1",
     "grammy": "^1.11.2",
     "i18next": "^22.0.2",
     "i18next-fs-backend": "^1.1.5",
+    "jsonwebtoken": "^8.5.1",
     "luxon": "^3.0.4",
     "node-fetch": "^3.2.10",
     "telegram-format": "^2.1.0",

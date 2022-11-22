@@ -7,27 +7,27 @@
         "file": "tree.json"
       }
     },
-    "BotFatherTelegramFacingStuff.assets": {
+    "WebTokenService.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "BotFatherTelegramFacingStuff.assets.json",
+        "file": "WebTokenService.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "BotFatherTelegramFacingStuff": {
+    "WebTokenService": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://993738567487/us-east-1",
       "properties": {
-        "templateFile": "BotFatherTelegramFacingStuff.template.json",
+        "templateFile": "WebTokenService.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e3983f774ee88152a32c047e914319389b6802d5dd581faa341c4a7e7ab39e00.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a2a808e3700c1d8ead30b2114557b229b33119b035d255f07c2b66f7dfdbe87c.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "BotFatherTelegramFacingStuff.assets"
+          "WebTokenService.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
@@ -36,153 +36,177 @@
         }
       },
       "dependencies": [
-        "BotFatherTelegramFacingStuff.assets"
+        "WebTokenService.assets"
       ],
       "metadata": {
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Resource": [
+        "/WebTokenService/TokenServiceLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWD674289B"
+            "data": "TokenServiceLambdaServiceRoleBC560DEB"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/CloudWatchRole/Resource": [
+        "/WebTokenService/TokenServiceLambda/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWCloudWatchRole87AA1AC6"
+            "data": "TokenServiceLambdaServiceRoleDefaultPolicy87F48249"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Account": [
+        "/WebTokenService/TokenServiceLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWAccountDBD5223F"
+            "data": "TokenServiceLambdaA04CF86C"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWproxy20E26B03"
+            "data": "WebTokenServiceGWAPIAFE5A254"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}": [
+        "/WebTokenService/WebTokenService-GWAPI/CloudWatchRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWproxyANYApiPermissionBotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2CANYproxy8D414378"
+            "data": "WebTokenServiceGWAPICloudWatchRole2C04FD27"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/ApiPermission.Test.BotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2C.ANY..{proxy+}": [
+        "/WebTokenService/WebTokenService-GWAPI/Account": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWproxyANYApiPermissionTestBotFatherTelegramFacingStuffBotFatherTelegramFacingAPIGW7C6C6E2CANYproxyEF882CB9"
+            "data": "WebTokenServiceGWAPIAccount852D4E01"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/{proxy+}/ANY/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWproxyANYE01C0E02"
+            "data": "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW/Default/ANY/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWANYCD22AAA1"
+            "data": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-incomingBotEvents_dlq.fifo/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Endpoint": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherincomingBotEventsdlqfifoA21DCF6C"
+            "data": "WebTokenServiceGWAPIEndpoint9329497D"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-incomingBotEvents.fifo/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherincomingBotEventsfifo329343C3"
+            "data": "WebTokenServiceGWAPIOPTIONSE6785683"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherqueueIncomingBotEventLambdaServiceRoleE331D427"
+            "data": "WebTokenServiceGWAPIPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POST65275471"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/ServiceRole/DefaultPolicy/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherqueueIncomingBotEventLambdaServiceRoleDefaultPolicy399E9AFB"
+            "data": "WebTokenServiceGWAPIPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POST4468E18B"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-queueIncomingBotEvent-Lambda/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherqueueIncomingBotEventLambda867A445B"
+            "data": "WebTokenServiceGWAPIPOSTD3E68602"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-deployment/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/WebTokenService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWdeployment60BC1FEFb51cc318107c59e73380d0484703d22a"
+            "data": "WebTokenServiceGWAPIWebTokenServiceGWAPIUsagePlanFFD4474E"
           }
         ],
-        "/BotFatherTelegramFacingStuff/BotFather-TelegramFacingAPI-GW-stage-production/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherTelegramFacingAPIGWstageproduction84C6AEA4"
+            "data": "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C"
           }
         ],
-        "/BotFatherTelegramFacingStuff/CDKMetadata/Default": [
+        "/WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPIWebTokenServiceGWSubDomainMapWebTokenServiceWebTokenServiceGWAPID1F20FE968DF6B8B"
+          }
+        ],
+        "/WebTokenService/TokenServiceAPIGWARecord/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TokenServiceAPIGWARecordE9A60854"
+          }
+        ],
+        "/WebTokenService/TokenServiceAPIGWARecord/DeleteExistingRecordSetCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TokenServiceAPIGWARecordDeleteExistingRecordSetCustomResource3B5F67CF"
+          }
+        ],
+        "/WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
+          }
+        ],
+        "/WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI-tokenApi": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPItokenApi"
+          }
+        ],
+        "/WebTokenService/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/BotFatherTelegramFacingStuff/Exports/Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsfifo329343C3\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttBotFatherincomingBotEventsfifo329343C3Arn9D5437C4"
-          }
-        ],
-        "/BotFatherTelegramFacingStuff/Exports/Output{\"Fn::GetAtt\":[\"BotFatherincomingBotEventsdlqfifoA21DCF6C\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttBotFatherincomingBotEventsdlqfifoA21DCF6CArnF826A76F"
-          }
-        ],
-        "/BotFatherTelegramFacingStuff/BootstrapVersion": [
+        "/WebTokenService/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/BotFatherTelegramFacingStuff/CheckBootstrapVersion": [
+        "/WebTokenService/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "BotFatherTelegramFacingStuff"
+      "displayName": "WebTokenService"
     },
-    "BotFatherTheBot.assets": {
+    "WebRestService.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "BotFatherTheBot.assets.json",
+        "file": "WebRestService.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "BotFatherTheBot": {
+    "WebRestService": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://993738567487/us-east-1",
       "properties": {
-        "templateFile": "BotFatherTheBot.template.json",
+        "templateFile": "WebRestService.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/804d3e9c729f33002be292a3d5fc36d11314af49e11fd43d056f878d8ee04882.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0e835b54549a2c2b480cdc9895101685b6ba878e44f8596add39b2dc35b4ce53.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "BotFatherTheBot.assets"
+          "WebRestService.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
@@ -191,60 +215,227 @@
         }
       },
       "dependencies": [
-        "BotFatherTelegramFacingStuff",
-        "BotFatherTheBot.assets"
+        "WebRestService.assets"
       ],
       "metadata": {
-        "/BotFatherTheBot/BotFather-Lambda/ServiceRole/Resource": [
+        "/WebRestService/LambdaJWTAuthorizer/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherLambdaServiceRole2E79358E"
+            "data": "LambdaJWTAuthorizerServiceRole5D71D691"
           }
         ],
-        "/BotFatherTheBot/BotFather-Lambda/ServiceRole/DefaultPolicy/Resource": [
+        "/WebRestService/LambdaJWTAuthorizer/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherLambdaServiceRoleDefaultPolicy77C60D99"
+            "data": "LambdaJWTAuthorizerF61869D9"
           }
         ],
-        "/BotFatherTheBot/BotFather-Lambda/Resource": [
+        "/WebRestService/LambdaJWTAuthorizer/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherLambdaDEDED5B3"
+            "data": "LambdaJWTAuthorizerLogRetention603A8E46"
           }
         ],
-        "/BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F00/Resource": [
+        "/WebRestService/LambdaJWTAuthorizer/WebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FA:Permissions": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherLambdaSqsEventSourceBotFatherTelegramFacingStuffBotFatherincomingBotEventsfifo01DC8F000A14BE4E"
+            "data": "LambdaJWTAuthorizerWebRestServiceWebRestServiceLambdaJWTAuthorizerObject99D0B0FAPermissions0F9F394F"
           }
         ],
-        "/BotFatherTheBot/BotFather-Lambda/SqsEventSource:BotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B28562/Resource": [
+        "/WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BotFatherLambdaSqsEventSourceBotFatherTelegramFacingStuffBotFatherincomingBotEventsdlqfifo10B2856266C2E942"
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
           }
         ],
-        "/BotFatherTheBot/CDKMetadata/Default": [
+        "/WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+          }
+        ],
+        "/WebRestService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+          }
+        ],
+        "/WebRestService/WebRestService-LambdaJWTAuthorizerObject/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPID1BA5018"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPICloudWatchRoleDB7C4E5F"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIAccountDC3CB312"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIEndpoint497456A8"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIOPTIONS622B6CF2"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBots64472057"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBotsOPTIONSB0668A3B"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBotsGetMyBotsOPTIONSA63AD8BA"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBotsGetMyBotsGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetMyBots65F6DEA7"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBotsGetMyBotsGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetMyBots6B7F325F"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIBotsGetMyBotsGET0773596C"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIWebRestServiceGWAPIUsagePlan476AD6E9"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIWebRestServiceGWSubDomain3CF214C1"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/WebRestService-GW-SubDomain/Map:--=>WebRestServiceWebRestServiceGWAPIA25BC9C1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIWebRestServiceGWSubDomainMapWebRestServiceWebRestServiceGWAPIA25BC9C13DA8860E"
+          }
+        ],
+        "/WebRestService/ListBotsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaServiceRoleA6E24787"
+          }
+        ],
+        "/WebRestService/ListBotsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4"
+          }
+        ],
+        "/WebRestService/ListBotsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaC9B0E149"
+          }
+        ],
+        "/WebRestService/WebRestService-ARecord/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceARecord98E8B946"
+          }
+        ],
+        "/WebRestService/WebRestService-ARecord/DeleteExistingRecordSetCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceARecordDeleteExistingRecordSetCustomResource7B895BB7"
+          }
+        ],
+        "/WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
+          }
+        ],
+        "/WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
+          }
+        ],
+        "/WebRestService/WebRestService-APIGW-SecureAPI": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceAPIGWSecureAPI"
+          }
+        ],
+        "/WebRestService/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/BotFatherTheBot/BootstrapVersion": [
+        "/WebRestService/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/BotFatherTheBot/CheckBootstrapVersion": [
+        "/WebRestService/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "BotFatherTheBot"
+      "displayName": "WebRestService"
     }
   }
 }
