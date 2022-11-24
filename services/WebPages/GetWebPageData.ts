@@ -62,6 +62,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                 console.log('no items returned from DDBQuery');
             }
             const returnObject = ReturnRestApiResult(200, map, origin);
+            console.log('returnObject\n', returnObject);
             return returnObject as APIGatewayProxyResult;
         } catch (error) {
             console.log('DynamoDB error\n', error);
