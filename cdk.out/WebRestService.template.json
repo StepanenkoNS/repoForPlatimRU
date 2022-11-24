@@ -348,7 +348,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Account"
    }
   },
-  "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4": {
+  "WebRestServiceGWAPIDeploymentE0A236723209da6b7b28f6ccce86d4a26430c85d": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -375,7 +375,7 @@
      "Ref": "WebRestServiceGWAPID1BA5018"
     },
     "DeploymentId": {
-     "Ref": "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4"
+     "Ref": "WebRestServiceGWAPIDeploymentE0A236723209da6b7b28f6ccce86d4a26430c85d"
     },
     "MethodSettings": [
      {
@@ -859,7 +859,7 @@
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
-    "FunctionName": "react-ListBotsLambda-Lambda",
+    "FunctionName": "react-ListBots-Lambda",
     "Handler": "index.ListMyBotsHandler",
     "Layers": [
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6",

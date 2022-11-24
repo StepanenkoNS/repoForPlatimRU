@@ -238,7 +238,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/366d781caa62a4dea87422972218fa312d7050b5adf6bd6024cc0b8f8c31884d.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/8afa7c57d5d5533c4bb48ccba2d5564f7015267b5bf1e5a692f3b87ba82ffe48.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -323,7 +323,7 @@
         "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIDeploymentE0A236721579118137f53f372f9a9f6c21cb18e4"
+            "data": "WebRestServiceGWAPIDeploymentE0A236723209da6b7b28f6ccce86d4a26430c85d"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -472,6 +472,185 @@
         ]
       },
       "displayName": "WebRestService"
+    },
+    "WebNotAuthorizedPages.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "WebNotAuthorizedPages.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "WebNotAuthorizedPages": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://993738567487/us-east-1",
+      "properties": {
+        "templateFile": "WebNotAuthorizedPages.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d874111b8a6a433509c98bda4968e83633b5359928933d66d9d653623cd750e1.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "WebNotAuthorizedPages.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "WebNotAuthorizedPages.assets"
+      ],
+      "metadata": {
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPI97EAFC19"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPICloudWatchRoleF0C986B5"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIAccountD1BFC30B"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD974313a61907d1d9afd30f9d29b7c28b0d"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.SecureAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIEndpoint8EC3CEAB"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIOPTIONSAF183470"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGETB4744ED9"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGET4E3BE965"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIGETA11C2EBD"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/WebNotAuthorizedPages-GWAPI-UsagePlan/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIWebNotAuthorizedPagesGWAPIUsagePlan76BD95F4"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/WebNotAuthorizedPages-GW-SubDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIWebNotAuthorizedPagesGWSubDomain446DBCE4"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/WebNotAuthorizedPages-GW-SubDomain/Map:--=>WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIWebNotAuthorizedPagesGWSubDomainMapWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC933CBBFE"
+          }
+        ],
+        "/WebNotAuthorizedPages/getWebPageDataLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getWebPageDataLambdaServiceRoleA2514D30"
+          }
+        ],
+        "/WebNotAuthorizedPages/getWebPageDataLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getWebPageDataLambdaServiceRoleDefaultPolicy8A243F8D"
+          }
+        ],
+        "/WebNotAuthorizedPages/getWebPageDataLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getWebPageDataLambdaD126B916"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-ARecord/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesARecord856A5FDE"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-ARecord/DeleteExistingRecordSetCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesARecordDeleteExistingRecordSetCustomResource995F204B"
+          }
+        ],
+        "/WebNotAuthorizedPages/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
+          }
+        ],
+        "/WebNotAuthorizedPages/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-APIGW-PagesAPI": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesAPIGWPagesAPI"
+          }
+        ],
+        "/WebNotAuthorizedPages/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/WebNotAuthorizedPages/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/WebNotAuthorizedPages/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "WebNotAuthorizedPages"
     },
     "Tree": {
       "type": "cdk:tree",
