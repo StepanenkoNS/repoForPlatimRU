@@ -1,24 +1,24 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
-//https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
-function replacer(key: any, value: any) {
-    if (value instanceof Map) {
-        return {
-            dataType: 'Map',
-            value: Array.from(value.entries()) // or with spread: value: [...value]
-        };
-    } else {
-        return value;
-    }
-}
+// //https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
+// function replacer(key: any, value: any) {
+//     if (value instanceof Map) {
+//         return {
+//             dataType: 'Map',
+//             value: Array.from(value.entries()) // or with spread: value: [...value]
+//         };
+//     } else {
+//         return value;
+//     }
+// }
 
-function reviver(key: any, value: any) {
-    if (typeof value === 'object' && value !== null) {
-        if (value.dataType === 'Map') {
-            return new Map(value.value);
-        }
-    }
-    return value;
-}
+// function reviver(key: any, value: any) {
+//     if (typeof value === 'object' && value !== null) {
+//         if (value.dataType === 'Map') {
+//             return new Map(value.value);
+//         }
+//     }
+//     return value;
+// }
 
 export default function ReturnRestApiResult(statusCode: number, data: any, origin: string, renewedAccessToken?: string) {
     let accessTokenCookie = '';
@@ -31,7 +31,7 @@ export default function ReturnRestApiResult(statusCode: number, data: any, origi
 
     let returnObject = {
         statusCode: statusCode,
-        body: JSON.stringify(data, replacer),
+        body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': origin, // Required for CORS support to work
