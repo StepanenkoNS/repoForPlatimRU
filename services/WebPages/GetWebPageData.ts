@@ -55,6 +55,8 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     }
                     map.set(item.PK, x);
                 }
+            } else {
+                console.log('no items returned from DDBQuery');
             }
             const returnObject = ReturnRestApiResult(200, JSON.stringify(map), origin);
             return returnObject as APIGatewayProxyResult;
