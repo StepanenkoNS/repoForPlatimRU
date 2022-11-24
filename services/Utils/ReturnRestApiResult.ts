@@ -1,8 +1,18 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
+function replacer(key: any, value: any) {
+    if (value instanceof Map) {
+        return {
+            dataType: 'Map',
+            value: Array.from(value.entries()) // or with spread: value: [...value]
+        };
+    } else {
+        return value;
+    }
+}
 
 export default function ReturnRestApiResult(statusCode: number, data: any, origin: string, renewedAccessToken?: string) {
     console.log('ReturnRestApiResult-DATA\n', data);
-    console.log('ReturnRestApiResult-DATA-stringify\n', JSON.stringify(data));
+    console.log('ReturnRestApiResult-DATA-stringify\n', JSON.stringify(data, replacer));
     let accessTokenCookie = '';
     if (renewedAccessToken) {
         const accessTokenExpirationDate = new Date();
