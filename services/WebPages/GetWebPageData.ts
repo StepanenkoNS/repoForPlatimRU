@@ -7,6 +7,7 @@ import { Item } from 'aws-sdk/clients/simpledb';
 type Page = {
     pagePath: string;
     locale: ESupportedLanguages;
+    itemName?: string;
     pageId?: string;
 };
 const fallbackLocale = defaultMenuLanguage;
@@ -37,10 +38,10 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
         try {
             const dbResponce = await ddbDocClient.query({
                 TableName: process.env.webTable!,
-                KeyConditionExpression: 'PK = :PK AND SK = :SK',
+                KeyConditionExpression: 'PK = :PK', // AND SK = :SK',
                 ExpressionAttributeValues: {
-                    ':PK': 'PATH#' + (body.pagePath as string).toLowerCase(),
-                    ':SK': 'LOCALE#' + (locale as string).toLowerCase()
+                    ':PK': 'PATH#' + (body.pagePath as string).toLowerCase() + '#LOCALE#' + (locale as string).toLowerCase()
+                    //':SK': 'ITEMNAME#' + body.itemName
                 }
             });
             const map = new Map<string, any>();
@@ -53,7 +54,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     if (x.hasOwnProperty('SK')) {
                         delete x.SK;
                     }
-                    map.set(item.PK as string, x);
+                    map.set(item.SK as string, x);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
