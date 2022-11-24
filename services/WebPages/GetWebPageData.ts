@@ -38,10 +38,10 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
         try {
             const dbResponce = await ddbDocClient.query({
                 TableName: process.env.webTable!,
-                KeyConditionExpression: 'PK = :PK', // AND SK = :SK',
+                KeyConditionExpression: 'PK = :PK AND SK begins_with :SK_PREFIX',
                 ExpressionAttributeValues: {
-                    ':PK': 'PATH#' + (body.pagePath as string).toLowerCase() + '#LOCALE#' + (locale as string).toLowerCase()
-                    //':SK': 'ITEMNAME#' + body.itemName
+                    ':PK': 'PATH#' + (body.pagePath as string).toLowerCase() + '#LOCALE#' + (locale as string).toLowerCase(),
+                    ':SK_PREFIX': 'ITEMID#'
                 }
             });
             const map = new Map<string, any>();
@@ -54,7 +54,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     if (x.hasOwnProperty('SK')) {
                         delete x.SK;
                     }
-                    map.set(item.SK as string, x);
+                    map.set((item.SK as string).replace('ITEMID#', ''), x);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
