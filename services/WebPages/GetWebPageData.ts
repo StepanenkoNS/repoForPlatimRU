@@ -2,6 +2,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { ddbDocClient } from '/opt/DDB/ddbDocClient';
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/ConfiguratorTypes';
+import { Item } from 'aws-sdk/clients/simpledb';
 
 type Page = {
     pagePath: string;
@@ -38,14 +39,21 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                 TableName: process.env.webTable!,
                 KeyConditionExpression: 'PK = :PK, SK = :SK',
                 ExpressionAttributeValues: {
-                    ':PK': '#PATH#' + body.pagePath,
-                    ':SK': 'LOCALE#' + locale
+                    ':PK': 'PATH#' + (body.pagePath as string).toLowerCase(),
+                    ':SK': 'LOCALE#' + (locale as string).toLowerCase()
                 }
             });
             const map = new Map<string, any>();
             if (dbResponce.Items) {
                 for (const item of dbResponce.Items) {
-                    map.set(item.SK, item.data);
+                    const x = { ...item };
+                    if (x.hasOwnProperty('PK')) {
+                        delete x.PK;
+                    }
+                    if (x.hasOwnProperty('SK')) {
+                        delete x.SK;
+                    }
+                    map.set(item.PK, x);
                 }
             }
             const returnObject = ReturnRestApiResult(200, JSON.stringify(map), origin);
