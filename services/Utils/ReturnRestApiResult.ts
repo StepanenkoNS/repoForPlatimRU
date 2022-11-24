@@ -2,6 +2,7 @@ import { APIGatewayProxyResult } from 'aws-lambda';
 
 export default function ReturnRestApiResult(statusCode: number, data: any, origin: string, renewedAccessToken?: string) {
     console.log('ReturnRestApiResult-DATA\n', data);
+    console.log('ReturnRestApiResult-DATA-stringify\n', JSON.stringify(data));
     let accessTokenCookie = '';
     if (renewedAccessToken) {
         const accessTokenExpirationDate = new Date();
@@ -21,7 +22,7 @@ export default function ReturnRestApiResult(statusCode: number, data: any, origi
             'Access-Control-Allow-Headers': '*'
         }
     };
-
+    console.log('1\n', returnObject);
     if (renewedAccessToken) {
         returnObject = {
             ...{
@@ -32,5 +33,6 @@ export default function ReturnRestApiResult(statusCode: number, data: any, origi
             ...returnObject
         };
     }
+    console.log('2\n', returnObject);
     return returnObject as APIGatewayProxyResult;
 }
