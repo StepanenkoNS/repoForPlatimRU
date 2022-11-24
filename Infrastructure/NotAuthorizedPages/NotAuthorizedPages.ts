@@ -76,6 +76,7 @@ export class NotAuthorizedPagesStack extends Stack {
 
         const lambdaIntegrationListBots = new apigateway.LambdaIntegration(getWebPageDataLambda);
         webPagesAPI.root.addMethod('GET', lambdaIntegrationListBots);
+        webPagesAPI.root.addMethod('POST', lambdaIntegrationListBots);
 
         webPagesAPI.addUsagePlan(this.stackName + '-GWAPI' + '-UsagePlan', {
             name: this.stackName + '-GWAPI' + '-UsagePlan',
@@ -92,7 +93,7 @@ export class NotAuthorizedPagesStack extends Stack {
 
         const aRecord = new route53.ARecord(this, this.stackName + '-ARecord', {
             zone: myZone,
-            recordName: StaticEnvironment.WebResources.subDomains.apiBackend.backendAPISubdomain + '.' + siteDomain,
+            recordName: StaticEnvironment.WebResources.subDomains.apiBackend.pagesDataSubDomain + '.' + siteDomain,
             deleteExisting: true,
             target: route53.RecordTarget.fromAlias(new targets.ApiGateway(webPagesAPI))
         });
