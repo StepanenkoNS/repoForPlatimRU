@@ -38,7 +38,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
         try {
             const dbResponce = await ddbDocClient.query({
                 TableName: process.env.webTable!,
-                KeyConditionExpression: 'PK = :PK AND SK begins_with :SK_PREFIX',
+                KeyConditionExpression: 'PK = :PK AND begins_with (SK, :SK_PREFIX)',
                 ExpressionAttributeValues: {
                     ':PK': 'PATH#' + (body.pagePath as string).toLowerCase() + '#LOCALE#' + (locale as string).toLowerCase(),
                     ':SK_PREFIX': 'ITEMID#'
