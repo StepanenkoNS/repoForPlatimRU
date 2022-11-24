@@ -37,7 +37,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
         try {
             const dbResponce = await ddbDocClient.query({
                 TableName: process.env.webTable!,
-                KeyConditionExpression: 'PK = :PK, SK = :SK',
+                KeyConditionExpression: 'PK = :PK AND SK = :SK',
                 ExpressionAttributeValues: {
                     ':PK': 'PATH#' + (body.pagePath as string).toLowerCase(),
                     ':SK': 'LOCALE#' + (locale as string).toLowerCase()
