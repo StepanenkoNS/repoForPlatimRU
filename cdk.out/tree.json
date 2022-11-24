@@ -2871,13 +2871,13 @@
                   "version": "2.51.1"
                 }
               },
-              "DeploymentStage.SecureAPI": {
-                "id": "DeploymentStage.SecureAPI",
-                "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.SecureAPI",
+              "DeploymentStage.pagesAPI": {
+                "id": "DeploymentStage.pagesAPI",
+                "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.pagesAPI",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.SecureAPI/Resource",
+                    "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.pagesAPI/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
                       "aws:cdk:cloudformation:props": {
@@ -2896,7 +2896,7 @@
                             "metricsEnabled": true
                           }
                         ],
-                        "stageName": "SecureAPI"
+                        "stageName": "pagesAPI"
                       }
                     },
                     "constructInfo": {
@@ -3021,7 +3021,7 @@
                                   },
                                   "/",
                                   {
-                                    "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+                                    "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
                                   },
                                   "/GET/"
                                 ]
@@ -3156,7 +3156,7 @@
                                   },
                                   "/",
                                   {
-                                    "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+                                    "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
                                   },
                                   "/POST/"
                                 ]
@@ -3281,7 +3281,7 @@
                               "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
                             },
                             "stage": {
-                              "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+                              "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
                             },
                             "throttle": {}
                           }
@@ -3349,7 +3349,7 @@
                               "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
                             },
                             "stage": {
-                              "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+                              "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
                             }
                           }
                         },

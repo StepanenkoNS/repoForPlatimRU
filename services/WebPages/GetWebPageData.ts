@@ -29,14 +29,14 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
     try {
         const body = JSON.parse(event.body);
         if (!body.pagePath) {
-            const returnObject = ReturnRestApiResult(422, { error: 'path not provided' }, origin);
+            const returnObject = ReturnRestApiResult(422, { error: 'pagePath not provided' }, origin);
             return returnObject as APIGatewayProxyResult;
         }
         let locale = !body.locale ? fallbackLocale : body.locale;
         try {
             const dbResponce = await ddbDocClient.query({
                 TableName: process.env.webTable!,
-                KeyConditionExpression: 'PK = :PK, SK = :SK',
+                KeyConditionExpression: 'PK = :PK',
                 ExpressionAttributeValues: {
                     ':PK': 'LOCALE#' + locale + '#PATH#' + body.pagePath
                 }

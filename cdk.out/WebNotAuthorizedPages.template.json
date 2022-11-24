@@ -81,7 +81,7 @@
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Deployment/Resource"
    }
   },
-  "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625": {
+  "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29": {
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "RestApiId": {
@@ -99,13 +99,13 @@
       "ResourcePath": "/*"
      }
     ],
-    "StageName": "SecureAPI"
+    "StageName": "pagesAPI"
    },
    "DependsOn": [
     "WebNotAuthorizedPagesGWAPIAccountD1BFC30B"
    ],
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.SecureAPI/Resource"
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.pagesAPI/Resource"
    }
   },
   "WebNotAuthorizedPagesGWAPIOPTIONSAF183470": {
@@ -185,7 +185,7 @@
        },
        "/",
        {
-        "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+        "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
        },
        "/GET/"
       ]
@@ -295,7 +295,7 @@
        },
        "/",
        {
-        "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+        "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
        },
        "/POST/"
       ]
@@ -389,7 +389,7 @@
        "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
       },
       "Stage": {
-       "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+       "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
       },
       "Throttle": {}
      }
@@ -433,7 +433,7 @@
      "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
     },
     "Stage": {
-     "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+     "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
     }
    },
    "Metadata": {
@@ -754,7 +754,7 @@
       },
       "/",
       {
-       "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+       "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
       },
       "/"
      ]
@@ -776,7 +776,7 @@
       },
       "/",
       {
-       "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+       "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
       },
       "/"
      ]

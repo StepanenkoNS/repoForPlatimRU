@@ -489,7 +489,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a27e8689b444de62ed2a23a10b10c5788a29637037f9562856f56a30bbdebb0a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/55ec3fc9020e10329064106efe3ea1716adbdc1c826091a2ae7cfa5f6eaf41ed.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -529,10 +529,10 @@
             "data": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.SecureAPI/Resource": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.pagesAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+            "data": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
           }
         ],
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Endpoint": [
