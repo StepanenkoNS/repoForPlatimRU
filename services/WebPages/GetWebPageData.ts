@@ -14,6 +14,7 @@ const fallbackLocale = defaultMenuLanguage;
 
 export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
+    console.log(JSON.stringify(event));
 
     let origin = 'https://' + process.env.cookieDomain;
     if (event.headers && event.headers.origin) {
@@ -59,7 +60,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
             } else {
                 console.log('no items returned from DDBQuery');
             }
-
+            console.log(map);
             const returnObject = ReturnRestApiResult(200, map, origin);
             return returnObject as APIGatewayProxyResult;
         } catch (error) {

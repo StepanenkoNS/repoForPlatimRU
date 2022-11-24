@@ -2,13 +2,10 @@ import * as jwt from 'jsonwebtoken';
 import { TelegramUserProfile } from './Types';
 export function RefreshTokenFromCookie(refreshToken: string) {
     try {
-        console.log('process.env.hashSalt\n', process.env.hashSalt);
-        console.log('refreshToken\n', refreshToken);
         const decoded = jwt.verify(refreshToken, process.env.hashSalt!, {
             algorithms: ['HS256']
         });
 
-        console.log('decoded\n', decoded);
         let userProfile: TelegramUserProfile = {
             id: (decoded as TelegramUserProfile).id,
             language: (decoded as TelegramUserProfile).language,

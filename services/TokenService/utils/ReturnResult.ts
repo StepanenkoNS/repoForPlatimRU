@@ -1,5 +1,4 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
-import { TokenService } from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { Tokens } from './Types';
 
 export function ReturnResult(statusCode: number, data: any, origin: string, tokens?: Tokens) {
