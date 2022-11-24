@@ -34,7 +34,7 @@ export class NotAuthorizedPagesStack extends Stack {
         const webPagesAPI = new apigateway.RestApi(this, this.stackName + '-GWAPI', {
             deploy: true,
             deployOptions: {
-                stageName: 'SecureAPI',
+                stageName: 'pagesAPI',
                 metricsEnabled: true,
                 loggingLevel: apigateway.MethodLoggingLevel.INFO
             },

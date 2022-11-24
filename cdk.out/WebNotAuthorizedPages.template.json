@@ -64,7 +64,7 @@
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Account"
    }
   },
-  "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD974313a61907d1d9afd30f9d29b7c28b0d": {
+  "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -74,7 +74,8 @@
    },
    "DependsOn": [
     "WebNotAuthorizedPagesGWAPIGETA11C2EBD",
-    "WebNotAuthorizedPagesGWAPIOPTIONSAF183470"
+    "WebNotAuthorizedPagesGWAPIOPTIONSAF183470",
+    "WebNotAuthorizedPagesGWAPIPOST84936A7E"
    ],
    "Metadata": {
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Deployment/Resource"
@@ -87,7 +88,7 @@
      "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
     },
     "DeploymentId": {
-     "Ref": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD974313a61907d1d9afd30f9d29b7c28b0d"
+     "Ref": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049"
     },
     "MethodSettings": [
      {
@@ -267,6 +268,116 @@
    },
    "Metadata": {
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIPOSTApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOST86CBB5E8": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "getWebPageDataLambdaD126B916",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+       },
+       "/",
+       {
+        "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+       },
+       "/POST/"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST.."
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIPOSTApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOSTF294BF1A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "getWebPageDataLambdaD126B916",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+       },
+       "/test-invoke-stage/POST/"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST.."
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIPOST84936A7E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "WebNotAuthorizedPagesGWAPI97EAFC19",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "getWebPageDataLambdaD126B916",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/Resource"
    }
   },
   "WebNotAuthorizedPagesGWAPIWebNotAuthorizedPagesGWAPIUsagePlan76BD95F4": {
@@ -464,7 +575,7 @@
   "WebNotAuthorizedPagesARecord856A5FDE": {
    "Type": "AWS::Route53::RecordSet",
    "Properties": {
-    "Name": "secure-api.zuzona.com.",
+    "Name": "pages.zuzona.com.",
     "Type": "A",
     "AliasTarget": {
      "DNSName": {
@@ -499,7 +610,7 @@
      ]
     },
     "HostedZoneId": "Z08669732ES7CY5LRF03T",
-    "RecordName": "secure-api.zuzona.com.",
+    "RecordName": "pages.zuzona.com.",
     "RecordType": "A"
    },
    "UpdateReplacePolicy": "Delete",

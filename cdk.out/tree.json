@@ -2885,7 +2885,7 @@
                           "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
                         },
                         "deploymentId": {
-                          "Ref": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD974313a61907d1d9afd30f9d29b7c28b0d"
+                          "Ref": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049"
                         },
                         "methodSettings": [
                           {
@@ -3078,6 +3078,141 @@
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                           "aws:cdk:cloudformation:props": {
                             "httpMethod": "GET",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "WebNotAuthorizedPagesGWAPI97EAFC19",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "AWS_PROXY",
+                              "uri": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                    {
+                                      "Fn::GetAtt": [
+                                        "getWebPageDataLambdaD126B916",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "/invocations"
+                                  ]
+                                ]
+                              },
+                              "integrationHttpMethod": "POST"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                          "version": "2.51.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                      "version": "2.51.1"
+                    }
+                  },
+                  "POST": {
+                    "id": "POST",
+                    "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST",
+                    "children": {
+                      "ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..": {
+                        "id": "ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..",
+                        "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "getWebPageDataLambdaD126B916",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-east-1:993738567487:",
+                                  {
+                                    "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+                                  },
+                                  "/",
+                                  {
+                                    "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStageSecureAPID6B91625"
+                                  },
+                                  "/POST/"
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                          "version": "2.51.1"
+                        }
+                      },
+                      "ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..": {
+                        "id": "ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..",
+                        "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "getWebPageDataLambdaD126B916",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-east-1:993738567487:",
+                                  {
+                                    "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+                                  },
+                                  "/test-invoke-stage/POST/"
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                          "version": "2.51.1"
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "POST",
                             "resourceId": {
                               "Fn::GetAtt": [
                                 "WebNotAuthorizedPagesGWAPI97EAFC19",
@@ -3495,7 +3630,7 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
                   "aws:cdk:cloudformation:props": {
-                    "name": "secure-api.zuzona.com.",
+                    "name": "pages.zuzona.com.",
                     "type": "A",
                     "aliasTarget": {
                       "dnsName": {

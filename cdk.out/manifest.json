@@ -489,7 +489,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/89dcdfe8622b0c548f314c5740b691dfb470c975f582b851f9c8336d2e28fe13.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a27e8689b444de62ed2a23a10b10c5788a29637037f9562856f56a30bbdebb0a.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -526,7 +526,7 @@
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD974313a61907d1d9afd30f9d29b7c28b0d"
+            "data": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049"
           }
         ],
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -563,6 +563,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebNotAuthorizedPagesGWAPIGETA11C2EBD"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIPOSTApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOST86CBB5E8"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIPOSTApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOSTF294BF1A"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIPOST84936A7E"
           }
         ],
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/WebNotAuthorizedPages-GWAPI-UsagePlan/Resource": [
