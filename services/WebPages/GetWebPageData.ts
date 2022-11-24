@@ -55,12 +55,13 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                         delete x.SK;
                     }
                     console.log('x\n', x);
-                    map.set(item.PK, x);
+                    map.set(item.PK as string, x);
+                    console.log(map);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
             }
-            const returnObject = ReturnRestApiResult(200, JSON.stringify(map), origin);
+            const returnObject = ReturnRestApiResult(200, map, origin);
             return returnObject as APIGatewayProxyResult;
         } catch (error) {
             console.log('DynamoDB error\n', error);
