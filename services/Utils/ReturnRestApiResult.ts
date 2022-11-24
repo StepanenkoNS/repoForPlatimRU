@@ -1,6 +1,7 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
 
 export default function ReturnRestApiResult(statusCode: number, data: any, origin: string, renewedAccessToken?: string) {
+    console.log('ReturnRestApiResult-DATA\n', data);
     let accessTokenCookie = '';
     if (renewedAccessToken) {
         const accessTokenExpirationDate = new Date();

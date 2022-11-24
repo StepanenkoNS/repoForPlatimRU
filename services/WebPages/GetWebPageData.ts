@@ -56,11 +56,11 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     }
                     console.log('x\n', x);
                     map.set(item.PK as string, x);
-                    console.log(map);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
             }
+            console.log('map\n', map);
             const returnObject = ReturnRestApiResult(200, map, origin);
             console.log('returnObject\n', returnObject);
             return returnObject as APIGatewayProxyResult;
@@ -74,9 +74,4 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
         const returnObject = ReturnRestApiResult(422, { error: 'Body is not in JSON' }, origin);
         return returnObject as APIGatewayProxyResult;
     }
-
-    const returnObject = ReturnRestApiResult(200, { templateData: 'template' }, origin);
-
-    console.log('returnObject\n', returnObject);
-    return returnObject as APIGatewayProxyResult;
 }
