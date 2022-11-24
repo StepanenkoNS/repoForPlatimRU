@@ -39,7 +39,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "048b0f02bc14c4214f9d344708a5d4ca2bfe8b46a7d8776c3861e59eb59e6106.zip"
+     "S3Key": "c4ab7acf7b1046a7735f4fdf0bcfdb3779014ba7d599810c0bd2bfdf85b19007.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -52,8 +52,9 @@
       "region": "us-east-1",
       "NODE_ENV": "production",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "accessTokenExpirationMinutes": "1",
+      "accessTokenExpirationMinutes": "10",
       "refreshTokenExpirationDays": "365",
+      "hashSalt": "rL%DscMWNk3xQtsKJf)MF89t!8(Y!6kcBsQMQp)W8+#7ybunH%BypL$RbK6z$4G8",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
@@ -66,7 +67,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/Resource",
-    "aws:asset:path": "asset.048b0f02bc14c4214f9d344708a5d4ca2bfe8b46a7d8776c3861e59eb59e6106",
+    "aws:asset:path": "asset.c4ab7acf7b1046a7735f4fdf0bcfdb3779014ba7d599810c0bd2bfdf85b19007",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -227,7 +228,7 @@
      "Ref": "WebRestServiceGWAPID1BA5018"
     },
     "Type": "REQUEST",
-    "AuthorizerResultTtlInSeconds": 0,
+    "AuthorizerResultTtlInSeconds": 600,
     "AuthorizerUri": {
      "Fn::Join": [
       "",
@@ -861,10 +862,10 @@
     "FunctionName": "react-ListBotsLambda-Lambda",
     "Handler": "index.ListMyBotsHandler",
     "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -1013,7 +1014,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a.zip"
+     "S3Key": "04371e66614da6603a2d0caff555a5ee48172084069076b90c459275c26db019.zip"
     },
     "Timeout": 900,
     "MemorySize": 128,
@@ -1031,14 +1032,14 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
-    "aws:asset:path": "asset.aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a",
+    "aws:asset:path": "asset.04371e66614da6603a2d0caff555a5ee48172084069076b90c459275c26db019",
     "aws:asset:property": "Code"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hG7BJ27EM7TRYVbQzMqlXAk3SxQmIVf33JSmDbie/Z8fP9suUPzzz+xGcaCzKw7iWW96uHYgDK5CMtwJZqG3aGtS2hI02Je6Jr1J49Vo4aTSToHhbmBrZy6dOMTe1FOdIe9Qxmm2ACB3xLIbA+dyLA7o5ELJenreh4aoam9EqSRRYx2pTEX8zVYEOdXoAjazA4QnOYTp+eSSXebczVn6jje0DVsRiI9OCN5gJYbx2bIFNbc4q6MbsgAUrqnRVD349STsvMaiXsXhBV8f6IT3+oNCY15DuuZGFUSD1ClR6PWBROge3W0LTSF3F6r9Ux6zxDh9nvM0KFMaW/cCI1ui6jiWH48YXgeFi7941PpzpyRl1K/yhuTVHWaLtWPxvvqe74+SJT6Z8MtqTlGMbPJMKedHHHyAANPREAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11SwW7CMAz9lt1DpoKQdi1DOwGrinZGIfVKoIm7OAGxqv++JGXQ7eT34vjZfsmUzzOePYkLTWR1mjRqz7utE/LESiD0VgILuV3XCL2vxM5gBUfimxTevJFOoWFKaN6V2AB7/TQpFtgoeY10QD2j2U4QgSOexxA4X3h5ArcQBGyQ510ouKvGYrBaEQXWswZr4iusS3Bg0gXRqlo4uIhr6A5fHsjl3h3Qqm+wsXzEyphsVRrwAXMp0RvHltA2eNVBN56OWLCiTlsN4NeTNPMagnoVkzd0d2xoMuAPCoVFI9I+D7JELZTZCJ1uj1iULoQ7rEXbKlPH7L+jnln0DuYz3uUlSLTV0DCiLbi+Z8nhOPFNYDzYu3etD2t6cqgfiT+0sHhWFdiexffmR3o+Zy88m4aPciSlJjZ4pjTwcog/yOCPZ0QCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "WebRestService/CDKMetadata/Default"

@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "937f0b5c41066b454060367e7c7a985e5e1217cba311bb5a9542807390f31ee1.zip"
+     "S3Key": "f2efd405e6ad423a900e3e5f17cf0d7dc24b7b0c8f771dde07ea905caac900ce.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -107,8 +107,9 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "accessTokenExpirationMinutes": "1",
+      "accessTokenExpirationMinutes": "10",
       "refreshTokenExpirationDays": "365",
+      "hashSalt": "rL%DscMWNk3xQtsKJf)MF89t!8(Y!6kcBsQMQp)W8+#7ybunH%BypL$RbK6z$4G8",
       "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
       "cookieDomain": "zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -117,10 +118,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -130,7 +131,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.937f0b5c41066b454060367e7c7a985e5e1217cba311bb5a9542807390f31ee1",
+    "aws:asset:path": "asset.f2efd405e6ad423a900e3e5f17cf0d7dc24b7b0c8f771dde07ea905caac900ce",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -199,7 +200,7 @@
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Account"
    }
   },
-  "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1": {
+  "WebTokenServiceGWAPIDeployment69CE11EB66128cfe030a5069388cbe0cddddd382": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -208,8 +209,13 @@
     "Description": "Automatically created by the RestApi construct"
    },
    "DependsOn": [
-    "WebTokenServiceGWAPIOPTIONSE6785683",
-    "WebTokenServiceGWAPIPOSTD3E68602"
+    "WebTokenServiceGWAPIgetTokenOPTIONS544CC085",
+    "WebTokenServiceGWAPIgetTokenPOST249FA332",
+    "WebTokenServiceGWAPIgetTokenEA421B7E",
+    "WebTokenServiceGWAPImeGET7190DC18",
+    "WebTokenServiceGWAPImeOPTIONS8D7EB856",
+    "WebTokenServiceGWAPImeEE3FC695",
+    "WebTokenServiceGWAPIOPTIONSE6785683"
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Deployment/Resource"
@@ -222,7 +228,7 @@
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
     "DeploymentId": {
-     "Ref": "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1"
+     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB66128cfe030a5069388cbe0cddddd382"
     },
     "MethodSettings": [
      {
@@ -294,7 +300,74 @@
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/OPTIONS/Resource"
    }
   },
-  "WebTokenServiceGWAPIPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POST65275471": {
+  "WebTokenServiceGWAPImeEE3FC695": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebTokenServiceGWAPIAFE5A254",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "me",
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/me/Resource"
+   }
+  },
+  "WebTokenServiceGWAPImeOPTIONS8D7EB856": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebTokenServiceGWAPImeEE3FC695"
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/me/OPTIONS/Resource"
+   }
+  },
+  "WebTokenServiceGWAPImeGETApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9GETme75CCC3CE": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -321,16 +394,16 @@
        {
         "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
        },
-       "/POST/"
+       "/GET/me"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST.."
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/me/GET/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..me"
    }
   },
-  "WebTokenServiceGWAPIPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POST4468E18B": {
+  "WebTokenServiceGWAPImeGETApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9GETmeC79145BB": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -353,24 +426,21 @@
        {
         "Ref": "WebTokenServiceGWAPIAFE5A254"
        },
-       "/test-invoke-stage/POST/"
+       "/test-invoke-stage/GET/me"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST.."
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/me/GET/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..me"
    }
   },
-  "WebTokenServiceGWAPIPOSTD3E68602": {
+  "WebTokenServiceGWAPImeGET7190DC18": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "ResourceId": {
-     "Fn::GetAtt": [
-      "WebTokenServiceGWAPIAFE5A254",
-      "RootResourceId"
-     ]
+     "Ref": "WebTokenServiceGWAPImeEE3FC695"
     },
     "RestApiId": {
      "Ref": "WebTokenServiceGWAPIAFE5A254"
@@ -401,7 +471,181 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/POST/Resource"
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/me/GET/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIgetTokenEA421B7E": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebTokenServiceGWAPIAFE5A254",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "getToken",
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/getToken/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIgetTokenOPTIONS544CC085": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebTokenServiceGWAPIgetTokenEA421B7E"
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/getToken/OPTIONS/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIgetTokenPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POSTgetToken4BC33A65": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaA04CF86C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebTokenServiceGWAPIAFE5A254"
+       },
+       "/",
+       {
+        "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+       },
+       "/POST/getToken"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..getToken"
+   }
+  },
+  "WebTokenServiceGWAPIgetTokenPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POSTgetToken637DCF76": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaA04CF86C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebTokenServiceGWAPIAFE5A254"
+       },
+       "/test-invoke-stage/POST/getToken"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..getToken"
+   }
+  },
+  "WebTokenServiceGWAPIgetTokenPOST249FA332": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Ref": "WebTokenServiceGWAPIgetTokenEA421B7E"
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "TokenServiceLambdaA04CF86C",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/Resource"
    }
   },
   "WebTokenServiceGWAPIWebTokenServiceGWAPIUsagePlanFFD4474E": {
@@ -598,7 +842,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a.zip"
+     "S3Key": "04371e66614da6603a2d0caff555a5ee48172084069076b90c459275c26db019.zip"
     },
     "Timeout": 900,
     "MemorySize": 128,
@@ -616,14 +860,14 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
-    "aws:asset:path": "asset.aa3a7eeeca3591ae988e3994bcd1af9125ea8ed878ddfcd5a640047ffcea414a",
+    "aws:asset:path": "asset.04371e66614da6603a2d0caff555a5ee48172084069076b90c459275c26db019",
     "aws:asset:property": "Code"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu7BG7BJ27EM7TRYVbQzMqlXAk1S1QkIVf33JSkDtpPfi+2X95IpPL3C4whPPJblYVyrLXRrh/IgCmLrW0ki9DZdjXpb4sbYkvYMq1TevZFOWSMUaugKW5N4+zap5rZW8hzpgHrBsw0yk2PIYgkc5l4eyM2RSQzy0IWFq2pcplYr5sB6gY2q0NEJz9B9pPHg0GWNSpfeYCal9caJBTW1PWsKMJzesRCvSk4H8Jsz+ViS29kyNi/oi8NMXmOycyMLq1GZFeokdMeiSo5ut8SmUaaK3X9HvWitd/Q8gy4rSNq2HAJEtCbX9yI9UDR3Efj0rvEhhWdn9fVbhtQX/KeVt/aoSmp7Eb8L9vxwnLzAZAqT0Z6VGrfheZQmKIb6AxCu6okDAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21RTW/CMAz9LbuHTAUh7VqGdhqsKtoZmdSDlCap4gSEqv735YMBm3bye/58tqd8XvDiCc40Ec1x0skdHzYOxJHVSMZbgSzEtkMHatfAVpsGW+LrZN68Fk4azSQoPtSmQ/b6pZOtTCfFJdKMRkazLRChI15GEzhfeHFEtwBCltvzIRTcusZitEoSBTYy6OUeHJ7hwof3lB4UurKXaegdlkIYrx1bYt+Zi8IAg/eBhfX2SWkGP3smHSt0B9PE4BXdrpCHZPxJobDqIGm8k6VRIPUaVMp+YLF1Be6wgr6Xeh+jf1wjs8Y7nM/4UNYojG3ywIg26MaRpatFxdcGH971PqzmyRn1r8rfocqak2zQjiz+kLf0fCpeeDENz29JyokNN5MKeZ3tN8a/aZAYAgAA"
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

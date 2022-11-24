@@ -1,12 +1,6 @@
 {
   "version": "21.0.0",
   "artifacts": {
-    "Tree": {
-      "type": "cdk:tree",
-      "properties": {
-        "file": "tree.json"
-      }
-    },
     "WebTokenService.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
@@ -23,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a2a808e3700c1d8ead30b2114557b229b33119b035d255f07c2b66f7dfdbe87c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/459d6910f415eec252563d7462e60d23430db1362577943b5136bce05ce20c88.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -78,7 +72,7 @@
         "/WebTokenService/WebTokenService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIDeployment69CE11EBcde8852c167dca050bf8ee51052c5ac1"
+            "data": "WebTokenServiceGWAPIDeployment69CE11EB66128cfe030a5069388cbe0cddddd382"
           }
         ],
         "/WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken/Resource": [
@@ -99,22 +93,64 @@
             "data": "WebTokenServiceGWAPIOPTIONSE6785683"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/me/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POST65275471"
+            "data": "WebTokenServiceGWAPImeEE3FC695"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/me/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POST4468E18B"
+            "data": "WebTokenServiceGWAPImeOPTIONS8D7EB856"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/POST/Resource": [
+        "/WebTokenService/WebTokenService-GWAPI/Default/me/GET/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..me": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIPOSTD3E68602"
+            "data": "WebTokenServiceGWAPImeGETApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9GETme75CCC3CE"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/me/GET/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..me": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPImeGETApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9GETmeC79145BB"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/me/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPImeGET7190DC18"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPIgetTokenEA421B7E"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPIgetTokenOPTIONS544CC085"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..getToken": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPIgetTokenPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POSTgetToken4BC33A65"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..getToken": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPIgetTokenPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POSTgetToken637DCF76"
+          }
+        ],
+        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebTokenServiceGWAPIgetTokenPOST249FA332"
           }
         ],
         "/WebTokenService/WebTokenService-GWAPI/WebTokenService-GWAPI-UsagePlan/Resource": [
@@ -202,7 +238,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0e835b54549a2c2b480cdc9895101685b6ba878e44f8596add39b2dc35b4ce53.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/366d781caa62a4dea87422972218fa312d7050b5adf6bd6024cc0b8f8c31884d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -436,6 +472,12 @@
         ]
       },
       "displayName": "WebRestService"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
     }
   }
 }

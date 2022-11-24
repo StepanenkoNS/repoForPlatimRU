@@ -1,25 +1,45 @@
-import * as jwt from "jsonwebtoken";
-import { TelegramUserProfile } from "./Types";
+import * as jwt from 'jsonwebtoken';
+import { TelegramUserProfile } from './Types';
 export function RefreshTokenFromCookie(refreshToken: string) {
-  try {
-    const decoded = jwt.verify(refreshToken, process.env.BOT_FATHER_TOKEN!, {
-      algorithms: ["HS256"],
-    });
-    const userProfile: TelegramUserProfile = {
-      id: (decoded as TelegramUserProfile).id,
-      first_name: (decoded as TelegramUserProfile).first_name,
-      last_name: (decoded as TelegramUserProfile).last_name,
-      photo_url: (decoded as TelegramUserProfile).photo_url,
-      username: (decoded as TelegramUserProfile).username,
-      language: (decoded as TelegramUserProfile).language,
-    };
-    const accessToken = jwt.sign(userProfile, process.env.BOT_FATHER_TOKEN!, {
-      algorithm: "HS256",
-      expiresIn: process.env.accessTokenExpirationMinutes! + " minutes",
-    });
-    return accessToken;
-  } catch (error) {
-    console.log("RefreshTokenFromCookieError\n", error);
-    return undefined;
-  }
+    try {
+        console.log('process.env.hashSalt\n', process.env.hashSalt);
+        console.log('refreshToken\n', refreshToken);
+        const decoded = jwt.verify(refreshToken, process.env.hashSalt!, {
+            algorithms: ['HS256']
+        });
+
+        console.log('decoded\n', decoded);
+        let userProfile: TelegramUserProfile = {
+            id: (decoded as TelegramUserProfile).id,
+            language: (decoded as TelegramUserProfile).language,
+            role: 'admin'
+        };
+
+        if ((decoded as TelegramUserProfile).first_name) {
+            userProfile = { ...{ first_name: (decoded as TelegramUserProfile).first_name }, ...userProfile };
+        }
+        if ((decoded as TelegramUserProfile).last_name) {
+            userProfile = { ...{ last_name: (decoded as TelegramUserProfile).last_name }, ...userProfile };
+        }
+        if ((decoded as TelegramUserProfile).photo_url) {
+            userProfile = { ...{ photo_url: (decoded as TelegramUserProfile).photo_url }, ...userProfile };
+        }
+        if ((decoded as TelegramUserProfile).username) {
+            userProfile = { ...{ username: (decoded as TelegramUserProfile).username }, ...userProfile };
+        }
+        console.log('userProfile', userProfile);
+
+        //const secret: jwt.Secret =
+        const accessToken = jwt.sign(userProfile, process.env.hashSalt!, {
+            algorithm: 'HS256',
+            expiresIn: process.env.accessTokenExpirationMinutes! + ' minutes'
+        });
+
+        const data = { accessToken: accessToken, userProfile: userProfile };
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log('RefreshTokenFromCookieError\n', error);
+        return { accessToken: undefined, userProfile: undefined };
+    }
 }
