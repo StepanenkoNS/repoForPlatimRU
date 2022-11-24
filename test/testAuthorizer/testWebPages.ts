@@ -1,4 +1,4 @@
-import { LambdaTokenServiceHandler } from '../../services/TokenService/Lambdas/lambdaTokenService';
+import { GetWebPageDataHandler } from 'services/WebPages/GetWebPageData';
 
 const event = {
     resource: '/me',
@@ -93,7 +93,7 @@ async function main() {
     //     console.log(key);
     // }
 
-    LambdaTokenServiceHandler(event as any, {} as any);
+    GetWebPageDataHandler(event as any, {} as any);
 }
 
 main();

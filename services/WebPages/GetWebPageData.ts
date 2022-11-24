@@ -45,7 +45,7 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     ':SK_PREFIX': 'ITEMID#'
                 }
             });
-            const map = new Map<string, any>();
+            const array: [string, any][] = [];
             if (dbResponce.Items) {
                 for (const item of dbResponce.Items) {
                     const x = { ...item };
@@ -55,13 +55,14 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     if (x.hasOwnProperty('SK')) {
                         delete x.SK;
                     }
-                    map.set((item.SK as string).replace('ITEMID#', ''), x);
+                    array.push([(item.SK as string).replace('ITEMID#', ''), x]);
+                    //array.push((item.SK as string).replace('ITEMID#', ''), x);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
             }
-            console.log(map);
-            const returnObject = ReturnRestApiResult(200, map, origin);
+
+            const returnObject = ReturnRestApiResult(200, array, origin);
             return returnObject as APIGatewayProxyResult;
         } catch (error) {
             console.log('DynamoDB error\n', error);
