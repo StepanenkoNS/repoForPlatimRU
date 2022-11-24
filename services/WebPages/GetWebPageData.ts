@@ -46,7 +46,6 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
             const map = new Map<string, any>();
             if (dbResponce.Items) {
                 for (const item of dbResponce.Items) {
-                    console.log('item\n', item);
                     const x = { ...item };
                     if (x.hasOwnProperty('PK')) {
                         delete x.PK;
@@ -54,15 +53,13 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     if (x.hasOwnProperty('SK')) {
                         delete x.SK;
                     }
-                    console.log('x\n', x);
                     map.set(item.PK as string, x);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
             }
-            console.log('map\n', map);
+
             const returnObject = ReturnRestApiResult(200, map, origin);
-            console.log('returnObject\n', returnObject);
             return returnObject as APIGatewayProxyResult;
         } catch (error) {
             console.log('DynamoDB error\n', error);

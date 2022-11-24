@@ -1,4 +1,5 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
+//https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
 function replacer(key: any, value: any) {
     if (value instanceof Map) {
         return {
@@ -10,9 +11,16 @@ function replacer(key: any, value: any) {
     }
 }
 
+function reviver(key: any, value: any) {
+    if (typeof value === 'object' && value !== null) {
+        if (value.dataType === 'Map') {
+            return new Map(value.value);
+        }
+    }
+    return value;
+}
+
 export default function ReturnRestApiResult(statusCode: number, data: any, origin: string, renewedAccessToken?: string) {
-    console.log('ReturnRestApiResult-DATA\n', data);
-    console.log('ReturnRestApiResult-DATA-stringify\n', JSON.stringify(data, replacer));
     let accessTokenCookie = '';
     if (renewedAccessToken) {
         const accessTokenExpirationDate = new Date();
@@ -23,7 +31,7 @@ export default function ReturnRestApiResult(statusCode: number, data: any, origi
 
     let returnObject = {
         statusCode: statusCode,
-        body: JSON.stringify(data),
+        body: JSON.stringify(data, replacer),
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': origin, // Required for CORS support to work
@@ -32,7 +40,7 @@ export default function ReturnRestApiResult(statusCode: number, data: any, origi
             'Access-Control-Allow-Headers': '*'
         }
     };
-    console.log('1\n', returnObject);
+
     if (renewedAccessToken) {
         returnObject = {
             ...{
@@ -43,6 +51,6 @@ export default function ReturnRestApiResult(statusCode: number, data: any, origi
             ...returnObject
         };
     }
-    console.log('2\n', returnObject);
+
     return returnObject as APIGatewayProxyResult;
 }
