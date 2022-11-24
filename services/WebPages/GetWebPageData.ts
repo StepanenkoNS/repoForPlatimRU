@@ -36,9 +36,10 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
         try {
             const dbResponce = await ddbDocClient.query({
                 TableName: process.env.webTable!,
-                KeyConditionExpression: 'PK = :PK',
+                KeyConditionExpression: 'PK = :PK, SK = :SK',
                 ExpressionAttributeValues: {
-                    ':PK': 'LOCALE#' + locale + '#PATH#' + body.pagePath
+                    ':PK': '#PATH#' + body.pagePath,
+                    ':SK': 'LOCALE#' + locale
                 }
             });
             const map = new Map<string, any>();
