@@ -50,7 +50,6 @@ export class TokenServiceStack extends Stack {
                 BOT_FATHER_TOKEN: StaticEnvironment.EnvironmentVariables.BOT_FATHER_TOKEN,
                 accessTokenExpirationMinutes: StaticEnvironment.TokenService.accessTokenExpirationMinutes.toString(),
                 refreshTokenExpirationDays: StaticEnvironment.TokenService.refreshTokenExpirationDays.toString(),
-                hashSalt: StaticEnvironment.TokenService.hashSalt,
                 allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
                 cookieDomain: StaticEnvironment.WebResources.mainDomainName
             },

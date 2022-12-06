@@ -1,15 +1,15 @@
-import { LambdaTokenServiceHandler } from '../../services/TokenService/Lambdas/lambdaTokenService';
+import { EditPaymentOptionHandler } from 'services/PaymentOptions/EditPaymentOptionLambda';
 
 const event = {
     resource: '/me',
     path: '/me',
-    httpMethod: 'GET',
+    httpMethod: 'PUT',
     headers: {
         accept: 'application/json, text/plain, */*',
         'accept-encoding': 'gzip, deflate, br',
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'content-type': 'application/x-www-form-urlencoded',
-        cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwMDk4NTQ0LCJleHAiOjE2NzAxMDIxNDR9.XYC6lfXWISyXcd_zMVpF64QamY3svcNE1IFzxQYe_OU; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwMDk4NTQ0LCJleHAiOjE3MDE2MzQ1NDR9.cFXOYVVEEnMmfHyl5w-zqHq1h8IGkh4MvU9gzJC6KBY',
+        cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1IiwiaWF0IjoxNjY5MjI1NTQ2LCJleHAiOjE2NjkyMjU2MDZ9.g-eEksC6TGJ0sDPDmTfGlmi2OoIu3TCTUpbb11CvaHk; Expires=Wed, 23 Nov 2022 17:46:46 GMT; Secure; SameSite=None; Domain=.zuzona.com; Path=/; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1IiwiaWF0IjoxNjY5MjI1NTQ2LCJleHAiOjE3MDA3NjE1NDZ9.Y0_rC_9Gsc5KsBt8EC9Wh5rt9YVQ6XOTevxnHbaP058; Expires=Wed, 23 Nov 2022 23:50:46 GMT; Secure; SameSite=None; Domain=.zuzona.com; Path=/',
         Host: 'auth.zuzona.com',
         origin: 'http://localhost',
         referer: 'http://localhost/',
@@ -31,7 +31,7 @@ const event = {
         'accept-language': ['en,tr;q=0.9,ru;q=0.8'],
         'content-type': ['application/x-www-form-urlencoded'],
         cookie: [
-            'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwMDk4NTQ0LCJleHAiOjE2NzAxMDIxNDR9.XYC6lfXWISyXcd_zMVpF64QamY3svcNE1IFzxQYe_OU; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwMDk4NTQ0LCJleHAiOjE3MDE2MzQ1NDR9.cFXOYVVEEnMmfHyl5w-zqHq1h8IGkh4MvU9gzJC6KBY'
+            'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2Njg3MTMxMjIsImV4cCI6MTY2ODcxNjcyMn0.-v5Gq-Uj2W2JJbClK-K-Wm3nqPvUY0xisQmFhvephoY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2Njg3MTMxMjIsImV4cCI6MTcwMDI0OTEyMn0.tEl4LKAUAqbQHdR7GpJjtqqnwascXOfqzCZhEdXEJS4'
         ],
         Host: ['auth.zuzona.com'],
         origin: ['http://localhost'],
@@ -82,18 +82,12 @@ const event = {
         domainName: 'auth.zuzona.com',
         apiId: 'hr7gpcp5hc'
     },
-    body: '{"id":199163834,"first_name":"Nick","username":"LikeAHurricane","auth_date":1668542054,"hash":"20fc7635528bb976f5b5b37792acf12e83f99bc401db5674c075e6327d552f66"}',
+    body: '{"id": "02eede74-29bc-4531-a29b-77c5c9ae6f6d","name": "name","type": "DIRECT","currency": "RUB","description": "blah-blah"}',
     isBase64Encoded: false
 };
 
 async function main() {
-    //console.log(JSON.parse(event.toString()));
-    // const key = "aaa";
-    // if (key in ["aaa","bbb"]){
-    //     console.log(key);
-    // }
-
-    LambdaTokenServiceHandler(event as any, {} as any);
+    EditPaymentOptionHandler(event as any, {} as any);
 }
 
 main();

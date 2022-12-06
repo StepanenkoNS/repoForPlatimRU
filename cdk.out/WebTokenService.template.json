@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "4a2e8a21cbf650c412587240297e38559950c35c6724e7c2e7a99a0071188939.zip"
+     "S3Key": "92afc59a15aa17dbf48568d328192ce8a005740288a82a424fafc3165836feb1.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -107,10 +107,9 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "accessTokenExpirationMinutes": "10",
+      "accessTokenExpirationMinutes": "60",
       "refreshTokenExpirationDays": "365",
-      "hashSalt": "rL%DscMWNk3xQtsKJf)MF89t!8(Y!6kcBsQMQp)W8+#7ybunH%BypL$RbK6z$4G8",
-      "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
       "cookieDomain": "zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
@@ -118,10 +117,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:19",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:8",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -131,7 +130,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.4a2e8a21cbf650c412587240297e38559950c35c6724e7c2e7a99a0071188939",
+    "aws:asset:path": "asset.92afc59a15aa17dbf48568d328192ce8a005740288a82a424fafc3165836feb1",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -200,7 +199,7 @@
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Account"
    }
   },
-  "WebTokenServiceGWAPIDeployment69CE11EB66128cfe030a5069388cbe0cddddd382": {
+  "WebTokenServiceGWAPIDeployment69CE11EB1c279fee369ccf0c260a69a3779f9d23": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -228,7 +227,7 @@
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
     "DeploymentId": {
-     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB66128cfe030a5069388cbe0cddddd382"
+     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB1c279fee369ccf0c260a69a3779f9d23"
     },
     "MethodSettings": [
      {
@@ -273,7 +272,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -340,7 +339,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -514,7 +513,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }

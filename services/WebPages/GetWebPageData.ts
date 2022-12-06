@@ -45,24 +45,27 @@ export async function GetWebPageDataHandler(event: APIGatewayEvent, context: Con
                     ':SK_PREFIX': 'ITEMID#'
                 }
             });
-            const array: [string, any][] = [];
+            const array: any[] = [];
             if (dbResponce.Items) {
                 for (const item of dbResponce.Items) {
-                    const x = { ...item };
+                    let x = { ...item };
                     if (x.hasOwnProperty('PK')) {
                         delete x.PK;
                     }
                     if (x.hasOwnProperty('SK')) {
                         delete x.SK;
                     }
-                    array.push([(item.SK as string).replace('ITEMID#', ''), x]);
-                    //array.push((item.SK as string).replace('ITEMID#', ''), x);
+                    const id = (item.SK as string).replace('ITEMID#', '');
+                    x = { ...{ id: id }, ...x };
+                    array.push(x);
+                    //map.set(x.id, x);
                 }
             } else {
                 console.log('no items returned from DDBQuery');
             }
 
             const returnObject = ReturnRestApiResult(200, array, origin);
+            console.log(returnObject);
             return returnObject as APIGatewayProxyResult;
         } catch (error) {
             console.log('DynamoDB error\n', error);

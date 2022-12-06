@@ -14,7 +14,8 @@ export function ReturnResult(statusCode: number, data: any, origin: string, toke
     if (tokens && tokens !== undefined) {
         if (tokens.accessToken) {
             const accessTokenExpirationDate = new Date();
-            accessTokenExpirationDate.setTime(new Date().getTime() + 1000 * Number(process.env.accessTokenExpirationMinutes!) * 60);
+            const dateIncrement = new Date().getTime() + Number(process.env.accessTokenExpirationMinutes!) * 60 * 1000;
+            accessTokenExpirationDate.setTime(dateIncrement);
             accessTokenCookie =
                 'accessToken=' + tokens.accessToken + '; Expires=' + accessTokenExpirationDate.toUTCString() + '; Secure; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
             cookiesArray.push(accessTokenCookie);
@@ -22,7 +23,8 @@ export function ReturnResult(statusCode: number, data: any, origin: string, toke
 
         if (tokens.refreshToken) {
             const refreshTokenExpirationDate = new Date();
-            refreshTokenExpirationDate.setTime(new Date().getTime() + 1000 * Number(process.env.refreshTokenExpirationDays!) * 60) * 24 * 60 * 60;
+            const dateIncrement = new Date().getTime() + Number(process.env.refreshTokenExpirationDays!) * 24 * 60 * 60 * 1000;
+            refreshTokenExpirationDate.setTime(dateIncrement);
             refreshTokenCookie =
                 'refreshToken=' + tokens.refreshToken + '; Expires=' + refreshTokenExpirationDate.toUTCString() + '; Secure; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
             cookiesArray.push(refreshTokenCookie);

@@ -45,11 +45,12 @@
                 "createPostTemplateSQSURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SendMessage-CreatePostTemplate.fifo",
                 //"tg_api_serverURI": "http://localhost"
                 "tg_api_serverURI": "https://telegram-api.zuzona.com",
-                "tg_api_serverURI": "https://api.telegram.org",
+                //"tg_api_serverURI": "https://api.telegram.org",
                 "accessTokenExpirationMinutes": "1",
                 "refreshTokenExpirationDays": "365",
-                "hashSalt": "rL%DscMWNk3xQtsKJf)MF89t!8(Y!6kcBsQMQp)W8+#7ybunH%BypL$RbK6z$4G8",
-                "allowedOrigins": ["http://localhost", "https://zuzona.com", "http://127.0.0.1"]
+
+                "allowedOrigins": "http://localhost, https://zuzona.com, http://127.0.0.1",
+                "webTable": "web"
             }
         }
     ]

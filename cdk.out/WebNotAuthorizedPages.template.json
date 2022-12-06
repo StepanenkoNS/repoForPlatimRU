@@ -64,7 +64,7 @@
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Account"
    }
   },
-  "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049": {
+  "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD97b51f6dbeec0d5957f3fd8a30261a4869": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -73,9 +73,18 @@
     "Description": "Automatically created by the RestApi construct"
    },
    "DependsOn": [
-    "WebNotAuthorizedPagesGWAPIGETA11C2EBD",
-    "WebNotAuthorizedPagesGWAPIOPTIONSAF183470",
-    "WebNotAuthorizedPagesGWAPIPOST84936A7E"
+    "WebNotAuthorizedPagesGWAPIhelpcenterarticleGET15969842",
+    "WebNotAuthorizedPagesGWAPIhelpcenterarticleOPTIONSA333C55F",
+    "WebNotAuthorizedPagesGWAPIhelpcenterarticle7BA23A86",
+    "WebNotAuthorizedPagesGWAPIhelpcenterlandingGET7E4A7DA7",
+    "WebNotAuthorizedPagesGWAPIhelpcenterlandingOPTIONS2E999A92",
+    "WebNotAuthorizedPagesGWAPIhelpcenterlanding6C4D5448",
+    "WebNotAuthorizedPagesGWAPIhelpcenterOPTIONS020BD4CE",
+    "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1",
+    "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGET21BED81E",
+    "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryOPTIONS3C11C89F",
+    "WebNotAuthorizedPagesGWAPIhelpcentersubcategory00576F93",
+    "WebNotAuthorizedPagesGWAPIOPTIONSAF183470"
    ],
    "Metadata": {
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Deployment/Resource"
@@ -88,13 +97,13 @@
      "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
     },
     "DeploymentId": {
-     "Ref": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049"
+     "Ref": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD97b51f6dbeec0d5957f3fd8a30261a4869"
     },
     "MethodSettings": [
      {
       "DataTraceEnabled": false,
       "HttpMethod": "*",
-      "LoggingLevel": "INFO",
+      "LoggingLevel": "ERROR",
       "MetricsEnabled": true,
       "ResourcePath": "/*"
      }
@@ -133,7 +142,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -160,13 +169,144 @@
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/OPTIONS/Resource"
    }
   },
-  "WebNotAuthorizedPagesGWAPIGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGETB4744ED9": {
+  "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebNotAuthorizedPagesGWAPI97EAFC19",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "help-center",
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterOPTIONS020BD4CE": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1"
+    },
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/OPTIONS/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterlanding6C4D5448": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1"
+    },
+    "PathPart": "landing",
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterlandingOPTIONS2E999A92": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterlanding6C4D5448"
+    },
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/OPTIONS/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterlandingGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterlanding88E61BD7": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
     "FunctionName": {
      "Fn::GetAtt": [
-      "getWebPageDataLambdaD126B916",
+      "GetHCLandingLambda7205BD53",
       "Arn"
      ]
     },
@@ -187,22 +327,22 @@
        {
         "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
        },
-       "/GET/"
+       "/GET/help-center/landing"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET.."
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.landing"
    }
   },
-  "WebNotAuthorizedPagesGWAPIGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGET4E3BE965": {
+  "WebNotAuthorizedPagesGWAPIhelpcenterlandingGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterlanding9A2EFF9C": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
     "FunctionName": {
      "Fn::GetAtt": [
-      "getWebPageDataLambdaD126B916",
+      "GetHCLandingLambda7205BD53",
       "Arn"
      ]
     },
@@ -219,24 +359,21 @@
        {
         "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
        },
-       "/test-invoke-stage/GET/"
+       "/test-invoke-stage/GET/help-center/landing"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET.."
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.landing"
    }
   },
-  "WebNotAuthorizedPagesGWAPIGETA11C2EBD": {
+  "WebNotAuthorizedPagesGWAPIhelpcenterlandingGET7E4A7DA7": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "HttpMethod": "GET",
     "ResourceId": {
-     "Fn::GetAtt": [
-      "WebNotAuthorizedPagesGWAPI97EAFC19",
-      "RootResourceId"
-     ]
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterlanding6C4D5448"
     },
     "RestApiId": {
      "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
@@ -256,7 +393,7 @@
         ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
         {
          "Fn::GetAtt": [
-          "getWebPageDataLambdaD126B916",
+          "GetHCLandingLambda7205BD53",
           "Arn"
          ]
         },
@@ -267,16 +404,80 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/Resource"
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/GET/Resource"
    }
   },
-  "WebNotAuthorizedPagesGWAPIPOSTApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOST86CBB5E8": {
+  "WebNotAuthorizedPagesGWAPIhelpcentersubcategory00576F93": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1"
+    },
+    "PathPart": "subcategory",
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryOPTIONS3C11C89F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcentersubcategory00576F93"
+    },
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/OPTIONS/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcentersubcategory1501E8A4": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
     "FunctionName": {
      "Fn::GetAtt": [
-      "getWebPageDataLambdaD126B916",
+      "GetHCsubcategoryLambdaDF64526C",
       "Arn"
      ]
     },
@@ -297,22 +498,22 @@
        {
         "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
        },
-       "/POST/"
+       "/GET/help-center/subcategory"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST.."
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.subcategory"
    }
   },
-  "WebNotAuthorizedPagesGWAPIPOSTApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOSTF294BF1A": {
+  "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcentersubcategory3F44B227": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
     "FunctionName": {
      "Fn::GetAtt": [
-      "getWebPageDataLambdaD126B916",
+      "GetHCsubcategoryLambdaDF64526C",
       "Arn"
      ]
     },
@@ -329,24 +530,21 @@
        {
         "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
        },
-       "/test-invoke-stage/POST/"
+       "/test-invoke-stage/GET/help-center/subcategory"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST.."
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.subcategory"
    }
   },
-  "WebNotAuthorizedPagesGWAPIPOST84936A7E": {
+  "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGET21BED81E": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "ResourceId": {
-     "Fn::GetAtt": [
-      "WebNotAuthorizedPagesGWAPI97EAFC19",
-      "RootResourceId"
-     ]
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcentersubcategory00576F93"
     },
     "RestApiId": {
      "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
@@ -366,7 +564,7 @@
         ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
         {
          "Fn::GetAtt": [
-          "getWebPageDataLambdaD126B916",
+          "GetHCsubcategoryLambdaDF64526C",
           "Arn"
          ]
         },
@@ -377,7 +575,178 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/Resource"
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/GET/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterarticle7BA23A86": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1"
+    },
+    "PathPart": "article",
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterarticleOPTIONSA333C55F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterarticle7BA23A86"
+    },
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/OPTIONS/Resource"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterarticleGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterarticle3EE617B6": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetHCArticleLambda3857DD83",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+       },
+       "/",
+       {
+        "Ref": "WebNotAuthorizedPagesGWAPIDeploymentStagepagesAPI23617D29"
+       },
+       "/GET/help-center/article"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.article"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterarticleGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterarticleBB7649B9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetHCArticleLambda3857DD83",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+       },
+       "/test-invoke-stage/GET/help-center/article"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.article"
+   }
+  },
+  "WebNotAuthorizedPagesGWAPIhelpcenterarticleGET15969842": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebNotAuthorizedPagesGWAPIhelpcenterarticle7BA23A86"
+    },
+    "RestApiId": {
+     "Ref": "WebNotAuthorizedPagesGWAPI97EAFC19"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetHCArticleLambda3857DD83",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/GET/Resource"
    }
   },
   "WebNotAuthorizedPagesGWAPIWebNotAuthorizedPagesGWAPIUsagePlan76BD95F4": {
@@ -440,7 +809,7 @@
     "aws:cdk:path": "WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/WebNotAuthorizedPages-GW-SubDomain/Map:--=>WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC/Resource"
    }
   },
-  "getWebPageDataLambdaServiceRoleA2514D30": {
+  "GetHCLandingLambdaServiceRole49B6A35F": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -471,10 +840,10 @@
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/getWebPageDataLambda/ServiceRole/Resource"
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCLandingLambda/ServiceRole/Resource"
    }
   },
-  "getWebPageDataLambdaServiceRoleDefaultPolicy8A243F8D": {
+  "GetHCLandingLambdaServiceRoleDefaultPolicy885F4CFB": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
@@ -516,27 +885,27 @@
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "getWebPageDataLambdaServiceRoleDefaultPolicy8A243F8D",
+    "PolicyName": "GetHCLandingLambdaServiceRoleDefaultPolicy885F4CFB",
     "Roles": [
      {
-      "Ref": "getWebPageDataLambdaServiceRoleA2514D30"
+      "Ref": "GetHCLandingLambdaServiceRole49B6A35F"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/getWebPageDataLambda/ServiceRole/DefaultPolicy/Resource"
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCLandingLambda/ServiceRole/DefaultPolicy/Resource"
    }
   },
-  "getWebPageDataLambdaD126B916": {
+  "GetHCLandingLambda7205BD53": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "5485db03016fe7c88d0d3e70b23f26605e064a1297f194b608103efc9ea6ff27.zip"
+     "S3Key": "bad3775c53ae8eaca42dae259bed10bfddc845902b7c5c55bf35c2fac7a7d858.zip"
     },
     "Role": {
      "Fn::GetAtt": [
-      "getWebPageDataLambdaServiceRoleA2514D30",
+      "GetHCLandingLambdaServiceRole49B6A35F",
       "Arn"
      ]
     },
@@ -546,28 +915,292 @@
       "region": "us-east-1",
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
-      "allowedOrigins": "http://localhost,https://zuzona.com,http://127.0.0.1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
       "cookieDomain": "zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
-    "FunctionName": "react-getWebPageData-Lambda",
-    "Handler": "index.GetWebPageDataHandler",
+    "FunctionName": "react-getHC-Landing-Lambda",
+    "Handler": "index.GetHCLandingLambdaHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:6",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:3",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:6",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:4"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:19",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:8",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
     ],
     "Runtime": "nodejs16.x"
    },
    "DependsOn": [
-    "getWebPageDataLambdaServiceRoleDefaultPolicy8A243F8D",
-    "getWebPageDataLambdaServiceRoleA2514D30"
+    "GetHCLandingLambdaServiceRoleDefaultPolicy885F4CFB",
+    "GetHCLandingLambdaServiceRole49B6A35F"
    ],
    "Metadata": {
-    "aws:cdk:path": "WebNotAuthorizedPages/getWebPageDataLambda/Resource",
-    "aws:asset:path": "asset.5485db03016fe7c88d0d3e70b23f26605e064a1297f194b608103efc9ea6ff27",
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCLandingLambda/Resource",
+    "aws:asset:path": "asset.bad3775c53ae8eaca42dae259bed10bfddc845902b7c5c55bf35c2fac7a7d858",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetHCsubcategoryLambdaServiceRole5D0A48C2": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCsubcategoryLambda/ServiceRole/Resource"
+   }
+  },
+  "GetHCsubcategoryLambdaServiceRoleDefaultPolicyC6ACB76B": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/web"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetHCsubcategoryLambdaServiceRoleDefaultPolicyC6ACB76B",
+    "Roles": [
+     {
+      "Ref": "GetHCsubcategoryLambdaServiceRole5D0A48C2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCsubcategoryLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetHCsubcategoryLambdaDF64526C": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "32ecf736c4e3f7658a12d20578de152cacae6dbf048d441e3f70090aaebad4e4.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "GetHCsubcategoryLambdaServiceRole5D0A48C2",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "webTable": "web",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-getHC-Subcategory-Lambda",
+    "Handler": "index.GetHCsubcategoryLambdaHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:19",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:8",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "GetHCsubcategoryLambdaServiceRoleDefaultPolicyC6ACB76B",
+    "GetHCsubcategoryLambdaServiceRole5D0A48C2"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCsubcategoryLambda/Resource",
+    "aws:asset:path": "asset.32ecf736c4e3f7658a12d20578de152cacae6dbf048d441e3f70090aaebad4e4",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetHCArticleLambdaServiceRoleE865A3F8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCArticleLambda/ServiceRole/Resource"
+   }
+  },
+  "GetHCArticleLambdaServiceRoleDefaultPolicy6EADEE79": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/web"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetHCArticleLambdaServiceRoleDefaultPolicy6EADEE79",
+    "Roles": [
+     {
+      "Ref": "GetHCArticleLambdaServiceRoleE865A3F8"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCArticleLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetHCArticleLambda3857DD83": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "ec21e4c2794289d2984f2f84bbe21884912fb33fada9ec9b3a5859555f59e760.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "GetHCArticleLambdaServiceRoleE865A3F8",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "webTable": "web",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-getHC-Article-Lambda",
+    "Handler": "index.GetHCArticleLambdaHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:19",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:8",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "GetHCArticleLambdaServiceRoleDefaultPolicy6EADEE79",
+    "GetHCArticleLambdaServiceRoleE865A3F8"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebNotAuthorizedPages/GetHCArticleLambda/Resource",
+    "aws:asset:path": "asset.ec21e4c2794289d2984f2f84bbe21884912fb33fada9ec9b3a5859555f59e760",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -731,7 +1364,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RS2/CMAz+LbuHTAUh7VqGdgMq0M7IpB6kNEkVOyBU9b8vSWFjO/l72JYfUzkvZPECV5qo+jxp9UH2OwZ1FlskF7xCEb19D50+AuMVbrKPDpedFu9f9gmWSrlgWSyxa93NYIRRfWKx7RGTNoJH/wUQihXyydXJvKNPijlVCzZpv2TpDGi7BpMbPbHUpQI+raDrtD0m9580CA0mDu/aXJtj5VqtbomOaBAtmEMNsk8SeqOJtMszfASrOOJHyt66GhuS6xwerqDZHoiQSZYpRC4XQZ2R85reBcb5TPblFpXz9XjChHbIw5DoJnAXWOTqdKi8TCB25uch493v+I9VeXfRNfpBpOlkQ6+X4k0W0/jhhrSe+PggbVBux/gNyJAU/P0BAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21RS2/CMAz+LbuHTAUh7VqGdgMq0M7IpB6kNEkVOyBU9b8vacbGpp38PRI/p3JeyOIJrjRR9XnS6oPsdwzqLLZILniFInr7Hjp9BMYr3GQfHS47LV4/7AMslXLBslhi17qbwQij+sBi2iMmLYN7/gUQihXyydXJ/ELf1XORjN8pfqxasEn9IUtnQNs1mPH1A0upK+DTCrpO22Ny/0iD0GDiRK7NlVKsXKvVLdGMBtGCOdQg+yShN5pIu7GHt2AVR3x/sreuxobkegx3V9BsD0TIJMsUIpeLoM7I4+zeBcb5TPblFpXzdR45oR3yMCS6CdwFFuPvtL1xmEDszL97+m1V3l10jX4QqTvZ0POleJHFNJ69Ia0nPl5NG5TbHD8BHlhFvhICAAA="
    },
    "Metadata": {
     "aws:cdk:path": "WebNotAuthorizedPages/CDKMetadata/Default"

@@ -1,4 +1,4 @@
-import { GetWebPageDataHandler } from 'services/WebPages/GetWebPageData';
+import { GetHCLandingLambdaHandler } from 'services/WebPages/HC-LandingLambda';
 
 const event = {
     resource: '/me',
@@ -82,7 +82,7 @@ const event = {
         domainName: 'auth.zuzona.com',
         apiId: 'hr7gpcp5hc'
     },
-    body: '{"id":199163834,"first_name":"Nick","username":"LikeAHurricane","auth_date":1668542054,"hash":"20fc7635528bb976f5b5b37792acf12e83f99bc401db5674c075e6327d552f66"}',
+    body: '{"locale": "ru"}',
     isBase64Encoded: false
 };
 
@@ -93,7 +93,7 @@ async function main() {
     //     console.log(key);
     // }
 
-    GetWebPageDataHandler(event as any, {} as any);
+    GetHCLandingLambdaHandler(event as any, {} as any);
 }
 
 main();

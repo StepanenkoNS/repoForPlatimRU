@@ -10,8 +10,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
-import { IdentitySource } from 'aws-cdk-lib/aws-apigateway';
-import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { addApigateway, addLambdaIntegration, addMethod } from './IntegrationHelper';
 
 export class NotAuthorizedPagesStack extends Stack {
     constructor(
@@ -21,6 +20,7 @@ export class NotAuthorizedPagesStack extends Stack {
         props: StackProps & {
             certificateARN: string;
             layerARNs: string[];
+            enableAPICache: boolean;
         }
     ) {
         super(scope, id, props);
@@ -31,21 +31,9 @@ export class NotAuthorizedPagesStack extends Stack {
             domainName: siteDomain
         });
 
-        const webPagesAPI = new apigateway.RestApi(this, this.stackName + '-GWAPI', {
-            deploy: true,
-            deployOptions: {
-                stageName: 'pagesAPI',
-                metricsEnabled: true,
-                loggingLevel: apigateway.MethodLoggingLevel.INFO
-            },
-            defaultCorsPreflightOptions: {
-                allowHeaders: ['*'],
-                allowMethods: ['POST, GET'],
+        const webPagesAPI = addApigateway(this, props.enableAPICache);
 
-                allowCredentials: true,
-                allowOrigins: StaticEnvironment.WebResources.allowedOrigins
-            }
-        });
+        const HCresource = webPagesAPI.root.addResource('help-center');
 
         const certificate = acm.Certificate.fromCertificateArn(this, 'imported-certificate', props.certificateARN);
 
@@ -54,10 +42,10 @@ export class NotAuthorizedPagesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const getWebPageDataLambda = new NodejsFunction(this, 'getWebPageDataLambda', {
-            entry: join(__dirname, '..', '..', 'services', 'WebPages', 'GetWebPageData.ts'),
-            handler: 'GetWebPageDataHandler',
-            functionName: 'react-getWebPageData-Lambda',
+        const getHCLangingLambda = new NodejsFunction(this, 'GetHCLandingLambda', {
+            entry: join(__dirname, '..', '..', 'services', 'WebPages', 'HC-LandingLambda.ts'),
+            handler: 'GetHCLandingLambdaHandler',
+            functionName: 'react-getHC-Landing-Lambda',
             runtime: Runtime.NODEJS_16_X,
             environment: {
                 webTable: StaticEnvironment.DynamoDbTables.webTable.name,
@@ -72,11 +60,56 @@ export class NotAuthorizedPagesStack extends Stack {
             },
             layers: layers
         });
-        webTable.grantReadWriteData(getWebPageDataLambda);
+        webTable.grantReadWriteData(getHCLangingLambda);
 
-        const lambdaIntegrationListBots = new apigateway.LambdaIntegration(getWebPageDataLambda);
-        webPagesAPI.root.addMethod('GET', lambdaIntegrationListBots);
-        webPagesAPI.root.addMethod('POST', lambdaIntegrationListBots);
+        const lambdaIntegrationHCLanging = addLambdaIntegration(getHCLangingLambda, props.enableAPICache);
+        addMethod(HCresource, 'landing', 'GET', lambdaIntegrationHCLanging, props.enableAPICache);
+
+        const getHCsubcategoryLambda = new NodejsFunction(this, 'GetHCsubcategoryLambda', {
+            entry: join(__dirname, '..', '..', 'services', 'WebPages', 'HC-SubCategoryLambda.ts'),
+            handler: 'GetHCsubcategoryLambdaHandler',
+            functionName: 'react-getHC-Subcategory-Lambda',
+            runtime: Runtime.NODEJS_16_X,
+            environment: {
+                webTable: StaticEnvironment.DynamoDbTables.webTable.name,
+                region: StaticEnvironment.GlobalAWSEnvironment.region,
+                NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
+                botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
+                allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
+                cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            },
+            bundling: {
+                externalModules: ['aws-sdk', '/opt/*']
+            },
+            layers: layers
+        });
+        webTable.grantReadWriteData(getHCsubcategoryLambda);
+
+        const lambdaIntegrationHCSubCategory = addLambdaIntegration(getHCsubcategoryLambda, props.enableAPICache);
+        addMethod(HCresource, 'subcategory', 'GET', lambdaIntegrationHCSubCategory, props.enableAPICache);
+
+        const getHCArticleLambda = new NodejsFunction(this, 'GetHCArticleLambda', {
+            entry: join(__dirname, '..', '..', 'services', 'WebPages', 'HC-ArticleLambda.ts'),
+            handler: 'GetHCArticleLambdaHandler',
+            functionName: 'react-getHC-Article-Lambda',
+            runtime: Runtime.NODEJS_16_X,
+            environment: {
+                webTable: StaticEnvironment.DynamoDbTables.webTable.name,
+                region: StaticEnvironment.GlobalAWSEnvironment.region,
+                NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
+                botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
+                allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
+                cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            },
+            bundling: {
+                externalModules: ['aws-sdk', '/opt/*']
+            },
+            layers: layers
+        });
+        webTable.grantReadWriteData(getHCArticleLambda);
+
+        const lambdaIntegrationHCArticle = addLambdaIntegration(getHCArticleLambda, props.enableAPICache);
+        addMethod(HCresource, 'article', 'GET', lambdaIntegrationHCArticle, props.enableAPICache);
 
         webPagesAPI.addUsagePlan(this.stackName + '-GWAPI' + '-UsagePlan', {
             name: this.stackName + '-GWAPI' + '-UsagePlan',

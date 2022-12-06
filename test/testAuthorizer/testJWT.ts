@@ -1,5 +1,4 @@
-import { LambdaJWTAuthorizerHandler } from '../../../services/TokenService/Lambdas/lambdaJWTAuthorizer';
-
+import { LambdaJWTAuthorizerHandler } from '../../services/TokenService/Lambdas/lambdaJWTAuthorizer';
 const event = {
     type: 'REQUEST',
     methodArn: 'arn:aws:execute-api:us-east-1:993738567487:hr7gpcp5hc/tokenApi/POST/getNewToken',
@@ -12,7 +11,7 @@ const event = {
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'Content-Length': '170',
         'content-type': 'application/x-www-form-urlencoded',
-        cookie: 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2Njg3MDUzMTgsImV4cCI6MTcwMDI0MTMxOH0.Bw0wFEbeSavCEG0qNsicHTDPZjglFJn3Ol4yb76euV8',
+        cookie: 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwMTc0MDEyLCJleHAiOjE3MDE3MTAwMTJ9.3S-zaLRahNq8ot5hGfOJM6PCnCLSwSWFBLEzF00XUa4; Secure; SameSite=None; Domain=.zuzona.com; Path=/',
         Host: 'auth.zuzona.com',
         origin: 'http://localhost',
         referer: 'http://localhost/',

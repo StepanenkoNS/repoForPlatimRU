@@ -33,6 +33,7 @@ const notAuthorizedPagesStack = new NotAuthorizedPagesStack(app, StaticEnvironme
     stackName: StaticEnvironment.StackName.webNotAuthorizedPages.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    enableAPICache: false,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region

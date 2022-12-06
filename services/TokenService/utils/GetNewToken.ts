@@ -21,6 +21,26 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
             userName: user.username
         });
 
+        if (botManager.isBanned()) {
+            const result = {
+                error: JSON.stringify({ error: 'user is banned' })
+            };
+            return ReturnResult(403, result, origin, {
+                accessToken: '',
+                refreshToken: ''
+            });
+        }
+        const salt = botManager.getSalt();
+        if (!salt) {
+            const result = {
+                error: JSON.stringify({ error: 'salt is undefined' })
+            };
+            return ReturnResult(403, result, origin, {
+                accessToken: '',
+                refreshToken: ''
+            });
+        }
+
         const userProfile: TelegramUserProfile = {
             id: user.id,
             first_name: user.first_name,
@@ -30,12 +50,13 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
             language: botManager.GetBotManagerMenuLanguage(),
             role: 'admin'
         };
-        const accessToken = jwt.sign(userProfile, process.env.hashSalt!, {
+
+        const accessToken = jwt.sign(userProfile, salt, {
             algorithm: 'HS256',
             expiresIn: process.env.accessTokenExpirationMinutes! + ' minutes'
         });
 
-        const refreshToken = jwt.sign(userProfile, process.env.hashSalt!, {
+        const refreshToken = jwt.sign(userProfile, salt, {
             algorithm: 'HS256',
             expiresIn: process.env.refreshTokenExpirationDays! + ' days'
         });

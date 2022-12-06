@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/eba086fce6eafb80cab30ecd03728f3afc510a97e5c669d200185a4554fbfcf7.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/4b02e585392e5e79a38be3189682594d641ca8e9d68462f9ad6a040a1fbb57e1.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -72,7 +72,7 @@
         "/WebTokenService/WebTokenService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIDeployment69CE11EB66128cfe030a5069388cbe0cddddd382"
+            "data": "WebTokenServiceGWAPIDeployment69CE11EB1c279fee369ccf0c260a69a3779f9d23"
           }
         ],
         "/WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken/Resource": [
@@ -238,7 +238,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/dddfd33845398ec8206c9f3f4cff14c58818f18fb3af447121f60502677fa0ca.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/89f1212a93069275652cafb338acecde3cc6db099429eb1cfb6076a83c39233a.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -258,6 +258,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "LambdaJWTAuthorizerServiceRole5D71D691"
+          }
+        ],
+        "/WebRestService/LambdaJWTAuthorizer/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaJWTAuthorizerServiceRoleDefaultPolicy2E3FC487"
           }
         ],
         "/WebRestService/LambdaJWTAuthorizer/Resource": [
@@ -323,7 +329,7 @@
         "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIDeploymentE0A236723209da6b7b28f6ccce86d4a26430c85d"
+            "data": "WebRestServiceGWAPIDeploymentE0A2367201ce0d98ab7c4218f722c279ee1dcc00"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -386,6 +392,138 @@
             "data": "WebRestServiceGWAPIBotsGetMyBotsGET0773596C"
           }
         ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptions9E07B8E5"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsOPTIONS0FEA12A9"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsListF21F6B91"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsListOPTIONS9FF6A85D"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..PaymentOptions.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsListGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETPaymentOptionsList4807FEDC"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..PaymentOptions.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsListGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETPaymentOptionsList5EC93259"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsListGETB110FC75"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Add/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsAddED43A709"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Add/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsAddOPTIONSFA7317DC"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..PaymentOptions.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsAddPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTPaymentOptionsAdd58D4B42E"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..PaymentOptions.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsAddPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTPaymentOptionsAdd4DDD81B1"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Add/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsAddPOSTA8E96E4D"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsDelete7D6AE109"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Delete/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsDeleteOPTIONSB5072DA6"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..PaymentOptions.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsDeleteDELETEApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEPaymentOptionsDeleteA5F28725"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..PaymentOptions.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsDeleteDELETEApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEPaymentOptionsDeleteD99E768E"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Delete/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsDeleteDELETEE156F660"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Edit/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsEdit875D169E"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Edit/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsEditOPTIONS26B676AE"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Edit/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PaymentOptions.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsEditPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTPaymentOptionsEdit0C85BB15"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Edit/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PaymentOptions.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsEditPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTPaymentOptionsEditA5F013B6"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Edit/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPaymentOptionsEditPUT9E17C24D"
+          }
+        ],
         "/WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -402,24 +540,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebRestServiceGWAPIWebRestServiceGWSubDomainMapWebRestServiceWebRestServiceGWAPIA25BC9C13DA8860E"
-          }
-        ],
-        "/WebRestService/ListBotsLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListBotsLambdaServiceRoleA6E24787"
-          }
-        ],
-        "/WebRestService/ListBotsLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4"
-          }
-        ],
-        "/WebRestService/ListBotsLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListBotsLambdaC9B0E149"
           }
         ],
         "/WebRestService/WebRestService-ARecord/Resource": [
@@ -444,6 +564,96 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
+          }
+        ],
+        "/WebRestService/ListBotsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaServiceRoleA6E24787"
+          }
+        ],
+        "/WebRestService/ListBotsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4"
+          }
+        ],
+        "/WebRestService/ListBotsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaC9B0E149"
+          }
+        ],
+        "/WebRestService/ListPaymentOptionsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListPaymentOptionsLambdaServiceRoleD3A97E58"
+          }
+        ],
+        "/WebRestService/ListPaymentOptionsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListPaymentOptionsLambdaServiceRoleDefaultPolicy7EDC2048"
+          }
+        ],
+        "/WebRestService/ListPaymentOptionsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListPaymentOptionsLambdaACAA5262"
+          }
+        ],
+        "/WebRestService/AddPaymentOptionsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddPaymentOptionsLambdaServiceRoleA4BD4D41"
+          }
+        ],
+        "/WebRestService/AddPaymentOptionsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddPaymentOptionsLambdaServiceRoleDefaultPolicy2FF91D53"
+          }
+        ],
+        "/WebRestService/AddPaymentOptionsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddPaymentOptionsLambda92473D39"
+          }
+        ],
+        "/WebRestService/DeletePaymentOptionLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeletePaymentOptionLambdaServiceRoleB4EBD3CA"
+          }
+        ],
+        "/WebRestService/DeletePaymentOptionLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeletePaymentOptionLambdaServiceRoleDefaultPolicy0FE9A027"
+          }
+        ],
+        "/WebRestService/DeletePaymentOptionLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeletePaymentOptionLambdaEC66351C"
+          }
+        ],
+        "/WebRestService/EditPaymentOptionLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditPaymentOptionLambdaServiceRole73BB83E4"
+          }
+        ],
+        "/WebRestService/EditPaymentOptionLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditPaymentOptionLambdaServiceRoleDefaultPolicyD994B97C"
+          }
+        ],
+        "/WebRestService/EditPaymentOptionLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditPaymentOptionLambda398037A2"
           }
         ],
         "/WebRestService/WebRestService-APIGW-SecureAPI": [
@@ -489,7 +699,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/83ae679cec30d5fc637845a6d2fbc213ce9c66a056563244a0ad7bed25903fba.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/057a59b93eeea0a485d0e10f8687475a9dc7e1996e9cae461ee0eb3dc28aa3d1.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -526,7 +736,7 @@
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD9751d6b908eb87fe97933a5cdc87de7049"
+            "data": "WebNotAuthorizedPagesGWAPIDeploymentD8F7DD97b51f6dbeec0d5957f3fd8a30261a4869"
           }
         ],
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/DeploymentStage.pagesAPI/Resource": [
@@ -547,40 +757,106 @@
             "data": "WebNotAuthorizedPagesGWAPIOPTIONSAF183470"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGETB4744ED9"
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterF5625ED1"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGET4E3BE965"
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterOPTIONS020BD4CE"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/GET/Resource": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIGETA11C2EBD"
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterlanding6C4D5448"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIPOSTApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOST86CBB5E8"
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterlandingOPTIONS2E999A92"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.POST..": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.landing": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIPOSTApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCPOSTF294BF1A"
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterlandingGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterlanding88E61BD7"
           }
         ],
-        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/POST/Resource": [
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.landing": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebNotAuthorizedPagesGWAPIPOST84936A7E"
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterlandingGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterlanding9A2EFF9C"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/landing/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterlandingGET7E4A7DA7"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcentersubcategory00576F93"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryOPTIONS3C11C89F"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.subcategory": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcentersubcategory1501E8A4"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.subcategory": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcentersubcategory3F44B227"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/subcategory/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcentersubcategoryGET21BED81E"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterarticle7BA23A86"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterarticleOPTIONSA333C55F"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/GET/ApiPermission.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.article": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterarticleGETApiPermissionWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterarticle3EE617B6"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/GET/ApiPermission.Test.WebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC.GET..help-center.article": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterarticleGETApiPermissionTestWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CCGEThelpcenterarticleBB7649B9"
+          }
+        ],
+        "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/Default/help-center/article/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebNotAuthorizedPagesGWAPIhelpcenterarticleGET15969842"
           }
         ],
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-GWAPI/WebNotAuthorizedPages-GWAPI-UsagePlan/Resource": [
@@ -601,22 +877,58 @@
             "data": "WebNotAuthorizedPagesGWAPIWebNotAuthorizedPagesGWSubDomainMapWebNotAuthorizedPagesWebNotAuthorizedPagesGWAPI6919D6CC933CBBFE"
           }
         ],
-        "/WebNotAuthorizedPages/getWebPageDataLambda/ServiceRole/Resource": [
+        "/WebNotAuthorizedPages/GetHCLandingLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "getWebPageDataLambdaServiceRoleA2514D30"
+            "data": "GetHCLandingLambdaServiceRole49B6A35F"
           }
         ],
-        "/WebNotAuthorizedPages/getWebPageDataLambda/ServiceRole/DefaultPolicy/Resource": [
+        "/WebNotAuthorizedPages/GetHCLandingLambda/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "getWebPageDataLambdaServiceRoleDefaultPolicy8A243F8D"
+            "data": "GetHCLandingLambdaServiceRoleDefaultPolicy885F4CFB"
           }
         ],
-        "/WebNotAuthorizedPages/getWebPageDataLambda/Resource": [
+        "/WebNotAuthorizedPages/GetHCLandingLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "getWebPageDataLambdaD126B916"
+            "data": "GetHCLandingLambda7205BD53"
+          }
+        ],
+        "/WebNotAuthorizedPages/GetHCsubcategoryLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCsubcategoryLambdaServiceRole5D0A48C2"
+          }
+        ],
+        "/WebNotAuthorizedPages/GetHCsubcategoryLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCsubcategoryLambdaServiceRoleDefaultPolicyC6ACB76B"
+          }
+        ],
+        "/WebNotAuthorizedPages/GetHCsubcategoryLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCsubcategoryLambdaDF64526C"
+          }
+        ],
+        "/WebNotAuthorizedPages/GetHCArticleLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCArticleLambdaServiceRoleE865A3F8"
+          }
+        ],
+        "/WebNotAuthorizedPages/GetHCArticleLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCArticleLambdaServiceRoleDefaultPolicy6EADEE79"
+          }
+        ],
+        "/WebNotAuthorizedPages/GetHCArticleLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCArticleLambda3857DD83"
           }
         ],
         "/WebNotAuthorizedPages/WebNotAuthorizedPages-ARecord/Resource": [

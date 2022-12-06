@@ -1,7 +1,10 @@
 import { RefreshTokenFromCookie } from './RefreshToken';
 import * as jwt from 'jsonwebtoken';
 import { TelegramUserProfile } from './Types';
-import { AWSPolicyGenerator } from './AWSPolicyGenerator';
+import { APIGatewayEvent } from 'aws-lambda';
+//@ts-ignore
+import BotManager from '/opt/BotManager';
+import { TelegramUser } from 'services/Utils/Types';
 
 function getTokenFromCookes(cookies: string) {
     let accessToken = cookies.split('; ').reduce((r, v) => {
@@ -36,26 +39,78 @@ type AllowResult = {
     context: any;
     userProfile: TelegramUserProfile;
 };
-export async function ValidateTokenFromCookies(event: any): Promise<DenyResult | AllowResult> {
-    if (!event.headers || !event.headers.cookie) {
+export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<DenyResult | AllowResult> {
+    if (!(event.headers.cookie || event.headers.Cookie)) {
         console.log('Cookies not provided');
-        //throw new Error("Unauthorized");
         return { effect: 'Deny', message: 'Cookies not provided' };
     }
-    const tokensFromCookies = getTokenFromCookes(event.headers.cookie);
-    console.log('tokensFromCookies\n', tokensFromCookies);
-
+    let cookie = '';
+    if (event.headers.Cookie) {
+        cookie = event.headers.Cookie;
+    }
+    if (event.headers.cookie) {
+        cookie = event.headers.cookie;
+    }
+    const tokensFromCookies = getTokenFromCookes(cookie);
+    let userProfile: TelegramUserProfile;
+    let salt: string | undefined = undefined;
     if (tokensFromCookies.refreshToken == undefined || tokensFromCookies.refreshToken == '') {
-        //throw new Error("Unauthorized");
         console.log('refreshToken not defined');
         return { effect: 'Deny', message: 'refreshToken not defined' };
     } else {
         try {
-            const decoded = jwt.verify(tokensFromCookies.refreshToken, process.env.hashSalt!, {
-                algorithms: ['HS256']
-            });
+            userProfile = jwt.decode(tokensFromCookies.refreshToken) as TelegramUserProfile;
+            if (!userProfile.id) {
+                const err = {
+                    error: JSON.stringify({ error: 'user id is not defined' })
+                };
+                console.log('Error:ValidateTokenFromCookies\n', err);
+                throw err;
+            }
+            if (!userProfile.username) {
+                userProfile.username = undefined;
+            }
+
+            let botManager: BotManager;
+            try {
+                console.log('userProfile\n', userProfile);
+                botManager = await BotManager.GetOrCreate({
+                    chatId: userProfile.id,
+                    userName: userProfile.username
+                });
+            } catch (error) {
+                const err = {
+                    error: JSON.stringify({ error: 'user is banned' })
+                };
+                console.log('Error:ValidateTokenFromCookies\n', error);
+                throw err;
+            }
+
+            if (botManager.isBanned()) {
+                const err = {
+                    error: JSON.stringify({ error: 'user is banned' })
+                };
+                console.log('Error:ValidateTokenFromCookies', err);
+                throw err;
+            }
+            salt = botManager.getSalt();
+            if (!salt) {
+                const err = {
+                    error: JSON.stringify({ error: 'salt is undefined' })
+                };
+                console.log('Error:ValidateTokenFromCookies', err);
+                throw err;
+            }
+            try {
+                console.log('data', tokensFromCookies.refreshToken, salt);
+                jwt.verify(tokensFromCookies.refreshToken, salt, {
+                    algorithms: ['HS256']
+                });
+            } catch (error) {
+                console.log('Error:ValidateTokenFromCookies:jwt.verify for refreshToken\n', error);
+                throw 'Refresh token verification failed';
+            }
         } catch (error) {
-            console.log('refresh token is invalid\n', tokensFromCookies.refreshToken);
             return { effect: 'Deny', message: 'refresh token is invalid' };
         }
     }
@@ -69,40 +124,53 @@ export async function ValidateTokenFromCookies(event: any): Promise<DenyResult |
     if (accessIdentity.accessToken == undefined || accessIdentity.accessToken == '') {
         //выпускаем новый accessToken
         try {
-            console.log('access token not provided (possibly expired on client side)');
-            accessIdentity = RefreshTokenFromCookie(tokensFromCookies.refreshToken);
+            accessIdentity = await RefreshTokenFromCookie(userProfile, salt!);
             renewAccessToken = true;
-            console.log('new access token has been issued 2\n', accessIdentity);
         } catch (error) {
-            console.log('accessToken generation error 1\n', error);
-            return { effect: 'Deny', message: 'accessToken generation error 1' };
+            console.log('Error:ValidateTokenFromCookies:RefreshTokenFromCookie\n', error);
+            return { effect: 'Deny', message: 'accessToken generation error' };
         }
     } else {
         try {
-            const decoded = jwt.verify(accessIdentity.accessToken, process.env.hashSalt!, {
+            const accessUserProfile = jwt.decode(accessIdentity.accessToken) as TelegramUserProfile;
+            if (!accessUserProfile.id) {
+                throw 'user id is not defined';
+            }
+            if (!accessUserProfile.username) {
+                accessUserProfile.username = undefined;
+            }
+
+            const decoded = jwt.verify(accessIdentity.accessToken, salt!, {
                 algorithms: ['HS256']
             });
             accessIdentity.userProfile = decoded as TelegramUserProfile;
         } catch (error) {
             if (error instanceof jwt.TokenExpiredError) {
                 try {
-                    console.log('access token has expired');
-                    accessIdentity = RefreshTokenFromCookie(tokensFromCookies.refreshToken);
+                    accessIdentity = await RefreshTokenFromCookie(userProfile, salt!);
                     renewAccessToken = true;
-                    console.log('new access token has been issued 2\n', accessIdentity);
                 } catch (error) {
-                    console.log('accessToken generation error 2\n', error);
+                    const err = {
+                        error: JSON.stringify({ error: 'accessToken is empty after generation' })
+                    };
+                    console.log('Error:ValidateTokenFromCookies:RefreshTokenFromCookie', err);
                     return { effect: 'Deny', message: 'accessToken generation error 2' };
                 }
             } else {
-                console.log('accessToken verification error error\n', error);
+                const err = {
+                    error: JSON.stringify({ error: 'accessToken verification error' })
+                };
+                console.log('Error:ValidateTokenFromCookies:RefreshTokenFromCookie', err);
                 return { effect: 'Deny', message: 'accessToken verification error error' };
             }
         }
     }
     if (!accessIdentity.accessToken || !accessIdentity.userProfile) {
-        console.log('accessToken is empty after generation');
-        return { effect: 'Deny', message: 'accessToken is empty after generation' };
+        const err = {
+            error: JSON.stringify({ error: 'accessToken is empty after generation' })
+        };
+        console.log('Error:ValidateTokenFromCookies', err);
+        throw err;
     }
     try {
         let responseContext = {
@@ -124,7 +192,7 @@ export async function ValidateTokenFromCookies(event: any): Promise<DenyResult |
         };
         return result;
     } catch (error) {
-        console.log('ValidateTokenFromCookies Error\n', error);
+        console.log('Error:ValidateTokenFromCookies:Finalization\n', error);
         return { effect: 'Deny', message: 'Token validation error' };
     }
 }

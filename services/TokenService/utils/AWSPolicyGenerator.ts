@@ -4,6 +4,8 @@ export class AWSPolicyGenerator {
     static generate(principalId: string, effect: string, resource: string, context?: any): any {
         var authResponse: any = {};
 
+        // console.log('resource', resource);
+        // console.log('extendedResource', process.env.allowedResources!);
         authResponse.principalId = principalId;
         if (effect && resource) {
             const policyDocument: any = {};
@@ -12,7 +14,8 @@ export class AWSPolicyGenerator {
             const statementOne: any = {};
             statementOne.Action = 'execute-api:Invoke';
             statementOne.Effect = effect;
-            statementOne.Resource = resource;
+            statementOne.Resource = process.env.allowedResources!;
+            //resource;
             policyDocument.Statement[0] = statementOne;
             authResponse.policyDocument = policyDocument;
         }
