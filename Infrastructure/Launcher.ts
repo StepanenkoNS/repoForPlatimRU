@@ -5,7 +5,7 @@ import * as StaticEnvironment from '../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../ReadmeAndConfig/DynamicEnvironment';
 import { RestServicesStack } from './RestServices/RestServices';
 import { TokenServiceStack } from './TokenService/TokenService';
-import { NotAuthorizedPagesStack } from './NotAuthorizedPages/NotAuthorizedPages';
+import { WebPublicPagesStack } from './NotAuthorizedPages/WebPublicPages';
 
 const app = new App();
 
@@ -29,8 +29,8 @@ const restServicesStack = new RestServicesStack(app, StaticEnvironment.StackName
     }
 });
 
-const notAuthorizedPagesStack = new NotAuthorizedPagesStack(app, StaticEnvironment.StackName.webNotAuthorizedPages.toString(), {
-    stackName: StaticEnvironment.StackName.webNotAuthorizedPages.toString(),
+const webPublicPagesStack = new WebPublicPagesStack(app, StaticEnvironment.StackName.WebPublicPages.toString(), {
+    stackName: StaticEnvironment.StackName.WebPublicPages.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
     enableAPICache: false,

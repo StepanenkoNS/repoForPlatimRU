@@ -5,9 +5,9 @@ import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventB
 import { EPaymentTypes } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import PaymentMethodsManager from '/opt/PaymentMethodsManager';
 
-export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function DeleteSubscriptionOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -25,7 +25,7 @@ export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context
     }
 
     try {
-        await PaymentOptionsManager.DeletePaymentMethod(telegramUser.id, bodyObject.id);
+        await PaymentMethodsManager.DeletePaymentMethod(telegramUser.id, bodyObject.id);
         const returnObject = ReturnRestApiResult(200, { success: true }, false, origin, renewedToken);
 
         return returnObject;

@@ -12,7 +12,7 @@ import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import { addApigateway, addLambdaIntegration, addMethod } from './IntegrationHelper';
 
-export class NotAuthorizedPagesStack extends Stack {
+export class WebPublicPagesStack extends Stack {
     constructor(
         scope: Construct,
         id: string,

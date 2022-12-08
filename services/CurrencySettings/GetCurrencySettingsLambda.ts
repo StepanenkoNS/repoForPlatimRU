@@ -1,16 +1,14 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventBody';
-import { SetOrigin } from '../Utils/OriginHelper';
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import BotManager from '/opt/BotManager';
 
-export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+import { SetOrigin } from '../Utils/OriginHelper';
+
+export async function GetCurrencySettingsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
-
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
     let renewedToken = undefined;
 
@@ -19,9 +17,14 @@ export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context:
     }
 
     try {
-        const dbResult = await PaymentOptionsManager.GetMyPaymentOptions(telegramUser.id);
-        const returnObject = ReturnRestApiResult(200, dbResult, true, origin, renewedToken);
-        console.log('returnObject\n', returnObject);
+        const botManager = await BotManager.GetOrCreate({
+            chatId: telegramUser.id,
+            userName: telegramUser.username
+        });
+
+        const currency = botManager.GetMyDefaultCurrency();
+
+        const returnObject = ReturnRestApiResult(200, { defaultCurrency: currency }, false, origin, renewedToken);
         return returnObject;
     } catch (error) {
         return ReturnRestApiResult(500, { error: 'Internal server error' }, false, origin, renewedToken);

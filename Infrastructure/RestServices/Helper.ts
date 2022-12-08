@@ -20,7 +20,7 @@ export function createAPIandAuthorizer(that: any, certificateARN: string, layers
     const LambdaJWTAuthorizer = new NodejsFunction(that, 'LambdaJWTAuthorizer', {
         entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaJWTAuthorizer.ts'),
         handler: 'LambdaJWTAuthorizerHandler',
-        functionName: that.stackName + '-JWTAuthorizer-Lambda',
+        functionName: 'JWTAuthorizer-Lambda',
         runtime: Runtime.NODEJS_16_X,
         logRetention: RetentionDays.INFINITE,
         environment: {

@@ -1,12 +1,12 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+import { SetOrigin } from 'services/Utils/OriginHelper';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
 import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventBody';
-import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import PaymentMethodsManager from '/opt/PaymentMethodsManager';
 
-export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function ListSubscriptionOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -18,8 +18,13 @@ export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context:
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
+    // let bodyObject = ValidateIncomingEventBody(event, ['chatId']);
+    // if (bodyObject === false) {
+    //     return ReturnRestApiResult(422, { error: 'Error: mailformed body' }, false, origin, renewedToken);
+    // }
+
     try {
-        const dbResult = await PaymentOptionsManager.GetMyPaymentOptions(telegramUser.id);
+        const dbResult = await PaymentMethodsManager.GetMyPaymentMethods(telegramUser.id);
         const returnObject = ReturnRestApiResult(200, dbResult, true, origin, renewedToken);
         console.log('returnObject\n', returnObject);
         return returnObject;
