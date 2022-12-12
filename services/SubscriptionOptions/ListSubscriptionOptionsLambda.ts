@@ -2,9 +2,8 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { SetOrigin } from 'services/Utils/OriginHelper';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventBody';
-//@ts-ignore
-import PaymentMethodsManager from '/opt/PaymentMethodsManager';
+
+import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
 
 export async function ListSubscriptionOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -24,11 +23,11 @@ export async function ListSubscriptionOptionsHandler(event: APIGatewayEvent, con
     // }
 
     try {
-        const dbResult = await PaymentMethodsManager.GetMyPaymentMethods(telegramUser.id);
-        const returnObject = ReturnRestApiResult(200, dbResult, true, origin, renewedToken);
-        console.log('returnObject\n', returnObject);
+        const plans = await BotSubscriptionConfigurator.ListMySubscriptionPlans(telegramUser.id);
+        const returnObject = ReturnRestApiResult(200, plans, true, origin, renewedToken);
         return returnObject;
     } catch (error) {
+        console.log('Error:ListSubscriptionOptionsHandler\n', error);
         return ReturnRestApiResult(500, { error: 'Internal server error' }, false, origin, renewedToken);
     }
 }

@@ -1,7 +1,7 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventBody';
+import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 import { EPaymentTypes } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
@@ -18,7 +18,7 @@ export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, ['id']);
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);

@@ -38,7 +38,7 @@ export function CreateSubscriptionOptionsLambdas(that: any, rootResource: apigat
     //Добавлении типа подписки
     const AddSubscriptionOptionLambda = new NodejsFunction(that, 'AddSubscriptionOptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionOptions', 'AddSubscriptionOptionLambda.ts'),
-        handler: 'AddSubscriptionHandler',
+        handler: 'AddSubscriptionOptionHandler',
         functionName: 'react-AddSubscription-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {

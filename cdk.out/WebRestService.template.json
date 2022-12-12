@@ -116,10 +116,10 @@
     "FunctionName": "JWTAuthorizer-Lambda",
     "Handler": "index.LambdaJWTAuthorizerHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -3062,10 +3062,10 @@
     "FunctionName": "react-ListBots-Lambda",
     "Handler": "index.ListMyBotsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -3199,10 +3199,10 @@
     "FunctionName": "react-GetCurrencySettings-Lambda",
     "Handler": "index.GetCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -3314,7 +3314,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "37a5cfed4d20b1a3257f8517e12f83a54e3e876ffb6622416c3296388ccf8781.zip"
+     "S3Key": "9322557b604551ec41f059db0df0ed3b9bf249f48e92713faa1e71d78346ed86.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -3336,10 +3336,10 @@
     "FunctionName": "react-EditCurrencySettings-Lambda",
     "Handler": "index.EditCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 15
@@ -3350,7 +3350,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditCurrencySettingsLambda/Resource",
-    "aws:asset:path": "asset.37a5cfed4d20b1a3257f8517e12f83a54e3e876ffb6622416c3296388ccf8781",
+    "aws:asset:path": "asset.9322557b604551ec41f059db0df0ed3b9bf249f48e92713faa1e71d78346ed86",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -3469,10 +3469,10 @@
     "FunctionName": "react-ListPaymentOptions-Lambda",
     "Handler": "index.ListPaymentOptionsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -3584,7 +3584,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "9afc4fa99e8c2230ccb97d513d431cfe71e662e9cc6d4fdc0ef3d89efc542cb9.zip"
+     "S3Key": "72b6b099c02889051ffd19496da99340f19f6553e5b8f4ec3cb3c02c36774a15.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -3606,10 +3606,10 @@
     "FunctionName": "react-AddPaymentOption-Lambda",
     "Handler": "index.AddPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -3619,7 +3619,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddPaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.9afc4fa99e8c2230ccb97d513d431cfe71e662e9cc6d4fdc0ef3d89efc542cb9",
+    "aws:asset:path": "asset.72b6b099c02889051ffd19496da99340f19f6553e5b8f4ec3cb3c02c36774a15",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -3721,7 +3721,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "744f44d72fd0d90f97d25b9a0c76a4962f32b53ea6363c715da3d264d53f4ef6.zip"
+     "S3Key": "7cf093c518f372964dc059089a303729fe60592ddaf358c085014e58f4a4d5af.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -3743,10 +3743,10 @@
     "FunctionName": "react-EditPaymentOption-Lambda",
     "Handler": "index.EditPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 15
@@ -3757,7 +3757,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditPaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.744f44d72fd0d90f97d25b9a0c76a4962f32b53ea6363c715da3d264d53f4ef6",
+    "aws:asset:path": "asset.7cf093c518f372964dc059089a303729fe60592ddaf358c085014e58f4a4d5af",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -3859,7 +3859,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "b8364e301e72b2a1d8a083bc63d7cc54e63eb74e4c287a620061d1da23d0c88e.zip"
+     "S3Key": "0ca5861c09ff18bf09e9902854ce01b25ee5429de08cc523ab90264f5d9b4220.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -3881,10 +3881,10 @@
     "FunctionName": "react-DeletePaymentOption-Lambda",
     "Handler": "index.DeletePaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -3894,7 +3894,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeletePaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.b8364e301e72b2a1d8a083bc63d7cc54e63eb74e4c287a620061d1da23d0c88e",
+    "aws:asset:path": "asset.0ca5861c09ff18bf09e9902854ce01b25ee5429de08cc523ab90264f5d9b4220",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -3996,7 +3996,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "9b799ef68f36cc395330d242243ada1a3ce7b032006b415e2484b7eab30e67be.zip"
+     "S3Key": "ef8c1c14987c8f3ac7ba1f187059735dca516649d2a3088cb9d7ea063b3ea83a.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -4018,10 +4018,10 @@
     "FunctionName": "react-ListSubscriptionOptions-Lambda",
     "Handler": "index.ListSubscriptionOptionsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -4031,7 +4031,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/ListSubscriptionOptionsLambda/Resource",
-    "aws:asset:path": "asset.9b799ef68f36cc395330d242243ada1a3ce7b032006b415e2484b7eab30e67be",
+    "aws:asset:path": "asset.ef8c1c14987c8f3ac7ba1f187059735dca516649d2a3088cb9d7ea063b3ea83a",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -4133,7 +4133,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "93a369000f2f6c5451cdeed029bb818b81fb1a461c983eea0423eb0db730cd71.zip"
+     "S3Key": "8c4777d9322eef375490590e1ac0d5667ec7a1d28eded257fee50039ea6c9ba3.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -4153,12 +4153,12 @@
      }
     },
     "FunctionName": "react-AddSubscription-Lambda",
-    "Handler": "index.AddSubscriptionHandler",
+    "Handler": "index.AddSubscriptionOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -4168,7 +4168,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddSubscriptionOptionLambda/Resource",
-    "aws:asset:path": "asset.93a369000f2f6c5451cdeed029bb818b81fb1a461c983eea0423eb0db730cd71",
+    "aws:asset:path": "asset.8c4777d9322eef375490590e1ac0d5667ec7a1d28eded257fee50039ea6c9ba3",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -4270,7 +4270,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "040ad88bd489fc978d1e9be9500d5c2e92ac6fcce3cb039b81b8131b3c391278.zip"
+     "S3Key": "800f8d5b4afc8fc29d06e21bfdac8e1021b20e51b2c9b2aa1e4fc2c8faad2265.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -4292,10 +4292,10 @@
     "FunctionName": "react-EditSubscription-Lambda",
     "Handler": "index.EditSubscriptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 15
@@ -4306,7 +4306,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditSubscriptionOptionLambda/Resource",
-    "aws:asset:path": "asset.040ad88bd489fc978d1e9be9500d5c2e92ac6fcce3cb039b81b8131b3c391278",
+    "aws:asset:path": "asset.800f8d5b4afc8fc29d06e21bfdac8e1021b20e51b2c9b2aa1e4fc2c8faad2265",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -4408,7 +4408,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "37998312511e56b115e9fb178f6221b2189db62876f695c940c0bf7e70d21938.zip"
+     "S3Key": "a449d211d1f6e88ac68905e84ef1daf7b2b48214f018283a63cfda4e884cba36.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -4430,10 +4430,10 @@
     "FunctionName": "react-DeleteSubscription-Lambda",
     "Handler": "index.DeleteSubscriptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:24",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:30",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:4",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:10",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:5"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:13",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:6"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -4443,7 +4443,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteSubscriptionOptionLambda/Resource",
-    "aws:asset:path": "asset.37998312511e56b115e9fb178f6221b2189db62876f695c940c0bf7e70d21938",
+    "aws:asset:path": "asset.a449d211d1f6e88ac68905e84ef1daf7b2b48214f018283a63cfda4e884cba36",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

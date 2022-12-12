@@ -1,7 +1,7 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventBody';
+import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 import { EPaymentTypes } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
@@ -18,13 +18,21 @@ export async function EditPaymentOptionHandler(event: APIGatewayEvent, context: 
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, ['id', 'name', 'type', 'description', 'currency', 'conversionRatio']);
+
+    let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'id', datatype: 'string' },
+        { key: 'name', datatype: 'string' },
+        { key: 'type', datatype: ['DIRECT', 'INTEGRATION'] },
+        { key: 'description', datatype: 'string' },
+        { key: 'currency', datatype: 'string' },
+        { key: 'conversionRatio', datatype: 'number(nonZeroPositive)' }
+    ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
     if (bodyObject.type === EPaymentTypes.INTEGRATION) {
-        bodyObject = ValidateIncomingEventBody(event, ['token']);
+        bodyObject = ValidateIncomingEventBody(event, [{ key: 'token', datatype: 'string' }]);
         if (bodyObject === false) {
             return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body - token not provided' }, false, origin, renewedToken);
         }

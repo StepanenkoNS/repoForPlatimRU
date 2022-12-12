@@ -1,7 +1,7 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingEventBody';
+import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 import BotManager from '/opt/BotManager';
 import { SetOrigin } from '../Utils/OriginHelper';
 import { ESupportedCurrency } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
@@ -17,7 +17,7 @@ export async function EditCurrencySettingsHandler(event: APIGatewayEvent, contex
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, ['defaultCurrency']);
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'defaultCurrency', datatype: 'string' }]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
