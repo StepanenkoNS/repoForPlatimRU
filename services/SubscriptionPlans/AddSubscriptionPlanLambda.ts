@@ -35,16 +35,7 @@ export async function AddSubscriptionPlanHandler(event: APIGatewayEvent, context
             { key: 'id', datatype: 'string' },
             { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
             { key: 'name', datatype: 'string' },
-            {
-                key: 'durationType',
-                datatype: 'object',
-                objectKeys: [
-                    {
-                        key: 'durationInDays',
-                        datatype: 'number(positiveInteger)'
-                    }
-                ]
-            },
+            { key: 'durationInDays', datatype: 'number(positiveInteger)' },
             { key: 'price', datatype: 'number(nonZeroPositive)' },
             { key: 'enabled', datatype: 'boolean' }
         ]);
@@ -58,20 +49,8 @@ export async function AddSubscriptionPlanHandler(event: APIGatewayEvent, context
             { key: 'id', datatype: 'string' },
             { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
             { key: 'name', datatype: 'string' },
-            {
-                key: 'durationType',
-                datatype: 'object',
-                objectKeys: [
-                    {
-                        key: 'dateStart',
-                        datatype: 'date'
-                    },
-                    {
-                        key: 'dateFinish',
-                        datatype: 'date'
-                    }
-                ]
-            },
+            { key: 'dateStart', datatype: 'date' },
+            { key: 'dateFinish', datatype: 'date' },
             { key: 'price', datatype: 'number(nonZeroPositive)' },
             { key: 'enabled', datatype: 'boolean' }
         ]);
