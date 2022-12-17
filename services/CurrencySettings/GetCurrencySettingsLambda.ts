@@ -1,5 +1,5 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
+import { ParseGetItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
 import BotManager from '/opt/BotManager';
 
@@ -22,11 +22,12 @@ export async function GetCurrencySettingsHandler(event: APIGatewayEvent, context
             userName: telegramUser.username
         });
 
-        const currency = botManager.GetMyDefaultCurrency();
+        const result = botManager.GetMyDefaultCurrency();
+        const getResult = ParseGetItemResult({ defaultCurrency: result });
 
-        const returnObject = ReturnRestApiResult(200, { defaultCurrency: currency }, false, origin, renewedToken);
+        const returnObject = ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
         return returnObject;
     } catch (error) {
-        return ReturnRestApiResult(500, { error: 'Internal server error' }, false, origin, renewedToken);
+        return ReturnRestApiResult(500, { success: false, error: 'Internal server error' }, false, origin, renewedToken);
     }
 }

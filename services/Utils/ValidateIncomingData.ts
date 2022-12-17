@@ -1,25 +1,5 @@
 import { APIGatewayEvent } from 'aws-lambda';
-import ReturnRestApiResult from './ReturnRestApiResult';
-
-// export function ValidateIncomingEventBody(event: APIGatewayEvent, params: string[]) {
-//     let bodyObject: any;
-
-//     if (!event.body) {
-//         return false;
-//     }
-//     try {
-//         bodyObject = JSON.parse(event.body);
-//     } catch (error) {
-//         return false;
-//     }
-//     for (const param of params) {
-//         if (!bodyObject.hasOwnProperty(param)) {
-//             return false;
-//         }
-//     }
-
-//     return bodyObject;
-// }
+import { DateTime } from 'luxon';
 
 export type DataType =
     | 'string'
@@ -34,61 +14,89 @@ export type DataType =
     | 'array'
     | string[];
 
+function validateBoolean(value: any) {
+    return typeof value == 'boolean' || value.toString().toLowerCase() === 'true' || value.toString().toLowerCase() === 'false';
+}
+
+function validateNumber(value: any) {
+    if (Object.prototype.toString.call(value) === '[object Number]') return value as number;
+    if (Object.prototype.toString.call(value) === '[object String]') {
+        if (isNaN(value)) {
+            return false;
+        } else {
+            return Number(value);
+        }
+    }
+    return false;
+}
+
 function validateDataType(value: any, datatype: DataType) {
+    // console.log('\nvalue: ' + value + '\nRequestedDataType: ' + datatype + '\nObject Type: ' + Object.prototype.toString.call(value) + '\nTypeOf: ' + typeof value);
     switch (datatype) {
         case 'string': {
             return Object.prototype.toString.call(value) === '[object String]';
         }
         case 'boolean': {
-            return typeof value == 'boolean';
+            return validateBoolean(value == 'boolean');
         }
         case 'number(any)': {
-            return Object.prototype.toString.call(value) === '[object Number]';
+            const numberValidationResult = validateNumber(value);
+            if (numberValidationResult === false) {
+                return false;
+            } else {
+                return true;
+            }
         }
         case 'number(positive)': {
-            if (!(Object.prototype.toString.call(value) === '[object Number]')) {
+            const numberValidationResult = validateNumber(value);
+            if (numberValidationResult === false) {
                 return false;
+            } else {
+                return numberValidationResult >= 0;
             }
-            if (value >= 0) {
-                return false;
-            }
-            return true;
         }
         case 'number(nonZeroPositive)': {
-            if (!(Object.prototype.toString.call(value) === '[object Number]')) {
+            const numberValidationResult = validateNumber(value);
+            if (numberValidationResult === false) {
                 return false;
+            } else {
+                return numberValidationResult > 0;
             }
-            if (value > 0) {
-                return false;
-            }
-            return true;
         }
         case 'number(integer)': {
-            if (!(Object.prototype.toString.call(value) === '[object Number]')) {
+            const numberValidationResult = validateNumber(value);
+            if (numberValidationResult === false) {
                 return false;
+            } else {
+                return Number.isInteger(numberValidationResult);
             }
-            return Number.isInteger(value);
         }
         case 'number(positiveInteger)': {
-            if (!(Object.prototype.toString.call(value) === '[object Number]')) {
+            const numberValidationResult = validateNumber(value);
+            if (numberValidationResult === false) {
                 return false;
+            } else {
+                if (!Number.isInteger(numberValidationResult)) {
+                    return false;
+                } else {
+                    return numberValidationResult >= 0;
+                }
             }
-            if (!Number.isInteger(value)) {
-                return false;
-            }
-            return value >= 0;
         }
         case 'number(nonZeroPositiveInteger)': {
-            if (!(Object.prototype.toString.call(value) === '[object Number]')) {
+            const numberValidationResult = validateNumber(value);
+            if (numberValidationResult === false) {
                 return false;
+            } else {
+                if (!Number.isInteger(numberValidationResult)) {
+                    return false;
+                } else {
+                    return numberValidationResult > 0;
+                }
             }
-            if (!Number.isInteger(value)) {
-                return false;
-            }
-            return value > 0;
         }
         case 'date': {
-            if (!(Object.prototype.toString.call(value) === '[object Date]')) {
+            if (!DateTime.fromISO(value).isValid) {
                 return false;
             }
 
@@ -149,8 +157,8 @@ export function ValidateIncomingArray(obj: any, params: { key: string; datatype:
                 console.log('array validation error(missing key)\nparam: ' + param.key);
                 return false;
             } else {
-                if (validateDataType(obj[param.key], param.datatype) === false) {
-                    console.log('array validation error\nparam: ' + param.key + ' datatype: ' + param.datatype + ' value: ' + obj[param.key]);
+                if (validateDataType(item[param.key], param.datatype) === false) {
+                    console.log('array validation error\nparam: ' + param.key + '\ndatatype: ' + param.datatype + '\nvalue: ' + item[param.key]);
                     return false;
                 }
             }
@@ -159,3 +167,5 @@ export function ValidateIncomingArray(obj: any, params: { key: string; datatype:
 
     return true;
 }
+
+//validateDataType(1000, 'number(nonZeroPositive)');

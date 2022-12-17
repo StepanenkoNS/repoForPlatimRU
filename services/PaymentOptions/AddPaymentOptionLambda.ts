@@ -1,8 +1,8 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
+import { ReturnRestApiResult, ParseInsertItemResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
 import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
-import { EPaymentTypes } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
+import { EPaymentType, PaymentOptionDirectCardTransfer, PaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
@@ -26,39 +26,36 @@ export async function AddPaymentOptionHandler(event: APIGatewayEvent, context: C
         { key: 'conversionRatio', datatype: 'number(nonZeroPositive)' }
     ]);
     if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
     if (bodyObject.type === 'INTEGRATION') {
         bodyObject = ValidateIncomingEventBody(event, [{ key: 'token', datatype: 'string' }]);
         if (bodyObject === false) {
-            return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body - token not provided' }, false, origin, renewedToken);
+            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body - token not provided' }, false, origin, renewedToken);
         }
     }
-    try {
-        if (bodyObject.type === 'DIRECT') {
-            await PaymentOptionsManager.AddDirectPaymentMethod(telegramUser.id, {
-                name: bodyObject.name,
-                type: EPaymentTypes.DIRECT,
-                currency: bodyObject.currency,
-                conversionRatio: bodyObject.conversionRatio,
-                description: bodyObject.description
-            });
-        }
-        if (bodyObject.type === 'INTEGRATION') {
-            await PaymentOptionsManager.AddIntegrationPaymentMethod(telegramUser.id, {
-                name: bodyObject.name,
-                type: EPaymentTypes.INTEGRATION,
-                token: bodyObject.token,
-                currency: bodyObject.currency,
-                conversionRatio: bodyObject.conversionRatio,
-                description: bodyObject.description
-            });
-        }
-        const returnObject = ReturnRestApiResult(200, { success: true }, false, origin, renewedToken);
-        console.log(returnObject);
-        return returnObject;
-    } catch (error) {
-        return ReturnRestApiResult(500, { error: 'Internal server error' }, false, origin, renewedToken);
+
+    let result: boolean | PaymentOptionDirectCardTransfer | PaymentOptionPaymentIntegration = false;
+    if (bodyObject.type === 'DIRECT') {
+        result = await PaymentOptionsManager.AddDirectPaymentOption(telegramUser.id, {
+            name: bodyObject.name,
+            type: EPaymentType.DIRECT,
+            currency: bodyObject.currency,
+            conversionRatio: bodyObject.conversionRatio,
+            description: bodyObject.description
+        });
     }
+    if (bodyObject.type === 'INTEGRATION') {
+        result = await PaymentOptionsManager.AddIntegrationPaymentOption(telegramUser.id, {
+            name: bodyObject.name,
+            type: EPaymentType.INTEGRATION,
+            token: bodyObject.token,
+            currency: bodyObject.currency,
+            conversionRatio: bodyObject.conversionRatio,
+            description: bodyObject.description
+        });
+    }
+    const addResult = ParseInsertItemResult(result);
+    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

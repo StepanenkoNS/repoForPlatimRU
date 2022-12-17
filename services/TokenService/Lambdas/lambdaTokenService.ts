@@ -1,4 +1,4 @@
-import { APIGatewayProxyResult, Context, APIGatewayEvent } from 'aws-lambda';
+import { Context, APIGatewayEvent } from 'aws-lambda';
 import { ReturnResult } from '../utils/ReturnResult';
 import { CreateNewTokens } from '../utils/GetNewToken';
 import { ValidateTokenFromCookies } from '../utils/ValidateTokenFromCookies';

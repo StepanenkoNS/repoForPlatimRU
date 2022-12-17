@@ -1,8 +1,8 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
+import { ParseUpdateItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
 import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
-import { EPaymentTypes } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
+import { EPaymentType, PaymentOptionDirectCardTransfer, PaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
@@ -28,41 +28,36 @@ export async function EditPaymentOptionHandler(event: APIGatewayEvent, context: 
         { key: 'conversionRatio', datatype: 'number(nonZeroPositive)' }
     ]);
     if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    if (bodyObject.type === EPaymentTypes.INTEGRATION) {
+    if (bodyObject.type === EPaymentType.INTEGRATION) {
         bodyObject = ValidateIncomingEventBody(event, [{ key: 'token', datatype: 'string' }]);
         if (bodyObject === false) {
-            return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body - token not provided' }, false, origin, renewedToken);
+            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body - token not provided' }, false, origin, renewedToken);
         }
     }
     const chatId = telegramUser.id;
-    try {
-        if (bodyObject.type === EPaymentTypes.INTEGRATION)
-            await PaymentOptionsManager.EditPaymentMethod(chatId, bodyObject.id, {
-                name: bodyObject.name,
-                type: EPaymentTypes.INTEGRATION,
-                token: bodyObject.token,
-                currency: bodyObject.currency,
-                conversionRatio: bodyObject.conversionRatio,
-                description: bodyObject.description
-            });
-        console.log(bodyObject);
-        const SK = bodyObject.id;
-        if (bodyObject.type === EPaymentTypes.DIRECT)
-            await PaymentOptionsManager.EditPaymentMethod(chatId, SK, {
-                name: bodyObject.name,
-                type: EPaymentTypes.DIRECT,
-                currency: bodyObject.currency,
-                conversionRatio: bodyObject.conversionRatio,
-                description: bodyObject.description
-            });
 
-        const returnObject = ReturnRestApiResult(201, { success: true }, false, origin, renewedToken);
-        console.log(returnObject);
-        return returnObject;
-    } catch (error) {
-        return ReturnRestApiResult(500, { error: 'Internal server error' }, false, origin, renewedToken);
-    }
+    let result: boolean | PaymentOptionDirectCardTransfer | PaymentOptionPaymentIntegration | undefined = false;
+    if (bodyObject.type === EPaymentType.INTEGRATION)
+        result = await PaymentOptionsManager.EditPaymentOption(chatId, bodyObject.id, {
+            name: bodyObject.name,
+            type: EPaymentType.INTEGRATION,
+            token: bodyObject.token,
+            currency: bodyObject.currency,
+            conversionRatio: bodyObject.conversionRatio,
+            description: bodyObject.description
+        });
+
+    if (bodyObject.type === EPaymentType.DIRECT)
+        result = await PaymentOptionsManager.EditPaymentOption(chatId, bodyObject.id, {
+            name: bodyObject.name,
+            type: EPaymentType.DIRECT,
+            currency: bodyObject.currency,
+            conversionRatio: bodyObject.conversionRatio,
+            description: bodyObject.description
+        });
+    const udpateResult = ParseUpdateItemResult(result);
+    return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
 }

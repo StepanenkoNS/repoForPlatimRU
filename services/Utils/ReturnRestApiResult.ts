@@ -22,7 +22,7 @@ function reviver(key: any, value: any) {
     return value;
 }
 
-export default function ReturnRestApiResult(statusCode: number, data: any, withMapReplacer: boolean, origin: string, renewedAccessToken?: string) {
+export function ReturnRestApiResult(statusCode: number, data: any, withMapReplacer: boolean, origin: string, renewedAccessToken?: string) {
     if (![200, 201, 202, 203, 204].includes(statusCode)) {
         console.log('Error:ReturnRestApiResult\n', data);
     }
@@ -74,4 +74,96 @@ export default function ReturnRestApiResult(statusCode: number, data: any, withM
     }
 
     return returnObject as APIGatewayProxyResult;
+}
+
+export function ParseDeleteItemResult<T>(deleteResult: boolean | undefined | T) {
+    if (deleteResult === undefined) {
+        return {
+            code: 500,
+            body: { success: false, error: 'Internal server error' }
+        };
+    }
+
+    if (deleteResult === false) {
+        return {
+            code: 404,
+            body: { success: false, error: 'Internal server error' }
+        };
+    }
+
+    return {
+        code: 202,
+        body: { success: false, deletedItem: deleteResult as T }
+    };
+}
+
+export function ParseInsertItemResult<T>(insertResult: boolean | undefined | T) {
+    if (insertResult === undefined || insertResult === false) {
+        return {
+            code: 500,
+            body: { success: false, error: 'Internal server error' }
+        };
+    }
+
+    return {
+        code: 201,
+        body: { success: true, insertedItem: insertResult as T }
+    };
+}
+
+export function ParseUpdateItemResult<T>(editResult: boolean | undefined | T) {
+    if (editResult === undefined) {
+        return {
+            code: 500,
+            body: { success: false, error: 'Internal server error' }
+        };
+    }
+    if (editResult === false) {
+        return {
+            code: 404,
+            body: { success: false, error: 'Item not found in DB' }
+        };
+    }
+    return {
+        code: 201,
+        body: { success: true, updatedItem: editResult as T }
+    };
+}
+
+export function ParseGetItemResult<T>(getResult: boolean | undefined | T) {
+    if (getResult === undefined) {
+        return {
+            code: 500,
+            body: { success: false, error: 'Internal server error' }
+        };
+    }
+    if (getResult === false) {
+        return {
+            code: 404,
+            body: { success: false, error: 'Item not found in DB' }
+        };
+    }
+    return {
+        code: 201,
+        body: { success: true, item: getResult as T }
+    };
+}
+
+export function ParseListItemsResult<T>(listResult: boolean | undefined | T[]) {
+    if (listResult === undefined) {
+        return {
+            code: 500,
+            body: { success: false, error: 'Internal server error' }
+        };
+    }
+    if (listResult === false) {
+        return {
+            code: 404,
+            body: { success: false, error: 'Item not found in DB' }
+        };
+    }
+    return {
+        code: 201,
+        body: { success: true, items: listResult as T[] }
+    };
 }

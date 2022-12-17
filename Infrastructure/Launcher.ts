@@ -5,7 +5,7 @@ import * as StaticEnvironment from '../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../ReadmeAndConfig/DynamicEnvironment';
 import { RestServicesStack } from './RestServices/RestServices';
 import { TokenServiceStack } from './TokenService/TokenService';
-import { WebPublicPagesStack } from './NotAuthorizedPages/WebPublicPages';
+import { WebPublicPagesStack } from './WebPublicPages/WebPublicPages';
 
 const app = new App();
 

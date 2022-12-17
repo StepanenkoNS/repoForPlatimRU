@@ -5,21 +5,21 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, GrantAccessToSecrets } from '../Helper';
+import { GrantAccessToDDB } from '../Helper';
 
-export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateSubscriptionPlansLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListPaymentOptionsResource = rootResource.addResource('List');
-    const lambdaGetPaymentOptionsResource = rootResource.addResource('Get');
-    const lambdaAddPaymentOptionResource = rootResource.addResource('Add');
-    const lambdaDeletePaymentOptionsResource = rootResource.addResource('Delete');
-    const lambdaEdutPaymentOptionsResource = rootResource.addResource('Edit');
+    const lambdaListSubscriptionPlansResource = rootResource.addResource('List');
+    const lambdaGetSubscriptionPlansResource = rootResource.addResource('Get');
+    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
+    const lambdaEdutSubscriptionPlansResource = rootResource.addResource('Edit');
+    const lambdaDeleteSubscriptionPlansResource = rootResource.addResource('Delete');
 
-    //вывод список опций оплаты
-    const ListPaymentOptionsLambda = new NodejsFunction(that, 'ListPaymentOptionsLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'ListPaymentOptionsLambda.ts'),
-        handler: 'ListPaymentOptionsHandler',
-        functionName: 'react-PaymentOptions-List-Lambda',
+    //Вывод списка
+    const ListSubscriptionPlansLambda = new NodejsFunction(that, 'ListSubscriptionPlansLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionPlans', 'ListSubscriptionPlansLambda.ts'),
+        handler: 'ListSubscriptionPlansHandler',
+        functionName: 'react-SubscriptionPlans-List-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
@@ -34,14 +34,14 @@ export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.
         },
         layers: layers
     });
-    const lambdaIntegrationListPaymentOptions = new apigateway.LambdaIntegration(ListPaymentOptionsLambda);
-    lambdaListPaymentOptionsResource.addMethod('GET', lambdaIntegrationListPaymentOptions);
+    const lambdaIntegrationListSubscriptionPlans = new apigateway.LambdaIntegration(ListSubscriptionPlansLambda);
+    lambdaListSubscriptionPlansResource.addMethod('GET', lambdaIntegrationListSubscriptionPlans);
 
     //Вывод одного элемента
-    const GetPaymentOptionLambda = new NodejsFunction(that, 'GetPaymentOptionLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'GetPaymentOptionLambda.ts'),
-        handler: 'GetPaymentOptionHandler',
-        functionName: 'react-PaymentOptions-Get-Lambda',
+    const GetSubscriptionPlanLambda = new NodejsFunction(that, 'GetSubscriptionPlanLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionPlans', 'GetSubscriptionPlanLambda.ts'),
+        handler: 'GetSubscriptionPlanHandler',
+        functionName: 'react-SubscriptionPlans-Get-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
@@ -56,14 +56,14 @@ export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.
         },
         layers: layers
     });
-    const lambdaIntegrationGetPaymentOption = new apigateway.LambdaIntegration(GetPaymentOptionLambda);
-    lambdaGetPaymentOptionsResource.addMethod('POST', lambdaIntegrationGetPaymentOption);
+    const lambdaIntegrationGetSubscriptionPlans = new apigateway.LambdaIntegration(GetSubscriptionPlanLambda);
+    lambdaGetSubscriptionPlansResource.addMethod('POST', lambdaIntegrationGetSubscriptionPlans);
 
-    //добавление опции оплаты
-    const AddPaymentOptionLambda = new NodejsFunction(that, 'AddPaymentOptionLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'AddPaymentOptionLambda.ts'),
-        handler: 'AddPaymentOptionHandler',
-        functionName: 'react-PaymentOptions-Add-Lambda',
+    //Добавлении типа подписки
+    const AddSubscriptionPlanLambda = new NodejsFunction(that, 'AddSubscriptionPlanLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionPlans', 'AddSubscriptionPlanLambda.ts'),
+        handler: 'AddSubscriptionPlanHandler',
+        functionName: 'react-SubscriptionPlans-Add-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
@@ -78,14 +78,14 @@ export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.
         },
         layers: layers
     });
-    const lambdaIntegrationAddPaymentOption = new apigateway.LambdaIntegration(AddPaymentOptionLambda);
-    lambdaAddPaymentOptionResource.addMethod('POST', lambdaIntegrationAddPaymentOption);
+    const lambdaIntegrationAddSubscriptionPlan = new apigateway.LambdaIntegration(AddSubscriptionPlanLambda);
+    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddSubscriptionPlan);
 
     //редактирование опции оплаты
-    const EditPaymentOptionLambda = new NodejsFunction(that, 'EditPaymentOptionLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'EditPaymentOptionLambda.ts'),
-        handler: 'EditPaymentOptionHandler',
-        functionName: 'react-PaymentOptions-Edit-Lambda',
+    const EditSubscriptionPlanLambda = new NodejsFunction(that, 'EditSubscriptionPlanLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionPlans', 'EditSubscriptionPlanLambda.ts'),
+        handler: 'EditSubscriptionPlanHandler',
+        functionName: 'react-SubscriptionPlans-Edit-Lambda',
         runtime: Runtime.NODEJS_16_X,
         timeout: Duration.seconds(15),
         environment: {
@@ -101,14 +101,14 @@ export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.
         },
         layers: layers
     });
-    const lambdaIntegrationEditPaymentOption = new apigateway.LambdaIntegration(EditPaymentOptionLambda);
-    lambdaEdutPaymentOptionsResource.addMethod('PUT', lambdaIntegrationEditPaymentOption);
+    const lambdaIntegrationEditSubscriptionPlan = new apigateway.LambdaIntegration(EditSubscriptionPlanLambda);
+    lambdaEdutSubscriptionPlansResource.addMethod('PUT', lambdaIntegrationEditSubscriptionPlan);
 
     //удаление опции оплаты
-    const DeletePaymentOptionLambda = new NodejsFunction(that, 'DeletePaymentOptionLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'DeletePaymentOptionLambda.ts'),
-        handler: 'DeletePaymentOptionHandler',
-        functionName: 'react-PaymentOptions-Delete-Lambda',
+    const DeleteSubscriptionPlanLambda = new NodejsFunction(that, 'DeleteSubscriptionPlanLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionPlans', 'DeleteSubscriptionPlanLambda.ts'),
+        handler: 'DeleteSubscriptionPlanHandler',
+        functionName: 'react-SubscriptionPlans-Delete-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
@@ -123,11 +123,8 @@ export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.
         },
         layers: layers
     });
-    const lambdaIntegrationDeletePaymentOption = new apigateway.LambdaIntegration(DeletePaymentOptionLambda);
-    lambdaDeletePaymentOptionsResource.addMethod('DELETE', lambdaIntegrationDeletePaymentOption);
+    const lambdaIntegrationDeleteSubscriptionPlan = new apigateway.LambdaIntegration(DeleteSubscriptionPlanLambda);
+    lambdaDeleteSubscriptionPlansResource.addMethod('DELETE', lambdaIntegrationDeleteSubscriptionPlan);
 
-    //Добавление политик
-    GrantAccessToSecrets([AddPaymentOptionLambda, DeletePaymentOptionLambda, EditPaymentOptionLambda]);
-
-    GrantAccessToDDB([ListPaymentOptionsLambda, AddPaymentOptionLambda, DeletePaymentOptionLambda, EditPaymentOptionLambda, GetPaymentOptionLambda], tables);
+    GrantAccessToDDB([ListSubscriptionPlansLambda, AddSubscriptionPlanLambda, EditSubscriptionPlanLambda, DeleteSubscriptionPlanLambda, GetSubscriptionPlanLambda], tables);
 }

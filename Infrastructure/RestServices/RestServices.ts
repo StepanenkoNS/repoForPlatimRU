@@ -1,9 +1,6 @@
 import { CfnOutput, Duration, Fn, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { join } from 'path';
-import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
-import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
 import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
@@ -11,8 +8,9 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { createAPIandAuthorizer, GrantAccessToDDB, GrantAccessToSecrets } from './Helper';
 import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 import { CreateBotsLambdas } from './Lambdas/Bots';
-import { CreateSubscriptionOptionsLambdas } from './Lambdas/SubscriptionOptions';
+import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
 import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
+import { CreateContentPlansLambdas } from './Lambdas/ContentPlan';
 
 export class RestServicesStack extends Stack {
     constructor(
@@ -35,8 +33,10 @@ export class RestServicesStack extends Stack {
 
         CreateBotsLambdas(this, restServicesAPI.root.addResource('Bots'), layers, [botsTable]);
         CreateCurrencySettingsLambdas(this, restServicesAPI.root.addResource('DefaultCurrency'), layers, [botsTable]);
+
         CreatePaymentOptionsLambdas(this, restServicesAPI.root.addResource('PaymentOptions'), layers, [botsTable]);
-        CreateSubscriptionOptionsLambdas(this, restServicesAPI.root.addResource('SubscriptionOptions'), layers, [botsTable]);
+        CreateSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('SubscriptionOptions'), layers, [botsTable]);
+        CreateContentPlansLambdas(this, restServicesAPI.root.addResource('ContentPlans'), layers, [botsTable]);
 
         new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {
             value: restServicesAPI.deploymentStage.urlForPath(),

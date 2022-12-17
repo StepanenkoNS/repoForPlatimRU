@@ -15,7 +15,7 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
     const GetCurrencySettingsLambda = new NodejsFunction(that, 'GetCurrencySettingsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CurrencySettings', 'GetCurrencySettingsLambda.ts'),
         handler: 'GetCurrencySettingsHandler',
-        functionName: 'react-GetCurrencySettings-Lambda',
+        functionName: 'react-CurrencySettings-Get-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
@@ -37,7 +37,7 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
     const EditCurrencySettingsLambda = new NodejsFunction(that, 'EditCurrencySettingsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CurrencySettings', 'EditCurrencySettingsLambda.ts'),
         handler: 'EditCurrencySettingsHandler',
-        functionName: 'react-EditCurrencySettings-Lambda',
+        functionName: 'react-CurrencySettings-Update-Lambda',
         runtime: Runtime.NODEJS_16_X,
         timeout: Duration.seconds(15),
         environment: {

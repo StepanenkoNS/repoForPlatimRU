@@ -5,19 +5,18 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, GrantAccessToSecrets } from '../Helper';
+import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
 
-export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaGetMyBotsResource = rootResource.addResource('GetMyBots');
 
-    const ListBotsLambda = new NodejsFunction(that, 'ListBotsLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'ListMyBots.ts'),
-        handler: 'ListMyBotsHandler',
-        functionName: 'react-Bots-List-Lambda',
+    const getWebPageContentLambda = new NodejsFunction(that, 'GetWebPageContentLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'WebPages-GetPageContent.ts'),
+        handler: 'GetWebPageContentHandler',
+        functionName: 'react-Content-Get-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
+            webTable: StaticEnvironment.DynamoDbTables.webTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
             botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
@@ -30,11 +29,8 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         layers: layers
     });
 
-    const lambdaIntegrationListBots = new apigateway.LambdaIntegration(ListBotsLambda);
-    lambdaGetMyBotsResource.addMethod('GET', lambdaIntegrationListBots);
+    const lambdaIntegrationWebPageContent = addLambdaIntegration(getWebPageContentLambda, enableAPICache);
+    addMethod(rootResource, undefined, 'GET', lambdaIntegrationWebPageContent, enableAPICache);
 
-    //Добавление политик
-    GrantAccessToSecrets([ListBotsLambda]);
-
-    GrantAccessToDDB([ListBotsLambda], tables);
+    GrantAccessToDDB([getWebPageContentLambda], tables);
 }

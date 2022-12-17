@@ -1,8 +1,9 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
-import { ddbDocClient } from '/opt/DDB/ddbDocClient';
+import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/ConfiguratorTypes';
-import { ReturnArticlesAsArray, ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '../Utils/HCHelper';
+import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '../Utils/HCHelper';
+import { SetOrigin } from 'services/Utils/OriginHelper';
 
 type Page = {
     pagePath: string;
@@ -12,50 +13,37 @@ type Page = {
 };
 const fallbackLocale = defaultMenuLanguage;
 
-export async function GetHCsubcategoryLambdaHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function GetHCArticleLambdaHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
-    let origin = 'https://' + process.env.cookieDomain;
-    if (event.headers && event.headers.origin) {
-        //todo - удалить перед деплоем
-        const array = process.env.allowedOrigins!.split(',');
-        if (array.includes(origin)) {
-            origin = event.headers.origin;
-        }
-    }
-
-    let locale;
+    const origin = SetOrigin(event);
+    let locale: string | undefined;
     let category: string | undefined;
     let subcategory: string | undefined;
+    let article: string | undefined;
     const queryParams = event.queryStringParameters;
     if (queryParams) {
         locale = !queryParams['locale'] ? fallbackLocale : queryParams['locale'];
         category = !queryParams['category'] ? undefined : queryParams['category'];
         subcategory = !queryParams['subcategory'] ? undefined : queryParams['subcategory'];
+        article = !queryParams['article'] ? undefined : queryParams['article'];
     } else {
-        locale = undefined;
-        category = undefined;
-        subcategory = undefined;
-    }
-
-    if (!category || !locale) {
-        console.log('category  not provided');
-        const returnObject = ReturnRestApiResult(422, { error: 'category or subcategory not provided' }, false, origin);
+        console.log('query params not provided');
+        const returnObject = ReturnRestApiResult(422, { error: 'query params  not provided' }, false, origin);
         return returnObject as APIGatewayProxyResult;
     }
+
     try {
         const mapArticles = await ReturnArticlesMapFromDB(locale);
         const mapCategories = await ReturnCategoriesMapFromDB(locale, mapArticles);
 
         const categoriesArray = ReturnCategoriesAsArray(mapCategories, mapArticles);
 
-        const filteredData = categoriesArray.filter((item) => item.slug === category);
+        const activeCategory = categoriesArray.filter((item) => item.slug === category)[0];
+        const activeSubcategory = activeCategory.subCategories.filter((item: any) => item.slug === subcategory)[0] || activeCategory.subCategories[0];
+        const activeArticle = activeSubcategory.articles.filter((item: any) => item.slug === article)[0];
 
-        const ResultObject = {
-            data: filteredData[0],
-            categories: categoriesArray,
-            activeTab: subcategory || filteredData[0].subCategories[0].slug
-        };
+        const ResultObject = { activeArticle, activeSubcategory, categories: categoriesArray, articles: activeSubcategory.articles }; // { categories: categoriesArray, allArticles: articlesArray, popularArticles: popularArticlesArray };
 
         const returnObject = ReturnRestApiResult(200, ResultObject, true, origin);
         return returnObject as APIGatewayProxyResult;

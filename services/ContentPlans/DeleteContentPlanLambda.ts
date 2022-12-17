@@ -1,15 +1,13 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseDeleteItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
-
+import { ReturnRestApiResult, ParseDeleteItemResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
 import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
+
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import ContentConfigurator from '/opt/ContentConfigurator';
 
-export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    console.log(event);
-
+export async function DeleteContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -21,10 +19,12 @@ export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context
     let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await PaymentOptionsManager.DeletePaymentOption(telegramUser.id, bodyObject.id);
+    const result = await ContentConfigurator.DeleteContentPlan(telegramUser.id, bodyObject.id);
+
     const deleteResult = ParseDeleteItemResult(result);
+
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

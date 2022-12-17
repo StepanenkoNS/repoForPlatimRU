@@ -1,4 +1,4 @@
-import { GetHCLandingLambdaHandler } from 'services/WebPages/HC-LandingLambda';
+import { GetHCLandingLambdaHandler } from 'services/WebPublicPages/HC-LandingLambda';
 
 const event = {
     resource: '/me',

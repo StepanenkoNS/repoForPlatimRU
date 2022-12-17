@@ -1,8 +1,9 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import ReturnRestApiResult from 'services/Utils/ReturnRestApiResult';
-import { ddbDocClient } from '/opt/DDB/ddbDocClient';
+import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/ConfiguratorTypes';
 import { ReturnArticlesAsArray, ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '../Utils/HCHelper';
+import { SetOrigin } from 'services/Utils/OriginHelper';
 
 type Page = {
     pagePath: string;
@@ -13,17 +14,10 @@ type Page = {
 const fallbackLocale = defaultMenuLanguage;
 
 export async function GetHCLandingLambdaHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    let origin = 'https://' + process.env.cookieDomain;
-    if (event.headers && event.headers.origin) {
-        //todo - удалить перед деплоем
-        const array = process.env.allowedOrigins!.split(',');
-        if (array.includes(origin)) {
-            origin = event.headers.origin;
-        }
-    }
+    const origin = SetOrigin(event);
 
     try {
-        let locale;
+        let locale: string | undefined;
         const queryParams = event.queryStringParameters;
         if (queryParams) {
             locale = !queryParams['locale'] ? fallbackLocale : queryParams['locale'];
