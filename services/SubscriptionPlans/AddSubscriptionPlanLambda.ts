@@ -6,7 +6,7 @@ import { ValidateIncomingArray, ValidateIncomingEventBody } from 'services/Utils
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
-import { ESubscriptionType } from '/opt/SubscriptionTypes';
+import { ESubscriptionDurationName } from '/opt/SubscriptionTypes';
 
 export async function AddSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -21,7 +21,8 @@ export async function AddSubscriptionPlanHandler(event: APIGatewayEvent, context
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'name', datatype: 'string' },
-        { key: 'type', datatype: ['MARATHON', 'INTERACTIVE_COURSE', 'SCHEDULED_COURSE'] },
+        { key: 'name', datatype: 'string' },
+        { key: 'durationType', datatype: [ESubscriptionDurationName.DAYS, ESubscriptionDurationName.DATES] },
         { key: 'enabled', datatype: 'boolean' },
         { key: 'options', datatype: 'array' }
     ]);
@@ -29,41 +30,62 @@ export async function AddSubscriptionPlanHandler(event: APIGatewayEvent, context
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    if (bodyObject.type === ESubscriptionType.MARATHON) {
-        const arrayValidationResult = ValidateIncomingArray(bodyObject.options, [
+    if (bodyObject.durationType === ESubscriptionDurationName.DAYS) {
+        let arrayValidationResult = ValidateIncomingArray(bodyObject.options, [
             { key: 'id', datatype: 'string' },
             { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
             { key: 'name', datatype: 'string' },
-            { key: 'dateStart', datatype: 'date' },
-            { key: 'dateFinish', datatype: 'date' },
+            {
+                key: 'durationType',
+                datatype: 'object',
+                objectKeys: [
+                    {
+                        key: 'durationInDays',
+                        datatype: 'number(positiveInteger)'
+                    }
+                ]
+            },
             { key: 'price', datatype: 'number(nonZeroPositive)' },
             { key: 'enabled', datatype: 'boolean' }
         ]);
         if (arrayValidationResult === false) {
-            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed MARATHON array' }, false, origin, renewedToken);
+            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed options - DAYS array' }, false, origin, renewedToken);
         }
     }
 
-    if (bodyObject.type === ESubscriptionType.SCHEDULED_COURSE) {
-        const arrayValidationResult = ValidateIncomingArray(bodyObject.options, [
+    if (bodyObject.durationType === ESubscriptionDurationName.DATES) {
+        let arrayValidationResult = ValidateIncomingArray(bodyObject.options, [
             { key: 'id', datatype: 'string' },
             { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
             { key: 'name', datatype: 'string' },
-            { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
+            {
+                key: 'durationType',
+                datatype: 'object',
+                objectKeys: [
+                    {
+                        key: 'dateStart',
+                        datatype: 'date'
+                    },
+                    {
+                        key: 'dateFinish',
+                        datatype: 'date'
+                    }
+                ]
+            },
             { key: 'price', datatype: 'number(nonZeroPositive)' },
             { key: 'enabled', datatype: 'boolean' }
         ]);
         if (arrayValidationResult === false) {
-            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed SCHEDULED_COURSE array' }, false, origin, renewedToken);
+            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed options - DATES array' }, false, origin, renewedToken);
         }
     }
 
     const result = await BotSubscriptionConfigurator.AddSubscriptionPlan({
         chatId: telegramUser.id,
+        durationType: bodyObject.durationType,
+        name: bodyObject.name,
         enabled: bodyObject.enabled,
-        subscriptionName: bodyObject.name,
-        subscriptionType: bodyObject.type,
-        options: bodyObject.type === ESubscriptionType.INTERACTIVE_COURSE ? [] : bodyObject.options
+        options: bodyObject.options
     });
     const addResult = ParseInsertItemResult(result);
 

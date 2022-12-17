@@ -32,25 +32,25 @@
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
@@ -252,9 +252,9 @@
                     "functionName": "WebTokenService-Lambda",
                     "handler": "index.LambdaTokenServiceHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -1237,25 +1237,25 @@
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
-            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
+            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
@@ -1464,9 +1464,9 @@
                     "functionName": "JWTAuthorizer-Lambda",
                     "handler": "index.LambdaJWTAuthorizerHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -1906,7 +1906,7 @@
                           "Ref": "WebRestServiceGWAPID1BA5018"
                         },
                         "deploymentId": {
-                          "Ref": "WebRestServiceGWAPIDeploymentE0A23672acc58db25e568d9442d7807b96498a0f"
+                          "Ref": "WebRestServiceGWAPIDeploymentE0A236723ea2a9f30f3e5c006be6dee3aaa60014"
                         },
                         "methodSettings": [
                           {
@@ -4133,13 +4133,13 @@
                       "version": "2.51.1"
                     }
                   },
-                  "SubscriptionOptions": {
-                    "id": "SubscriptionOptions",
-                    "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions",
+                  "SubscriptionPlans": {
+                    "id": "SubscriptionPlans",
+                    "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Resource",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -4149,7 +4149,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "SubscriptionOptions",
+                            "pathPart": "SubscriptionPlans",
                             "restApiId": {
                               "Ref": "WebRestServiceGWAPID1BA5018"
                             }
@@ -4162,17 +4162,17 @@
                       },
                       "OPTIONS": {
                         "id": "OPTIONS",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/OPTIONS",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/OPTIONS",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/OPTIONS/Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/OPTIONS/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "OPTIONS",
                                 "resourceId": {
-                                  "Ref": "WebRestServiceGWAPISubscriptionOptions151DF857"
+                                  "Ref": "WebRestServiceGWAPISubscriptionPlansDD34CD79"
                                 },
                                 "restApiId": {
                                   "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4226,16 +4226,16 @@
                       },
                       "List": {
                         "id": "List",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestServiceGWAPISubscriptionOptions151DF857"
+                                  "Ref": "WebRestServiceGWAPISubscriptionPlansDD34CD79"
                                 },
                                 "pathPart": "List",
                                 "restApiId": {
@@ -4250,17 +4250,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/OPTIONS",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/OPTIONS/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsList32AC312E"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansList976233C4"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4314,11 +4314,11 @@
                           },
                           "GET": {
                             "id": "GET",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/GET",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/GET",
                             "children": {
-                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionOptions.List": {
-                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionOptions.List",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionOptions.List",
+                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.List": {
+                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.List",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.List",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -4346,7 +4346,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
                                           },
-                                          "/GET/SubscriptionOptions/List"
+                                          "/GET/SubscriptionPlans/List"
                                         ]
                                       ]
                                     }
@@ -4357,9 +4357,9 @@
                                   "version": "2.51.1"
                                 }
                               },
-                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionOptions.List": {
-                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionOptions.List",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionOptions.List",
+                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.List": {
+                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.List",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.List",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -4383,7 +4383,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPID1BA5018"
                                           },
-                                          "/test-invoke-stage/GET/SubscriptionOptions/List"
+                                          "/test-invoke-stage/GET/SubscriptionPlans/List"
                                         ]
                                       ]
                                     }
@@ -4396,13 +4396,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/List/GET/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/List/GET/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "GET",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsList32AC312E"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansList976233C4"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4455,16 +4455,16 @@
                       },
                       "Get": {
                         "id": "Get",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestServiceGWAPISubscriptionOptions151DF857"
+                                  "Ref": "WebRestServiceGWAPISubscriptionPlansDD34CD79"
                                 },
                                 "pathPart": "Get",
                                 "restApiId": {
@@ -4479,17 +4479,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/OPTIONS",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/OPTIONS/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsGet804AC8B3"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansGet7B3121EE"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4543,11 +4543,11 @@
                           },
                           "POST": {
                             "id": "POST",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/POST",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST",
                             "children": {
-                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Get": {
-                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Get",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Get",
+                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get": {
+                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -4575,7 +4575,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
                                           },
-                                          "/POST/SubscriptionOptions/Get"
+                                          "/POST/SubscriptionPlans/Get"
                                         ]
                                       ]
                                     }
@@ -4586,9 +4586,9 @@
                                   "version": "2.51.1"
                                 }
                               },
-                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Get": {
-                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Get",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Get",
+                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get": {
+                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -4612,7 +4612,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPID1BA5018"
                                           },
-                                          "/test-invoke-stage/POST/SubscriptionOptions/Get"
+                                          "/test-invoke-stage/POST/SubscriptionPlans/Get"
                                         ]
                                       ]
                                     }
@@ -4625,13 +4625,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Get/POST/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "POST",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsGet804AC8B3"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansGet7B3121EE"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4684,16 +4684,16 @@
                       },
                       "Add": {
                         "id": "Add",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestServiceGWAPISubscriptionOptions151DF857"
+                                  "Ref": "WebRestServiceGWAPISubscriptionPlansDD34CD79"
                                 },
                                 "pathPart": "Add",
                                 "restApiId": {
@@ -4708,17 +4708,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/OPTIONS",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/OPTIONS/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsAdd926241E1"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansAddBD572942"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4772,11 +4772,11 @@
                           },
                           "POST": {
                             "id": "POST",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/POST",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/POST",
                             "children": {
-                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Add": {
-                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Add",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Add",
+                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Add": {
+                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Add",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Add",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -4804,7 +4804,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
                                           },
-                                          "/POST/SubscriptionOptions/Add"
+                                          "/POST/SubscriptionPlans/Add"
                                         ]
                                       ]
                                     }
@@ -4815,9 +4815,9 @@
                                   "version": "2.51.1"
                                 }
                               },
-                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Add": {
-                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Add",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionOptions.Add",
+                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Add": {
+                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Add",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Add",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -4841,7 +4841,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPID1BA5018"
                                           },
-                                          "/test-invoke-stage/POST/SubscriptionOptions/Add"
+                                          "/test-invoke-stage/POST/SubscriptionPlans/Add"
                                         ]
                                       ]
                                     }
@@ -4854,13 +4854,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Add/POST/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/POST/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "POST",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsAdd926241E1"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansAddBD572942"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -4913,16 +4913,16 @@
                       },
                       "Edit": {
                         "id": "Edit",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestServiceGWAPISubscriptionOptions151DF857"
+                                  "Ref": "WebRestServiceGWAPISubscriptionPlansDD34CD79"
                                 },
                                 "pathPart": "Edit",
                                 "restApiId": {
@@ -4937,17 +4937,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/OPTIONS",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/OPTIONS/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsEdit72A88937"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansEdit50005E39"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -5001,11 +5001,11 @@
                           },
                           "PUT": {
                             "id": "PUT",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/PUT",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/PUT",
                             "children": {
-                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionOptions.Edit": {
-                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionOptions.Edit",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionOptions.Edit",
+                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionPlans.Edit": {
+                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionPlans.Edit",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionPlans.Edit",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -5033,7 +5033,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
                                           },
-                                          "/PUT/SubscriptionOptions/Edit"
+                                          "/PUT/SubscriptionPlans/Edit"
                                         ]
                                       ]
                                     }
@@ -5044,9 +5044,9 @@
                                   "version": "2.51.1"
                                 }
                               },
-                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionOptions.Edit": {
-                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionOptions.Edit",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionOptions.Edit",
+                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionPlans.Edit": {
+                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionPlans.Edit",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..SubscriptionPlans.Edit",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -5070,7 +5070,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPID1BA5018"
                                           },
-                                          "/test-invoke-stage/PUT/SubscriptionOptions/Edit"
+                                          "/test-invoke-stage/PUT/SubscriptionPlans/Edit"
                                         ]
                                       ]
                                     }
@@ -5083,13 +5083,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Edit/PUT/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Edit/PUT/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "PUT",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsEdit72A88937"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansEdit50005E39"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -5142,16 +5142,16 @@
                       },
                       "Delete": {
                         "id": "Delete",
-                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestServiceGWAPISubscriptionOptions151DF857"
+                                  "Ref": "WebRestServiceGWAPISubscriptionPlansDD34CD79"
                                 },
                                 "pathPart": "Delete",
                                 "restApiId": {
@@ -5166,17 +5166,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/OPTIONS",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/OPTIONS/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsDelete05FA8B22"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansDelete1277CC44"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -5230,11 +5230,11 @@
                           },
                           "DELETE": {
                             "id": "DELETE",
-                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/DELETE",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/DELETE",
                             "children": {
-                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionOptions.Delete": {
-                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionOptions.Delete",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionOptions.Delete",
+                              "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionPlans.Delete": {
+                                "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionPlans.Delete",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionPlans.Delete",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -5262,7 +5262,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
                                           },
-                                          "/DELETE/SubscriptionOptions/Delete"
+                                          "/DELETE/SubscriptionPlans/Delete"
                                         ]
                                       ]
                                     }
@@ -5273,9 +5273,9 @@
                                   "version": "2.51.1"
                                 }
                               },
-                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionOptions.Delete": {
-                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionOptions.Delete",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionOptions.Delete",
+                              "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionPlans.Delete": {
+                                "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionPlans.Delete",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..SubscriptionPlans.Delete",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -5299,7 +5299,7 @@
                                           {
                                             "Ref": "WebRestServiceGWAPID1BA5018"
                                           },
-                                          "/test-invoke-stage/DELETE/SubscriptionOptions/Delete"
+                                          "/test-invoke-stage/DELETE/SubscriptionPlans/Delete"
                                         ]
                                       ]
                                     }
@@ -5312,13 +5312,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionOptions/Delete/DELETE/Resource",
+                                "path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Delete/DELETE/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "DELETE",
                                     "resourceId": {
-                                      "Ref": "WebRestServiceGWAPISubscriptionOptionsDelete05FA8B22"
+                                      "Ref": "WebRestServiceGWAPISubscriptionPlansDelete1277CC44"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestServiceGWAPID1BA5018"
@@ -7024,9 +7024,9 @@
                     "functionName": "react-Bots-List-Lambda",
                     "handler": "index.ListMyBotsHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -7233,9 +7233,9 @@
                     "functionName": "react-CurrencySettings-Get-Lambda",
                     "handler": "index.GetCurrencySettingsHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -7420,7 +7420,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "7cb46053cbfec8bb4634b927dbc3387968798e67ee39c2ceeb34d0318ed3ba71.zip"
+                      "s3Key": "ee87dd897ceb610f2133415850fee85bcd57d879d538b0fcba5efc75b4a9be89.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -7442,9 +7442,9 @@
                     "functionName": "react-CurrencySettings-Update-Lambda",
                     "handler": "index.EditCurrencySettingsHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x",
@@ -7647,9 +7647,9 @@
                     "functionName": "react-PaymentOptions-List-Lambda",
                     "handler": "index.ListPaymentOptionsHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -7829,7 +7829,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "229a18173a685e52edcccaab2ffb19a3780917956ee23473b1764580160e7881.zip"
+                      "s3Key": "ef4948e06de552f9c05bceea4762da1e75e4e6bfe5ae6998179fcbedadc765c1.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -7851,9 +7851,9 @@
                     "functionName": "react-PaymentOptions-Get-Lambda",
                     "handler": "index.GetPaymentOptionHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -8038,7 +8038,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "03b561383c7ec3cfb41e3cd76be16050b6b6a9693ab5740cfcf69c7d1801c39f.zip"
+                      "s3Key": "f49922dbb0fafa26ecfe1aee145c372dba2adcf3fdcf449af0bdda8fc4b977d9.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -8060,9 +8060,9 @@
                     "functionName": "react-PaymentOptions-Add-Lambda",
                     "handler": "index.AddPaymentOptionHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -8247,7 +8247,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "c302d824c0952558af2203880db64b5ee448d53e31d0b0b4d63d523f64c3c094.zip"
+                      "s3Key": "d3b7e97515ae4c4704d7418180eeee95d6f46cf1838d8de20c38b664b609cc89.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -8269,9 +8269,9 @@
                     "functionName": "react-PaymentOptions-Edit-Lambda",
                     "handler": "index.EditPaymentOptionHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x",
@@ -8457,7 +8457,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "7c4eea494494f2469465abbfd22b495f96913c4dcf0a7a3ca3bf71e7308ae8ce.zip"
+                      "s3Key": "319abedaae0cdf4389bb730fa66633b0a6344bad5190b7ab5b3a6fc339de37b9.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -8479,9 +8479,9 @@
                     "functionName": "react-PaymentOptions-Delete-Lambda",
                     "handler": "index.DeletePaymentOptionHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -8683,9 +8683,9 @@
                     "functionName": "react-SubscriptionPlans-List-Lambda",
                     "handler": "index.ListSubscriptionPlansHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -8865,7 +8865,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "c7e7e6b3d1ba77a37513fcf363bd0d217bc366946e0b5591ab6d3a81570c1414.zip"
+                      "s3Key": "e5c913c64b9833287fc522f7598b531d07f40dcd94b6e0165d7752a9c9ada3c7.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -8887,9 +8887,9 @@
                     "functionName": "react-SubscriptionPlans-Get-Lambda",
                     "handler": "index.GetSubscriptionPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -9069,7 +9069,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "288068998a034fdae1c5d9aa0fb5cb9eaa303485738ac5ce2a3e578b725082cd.zip"
+                      "s3Key": "ff443480278e600f4d491d2c241387edf34ddacd8b22a59d3fa79e37ce2a05e2.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -9091,9 +9091,9 @@
                     "functionName": "react-SubscriptionPlans-Add-Lambda",
                     "handler": "index.AddSubscriptionPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -9273,7 +9273,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "b14786b0cb124d1658360dc9b864a92808de3a571fe7c1ae560f3131413e3f9c.zip"
+                      "s3Key": "b6ead0f7b6bd1c84faaa33953319712d7fb494750c18f24e512640a69f5045f1.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -9295,9 +9295,9 @@
                     "functionName": "react-SubscriptionPlans-Edit-Lambda",
                     "handler": "index.EditSubscriptionPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x",
@@ -9478,7 +9478,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "83057f098e86c28bc88ab6efeecd21963793296ce692cc843d22a4630cbb18ec.zip"
+                      "s3Key": "86146cb22b4e81a116e0946b523deb59ea7f4c483e217ab03e88557bbef9e038.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -9500,9 +9500,9 @@
                     "functionName": "react-SubscriptionPlans-Delete-Lambda",
                     "handler": "index.DeleteSubscriptionPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -9704,9 +9704,9 @@
                     "functionName": "react-ContentPlans-List-Lambda",
                     "handler": "index.ListContentPlansHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -9886,7 +9886,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "bc992d7fccff8fa141c8fd41935f68a6cb98349d45ffc4f99ff043b3193829a8.zip"
+                      "s3Key": "49898775bc16e29731727901966e1d8dcd32d28d426cc1e532c7b06a9ccc6d9e.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -9908,9 +9908,9 @@
                     "functionName": "react-ContentPlans-Get-Lambda",
                     "handler": "index.GetContentPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -10090,7 +10090,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "2cf82e5de1e853a8fd2c2cca3f9afc984a3f8259670a131b528ad2a8ddcb8099.zip"
+                      "s3Key": "31eec3617073c58a5d49ad9194ef72e460903d369766fda5cd55b486318363b0.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -10112,9 +10112,9 @@
                     "functionName": "react-ContentPlans-Add-Lambda",
                     "handler": "index.AddContentPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -10294,7 +10294,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "fa8539476b60f7955c19705d3f10660f27ce2587f055f65835ddd851fa41a188.zip"
+                      "s3Key": "38f17f89cc32d0f99affde551935ea5a0db44803ceae2953b84ef4ea023b2f3f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -10316,9 +10316,9 @@
                     "functionName": "react-ContentPlans-Edit-Lambda",
                     "handler": "index.EditContentPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x",
@@ -10499,7 +10499,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "c941f1e6b9e9ab9d6f3c2865ebc1517a36c046c4ec34a11be8d9b57f1fd2f41e.zip"
+                      "s3Key": "c58143c6250f321c011b5bf578e071e4b07f8cf80da2b8a6047059e49720206f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -10521,9 +10521,9 @@
                     "functionName": "react-ContentPlans-Delete-Lambda",
                     "handler": "index.DeleteContentPlanHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -10600,25 +10600,25 @@
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
@@ -12285,9 +12285,9 @@
                     "functionName": "react-HelpCenter-Landing-Get-Lambda",
                     "handler": "index.GetHCLandingLambdaHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -12489,9 +12489,9 @@
                     "functionName": "react-HelpCenter-Subcategory-Get-Lambda",
                     "handler": "index.GetHCsubcategoryLambdaHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -12693,9 +12693,9 @@
                     "functionName": "react-HelpCenter-Article-Get-Lambda",
                     "handler": "index.GetHCArticleLambdaHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"
@@ -12897,9 +12897,9 @@
                     "functionName": "react-Content-Get-Lambda",
                     "handler": "index.GetWebPageContentHandler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:53",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:6",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:27",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:7",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:29",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
                     ],
                     "runtime": "nodejs16.x"

@@ -18,12 +18,12 @@ export async function GetSubscriptionPlanHandler(event: APIGatewayEvent, context
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'SK', datatype: 'string' }]);
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await BotSubscriptionConfigurator.GetMySubscriptionPlanById(telegramUser.id, bodyObject.SK);
+    const result = await BotSubscriptionConfigurator.GetMySubscriptionPlanById(telegramUser.id, bodyObject.id);
 
     const getResult = ParseGetItemResult(result);
 

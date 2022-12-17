@@ -16,7 +16,7 @@ export async function DeleteSubscriptionPlanHandler(event: APIGatewayEvent, cont
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'SK', datatype: 'string' }]);
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);

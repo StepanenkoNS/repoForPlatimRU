@@ -35,7 +35,7 @@ export class RestServicesStack extends Stack {
         CreateCurrencySettingsLambdas(this, restServicesAPI.root.addResource('DefaultCurrency'), layers, [botsTable]);
 
         CreatePaymentOptionsLambdas(this, restServicesAPI.root.addResource('PaymentOptions'), layers, [botsTable]);
-        CreateSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('SubscriptionOptions'), layers, [botsTable]);
+        CreateSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('SubscriptionPlans'), layers, [botsTable]);
         CreateContentPlansLambdas(this, restServicesAPI.root.addResource('ContentPlans'), layers, [botsTable]);
 
         new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {

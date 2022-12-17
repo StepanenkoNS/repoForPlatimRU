@@ -12,7 +12,14 @@ export type DataType =
     | 'number(nonZeroPositiveInteger)'
     | 'date'
     | 'array'
+    | 'object'
     | string[];
+
+export type DataValidationParameter = {
+    key: any;
+    datatype: DataType;
+    objectKeys?: DataValidationParameter[] | undefined;
+};
 
 function validateBoolean(value: any) {
     return typeof value == 'boolean' || value.toString().toLowerCase() === 'true' || value.toString().toLowerCase() === 'false';
@@ -30,7 +37,7 @@ function validateNumber(value: any) {
     return false;
 }
 
-function validateDataType(value: any, datatype: DataType) {
+function validateDataValue(value: any, datatype: DataType, objectKeys?: DataValidationParameter[]) {
     // console.log('\nvalue: ' + value + '\nRequestedDataType: ' + datatype + '\nObject Type: ' + Object.prototype.toString.call(value) + '\nTypeOf: ' + typeof value);
     switch (datatype) {
         case 'string': {
@@ -109,15 +116,31 @@ function validateDataType(value: any, datatype: DataType) {
 
             return true;
         }
+        case 'object': {
+            if (Object.prototype.toString.call(value) !== '[object Object]') {
+                return false;
+            }
+            if (objectKeys === undefined) {
+                return false;
+            }
+            for (const objectKey of objectKeys) {
+                const result = validateDataValue(value[objectKey.key], objectKey.datatype, objectKey.objectKeys);
+                if (result === false) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
     if (Object.prototype.toString.call(datatype) === '[object Array]') {
         if ((datatype as string[]).includes(value)) {
             return true;
         }
     }
+
     return false;
 }
-export function ValidateIncomingEventBody(event: APIGatewayEvent, params: { key: string; datatype: DataType }[]) {
+export function ValidateIncomingEventBody(event: APIGatewayEvent, params: DataValidationParameter[]) {
     let bodyObject: any;
 
     if (!event.body) {
@@ -135,7 +158,7 @@ export function ValidateIncomingEventBody(event: APIGatewayEvent, params: { key:
             console.log('body validation error(missing key)\nparam: ' + param.key);
             return false;
         } else {
-            if (validateDataType(bodyObject[param.key], param.datatype) === false) {
+            if (validateDataValue(bodyObject[param.key], param.datatype, param.objectKeys) === false) {
                 console.log('body validation error\nparam: ' + param.key + ' datatype: ' + param.datatype + ' value: ' + bodyObject[param.key]);
                 return false;
             }
@@ -145,7 +168,7 @@ export function ValidateIncomingEventBody(event: APIGatewayEvent, params: { key:
     return bodyObject;
 }
 
-export function ValidateIncomingArray(obj: any, params: { key: string; datatype: DataType }[]) {
+export function ValidateIncomingArray(obj: any, params: DataValidationParameter[]) {
     if (!(Object.prototype.toString.call(obj) === '[object Array]')) {
         console.log('array validation error(object is not array)\nparam: ' + obj);
         return false;
@@ -157,7 +180,7 @@ export function ValidateIncomingArray(obj: any, params: { key: string; datatype:
                 console.log('array validation error(missing key)\nparam: ' + param.key);
                 return false;
             } else {
-                if (validateDataType(item[param.key], param.datatype) === false) {
+                if (validateDataValue(item[param.key], param.datatype, param.objectKeys) === false) {
                     console.log('array validation error\nparam: ' + param.key + '\ndatatype: ' + param.datatype + '\nvalue: ' + item[param.key]);
                     return false;
                 }
@@ -168,4 +191,11 @@ export function ValidateIncomingArray(obj: any, params: { key: string; datatype:
     return true;
 }
 
-//validateDataType(1000, 'number(nonZeroPositive)');
+// console.log(
+//     validateDataValue({ durationInDays: 5 }, 'object', [
+//         {
+//             key: 'durationInDays',
+//             datatype: 'number(positiveInteger)'
+//         }
+//     ])
+// );
