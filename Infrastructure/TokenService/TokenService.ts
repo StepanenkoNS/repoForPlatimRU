@@ -13,6 +13,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 
 export class TokenServiceStack extends Stack {
     constructor(
@@ -42,6 +43,7 @@ export class TokenServiceStack extends Stack {
             handler: 'LambdaTokenServiceHandler',
             functionName: this.stackName + '-Lambda',
             runtime: Runtime.NODEJS_16_X,
+            logRetention: StaticEnvironment.LambdaSettinds.logRetention,
             environment: {
                 botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
                 region: StaticEnvironment.GlobalAWSEnvironment.region,

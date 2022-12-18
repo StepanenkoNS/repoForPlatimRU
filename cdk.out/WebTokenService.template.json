@@ -117,10 +117,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:55",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:8",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:32",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:7"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:57",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:34",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -132,6 +132,120 @@
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
     "aws:asset:path": "asset.92afc59a15aa17dbf48568d328192ce8a005740288a82a424fafc3165836feb1",
     "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "TokenServiceLambdaLogRetention9B6C5D33": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "TokenServiceLambdaA04CF86C"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/TokenServiceLambda/LogRetention/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:PutRetentionPolicy",
+        "logs:DeleteRetentionPolicy"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "Roles": [
+     {
+      "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Handler": "index.handler",
+    "Runtime": "nodejs14.x",
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
+    "aws:asset:path": "asset.eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8",
+    "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
   },
@@ -866,7 +980,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21RTW/CMAz9LbuHTAUh7VqGdhqsKtoZmdSDlCap4gSEqv735YMBm3bye/58tqd8XvDiCc40Ec1x0skdHzYOxJHVSMZbgSzEtkMHatfAVpsGW+LrZN68Fk4azSQoPtSmQ/b6pZOtTCfFJdKMRkazLRChI15GEzhfeHFEtwBCltvzIRTcusZitEoSBTYy6OUeHJ7hwof3lB4UurKXaegdlkIYrx1bYt+Zi8IAg/eBhfX2SWkGP3smHSt0B9PE4BXdrpCHZPxJobDqIGm8k6VRIPUaVMp+YLF1Be6wgr6Xeh+jf1wjs8Y7nM/4UNYojG3ywIg26MaRpatFxdcGH971PqzmyRn1r8rfocqak2zQjiz+kLf0fCpeeDENz29JyokNN5MKeZ3tN8a/aZAYAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11SwW7CMAz9lt1DpoKQdi1DOwGrinZGJvVKoImrOgGhqv++JGXAdvJ7cfz87GQq55nMXuDCE1WdJo3ey37rQJ1EiUy+UyhCbtc3YPYV7CxVeGS5SeHDW+U0WaHByL6kBsX7t02xoEara6QjGgTPdsCMjmUeQ+By4dUJ3QIYxSgv+1BwV43F2BnNHNggGqpZrqgu0aFNF6DVNTi8wFX2qyQQPLu81cnGA+ZKkbdOLLFt6GpCdTx9YmHgOnkfwe/kydka3YGqmLyh+17GJiP+4lBYNJBcP8iSDGi7AZNuP7EoXYA7rKFtta1j9t/RIDryDucz2eclKuqqsWFEW3TDINIeo+ObwLOxT+9aH8b07Mg8En9o0dFZV9gNIr6qPPLrOXuT2TR8hyNrPenCzrRBWY7xB1CslFkqAgAA"
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"
