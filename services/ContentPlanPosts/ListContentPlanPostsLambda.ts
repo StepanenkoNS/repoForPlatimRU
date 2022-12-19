@@ -1,12 +1,15 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { SetOrigin } from 'services/Utils/OriginHelper';
-import { ParseGetItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+import { ParseListItemsResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
-import { ValidateIncomingEventBody, ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
+import { ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
+
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 
-export async function GetContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function ListContentPlanPostsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
+
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -16,12 +19,13 @@ export async function GetContentPlanHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
+    if (!ValidateStringParameters(event, ['contentPlanId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.GetMyContentPlanById(telegramUser.id, event.queryStringParameters!.id!);
-    const getResult = ParseGetItemResult(result);
+    const result = await ContentConfigurator.ListMyContentPlanPosts(telegramUser.id, event.queryStringParameters!.contentPlanId!);
 
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    const listResults = ParseListItemsResult(result);
+
+    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

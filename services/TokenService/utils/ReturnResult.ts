@@ -17,7 +17,7 @@ export function ReturnResult(statusCode: number, data: any, origin: string, toke
             const dateIncrement = new Date().getTime() + Number(process.env.accessTokenExpirationMinutes!) * 60 * 1000;
             accessTokenExpirationDate.setTime(dateIncrement);
             accessTokenCookie =
-                'accessToken=' + tokens.accessToken + '; Expires=' + accessTokenExpirationDate.toUTCString() + '; Secure; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
+                'accessToken=' + tokens.accessToken + '; Expires=' + accessTokenExpirationDate.toUTCString() + '; Secure; HttpOnly; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
             cookiesArray.push(accessTokenCookie);
         }
 
@@ -26,7 +26,13 @@ export function ReturnResult(statusCode: number, data: any, origin: string, toke
             const dateIncrement = new Date().getTime() + Number(process.env.refreshTokenExpirationDays!) * 24 * 60 * 60 * 1000;
             refreshTokenExpirationDate.setTime(dateIncrement);
             refreshTokenCookie =
-                'refreshToken=' + tokens.refreshToken + '; Expires=' + refreshTokenExpirationDate.toUTCString() + '; Secure; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
+                'refreshToken=' +
+                tokens.refreshToken +
+                '; Expires=' +
+                refreshTokenExpirationDate.toUTCString() +
+                '; Secure; HttpOnly; SameSite=None; Domain=.' +
+                process.env.cookieDomain! +
+                '; Path=/';
             cookiesArray.push(refreshTokenCookie);
         }
     }
@@ -46,16 +52,40 @@ export function ReturnResult(statusCode: number, data: any, origin: string, toke
         }
     };
 
-    if (cookiesArray.length > 0) {
-        returnObject = {
-            ...{
-                multiValueHeaders: {
-                    'Set-Cookie': [...cookiesArray]
-                }
-            },
-            ...returnObject
-        };
-    }
-    console.log('returnObject\n', returnObject);
+    // if (cookiesArray.length > 0) {
+    //     returnObject = {
+    //         ...{
+    //             multiValueHeaders: {
+    //                 'Set-Cookie': [...cookiesArray]
+    //             }
+    //         },
+    //         ...returnObject
+    //     };
+    // }
+
+    return returnObject;
+}
+
+export function LogOut(origin: string) {
+    const accessTokenCookie = 'accessToken= ; Secure; HttpOnly; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
+    const refreshTokenCookie = 'refreshToken= ; Secure; HttpOnly; SameSite=None; Domain=.' + process.env.cookieDomain! + '; Path=/';
+
+    const cookiesArray: string[] = [accessTokenCookie, refreshTokenCookie];
+
+    let returnObject: APIGatewayProxyResult = {
+        statusCode: 201,
+        body: JSON.stringify({ logOut: true }),
+        multiValueHeaders: {
+            'Set-Cookie': [...cookiesArray]
+        },
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': origin, // Required for CORS support to work
+            'Access-Control-Allow-Credentials': true, // Required for cookies, authorization headers
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,UPDATE,OPTIONS',
+            'Access-Control-Allow-Headers': '*'
+        }
+    };
+
     return returnObject;
 }

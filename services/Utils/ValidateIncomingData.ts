@@ -168,6 +168,21 @@ export function ValidateIncomingEventBody(event: APIGatewayEvent, params: DataVa
     return bodyObject;
 }
 
+export function ValidateStringParameters(event: APIGatewayEvent, params: string[] = ['id']) {
+    const queryParams = event.queryStringParameters;
+    if (!queryParams) {
+        console.log('Error:ValidateGetIdParamater\n', 'queryStringParameters not provided');
+        return false;
+    }
+    for (const param of params) {
+        if (!queryParams[param]) {
+            console.log('Error:ValidateGetIdParamater\n', 'Missing required parameter: ' + param);
+            return false;
+        }
+    }
+    return true;
+}
+
 export function ValidateIncomingArray(obj: any, params: DataValidationParameter[]) {
     if (!(Object.prototype.toString.call(obj) === '[object Array]')) {
         console.log('array validation error(object is not array)\nparam: ' + obj);

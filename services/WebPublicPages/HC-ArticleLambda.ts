@@ -1,7 +1,8 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
 
-import { defaultMenuLanguage, ESupportedLanguages } from '/opt/ConfiguratorTypes';
+//@ts-ignore
+import { defaultLocale, ESupportedLanguages } from '/opt/LocaleTypes';
 import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '../Utils/HCHelper';
 import { SetOrigin } from 'services/Utils/OriginHelper';
 
@@ -11,7 +12,7 @@ type Page = {
     itemName?: string;
     pageId?: string;
 };
-const fallbackLocale = defaultMenuLanguage;
+const fallbackLocale = defaultLocale;
 
 export async function GetHCArticleLambdaHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

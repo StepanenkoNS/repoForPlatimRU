@@ -9,8 +9,8 @@ import { GrantAccessToDDB, GrantAccessToSecrets } from '../Helper';
 
 export function CreateCurrencySettingsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaGetCurrencySettingsResource = rootResource.addResource('Get');
-    const lambdaEdutCurrencySettingsResource = rootResource.addResource('Set');
+    // const lambdaGetCurrencySettingsResource = rootResource.addResource('Get');
+    // const lambdaEdutCurrencySettingsResource = rootResource.addResource('Set');
     //Получение валюты по-умолчанию
     const GetCurrencySettingsLambda = new NodejsFunction(that, 'GetCurrencySettingsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CurrencySettings', 'GetCurrencySettingsLambda.ts'),
@@ -31,7 +31,7 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
         layers: layers
     });
     const lambdaIntegrationGetCurrencySettings = new apigateway.LambdaIntegration(GetCurrencySettingsLambda);
-    lambdaGetCurrencySettingsResource.addMethod('GET', lambdaIntegrationGetCurrencySettings);
+    rootResource.addMethod('GET', lambdaIntegrationGetCurrencySettings);
 
     //редактирование валюты по-умолчанию
     const EditCurrencySettingsLambda = new NodejsFunction(that, 'EditCurrencySettingsLambda', {
@@ -54,7 +54,7 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
         layers: layers
     });
     const lambdaIntegrationEditCurrencySettings = new apigateway.LambdaIntegration(EditCurrencySettingsLambda);
-    lambdaEdutCurrencySettingsResource.addMethod('PUT', lambdaIntegrationEditCurrencySettings);
+    rootResource.addMethod('PUT', lambdaIntegrationEditCurrencySettings);
 
     //Добавление политик
     GrantAccessToSecrets([GetCurrencySettingsLambda, EditCurrencySettingsLambda]);

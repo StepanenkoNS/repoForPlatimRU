@@ -8,7 +8,7 @@ import { TelegramUser } from 'services/Utils/Types';
 
 function getTokenFromCookes(cookies: string) {
     let accessToken = cookies.split('; ').reduce((r, v) => {
-        const parts = v.split('=');
+        const parts: string[] = v.split('=');
         return parts[0] === 'accessToken' ? decodeURIComponent(parts[1]) : r;
     }, '');
 

@@ -1,7 +1,8 @@
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { ReturnResult } from '../utils/ReturnResult';
+import { LogOut, ReturnResult } from '../utils/ReturnResult';
 import { CreateNewTokens } from '../utils/GetNewToken';
 import { ValidateTokenFromCookies } from '../utils/ValidateTokenFromCookies';
+import { TelegramUserProfile } from '../utils/Types';
 
 export async function LambdaTokenServiceHandler(event: APIGatewayEvent, context: Context) {
     console.log('event\n', JSON.stringify(event));
@@ -56,14 +57,27 @@ export async function LambdaTokenServiceHandler(event: APIGatewayEvent, context:
             };
             return ReturnResult(401, result, origin);
         } else {
+            const userProfile: TelegramUserProfile = {
+                id: validateTokenResult.userProfile.id,
+                first_name: validateTokenResult.userProfile.first_name,
+                last_name: validateTokenResult.userProfile.last_name,
+                photo_url: validateTokenResult.userProfile.photo_url,
+                username: validateTokenResult.userProfile.username,
+                language: validateTokenResult.userProfile.language,
+                role: 'admin'
+            };
             if (validateTokenResult.context.renewedAccessToken) {
-                return ReturnResult(201, { userProfile: validateTokenResult.userProfile }, origin, {
+                return ReturnResult(201, { userProfile: userProfile }, origin, {
                     accessToken: validateTokenResult.context.renewedAccessToken
                 });
             } else {
-                return ReturnResult(200, { userProfile: validateTokenResult.userProfile }, origin);
+                return ReturnResult(200, { userProfile: userProfile }, origin);
             }
         }
+    }
+
+    if (event.resource === '/logOut' && event.httpMethod === 'GET') {
+        return LogOut(origin);
     }
     return ReturnResult(404, 'not found', origin);
 }

@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "92afc59a15aa17dbf48568d328192ce8a005740288a82a424fafc3165836feb1.zip"
+     "S3Key": "ca0bbd15c9bcc3f35ba4194806a548b753eba55045665be269a5eca8ea90c648.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -117,9 +117,9 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:57",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:34",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -130,7 +130,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.92afc59a15aa17dbf48568d328192ce8a005740288a82a424fafc3165836feb1",
+    "aws:asset:path": "asset.ca0bbd15c9bcc3f35ba4194806a548b753eba55045665be269a5eca8ea90c648",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -313,7 +313,7 @@
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Account"
    }
   },
-  "WebTokenServiceGWAPIDeployment69CE11EB1c279fee369ccf0c260a69a3779f9d23": {
+  "WebTokenServiceGWAPIDeployment69CE11EB4134337e5f01c3933449c5ef5a0a084d": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -325,6 +325,9 @@
     "WebTokenServiceGWAPIgetTokenOPTIONS544CC085",
     "WebTokenServiceGWAPIgetTokenPOST249FA332",
     "WebTokenServiceGWAPIgetTokenEA421B7E",
+    "WebTokenServiceGWAPIlogOutGET6FEB5543",
+    "WebTokenServiceGWAPIlogOutOPTIONS39CB2C79",
+    "WebTokenServiceGWAPIlogOut3A11217E",
     "WebTokenServiceGWAPImeGET7190DC18",
     "WebTokenServiceGWAPImeOPTIONS8D7EB856",
     "WebTokenServiceGWAPImeEE3FC695",
@@ -341,7 +344,7 @@
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
     "DeploymentId": {
-     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB1c279fee369ccf0c260a69a3779f9d23"
+     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB4134337e5f01c3933449c5ef5a0a084d"
     },
     "MethodSettings": [
      {
@@ -759,6 +762,180 @@
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIlogOut3A11217E": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebTokenServiceGWAPIAFE5A254",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "logOut",
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/logOut/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIlogOutOPTIONS39CB2C79": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebTokenServiceGWAPIlogOut3A11217E"
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/logOut/OPTIONS/Resource"
+   }
+  },
+  "WebTokenServiceGWAPIlogOutGETApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9GETlogOut59AF7F53": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaA04CF86C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebTokenServiceGWAPIAFE5A254"
+       },
+       "/",
+       {
+        "Ref": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+       },
+       "/GET/logOut"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/logOut/GET/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..logOut"
+   }
+  },
+  "WebTokenServiceGWAPIlogOutGETApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9GETlogOut3875EB3B": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "TokenServiceLambdaA04CF86C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebTokenServiceGWAPIAFE5A254"
+       },
+       "/test-invoke-stage/GET/logOut"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/logOut/GET/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..logOut"
+   }
+  },
+  "WebTokenServiceGWAPIlogOutGET6FEB5543": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebTokenServiceGWAPIlogOut3A11217E"
+    },
+    "RestApiId": {
+     "Ref": "WebTokenServiceGWAPIAFE5A254"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "TokenServiceLambdaA04CF86C",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Default/logOut/GET/Resource"
    }
   },
   "WebTokenServiceGWAPIWebTokenServiceGWAPIUsagePlanFFD4474E": {

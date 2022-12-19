@@ -100,6 +100,7 @@ export class TokenServiceStack extends Stack {
 
         TokenServiceAPIGW.root.addResource('me').addMethod('GET');
         TokenServiceAPIGW.root.addResource('getToken').addMethod('POST');
+        TokenServiceAPIGW.root.addResource('logOut').addMethod('GET');
 
         const usagePlan = TokenServiceAPIGW.addUsagePlan(this.stackName + '-GWAPI' + '-UsagePlan', {
             name: this.stackName + '-GWAPI' + '-UsagePlan',

@@ -4,9 +4,9 @@ import { ParseGetItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRe
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
 import { ValidateIncomingEventBody, ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
 //@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import ContentConfigurator from '/opt/ContentConfigurator';
 
-export async function GetPaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function GetContentPlanPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -16,11 +16,11 @@ export async function GetPaymentOptionHandler(event: APIGatewayEvent, context: C
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
+    if (!ValidateStringParameters(event, ['id', 'contentPlanId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await PaymentOptionsManager.GetMyPaymentOptionById(telegramUser.id, event.queryStringParameters!.id!);
+    const result = await ContentConfigurator.GetMyContentPlanPostById(telegramUser.id, event.queryStringParameters!.contentPlanId!, event.queryStringParameters!.id!);
     const getResult = ParseGetItemResult(result);
 
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
