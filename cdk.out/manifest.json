@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/267a79242866bccebe748d6c49bc658f23aeeab2a8995211f2369f8c95485ec8.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/418bfd4ec7a63fdebf25d2199e29de857aede3b4f9511c01deed57092a7b8941.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/044baa40aa7384199846e23ad24845e9033342a1783332d22552d13072699200.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/dd11ba19740822de44858ba5e0a7238aab5201198d8af7b802c08f6679a83610.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -383,7 +383,7 @@
         "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIDeploymentE0A236726210279b33c0fd0967329bc4e42cf1ef"
+            "data": "WebRestServiceGWAPIDeploymentE0A23672890c58283deb1ea5d50afcb799e240cb"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -1142,6 +1142,168 @@
             "data": "WebRestServiceGWAPIContentPlanPostsDeleteDELETE6639B88A"
           }
         ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesEFD4F953"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesOPTIONSB2879F81"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesList268DAC09"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesListOPTIONS54B46F37"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesListGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesList39075D33"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesListGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesList8F48A457"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesListGETEAD810E4"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesGet678DE630"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesGetOPTIONSDB219378"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.Get": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesGetE9D6746E"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.Get": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesGet426646B7"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesGetGETDB00F4D9"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesAdd1A54AFE1"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesAddOPTIONSED8E506D"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..MessageFiles.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesAddPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTMessageFilesAdd1508C8A4"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..MessageFiles.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesAddPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTMessageFilesAddCBAD02EF"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesAddPOST22B94D8E"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesEdit64F5ED92"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesEditOPTIONS3B609296"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..MessageFiles.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesEditPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTMessageFilesEdit37806333"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..MessageFiles.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesEditPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTMessageFilesEditF82B0856"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesEditPUTC2B06BDB"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesDelete83470B4C"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesDeleteOPTIONS8E09527E"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..MessageFiles.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesDeleteDELETEApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEMessageFilesDeleteB0880350"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..MessageFiles.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesDeleteDELETEApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEMessageFilesDelete247AA648"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIMessageFilesDeleteDELETE4AB2855E"
+          }
+        ],
         "/WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1598,6 +1760,96 @@
             "data": "DeleteContentPlanPostLambda9CD840D1"
           }
         ],
+        "/WebRestService/ListMessageFilesLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListMessageFilesLambdaServiceRole27E6A9BF"
+          }
+        ],
+        "/WebRestService/ListMessageFilesLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListMessageFilesLambdaServiceRoleDefaultPolicyBAFFF0C6"
+          }
+        ],
+        "/WebRestService/ListMessageFilesLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListMessageFilesLambdaA8A6DBEA"
+          }
+        ],
+        "/WebRestService/GetMessageFileLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetMessageFileLambdaServiceRole69400E26"
+          }
+        ],
+        "/WebRestService/GetMessageFileLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetMessageFileLambdaServiceRoleDefaultPolicy8F726EE9"
+          }
+        ],
+        "/WebRestService/GetMessageFileLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetMessageFileLambdaDF57EDB2"
+          }
+        ],
+        "/WebRestService/AddMessageFileLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddMessageFileLambdaServiceRoleBE2D7298"
+          }
+        ],
+        "/WebRestService/AddMessageFileLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddMessageFileLambdaServiceRoleDefaultPolicyE45FE77C"
+          }
+        ],
+        "/WebRestService/AddMessageFileLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddMessageFileLambda2C734180"
+          }
+        ],
+        "/WebRestService/EditMessageFileLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditMessageFileLambdaServiceRoleD51D4A28"
+          }
+        ],
+        "/WebRestService/EditMessageFileLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditMessageFileLambdaServiceRoleDefaultPolicy707E1526"
+          }
+        ],
+        "/WebRestService/EditMessageFileLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditMessageFileLambda395F8673"
+          }
+        ],
+        "/WebRestService/DeleteMessageFileLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteMessageFileLambdaServiceRole72930807"
+          }
+        ],
+        "/WebRestService/DeleteMessageFileLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteMessageFileLambdaServiceRoleDefaultPolicy062F48D7"
+          }
+        ],
+        "/WebRestService/DeleteMessageFileLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteMessageFileLambdaE4E88A6A"
+          }
+        ],
         "/WebRestService/WebRestService-APIGW-SecureAPI": [
           {
             "type": "aws:cdk:logicalId",
@@ -1641,7 +1893,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e46e93e36d606acd1d8a462d793af6bd264c8ffd1e4463bbe586632dfcf80885.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ffd41c00f3a6e72dc6c0333ed344b7221bf363a7146f05639cd3b9f07fb6ed85.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [

@@ -116,9 +116,9 @@
     "FunctionName": "JWTAuthorizer-Lambda",
     "Handler": "index.LambdaJWTAuthorizerHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -410,7 +410,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Account"
    }
   },
-  "WebRestServiceGWAPIDeploymentE0A236726210279b33c0fd0967329bc4e42cf1ef": {
+  "WebRestServiceGWAPIDeploymentE0A23672890c58283deb1ea5d50afcb799e240cb": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -462,6 +462,23 @@
     "WebRestServiceGWAPIDefaultCurrencyOPTIONSA094FE46",
     "WebRestServiceGWAPIDefaultCurrencyPUT2E03073B",
     "WebRestServiceGWAPIDefaultCurrency594708F8",
+    "WebRestServiceGWAPIMessageFilesAddOPTIONSED8E506D",
+    "WebRestServiceGWAPIMessageFilesAddPOST22B94D8E",
+    "WebRestServiceGWAPIMessageFilesAdd1A54AFE1",
+    "WebRestServiceGWAPIMessageFilesDeleteDELETE4AB2855E",
+    "WebRestServiceGWAPIMessageFilesDeleteOPTIONS8E09527E",
+    "WebRestServiceGWAPIMessageFilesDelete83470B4C",
+    "WebRestServiceGWAPIMessageFilesEditOPTIONS3B609296",
+    "WebRestServiceGWAPIMessageFilesEditPUTC2B06BDB",
+    "WebRestServiceGWAPIMessageFilesEdit64F5ED92",
+    "WebRestServiceGWAPIMessageFilesGetGETDB00F4D9",
+    "WebRestServiceGWAPIMessageFilesGetOPTIONSDB219378",
+    "WebRestServiceGWAPIMessageFilesGet678DE630",
+    "WebRestServiceGWAPIMessageFilesListGETEAD810E4",
+    "WebRestServiceGWAPIMessageFilesListOPTIONS54B46F37",
+    "WebRestServiceGWAPIMessageFilesList268DAC09",
+    "WebRestServiceGWAPIMessageFilesOPTIONSB2879F81",
+    "WebRestServiceGWAPIMessageFilesEFD4F953",
     "WebRestServiceGWAPIOPTIONS622B6CF2",
     "WebRestServiceGWAPIPaymentOptionsAddOPTIONSFA7317DC",
     "WebRestServiceGWAPIPaymentOptionsAddPOSTA8E96E4D",
@@ -509,7 +526,7 @@
      "Ref": "WebRestServiceGWAPID1BA5018"
     },
     "DeploymentId": {
-     "Ref": "WebRestServiceGWAPIDeploymentE0A236726210279b33c0fd0967329bc4e42cf1ef"
+     "Ref": "WebRestServiceGWAPIDeploymentE0A23672890c58283deb1ea5d50afcb799e240cb"
     },
     "MethodSettings": [
      {
@@ -4857,6 +4874,943 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Delete/DELETE/Resource"
    }
   },
+  "WebRestServiceGWAPIMessageFilesEFD4F953": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebRestServiceGWAPID1BA5018",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "MessageFiles",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesOPTIONSB2879F81": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEFD4F953"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesList268DAC09": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEFD4F953"
+    },
+    "PathPart": "List",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesListOPTIONS54B46F37": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesList268DAC09"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesListGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesList39075D33": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ListMessageFilesLambdaA8A6DBEA",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/GET/MessageFiles/List"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.List"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesListGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesList8F48A457": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ListMessageFilesLambdaA8A6DBEA",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/GET/MessageFiles/List"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.List"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesListGETEAD810E4": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesList268DAC09"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ListMessageFilesLambdaA8A6DBEA",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/List/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesGet678DE630": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEFD4F953"
+    },
+    "PathPart": "Get",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesGetOPTIONSDB219378": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesGet678DE630"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesGetE9D6746E": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetMessageFileLambdaDF57EDB2",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/GET/MessageFiles/Get"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.Get"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETMessageFilesGet426646B7": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetMessageFileLambdaDF57EDB2",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/GET/MessageFiles/Get"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..MessageFiles.Get"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesGetGETDB00F4D9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesGet678DE630"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetMessageFileLambdaDF57EDB2",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Get/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesAdd1A54AFE1": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEFD4F953"
+    },
+    "PathPart": "Add",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesAddOPTIONSED8E506D": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesAdd1A54AFE1"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesAddPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTMessageFilesAdd1508C8A4": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AddMessageFileLambda2C734180",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/POST/MessageFiles/Add"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..MessageFiles.Add"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesAddPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTMessageFilesAddCBAD02EF": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AddMessageFileLambda2C734180",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/POST/MessageFiles/Add"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..MessageFiles.Add"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesAddPOST22B94D8E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesAdd1A54AFE1"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "AddMessageFileLambda2C734180",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Add/POST/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesEdit64F5ED92": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEFD4F953"
+    },
+    "PathPart": "Edit",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesEditOPTIONS3B609296": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEdit64F5ED92"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesEditPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTMessageFilesEdit37806333": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "EditMessageFileLambda395F8673",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/PUT/MessageFiles/Edit"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..MessageFiles.Edit"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesEditPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTMessageFilesEditF82B0856": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "EditMessageFileLambda395F8673",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/PUT/MessageFiles/Edit"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..MessageFiles.Edit"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesEditPUTC2B06BDB": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "PUT",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEdit64F5ED92"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "EditMessageFileLambda395F8673",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Edit/PUT/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesDelete83470B4C": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesEFD4F953"
+    },
+    "PathPart": "Delete",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesDeleteOPTIONS8E09527E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesDelete83470B4C"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesDeleteDELETEApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEMessageFilesDeleteB0880350": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "DeleteMessageFileLambdaE4E88A6A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/DELETE/MessageFiles/Delete"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..MessageFiles.Delete"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesDeleteDELETEApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEMessageFilesDelete247AA648": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "DeleteMessageFileLambdaE4E88A6A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/DELETE/MessageFiles/Delete"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..MessageFiles.Delete"
+   }
+  },
+  "WebRestServiceGWAPIMessageFilesDeleteDELETE4AB2855E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "DELETE",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIMessageFilesDelete83470B4C"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "DeleteMessageFileLambdaE4E88A6A",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/MessageFiles/Delete/DELETE/Resource"
+   }
+  },
   "WebRestServiceGWAPIWebRestServiceGWAPIUsagePlan476AD6E9": {
    "Type": "AWS::ApiGateway::UsagePlan",
    "Properties": {
@@ -5192,9 +6146,9 @@
     "FunctionName": "react-Bots-List-Lambda",
     "Handler": "index.ListMyBotsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -5329,9 +6283,9 @@
     "FunctionName": "react-CurrencySettings-Get-Lambda",
     "Handler": "index.GetCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -5466,9 +6420,9 @@
     "FunctionName": "react-CurrencySettings-Update-Lambda",
     "Handler": "index.EditCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
@@ -5599,9 +6553,9 @@
     "FunctionName": "react-PaymentOptions-List-Lambda",
     "Handler": "index.ListPaymentOptionsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -5731,9 +6685,9 @@
     "FunctionName": "react-PaymentOptions-Get-Lambda",
     "Handler": "index.GetPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -5868,9 +6822,9 @@
     "FunctionName": "react-PaymentOptions-Add-Lambda",
     "Handler": "index.AddPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -6005,9 +6959,9 @@
     "FunctionName": "react-PaymentOptions-Edit-Lambda",
     "Handler": "index.EditPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
@@ -6143,9 +7097,9 @@
     "FunctionName": "react-PaymentOptions-Delete-Lambda",
     "Handler": "index.DeletePaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -6275,9 +7229,9 @@
     "FunctionName": "react-SubscriptionPlans-List-Lambda",
     "Handler": "index.ListSubscriptionPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -6407,9 +7361,9 @@
     "FunctionName": "react-SubscriptionPlans-Get-Lambda",
     "Handler": "index.GetSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -6539,9 +7493,9 @@
     "FunctionName": "react-SubscriptionPlans-Add-Lambda",
     "Handler": "index.AddSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -6671,9 +7625,9 @@
     "FunctionName": "react-SubscriptionPlans-Edit-Lambda",
     "Handler": "index.EditSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
@@ -6804,9 +7758,9 @@
     "FunctionName": "react-SubscriptionPlans-Delete-Lambda",
     "Handler": "index.DeleteSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -6936,9 +7890,9 @@
     "FunctionName": "react-ContentPlans-List-Lambda",
     "Handler": "index.ListContentPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7068,9 +8022,9 @@
     "FunctionName": "react-ContentPlans-Get-Lambda",
     "Handler": "index.GetContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7200,9 +8154,9 @@
     "FunctionName": "react-ContentPlans-Add-Lambda",
     "Handler": "index.AddContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7332,9 +8286,9 @@
     "FunctionName": "react-ContentPlans-Edit-Lambda",
     "Handler": "index.EditContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
@@ -7465,9 +8419,9 @@
     "FunctionName": "react-ContentPlans-Delete-Lambda",
     "Handler": "index.DeleteContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7597,9 +8551,9 @@
     "FunctionName": "react-ContentPlanPosts-List-Lambda",
     "Handler": "index.ListContentPlanPostsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7729,9 +8683,9 @@
     "FunctionName": "react-ContentPlanPosts-Get-Lambda",
     "Handler": "index.GetContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7861,9 +8815,9 @@
     "FunctionName": "react-ContentPlanPosts-Add-Lambda",
     "Handler": "index.AddContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -7993,9 +8947,9 @@
     "FunctionName": "react-ContentPlanPosts-Edit-Lambda",
     "Handler": "index.EditContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
@@ -8126,9 +9080,9 @@
     "FunctionName": "react-ContentPlanPosts-Delete-Lambda",
     "Handler": "index.DeleteContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:61",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -8140,6 +9094,667 @@
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteContentPlanPostLambda/Resource",
     "aws:asset:path": "asset.dece80e1bc589ba2e57956859657edc057bf41694d395125403aba9680974484",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ListMessageFilesLambdaServiceRole27E6A9BF": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListMessageFilesLambda/ServiceRole/Resource"
+   }
+  },
+  "ListMessageFilesLambdaServiceRoleDefaultPolicyBAFFF0C6": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ListMessageFilesLambdaServiceRoleDefaultPolicyBAFFF0C6",
+    "Roles": [
+     {
+      "Ref": "ListMessageFilesLambdaServiceRole27E6A9BF"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListMessageFilesLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "ListMessageFilesLambdaA8A6DBEA": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "7773d1c721ffe23533c86680e8de5de0de1ad3ac77e882e8b663ccf7f8af6ea3.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "ListMessageFilesLambdaServiceRole27E6A9BF",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-MessageFiles-List-Lambda",
+    "Handler": "index.ListMessageFilesHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "ListMessageFilesLambdaServiceRoleDefaultPolicyBAFFF0C6",
+    "ListMessageFilesLambdaServiceRole27E6A9BF"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListMessageFilesLambda/Resource",
+    "aws:asset:path": "asset.7773d1c721ffe23533c86680e8de5de0de1ad3ac77e882e8b663ccf7f8af6ea3",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetMessageFileLambdaServiceRole69400E26": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetMessageFileLambda/ServiceRole/Resource"
+   }
+  },
+  "GetMessageFileLambdaServiceRoleDefaultPolicy8F726EE9": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetMessageFileLambdaServiceRoleDefaultPolicy8F726EE9",
+    "Roles": [
+     {
+      "Ref": "GetMessageFileLambdaServiceRole69400E26"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetMessageFileLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetMessageFileLambdaDF57EDB2": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "a9fd9b916a2cf64cd9a773efd3efd8544aab350f1d4abd8e69cf2165ad590991.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "GetMessageFileLambdaServiceRole69400E26",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-MessageFiles-Get-Lambda",
+    "Handler": "index.GetMessageFileHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "GetMessageFileLambdaServiceRoleDefaultPolicy8F726EE9",
+    "GetMessageFileLambdaServiceRole69400E26"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetMessageFileLambda/Resource",
+    "aws:asset:path": "asset.a9fd9b916a2cf64cd9a773efd3efd8544aab350f1d4abd8e69cf2165ad590991",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "AddMessageFileLambdaServiceRoleBE2D7298": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddMessageFileLambda/ServiceRole/Resource"
+   }
+  },
+  "AddMessageFileLambdaServiceRoleDefaultPolicyE45FE77C": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "AddMessageFileLambdaServiceRoleDefaultPolicyE45FE77C",
+    "Roles": [
+     {
+      "Ref": "AddMessageFileLambdaServiceRoleBE2D7298"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddMessageFileLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "AddMessageFileLambda2C734180": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "390333e49ca2c6ba9a6402bf2ae6776ad3362de8c39ec3c5c42bee59c347ef18.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "AddMessageFileLambdaServiceRoleBE2D7298",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-MessageFiles-Add-Lambda",
+    "Handler": "index.AddMessageFileHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "AddMessageFileLambdaServiceRoleDefaultPolicyE45FE77C",
+    "AddMessageFileLambdaServiceRoleBE2D7298"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddMessageFileLambda/Resource",
+    "aws:asset:path": "asset.390333e49ca2c6ba9a6402bf2ae6776ad3362de8c39ec3c5c42bee59c347ef18",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "EditMessageFileLambdaServiceRoleD51D4A28": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditMessageFileLambda/ServiceRole/Resource"
+   }
+  },
+  "EditMessageFileLambdaServiceRoleDefaultPolicy707E1526": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "EditMessageFileLambdaServiceRoleDefaultPolicy707E1526",
+    "Roles": [
+     {
+      "Ref": "EditMessageFileLambdaServiceRoleD51D4A28"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditMessageFileLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "EditMessageFileLambda395F8673": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "c7a96a023f9968f4cb319726be235da8836a6c626946a054b4624ac3aeb01ae9.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "EditMessageFileLambdaServiceRoleD51D4A28",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-MessageFiles-Edit-Lambda",
+    "Handler": "index.EditMessageFileHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 15
+   },
+   "DependsOn": [
+    "EditMessageFileLambdaServiceRoleDefaultPolicy707E1526",
+    "EditMessageFileLambdaServiceRoleD51D4A28"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditMessageFileLambda/Resource",
+    "aws:asset:path": "asset.c7a96a023f9968f4cb319726be235da8836a6c626946a054b4624ac3aeb01ae9",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "DeleteMessageFileLambdaServiceRole72930807": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteMessageFileLambda/ServiceRole/Resource"
+   }
+  },
+  "DeleteMessageFileLambdaServiceRoleDefaultPolicy062F48D7": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":dynamodb:us-east-1:993738567487:table/bots"
+          ]
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "DeleteMessageFileLambdaServiceRoleDefaultPolicy062F48D7",
+    "Roles": [
+     {
+      "Ref": "DeleteMessageFileLambdaServiceRole72930807"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteMessageFileLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "DeleteMessageFileLambdaE4E88A6A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "c1f3d483ef4b80875c825374c4a6d19f855d2f9f277ab118543dccd60b024b7e.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "DeleteMessageFileLambdaServiceRole72930807",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+      "cookieDomain": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-MessageFiles-Delete-Lambda",
+    "Handler": "index.DeleteMessageFileHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
+    ],
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "DeleteMessageFileLambdaServiceRoleDefaultPolicy062F48D7",
+    "DeleteMessageFileLambdaServiceRole72930807"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteMessageFileLambda/Resource",
+    "aws:asset:path": "asset.c1f3d483ef4b80875c825374c4a6d19f855d2f9f277ab118543dccd60b024b7e",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
