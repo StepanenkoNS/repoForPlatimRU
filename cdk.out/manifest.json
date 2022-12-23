@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e2f119f2f50e9ec6a7fa20726baad474fa7029779e7d385fff8a1c80fcaefb85.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/044baa40aa7384199846e23ad24845e9033342a1783332d22552d13072699200.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -383,7 +383,7 @@
         "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIDeploymentE0A23672677298c1ba603e494d4f827b6e363180"
+            "data": "WebRestServiceGWAPIDeploymentE0A236726210279b33c0fd0967329bc4e42cf1ef"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -548,22 +548,22 @@
             "data": "WebRestServiceGWAPIPaymentOptionsGetOPTIONS83BA526C"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..PaymentOptions.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..PaymentOptions.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIPaymentOptionsGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTPaymentOptionsGet722ADE7C"
+            "data": "WebRestServiceGWAPIPaymentOptionsGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETPaymentOptionsGetB756947B"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..PaymentOptions.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..PaymentOptions.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIPaymentOptionsGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTPaymentOptionsGetC541804B"
+            "data": "WebRestServiceGWAPIPaymentOptionsGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETPaymentOptionsGetC833CD7F"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/POST/Resource": [
+        "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIPaymentOptionsGetPOST40834812"
+            "data": "WebRestServiceGWAPIPaymentOptionsGetGETCE6937DF"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Add/Resource": [
@@ -710,22 +710,22 @@
             "data": "WebRestServiceGWAPISubscriptionPlansGetOPTIONS967ECA8D"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPISubscriptionPlansGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTSubscriptionPlansGetF35E2256"
+            "data": "WebRestServiceGWAPISubscriptionPlansGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETSubscriptionPlansGet3FC52F81"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPISubscriptionPlansGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTSubscriptionPlansGetFE1D2446"
+            "data": "WebRestServiceGWAPISubscriptionPlansGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETSubscriptionPlansGet78E33ED8"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/Resource": [
+        "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPISubscriptionPlansGetPOST12BB776F"
+            "data": "WebRestServiceGWAPISubscriptionPlansGetGET339E492F"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Add/Resource": [
@@ -872,22 +872,22 @@
             "data": "WebRestServiceGWAPIContentPlansGetOPTIONS42CE981B"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlans.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlans.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIContentPlansGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlansGet6A271010"
+            "data": "WebRestServiceGWAPIContentPlansGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlansGet23E8ECBE"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlans.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlans.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIContentPlansGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlansGetD7C57828"
+            "data": "WebRestServiceGWAPIContentPlansGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlansGetEE8D075E"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/POST/Resource": [
+        "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIContentPlansGetPOST8CDC2663"
+            "data": "WebRestServiceGWAPIContentPlansGetGET2CA5D1F4"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/Default/ContentPlans/Add/Resource": [
@@ -1034,22 +1034,22 @@
             "data": "WebRestServiceGWAPIContentPlanPostsGetOPTIONSC7C6B351"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlanPosts.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlanPosts.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIContentPlanPostsGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlanPostsGet62B32258"
+            "data": "WebRestServiceGWAPIContentPlanPostsGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlanPostsGetA5C77A18"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlanPosts.Get": [
+        "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlanPosts.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIContentPlanPostsGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlanPostsGet404E34CC"
+            "data": "WebRestServiceGWAPIContentPlanPostsGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlanPostsGet1B21044C"
           }
         ],
-        "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/POST/Resource": [
+        "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIContentPlanPostsGetPOSTE241C06D"
+            "data": "WebRestServiceGWAPIContentPlanPostsGetGET82981A04"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Add/Resource": [

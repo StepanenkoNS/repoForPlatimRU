@@ -57,7 +57,7 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
         layers: layers
     });
     const lambdaIntegrationGetContentPlans = new apigateway.LambdaIntegration(GetContentPlanLambda);
-    lambdaGetContentPlansResource.addMethod('POST', lambdaIntegrationGetContentPlans);
+    lambdaGetContentPlansResource.addMethod('GET', lambdaIntegrationGetContentPlans);
 
     //Добавлении типа подписки
     const AddContentPlanLambda = new NodejsFunction(that, 'AddContentPlanLambda', {

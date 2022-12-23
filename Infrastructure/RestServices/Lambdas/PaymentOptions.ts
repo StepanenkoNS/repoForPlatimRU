@@ -57,7 +57,7 @@ export function CreatePaymentOptionsLambdas(that: any, rootResource: apigateway.
         layers: layers
     });
     const lambdaIntegrationGetPaymentOption = new apigateway.LambdaIntegration(GetPaymentOptionLambda);
-    lambdaGetPaymentOptionsResource.addMethod('POST', lambdaIntegrationGetPaymentOption);
+    lambdaGetPaymentOptionsResource.addMethod('GET', lambdaIntegrationGetPaymentOption);
 
     //добавление опции оплаты
     const AddPaymentOptionLambda = new NodejsFunction(that, 'AddPaymentOptionLambda', {

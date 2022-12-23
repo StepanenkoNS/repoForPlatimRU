@@ -410,7 +410,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Account"
    }
   },
-  "WebRestServiceGWAPIDeploymentE0A23672677298c1ba603e494d4f827b6e363180": {
+  "WebRestServiceGWAPIDeploymentE0A236726210279b33c0fd0967329bc4e42cf1ef": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -433,8 +433,8 @@
     "WebRestServiceGWAPIContentPlanPostsEditOPTIONS41F2BEFF",
     "WebRestServiceGWAPIContentPlanPostsEditPUTDA9B067A",
     "WebRestServiceGWAPIContentPlanPostsEdit5CC7884E",
+    "WebRestServiceGWAPIContentPlanPostsGetGET82981A04",
     "WebRestServiceGWAPIContentPlanPostsGetOPTIONSC7C6B351",
-    "WebRestServiceGWAPIContentPlanPostsGetPOSTE241C06D",
     "WebRestServiceGWAPIContentPlanPostsGetC665E064",
     "WebRestServiceGWAPIContentPlanPostsListGET90443260",
     "WebRestServiceGWAPIContentPlanPostsListOPTIONS75597C46",
@@ -450,8 +450,8 @@
     "WebRestServiceGWAPIContentPlansEditOPTIONS05FB454C",
     "WebRestServiceGWAPIContentPlansEditPUTCFC5FBAA",
     "WebRestServiceGWAPIContentPlansEditD345A8E1",
+    "WebRestServiceGWAPIContentPlansGetGET2CA5D1F4",
     "WebRestServiceGWAPIContentPlansGetOPTIONS42CE981B",
-    "WebRestServiceGWAPIContentPlansGetPOST8CDC2663",
     "WebRestServiceGWAPIContentPlansGetDD882AFD",
     "WebRestServiceGWAPIContentPlansListGET592A5C97",
     "WebRestServiceGWAPIContentPlansListOPTIONSE4291FD6",
@@ -472,8 +472,8 @@
     "WebRestServiceGWAPIPaymentOptionsEditOPTIONS26B676AE",
     "WebRestServiceGWAPIPaymentOptionsEditPUT9E17C24D",
     "WebRestServiceGWAPIPaymentOptionsEdit875D169E",
+    "WebRestServiceGWAPIPaymentOptionsGetGETCE6937DF",
     "WebRestServiceGWAPIPaymentOptionsGetOPTIONS83BA526C",
-    "WebRestServiceGWAPIPaymentOptionsGetPOST40834812",
     "WebRestServiceGWAPIPaymentOptionsGetE77EBDDE",
     "WebRestServiceGWAPIPaymentOptionsListGETB110FC75",
     "WebRestServiceGWAPIPaymentOptionsListOPTIONS9FF6A85D",
@@ -489,8 +489,8 @@
     "WebRestServiceGWAPISubscriptionPlansEditOPTIONS92474053",
     "WebRestServiceGWAPISubscriptionPlansEditPUT52353490",
     "WebRestServiceGWAPISubscriptionPlansEdit50005E39",
+    "WebRestServiceGWAPISubscriptionPlansGetGET339E492F",
     "WebRestServiceGWAPISubscriptionPlansGetOPTIONS967ECA8D",
-    "WebRestServiceGWAPISubscriptionPlansGetPOST12BB776F",
     "WebRestServiceGWAPISubscriptionPlansGet7B3121EE",
     "WebRestServiceGWAPISubscriptionPlansListGET12C816F5",
     "WebRestServiceGWAPISubscriptionPlansListOPTIONS9639A412",
@@ -509,7 +509,7 @@
      "Ref": "WebRestServiceGWAPID1BA5018"
     },
     "DeploymentId": {
-     "Ref": "WebRestServiceGWAPIDeploymentE0A23672677298c1ba603e494d4f827b6e363180"
+     "Ref": "WebRestServiceGWAPIDeploymentE0A236726210279b33c0fd0967329bc4e42cf1ef"
     },
     "MethodSettings": [
      {
@@ -1414,7 +1414,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/OPTIONS/Resource"
    }
   },
-  "WebRestServiceGWAPIPaymentOptionsGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTPaymentOptionsGet722ADE7C": {
+  "WebRestServiceGWAPIPaymentOptionsGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETPaymentOptionsGetB756947B": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -1441,16 +1441,16 @@
        {
         "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
        },
-       "/POST/PaymentOptions/Get"
+       "/GET/PaymentOptions/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..PaymentOptions.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..PaymentOptions.Get"
    }
   },
-  "WebRestServiceGWAPIPaymentOptionsGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTPaymentOptionsGetC541804B": {
+  "WebRestServiceGWAPIPaymentOptionsGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETPaymentOptionsGetC833CD7F": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -1473,19 +1473,19 @@
        {
         "Ref": "WebRestServiceGWAPID1BA5018"
        },
-       "/test-invoke-stage/POST/PaymentOptions/Get"
+       "/test-invoke-stage/GET/PaymentOptions/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..PaymentOptions.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..PaymentOptions.Get"
    }
   },
-  "WebRestServiceGWAPIPaymentOptionsGetPOST40834812": {
+  "WebRestServiceGWAPIPaymentOptionsGetGETCE6937DF": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "ResourceId": {
      "Ref": "WebRestServiceGWAPIPaymentOptionsGetE77EBDDE"
     },
@@ -1521,7 +1521,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/POST/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Get/GET/Resource"
    }
   },
   "WebRestServiceGWAPIPaymentOptionsAddED43A709": {
@@ -2351,7 +2351,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/OPTIONS/Resource"
    }
   },
-  "WebRestServiceGWAPISubscriptionPlansGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTSubscriptionPlansGetF35E2256": {
+  "WebRestServiceGWAPISubscriptionPlansGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETSubscriptionPlansGet3FC52F81": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -2378,16 +2378,16 @@
        {
         "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
        },
-       "/POST/SubscriptionPlans/Get"
+       "/GET/SubscriptionPlans/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.Get"
    }
   },
-  "WebRestServiceGWAPISubscriptionPlansGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTSubscriptionPlansGetFE1D2446": {
+  "WebRestServiceGWAPISubscriptionPlansGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETSubscriptionPlansGet78E33ED8": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -2410,19 +2410,19 @@
        {
         "Ref": "WebRestServiceGWAPID1BA5018"
        },
-       "/test-invoke-stage/POST/SubscriptionPlans/Get"
+       "/test-invoke-stage/GET/SubscriptionPlans/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..SubscriptionPlans.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..SubscriptionPlans.Get"
    }
   },
-  "WebRestServiceGWAPISubscriptionPlansGetPOST12BB776F": {
+  "WebRestServiceGWAPISubscriptionPlansGetGET339E492F": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "ResourceId": {
      "Ref": "WebRestServiceGWAPISubscriptionPlansGet7B3121EE"
     },
@@ -2458,7 +2458,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/POST/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/SubscriptionPlans/Get/GET/Resource"
    }
   },
   "WebRestServiceGWAPISubscriptionPlansAddBD572942": {
@@ -3288,7 +3288,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/OPTIONS/Resource"
    }
   },
-  "WebRestServiceGWAPIContentPlansGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlansGet6A271010": {
+  "WebRestServiceGWAPIContentPlansGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlansGet23E8ECBE": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -3315,16 +3315,16 @@
        {
         "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
        },
-       "/POST/ContentPlans/Get"
+       "/GET/ContentPlans/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlans.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlans.Get"
    }
   },
-  "WebRestServiceGWAPIContentPlansGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlansGetD7C57828": {
+  "WebRestServiceGWAPIContentPlansGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlansGetEE8D075E": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -3347,19 +3347,19 @@
        {
         "Ref": "WebRestServiceGWAPID1BA5018"
        },
-       "/test-invoke-stage/POST/ContentPlans/Get"
+       "/test-invoke-stage/GET/ContentPlans/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlans.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlans.Get"
    }
   },
-  "WebRestServiceGWAPIContentPlansGetPOST8CDC2663": {
+  "WebRestServiceGWAPIContentPlansGetGET2CA5D1F4": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "ResourceId": {
      "Ref": "WebRestServiceGWAPIContentPlansGetDD882AFD"
     },
@@ -3395,7 +3395,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/POST/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlans/Get/GET/Resource"
    }
   },
   "WebRestServiceGWAPIContentPlansAdd33EA37BD": {
@@ -4225,7 +4225,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/OPTIONS/Resource"
    }
   },
-  "WebRestServiceGWAPIContentPlanPostsGetPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlanPostsGet62B32258": {
+  "WebRestServiceGWAPIContentPlanPostsGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlanPostsGetA5C77A18": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -4252,16 +4252,16 @@
        {
         "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
        },
-       "/POST/ContentPlanPosts/Get"
+       "/GET/ContentPlanPosts/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlanPosts.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlanPosts.Get"
    }
   },
-  "WebRestServiceGWAPIContentPlanPostsGetPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTContentPlanPostsGet404E34CC": {
+  "WebRestServiceGWAPIContentPlanPostsGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETContentPlanPostsGet1B21044C": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -4284,19 +4284,19 @@
        {
         "Ref": "WebRestServiceGWAPID1BA5018"
        },
-       "/test-invoke-stage/POST/ContentPlanPosts/Get"
+       "/test-invoke-stage/GET/ContentPlanPosts/Get"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..ContentPlanPosts.Get"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ContentPlanPosts.Get"
    }
   },
-  "WebRestServiceGWAPIContentPlanPostsGetPOSTE241C06D": {
+  "WebRestServiceGWAPIContentPlanPostsGetGET82981A04": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "ResourceId": {
      "Ref": "WebRestServiceGWAPIContentPlanPostsGetC665E064"
     },
@@ -4332,7 +4332,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/POST/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/ContentPlanPosts/Get/GET/Resource"
    }
   },
   "WebRestServiceGWAPIContentPlanPostsAdd40F1E0CA": {

@@ -57,7 +57,7 @@ export function CreateSubscriptionPlansLambdas(that: any, rootResource: apigatew
         layers: layers
     });
     const lambdaIntegrationGetSubscriptionPlans = new apigateway.LambdaIntegration(GetSubscriptionPlanLambda);
-    lambdaGetSubscriptionPlansResource.addMethod('POST', lambdaIntegrationGetSubscriptionPlans);
+    lambdaGetSubscriptionPlansResource.addMethod('GET', lambdaIntegrationGetSubscriptionPlans);
 
     //Добавлении типа подписки
     const AddSubscriptionPlanLambda = new NodejsFunction(that, 'AddSubscriptionPlanLambda', {
