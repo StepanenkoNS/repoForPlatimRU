@@ -40,9 +40,9 @@
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
@@ -253,7 +253,7 @@
                     "handler": "index.LambdaTokenServiceHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -1643,9 +1643,9 @@
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
+            "path": "WebRestService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
@@ -1863,7 +1863,7 @@
                     "handler": "index.LambdaJWTAuthorizerHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -2304,7 +2304,7 @@
                           "Ref": "WebRestServiceGWAPID1BA5018"
                         },
                         "deploymentId": {
-                          "Ref": "WebRestServiceGWAPIDeploymentE0A23672890c58283deb1ea5d50afcb799e240cb"
+                          "Ref": "WebRestServiceGWAPIDeploymentE0A23672667951310d7853217165f1bfcb55c54e"
                         },
                         "methodSettings": [
                           {
@@ -9310,6 +9310,238 @@
                       "fqn": "aws-cdk-lib.aws_apigateway.Resource",
                       "version": "2.51.1"
                     }
+                  },
+                  "PreSignedUrls": {
+                    "id": "PreSignedUrls",
+                    "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "WebRestServiceGWAPID1BA5018",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "PreSignedUrls",
+                            "restApiId": {
+                              "Ref": "WebRestServiceGWAPID1BA5018"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.51.1"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "WebRestServiceGWAPIPreSignedUrls22D05D55"
+                                },
+                                "restApiId": {
+                                  "Ref": "WebRestServiceGWAPID1BA5018"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "204",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+                                        "method.response.header.Vary": "'Origin'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+                                        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+                                      },
+                                      "responseTemplates": {
+                                        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"http://127.0.0.1\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "204",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Vary": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true,
+                                      "method.response.header.Access-Control-Allow-Credentials": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.51.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.51.1"
+                        }
+                      },
+                      "PUT": {
+                        "id": "PUT",
+                        "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT",
+                        "children": {
+                          "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls": {
+                            "id": "ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "GetGetPresignedUrlLambda43F48E6F",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:993738567487:",
+                                      {
+                                        "Ref": "WebRestServiceGWAPID1BA5018"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+                                      },
+                                      "/PUT/PreSignedUrls"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.51.1"
+                            }
+                          },
+                          "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls": {
+                            "id": "ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "GetGetPresignedUrlLambda43F48E6F",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:993738567487:",
+                                      {
+                                        "Ref": "WebRestServiceGWAPID1BA5018"
+                                      },
+                                      "/test-invoke-stage/PUT/PreSignedUrls"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.51.1"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "PUT",
+                                "resourceId": {
+                                  "Ref": "WebRestServiceGWAPIPreSignedUrls22D05D55"
+                                },
+                                "restApiId": {
+                                  "Ref": "WebRestServiceGWAPID1BA5018"
+                                },
+                                "authorizationType": "CUSTOM",
+                                "authorizerId": {
+                                  "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+                                },
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "GetGetPresignedUrlLambda43F48E6F",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.51.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.51.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.51.1"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -9719,7 +9951,7 @@
                     "handler": "index.ListMyBotsHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -9928,7 +10160,7 @@
                     "handler": "index.GetCurrencySettingsHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -10137,7 +10369,7 @@
                     "handler": "index.EditCurrencySettingsHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -10342,7 +10574,7 @@
                     "handler": "index.ListPaymentOptionsHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -10546,7 +10778,7 @@
                     "handler": "index.GetPaymentOptionHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -10755,7 +10987,7 @@
                     "handler": "index.AddPaymentOptionHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -10964,7 +11196,7 @@
                     "handler": "index.EditPaymentOptionHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -11174,7 +11406,7 @@
                     "handler": "index.DeletePaymentOptionHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -11378,7 +11610,7 @@
                     "handler": "index.ListSubscriptionPlansHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -11582,7 +11814,7 @@
                     "handler": "index.GetSubscriptionPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -11786,7 +12018,7 @@
                     "handler": "index.AddSubscriptionPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -11990,7 +12222,7 @@
                     "handler": "index.EditSubscriptionPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -12195,7 +12427,7 @@
                     "handler": "index.DeleteSubscriptionPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -12399,7 +12631,7 @@
                     "handler": "index.ListContentPlansHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -12603,7 +12835,7 @@
                     "handler": "index.GetContentPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -12807,7 +13039,7 @@
                     "handler": "index.AddContentPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -13011,7 +13243,7 @@
                     "handler": "index.EditContentPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -13216,7 +13448,7 @@
                     "handler": "index.DeleteContentPlanHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -13420,7 +13652,7 @@
                     "handler": "index.ListContentPlanPostsHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -13624,7 +13856,7 @@
                     "handler": "index.GetContentPlanPostHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -13828,7 +14060,7 @@
                     "handler": "index.AddContentPlanPostHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -14032,7 +14264,7 @@
                     "handler": "index.EditContentPlanPostHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -14237,7 +14469,7 @@
                     "handler": "index.DeleteContentPlanPostHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -14441,7 +14673,7 @@
                     "handler": "index.ListMessageFilesHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -14645,7 +14877,7 @@
                     "handler": "index.GetMessageFileHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -14849,7 +15081,7 @@
                     "handler": "index.AddMessageFileHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -15053,7 +15285,7 @@
                     "handler": "index.EditMessageFileHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -15258,11 +15490,149 @@
                     "handler": "index.DeleteMessageFileHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
                     "runtime": "nodejs16.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.51.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
+              "version": "2.51.1"
+            }
+          },
+          "GetGetPresignedUrlLambda": {
+            "id": "GetGetPresignedUrlLambda",
+            "path": "WebRestService/GetGetPresignedUrlLambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "WebRestService/GetGetPresignedUrlLambda/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "WebRestService/GetGetPresignedUrlLambda/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.51.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "WebRestService/GetGetPresignedUrlLambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.51.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.51.1"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "WebRestService/GetGetPresignedUrlLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "WebRestService/GetGetPresignedUrlLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.51.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "WebRestService/GetGetPresignedUrlLambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.51.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.51.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "WebRestService/GetGetPresignedUrlLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+                      "s3Key": "3f20a7edf138ec38e6ad8de3bca1cea2516541927032c9fbe2aa8ed99a1a758f.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "GetGetPresignedUrlLambdaServiceRole6568E3BF",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "botsTable": "bots",
+                        "region": "us-east-1",
+                        "NODE_ENV": "production",
+                        "botFatherId": "5645439521",
+                        "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,http://127.0.0.1",
+                        "cookieDomain": "zuzona.com",
+                        "tempUploadsBucketName": "message-files-temp-uploads-bucket",
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "functionName": "react-GetPresignedUrl-Lambda",
+                    "handler": "index.GetPreSignedUrlHandler",
+                    "layers": [
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
+                    ],
+                    "runtime": "nodejs16.x",
+                    "timeout": 3
                   }
                 },
                 "constructInfo": {
@@ -15344,9 +15714,9 @@
               "version": "2.51.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.51.1"
@@ -17022,7 +17392,7 @@
                     "handler": "index.GetHCLandingLambdaHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -17226,7 +17596,7 @@
                     "handler": "index.GetHCsubcategoryLambdaHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -17430,7 +17800,7 @@
                     "handler": "index.GetHCArticleLambdaHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],
@@ -17634,7 +18004,7 @@
                     "handler": "index.GetWebPageContentHandler",
                     "layers": [
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:62",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:11",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:25",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:47",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
                     ],

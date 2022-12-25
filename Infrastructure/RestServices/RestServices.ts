@@ -13,6 +13,7 @@ import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
 import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
 import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
 import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
+import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
 
 export class RestServicesStack extends Stack {
     constructor(
@@ -42,6 +43,8 @@ export class RestServicesStack extends Stack {
         CreateContentPlanPostsLambdas(this, restServicesAPI.root.addResource('ContentPlanPosts'), layers, [botsTable]);
 
         CreateMessageFilesLambdas(this, restServicesAPI.root.addResource('MessageFiles'), layers, [botsTable]);
+
+        CreateGetPresignedUrlsLambdas(this, restServicesAPI.root.addResource('PreSignedUrls'), layers, []);
 
         new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {
             value: restServicesAPI.deploymentStage.urlForPath(),

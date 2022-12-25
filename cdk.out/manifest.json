@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/418bfd4ec7a63fdebf25d2199e29de857aede3b4f9511c01deed57092a7b8941.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f016b7c15713c41806d75a360bf48290b05da5d64da6f2cd5e8c321b85a34275.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/dd11ba19740822de44858ba5e0a7238aab5201198d8af7b802c08f6679a83610.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/fa57c797a5aa981a11684ae39a845664e38ec7c25df218714dce37921ebfd13d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -383,7 +383,7 @@
         "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIDeploymentE0A23672890c58283deb1ea5d50afcb799e240cb"
+            "data": "WebRestServiceGWAPIDeploymentE0A23672667951310d7853217165f1bfcb55c54e"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -1304,6 +1304,36 @@
             "data": "WebRestServiceGWAPIMessageFilesDeleteDELETE4AB2855E"
           }
         ],
+        "/WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPreSignedUrls22D05D55"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPreSignedUrlsOPTIONSE7C58CAF"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPreSignedUrlsPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTPreSignedUrlsF5399178"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..PreSignedUrls": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPreSignedUrlsPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTPreSignedUrls6C8EE65B"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/PreSignedUrls/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIPreSignedUrlsPUT8488033B"
+          }
+        ],
         "/WebRestService/WebRestService-GWAPI/WebRestService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1850,6 +1880,18 @@
             "data": "DeleteMessageFileLambdaE4E88A6A"
           }
         ],
+        "/WebRestService/GetGetPresignedUrlLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetGetPresignedUrlLambdaServiceRole6568E3BF"
+          }
+        ],
+        "/WebRestService/GetGetPresignedUrlLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetGetPresignedUrlLambda43F48E6F"
+          }
+        ],
         "/WebRestService/WebRestService-APIGW-SecureAPI": [
           {
             "type": "aws:cdk:logicalId",
@@ -1893,7 +1935,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ffd41c00f3a6e72dc6c0333ed344b7221bf363a7146f05639cd3b9f07fb6ed85.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/64fe4c138c68f0f6047d86533efbd1b58a281282244cbb028bdfe6d93576f83d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
