@@ -19,7 +19,8 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'name', datatype: 'string' },
-        { key: 's3Id', datatype: 'string' },
+        { key: 's3key', datatype: 'string' },
+        { key: 'originalFileName', datatype: 'string' },
         { key: 'fileSize', datatype: 'number(positiveInteger)' },
         { key: 'tags', datatype: 'array' }
     ]);
@@ -31,7 +32,8 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         chatId: telegramUser.id,
         messageFile: {
             name: bodyObject.name,
-            s3Id: bodyObject.s3Id,
+            s3key: bodyObject.s3key,
+            originalFileName: bodyObject.originalFileName,
             fileSize: bodyObject.fileSize,
             attachedToPosts: [],
             tags: bodyObject.tags

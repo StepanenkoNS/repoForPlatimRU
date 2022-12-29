@@ -2,6 +2,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { SetOrigin } from 'services/Utils/OriginHelper';
 import { ParseListItemsResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
+import { ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
 
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
@@ -18,7 +19,12 @@ export async function ListMessageFilesHandler(event: APIGatewayEvent, context: C
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    const result = await ContentConfigurator.ListMyMessageFiles(telegramUser.id);
+    let tags: string[] = [];
+    if (ValidateStringParameters(event, ['tags'])) {
+        tags = event.queryStringParameters!.tags!.split(',');
+    }
+
+    const result = await ContentConfigurator.ListMyMessageFiles(telegramUser.id, tags);
 
     const listResults = ParseListItemsResult(result);
 

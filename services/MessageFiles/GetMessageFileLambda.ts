@@ -21,6 +21,7 @@ export async function GetMessageFileHandler(event: APIGatewayEvent, context: Con
     }
 
     const result = await ContentConfigurator.GetMyMessageFileById(telegramUser.id, event.queryStringParameters!.id!);
+    console.log('result', result);
     const getResult = ParseGetItemResult(result);
 
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);

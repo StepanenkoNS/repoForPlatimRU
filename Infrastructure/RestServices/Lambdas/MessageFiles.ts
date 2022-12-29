@@ -5,7 +5,7 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB } from '../Helper';
+import { GrantAccessToDDB, GrantAccessToS3 } from '../Helper';
 
 export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
@@ -22,6 +22,8 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         functionName: 'react-MessageFiles-List-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
+            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
+            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
@@ -44,6 +46,8 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         functionName: 'react-MessageFiles-Get-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
+            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
+            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
@@ -65,7 +69,10 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         handler: 'AddMessageFileHandler',
         functionName: 'react-MessageFiles-Add-Lambda',
         runtime: Runtime.NODEJS_16_X,
+        timeout: Duration.seconds(15),
         environment: {
+            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
+            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
@@ -89,6 +96,8 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         runtime: Runtime.NODEJS_16_X,
         timeout: Duration.seconds(15),
         environment: {
+            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
+            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
@@ -111,6 +120,8 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         functionName: 'react-MessageFiles-Delete-Lambda',
         runtime: Runtime.NODEJS_16_X,
         environment: {
+            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
+            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
@@ -127,4 +138,9 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
     lambdaDeleteMessageFilesResource.addMethod('DELETE', lambdaIntegrationDeleteMessageFile);
 
     GrantAccessToDDB([ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda], tables);
+
+    GrantAccessToS3(
+        [ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda],
+        [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
+    );
 }

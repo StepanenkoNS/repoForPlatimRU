@@ -106,3 +106,16 @@ export function GrantAccessToSecrets(lambdas: NodejsFunction[]) {
         lambda.addToRolePolicy(statementSecretsManager);
     }
 }
+
+export function GrantAccessToS3(lambdas: NodejsFunction[], buckets: string[]) {
+    for (const bucket of buckets) {
+        const statementS3 = new PolicyStatement({
+            resources: ['arn:aws:s3:::' + bucket + '/*', 'arn:aws:s3:::' + bucket],
+            actions: ['s3:*'],
+            effect: Effect.ALLOW
+        });
+        for (const lambda of lambdas) {
+            lambda.addToRolePolicy(statementS3);
+        }
+    }
+}

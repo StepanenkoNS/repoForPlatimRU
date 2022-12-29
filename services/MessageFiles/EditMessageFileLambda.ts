@@ -10,6 +10,7 @@ import ContentConfigurator from '/opt/ContentConfigurator';
 import { EMessageFileType } from '/opt/ContentTypes';
 
 export async function EditMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -21,7 +22,8 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
-        { key: 's3Id', datatype: 'string' },
+        { key: 's3key', datatype: 'string' },
+        { key: 'originalFileName', datatype: 'string' },
         { key: 'fileSize', datatype: 'number(positiveInteger)' },
         { key: 'tags', datatype: 'array' }
     ]);
@@ -31,7 +33,7 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
 
     const result = await ContentConfigurator.UpdateMessageFile({
         chatId: telegramUser.id,
-        messageFile: { id: bodyObject.id, name: bodyObject.name, s3Id: bodyObject.s3Id, fileSize: bodyObject.fileSize, tags: bodyObject.tags }
+        messageFile: { id: bodyObject.id, name: bodyObject.name, s3key: bodyObject.s3key, originalFileName: bodyObject.originalFileName, fileSize: bodyObject.fileSize, tags: bodyObject.tags }
     });
 
     const updateResult = ParseUpdateItemResult(result);
