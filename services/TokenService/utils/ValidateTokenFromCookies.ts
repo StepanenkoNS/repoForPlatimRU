@@ -75,7 +75,6 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
 
             let botManager: BotManager;
             try {
-                console.log('userProfile\n', userProfile);
                 botManager = await BotManager.GetOrCreate({
                     chatId: userProfile.id,
                     userName: userProfile.username
