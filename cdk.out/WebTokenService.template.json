@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "11ecdaa6870b8fce6b7b0b5cc68c3bef903cada824d80be5e526507f6c9c5d2d.zip"
+     "S3Key": "10fc8b07e64c37a98bb5a7ee359417252fd91161c754d8c4ed13dc65ed4d5f9d.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -104,22 +104,25 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
-      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
       "accessTokenExpirationMinutes": "60",
       "refreshTokenExpirationDays": "365",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "AllowUsers": "199163834",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x"
@@ -130,7 +133,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.11ecdaa6870b8fce6b7b0b5cc68c3bef903cada824d80be5e526507f6c9c5d2d",
+    "aws:asset:path": "asset.10fc8b07e64c37a98bb5a7ee359417252fd91161c754d8c4ed13dc65ed4d5f9d",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -350,7 +353,7 @@
      {
       "DataTraceEnabled": false,
       "HttpMethod": "*",
-      "LoggingLevel": "INFO",
+      "LoggingLevel": "ERROR",
       "MetricsEnabled": true,
       "ResourcePath": "/*"
      }
@@ -1157,7 +1160,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11SwW7CMAz9lt1DpoKQdi1DOwGrinZGJvVKoImrOgGhqv++JGXAdvJ7cfz87GQq55nMXuDCE1WdJo3ey37rQJ1EiUy+UyhCbtc3YPYV7CxVeGS5SeHDW+U0WaHByL6kBsX7t02xoEara6QjGgTPdsCMjmUeQ+By4dUJ3QIYxSgv+1BwV43F2BnNHNggGqpZrqgu0aFNF6DVNTi8wFX2qyQQPLu81cnGA+ZKkbdOLLFt6GpCdTx9YmHgOnkfwe/kydka3YGqmLyh+17GJiP+4lBYNJBcP8iSDGi7AZNuP7EoXYA7rKFtta1j9t/RIDryDucz2eclKuqqsWFEW3TDINIeo+ObwLOxT+9aH8b07Mg8En9o0dFZV9gNIr6qPPLrOXuT2TR8hyNrPenCzrRBWY7xB1CslFkqAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11SwW7CMAz9lt1DJkBIu5ahnYBVRTsjk3olpYmrOgGhqv++JGXAdvJ7cfz87GQmF29y+gIXnqjyNGn0QfY7B+okCmTynUIRcvu+AXMoYW+pxJrlNoUPb5XTZIUGI/uCGhTv3zbFnBqtrpGOaBA83wMzOpZZDIHLpVcndEtgFKO87EPBXTUWY2c0c2CDaKhiuaaqQIc2XYBWV+DwAlfZr5NA8OyyVicbD5gpRd46scK2oasJ1fH0iYWBq+R9BL+TJ2cbdEcqY/KG7nsZm4z4i0Nh3kBy/SArMqDtFky6/cSidA7uuIG21baK2X9Hg+jIO1zMZZ8VqKgrx4YR7dANg0h7jI5vAs/GPr1rfRjTsyPzSPyheUdnXWI3iPiqsubX8zT8hVn4DjVrPenCzrRBWYzxB3aEXZUqAgAA"
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

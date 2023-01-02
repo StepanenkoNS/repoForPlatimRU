@@ -1,5 +1,5 @@
 {
-  "version": "21.0.0",
+  "version": "22.0.0",
   "artifacts": {
     "WebTokenService.assets": {
       "type": "cdk:asset-manifest",
@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6083ca9abfdc7a6b46cbdc31991123b9af73e5af310c4cd0cdef825e717a1855.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c371a71b63398dcb8215fcb2a8f2c8bbf4fb30877d28299825786fcde921f2ee.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/bf000d0f09df864a0dd2371178c64d5cc5a8096c6e209f26bb157634ead6e8d4.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/40262f70a6c1e699f36d32f84d5f58e0a8a1358bca87b2eddd33b793bd4da954.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1394,6 +1394,12 @@
             "data": "ListBotsLambdaC9B0E149"
           }
         ],
+        "/WebRestService/ListBotsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListBotsLambdaLogRetention8177B538"
+          }
+        ],
         "/WebRestService/GetCurrencySettingsLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1410,6 +1416,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetCurrencySettingsLambdaCBDD42E1"
+          }
+        ],
+        "/WebRestService/GetCurrencySettingsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetCurrencySettingsLambdaLogRetentionDC470B72"
           }
         ],
         "/WebRestService/EditCurrencySettingsLambda/ServiceRole/Resource": [
@@ -1430,6 +1442,12 @@
             "data": "EditCurrencySettingsLambda8DC44B43"
           }
         ],
+        "/WebRestService/EditCurrencySettingsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditCurrencySettingsLambdaLogRetention4AF2B4EE"
+          }
+        ],
         "/WebRestService/ListPaymentOptionsLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1446,6 +1464,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ListPaymentOptionsLambdaACAA5262"
+          }
+        ],
+        "/WebRestService/ListPaymentOptionsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListPaymentOptionsLambdaLogRetention4309571E"
           }
         ],
         "/WebRestService/GetPaymentOptionLambda/ServiceRole/Resource": [
@@ -1466,6 +1490,12 @@
             "data": "GetPaymentOptionLambdaD6DBF61A"
           }
         ],
+        "/WebRestService/GetPaymentOptionLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetPaymentOptionLambdaLogRetentionEA3D15EA"
+          }
+        ],
         "/WebRestService/AddPaymentOptionLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1482,6 +1512,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "AddPaymentOptionLambdaBFF77B7F"
+          }
+        ],
+        "/WebRestService/AddPaymentOptionLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddPaymentOptionLambdaLogRetention47D7EEEB"
           }
         ],
         "/WebRestService/EditPaymentOptionLambda/ServiceRole/Resource": [
@@ -1502,6 +1538,12 @@
             "data": "EditPaymentOptionLambda398037A2"
           }
         ],
+        "/WebRestService/EditPaymentOptionLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditPaymentOptionLambdaLogRetentionCC8461A5"
+          }
+        ],
         "/WebRestService/DeletePaymentOptionLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1518,6 +1560,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "DeletePaymentOptionLambdaEC66351C"
+          }
+        ],
+        "/WebRestService/DeletePaymentOptionLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeletePaymentOptionLambdaLogRetentionDA6A51E6"
           }
         ],
         "/WebRestService/ListSubscriptionPlansLambda/ServiceRole/Resource": [
@@ -1538,6 +1586,12 @@
             "data": "ListSubscriptionPlansLambdaC114B87D"
           }
         ],
+        "/WebRestService/ListSubscriptionPlansLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListSubscriptionPlansLambdaLogRetentionF4F46B3F"
+          }
+        ],
         "/WebRestService/GetSubscriptionPlanLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1554,6 +1608,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetSubscriptionPlanLambda38ECFF18"
+          }
+        ],
+        "/WebRestService/GetSubscriptionPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetSubscriptionPlanLambdaLogRetention849A0D0E"
           }
         ],
         "/WebRestService/AddSubscriptionPlanLambda/ServiceRole/Resource": [
@@ -1574,6 +1634,12 @@
             "data": "AddSubscriptionPlanLambdaCAFEE16F"
           }
         ],
+        "/WebRestService/AddSubscriptionPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddSubscriptionPlanLambdaLogRetentionA51550CC"
+          }
+        ],
         "/WebRestService/EditSubscriptionPlanLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1590,6 +1656,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "EditSubscriptionPlanLambdaDEE52D77"
+          }
+        ],
+        "/WebRestService/EditSubscriptionPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditSubscriptionPlanLambdaLogRetention2B6A2C02"
           }
         ],
         "/WebRestService/DeleteSubscriptionPlanLambda/ServiceRole/Resource": [
@@ -1610,6 +1682,12 @@
             "data": "DeleteSubscriptionPlanLambda97210FAF"
           }
         ],
+        "/WebRestService/DeleteSubscriptionPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteSubscriptionPlanLambdaLogRetentionA0373E84"
+          }
+        ],
         "/WebRestService/ListContentPlansLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1626,6 +1704,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ListContentPlansLambda95AC08D7"
+          }
+        ],
+        "/WebRestService/ListContentPlansLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListContentPlansLambdaLogRetention3FA2F81F"
           }
         ],
         "/WebRestService/GetContentPlanLambda/ServiceRole/Resource": [
@@ -1646,6 +1730,12 @@
             "data": "GetContentPlanLambda45DE78B9"
           }
         ],
+        "/WebRestService/GetContentPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetContentPlanLambdaLogRetentionFC90F014"
+          }
+        ],
         "/WebRestService/AddContentPlanLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1662,6 +1752,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "AddContentPlanLambda2A50CDCC"
+          }
+        ],
+        "/WebRestService/AddContentPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddContentPlanLambdaLogRetention5D7B6F3D"
           }
         ],
         "/WebRestService/EditContentPlanLambda/ServiceRole/Resource": [
@@ -1682,6 +1778,12 @@
             "data": "EditContentPlanLambdaA1D9BCED"
           }
         ],
+        "/WebRestService/EditContentPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditContentPlanLambdaLogRetention6366481E"
+          }
+        ],
         "/WebRestService/DeleteContentPlanLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1698,6 +1800,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "DeleteContentPlanLambda37ED3EAE"
+          }
+        ],
+        "/WebRestService/DeleteContentPlanLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteContentPlanLambdaLogRetentionCFFBC149"
           }
         ],
         "/WebRestService/ListContentPlanPostsLambda/ServiceRole/Resource": [
@@ -1718,6 +1826,12 @@
             "data": "ListContentPlanPostsLambda80CD292F"
           }
         ],
+        "/WebRestService/ListContentPlanPostsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListContentPlanPostsLambdaLogRetentionF19C66EF"
+          }
+        ],
         "/WebRestService/GetContentPlanPostLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1734,6 +1848,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetContentPlanPostLambdaA8AFC433"
+          }
+        ],
+        "/WebRestService/GetContentPlanPostLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetContentPlanPostLambdaLogRetentionA24915CE"
           }
         ],
         "/WebRestService/AddContentPlanPostLambda/ServiceRole/Resource": [
@@ -1754,6 +1874,12 @@
             "data": "AddContentPlanPostLambda6114356C"
           }
         ],
+        "/WebRestService/AddContentPlanPostLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddContentPlanPostLambdaLogRetentionA8217BEA"
+          }
+        ],
         "/WebRestService/EditContentPlanPostLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1770,6 +1896,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "EditContentPlanPostLambdaB4D253CE"
+          }
+        ],
+        "/WebRestService/EditContentPlanPostLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditContentPlanPostLambdaLogRetentionCCB7D6F4"
           }
         ],
         "/WebRestService/DeleteContentPlanPostLambda/ServiceRole/Resource": [
@@ -1790,6 +1922,12 @@
             "data": "DeleteContentPlanPostLambda9CD840D1"
           }
         ],
+        "/WebRestService/DeleteContentPlanPostLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteContentPlanPostLambdaLogRetention02ACDCCD"
+          }
+        ],
         "/WebRestService/ListMessageFilesLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1806,6 +1944,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ListMessageFilesLambdaA8A6DBEA"
+          }
+        ],
+        "/WebRestService/ListMessageFilesLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListMessageFilesLambdaLogRetentionFAAC6125"
           }
         ],
         "/WebRestService/GetMessageFileLambda/ServiceRole/Resource": [
@@ -1826,6 +1970,12 @@
             "data": "GetMessageFileLambdaDF57EDB2"
           }
         ],
+        "/WebRestService/GetMessageFileLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetMessageFileLambdaLogRetention135A8CFD"
+          }
+        ],
         "/WebRestService/AddMessageFileLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1842,6 +1992,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "AddMessageFileLambda2C734180"
+          }
+        ],
+        "/WebRestService/AddMessageFileLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddMessageFileLambdaLogRetentionCEFE6D0D"
           }
         ],
         "/WebRestService/EditMessageFileLambda/ServiceRole/Resource": [
@@ -1862,6 +2018,12 @@
             "data": "EditMessageFileLambda395F8673"
           }
         ],
+        "/WebRestService/EditMessageFileLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditMessageFileLambdaLogRetention5FC7160D"
+          }
+        ],
         "/WebRestService/DeleteMessageFileLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1880,6 +2042,12 @@
             "data": "DeleteMessageFileLambdaE4E88A6A"
           }
         ],
+        "/WebRestService/DeleteMessageFileLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteMessageFileLambdaLogRetentionC9372832"
+          }
+        ],
         "/WebRestService/GetGetPresignedUrlLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1890,6 +2058,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetGetPresignedUrlLambda43F48E6F"
+          }
+        ],
+        "/WebRestService/GetGetPresignedUrlLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetGetPresignedUrlLambdaLogRetention3BCDA4A2"
           }
         ],
         "/WebRestService/WebRestService-APIGW-SecureAPI": [
@@ -1935,7 +2109,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/38b37f04f09a816988037ac43c1aef19a8517d3e9585f32b26786eec8c9ffe49.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/42dc0c6db0a7303863e874af2db8bff57c84de044e049ee82772f36a75cfe781.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2185,6 +2359,30 @@
             "data": "GetHCLandingLambda7205BD53"
           }
         ],
+        "/WebPublicPages/GetHCLandingLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCLandingLambdaLogRetention685A1ACA"
+          }
+        ],
+        "/WebPublicPages/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+          }
+        ],
+        "/WebPublicPages/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+          }
+        ],
+        "/WebPublicPages/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+          }
+        ],
         "/WebPublicPages/GetHCsubcategoryLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -2203,6 +2401,12 @@
             "data": "GetHCsubcategoryLambdaDF64526C"
           }
         ],
+        "/WebPublicPages/GetHCsubcategoryLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCsubcategoryLambdaLogRetention53EF89EC"
+          }
+        ],
         "/WebPublicPages/GetHCArticleLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -2219,6 +2423,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCArticleLambda3857DD83"
+          }
+        ],
+        "/WebPublicPages/GetHCArticleLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetHCArticleLambdaLogRetention12CA6DC0"
           }
         ],
         "/WebPublicPages/GetWebPageContentLambda/ServiceRole/Resource": [

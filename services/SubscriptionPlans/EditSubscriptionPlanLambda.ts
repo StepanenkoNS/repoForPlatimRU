@@ -1,6 +1,6 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseUpdateItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { ValidateIncomingArray, ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 
 import { SetOrigin } from '../Utils/OriginHelper';

@@ -20,14 +20,15 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'ListContentPlanPostsLambda.ts'),
         handler: 'ListContentPlanPostsHandler',
         functionName: 'react-ContentPlanPosts-List-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -42,14 +43,15 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'GetContentPlanPostLambda.ts'),
         handler: 'GetContentPlanPostHandler',
         functionName: 'react-ContentPlanPosts-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -64,14 +66,15 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'AddContentPlanPostLambda.ts'),
         handler: 'AddContentPlanPostHandler',
         functionName: 'react-ContentPlanPosts-Add-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -86,15 +89,15 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'EditContentPlanPostLambda.ts'),
         handler: 'EditContentPlanPostHandler',
         functionName: 'react-ContentPlanPosts-Edit-Lambda',
-        runtime: Runtime.NODEJS_16_X,
-        timeout: Duration.seconds(15),
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -109,14 +112,16 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'DeleteContentPlanPostLambda.ts'),
         handler: 'DeleteContentPlanPostHandler',
         functionName: 'react-ContentPlanPosts-Delete-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

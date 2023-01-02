@@ -1,9 +1,10 @@
+//@ts-ignore
+import { defaultLocale } from '/opt/LocaleTypes';
 import { ddbDocClient } from '/opt/DDB/ddbDocClient';
-import { defaultMenuLanguage } from '/opt/ConfiguratorTypes';
 
 //@ts-ignore
 export async function GetItemFromDB(locale: string, PKPostfix: string = 'publicPages', pagePath: string) {
-    const fallbackLocale = defaultMenuLanguage;
+    const fallbackLocale = defaultLocale;
     const key = { PK: 'LOCALE#' + locale + '#PATH#' + PKPostfix, SK: 'PAGE#' + pagePath };
     try {
         const dbResponce = await ddbDocClient.get({

@@ -14,14 +14,13 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'WebPages-GetPageContent.ts'),
         handler: 'GetWebPageContentHandler',
         functionName: 'react-Content-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

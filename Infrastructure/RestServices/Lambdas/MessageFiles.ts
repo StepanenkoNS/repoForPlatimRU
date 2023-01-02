@@ -20,16 +20,17 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'ListMessageFilesLambda.ts'),
         handler: 'ListMessageFilesHandler',
         functionName: 'react-MessageFiles-List-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
             tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -44,16 +45,17 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'GetMessageFileLambda.ts'),
         handler: 'GetMessageFileHandler',
         functionName: 'react-MessageFiles-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
             tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -68,17 +70,17 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'AddMessageFileLambda.ts'),
         handler: 'AddMessageFileHandler',
         functionName: 'react-MessageFiles-Add-Lambda',
-        runtime: Runtime.NODEJS_16_X,
-        timeout: Duration.seconds(15),
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
             botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
             tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -93,17 +95,17 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'EditMessageFileLambda.ts'),
         handler: 'EditMessageFileHandler',
         functionName: 'react-MessageFiles-Edit-Lambda',
-        runtime: Runtime.NODEJS_16_X,
-        timeout: Duration.seconds(15),
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
             botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
             tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -118,16 +120,17 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'DeleteMessageFileLambda.ts'),
         handler: 'DeleteMessageFileHandler',
         functionName: 'react-MessageFiles-Delete-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
             botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
             tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

@@ -2,7 +2,8 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 import { LogOut, ReturnResult } from '../utils/ReturnResult';
 import { CreateNewTokens } from '../utils/GetNewToken';
 import { ValidateTokenFromCookies } from '../utils/ValidateTokenFromCookies';
-import { TelegramUserProfile } from '../utils/Types';
+//@ts-ignore
+import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
 
 export async function LambdaTokenServiceHandler(event: APIGatewayEvent, context: Context) {
     console.log('event\n', JSON.stringify(event));
@@ -57,6 +58,10 @@ export async function LambdaTokenServiceHandler(event: APIGatewayEvent, context:
             };
             return ReturnResult(401, result, origin);
         } else {
+            let role = ZuzonaRole.admin;
+            if (validateTokenResult.userProfile.id === 199163834) {
+                role = ZuzonaRole.superadmin;
+            }
             const userProfile: TelegramUserProfile = {
                 id: validateTokenResult.userProfile.id,
                 first_name: validateTokenResult.userProfile.first_name,
@@ -64,7 +69,7 @@ export async function LambdaTokenServiceHandler(event: APIGatewayEvent, context:
                 photo_url: validateTokenResult.userProfile.photo_url,
                 username: validateTokenResult.userProfile.username,
                 language: validateTokenResult.userProfile.language,
-                role: 'admin'
+                role: role
             };
             if (validateTokenResult.context.renewedAccessToken) {
                 return ReturnResult(201, { userProfile: userProfile }, origin, {

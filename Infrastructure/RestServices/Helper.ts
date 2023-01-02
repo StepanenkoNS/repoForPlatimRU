@@ -21,17 +21,17 @@ export function createAPIandAuthorizer(that: any, certificateARN: string, layers
         entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaJWTAuthorizer.ts'),
         handler: 'LambdaJWTAuthorizerHandler',
         functionName: 'JWTAuthorizer-Lambda',
-        runtime: Runtime.NODEJS_16_X,
-        logRetention: RetentionDays.INFINITE,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
-            BOT_FATHER_TOKEN: StaticEnvironment.EnvironmentVariables.BOT_FATHER_TOKEN,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             accessTokenExpirationMinutes: StaticEnvironment.TokenService.accessTokenExpirationMinutes.toString(),
             refreshTokenExpirationDays: StaticEnvironment.TokenService.refreshTokenExpirationDays.toString(),
-            allowedResources: StaticEnvironment.TokenService.allowedResources
+            allowedResources: StaticEnvironment.TokenService.allowedResources,
+            AllowUsers: StaticEnvironment.TokenService.AllowUsers,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -50,19 +50,19 @@ export function createAPIandAuthorizer(that: any, certificateARN: string, layers
         deploy: true,
         deployOptions: {
             stageName: 'SecureAPI',
-            metricsEnabled: true,
-            loggingLevel: apigateway.MethodLoggingLevel.INFO
+            metricsEnabled: StaticEnvironment.APIGWSettings.cloudWatchMetricsEnabled,
+            loggingLevel: StaticEnvironment.APIGWSettings.loggingLevel
         },
         defaultMethodOptions: {
             authorizationType: apigateway.AuthorizationType.CUSTOM,
             authorizer: authorizer
         },
         defaultCorsPreflightOptions: {
-            allowHeaders: ['*'],
+            allowHeaders: StaticEnvironment.APIGWSettings.allowHeaders,
             allowMethods: ['POST, GET', 'DELETE', 'PUT'],
 
             allowCredentials: true,
-            allowOrigins: StaticEnvironment.WebResources.allowedOrigins // [...StaticEnvironment.WebResources.allowedOrigins],
+            allowOrigins: StaticEnvironment.APIGWSettings.allowOrigins
         }
     });
     const certificate = acm.Certificate.fromCertificateArn(that, 'imported-certificate', certificateARN);

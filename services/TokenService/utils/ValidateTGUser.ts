@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js';
-import { TelegramUser } from 'services/Utils/Types';
+//@ts-ignore
+import { TelegramUser } from '/opt/AuthTypes';
 
 export function CleanupUser(user: any, removeHash: boolean = true): TelegramUser {
     const u = { ...user };

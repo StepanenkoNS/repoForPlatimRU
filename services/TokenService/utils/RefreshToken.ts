@@ -1,5 +1,6 @@
 import * as jwt from 'jsonwebtoken';
-import { TelegramUserProfile } from './Types';
+//@ts-ignore
+import { TelegramUserProfile } from '/opt/AuthTypes';
 //@ts-ignore
 import BotManager from '/opt/BotManager';
 

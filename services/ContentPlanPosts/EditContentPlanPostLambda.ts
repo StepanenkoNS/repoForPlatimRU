@@ -1,6 +1,6 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseUpdateItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 
 import { SetOrigin } from '../Utils/OriginHelper';
@@ -20,14 +20,9 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
         { key: 'contentPlanId', datatype: 'string' },
-        { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
-        { key: 'paid', datatype: 'boolean' },
-        { key: 'price', datatype: 'number(positive)' },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
         { key: 'messages', datatype: 'array' },
-        { key: 'previewMessages', datatype: 'array' },
-        { key: 'name', datatype: 'string' },
         { key: 'interaction', datatype: 'object', objectKeys: [] },
         { key: 'draft', datatype: 'boolean' }
     ]);
@@ -40,13 +35,12 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
         contentPlanPost: {
             id: bodyObject.id,
             contentPlanId: bodyObject.contentPlanId,
-            orderN: bodyObject.orderN,
+
             name: bodyObject.name,
-            paid: bodyObject.paid,
-            price: bodyObject.price,
+
             trigger: bodyObject.trigger,
             messages: bodyObject.messages,
-            previewMessages: bodyObject.previewMessages,
+
             interaction: bodyObject.interaction,
             draft: bodyObject.draft
         }

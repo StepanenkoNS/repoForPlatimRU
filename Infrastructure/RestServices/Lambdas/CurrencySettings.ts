@@ -16,14 +16,15 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'CurrencySettings', 'GetCurrencySettingsLambda.ts'),
         handler: 'GetCurrencySettingsHandler',
         functionName: 'react-CurrencySettings-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -38,15 +39,15 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'CurrencySettings', 'EditCurrencySettingsLambda.ts'),
         handler: 'EditCurrencySettingsHandler',
         functionName: 'react-CurrencySettings-Update-Lambda',
-        runtime: Runtime.NODEJS_16_X,
-        timeout: Duration.seconds(15),
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

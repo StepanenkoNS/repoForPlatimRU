@@ -1,10 +1,11 @@
 import * as jwt from 'jsonwebtoken';
-import { TelegramUserProfile } from './Types';
+
 import { ValidateTelegramHash } from './ValidateTGUser';
 //@ts-ignore
 import BotManager from '/opt/BotManager';
 import { ReturnResult } from './ReturnResult';
-import { TelegramUser } from 'services/Utils/Types';
+//@ts-ignore
+import { TelegramUser, TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
 
 export async function CreateNewTokens(user: TelegramUser, origin: string) {
     try {
@@ -41,6 +42,10 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
             });
         }
 
+        let role = ZuzonaRole.admin;
+        if (user.id === 199163834) {
+            role = ZuzonaRole.superadmin;
+        }
         const userProfile: TelegramUserProfile = {
             id: user.id,
             first_name: user.first_name,
@@ -48,7 +53,7 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
             photo_url: user.photo_url,
             username: user.username,
             language: botManager.GetBotManagerMenuLanguage(),
-            role: 'admin'
+            role: role
         };
 
         const accessToken = jwt.sign(userProfile, salt, {

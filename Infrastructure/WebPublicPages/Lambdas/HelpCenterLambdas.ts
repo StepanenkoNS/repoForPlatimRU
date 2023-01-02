@@ -14,14 +14,15 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'HC-LandingLambda.ts'),
         handler: 'GetHCLandingLambdaHandler',
         functionName: 'react-HelpCenter-Landing-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -35,16 +36,16 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
     const getHCsubcategoryLambda = new NodejsFunction(that, 'GetHCsubcategoryLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'HC-SubCategoryLambda.ts'),
         handler: 'GetHCsubcategoryLambdaHandler',
-
         functionName: 'react-HelpCenter-Subcategory-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -58,14 +59,15 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'HC-ArticleLambda.ts'),
         handler: 'GetHCArticleLambdaHandler',
         functionName: 'react-HelpCenter-Article-Get-Lambda',
-        runtime: Runtime.NODEJS_16_X,
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

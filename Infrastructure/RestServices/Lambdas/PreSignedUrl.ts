@@ -17,16 +17,16 @@ export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigatewa
         entry: join(__dirname, '..', '..', '..', 'services', 'Files', 'GetPreSignedUrlLambda.ts'),
         handler: 'GetPreSignedUrlHandler',
         functionName: 'react-GetPresignedUrl-Lambda',
-        runtime: Runtime.NODEJS_16_X,
-        timeout: Duration.seconds(3),
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
-            NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-            botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName
+            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

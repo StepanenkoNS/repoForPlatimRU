@@ -13,7 +13,6 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
-import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 
 export class TokenServiceStack extends Stack {
     constructor(
@@ -42,18 +41,17 @@ export class TokenServiceStack extends Stack {
             entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaTokenService.ts'),
             handler: 'LambdaTokenServiceHandler',
             functionName: this.stackName + '-Lambda',
-            runtime: Runtime.NODEJS_16_X,
+            runtime: StaticEnvironment.LambdaSettinds.runtime,
             logRetention: StaticEnvironment.LambdaSettinds.logRetention,
             environment: {
                 botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
                 region: StaticEnvironment.GlobalAWSEnvironment.region,
-                NODE_ENV: StaticEnvironment.EnvironmentVariables.NODE_ENV,
-                botFatherId: StaticEnvironment.EnvironmentVariables.botFatherId,
-                BOT_FATHER_TOKEN: StaticEnvironment.EnvironmentVariables.BOT_FATHER_TOKEN,
                 accessTokenExpirationMinutes: StaticEnvironment.TokenService.accessTokenExpirationMinutes.toString(),
                 refreshTokenExpirationDays: StaticEnvironment.TokenService.refreshTokenExpirationDays.toString(),
                 allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-                cookieDomain: StaticEnvironment.WebResources.mainDomainName
+                AllowUsers: StaticEnvironment.TokenService.AllowUsers,
+                cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+                ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
             },
             bundling: {
                 externalModules: ['aws-sdk', '/opt/*']
@@ -69,32 +67,32 @@ export class TokenServiceStack extends Stack {
             deploy: true,
             deployOptions: {
                 stageName: 'GetToken',
-                metricsEnabled: true,
-                loggingLevel: apigateway.MethodLoggingLevel.INFO
+                metricsEnabled: StaticEnvironment.APIGWSettings.cloudWatchMetricsEnabled,
+                loggingLevel: StaticEnvironment.APIGWSettings.loggingLevel
             },
             // defaultMethodOptions: {
             //     authorizationType: apigateway.AuthorizationType.CUSTOM,
             //     authorizer: authorizer
             // },
             defaultCorsPreflightOptions: {
-                allowHeaders: [
-                    '*'
-                    // 'Content-Type',
-                    // 'X-Amz-Date',
-                    // 'Authorization',
-                    // 'X-Api-Key',
-                    // 'X-Requested-With',
-                    // 'X-Requested-With, X-HTTP-Method-Override',
-                    // 'Access-Control-Allow-Origin',
-                    // 'Access-Control-Allow-Method',
-                    // 'Access-Control-Allow-Headers',
-                    // 'Access-Control-Allow-Credentials',
-                    // 'Origin'
-                ],
+                allowHeaders: StaticEnvironment.APIGWSettings.allowHeaders,
+                //'*'
+                // 'Content-Type',
+                // 'X-Amz-Date',
+                // 'Authorization',
+                // 'X-Api-Key',
+                // 'X-Requested-With',
+                // 'X-Requested-With, X-HTTP-Method-Override',
+                // 'Access-Control-Allow-Origin',
+                // 'Access-Control-Allow-Method',
+                // 'Access-Control-Allow-Headers',
+                // 'Access-Control-Allow-Credentials',
+                // 'Origin'
+
                 allowMethods: ['POST'],
 
                 allowCredentials: true,
-                allowOrigins: StaticEnvironment.WebResources.allowedOrigins
+                allowOrigins: StaticEnvironment.APIGWSettings.allowOrigins
             }
         });
 

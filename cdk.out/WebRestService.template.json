@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "1b0854cbc60ad7d92d30a3eb0061a9f5bd3a81fc01e22d1630a97c9f17337e92.zip"
+     "S3Key": "060a642d7c3cc517092e54000b6bb755a1285f3849cea20f71bfd299a9e216dc.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -103,25 +103,29 @@
     "Environment": {
      "Variables": {
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
-      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
       "botsTable": "bots",
       "accessTokenExpirationMinutes": "60",
       "refreshTokenExpirationDays": "365",
       "allowedResources": "arn:aws:execute-api:us-east-1:993738567487:*",
+      "AllowUsers": "199163834",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "JWTAuthorizer-Lambda",
     "Handler": "index.LambdaJWTAuthorizerHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "LambdaJWTAuthorizerServiceRoleDefaultPolicy2E3FC487",
@@ -129,7 +133,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/Resource",
-    "aws:asset:path": "asset.1b0854cbc60ad7d92d30a3eb0061a9f5bd3a81fc01e22d1630a97c9f17337e92",
+    "aws:asset:path": "asset.060a642d7c3cc517092e54000b6bb755a1285f3849cea20f71bfd299a9e216dc",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -153,7 +157,8 @@
        }
       ]
      ]
-    }
+    },
+    "RetentionInDays": 1
    },
    "Metadata": {
     "aws:cdk:path": "WebRestService/LambdaJWTAuthorizer/LogRetention/Resource"
@@ -535,7 +540,7 @@
      {
       "DataTraceEnabled": false,
       "HttpMethod": "*",
-      "LoggingLevel": "INFO",
+      "LoggingLevel": "ERROR",
       "MetricsEnabled": true,
       "ResourcePath": "/*"
      }
@@ -6316,22 +6321,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-Bots-List-Lambda",
     "Handler": "index.ListMyBotsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "ListBotsLambdaServiceRoleDefaultPolicyCDDF57E4",
@@ -6342,6 +6351,32 @@
     "aws:asset:path": "asset.9bee861f3aad76c112b2cd9b674616a7922a38c344954efe00a92f69e0612cb5",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "ListBotsLambdaLogRetention8177B538": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListBotsLambdaC9B0E149"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListBotsLambda/LogRetention/Resource"
    }
   },
   "GetCurrencySettingsLambdaServiceRole33B26775": {
@@ -6453,22 +6488,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-CurrencySettings-Get-Lambda",
     "Handler": "index.GetCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "GetCurrencySettingsLambdaServiceRoleDefaultPolicy476605B3",
@@ -6479,6 +6518,32 @@
     "aws:asset:path": "asset.2546082db141da65d4f84929fee6619f953703194787e53619f3f047e2a48112",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetCurrencySettingsLambdaLogRetentionDC470B72": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetCurrencySettingsLambdaCBDD42E1"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetCurrencySettingsLambda/LogRetention/Resource"
    }
   },
   "EditCurrencySettingsLambdaServiceRole9008F6CB": {
@@ -6578,7 +6643,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "ee87dd897ceb610f2133415850fee85bcd57d879d538b0fcba5efc75b4a9be89.zip"
+     "S3Key": "eae2d9485e972e1d4889a07a3bcb649481c236ec01c096dccceb0450668eee0e.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -6590,23 +6655,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-CurrencySettings-Update-Lambda",
     "Handler": "index.EditCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 3
    },
    "DependsOn": [
     "EditCurrencySettingsLambdaServiceRoleDefaultPolicyF1B14478",
@@ -6614,9 +6682,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditCurrencySettingsLambda/Resource",
-    "aws:asset:path": "asset.ee87dd897ceb610f2133415850fee85bcd57d879d538b0fcba5efc75b4a9be89",
+    "aws:asset:path": "asset.eae2d9485e972e1d4889a07a3bcb649481c236ec01c096dccceb0450668eee0e",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "EditCurrencySettingsLambdaLogRetention4AF2B4EE": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditCurrencySettingsLambda8DC44B43"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditCurrencySettingsLambda/LogRetention/Resource"
    }
   },
   "ListPaymentOptionsLambdaServiceRoleD3A97E58": {
@@ -6723,22 +6817,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-List-Lambda",
     "Handler": "index.ListPaymentOptionsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "ListPaymentOptionsLambdaServiceRoleDefaultPolicy7EDC2048",
@@ -6749,6 +6847,32 @@
     "aws:asset:path": "asset.dcfdf7c8e3dfbe25390c9a9b7cd32af54f3b92e571d71d2defff17cf8f19425b",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "ListPaymentOptionsLambdaLogRetention4309571E": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListPaymentOptionsLambdaACAA5262"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListPaymentOptionsLambda/LogRetention/Resource"
    }
   },
   "GetPaymentOptionLambdaServiceRoleDC5B8DC2": {
@@ -6843,7 +6967,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "189b9fe3ac3cc6a76a0dd6bfe8b1cdfc76bc2d9b525e9821c269b0353a351f0a.zip"
+     "S3Key": "f0e348a45950c5000bc5f1a8ae4d629408f0be3db117dab48c473445ac8be023.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -6855,22 +6979,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Get-Lambda",
     "Handler": "index.GetPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "GetPaymentOptionLambdaServiceRoleDefaultPolicyBDFF2304",
@@ -6878,9 +7006,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetPaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.189b9fe3ac3cc6a76a0dd6bfe8b1cdfc76bc2d9b525e9821c269b0353a351f0a",
+    "aws:asset:path": "asset.f0e348a45950c5000bc5f1a8ae4d629408f0be3db117dab48c473445ac8be023",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetPaymentOptionLambdaLogRetentionEA3D15EA": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetPaymentOptionLambdaD6DBF61A"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetPaymentOptionLambda/LogRetention/Resource"
    }
   },
   "AddPaymentOptionLambdaServiceRole15897195": {
@@ -6980,7 +7134,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "f49922dbb0fafa26ecfe1aee145c372dba2adcf3fdcf449af0bdda8fc4b977d9.zip"
+     "S3Key": "1b9d20211477a83142d006ce78d8c1dfd35481ef7e376f69b98a5290f7a3f264.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -6992,22 +7146,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Add-Lambda",
     "Handler": "index.AddPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "AddPaymentOptionLambdaServiceRoleDefaultPolicy2C58588A",
@@ -7015,9 +7173,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddPaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.f49922dbb0fafa26ecfe1aee145c372dba2adcf3fdcf449af0bdda8fc4b977d9",
+    "aws:asset:path": "asset.1b9d20211477a83142d006ce78d8c1dfd35481ef7e376f69b98a5290f7a3f264",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "AddPaymentOptionLambdaLogRetention47D7EEEB": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddPaymentOptionLambdaBFF77B7F"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddPaymentOptionLambda/LogRetention/Resource"
    }
   },
   "EditPaymentOptionLambdaServiceRole73BB83E4": {
@@ -7117,7 +7301,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "d3b7e97515ae4c4704d7418180eeee95d6f46cf1838d8de20c38b664b609cc89.zip"
+     "S3Key": "8c8424c5cdd81805e967d5a115f2bec9d0f7d84a308d7c5a54fd44a38da85a4a.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -7129,23 +7313,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Edit-Lambda",
     "Handler": "index.EditPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 3
    },
    "DependsOn": [
     "EditPaymentOptionLambdaServiceRoleDefaultPolicyD994B97C",
@@ -7153,9 +7340,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditPaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.d3b7e97515ae4c4704d7418180eeee95d6f46cf1838d8de20c38b664b609cc89",
+    "aws:asset:path": "asset.8c8424c5cdd81805e967d5a115f2bec9d0f7d84a308d7c5a54fd44a38da85a4a",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "EditPaymentOptionLambdaLogRetentionCC8461A5": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditPaymentOptionLambda398037A2"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditPaymentOptionLambda/LogRetention/Resource"
    }
   },
   "DeletePaymentOptionLambdaServiceRoleB4EBD3CA": {
@@ -7255,7 +7468,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "319abedaae0cdf4389bb730fa66633b0a6344bad5190b7ab5b3a6fc339de37b9.zip"
+     "S3Key": "0f80684c7c389b8828d4e126ff681d350b11ee603b8c64f38ba2b2287d806298.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -7267,22 +7480,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Delete-Lambda",
     "Handler": "index.DeletePaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "DeletePaymentOptionLambdaServiceRoleDefaultPolicy0FE9A027",
@@ -7290,9 +7507,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeletePaymentOptionLambda/Resource",
-    "aws:asset:path": "asset.319abedaae0cdf4389bb730fa66633b0a6344bad5190b7ab5b3a6fc339de37b9",
+    "aws:asset:path": "asset.0f80684c7c389b8828d4e126ff681d350b11ee603b8c64f38ba2b2287d806298",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "DeletePaymentOptionLambdaLogRetentionDA6A51E6": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeletePaymentOptionLambdaEC66351C"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeletePaymentOptionLambda/LogRetention/Resource"
    }
   },
   "ListSubscriptionPlansLambdaServiceRole3C8B5C31": {
@@ -7399,22 +7642,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-List-Lambda",
     "Handler": "index.ListSubscriptionPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "ListSubscriptionPlansLambdaServiceRoleDefaultPolicyAA0E051A",
@@ -7425,6 +7672,32 @@
     "aws:asset:path": "asset.b0bbf3f8ea1594b71396e46fa3f2b5c5700c6524f171fe6d3b3d3b9d53d31249",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "ListSubscriptionPlansLambdaLogRetentionF4F46B3F": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListSubscriptionPlansLambdaC114B87D"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListSubscriptionPlansLambda/LogRetention/Resource"
    }
   },
   "GetSubscriptionPlanLambdaServiceRoleEE9C6B15": {
@@ -7519,7 +7792,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "3b991c52bcbeb9d12c41bb0286585b546fb4024f805d80e686a46c221dcff70c.zip"
+     "S3Key": "da44670b797a371991a63c3fee1642ab0feeec286106467c59baa36e89237dbb.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -7531,22 +7804,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Get-Lambda",
     "Handler": "index.GetSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "GetSubscriptionPlanLambdaServiceRoleDefaultPolicy03037E09",
@@ -7554,9 +7831,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetSubscriptionPlanLambda/Resource",
-    "aws:asset:path": "asset.3b991c52bcbeb9d12c41bb0286585b546fb4024f805d80e686a46c221dcff70c",
+    "aws:asset:path": "asset.da44670b797a371991a63c3fee1642ab0feeec286106467c59baa36e89237dbb",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetSubscriptionPlanLambdaLogRetention849A0D0E": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetSubscriptionPlanLambda38ECFF18"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetSubscriptionPlanLambda/LogRetention/Resource"
    }
   },
   "AddSubscriptionPlanLambdaServiceRole8024442A": {
@@ -7651,7 +7954,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "d7d194e8a1312c783fbbb468e424a37f5bd64ea288e63d6ce6f6f39dc5f1a17f.zip"
+     "S3Key": "f94ac94a02567a9e53840f7566ff38afcc9a6695603949d25c92e53e02b71fec.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -7663,22 +7966,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Add-Lambda",
     "Handler": "index.AddSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "AddSubscriptionPlanLambdaServiceRoleDefaultPolicy97E5D84B",
@@ -7686,9 +7993,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddSubscriptionPlanLambda/Resource",
-    "aws:asset:path": "asset.d7d194e8a1312c783fbbb468e424a37f5bd64ea288e63d6ce6f6f39dc5f1a17f",
+    "aws:asset:path": "asset.f94ac94a02567a9e53840f7566ff38afcc9a6695603949d25c92e53e02b71fec",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "AddSubscriptionPlanLambdaLogRetentionA51550CC": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddSubscriptionPlanLambdaCAFEE16F"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddSubscriptionPlanLambda/LogRetention/Resource"
    }
   },
   "EditSubscriptionPlanLambdaServiceRoleEBD8353A": {
@@ -7783,7 +8116,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "862832c7ffb6b59379034ec92fcec85234d8cf70f73905d2c62902d7c9d823d5.zip"
+     "S3Key": "25c3f21ef5a762c7e57227fde56f44cd4bc0c72d75e6187db6747050d4e2db72.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -7795,23 +8128,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Edit-Lambda",
     "Handler": "index.EditSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 3
    },
    "DependsOn": [
     "EditSubscriptionPlanLambdaServiceRoleDefaultPolicy0E8B20B2",
@@ -7819,9 +8155,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditSubscriptionPlanLambda/Resource",
-    "aws:asset:path": "asset.862832c7ffb6b59379034ec92fcec85234d8cf70f73905d2c62902d7c9d823d5",
+    "aws:asset:path": "asset.25c3f21ef5a762c7e57227fde56f44cd4bc0c72d75e6187db6747050d4e2db72",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "EditSubscriptionPlanLambdaLogRetention2B6A2C02": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditSubscriptionPlanLambdaDEE52D77"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditSubscriptionPlanLambda/LogRetention/Resource"
    }
   },
   "DeleteSubscriptionPlanLambdaServiceRoleAD4731BB": {
@@ -7916,7 +8278,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "86146cb22b4e81a116e0946b523deb59ea7f4c483e217ab03e88557bbef9e038.zip"
+     "S3Key": "97d2fcb9bf9183bf16b51f8259c7321c304d1a9dcab6d870f0ce791f01495ec8.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -7928,22 +8290,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Delete-Lambda",
     "Handler": "index.DeleteSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "DeleteSubscriptionPlanLambdaServiceRoleDefaultPolicy6880D94D",
@@ -7951,9 +8317,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteSubscriptionPlanLambda/Resource",
-    "aws:asset:path": "asset.86146cb22b4e81a116e0946b523deb59ea7f4c483e217ab03e88557bbef9e038",
+    "aws:asset:path": "asset.97d2fcb9bf9183bf16b51f8259c7321c304d1a9dcab6d870f0ce791f01495ec8",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "DeleteSubscriptionPlanLambdaLogRetentionA0373E84": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeleteSubscriptionPlanLambda97210FAF"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteSubscriptionPlanLambda/LogRetention/Resource"
    }
   },
   "ListContentPlansLambdaServiceRole367A02FD": {
@@ -8060,22 +8452,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-List-Lambda",
     "Handler": "index.ListContentPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "ListContentPlansLambdaServiceRoleDefaultPolicy81EF1248",
@@ -8086,6 +8482,32 @@
     "aws:asset:path": "asset.dd07b06a3358efb8ac9a87353c748f4e11e8015a104d6276efd88137fb6bf5f8",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "ListContentPlansLambdaLogRetention3FA2F81F": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListContentPlansLambda95AC08D7"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListContentPlansLambda/LogRetention/Resource"
    }
   },
   "GetContentPlanLambdaServiceRole2D75CA0E": {
@@ -8180,7 +8602,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "10202bc1d0a4a15250071d8c99e31f3bac8f5d7ba6bbc10229111fbca8eeb36d.zip"
+     "S3Key": "652667f095bfcebeb6228ded83577797e4af02b25716249280ce2caa52c25d95.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8192,22 +8614,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Get-Lambda",
     "Handler": "index.GetContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "GetContentPlanLambdaServiceRoleDefaultPolicy0F524B7A",
@@ -8215,9 +8641,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetContentPlanLambda/Resource",
-    "aws:asset:path": "asset.10202bc1d0a4a15250071d8c99e31f3bac8f5d7ba6bbc10229111fbca8eeb36d",
+    "aws:asset:path": "asset.652667f095bfcebeb6228ded83577797e4af02b25716249280ce2caa52c25d95",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetContentPlanLambdaLogRetentionFC90F014": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetContentPlanLambda45DE78B9"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetContentPlanLambda/LogRetention/Resource"
    }
   },
   "AddContentPlanLambdaServiceRole69887C26": {
@@ -8312,7 +8764,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "31eec3617073c58a5d49ad9194ef72e460903d369766fda5cd55b486318363b0.zip"
+     "S3Key": "150bb5f17da694d472a898eea96f8f2e0a2d2da0742b72d44a0e8c992b9c8479.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8324,22 +8776,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Add-Lambda",
     "Handler": "index.AddContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "AddContentPlanLambdaServiceRoleDefaultPolicy516C47E9",
@@ -8347,9 +8803,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddContentPlanLambda/Resource",
-    "aws:asset:path": "asset.31eec3617073c58a5d49ad9194ef72e460903d369766fda5cd55b486318363b0",
+    "aws:asset:path": "asset.150bb5f17da694d472a898eea96f8f2e0a2d2da0742b72d44a0e8c992b9c8479",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "AddContentPlanLambdaLogRetention5D7B6F3D": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddContentPlanLambda2A50CDCC"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddContentPlanLambda/LogRetention/Resource"
    }
   },
   "EditContentPlanLambdaServiceRole25A19D33": {
@@ -8444,7 +8926,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "38f17f89cc32d0f99affde551935ea5a0db44803ceae2953b84ef4ea023b2f3f.zip"
+     "S3Key": "13e503bfe7a868f87a292f7a4c0101a318966f4e3709c9c62cacd75213ae08e8.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8456,23 +8938,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Edit-Lambda",
     "Handler": "index.EditContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 3
    },
    "DependsOn": [
     "EditContentPlanLambdaServiceRoleDefaultPolicy1AFD06B3",
@@ -8480,9 +8965,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditContentPlanLambda/Resource",
-    "aws:asset:path": "asset.38f17f89cc32d0f99affde551935ea5a0db44803ceae2953b84ef4ea023b2f3f",
+    "aws:asset:path": "asset.13e503bfe7a868f87a292f7a4c0101a318966f4e3709c9c62cacd75213ae08e8",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "EditContentPlanLambdaLogRetention6366481E": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditContentPlanLambdaA1D9BCED"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditContentPlanLambda/LogRetention/Resource"
    }
   },
   "DeleteContentPlanLambdaServiceRoleAD676078": {
@@ -8577,7 +9088,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "c58143c6250f321c011b5bf578e071e4b07f8cf80da2b8a6047059e49720206f.zip"
+     "S3Key": "5c30a01e83e3c2bf4419cafb4b502189789fb73b704330f431bea18b44a3d364.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8589,22 +9100,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Delete-Lambda",
     "Handler": "index.DeleteContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "DeleteContentPlanLambdaServiceRoleDefaultPolicyFB90CDB0",
@@ -8612,9 +9127,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteContentPlanLambda/Resource",
-    "aws:asset:path": "asset.c58143c6250f321c011b5bf578e071e4b07f8cf80da2b8a6047059e49720206f",
+    "aws:asset:path": "asset.5c30a01e83e3c2bf4419cafb4b502189789fb73b704330f431bea18b44a3d364",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "DeleteContentPlanLambdaLogRetentionCFFBC149": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeleteContentPlanLambda37ED3EAE"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteContentPlanLambda/LogRetention/Resource"
    }
   },
   "ListContentPlanPostsLambdaServiceRole979D40F7": {
@@ -8709,7 +9250,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "d782047bbc6c416347b74a48cb953d4c117fe7d0aa829aef7173bf49adc23028.zip"
+     "S3Key": "a68f81199471feea625f01bf03a659ade5c4bd030f9747856f8f36a4a2c1b8b5.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8721,22 +9262,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-List-Lambda",
     "Handler": "index.ListContentPlanPostsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "ListContentPlanPostsLambdaServiceRoleDefaultPolicyBC01FCAC",
@@ -8744,9 +9289,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/ListContentPlanPostsLambda/Resource",
-    "aws:asset:path": "asset.d782047bbc6c416347b74a48cb953d4c117fe7d0aa829aef7173bf49adc23028",
+    "aws:asset:path": "asset.a68f81199471feea625f01bf03a659ade5c4bd030f9747856f8f36a4a2c1b8b5",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "ListContentPlanPostsLambdaLogRetentionF19C66EF": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListContentPlanPostsLambda80CD292F"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListContentPlanPostsLambda/LogRetention/Resource"
    }
   },
   "GetContentPlanPostLambdaServiceRoleC014D555": {
@@ -8841,7 +9412,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "e6aba035bee949f52c92bf7e6e00d37f56c4bd0d321f2e7e17ccd0137602de78.zip"
+     "S3Key": "fd5e5ad550ace3091d8c4cf4899b9addc32638154e5792c83fd8dbdecde0297e.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8853,22 +9424,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Get-Lambda",
     "Handler": "index.GetContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "GetContentPlanPostLambdaServiceRoleDefaultPolicyE38B6BCA",
@@ -8876,9 +9451,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetContentPlanPostLambda/Resource",
-    "aws:asset:path": "asset.e6aba035bee949f52c92bf7e6e00d37f56c4bd0d321f2e7e17ccd0137602de78",
+    "aws:asset:path": "asset.fd5e5ad550ace3091d8c4cf4899b9addc32638154e5792c83fd8dbdecde0297e",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetContentPlanPostLambdaLogRetentionA24915CE": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetContentPlanPostLambdaA8AFC433"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetContentPlanPostLambda/LogRetention/Resource"
    }
   },
   "AddContentPlanPostLambdaServiceRoleC11A91BA": {
@@ -8973,7 +9574,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "01286a1fa48378a6f2f2b7cadd34a88cb7e3cadfdff3755d813b3a646fa0c006.zip"
+     "S3Key": "a7db44dba6783aecfe3f36e149aa25833d4c872045975d5a7fb78d95a443db53.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8985,22 +9586,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Add-Lambda",
     "Handler": "index.AddContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "AddContentPlanPostLambdaServiceRoleDefaultPolicy98C48D3B",
@@ -9008,9 +9613,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddContentPlanPostLambda/Resource",
-    "aws:asset:path": "asset.01286a1fa48378a6f2f2b7cadd34a88cb7e3cadfdff3755d813b3a646fa0c006",
+    "aws:asset:path": "asset.a7db44dba6783aecfe3f36e149aa25833d4c872045975d5a7fb78d95a443db53",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "AddContentPlanPostLambdaLogRetentionA8217BEA": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddContentPlanPostLambda6114356C"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddContentPlanPostLambda/LogRetention/Resource"
    }
   },
   "EditContentPlanPostLambdaServiceRole9D24083D": {
@@ -9105,7 +9736,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "89fbb5b04da3fc1f8b40b1f8660c7faef135d215454ca863013cd56199f872db.zip"
+     "S3Key": "6853dbd3a6180629c3c0dd0ff6884b6efd0687ff1c70bb6657fac289a69c1d96.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9117,23 +9748,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Edit-Lambda",
     "Handler": "index.EditContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 60
    },
    "DependsOn": [
     "EditContentPlanPostLambdaServiceRoleDefaultPolicyE3B51AAF",
@@ -9141,9 +9775,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditContentPlanPostLambda/Resource",
-    "aws:asset:path": "asset.89fbb5b04da3fc1f8b40b1f8660c7faef135d215454ca863013cd56199f872db",
+    "aws:asset:path": "asset.6853dbd3a6180629c3c0dd0ff6884b6efd0687ff1c70bb6657fac289a69c1d96",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "EditContentPlanPostLambdaLogRetentionCCB7D6F4": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditContentPlanPostLambdaB4D253CE"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditContentPlanPostLambda/LogRetention/Resource"
    }
   },
   "DeleteContentPlanPostLambdaServiceRole889FFD78": {
@@ -9238,7 +9898,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "dece80e1bc589ba2e57956859657edc057bf41694d395125403aba9680974484.zip"
+     "S3Key": "cd1eb5bf3fd2ac9a5b4cdf4306e04c0a3671ff616dad5ade03567e221ddf50ac.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9250,22 +9910,26 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Delete-Lambda",
     "Handler": "index.DeleteContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "DeleteContentPlanPostLambdaServiceRoleDefaultPolicyE309B8E0",
@@ -9273,9 +9937,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteContentPlanPostLambda/Resource",
-    "aws:asset:path": "asset.dece80e1bc589ba2e57956859657edc057bf41694d395125403aba9680974484",
+    "aws:asset:path": "asset.cd1eb5bf3fd2ac9a5b4cdf4306e04c0a3671ff616dad5ade03567e221ddf50ac",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "DeleteContentPlanPostLambdaLogRetention02ACDCCD": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeleteContentPlanPostLambda9CD840D1"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteContentPlanPostLambda/LogRetention/Resource"
    }
   },
   "ListMessageFilesLambdaServiceRole27E6A9BF": {
@@ -9386,7 +10076,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "26b2e1931d47109e3f2d71e121fc9e64bb489a943144a822d21dc8c617188458.zip"
+     "S3Key": "b5f0bc9831055f5d5ffaca23a8e923053eac1b39eb1243a04c9780873c573040.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9400,22 +10090,26 @@
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-List-Lambda",
     "Handler": "index.ListMessageFilesHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "ListMessageFilesLambdaServiceRoleDefaultPolicyBAFFF0C6",
@@ -9423,9 +10117,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/ListMessageFilesLambda/Resource",
-    "aws:asset:path": "asset.26b2e1931d47109e3f2d71e121fc9e64bb489a943144a822d21dc8c617188458",
+    "aws:asset:path": "asset.b5f0bc9831055f5d5ffaca23a8e923053eac1b39eb1243a04c9780873c573040",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "ListMessageFilesLambdaLogRetentionFAAC6125": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListMessageFilesLambdaA8A6DBEA"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListMessageFilesLambda/LogRetention/Resource"
    }
   },
   "GetMessageFileLambdaServiceRole69400E26": {
@@ -9536,7 +10256,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "9d64e8ccb639d7dcc671f858c9cff299ab314c43f2e976282faab2ff7092a666.zip"
+     "S3Key": "439143c8cbfcd1ba5abb2f3f83005a9b9e64cc56bc0a9c4904cee0b31e8b54a2.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9550,22 +10270,26 @@
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Get-Lambda",
     "Handler": "index.GetMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
    },
    "DependsOn": [
     "GetMessageFileLambdaServiceRoleDefaultPolicy8F726EE9",
@@ -9573,9 +10297,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetMessageFileLambda/Resource",
-    "aws:asset:path": "asset.9d64e8ccb639d7dcc671f858c9cff299ab314c43f2e976282faab2ff7092a666",
+    "aws:asset:path": "asset.439143c8cbfcd1ba5abb2f3f83005a9b9e64cc56bc0a9c4904cee0b31e8b54a2",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetMessageFileLambdaLogRetention135A8CFD": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetMessageFileLambdaDF57EDB2"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetMessageFileLambda/LogRetention/Resource"
    }
   },
   "AddMessageFileLambdaServiceRoleBE2D7298": {
@@ -9686,7 +10436,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "a20e4b06a9b66782c24e482b0a229c198d74d73ef70e4dd0cc231df2b736f7ff.zip"
+     "S3Key": "dac028bc102e379dac1a6bb6c58c77bf6c653ec5e0a0a9e23ca189d082baf844.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9700,23 +10450,26 @@
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Add-Lambda",
     "Handler": "index.AddMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 60
    },
    "DependsOn": [
     "AddMessageFileLambdaServiceRoleDefaultPolicyE45FE77C",
@@ -9724,9 +10477,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddMessageFileLambda/Resource",
-    "aws:asset:path": "asset.a20e4b06a9b66782c24e482b0a229c198d74d73ef70e4dd0cc231df2b736f7ff",
+    "aws:asset:path": "asset.dac028bc102e379dac1a6bb6c58c77bf6c653ec5e0a0a9e23ca189d082baf844",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "AddMessageFileLambdaLogRetentionCEFE6D0D": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddMessageFileLambda2C734180"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddMessageFileLambda/LogRetention/Resource"
    }
   },
   "EditMessageFileLambdaServiceRoleD51D4A28": {
@@ -9837,7 +10616,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "52165d259055e9fa2d779be7611b559fcf0962a8fdbdc391fc7a61b25a67b221.zip"
+     "S3Key": "0508bd57186d9fa743057558463328adb8d61241782a41513b02ce3d264bdc8f.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9851,23 +10630,26 @@
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Edit-Lambda",
     "Handler": "index.EditMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
-    "Timeout": 15
+    "Timeout": 60
    },
    "DependsOn": [
     "EditMessageFileLambdaServiceRoleDefaultPolicy707E1526",
@@ -9875,9 +10657,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditMessageFileLambda/Resource",
-    "aws:asset:path": "asset.52165d259055e9fa2d779be7611b559fcf0962a8fdbdc391fc7a61b25a67b221",
+    "aws:asset:path": "asset.0508bd57186d9fa743057558463328adb8d61241782a41513b02ce3d264bdc8f",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "EditMessageFileLambdaLogRetention5FC7160D": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditMessageFileLambda395F8673"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditMessageFileLambda/LogRetention/Resource"
    }
   },
   "DeleteMessageFileLambdaServiceRole72930807": {
@@ -9988,7 +10796,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "c1f3d483ef4b80875c825374c4a6d19f855d2f9f277ab118543dccd60b024b7e.zip"
+     "S3Key": "11c2260b621995b4c89a87bda45287ef0ecf9ff2c6a4cb06911732187e30cf6a.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -10002,22 +10810,26 @@
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Delete-Lambda",
     "Handler": "index.DeleteMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
-    "Runtime": "nodejs16.x"
+    "Runtime": "nodejs16.x",
+    "Timeout": 60
    },
    "DependsOn": [
     "DeleteMessageFileLambdaServiceRoleDefaultPolicy062F48D7",
@@ -10025,9 +10837,35 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteMessageFileLambda/Resource",
-    "aws:asset:path": "asset.c1f3d483ef4b80875c825374c4a6d19f855d2f9f277ab118543dccd60b024b7e",
+    "aws:asset:path": "asset.11c2260b621995b4c89a87bda45287ef0ecf9ff2c6a4cb06911732187e30cf6a",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "DeleteMessageFileLambdaLogRetentionC9372832": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeleteMessageFileLambdaE4E88A6A"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteMessageFileLambda/LogRetention/Resource"
    }
   },
   "GetGetPresignedUrlLambdaServiceRole6568E3BF": {
@@ -10069,7 +10907,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "3f20a7edf138ec38e6ad8de3bca1cea2516541927032c9fbe2aa8ed99a1a758f.zip"
+     "S3Key": "5ea0493c181a2b59e13828b85aef1e45ab9634eecce9fdf3b0b8e53e5c9ab6e6.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -10081,20 +10919,23 @@
      "Variables": {
       "botsTable": "bots",
       "region": "us-east-1",
-      "NODE_ENV": "production",
-      "botFatherId": "5645439521",
       "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
       "cookieDomain": "zuzona.com",
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://telegram-api.zuzona.com",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-GetPresignedUrl-Lambda",
     "Handler": "index.GetPreSignedUrlHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:78",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:80",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:35",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:55",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:62",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:10"
     ],
     "Runtime": "nodejs16.x",
@@ -10105,15 +10946,41 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetGetPresignedUrlLambda/Resource",
-    "aws:asset:path": "asset.3f20a7edf138ec38e6ad8de3bca1cea2516541927032c9fbe2aa8ed99a1a758f",
+    "aws:asset:path": "asset.5ea0493c181a2b59e13828b85aef1e45ab9634eecce9fdf3b0b8e53e5c9ab6e6",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
+   }
+  },
+  "GetGetPresignedUrlLambdaLogRetention3BCDA4A2": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetGetPresignedUrlLambda43F48E6F"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetGetPresignedUrlLambda/LogRetention/Resource"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11SwW7CMAz9lt1DpoKQdi1DOwGrinZGIfVKoIm7OAGxqv++JGXQ7eT34vjZfsmUzzOePYkLTWR1mjRqz7utE/LESiD0VgILuV3XCL2vxM5gBUfimxTevJFOoWFKaN6V2AB7/TQpFtgoeY10QD2j2U4QgSOexxA4X3h5ArcQBGyQ510ouKvGYrBaEQXWswZr4iusS3Bg0gXRqlo4uIhr6A5fHsjl3h3Qqm+wsXzEyphsVRrwAXMp0RvHltA2eNVBN56OWLCiTlsN4NeTNPMagnoVkzd0d2xoMuAPCoVFI9I+D7JELZTZCJ1uj1iULoQ7rEXbKlPH7L+jnln0DuYz3uUlSLTV0DCiLbi+Z8nhOPFNYDzYu3etD2t6cqgfiT+0sHhWFdiexffmR3o+Zy88m4aPciSlJjZ4pjTwcog/yOCPZ0QCAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11SwW7CMAz9lt1DJoaQdi1DOw1WFe2MQuqVQBJ3cQJiVf99Scqg28nvxfGz/ZInPn/m0wdxpomsjxOtdrzbeCGPrALC4CSwmNt2WphdLbYWazgQX+fwGqz0Ci1TwvCuQg3s5dPmWKJW8pLogHpGs60gAk+8SCFyvgjyCH4hCNggz7tYcFNNxeCMIoqsZxob4m/YVODB5guiVY3wcBaX2B2+ApAvgt+jU9/gUvmIVSnZqjzgHRZSYrCeLaHVeDFRN52OWLSiyVsN4NeTPPMKonqdkld0c2xoMuAPioWlFnmfO1miEcquhcm3RyxJl8LvV6JtlW1S9t9RzxwGD/MZ74oKJLp6aJjQBnzfs+xwmvgqMB7sPfg2xDUDeTT3xB9aOjypGlzP0nvzAz2epvGXPMWPciClJi56pgzwaog/AM9XfUQCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "WebRestService/CDKMetadata/Default"

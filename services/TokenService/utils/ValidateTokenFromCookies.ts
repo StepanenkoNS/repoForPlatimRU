@@ -1,10 +1,11 @@
 import { RefreshTokenFromCookie } from './RefreshToken';
 import * as jwt from 'jsonwebtoken';
-import { TelegramUserProfile } from './Types';
+
 import { APIGatewayEvent } from 'aws-lambda';
 //@ts-ignore
 import BotManager from '/opt/BotManager';
-import { TelegramUser } from 'services/Utils/Types';
+//@ts-ignore
+import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
 
 function getTokenFromCookes(cookies: string) {
     let accessToken = cookies.split('; ').reduce((r, v) => {
@@ -53,6 +54,7 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
     }
     const tokensFromCookies = getTokenFromCookes(cookie);
     let userProfile: TelegramUserProfile;
+
     let salt: string | undefined = undefined;
     if (tokensFromCookies.refreshToken == undefined || tokensFromCookies.refreshToken == '') {
         console.log('refreshToken not defined');
@@ -190,6 +192,16 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
             context: responseContext,
             userProfile: accessIdentity.userProfile
         };
+        if (process.env.AllowUsers != '') {
+            const usersArray = process.env.AllowUsers?.split(',');
+            console.log('AllowUsers - array', usersArray);
+            if (!usersArray?.includes(userProfile.id.toString())) {
+                return { effect: 'Deny', message: 'Guarded mode: only superadmins allowed' };
+            }
+        } else {
+            return result;
+        }
+
         return result;
     } catch (error) {
         console.log('Error:ValidateTokenFromCookies:Finalization\n', error);

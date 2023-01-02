@@ -3,13 +3,10 @@ import { Construct } from 'constructs';
 import { join } from 'path';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
-import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
 import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
-import * as route53 from 'aws-cdk-lib/aws-route53';
-import * as targets from 'aws-cdk-lib/aws-route53-targets';
-import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+
 import { createAPI, GrantAccessToDDB } from './Helper';
 import { CreateHelpCenterLambdas } from './Lambdas/HelpCenterLambdas';
 import { CreatePublicPagesLambdas } from './Lambdas/PublicPages';

@@ -1,5 +1,6 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
-import { Tokens } from './Types';
+//@ts-ignore
+import { Tokens } from '/opt/AuthTypes';
 
 export function ReturnResult(statusCode: number, data: any, origin: string, tokens?: Tokens) {
     if (!(statusCode in [200, 201])) {

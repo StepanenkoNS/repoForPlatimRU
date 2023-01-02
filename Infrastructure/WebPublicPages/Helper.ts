@@ -19,19 +19,19 @@ export function createAPI(that: any, enableAPICache: boolean, certificateARN: st
             deploy: true,
             deployOptions: {
                 stageName: 'pagesAPI',
-                metricsEnabled: true,
+                metricsEnabled: StaticEnvironment.APIGWSettings.cloudWatchMetricsEnabled,
                 cachingEnabled: true,
                 cacheClusterEnabled: true,
                 cacheDataEncrypted: false,
                 cacheTtl: Duration.minutes(60),
-                loggingLevel: apigateway.MethodLoggingLevel.ERROR
+                loggingLevel: StaticEnvironment.APIGWSettings.loggingLevel
             },
             defaultCorsPreflightOptions: {
-                allowHeaders: ['*'],
+                allowHeaders: StaticEnvironment.APIGWSettings.allowHeaders,
                 allowMethods: ['POST, GET'],
 
                 allowCredentials: true,
-                allowOrigins: StaticEnvironment.WebResources.allowedOrigins
+                allowOrigins: StaticEnvironment.APIGWSettings.allowOrigins
             }
         });
     } else {
@@ -39,11 +39,11 @@ export function createAPI(that: any, enableAPICache: boolean, certificateARN: st
             deploy: true,
             deployOptions: {
                 stageName: 'pagesAPI',
-                metricsEnabled: true,
-                loggingLevel: apigateway.MethodLoggingLevel.ERROR
+                metricsEnabled: StaticEnvironment.APIGWSettings.cloudWatchMetricsEnabled,
+                loggingLevel: StaticEnvironment.APIGWSettings.loggingLevel
             },
             defaultCorsPreflightOptions: {
-                allowHeaders: ['*'],
+                allowHeaders: StaticEnvironment.APIGWSettings.allowHeaders,
                 allowMethods: ['POST, GET'],
 
                 allowCredentials: true,

@@ -1,7 +1,8 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { SetOrigin } from 'services/Utils/OriginHelper';
 import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'services/Utils/Types';
+//@ts-ignore
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import BotManager from '/opt/BotManager';
 
