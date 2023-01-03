@@ -15,6 +15,8 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
         handler: 'GetWebPageContentHandler',
         functionName: 'react-Content-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,

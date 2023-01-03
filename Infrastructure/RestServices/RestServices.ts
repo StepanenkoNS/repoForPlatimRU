@@ -14,6 +14,7 @@ import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
 import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
 import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
 import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
+import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
 
 export class RestServicesStack extends Stack {
     constructor(
@@ -37,6 +38,8 @@ export class RestServicesStack extends Stack {
         CreateBotsLambdas(this, restServicesAPI.root.addResource('Bots'), layers, [botsTable]);
         CreateCurrencySettingsLambdas(this, restServicesAPI.root.addResource('DefaultCurrency'), layers, [botsTable]);
 
+        CreateSubscriptionSettingsLambdas(this, restServicesAPI.root.addResource('ActiveSubscription'), layers, [botsTable]);
+
         CreatePaymentOptionsLambdas(this, restServicesAPI.root.addResource('PaymentOptions'), layers, [botsTable]);
         CreateSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('SubscriptionPlans'), layers, [botsTable]);
         CreateContentPlansLambdas(this, restServicesAPI.root.addResource('ContentPlans'), layers, [botsTable]);
@@ -44,7 +47,7 @@ export class RestServicesStack extends Stack {
 
         CreateMessageFilesLambdas(this, restServicesAPI.root.addResource('MessageFiles'), layers, [botsTable]);
 
-        CreateGetPresignedUrlsLambdas(this, restServicesAPI.root.addResource('PreSignedUrls'), layers, []);
+        CreateGetPresignedUrlsLambdas(this, restServicesAPI.root.addResource('PreSignedUrls'), layers, [botsTable]);
 
         new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {
             value: restServicesAPI.deploymentStage.urlForPath(),

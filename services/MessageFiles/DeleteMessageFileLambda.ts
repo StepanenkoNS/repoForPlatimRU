@@ -6,6 +6,7 @@ import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
+import BotManager from '/opt/BotManager';
 
 export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -24,6 +25,15 @@ export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: 
 
     const result = await ContentConfigurator.DeleteMessageFile(telegramUser.id, bodyObject.id);
 
+    if (result && result.fileSize) {
+        const botManager = await BotManager.GetOrCreate({
+            chatId: telegramUser.id,
+            userName: telegramUser.username
+        });
+        const validateLimits = await botManager.UpdateSubscriptionLimit({
+            resourceConsumption_mediaFiles: -result.fileSize
+        });
+    }
     const deleteResult = ParseDeleteItemResult(result);
 
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);

@@ -6,6 +6,7 @@ import { ValidateIncomingArray, ValidateIncomingEventBody } from 'services/Utils
 import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
+import BotManager from '../../../TGBot-CoreLayers/LambdaLayers/Models/BotManager';
 //@ts-ignore
 
 export async function AddMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -27,20 +28,33 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
-
-    const result = await ContentConfigurator.AddMessageFile({
+    const botManager = await BotManager.GetOrCreate({
         chatId: telegramUser.id,
-        messageFile: {
-            name: bodyObject.name,
-            s3key: bodyObject.s3key,
-            originalFileName: bodyObject.originalFileName,
-            fileSize: bodyObject.fileSize,
-            attachedToPosts: [],
-            tags: bodyObject.tags
-        }
+        userName: telegramUser.username
+    });
+    const validateLimits = await botManager.UpdateSubscriptionLimit({
+        resourceConsumption_mediaFiles: bodyObject.fileSize
     });
 
-    const addResult = ParseInsertItemResult(result);
+    if (validateLimits === true) {
+        const result = await ContentConfigurator.AddMessageFile({
+            chatId: telegramUser.id,
+            messageFile: {
+                name: bodyObject.name,
+                s3key: bodyObject.s3key,
+                originalFileName: bodyObject.originalFileName,
+                fileSize: bodyObject.fileSize,
+                attachedToPosts: [],
+                tags: bodyObject.tags
+            }
+        });
 
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+        const addResult = ParseInsertItemResult(result);
+
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    } else {
+        const addResult = ParseInsertItemResult(undefined);
+
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    }
 }

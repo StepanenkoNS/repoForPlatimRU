@@ -8,6 +8,7 @@ import { SetOrigin } from '../Utils/OriginHelper';
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
 import { EMessageFileType } from '/opt/ContentTypes';
+import BotManager from '/opt/BotManager';
 
 export async function EditMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -31,10 +32,21 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
+    //если указан s3Key - то будем менять старый файл
     const result = await ContentConfigurator.UpdateMessageFile({
         chatId: telegramUser.id,
         messageFile: { id: bodyObject.id, name: bodyObject.name, s3key: bodyObject.s3key, originalFileName: bodyObject.originalFileName, fileSize: bodyObject.fileSize, tags: bodyObject.tags }
     });
+
+    if (result !== undefined && result !== false) {
+        const botManager = await BotManager.GetOrCreate({
+            chatId: telegramUser.id,
+            userName: telegramUser.username
+        });
+        const validateLimits = await botManager.UpdateSubscriptionLimit({
+            resourceConsumption_mediaFiles: result.newFileSize - result.oldFileSize
+        });
+    }
 
     const updateResult = ParseUpdateItemResult(result);
 

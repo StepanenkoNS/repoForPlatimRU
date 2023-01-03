@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c371a71b63398dcb8215fcb2a8f2c8bbf4fb30877d28299825786fcde921f2ee.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e27d59a1323148ce4e25cd5708f49a09a5fd12e51def82acf8a4a3597460e1d8.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/40262f70a6c1e699f36d32f84d5f58e0a8a1358bca87b2eddd33b793bd4da954.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/fc824dfcef61eafc068a45e7e495245f96ff2d45afa9465e2da46942e41ea6a7.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -383,7 +383,7 @@
         "/WebRestService/WebRestService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestServiceGWAPIDeploymentE0A236721e60297a28209aa25faaec06d57b329d"
+            "data": "WebRestServiceGWAPIDeploymentE0A23672935da142671e020ac28a8def355ffe77"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -492,6 +492,36 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebRestServiceGWAPIDefaultCurrencyPUT2E03073B"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/ActiveSubscription/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIActiveSubscription608E0F3D"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/ActiveSubscription/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIActiveSubscriptionOPTIONSEC83F987"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/ActiveSubscription/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ActiveSubscription": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIActiveSubscriptionGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETActiveSubscription6342865F"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/ActiveSubscription/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..ActiveSubscription": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIActiveSubscriptionGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETActiveSubscriptionF25D688B"
+          }
+        ],
+        "/WebRestService/WebRestService-GWAPI/Default/ActiveSubscription/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestServiceGWAPIActiveSubscriptionGETF2E5F11F"
           }
         ],
         "/WebRestService/WebRestService-GWAPI/Default/PaymentOptions/Resource": [
@@ -1448,6 +1478,30 @@
             "data": "EditCurrencySettingsLambdaLogRetention4AF2B4EE"
           }
         ],
+        "/WebRestService/GetSubscriptionSettingsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetSubscriptionSettingsLambdaServiceRoleAE4FD69B"
+          }
+        ],
+        "/WebRestService/GetSubscriptionSettingsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetSubscriptionSettingsLambdaServiceRoleDefaultPolicy6E4FF3B3"
+          }
+        ],
+        "/WebRestService/GetSubscriptionSettingsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetSubscriptionSettingsLambdaD3B798F7"
+          }
+        ],
+        "/WebRestService/GetSubscriptionSettingsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetSubscriptionSettingsLambdaLogRetention77F41B4E"
+          }
+        ],
         "/WebRestService/ListPaymentOptionsLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -2054,6 +2108,12 @@
             "data": "GetGetPresignedUrlLambdaServiceRole6568E3BF"
           }
         ],
+        "/WebRestService/GetGetPresignedUrlLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetGetPresignedUrlLambdaServiceRoleDefaultPolicy8389685E"
+          }
+        ],
         "/WebRestService/GetGetPresignedUrlLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -2109,7 +2169,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/42dc0c6db0a7303863e874af2db8bff57c84de044e049ee82772f36a75cfe781.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/5f381c83b47bc57dcc8e6c822aaf5707360509b801304611233b0d0071304f19.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2447,6 +2507,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetWebPageContentLambdaA5F8923E"
+          }
+        ],
+        "/WebPublicPages/GetWebPageContentLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetWebPageContentLambdaLogRetentionE06F2BD7"
           }
         ],
         "/WebPublicPages/CDKMetadata/Default": [

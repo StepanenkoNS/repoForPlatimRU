@@ -1,6 +1,6 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguages } from '/opt/ConfiguratorTypes';
+import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
 import { SetOrigin } from 'services/Utils/OriginHelper';
 import { GetItemFromDB } from 'services/Utils/WebPagesHelper';
 

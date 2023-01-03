@@ -62,9 +62,9 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
     } else {
         try {
             userProfile = jwt.decode(tokensFromCookies.refreshToken) as TelegramUserProfile;
-            if (!userProfile.id) {
+            if (!userProfile.id || userProfile.id == undefined || isNaN(userProfile.id)) {
                 const err = {
-                    error: JSON.stringify({ error: 'user id is not defined' })
+                    error: JSON.stringify({ error: 'user id is invalid' })
                 };
                 console.log('Error:ValidateTokenFromCookies\n', err);
                 throw err;
@@ -81,12 +81,13 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
                 });
             } catch (error) {
                 const err = {
-                    error: JSON.stringify({ error: 'user is banned' })
+                    error: JSON.stringify({ error: 'BotManager.GetOrCreate error' })
                 };
                 console.log('Error:ValidateTokenFromCookies\n', error);
                 throw err;
             }
 
+            console.log('isBannedCheck ' + userProfile.id.toString(), botManager.isBanned());
             if (botManager.isBanned()) {
                 const err = {
                     error: JSON.stringify({ error: 'user is banned' })
@@ -112,7 +113,7 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
                 throw 'Refresh token verification failed';
             }
         } catch (error) {
-            return { effect: 'Deny', message: 'refresh token is invalid' };
+            return { effect: 'Deny', message: JSON.stringify(error) };
         }
     }
     let renewAccessToken = false;
