@@ -23,7 +23,7 @@ export async function GetSubscriptionSettingsHandler(event: APIGatewayEvent, con
         });
 
         const result = botManager.GetMyActiveSubscription();
-        const getResult = ParseGetItemResult({ activeSubscription: result });
+        const getResult = ParseGetItemResult({ ...result });
 
         const returnObject = ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
         return returnObject;
