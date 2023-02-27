@@ -1,13 +1,12 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { SetOrigin } from 'services/Utils/OriginHelper';
 import { ParseListItemsResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
-import { ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+//@ts-ignore
+import BotManager from '/opt/BotManager';
 
-export async function ListContentPlansHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function ListBotsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -19,11 +18,7 @@ export async function ListContentPlansHandler(event: APIGatewayEvent, context: C
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['BOTUUID'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
-    }
-
-    const result = await ContentConfigurator.ListMyBotContentPlans(telegramUser.id, event.queryStringParameters!.BOTUUID!);
+    const result = await BotManager.GetMyBots(telegramUser.id);
 
     const listResults = ParseListItemsResult(result);
 

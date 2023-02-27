@@ -61,7 +61,7 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
     const lambdaIntegrationGetContentPlans = new apigateway.LambdaIntegration(GetContentPlanLambda);
     lambdaGetContentPlansResource.addMethod('GET', lambdaIntegrationGetContentPlans);
 
-    //Добавлении типа подписки
+    //Добавление
     const AddContentPlanLambda = new NodejsFunction(that, 'AddContentPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlans', 'AddContentPlanLambda.ts'),
         handler: 'AddContentPlanHandler',
@@ -84,7 +84,7 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
     const lambdaIntegrationAddContentPlan = new apigateway.LambdaIntegration(AddContentPlanLambda);
     lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddContentPlan);
 
-    //редактирование опции оплаты
+    //редактирование
     const EditContentPlanLambda = new NodejsFunction(that, 'EditContentPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlans', 'EditContentPlanLambda.ts'),
         handler: 'EditContentPlanHandler',
@@ -107,7 +107,7 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
     const lambdaIntegrationEditContentPlan = new apigateway.LambdaIntegration(EditContentPlanLambda);
     lambdaEdutContentPlansResource.addMethod('PUT', lambdaIntegrationEditContentPlan);
 
-    //удаление опции оплаты
+    //удаление
     const DeleteContentPlanLambda = new NodejsFunction(that, 'DeleteContentPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlans', 'DeleteContentPlanLambda.ts'),
         handler: 'DeleteContentPlanHandler',
@@ -129,6 +129,8 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
     });
     const lambdaIntegrationDeleteContentPlan = new apigateway.LambdaIntegration(DeleteContentPlanLambda);
     lambdaDeleteContentPlansResource.addMethod('DELETE', lambdaIntegrationDeleteContentPlan);
+
+    //предоставление доступа
 
     GrantAccessToDDB([ListContentPlansLambda, AddContentPlanLambda, EditContentPlanLambda, DeleteContentPlanLambda, GetContentPlanLambda], tables);
 }

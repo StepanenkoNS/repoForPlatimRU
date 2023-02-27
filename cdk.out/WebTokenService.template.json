@@ -113,17 +113,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x"
    },

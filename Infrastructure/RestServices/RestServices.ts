@@ -3,9 +3,10 @@ import { Construct } from 'constructs';
 
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
 import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
-import { createAPIandAuthorizer, GrantAccessToDDB, GrantAccessToSecrets } from './Helper';
+import { createAPIandAuthorizer, GrantAccessToDDB, GrantAccessToSecrets, ReturnGSIs } from './Helper';
 import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 import { CreateBotsLambdas } from './Lambdas/Bots';
 import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
@@ -27,7 +28,13 @@ export class RestServicesStack extends Stack {
         }
     ) {
         super(scope, id, props);
-        const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
+        // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
+
+        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
+        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
+            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
+            globalIndexes: botsIndexes
+        });
         const layers: ILayerVersion[] = [];
         for (const layerARN of props.layerARNs) {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));

@@ -56,21 +56,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -112,17 +99,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "JWTAuthorizer-Lambda",
     "Handler": "index.LambdaJWTAuthorizerHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -415,7 +402,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Account"
    }
   },
-  "WebRestServiceGWAPIDeploymentE0A23672935da142671e020ac28a8def355ffe77": {
+  "WebRestServiceGWAPIDeploymentE0A23672f868bc74e5781bb689b30239e20bf700": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -427,11 +414,29 @@
     "WebRestServiceGWAPIActiveSubscriptionGETF2E5F11F",
     "WebRestServiceGWAPIActiveSubscriptionOPTIONSEC83F987",
     "WebRestServiceGWAPIActiveSubscription608E0F3D",
-    "WebRestServiceGWAPIBotsGetMyBotsGET0773596C",
-    "WebRestServiceGWAPIBotsGetMyBotsOPTIONSA63AD8BA",
-    "WebRestServiceGWAPIBotsGetMyBotsA76DBF06",
+    "WebRestServiceGWAPIBotsAddOPTIONS9C9469F7",
+    "WebRestServiceGWAPIBotsAddPOSTFC2AF30A",
+    "WebRestServiceGWAPIBotsAdd9E0027BA",
+    "WebRestServiceGWAPIBotsDeleteDELETEC9EC9F7A",
+    "WebRestServiceGWAPIBotsDeleteOPTIONS3076A53A",
+    "WebRestServiceGWAPIBotsDelete19F0D3AB",
+    "WebRestServiceGWAPIBotsEditOPTIONS5CC8FB50",
+    "WebRestServiceGWAPIBotsEditPUT86545163",
+    "WebRestServiceGWAPIBotsEditBBBC709C",
+    "WebRestServiceGWAPIBotsGetGETED2528E1",
+    "WebRestServiceGWAPIBotsGetOPTIONSFAB56703",
+    "WebRestServiceGWAPIBotsGet3C04210F",
+    "WebRestServiceGWAPIBotsListGET559D6B3D",
+    "WebRestServiceGWAPIBotsListOPTIONSF1167672",
+    "WebRestServiceGWAPIBotsList72667DDB",
     "WebRestServiceGWAPIBotsOPTIONSB0668A3B",
+    "WebRestServiceGWAPIBotsRegisterOPTIONS56DF6AA9",
+    "WebRestServiceGWAPIBotsRegisterPUT2B56AC1C",
+    "WebRestServiceGWAPIBotsRegister2CB78075",
     "WebRestServiceGWAPIBots64472057",
+    "WebRestServiceGWAPIBotsUnRegisterOPTIONSFD490015",
+    "WebRestServiceGWAPIBotsUnRegisterPUT097DCF55",
+    "WebRestServiceGWAPIBotsUnRegister76E683F6",
     "WebRestServiceGWAPIContentPlanPostsAddOPTIONS61720DDC",
     "WebRestServiceGWAPIContentPlanPostsAddPOSTBB97C0AC",
     "WebRestServiceGWAPIContentPlanPostsAdd40F1E0CA",
@@ -537,7 +542,7 @@
      "Ref": "WebRestServiceGWAPID1BA5018"
     },
     "DeploymentId": {
-     "Ref": "WebRestServiceGWAPIDeploymentE0A23672935da142671e020ac28a8def355ffe77"
+     "Ref": "WebRestServiceGWAPIDeploymentE0A23672f868bc74e5781bb689b30239e20bf700"
     },
     "MethodSettings": [
      {
@@ -676,27 +681,27 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/OPTIONS/Resource"
    }
   },
-  "WebRestServiceGWAPIBotsGetMyBotsA76DBF06": {
+  "WebRestServiceGWAPIBotsList72667DDB": {
    "Type": "AWS::ApiGateway::Resource",
    "Properties": {
     "ParentId": {
      "Ref": "WebRestServiceGWAPIBots64472057"
     },
-    "PathPart": "GetMyBots",
+    "PathPart": "List",
     "RestApiId": {
      "Ref": "WebRestServiceGWAPID1BA5018"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/List/Resource"
    }
   },
-  "WebRestServiceGWAPIBotsGetMyBotsOPTIONSA63AD8BA": {
+  "WebRestServiceGWAPIBotsListOPTIONSF1167672": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "HttpMethod": "OPTIONS",
     "ResourceId": {
-     "Ref": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+     "Ref": "WebRestServiceGWAPIBotsList72667DDB"
     },
     "RestApiId": {
      "Ref": "WebRestServiceGWAPID1BA5018"
@@ -737,10 +742,10 @@
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/OPTIONS/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/List/OPTIONS/Resource"
    }
   },
-  "WebRestServiceGWAPIBotsGetMyBotsGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetMyBots65F6DEA7": {
+  "WebRestServiceGWAPIBotsListGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsList311DFB5B": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -767,16 +772,16 @@
        {
         "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
        },
-       "/GET/Bots/GetMyBots"
+       "/GET/Bots/List"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.List"
    }
   },
-  "WebRestServiceGWAPIBotsGetMyBotsGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetMyBots6B7F325F": {
+  "WebRestServiceGWAPIBotsListGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsList7174E6D9": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -799,21 +804,21 @@
        {
         "Ref": "WebRestServiceGWAPID1BA5018"
        },
-       "/test-invoke-stage/GET/Bots/GetMyBots"
+       "/test-invoke-stage/GET/Bots/List"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.GetMyBots"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.List"
    }
   },
-  "WebRestServiceGWAPIBotsGetMyBotsGET0773596C": {
+  "WebRestServiceGWAPIBotsListGET559D6B3D": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "HttpMethod": "GET",
     "ResourceId": {
-     "Ref": "WebRestServiceGWAPIBotsGetMyBotsA76DBF06"
+     "Ref": "WebRestServiceGWAPIBotsList72667DDB"
     },
     "RestApiId": {
      "Ref": "WebRestServiceGWAPID1BA5018"
@@ -847,7 +852,1051 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/GetMyBots/GET/Resource"
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/List/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsGet3C04210F": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "Get",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Get/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetOPTIONSFAB56703": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsGet3C04210F"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Get/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGetFC224603": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetBotLambda0C4EA18F",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/GET/Bots/Get"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.Get"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETBotsGet96E71D71": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetBotLambda0C4EA18F",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/GET/Bots/Get"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..Bots.Get"
+   }
+  },
+  "WebRestServiceGWAPIBotsGetGETED2528E1": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsGet3C04210F"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetBotLambda0C4EA18F",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Get/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsAdd9E0027BA": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "Add",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Add/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsAddOPTIONS9C9469F7": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsAdd9E0027BA"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Add/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsAddPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTBotsAddABD40875": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AddBotLambda25A32D8F",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/POST/Bots/Add"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..Bots.Add"
+   }
+  },
+  "WebRestServiceGWAPIBotsAddPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTBotsAdd5073D556": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AddBotLambda25A32D8F",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/POST/Bots/Add"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..Bots.Add"
+   }
+  },
+  "WebRestServiceGWAPIBotsAddPOSTFC2AF30A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsAdd9E0027BA"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "AddBotLambda25A32D8F",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Add/POST/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsEditBBBC709C": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "Edit",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Edit/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsEditOPTIONS5CC8FB50": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsEditBBBC709C"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Edit/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsEditPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTBotsEdit7FA6F2A6": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "EditBotLambda82B1C036",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/PUT/Bots/Edit"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Edit/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..Bots.Edit"
+   }
+  },
+  "WebRestServiceGWAPIBotsEditPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTBotsEditF6CB8A22": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "EditBotLambda82B1C036",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/PUT/Bots/Edit"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Edit/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..Bots.Edit"
+   }
+  },
+  "WebRestServiceGWAPIBotsEditPUT86545163": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "PUT",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsEditBBBC709C"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "EditBotLambda82B1C036",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Edit/PUT/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsRegister2CB78075": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "Register",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Register/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsRegisterOPTIONS56DF6AA9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsRegister2CB78075"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Register/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsRegisterPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTBotsRegisterC9B63065": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "RegisterBotLambda695100A4",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/PUT/Bots/Register"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Register/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..Bots.Register"
+   }
+  },
+  "WebRestServiceGWAPIBotsRegisterPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTBotsRegisterF81D76F5": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "RegisterBotLambda695100A4",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/PUT/Bots/Register"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Register/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..Bots.Register"
+   }
+  },
+  "WebRestServiceGWAPIBotsRegisterPUT2B56AC1C": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "PUT",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsRegister2CB78075"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "RegisterBotLambda695100A4",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Register/PUT/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsUnRegister76E683F6": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "UnRegister",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/UnRegister/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsUnRegisterOPTIONSFD490015": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsUnRegister76E683F6"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/UnRegister/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsUnRegisterPUTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1PUTBotsUnRegisterE7A6B379": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UnRegisterBotLambda0B03CDDE",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/PUT/Bots/UnRegister"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/UnRegister/PUT/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..Bots.UnRegister"
+   }
+  },
+  "WebRestServiceGWAPIBotsUnRegisterPUTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1PUTBotsUnRegisterEF254111": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UnRegisterBotLambda0B03CDDE",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/PUT/Bots/UnRegister"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/UnRegister/PUT/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.PUT..Bots.UnRegister"
+   }
+  },
+  "WebRestServiceGWAPIBotsUnRegisterPUT097DCF55": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "PUT",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsUnRegister76E683F6"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "UnRegisterBotLambda0B03CDDE",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/UnRegister/PUT/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsDelete19F0D3AB": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIBots64472057"
+    },
+    "PathPart": "Delete",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Delete/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsDeleteOPTIONS3076A53A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsDelete19F0D3AB"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Delete/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIBotsDeleteDELETEApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEBotsDelete920DBA59": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "DeleteBotLambda6B24EC61",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/DELETE/Bots/Delete"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..Bots.Delete"
+   }
+  },
+  "WebRestServiceGWAPIBotsDeleteDELETEApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEBotsDelete9CEC195A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "DeleteBotLambda6B24EC61",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/DELETE/Bots/Delete"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..Bots.Delete"
+   }
+  },
+  "WebRestServiceGWAPIBotsDeleteDELETEC9EC9F7A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "DELETE",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIBotsDelete19F0D3AB"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "DeleteBotLambda6B24EC61",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/Bots/Delete/DELETE/Resource"
    }
   },
   "WebRestServiceGWAPIDefaultCurrency594708F8": {
@@ -6453,21 +7502,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -6489,7 +7525,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "9bee861f3aad76c112b2cd9b674616a7922a38c344954efe00a92f69e0612cb5.zip"
+     "S3Key": "c34faf698147624db2ee8ce7a846e9a400f8d8f10c9a28f57a9e41d51e44bd61.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -6507,17 +7543,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-Bots-List-Lambda",
-    "Handler": "index.ListMyBotsHandler",
+    "Handler": "index.ListBotsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -6528,7 +7564,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/ListBotsLambda/Resource",
-    "aws:asset:path": "asset.9bee861f3aad76c112b2cd9b674616a7922a38c344954efe00a92f69e0612cb5",
+    "aws:asset:path": "asset.c34faf698147624db2ee8ce7a846e9a400f8d8f10c9a28f57a9e41d51e44bd61",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -6557,6 +7593,932 @@
    },
    "Metadata": {
     "aws:cdk:path": "WebRestService/ListBotsLambda/LogRetention/Resource"
+   }
+  },
+  "GetBotLambdaServiceRoleC26C83F1": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetBotLambda/ServiceRole/Resource"
+   }
+  },
+  "GetBotLambdaServiceRoleDefaultPolicy4267B667": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "secretsmanager:*",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetBotLambdaServiceRoleDefaultPolicy4267B667",
+    "Roles": [
+     {
+      "Ref": "GetBotLambdaServiceRoleC26C83F1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetBotLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetBotLambda0C4EA18F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "3f1249f4e395ffae9512e7ee5cda5eec2126b74abe4a129b491d6ec8cf75fe82.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "GetBotLambdaServiceRoleC26C83F1",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-Bots-Get-Lambda",
+    "Handler": "index.GetBotHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "GetBotLambdaServiceRoleDefaultPolicy4267B667",
+    "GetBotLambdaServiceRoleC26C83F1"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetBotLambda/Resource",
+    "aws:asset:path": "asset.3f1249f4e395ffae9512e7ee5cda5eec2126b74abe4a129b491d6ec8cf75fe82",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetBotLambdaLogRetention079BCCC8": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetBotLambda0C4EA18F"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetBotLambda/LogRetention/Resource"
+   }
+  },
+  "AddBotLambdaServiceRole3893B7F5": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddBotLambda/ServiceRole/Resource"
+   }
+  },
+  "AddBotLambdaServiceRoleDefaultPolicy840C6C96": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "secretsmanager:*",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "AddBotLambdaServiceRoleDefaultPolicy840C6C96",
+    "Roles": [
+     {
+      "Ref": "AddBotLambdaServiceRole3893B7F5"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddBotLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "AddBotLambda25A32D8F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "ffd53c646c37c1320f0e6e40838b1dc81125f623c0c528ab12d64b978083fb94.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "AddBotLambdaServiceRole3893B7F5",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-Bots-Add-Lambda",
+    "Handler": "index.AddBotHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "AddBotLambdaServiceRoleDefaultPolicy840C6C96",
+    "AddBotLambdaServiceRole3893B7F5"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddBotLambda/Resource",
+    "aws:asset:path": "asset.ffd53c646c37c1320f0e6e40838b1dc81125f623c0c528ab12d64b978083fb94",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "AddBotLambdaLogRetention28399598": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddBotLambda25A32D8F"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddBotLambda/LogRetention/Resource"
+   }
+  },
+  "RegisterBotLambdaServiceRole6F8C4E1E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/RegisterBotLambda/ServiceRole/Resource"
+   }
+  },
+  "RegisterBotLambdaServiceRoleDefaultPolicy08459592": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "secretsmanager:*",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "RegisterBotLambdaServiceRoleDefaultPolicy08459592",
+    "Roles": [
+     {
+      "Ref": "RegisterBotLambdaServiceRole6F8C4E1E"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/RegisterBotLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "RegisterBotLambda695100A4": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "0ed3905f2574a6e03ffd491b21596765f02742ba50fd158af20f0af24b3995eb.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "RegisterBotLambdaServiceRole6F8C4E1E",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "telegramFacingAPIurl": "https://uoxpmw3g77.execute-api.us-east-1.amazonaws.com/prod/",
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-Bots-Register-Lambda",
+    "Handler": "index.RegisterBotHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "RegisterBotLambdaServiceRoleDefaultPolicy08459592",
+    "RegisterBotLambdaServiceRole6F8C4E1E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/RegisterBotLambda/Resource",
+    "aws:asset:path": "asset.0ed3905f2574a6e03ffd491b21596765f02742ba50fd158af20f0af24b3995eb",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "RegisterBotLambdaLogRetentionA5CEA523": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "RegisterBotLambda695100A4"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/RegisterBotLambda/LogRetention/Resource"
+   }
+  },
+  "UnRegisterBotLambdaServiceRole2048DD2D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/UnRegisterBotLambda/ServiceRole/Resource"
+   }
+  },
+  "UnRegisterBotLambdaServiceRoleDefaultPolicyF9271B9B": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "secretsmanager:*",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "UnRegisterBotLambdaServiceRoleDefaultPolicyF9271B9B",
+    "Roles": [
+     {
+      "Ref": "UnRegisterBotLambdaServiceRole2048DD2D"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/UnRegisterBotLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "UnRegisterBotLambda0B03CDDE": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "3935f70b0ed73b2a64415283e7862dcb1f0f352dc647b608dbad36c7f7ea2934.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "UnRegisterBotLambdaServiceRole2048DD2D",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "telegramFacingAPIurl": "https://uoxpmw3g77.execute-api.us-east-1.amazonaws.com/prod/",
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-Bots-UnRegister-Lambda",
+    "Handler": "index.UnRegisterBotHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "UnRegisterBotLambdaServiceRoleDefaultPolicyF9271B9B",
+    "UnRegisterBotLambdaServiceRole2048DD2D"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/UnRegisterBotLambda/Resource",
+    "aws:asset:path": "asset.3935f70b0ed73b2a64415283e7862dcb1f0f352dc647b608dbad36c7f7ea2934",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "UnRegisterBotLambdaLogRetention8D1336C0": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "UnRegisterBotLambda0B03CDDE"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/UnRegisterBotLambda/LogRetention/Resource"
+   }
+  },
+  "EditBotLambdaServiceRole67F2A33A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditBotLambda/ServiceRole/Resource"
+   }
+  },
+  "EditBotLambdaServiceRoleDefaultPolicyD972E5A3": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "secretsmanager:*",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "EditBotLambdaServiceRoleDefaultPolicyD972E5A3",
+    "Roles": [
+     {
+      "Ref": "EditBotLambdaServiceRole67F2A33A"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditBotLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "EditBotLambda82B1C036": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "c66538845314c97a3472979acd7b9bba2ecb040ed3831aee0fd898f92a4e9673.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "EditBotLambdaServiceRole67F2A33A",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-Bots-Edit-Lambda",
+    "Handler": "index.EditBotHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "EditBotLambdaServiceRoleDefaultPolicyD972E5A3",
+    "EditBotLambdaServiceRole67F2A33A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditBotLambda/Resource",
+    "aws:asset:path": "asset.c66538845314c97a3472979acd7b9bba2ecb040ed3831aee0fd898f92a4e9673",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "EditBotLambdaLogRetentionEE3A2D07": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "EditBotLambda82B1C036"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/EditBotLambda/LogRetention/Resource"
+   }
+  },
+  "DeleteBotLambdaServiceRoleEE3D337F": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteBotLambda/ServiceRole/Resource"
+   }
+  },
+  "DeleteBotLambdaServiceRoleDefaultPolicyD016D023": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "secretsmanager:*",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "DeleteBotLambdaServiceRoleDefaultPolicyD016D023",
+    "Roles": [
+     {
+      "Ref": "DeleteBotLambdaServiceRoleEE3D337F"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteBotLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "DeleteBotLambda6B24EC61": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "e83facb78e47043122c15316fb339f58c11b2298c48667e030ee6f94637a7c71.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "DeleteBotLambdaServiceRoleEE3D337F",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-Bots-Delete-Lambda",
+    "Handler": "index.DeleteBotHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "DeleteBotLambdaServiceRoleDefaultPolicyD016D023",
+    "DeleteBotLambdaServiceRoleEE3D337F"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteBotLambda/Resource",
+    "aws:asset:path": "asset.e83facb78e47043122c15316fb339f58c11b2298c48667e030ee6f94637a7c71",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "DeleteBotLambdaLogRetention6418DC4F": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeleteBotLambda6B24EC61"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteBotLambda/LogRetention/Resource"
    }
   },
   "GetCurrencySettingsLambdaServiceRole33B26775": {
@@ -6620,21 +8582,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -6674,17 +8623,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-CurrencySettings-Get-Lambda",
     "Handler": "index.GetCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -6787,21 +8736,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -6841,17 +8777,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-CurrencySettings-Update-Lambda",
     "Handler": "index.EditCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -6949,21 +8885,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7003,17 +8926,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionSettings-Get-Lambda",
     "Handler": "index.GetSubscriptionSettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -7111,21 +9034,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7165,17 +9075,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-List-Lambda",
     "Handler": "index.ListPaymentOptionsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -7273,21 +9183,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7327,17 +9224,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Get-Lambda",
     "Handler": "index.GetPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -7440,21 +9337,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7494,17 +9378,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Add-Lambda",
     "Handler": "index.AddPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -7607,21 +9491,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7661,17 +9532,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Edit-Lambda",
     "Handler": "index.EditPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -7774,21 +9645,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7828,17 +9686,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-PaymentOptions-Delete-Lambda",
     "Handler": "index.DeletePaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -7936,21 +9794,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -7990,17 +9835,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-List-Lambda",
     "Handler": "index.ListSubscriptionPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8098,21 +9943,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -8152,17 +9984,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Get-Lambda",
     "Handler": "index.GetSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8260,21 +10092,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -8314,17 +10133,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Add-Lambda",
     "Handler": "index.AddSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8422,21 +10241,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -8476,17 +10282,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Edit-Lambda",
     "Handler": "index.EditSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8584,21 +10390,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -8638,17 +10431,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-SubscriptionPlans-Delete-Lambda",
     "Handler": "index.DeleteSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8746,21 +10539,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -8782,7 +10562,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "dd07b06a3358efb8ac9a87353c748f4e11e8015a104d6276efd88137fb6bf5f8.zip"
+     "S3Key": "6272b1ea059e7cc0ed9824d2b54974b7923bbac9fc0477536c42f3137ee6f969.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8800,17 +10580,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-List-Lambda",
     "Handler": "index.ListContentPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8821,7 +10601,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/ListContentPlansLambda/Resource",
-    "aws:asset:path": "asset.dd07b06a3358efb8ac9a87353c748f4e11e8015a104d6276efd88137fb6bf5f8",
+    "aws:asset:path": "asset.6272b1ea059e7cc0ed9824d2b54974b7923bbac9fc0477536c42f3137ee6f969",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -8908,21 +10688,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -8944,7 +10711,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "652667f095bfcebeb6228ded83577797e4af02b25716249280ce2caa52c25d95.zip"
+     "S3Key": "eeeab5485891a17ae0046840b86907a23b052985e748e87e3cd1f57651ef253d.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -8962,17 +10729,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Get-Lambda",
     "Handler": "index.GetContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -8983,7 +10750,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/GetContentPlanLambda/Resource",
-    "aws:asset:path": "asset.652667f095bfcebeb6228ded83577797e4af02b25716249280ce2caa52c25d95",
+    "aws:asset:path": "asset.eeeab5485891a17ae0046840b86907a23b052985e748e87e3cd1f57651ef253d",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -9070,21 +10837,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -9106,7 +10860,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "150bb5f17da694d472a898eea96f8f2e0a2d2da0742b72d44a0e8c992b9c8479.zip"
+     "S3Key": "2f36ae836aa5dba01e2999e130ee1031575d66822204b81d64611e85e49ebe41.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9124,17 +10878,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Add-Lambda",
     "Handler": "index.AddContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -9145,7 +10899,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddContentPlanLambda/Resource",
-    "aws:asset:path": "asset.150bb5f17da694d472a898eea96f8f2e0a2d2da0742b72d44a0e8c992b9c8479",
+    "aws:asset:path": "asset.2f36ae836aa5dba01e2999e130ee1031575d66822204b81d64611e85e49ebe41",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -9232,21 +10986,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -9268,7 +11009,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "13e503bfe7a868f87a292f7a4c0101a318966f4e3709c9c62cacd75213ae08e8.zip"
+     "S3Key": "2f959b671b0520ee1c80d30be6b46cf56b1c02391f70d1273107a852591838f9.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9286,17 +11027,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Edit-Lambda",
     "Handler": "index.EditContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -9307,7 +11048,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/EditContentPlanLambda/Resource",
-    "aws:asset:path": "asset.13e503bfe7a868f87a292f7a4c0101a318966f4e3709c9c62cacd75213ae08e8",
+    "aws:asset:path": "asset.2f959b671b0520ee1c80d30be6b46cf56b1c02391f70d1273107a852591838f9",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -9394,21 +11135,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -9430,7 +11158,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "5c30a01e83e3c2bf4419cafb4b502189789fb73b704330f431bea18b44a3d364.zip"
+     "S3Key": "4be69faaa03d023f55295c07b4692d9acbb2f89fc61913d989a50ac2c4976580.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -9448,17 +11176,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlans-Delete-Lambda",
     "Handler": "index.DeleteContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -9469,7 +11197,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteContentPlanLambda/Resource",
-    "aws:asset:path": "asset.5c30a01e83e3c2bf4419cafb4b502189789fb73b704330f431bea18b44a3d364",
+    "aws:asset:path": "asset.4be69faaa03d023f55295c07b4692d9acbb2f89fc61913d989a50ac2c4976580",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -9556,21 +11284,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -9610,17 +11325,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-List-Lambda",
     "Handler": "index.ListContentPlanPostsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -9718,21 +11433,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -9772,17 +11474,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Get-Lambda",
     "Handler": "index.GetContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -9880,21 +11582,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -9934,17 +11623,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Add-Lambda",
     "Handler": "index.AddContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -10042,21 +11731,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -10096,17 +11772,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Edit-Lambda",
     "Handler": "index.EditContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 60
@@ -10204,21 +11880,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -10258,17 +11921,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-ContentPlanPosts-Delete-Lambda",
     "Handler": "index.DeleteContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -10366,21 +12029,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       },
       {
@@ -10438,17 +12088,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-List-Lambda",
     "Handler": "index.ListMessageFilesHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -10546,21 +12196,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       },
       {
@@ -10618,17 +12255,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Get-Lambda",
     "Handler": "index.GetMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3
@@ -10726,21 +12363,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       },
       {
@@ -10778,7 +12402,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "bfd3dfcf44f8981d1dbc93038d5ca66b3f3c2a33dc7c2d08cd32d41c9b95147f.zip"
+     "S3Key": "3c64b131b259b48d6e10257ad18741c71a11371f6ca72daff0db7b0300424c5c.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -10798,17 +12422,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Add-Lambda",
     "Handler": "index.AddMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 60
@@ -10819,7 +12443,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebRestService/AddMessageFileLambda/Resource",
-    "aws:asset:path": "asset.bfd3dfcf44f8981d1dbc93038d5ca66b3f3c2a33dc7c2d08cd32d41c9b95147f",
+    "aws:asset:path": "asset.3c64b131b259b48d6e10257ad18741c71a11371f6ca72daff0db7b0300424c5c",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -10906,21 +12530,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       },
       {
@@ -10978,17 +12589,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Edit-Lambda",
     "Handler": "index.EditMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 60
@@ -11086,21 +12697,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       },
       {
@@ -11158,17 +12756,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-MessageFiles-Delete-Lambda",
     "Handler": "index.DeleteMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 60
@@ -11266,21 +12864,8 @@
        ],
        "Effect": "Allow",
        "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
        ]
       }
      ],
@@ -11321,17 +12906,17 @@
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
       "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
-      "tg_api_serverURI": "https://telegram-api.zuzona.com",
+      "tg_api_serverURI": "https://api.telegram.org",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
     "FunctionName": "react-GetPresignedUrl-Lambda",
     "Handler": "index.GetPreSignedUrlHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:91",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:109",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:36",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:71",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:11"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:77",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:12"
     ],
     "Runtime": "nodejs16.x",
     "Timeout": 3

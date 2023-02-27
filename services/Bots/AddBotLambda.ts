@@ -1,5 +1,6 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseInsertItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+//@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { ValidateIncomingArray, ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
 
@@ -8,8 +9,11 @@ import { SetOrigin } from '../Utils/OriginHelper';
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
 import { EContentPlanType } from '/opt/ContentTypes';
+//@ts-ignore
+import BotManager from '/opt/BotManager';
+import { IMasterBot } from '/opt/ConfiguratorTypes';
 
-export async function AddContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function AddBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -19,35 +23,23 @@ export async function AddContentPlanHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
         { key: 'name', datatype: 'string' },
-        // { key: 'type', datatype: [EContentPlanType.INTERACTIVE.toString(), EContentPlanType.SCHEDULLED.toString()] },
-        { key: 'price', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'currency', datatype: 'string' },
-        { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
         { key: 'description', datatype: 'string' },
-        { key: 'enabled', datatype: 'boolean' }
+        { key: 'token', datatype: 'string' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const contentPlan = {
-        BOTUUID: bodyObject.BOTUUID,
+    const bot: IMasterBot = {
+        masterId: telegramUser.id,
         name: bodyObject.name,
-        price: bodyObject.price,
-        currency: bodyObject.currency,
-        lengthInDays: bodyObject.lengthInDays,
         description: bodyObject.description,
-        enabled: bodyObject.enabled
+        token: bodyObject.token ? bodyObject.token : '',
+        registered: false,
+        registeredBotId: undefined
     };
-
-    console.log(contentPlan);
-
-    const result = await ContentConfigurator.AddContentPlan({
-        chatId: telegramUser.id,
-        contentPlan: contentPlan
-    });
+    const result = await BotManager.AddMyBot(bot);
 
     const addResult = ParseInsertItemResult(result);
 

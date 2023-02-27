@@ -19,9 +19,12 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'BOTUUID', datatype: 'string' },
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
-        { key: 'type', datatype: [EContentPlanType.INTERACTIVE.toString(), EContentPlanType.SCHEDULLED.toString()] },
+        { key: 'price', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'currency', datatype: 'string' },
+        { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
         { key: 'description', datatype: 'string' },
         { key: 'enabled', datatype: 'boolean' }
     ]);
@@ -31,7 +34,17 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
 
     const result = await ContentConfigurator.UpdateContentPlan({
         chatId: telegramUser.id,
-        contentPlan: { id: bodyObject.id, name: bodyObject.name, type: bodyObject.type, description: bodyObject.description, enabled: bodyObject.enabled }
+
+        contentPlan: {
+            id: bodyObject.id,
+            BOTUUID: bodyObject.BOTUUID,
+            name: bodyObject.name,
+            price: bodyObject.price,
+            currency: bodyObject.currency,
+            lengthInDays: bodyObject.lengthInDays,
+            description: bodyObject.description,
+            enabled: bodyObject.enabled
+        }
     });
 
     const updateResult = ParseUpdateItemResult(result);

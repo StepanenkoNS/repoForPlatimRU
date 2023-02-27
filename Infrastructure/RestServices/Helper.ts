@@ -88,6 +88,13 @@ export function createAPIandAuthorizer(that: any, certificateARN: string, layers
     return restServicesAPI;
 }
 
+export function ReturnGSIs(count: number) {
+    const array = [];
+    for (let i = 1; i <= count; i++) {
+        array.push('GSI' + i);
+    }
+    return array;
+}
 export function GrantAccessToDDB(lambdas: NodejsFunction[], tables: ITable[]) {
     for (const table of tables) {
         for (const lambda of lambdas) {
