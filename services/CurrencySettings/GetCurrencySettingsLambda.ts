@@ -18,7 +18,7 @@ export async function GetCurrencySettingsHandler(event: APIGatewayEvent, context
 
     try {
         const botManager = await BotManager.GetOrCreate({
-            chatId: telegramUser.id,
+            masterId: telegramUser.id,
             userName: telegramUser.username
         });
 

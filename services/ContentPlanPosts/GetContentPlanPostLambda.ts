@@ -16,11 +16,16 @@ export async function GetContentPlanPostHandler(event: APIGatewayEvent, context:
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['id', 'contentPlanId'])) {
+    if (!ValidateStringParameters(event, ['id', 'BOTUUID', 'contentPlanId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.GetMyContentPlanPostById(telegramUser.id, event.queryStringParameters!.contentPlanId!, event.queryStringParameters!.id!);
+    const result = await ContentConfigurator.GetMyContentPlanPostById(
+        telegramUser.id,
+        event.queryStringParameters!.BOTUUID!,
+        event.queryStringParameters!.contentPlanId!,
+        event.queryStringParameters!.id!
+    );
     const getResult = ParseGetItemResult(result);
 
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);

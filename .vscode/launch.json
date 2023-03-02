@@ -26,6 +26,7 @@
             "env": {
                 "region": "us-east-1",
                 "TABLE_NAME": "SpacesTable",
+                "tempUploadsBucketName": "message-files-temp-uploads-bucket",
                 "PRIMARY_KEY": "spaceId",
                 "telegramFacingAPIurl": "https://uoxpmw3g77.execute-api.us-east-1.amazonaws.com/prod/",
                 "sendMessageGWAPI": "https://s6myi3fwfd.execute-api.us-east-1.amazonaws.com/test/",

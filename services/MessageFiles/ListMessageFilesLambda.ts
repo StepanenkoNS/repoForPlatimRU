@@ -20,11 +20,11 @@ export async function ListMessageFilesHandler(event: APIGatewayEvent, context: C
     }
 
     let tags: string[] = [];
-    if (ValidateStringParameters(event, ['tags'])) {
+    if (ValidateStringParameters(event, ['tags', 'BOTUUID'])) {
         tags = event.queryStringParameters!.tags!.split(',');
     }
 
-    const result = await ContentConfigurator.ListMyMessageFiles(telegramUser.id, tags);
+    const result = await ContentConfigurator.ListMyMessageFiles(telegramUser.id, event.queryStringParameters!.BOTUUID!, tags);
 
     const listResults = ParseListItemsResult(result);
 

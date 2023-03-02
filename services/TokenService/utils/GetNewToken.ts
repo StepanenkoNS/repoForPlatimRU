@@ -18,7 +18,7 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
 
         //get or create
         const botManager = await BotManager.GetOrCreate({
-            chatId: user.id,
+            masterId: user.id,
             userName: user.username
         });
 

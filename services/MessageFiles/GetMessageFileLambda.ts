@@ -16,11 +16,11 @@ export async function GetMessageFileHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
+    if (!ValidateStringParameters(event, ['id', 'BOTUUID'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.GetMyMessageFileById(telegramUser.id, event.queryStringParameters!.id!);
+    const result = await ContentConfigurator.GetMyMessageFileById(telegramUser.id, event.queryStringParameters!.BOTUUID!, event.queryStringParameters!.id!);
     console.log('result', result);
     const getResult = ParseGetItemResult(result);
 

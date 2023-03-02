@@ -8,8 +8,10 @@ import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
+import MessageSender from '/opt/MessageSender';
+//@ts-ignore
 
-export async function AddContentPlanPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function SendTestPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -20,31 +22,13 @@ export async function AddContentPlanPostHandler(event: APIGatewayEvent, context:
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'BOTUUID', datatype: 'string' },
-        { key: 'contentPlanId', datatype: 'string' },
-        { key: 'sendMethod', datatype: 'string' },
-        { key: 'name', datatype: 'string' },
-        { key: 'draft', datatype: 'boolean' },
-        { key: 'message', datatype: 'object', objectKeys: [] },
-        { key: 'trigger', datatype: 'object', objectKeys: [] },
-        { key: 'interaction', datatype: 'object', objectKeys: [] }
+        { key: 'message', datatype: 'object', objectKeys: [] }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.AddContentPlanPost({
-        masterId: telegramUser.id,
-        contentPlanPost: {
-            BOTUUID: bodyObject.BOTUUID,
-            contentPlanId: bodyObject.contentPlanId,
-            sendMethod: bodyObject.sendMethod,
-            name: bodyObject.name,
-            draft: bodyObject.draft,
-            message: bodyObject.message,
-            trigger: bodyObject.trigger,
-            interaction: bodyObject.interaction
-        }
-    });
+    const result = await MessageSender.SendTestMessage(telegramUser.id, bodyObject.BOTUUID, bodyObject.message);
 
     const addResult = ParseInsertItemResult(result);
 

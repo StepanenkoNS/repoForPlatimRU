@@ -19,6 +19,7 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'BOTUUID', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 's3key', datatype: 'string' },
         { key: 'originalFileName', datatype: 'string' },
@@ -29,7 +30,7 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
     const botManager = await BotManager.GetOrCreate({
-        chatId: telegramUser.id,
+        masterId: telegramUser.id,
         userName: telegramUser.username
     });
     const validateLimits = await botManager.UpdateSubscriptionLimit({
@@ -38,8 +39,9 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
 
     if (validateLimits === true) {
         const result = await ContentConfigurator.AddMessageFile({
-            chatId: telegramUser.id,
+            masterId: telegramUser.id,
             messageFile: {
+                BOTUUID: bodyObject.BOTUUID,
                 name: bodyObject.name,
                 s3key: bodyObject.s3key,
                 originalFileName: bodyObject.originalFileName,

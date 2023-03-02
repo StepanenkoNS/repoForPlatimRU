@@ -18,6 +18,7 @@ export async function DeleteContentPlanPostHandler(event: APIGatewayEvent, conte
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
+        { key: 'BOTUUID', datatype: 'string' },
         { key: 'contentPlanId', datatype: 'string' }
     ]);
     if (bodyObject === false) {
@@ -25,7 +26,7 @@ export async function DeleteContentPlanPostHandler(event: APIGatewayEvent, conte
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.DeleteContentPlanPost(telegramUser.id, bodyObject.contentPlanId, bodyObject.id);
+    const result = await ContentConfigurator.DeleteContentPlanPost(telegramUser.id, bodyObject.BOTUUID, bodyObject.contentPlanId, bodyObject.id);
 
     const deleteResult = ParseDeleteItemResult(result);
 

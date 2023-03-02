@@ -5,7 +5,7 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB } from '../Helper';
+import { GrantAccessToDDB, GrantAccessToS3 } from '../Helper';
 
 export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
@@ -35,6 +35,8 @@ export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigatewa
     });
     const lambdaIntegrationGetGetPresignedUrls = new apigateway.LambdaIntegration(GetPresignedUrlLambda);
     lambdaGetPresignedUrlsResource.addMethod('PUT', lambdaIntegrationGetGetPresignedUrls);
+
+    GrantAccessToS3([GetPresignedUrlLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
     GrantAccessToDDB([GetPresignedUrlLambda], tables);
 }

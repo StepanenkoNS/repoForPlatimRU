@@ -19,10 +19,12 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
+        { key: 'BOTUUID', datatype: 'string' },
         { key: 'contentPlanId', datatype: 'string' },
+        { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
-        { key: 'messages', datatype: 'array' },
+        { key: 'message', datatype: 'object', objectKeys: [] },
         { key: 'interaction', datatype: 'object', objectKeys: [] },
         { key: 'draft', datatype: 'boolean' }
     ]);
@@ -31,15 +33,17 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
     }
 
     const result = await ContentConfigurator.UpdateContentPlanPost({
-        chatId: telegramUser.id,
+        masterId: telegramUser.id,
         contentPlanPost: {
             id: bodyObject.id,
+            BOTUUID: bodyObject.BOTUUID,
             contentPlanId: bodyObject.contentPlanId,
 
             name: bodyObject.name,
+            sendMethod: bodyObject.sendMethod,
 
             trigger: bodyObject.trigger,
-            messages: bodyObject.messages,
+            message: bodyObject.message,
 
             interaction: bodyObject.interaction,
             draft: bodyObject.draft

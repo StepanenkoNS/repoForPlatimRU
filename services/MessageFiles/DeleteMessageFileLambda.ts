@@ -17,17 +17,20 @@ export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: 
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
+    let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'id', datatype: 'string' },
+        { key: 'BOTUUID', datatype: 'string' }
+    ]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.DeleteMessageFile(telegramUser.id, bodyObject.id);
+    const result = await ContentConfigurator.DeleteMessageFile(telegramUser.id, bodyObject.BOTUUID, bodyObject.id);
 
     if (result && result.fileSize) {
         const botManager = await BotManager.GetOrCreate({
-            chatId: telegramUser.id,
+            masterId: telegramUser.id,
             userName: telegramUser.username
         });
         const validateLimits = await botManager.UpdateSubscriptionLimit({

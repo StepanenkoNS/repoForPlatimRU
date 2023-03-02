@@ -21,6 +21,7 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'BOTUUID', datatype: 'string' },
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 's3key', datatype: 'string' },
@@ -34,13 +35,21 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
 
     //если указан s3Key - то будем менять старый файл
     const result = await ContentConfigurator.UpdateMessageFile({
-        chatId: telegramUser.id,
-        messageFile: { id: bodyObject.id, name: bodyObject.name, s3key: bodyObject.s3key, originalFileName: bodyObject.originalFileName, fileSize: bodyObject.fileSize, tags: bodyObject.tags }
+        masterId: telegramUser.id,
+        messageFile: {
+            BOTUUID: bodyObject.BOTUUID,
+            id: bodyObject.id,
+            name: bodyObject.name,
+            s3key: bodyObject.s3key,
+            originalFileName: bodyObject.originalFileName,
+            fileSize: bodyObject.fileSize,
+            tags: bodyObject.tags
+        }
     });
 
     if (result !== undefined && result !== false) {
         const botManager = await BotManager.GetOrCreate({
-            chatId: telegramUser.id,
+            masterId: telegramUser.id,
             userName: telegramUser.username
         });
         const validateLimits = await botManager.UpdateSubscriptionLimit({

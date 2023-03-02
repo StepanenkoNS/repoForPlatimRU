@@ -18,7 +18,7 @@ export async function GetSubscriptionSettingsHandler(event: APIGatewayEvent, con
 
     try {
         const botManager = await BotManager.GetOrCreate({
-            chatId: telegramUser.id,
+            masterId: telegramUser.id,
             userName: telegramUser.username
         });
 

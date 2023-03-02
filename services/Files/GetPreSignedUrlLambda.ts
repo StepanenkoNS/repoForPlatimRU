@@ -19,6 +19,7 @@ export async function GetPreSignedUrlHandler(event: APIGatewayEvent, context: Co
     }
 
     let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'BOTUUID', datatype: 'string' },
         { key: 'fileName', datatype: 'string' },
         { key: 'fileType', datatype: 'string' },
         { key: 'fileSize', datatype: 'number(nonZeroPositiveInteger)' }
@@ -29,18 +30,23 @@ export async function GetPreSignedUrlHandler(event: APIGatewayEvent, context: Co
     }
 
     const botManager = await BotManager.GetOrCreate({
-        chatId: telegramUser.id,
+        masterId: telegramUser.id,
         userName: telegramUser.username
     });
+
+    console.log('botManager', botManager);
     const validateLimits = botManager.CheckSubscriptionsLimits({
         resourceConsumption_mediaFiles: bodyObject.fileSize
     });
+    console.log('validateLimits', validateLimits);
 
     if (validateLimits) {
-        const s3Result = await S3Helper.GeneratePreSignedURL_Put(process.env.tempUploadsBucketName!, telegramUser.id, bodyObject.fileName, bodyObject.fileType, 1);
+        const s3Result = await S3Helper.GeneratePreSignedURL_Put(process.env.tempUploadsBucketName!, telegramUser.id, bodyObject.BOTUUID, bodyObject.fileName, bodyObject.fileType, 1);
         console.log(s3Result);
 
         const getResult = ParseGetItemResult(s3Result);
+
+        console.log('getResult', getResult);
 
         return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
     } else {
