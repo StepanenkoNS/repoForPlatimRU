@@ -1,9 +1,12 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseGetItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import BotManager from '/opt/BotManager';
-
-import { SetOrigin } from '../Utils/OriginHelper';
 
 export async function GetCurrencySettingsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

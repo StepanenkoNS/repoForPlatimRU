@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToSecrets } from '../Helper';
+import { GrantAccessToDDB, GrantAccessToSecrets } from '/opt/LambdaHelpers/AccessHelper';
 
 export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
@@ -102,6 +102,8 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

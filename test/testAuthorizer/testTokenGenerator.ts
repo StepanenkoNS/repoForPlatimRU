@@ -1,4 +1,4 @@
-import { LambdaTokenServiceHandler } from '../../services/TokenService/Lambdas/lambdaTokenService';
+import { LambdaTokenServiceHandler } from '../../Infrastructure/TokenService/Lambdas/lambdaTokenService';
 
 const event = {
     resource: '/me',

@@ -1,9 +1,12 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseGetItemResult, ParseInsertItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
 
-import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import BotManager from '/opt/BotManager';
 
@@ -21,7 +24,7 @@ export async function GetBotHandler(event: APIGatewayEvent, context: Context): P
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
+    if (!ValidateStringParameters(event, ['id'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 

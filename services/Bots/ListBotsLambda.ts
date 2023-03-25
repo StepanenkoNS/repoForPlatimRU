@@ -1,6 +1,10 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { SetOrigin } from 'services/Utils/OriginHelper';
-import { ParseListItemsResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore

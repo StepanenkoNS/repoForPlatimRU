@@ -1,14 +1,17 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseUpdateItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
-
-import { SetOrigin } from '../Utils/OriginHelper';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
 import { EMessageFileType } from '/opt/ContentTypes';
 import BotManager from '/opt/BotManager';
+import { S3Helper } from '/opt/S3/S3Utils';
 
 export async function EditMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -33,6 +36,13 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
+    const mediaType = S3Helper.GetMediaType(bodyObject.originalFileName);
+    if (mediaType === false) {
+        const addResult = ParseUpdateItemResult(undefined);
+
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    }
+
     //если указан s3Key - то будем менять старый файл
     const result = await ContentConfigurator.UpdateMessageFile({
         masterId: telegramUser.id,
@@ -41,6 +51,7 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
             id: bodyObject.id,
             name: bodyObject.name,
             s3key: bodyObject.s3key,
+            mediaType: mediaType.type,
             originalFileName: bodyObject.originalFileName,
             fileSize: bodyObject.fileSize,
             tags: bodyObject.tags

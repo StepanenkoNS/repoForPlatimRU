@@ -1,12 +1,15 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseInsertItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { ValidateIncomingArray, ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
-
-import { SetOrigin } from '../Utils/OriginHelper';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
-import BotManager from '../../../TGBot-CoreLayers/LambdaLayers/Models/BotManager';
+import BotManager from '/opt/BotManager';
+import { S3Helper } from '/opt/S3/S3Utils';
 //@ts-ignore
 
 export async function AddMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -33,9 +36,17 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         masterId: telegramUser.id,
         userName: telegramUser.username
     });
+
     const validateLimits = await botManager.UpdateSubscriptionLimit({
-        resourceConsumption_mediaFiles: bodyObject.fileSize
+        resourceConsumption_mediaFiles: Number(bodyObject.fileSize)
     });
+
+    const mediaType = S3Helper.GetMediaType(bodyObject.originalFileName);
+    if (mediaType === false) {
+        const addResult = ParseInsertItemResult(mediaType);
+
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    }
 
     if (validateLimits === true) {
         const result = await ContentConfigurator.AddMessageFile({
@@ -46,6 +57,7 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
                 s3key: bodyObject.s3key,
                 originalFileName: bodyObject.originalFileName,
                 fileSize: bodyObject.fileSize,
+                mediaType: mediaType.type,
                 attachedToPosts: [],
                 tags: bodyObject.tags
             }

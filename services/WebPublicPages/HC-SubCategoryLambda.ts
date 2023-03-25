@@ -1,9 +1,9 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+import { ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { defaultMenuLanguage, ESupportedLanguages } from '/opt/ConfiguratorTypes';
-import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '../Utils/HCHelper';
-import { SetOrigin } from 'services/Utils/OriginHelper';
+import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
+import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '/opt/LambdaHelpers/HCHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 
 type Page = {
     pagePath: string;

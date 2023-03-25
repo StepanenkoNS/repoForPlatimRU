@@ -1,0 +1,321 @@
+const q21 = [
+    ['ADD_USER', 'username', '1000'],
+    ['ADD_FILE_BY', 'username', '/username/file.txt', '100'],
+    ['ADD_FILE_BY', 'username', '/common/username_file.txt', '200'],
+    ['ADD_USER', 'moderator', '100'],
+    ['ADD_FILE_BY', 'moderator', '/moderator/file.txt', '50'],
+    ['ADD_FILE_BY', 'moderator', '/common/moderator_file.txt', '30'],
+    ['ADD_FILE_BY', 'username', '/file.txt', '50']
+]; //[true, 900, 700, true, 50, 20, 650]
+
+const q22 = [
+    ['ADD_USER', 'user100', '100'], //true
+    ['ADD_USER', 'user1000', '1000'], //true
+    ['ADD_FILE_BY', 'user100', '/dir/file2', '80'], //20
+    ['ADD_FILE_BY', 'user100', '/dir/file2', '50'], //''
+    ['ADD_FILE_BY', 'user1000', '/dir/file2', '1500'], //''
+    ['ADD_FILE_BY', 'user1000', '/dir/file2', '500'], //''
+    ['ADD_FILE_BY', 'user1000', '/dir/file3', '500'], //500
+    ['ADD_FILE_BY', 'user1000', '/dir/file4', '600'] //''
+];
+
+type FileType = {
+    id?: string;
+    name: string;
+    owner?: string;
+    fileSize: number;
+};
+
+type UserType = {
+    user_id: string;
+    capacity: number;
+    usedCapacity: number;
+};
+class FileManager {
+    private files: Map<string, FileType>;
+    private users: Map<string, UserType>;
+    constructor() {
+        this.files = new Map<string, FileType>();
+        this.users = new Map<string, UserType>();
+        this.users.set('admin', {
+            user_id: 'admin',
+            capacity: 0,
+            usedCapacity: 0
+        });
+    }
+
+    private FindFileById(id: string) {
+        const file = this.files.get(id);
+        if (file) {
+            return file;
+        } else {
+            return false;
+        }
+    }
+
+    private FindUserById(id: string) {
+        const user = this.users.get(id);
+        if (user) {
+            return user;
+        } else {
+            return false;
+        }
+    }
+
+    public AddUser(value: { user_id: string; capacity: string }) {
+        const newUser: UserType = {
+            user_id: value.user_id,
+            capacity: Number(value.capacity),
+            usedCapacity: 0
+        };
+
+        const existingUser = this.FindUserById(value.user_id);
+        if (existingUser === false) {
+            ///add user
+            this.users.set(value.user_id, newUser);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public CheckCapacity(user_id: string, fileSize: number) {
+        const user = this.FindUserById(user_id);
+        if (!user) {
+            //user not exists
+            return false;
+        }
+        if (user.user_id === 'admin') {
+            //user is admin, capacity is unlimited
+            return true;
+        }
+        const capacityAfterAdd = user.usedCapacity + fileSize - user.capacity;
+        return capacityAfterAdd;
+    }
+
+    public AddFile(value: FileType) {
+        const newFile = value;
+        if (!value.owner) {
+            newFile.owner = 'admin';
+        }
+        newFile.id = newFile.owner + newFile.name;
+
+        const existingFile = this.FindFileById(newFile.id);
+        if (existingFile === false) {
+            ///add file
+            this.files.set(value.id!, newFile);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public AddFileBy(value: FileType) {
+        const newFile = value;
+        if (!value.owner) {
+            newFile.owner = 'admin';
+        }
+        newFile.id = newFile.owner + newFile.name;
+        if (newFile.owner === 'admin') {
+            const result = this.AddFile(newFile);
+            return result;
+        }
+
+        const user = this.FindUserById(newFile.owner!);
+
+        if (!user) {
+            //user not exists
+            return false;
+        }
+        const newCapacity = user.usedCapacity + value.fileSize;
+        if (newCapacity > user.capacity) {
+            return '';
+        }
+        const existingFile = this.FindFileById(newFile.id);
+        if (existingFile === false) {
+            ///add file
+            this.files.set(value.id!, newFile);
+            this.users.set(user.user_id, {
+                capacity: user.capacity,
+                usedCapacity: newCapacity,
+                user_id: user.user_id
+            });
+
+            return user.capacity - newCapacity;
+        } else {
+            return false;
+        }
+    }
+
+    public GetFileSizeById(id: string, owner?: string) {
+        let internalId = '';
+        if (owner) {
+            internalId = owner + id;
+        } else {
+            internalId = 'admin' + id;
+        }
+        const existingFile = this.FindFileById(internalId);
+        if (existingFile === false) {
+            //file not exists
+            return false;
+        } else {
+            return existingFile.fileSize;
+        }
+    }
+
+    public CopyFile(pathFrom: string, pathTo: string) {
+        //check if From exists
+        const pathf = 'admin' + pathFrom;
+        const patht = 'admin' + pathTo;
+        const existingFile = this.FindFileById(pathf);
+        const newFile = this.FindFileById(patht);
+        if (existingFile === false) {
+            return false;
+        }
+        if (newFile !== false) {
+            return false;
+        }
+        this.AddFile({
+            name: pathTo,
+            owner: existingFile.owner,
+            fileSize: existingFile.fileSize
+        });
+        return true;
+    }
+
+    public FindFileByPreSuf(prefix: string, suffix: string) {
+        const foundFiles: FileType[] = [];
+        for (const file of this.files) {
+            if (file[1].name.startsWith(prefix) && file[1].name.endsWith(suffix)) {
+                foundFiles.push(file[1]);
+            }
+        }
+        foundFiles.sort((a, b) => {
+            if (a.fileSize < b.fileSize) {
+                return 1;
+            }
+            if (a.fileSize < b.fileSize) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
+            if (a.name < b.name) {
+                return -1;
+            }
+            return 1;
+        });
+
+        let resultString = '';
+        for (const row of foundFiles) {
+            if (resultString !== '') {
+                resultString = resultString + ', ';
+            }
+            resultString = resultString + row.name + '(' + row.fileSize + ')';
+        }
+        return resultString;
+    }
+
+    public DeleteFilesByUser(value: UserType, targetCapacity: number) {
+        const foundFiles: FileType[] = [];
+        const tempUser = value;
+        for (const file of this.files) {
+            if (file[1].owner! === value.user_id) {
+                foundFiles.push(file[1]);
+            }
+        }
+        foundFiles.sort((a, b) => {
+            if (a.fileSize < b.fileSize) {
+                return 1;
+            }
+            if (a.fileSize < b.fileSize) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
+            if (a.name < b.name) {
+                return -1;
+            }
+            return 1;
+        });
+
+        let NumberOfDeletedFiles = 0;
+        for (const row of foundFiles) {
+            if (tempUser.usedCapacity <= targetCapacity) {
+                return NumberOfDeletedFiles;
+            }
+            //delete file and update capacity
+            this.files.delete(row.id!);
+            tempUser.usedCapacity = tempUser.usedCapacity - row.fileSize;
+        }
+        return NumberOfDeletedFiles;
+    }
+    public UpdateCapacity(user_id: string, newCapacity: number) {
+        const user = this.FindUserById(user_id);
+        if (!user) {
+            return '';
+        }
+        if (newCapacity >= user.usedCapacity) {
+            //set new Capacity
+            this.users.set(user.user_id, {
+                user_id: user.user_id,
+                usedCapacity: user.usedCapacity,
+                capacity: newCapacity
+            });
+            return '0';
+        }
+        const result = this.DeleteFilesByUser(user, newCapacity);
+        return result;
+        //find user files
+    }
+}
+function solution(queries: string[][]) {
+    const fileManager = new FileManager();
+    const solutionResult: string[] = [];
+    for (const row of queries) {
+        if (row[0] === 'ADD_FILE') {
+            const result = fileManager.AddFile({
+                name: row[1],
+                fileSize: Number(row[2])
+            });
+            solutionResult.push(String(result));
+        }
+        if (row[0] === 'GET_FILE_SIZE') {
+            const result = fileManager.GetFileSizeById(row[1]);
+            const processedResult = result === false ? '' : String(result);
+            solutionResult.push(processedResult);
+        }
+        if (row[0] === 'COPY_FILE') {
+            const result = fileManager.CopyFile(row[1], row[2]);
+            solutionResult.push(String(result));
+        }
+        if (row[0] === 'FIND_FILE') {
+            const result = fileManager.FindFileByPreSuf(row[1], row[2]);
+            solutionResult.push(String(result));
+        }
+        if (row[0] === 'ADD_USER') {
+            const result = fileManager.AddUser({ user_id: row[1], capacity: row[2] });
+            solutionResult.push(String(result));
+        }
+
+        if (row[0] === 'ADD_FILE_BY') {
+            const result = fileManager.AddFileBy({
+                owner: row[1],
+                name: row[2],
+                fileSize: Number(row[3])
+            });
+            solutionResult.push(String(result));
+        }
+
+        if (row[0] === 'UPDATE_CAPACITY') {
+            const result = fileManager.UpdateCapacity(row[0], Number(row[1]));
+            solutionResult.push(String(result));
+        }
+    }
+
+    return solutionResult;
+}
+
+const ress = solution(q22);
+console.log(ress);

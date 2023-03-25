@@ -1,10 +1,17 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { SetOrigin } from 'services/Utils/OriginHelper';
-import { ParseGetItemResult, ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseGetItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+//@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { ValidateIncomingEventBody, ValidateStringParameters } from 'services/Utils/ValidateIncomingData';
+
 //@ts-ignore
 import { S3Helper } from '/opt/S3/S3Utils';
+//@ts-ignore
 import BotManager from '/opt/BotManager';
 
 export async function GetPreSignedUrlHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {

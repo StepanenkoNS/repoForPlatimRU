@@ -1,8 +1,9 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ReturnRestApiResult } from 'services/Utils/ReturnRestApiResult';
+import { ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
-import { SetOrigin } from 'services/Utils/OriginHelper';
-import { GetItemFromDB } from 'services/Utils/WebPagesHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { GetItemFromDB } from '/opt/LambdaHelpers/WebPagesHelper';
 
 type Page = {
     pagePath: string;

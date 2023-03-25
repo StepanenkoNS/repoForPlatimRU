@@ -5,7 +5,8 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3 } from '../Helper';
+//@ts-ignore
+import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
 
 export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
@@ -25,7 +26,6 @@ export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigatewa
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

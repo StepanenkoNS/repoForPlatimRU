@@ -5,7 +5,9 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3 } from '../Helper';
+
+//@ts-ignore
+import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
 
 export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
@@ -24,8 +26,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
@@ -49,8 +49,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
@@ -74,8 +72,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
@@ -99,8 +95,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
@@ -124,8 +118,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsBucketName: StaticEnvironment.S3.buckets.botsBucketName,
-            tempUploadsBucketName: StaticEnvironment.S3.buckets.tempUploadsBucketName,
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),

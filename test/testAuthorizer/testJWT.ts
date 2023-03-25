@@ -1,4 +1,4 @@
-import { LambdaJWTAuthorizerHandler } from '../../services/TokenService/Lambdas/lambdaJWTAuthorizer';
+import { LambdaJWTAuthorizerHandler } from '../../Infrastructure/TokenService/Lambdas/lambdaJWTAuthorizer';
 const event = {
     type: 'REQUEST',
     methodArn: 'arn:aws:execute-api:us-east-1:993738567487:hr7gpcp5hc/tokenApi/POST/getNewToken',

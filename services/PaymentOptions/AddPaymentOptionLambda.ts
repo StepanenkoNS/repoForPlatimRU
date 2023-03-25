@@ -1,9 +1,14 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ReturnRestApiResult, ParseInsertItemResult } from 'services/Utils/ReturnRestApiResult';
+
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { ValidateIncomingEventBody } from 'services/Utils/ValidateIncomingData';
+
 import { EPaymentType, PaymentOptionDirectCardTransfer, PaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
-import { SetOrigin } from '../Utils/OriginHelper';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
 

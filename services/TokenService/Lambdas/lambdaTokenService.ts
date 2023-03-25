@@ -1,6 +1,6 @@
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { LogOut, ReturnResult } from '../utils/ReturnResult';
 import { CreateNewTokens } from '../utils/GetNewToken';
+import { LogOut, ReturnResult } from '../utils/ReturnResult';
 import { ValidateTokenFromCookies } from '../utils/ValidateTokenFromCookies';
 //@ts-ignore
 import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';

@@ -19,7 +19,7 @@ const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebT
     }
 });
 
-const restServicesStack = new RestServicesStack(app, StaticEnvironment.StackName.WebRestService.toString(), {
+const restService = new RestServicesStack(app, StaticEnvironment.StackName.WebRestService.toString(), {
     stackName: StaticEnvironment.StackName.WebRestService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
