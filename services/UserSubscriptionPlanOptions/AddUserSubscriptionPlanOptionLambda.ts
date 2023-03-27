@@ -25,7 +25,7 @@ export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEven
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'BOTUUID', datatype: 'string' },
         { key: 'userSubscriptionPlanId', datatype: 'string' },
-        { key: 'id', datatype: 'string' }
+        { key: 'ids', datatype: 'array' }
     ]);
 
     if (bodyObject === false) {
@@ -33,11 +33,11 @@ export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEven
     }
 
     const result = await UserSubscriptionPlan.AddUserSubscriptionPlanOption({
-        discriminator: 'IUserSubscriptionOption',
+        discriminator: 'IUserSubscriptionPlanOption',
         masterId: telegramUser.id,
         BOTUUID: bodyObject.BOTUUID,
         userSubscriptionPlanId: bodyObject.userSubscriptionPlanId,
-        id: bodyObject.id
+        ids: bodyObject.ids
     });
     const addResult = ParseInsertItemResult(result);
 

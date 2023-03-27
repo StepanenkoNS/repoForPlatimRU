@@ -631,6 +631,20 @@
         }
       }
     },
+    "a950bf0ec1441a3c452d3ebf80d498dd7bd68cd1bd2a1cf96e58b1555f7a4155": {
+      "source": {
+        "path": "asset.a950bf0ec1441a3c452d3ebf80d498dd7bd68cd1bd2a1cf96e58b1555f7a4155",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "993738567487-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-993738567487-us-east-1",
+          "objectKey": "a950bf0ec1441a3c452d3ebf80d498dd7bd68cd1bd2a1cf96e58b1555f7a4155.zip",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-file-publishing-role-993738567487-us-east-1"
+        }
+      }
+    },
     "b0eea4edb02277ed289a0b69db291b9d5695d6594fa09204ea2859230808f52b": {
       "source": {
         "path": "asset.b0eea4edb02277ed289a0b69db291b9d5695d6594fa09204ea2859230808f52b",
@@ -645,15 +659,15 @@
         }
       }
     },
-    "5621e156155ecb8f212ab7234d7bb7e97082a833a67c0f4ac93f5d86400e1321": {
+    "fdc3312899fe9ed15a7e7d9123a651582136db9b3dcec123229b4deb7ad031b9": {
       "source": {
-        "path": "asset.5621e156155ecb8f212ab7234d7bb7e97082a833a67c0f4ac93f5d86400e1321",
+        "path": "asset.fdc3312899fe9ed15a7e7d9123a651582136db9b3dcec123229b4deb7ad031b9",
         "packaging": "zip"
       },
       "destinations": {
         "993738567487-us-east-1": {
           "bucketName": "cdk-hnb659fds-assets-993738567487-us-east-1",
-          "objectKey": "5621e156155ecb8f212ab7234d7bb7e97082a833a67c0f4ac93f5d86400e1321.zip",
+          "objectKey": "fdc3312899fe9ed15a7e7d9123a651582136db9b3dcec123229b4deb7ad031b9.zip",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-file-publishing-role-993738567487-us-east-1"
         }
@@ -757,7 +771,7 @@
         }
       }
     },
-    "a8e68a59fc002ee3ba44d8693dd768a25ddb1d1d700bc27b286cdfb8fe11558c": {
+    "58ce150daa9cce2d24d980648dccb03d390fc6fd0365894da2566dab87e99136": {
       "source": {
         "path": "WebRestService.template.json",
         "packaging": "file"
@@ -765,7 +779,7 @@
       "destinations": {
         "993738567487-us-east-1": {
           "bucketName": "cdk-hnb659fds-assets-993738567487-us-east-1",
-          "objectKey": "a8e68a59fc002ee3ba44d8693dd768a25ddb1d1d700bc27b286cdfb8fe11558c.json",
+          "objectKey": "58ce150daa9cce2d24d980648dccb03d390fc6fd0365894da2566dab87e99136.json",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-file-publishing-role-993738567487-us-east-1"
         }

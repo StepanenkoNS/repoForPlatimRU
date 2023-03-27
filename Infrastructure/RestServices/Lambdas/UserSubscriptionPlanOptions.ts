@@ -10,6 +10,7 @@ import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
 export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
     const lambdaListUserSubscriptionPlanOptionsResource = rootResource.addResource('List');
+    const lambdaListUserSubscriptionPlanOptionsWithContentPlansResource = rootResource.addResource('ListWithContentPlans');
     const lambdaGetUserSubscriptionPlanOptionsResource = rootResource.addResource('Get');
     const lambdaAddSubscriptionResource = rootResource.addResource('Add');
     const lambdaDeleteUserSubscriptionPlanOptionsResource = rootResource.addResource('Delete');
@@ -36,6 +37,29 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
     });
     const lambdaIntegrationListUserSubscriptionPlanOptions = new apigateway.LambdaIntegration(ListUserSubscriptionPlanOptionsLambda);
     lambdaListUserSubscriptionPlanOptionsResource.addMethod('GET', lambdaIntegrationListUserSubscriptionPlanOptions);
+
+    //Вывод списка2
+    const ListUserSubscriptionPlanOptionsListWithContentPlansLambda = new NodejsFunction(that, 'ListUserSubscriptionPlanOptionsListWithContentPlansLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlanOptions', 'ListUserSubscriptionPlanOptionsWithContentLambda.ts'),
+        handler: 'ListUserSubscriptionPlanOptionsWithContentHandler',
+        functionName: 'react-UserSubscriptionPlanOptions-ListWithContentPlans-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
+            region: StaticEnvironment.GlobalAWSEnvironment.region,
+            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+    const lambdaIntegrationListUserSubscriptionPlanOptionsWithContentPlans = new apigateway.LambdaIntegration(ListUserSubscriptionPlanOptionsListWithContentPlansLambda);
+    lambdaListUserSubscriptionPlanOptionsWithContentPlansResource.addMethod('GET', lambdaIntegrationListUserSubscriptionPlanOptionsWithContentPlans);
 
     //Вывод одного элемента
     const GetSubscriptionPlanLambda = new NodejsFunction(that, 'GetUserSubscriptionPlanOptionLambda', {
@@ -108,5 +132,8 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
     const lambdaIntegrationDeleteSubscriptionPlan = new apigateway.LambdaIntegration(DeleteSubscriptionPlanLambda);
     lambdaDeleteUserSubscriptionPlanOptionsResource.addMethod('DELETE', lambdaIntegrationDeleteSubscriptionPlan);
 
-    GrantAccessToDDB([ListUserSubscriptionPlanOptionsLambda, AddSubscriptionPlanLambda, DeleteSubscriptionPlanLambda, GetSubscriptionPlanLambda], tables);
+    GrantAccessToDDB(
+        [ListUserSubscriptionPlanOptionsLambda, AddSubscriptionPlanLambda, DeleteSubscriptionPlanLambda, GetSubscriptionPlanLambda, ListUserSubscriptionPlanOptionsListWithContentPlansLambda],
+        tables
+    );
 }
