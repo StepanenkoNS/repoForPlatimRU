@@ -2,12 +2,12 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
+import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
 
 export async function GetUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -21,11 +21,15 @@ export async function GetUserSubscriptionPlanHandler(event: APIGatewayEvent, con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
+    if (!ValidateStringParameters(event, ['id', 'BOTUUID'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await BotSubscriptionConfigurator.GetMySubscriptionPlanById(telegramUser.id, event.queryStringParameters!.id!);
+    const result = await UserSubscriptionPlan.GetUserSubscriptionPlanById({
+        id: event.queryStringParameters!.id!,
+        BOTUUID: event.queryStringParameters!.BOTUUID!,
+        masterId: telegramUser.id
+    });
 
     const getResult = ParseGetItemResult(result);
 

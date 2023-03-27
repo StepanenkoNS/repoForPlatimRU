@@ -2,16 +2,14 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
-import { ESubscriptionDurationName } from '/opt/SubscriptionTypes';
 import { ESupportedCurrency } from '/opt/PaymentTypes';
-import { EnumToArray } from 'services/Helper/EnumToArray';
+
 //@ts-ignore
 import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
 
@@ -26,10 +24,9 @@ export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, con
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    const e = EnumToArray(ESupportedCurrency);
+    const e = [ESupportedCurrency.EUR.toString(), ESupportedCurrency.GBP.toString(), ESupportedCurrency.RUB.toString(), ESupportedCurrency.TRY.toString(), ESupportedCurrency.USD.toString()];
     console.log('EnumToArray', e);
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'masterId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'BOTUUID', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },

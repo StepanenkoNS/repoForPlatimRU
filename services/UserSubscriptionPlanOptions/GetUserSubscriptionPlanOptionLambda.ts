@@ -2,14 +2,14 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
 
-export async function ListUserSubscriptionPlansHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function GetUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -21,15 +21,18 @@ export async function ListUserSubscriptionPlansHandler(event: APIGatewayEvent, c
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['BOTUUID'])) {
+    if (!ValidateStringParameters(event, ['userSubscriptionPlanId', 'contentPlanId', 'BOTUUID'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlan.ListUserSubscriptionPlans({
+    const result = await UserSubscriptionPlan.GetUserSubscriptionOptionById({
         BOTUUID: event.queryStringParameters!.BOTUUID!,
-        masterId: telegramUser.id
+        masterId: telegramUser.id,
+        contentPlanId: event.queryStringParameters!.contentPlanId!,
+        userSubscriptionPlanId: event.queryStringParameters!.userSubscriptionPlanId!
     });
-    const listResult = ParseListItemsResult(result);
 
-    return ReturnRestApiResult(listResult.code, listResult.body, true, origin, renewedToken);
+    const getResult = ParseGetItemResult(result);
+
+    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }
