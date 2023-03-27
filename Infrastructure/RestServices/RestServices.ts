@@ -32,7 +32,7 @@ import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscrip
 // import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
 // import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
 // import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
-// import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
+
 // import { CreateSendMessagesLambdas } from './Lambdas/SendMessages';
 
 export class RestServicesStack extends Stack {

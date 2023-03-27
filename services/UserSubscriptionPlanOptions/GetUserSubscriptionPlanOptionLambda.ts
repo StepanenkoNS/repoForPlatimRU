@@ -21,14 +21,14 @@ export async function GetUserSubscriptionPlanOptionHandler(event: APIGatewayEven
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['userSubscriptionPlanId', 'contentPlanId', 'BOTUUID'])) {
+    if (!ValidateStringParameters(event, ['userSubscriptionPlanId', 'id', 'BOTUUID'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
     const result = await UserSubscriptionPlan.GetUserSubscriptionOptionById({
         BOTUUID: event.queryStringParameters!.BOTUUID!,
         masterId: telegramUser.id,
-        contentPlanId: event.queryStringParameters!.contentPlanId!,
+        id: event.queryStringParameters!.id!,
         userSubscriptionPlanId: event.queryStringParameters!.userSubscriptionPlanId!
     });
 

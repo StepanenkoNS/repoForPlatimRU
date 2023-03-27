@@ -22,7 +22,7 @@ export async function DeleteUserSubscriptionPlanOptionHandler(event: APIGatewayE
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'BOTUUID', datatype: 'string' },
         { key: 'userSubscriptionPlanId', datatype: 'string' },
-        { key: 'contentPlanId', datatype: 'string' }
+        { key: 'id', datatype: 'string' }
     ]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
@@ -32,7 +32,7 @@ export async function DeleteUserSubscriptionPlanOptionHandler(event: APIGatewayE
     const result = await UserSubscriptionPlan.DeleteUserSubscriptionPlanOption({
         masterId: telegramUser.id,
         BOTUUID: bodyObject.BOTUUID,
-        contentPlanId: bodyObject.contentPlanId,
+        id: bodyObject.id,
         userSubscriptionPlanId: bodyObject.userSubscriptionPlanId
     });
 
