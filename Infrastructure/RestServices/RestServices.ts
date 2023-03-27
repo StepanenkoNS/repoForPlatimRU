@@ -21,6 +21,8 @@ import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSetting
 import { CreateSendMessagesLambdas } from './Lambdas/SendTestMessages';
 import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
 import { PaymentProcessor } from './Lambdas/PaymentProcessor';
+import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
+import { CreateUserSubscriptionPlansLambdas } from './Lambdas/UserSubscriptionPlans';
 // import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 // import { CreateBotsLambdas } from './Lambdas/Bots';
 // import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
@@ -73,6 +75,10 @@ export class RestServicesStack extends Stack {
         CreateSubscriptionSettingsLambdas(this, restServicesAPI.root.addResource('ActiveSubscription'), layers, [botsTable]);
 
         CreateSendMessagesLambdas(this, restServicesAPI.root.addResource('SendTestMessage'), layers, [botsTable]);
+
+        CreateServiceSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('ServiceSubscriptionPlans'), layers, [botsTable]);
+
+        CreateUserSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('UserSubscriptionPlans'), layers, [botsTable]);
 
         SendMessageScheduler(this, layers, [botsTable]);
 
