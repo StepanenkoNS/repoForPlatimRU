@@ -23,6 +23,7 @@ import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
 import { PaymentProcessor } from './Lambdas/PaymentProcessor';
 import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
 import { CreateUserSubscriptionPlansLambdas } from './Lambdas/UserSubscriptionPlans';
+import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
 // import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 // import { CreateBotsLambdas } from './Lambdas/Bots';
 // import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
@@ -80,13 +81,11 @@ export class RestServicesStack extends Stack {
 
         CreateUserSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('UserSubscriptionPlans'), layers, [botsTable]);
 
+        CreateUserSubscriptionPlanOptionsLambdas(this, restServicesAPI.root.addResource('UserSubscriptionPlanOptions'), layers, [botsTable]);
+
         SendMessageScheduler(this, layers, [botsTable]);
 
         PaymentProcessor(this, layers, [botsTable]);
-
-        // CreateSubscriptionPlansLambdas(this, restServicesAPI.root.addResource('SubscriptionPlans'), layers, [botsTable]);
-
-        // CreateSendMessagesLambdas(this, restServicesAPI.root.addResource('SendMessages'), layers, [botsTable]);
 
         new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {
             value: restServicesAPI.deploymentStage.urlForPath(),

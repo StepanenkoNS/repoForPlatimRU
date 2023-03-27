@@ -110,7 +110,7 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Account"
    }
   },
-  "WebRestServiceGWAPIDeploymentE0A236722382de39d07c872c15fbe9f70ba554bc": {
+  "WebRestServiceGWAPIDeploymentE0A23672bda2fa9b59287bfd4eb17c8ec6c843cd": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -243,6 +243,20 @@
     "WebRestServiceGWAPIServiceSubscriptionPlansList5913E1D7",
     "WebRestServiceGWAPIServiceSubscriptionPlansOPTIONSC891B77D",
     "WebRestServiceGWAPIServiceSubscriptionPlans9E7E7273",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddOPTIONS9E389DF8",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddPOST7E158E71",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddF7B82594",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsDeleteDELETEC86DAC2C",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsDeleteOPTIONSDDFD3C5F",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsDelete78B1F7FD",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetGET67914193",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetOPTIONSB40A1596",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetF30EE5EE",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsListGET96455C46",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsListOPTIONSEF8297E1",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsListA38B1E3A",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptionsOPTIONS755331FC",
+    "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A",
     "WebRestServiceGWAPIUserSubscriptionPlansAddOPTIONS0F027214",
     "WebRestServiceGWAPIUserSubscriptionPlansAddPOSTEA3410A4",
     "WebRestServiceGWAPIUserSubscriptionPlansAdd141A3012",
@@ -272,7 +286,7 @@
      "Ref": "WebRestServiceGWAPID1BA5018"
     },
     "DeploymentId": {
-     "Ref": "WebRestServiceGWAPIDeploymentE0A236722382de39d07c872c15fbe9f70ba554bc"
+     "Ref": "WebRestServiceGWAPIDeploymentE0A23672bda2fa9b59287bfd4eb17c8ec6c843cd"
     },
     "MethodSettings": [
      {
@@ -8133,6 +8147,769 @@
     "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlans/Delete/DELETE/Resource"
    }
   },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "WebRestServiceGWAPID1BA5018",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "UserSubscriptionPlanOptions",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsOPTIONS755331FC": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsListA38B1E3A": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A"
+    },
+    "PathPart": "List",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/List/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsListOPTIONSEF8297E1": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsListA38B1E3A"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/List/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsListGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETUserSubscriptionPlanOptionsList94D51194": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ListUserSubscriptionPlanOptionsLambda0737A259",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/GET/UserSubscriptionPlanOptions/List"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/List/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..UserSubscriptionPlanOptions.List"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsListGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETUserSubscriptionPlanOptionsList6E01AA1F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ListUserSubscriptionPlanOptionsLambda0737A259",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/GET/UserSubscriptionPlanOptions/List"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/List/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..UserSubscriptionPlanOptions.List"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsListGET96455C46": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsListA38B1E3A"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ListUserSubscriptionPlanOptionsLambda0737A259",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/List/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetF30EE5EE": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A"
+    },
+    "PathPart": "Get",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Get/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetOPTIONSB40A1596": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetF30EE5EE"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Get/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetGETApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1GETUserSubscriptionPlanOptionsGet43EB4CFD": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetUserSubscriptionPlanOptionLambda4A632252",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/GET/UserSubscriptionPlanOptions/Get"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Get/GET/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..UserSubscriptionPlanOptions.Get"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetGETApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1GETUserSubscriptionPlanOptionsGet663B2352": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetUserSubscriptionPlanOptionLambda4A632252",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/GET/UserSubscriptionPlanOptions/Get"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Get/GET/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.GET..UserSubscriptionPlanOptions.Get"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetGET67914193": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsGetF30EE5EE"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetUserSubscriptionPlanOptionLambda4A632252",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Get/GET/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddF7B82594": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A"
+    },
+    "PathPart": "Add",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Add/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddOPTIONS9E389DF8": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddF7B82594"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Add/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddPOSTApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1POSTUserSubscriptionPlanOptionsAdd0E0FFF59": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AddUserSubscriptionPlanOptionLambda1B43ADFA",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/POST/UserSubscriptionPlanOptions/Add"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Add/POST/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..UserSubscriptionPlanOptions.Add"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddPOSTApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1POSTUserSubscriptionPlanOptionsAddFEE4DB1F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AddUserSubscriptionPlanOptionLambda1B43ADFA",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/POST/UserSubscriptionPlanOptions/Add"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Add/POST/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.POST..UserSubscriptionPlanOptions.Add"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddPOST7E158E71": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsAddF7B82594"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "AddUserSubscriptionPlanOptionLambda1B43ADFA",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Add/POST/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsDelete78B1F7FD": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptions00FDB35A"
+    },
+    "PathPart": "Delete",
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Delete/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsDeleteOPTIONSDDFD3C5F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "OPTIONS",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsDelete78B1F7FD"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'*'",
+        "method.response.header.Access-Control-Allow-Origin": "'http://localhost'",
+        "method.response.header.Vary": "'Origin'",
+        "method.response.header.Access-Control-Allow-Methods": "'POST, GET,DELETE,PUT'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "ResponseTemplates": {
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Vary": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Delete/OPTIONS/Resource"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsDeleteDELETEApiPermissionWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEUserSubscriptionPlanOptionsDelete49A83A79": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "DeleteUserSubscriptionPlaOptionnLambdaC8D4C27A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/",
+       {
+        "Ref": "WebRestServiceGWAPIDeploymentStageSecureAPI70C67597"
+       },
+       "/DELETE/UserSubscriptionPlanOptions/Delete"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Delete/DELETE/ApiPermission.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..UserSubscriptionPlanOptions.Delete"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsDeleteDELETEApiPermissionTestWebRestServiceWebRestServiceGWAPIA25BC9C1DELETEUserSubscriptionPlanOptionsDelete212A30DF": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "DeleteUserSubscriptionPlaOptionnLambdaC8D4C27A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:993738567487:",
+       {
+        "Ref": "WebRestServiceGWAPID1BA5018"
+       },
+       "/test-invoke-stage/DELETE/UserSubscriptionPlanOptions/Delete"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Delete/DELETE/ApiPermission.Test.WebRestServiceWebRestServiceGWAPIA25BC9C1.DELETE..UserSubscriptionPlanOptions.Delete"
+   }
+  },
+  "WebRestServiceGWAPIUserSubscriptionPlanOptionsDeleteDELETEC86DAC2C": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "DELETE",
+    "ResourceId": {
+     "Ref": "WebRestServiceGWAPIUserSubscriptionPlanOptionsDelete78B1F7FD"
+    },
+    "RestApiId": {
+     "Ref": "WebRestServiceGWAPID1BA5018"
+    },
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Ref": "WebRestServiceLambdaJWTAuthorizerObject90D15D2F"
+    },
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "DeleteUserSubscriptionPlaOptionnLambdaC8D4C27A",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/WebRestService-GWAPI/Default/UserSubscriptionPlanOptions/Delete/DELETE/Resource"
+   }
+  },
   "WebRestServiceGWAPIWebRestServiceGWAPIUsagePlan476AD6E9": {
    "Type": "AWS::ApiGateway::UsagePlan",
    "Properties": {
@@ -8473,9 +9250,9 @@
     "FunctionName": "react-MessageFiles-List-Lambda",
     "Handler": "index.ListMessageFilesHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -8730,9 +9507,9 @@
     "FunctionName": "react-MessageFiles-Get-Lambda",
     "Handler": "index.GetMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -8899,9 +9676,9 @@
     "FunctionName": "react-MessageFiles-Add-Lambda",
     "Handler": "index.AddMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -9068,9 +9845,9 @@
     "FunctionName": "react-MessageFiles-Edit-Lambda",
     "Handler": "index.EditMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -9237,9 +10014,9 @@
     "FunctionName": "react-MessageFiles-Delete-Lambda",
     "Handler": "index.DeleteMessageFileHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -9406,9 +10183,9 @@
     "FunctionName": "react-GetPresignedUrl-Lambda",
     "Handler": "index.GetPreSignedUrlHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -9564,9 +10341,9 @@
     "FunctionName": "react-Bots-List-Lambda",
     "Handler": "index.ListBotsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -9722,9 +10499,9 @@
     "FunctionName": "react-Bots-Get-Lambda",
     "Handler": "index.GetBotHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -9880,9 +10657,9 @@
     "FunctionName": "react-Bots-Add-Lambda",
     "Handler": "index.AddBotHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10040,9 +10817,9 @@
     "FunctionName": "react-Bots-Register-Lambda",
     "Handler": "index.RegisterBotHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10199,9 +10976,9 @@
     "FunctionName": "react-Bots-UnRegister-Lambda",
     "Handler": "index.UnRegisterBotHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10357,9 +11134,9 @@
     "FunctionName": "react-Bots-Edit-Lambda",
     "Handler": "index.EditBotHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10515,9 +11292,9 @@
     "FunctionName": "react-Bots-Delete-Lambda",
     "Handler": "index.DeleteBotHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10668,9 +11445,9 @@
     "FunctionName": "react-ContentPlanPosts-List-Lambda",
     "Handler": "index.ListContentPlanPostsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10821,9 +11598,9 @@
     "FunctionName": "react-ContentPlanPosts-Get-Lambda",
     "Handler": "index.GetContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -10974,9 +11751,9 @@
     "FunctionName": "react-ContentPlanPosts-Add-Lambda",
     "Handler": "index.AddContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -11127,9 +11904,9 @@
     "FunctionName": "react-ContentPlanPosts-Edit-Lambda",
     "Handler": "index.EditContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -11280,9 +12057,9 @@
     "FunctionName": "react-ContentPlanPosts-Delete-Lambda",
     "Handler": "index.DeleteContentPlanPostHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -11433,9 +12210,9 @@
     "FunctionName": "react-ContentPlans-List-Lambda",
     "Handler": "index.ListContentPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -11586,9 +12363,9 @@
     "FunctionName": "react-ContentPlans-Get-Lambda",
     "Handler": "index.GetContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -11739,9 +12516,9 @@
     "FunctionName": "react-ContentPlans-Add-Lambda",
     "Handler": "index.AddContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -11892,9 +12669,9 @@
     "FunctionName": "react-ContentPlans-Edit-Lambda",
     "Handler": "index.EditContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12045,9 +12822,9 @@
     "FunctionName": "react-ContentPlans-Delete-Lambda",
     "Handler": "index.DeleteContentPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12203,9 +12980,9 @@
     "FunctionName": "react-CurrencySettings-Get-Lambda",
     "Handler": "index.GetCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12361,9 +13138,9 @@
     "FunctionName": "react-CurrencySettings-Update-Lambda",
     "Handler": "index.EditCurrencySettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12514,9 +13291,9 @@
     "FunctionName": "react-PaymentOptions-List-Lambda",
     "Handler": "index.ListPaymentOptionsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12667,9 +13444,9 @@
     "FunctionName": "react-PaymentOptions-Get-Lambda",
     "Handler": "index.GetPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12825,9 +13602,9 @@
     "FunctionName": "react-PaymentOptions-Add-Lambda",
     "Handler": "index.AddPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -12983,9 +13760,9 @@
     "FunctionName": "react-PaymentOptions-Edit-Lambda",
     "Handler": "index.EditPaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -13141,9 +13918,9 @@
     "FunctionName": "react-PaymentOptions-Delete-Lambda",
     "Handler": "index.DeletePaymentOptionHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -13294,9 +14071,9 @@
     "FunctionName": "react-SubscriptionSettings-Get-Lambda",
     "Handler": "index.GetSubscriptionSettingsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -13463,9 +14240,9 @@
     "FunctionName": "react-SendMessages-SendTestMessage-Lambda",
     "Handler": "index.SendTestMessageHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -13616,9 +14393,9 @@
     "FunctionName": "react-ServiceSubscriptionPlans-List-Lambda",
     "Handler": "index.ListServiceSubscriptionPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -13769,9 +14546,9 @@
     "FunctionName": "react-ServiceSubscriptionPlans-Get-Lambda",
     "Handler": "index.GetServiceSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -13922,9 +14699,9 @@
     "FunctionName": "react-ServiceSubscriptionPlans-Add-Lambda",
     "Handler": "index.AddServiceSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14075,9 +14852,9 @@
     "FunctionName": "react-ServiceSubscriptionPlans-Edit-Lambda",
     "Handler": "index.EditServiceSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14228,9 +15005,9 @@
     "FunctionName": "react-ServiceSubscriptionPlans-Delete-Lambda",
     "Handler": "index.DeleteServiceSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14381,9 +15158,9 @@
     "FunctionName": "react-UserSubscriptionPlans-List-Lambda",
     "Handler": "index.ListUserSubscriptionPlansHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14534,9 +15311,9 @@
     "FunctionName": "react-UserSubscriptionPlans-Get-Lambda",
     "Handler": "index.GetUserSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14687,9 +15464,9 @@
     "FunctionName": "react-UserSubscriptionPlans-Add-Lambda",
     "Handler": "index.AddUserSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14840,9 +15617,9 @@
     "FunctionName": "react-UserSubscriptionPlans-Edit-Lambda",
     "Handler": "index.EditUserSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -14993,9 +15770,9 @@
     "FunctionName": "react-UserSubscriptionPlans-Delete-Lambda",
     "Handler": "index.DeleteUserSubscriptionPlanHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -15036,6 +15813,618 @@
    },
    "Metadata": {
     "aws:cdk:path": "WebRestService/DeleteUserSubscriptionPlanLambda/LogRetention/Resource"
+   }
+  },
+  "ListUserSubscriptionPlanOptionsLambdaServiceRole417399BF": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListUserSubscriptionPlanOptionsLambda/ServiceRole/Resource"
+   }
+  },
+  "ListUserSubscriptionPlanOptionsLambdaServiceRoleDefaultPolicyDAD3CD27": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ListUserSubscriptionPlanOptionsLambdaServiceRoleDefaultPolicyDAD3CD27",
+    "Roles": [
+     {
+      "Ref": "ListUserSubscriptionPlanOptionsLambdaServiceRole417399BF"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListUserSubscriptionPlanOptionsLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "ListUserSubscriptionPlanOptionsLambda0737A259": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "dccbaf268a9efb9455c885ea642ece3049d9daf8b052759704e3a430f063046d.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "ListUserSubscriptionPlanOptionsLambdaServiceRole417399BF",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "botsBucketName": "bots-bucket",
+      "tempUploadsBucketName": "message-files-temp-uploads-bucket",
+      "zuzonaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+      "mainDomainName": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-UserSubscriptionPlanOptions-List-Lambda",
+    "Handler": "index.ListUserSubscriptionPlanOptionsHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "ListUserSubscriptionPlanOptionsLambdaServiceRoleDefaultPolicyDAD3CD27",
+    "ListUserSubscriptionPlanOptionsLambdaServiceRole417399BF"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListUserSubscriptionPlanOptionsLambda/Resource",
+    "aws:asset:path": "asset.dccbaf268a9efb9455c885ea642ece3049d9daf8b052759704e3a430f063046d",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ListUserSubscriptionPlanOptionsLambdaLogRetention47F2152E": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ListUserSubscriptionPlanOptionsLambda0737A259"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/ListUserSubscriptionPlanOptionsLambda/LogRetention/Resource"
+   }
+  },
+  "GetUserSubscriptionPlanOptionLambdaServiceRole0AB9F676": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetUserSubscriptionPlanOptionLambda/ServiceRole/Resource"
+   }
+  },
+  "GetUserSubscriptionPlanOptionLambdaServiceRoleDefaultPolicyFD519410": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetUserSubscriptionPlanOptionLambdaServiceRoleDefaultPolicyFD519410",
+    "Roles": [
+     {
+      "Ref": "GetUserSubscriptionPlanOptionLambdaServiceRole0AB9F676"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetUserSubscriptionPlanOptionLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetUserSubscriptionPlanOptionLambda4A632252": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "f84dbdd92b567f7df7b1cc2449bcc5c77003d6009023b0a991b9263939fb9735.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "GetUserSubscriptionPlanOptionLambdaServiceRole0AB9F676",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "botsBucketName": "bots-bucket",
+      "tempUploadsBucketName": "message-files-temp-uploads-bucket",
+      "zuzonaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+      "mainDomainName": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-UserSubscriptionPlanOptions-Get-Lambda",
+    "Handler": "index.GetUserSubscriptionPlanOptionHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "GetUserSubscriptionPlanOptionLambdaServiceRoleDefaultPolicyFD519410",
+    "GetUserSubscriptionPlanOptionLambdaServiceRole0AB9F676"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetUserSubscriptionPlanOptionLambda/Resource",
+    "aws:asset:path": "asset.f84dbdd92b567f7df7b1cc2449bcc5c77003d6009023b0a991b9263939fb9735",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetUserSubscriptionPlanOptionLambdaLogRetention8CD4E5A9": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetUserSubscriptionPlanOptionLambda4A632252"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/GetUserSubscriptionPlanOptionLambda/LogRetention/Resource"
+   }
+  },
+  "AddUserSubscriptionPlanOptionLambdaServiceRole57302E04": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddUserSubscriptionPlanOptionLambda/ServiceRole/Resource"
+   }
+  },
+  "AddUserSubscriptionPlanOptionLambdaServiceRoleDefaultPolicyFDD26A09": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "AddUserSubscriptionPlanOptionLambdaServiceRoleDefaultPolicyFDD26A09",
+    "Roles": [
+     {
+      "Ref": "AddUserSubscriptionPlanOptionLambdaServiceRole57302E04"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddUserSubscriptionPlanOptionLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "AddUserSubscriptionPlanOptionLambda1B43ADFA": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "e6d2eb56c0bbe19697763598744aee05b718544b72ef31e0d4e224d430b17fae.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "AddUserSubscriptionPlanOptionLambdaServiceRole57302E04",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "botsBucketName": "bots-bucket",
+      "tempUploadsBucketName": "message-files-temp-uploads-bucket",
+      "zuzonaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+      "mainDomainName": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-UserSubscriptionPlanOptions-Add-Lambda",
+    "Handler": "index.AddUserSubscriptionPlanOptionHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "AddUserSubscriptionPlanOptionLambdaServiceRoleDefaultPolicyFDD26A09",
+    "AddUserSubscriptionPlanOptionLambdaServiceRole57302E04"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddUserSubscriptionPlanOptionLambda/Resource",
+    "aws:asset:path": "asset.e6d2eb56c0bbe19697763598744aee05b718544b72ef31e0d4e224d430b17fae",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "AddUserSubscriptionPlanOptionLambdaLogRetentionCC3D09FF": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "AddUserSubscriptionPlanOptionLambda1B43ADFA"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/AddUserSubscriptionPlanOptionLambda/LogRetention/Resource"
+   }
+  },
+  "DeleteUserSubscriptionPlaOptionnLambdaServiceRole42F8C772": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteUserSubscriptionPlaOptionnLambda/ServiceRole/Resource"
+   }
+  },
+  "DeleteUserSubscriptionPlaOptionnLambdaServiceRoleDefaultPolicy31373B11": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots",
+        "arn:aws:dynamodb:us-east-1:993738567487:table/bots/index/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "DeleteUserSubscriptionPlaOptionnLambdaServiceRoleDefaultPolicy31373B11",
+    "Roles": [
+     {
+      "Ref": "DeleteUserSubscriptionPlaOptionnLambdaServiceRole42F8C772"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteUserSubscriptionPlaOptionnLambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "DeleteUserSubscriptionPlaOptionnLambdaC8D4C27A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
+     "S3Key": "7f9dcd6709dbf1311ffe8a307139e48c29493679639b8e475cad312bca60c862.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "DeleteUserSubscriptionPlaOptionnLambdaServiceRole42F8C772",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "botsTable": "bots",
+      "region": "us-east-1",
+      "allowedOrigins": "http://localhost,http://localhost:8080,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
+      "cookieDomain": "zuzona.com",
+      "LOG_LEVEL": "info",
+      "NODE_ENV": "production",
+      "botFatherId": "5645439521",
+      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "tg_api_serverURI": "https://api.telegram.org",
+      "botsBucketName": "bots-bucket",
+      "tempUploadsBucketName": "message-files-temp-uploads-bucket",
+      "zuzonaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+      "mainDomainName": "zuzona.com",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "react-UserSubscriptionPlanOptions-Delete-Lambda",
+    "Handler": "index.DeleteUserSubscriptionPlanOptionHandler",
+    "Layers": [
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
+    ],
+    "Runtime": "nodejs16.x",
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "DeleteUserSubscriptionPlaOptionnLambdaServiceRoleDefaultPolicy31373B11",
+    "DeleteUserSubscriptionPlaOptionnLambdaServiceRole42F8C772"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteUserSubscriptionPlaOptionnLambda/Resource",
+    "aws:asset:path": "asset.7f9dcd6709dbf1311ffe8a307139e48c29493679639b8e475cad312bca60c862",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "DeleteUserSubscriptionPlaOptionnLambdaLogRetention4586D504": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "DeleteUserSubscriptionPlaOptionnLambdaC8D4C27A"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "WebRestService/DeleteUserSubscriptionPlaOptionnLambda/LogRetention/Resource"
    }
   },
   "schedulerschedulerDDBUpdateQueueDLQfifo50CC9D1C": {
@@ -15233,9 +16622,9 @@
     "FunctionName": "scheduler-SendMessagePreProcessor-Lambda",
     "Handler": "index.SendMessagePreProcessorHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -15431,9 +16820,9 @@
     "FunctionName": "scheduler-ScheduleMessages-Lambda",
     "Handler": "index.SendMessagesShedulerHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "ReservedConcurrentExecutions": 1,
@@ -15623,9 +17012,9 @@
     "FunctionName": "scheduler-SendMessageSender-Lambda",
     "Handler": "index.SendMessageSenderHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "ReservedConcurrentExecutions": 1,
@@ -15859,9 +17248,9 @@
     "FunctionName": "scheduler-DDBUpdateInProgress-Lambda",
     "Handler": "index.DDBUpdateInProgressHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "ReservedConcurrentExecutions": 1,
@@ -16121,9 +17510,9 @@
     "FunctionName": "paymentProcessor-incomingRequests",
     "Handler": "index.IncomingPaymentRequestsHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",
@@ -16372,9 +17761,9 @@
     "FunctionName": "paymentProcessor-IncomingPaymentConfirmation",
     "Handler": "index.IncomingPaymentConfirmationHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:186",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:95",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:106",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:189",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:98",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:108",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
     ],
     "Runtime": "nodejs16.x",

@@ -7,19 +7,18 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
 
-export function CreateUserSubscriptionPlansLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListUserSubscriptionPlansResource = rootResource.addResource('List');
-    const lambdaGetUserSubscriptionPlansResource = rootResource.addResource('Get');
+    const lambdaListUserSubscriptionPlanOptionsResource = rootResource.addResource('List');
+    const lambdaGetUserSubscriptionPlanOptionsResource = rootResource.addResource('Get');
     const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaEdutUserSubscriptionPlansResource = rootResource.addResource('Edit');
-    const lambdaDeleteUserSubscriptionPlansResource = rootResource.addResource('Delete');
+    const lambdaDeleteUserSubscriptionPlanOptionsResource = rootResource.addResource('Delete');
 
     //Вывод списка
-    const ListUserSubscriptionPlansLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlans', 'ListUserSubscriptionPlansLambda.ts'),
-        handler: 'ListUserSubscriptionPlansHandler',
-        functionName: 'react-UserSubscriptionPlans-List-Lambda',
+    const ListUserSubscriptionPlanOptionsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlanOptionsLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlanOptions', 'ListUserSubscriptionPlanOptionsLambda.ts'),
+        handler: 'ListUserSubscriptionPlanOptionsHandler',
+        functionName: 'react-UserSubscriptionPlanOptions-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -35,14 +34,14 @@ export function CreateUserSubscriptionPlansLambdas(that: any, rootResource: apig
         },
         layers: layers
     });
-    const lambdaIntegrationListUserSubscriptionPlans = new apigateway.LambdaIntegration(ListUserSubscriptionPlansLambda);
-    lambdaListUserSubscriptionPlansResource.addMethod('GET', lambdaIntegrationListUserSubscriptionPlans);
+    const lambdaIntegrationListUserSubscriptionPlanOptions = new apigateway.LambdaIntegration(ListUserSubscriptionPlanOptionsLambda);
+    lambdaListUserSubscriptionPlanOptionsResource.addMethod('GET', lambdaIntegrationListUserSubscriptionPlanOptions);
 
     //Вывод одного элемента
-    const GetSubscriptionPlanLambda = new NodejsFunction(that, 'GetUserSubscriptionPlanLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlans', 'GetUserSubscriptionPlanLambda.ts'),
-        handler: 'GetUserSubscriptionPlanHandler',
-        functionName: 'react-UserSubscriptionPlans-Get-Lambda',
+    const GetSubscriptionPlanLambda = new NodejsFunction(that, 'GetUserSubscriptionPlanOptionLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlanOptions', 'GetUserSubscriptionPlanOptionLambda.ts'),
+        handler: 'GetUserSubscriptionPlanOptionHandler',
+        functionName: 'react-UserSubscriptionPlanOptions-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -59,14 +58,14 @@ export function CreateUserSubscriptionPlansLambdas(that: any, rootResource: apig
         },
         layers: layers
     });
-    const lambdaIntegrationGetUserSubscriptionPlans = new apigateway.LambdaIntegration(GetSubscriptionPlanLambda);
-    lambdaGetUserSubscriptionPlansResource.addMethod('GET', lambdaIntegrationGetUserSubscriptionPlans);
+    const lambdaIntegrationGetUserSubscriptionPlanOptions = new apigateway.LambdaIntegration(GetSubscriptionPlanLambda);
+    lambdaGetUserSubscriptionPlanOptionsResource.addMethod('GET', lambdaIntegrationGetUserSubscriptionPlanOptions);
 
     //Добавлении типа подписки
-    const AddSubscriptionPlanLambda = new NodejsFunction(that, 'AddUserSubscriptionPlanLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlans', 'AddUserSubscriptionPlanLambda.ts'),
-        handler: 'AddUserSubscriptionPlanHandler',
-        functionName: 'react-UserSubscriptionPlans-Add-Lambda',
+    const AddSubscriptionPlanLambda = new NodejsFunction(that, 'AddUserSubscriptionPlanOptionLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlanOptions', 'AddUserSubscriptionPlanOptionLambda.ts'),
+        handler: 'AddUserSubscriptionPlanOptionHandler',
+        functionName: 'react-UserSubscriptionPlanOptions-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -86,35 +85,11 @@ export function CreateUserSubscriptionPlansLambdas(that: any, rootResource: apig
     const lambdaIntegrationAddSubscriptionPlan = new apigateway.LambdaIntegration(AddSubscriptionPlanLambda);
     lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddSubscriptionPlan);
 
-    //редактирование опции оплаты
-    const EditSubscriptionPlanLambda = new NodejsFunction(that, 'EditUserSubscriptionPlanLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlans', 'EditUserSubscriptionPlanLambda.ts'),
-        handler: 'EditUserSubscriptionPlanHandler',
-        functionName: 'react-UserSubscriptionPlans-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
-        environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-        },
-        bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
-        },
-        layers: layers
-    });
-    const lambdaIntegrationEditSubscriptionPlan = new apigateway.LambdaIntegration(EditSubscriptionPlanLambda);
-    lambdaEdutUserSubscriptionPlansResource.addMethod('PUT', lambdaIntegrationEditSubscriptionPlan);
-
     //удаление опции оплаты
-    const DeleteSubscriptionPlanLambda = new NodejsFunction(that, 'DeleteUserSubscriptionPlanLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlans', 'DeleteUserSubscriptionPlanLambda.ts'),
-        handler: 'DeleteUserSubscriptionPlanHandler',
-        functionName: 'react-UserSubscriptionPlans-Delete-Lambda',
+    const DeleteSubscriptionPlanLambda = new NodejsFunction(that, 'DeleteUserSubscriptionPlaOptionnLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlanOptions', 'DeleteUserSubscriptionPlanOptionLambda.ts'),
+        handler: 'DeleteUserSubscriptionPlanOptionHandler',
+        functionName: 'react-UserSubscriptionPlanOptions-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -131,7 +106,7 @@ export function CreateUserSubscriptionPlansLambdas(that: any, rootResource: apig
         layers: layers
     });
     const lambdaIntegrationDeleteSubscriptionPlan = new apigateway.LambdaIntegration(DeleteSubscriptionPlanLambda);
-    lambdaDeleteUserSubscriptionPlansResource.addMethod('DELETE', lambdaIntegrationDeleteSubscriptionPlan);
+    lambdaDeleteUserSubscriptionPlanOptionsResource.addMethod('DELETE', lambdaIntegrationDeleteSubscriptionPlan);
 
-    GrantAccessToDDB([ListUserSubscriptionPlansLambda, AddSubscriptionPlanLambda, EditSubscriptionPlanLambda, DeleteSubscriptionPlanLambda, GetSubscriptionPlanLambda], tables);
+    GrantAccessToDDB([ListUserSubscriptionPlanOptionsLambda, AddSubscriptionPlanLambda, DeleteSubscriptionPlanLambda, GetSubscriptionPlanLambda], tables);
 }

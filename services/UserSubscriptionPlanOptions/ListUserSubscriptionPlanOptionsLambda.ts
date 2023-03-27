@@ -9,7 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
 
-export async function ListUserSubscriptionPlansHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function ListUserSubscriptionPlanOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -28,7 +28,7 @@ export async function ListUserSubscriptionPlansHandler(event: APIGatewayEvent, c
     const result = await UserSubscriptionPlan.ListUserSubscriptionPlanOptions({
         BOTUUID: event.queryStringParameters!.BOTUUID!,
         masterId: telegramUser.id,
-        userSubscriptionPlanId: event.queryStringParameters!.id!
+        userSubscriptionPlanId: event.queryStringParameters!.userSubscriptionPlanId!
     });
     const listResult = ParseListItemsResult(result);
 

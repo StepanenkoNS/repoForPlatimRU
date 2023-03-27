@@ -1,8 +1,8 @@
-import { ListUserSubscriptionPlansHandler } from 'services/UserSubscriptionPlanOptions/ListUserSubscriptionPlanOptionsLambda';
+import { ListUserSubscriptionPlanOptionsHandler } from 'services/UserSubscriptionPlanOptions/ListUserSubscriptionPlanOptionsLambda';
 
 const event = {
-    resource: '/UserSubscriptionPlans/List',
-    path: '/UserSubscriptionPlans/List',
+    resource: '/UserSubscriptionPlanOptions/List',
+    path: '/UserSubscriptionPlanOptions/List',
     httpMethod: 'GET',
     headers: {
         Accept: '*/*',
@@ -10,9 +10,9 @@ const event = {
         'Cache-Control': 'no-cache',
         cookie: 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwNzY4NzkzLCJleHAiOjE3MDIzMDQ3OTN9.mt7Yg1avwlVJSYRma163PTIlBNtzLrvm_bqrNBZdZpI; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzg5MDIxMDgsImV4cCI6MTY3ODkwNTcwOH0.Uv3_Qs6Fm0pZa1dulCR5drcawZF3iu4qxfWeHqMfKgw; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzg5MDIxMDgsImV4cCI6MTcxMDQzODEwOH0.pkfsMc5UPNhxUwcnvVe6xBO6SXH1DulgE7MSJVb6QsU',
         Host: 'secure-api.zuzona.com',
-        'Postman-Token': '413a2aad-5591-4917-b3c8-a270a10621d3',
+        'Postman-Token': 'bd4c55fe-9d5c-45c3-abb0-dbdfde892acc',
         'User-Agent': 'PostmanRuntime/7.31.3',
-        'X-Amzn-Trace-Id': 'Root=1-64215b93-6544811460e4af91535a33e2',
+        'X-Amzn-Trace-Id': 'Root=1-64217572-27a7e73c3b821b75553dcccd',
         'X-Forwarded-For': '176.232.62.238',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
@@ -25,42 +25,48 @@ const event = {
             'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjcwNzY4NzkzLCJleHAiOjE3MDIzMDQ3OTN9.mt7Yg1avwlVJSYRma163PTIlBNtzLrvm_bqrNBZdZpI; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzg5MDIxMDgsImV4cCI6MTY3ODkwNTcwOH0.Uv3_Qs6Fm0pZa1dulCR5drcawZF3iu4qxfWeHqMfKgw; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzg5MDIxMDgsImV4cCI6MTcxMDQzODEwOH0.pkfsMc5UPNhxUwcnvVe6xBO6SXH1DulgE7MSJVb6QsU'
         ],
         Host: ['secure-api.zuzona.com'],
-        'Postman-Token': ['413a2aad-5591-4917-b3c8-a270a10621d3'],
+        'Postman-Token': ['bd4c55fe-9d5c-45c3-abb0-dbdfde892acc'],
         'User-Agent': ['PostmanRuntime/7.31.3'],
-        'X-Amzn-Trace-Id': ['Root=1-64215b93-6544811460e4af91535a33e2'],
+        'X-Amzn-Trace-Id': ['Root=1-64217572-27a7e73c3b821b75553dcccd'],
         'X-Forwarded-For': ['176.232.62.238'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
-    queryStringParameters: { BOTUUID: '2MNHTeQWWxcV6r3T82vZQVzKR4l' },
-    multiValueQueryStringParameters: { BOTUUID: ['2MNHTeQWWxcV6r3T82vZQVzKR4l'] },
+    queryStringParameters: {
+        BOTUUID: '2MNHTeQWWxcV6r3T82vZQVzKR4l',
+        userSubscriptionPlanId: '2Nat1opcDn9Ym4rT37YVLyNVBXr'
+    },
+    multiValueQueryStringParameters: {
+        BOTUUID: ['2MNHTeQWWxcV6r3T82vZQVzKR4l'],
+        userSubscriptionPlanId: ['2Nat1opcDn9Ym4rT37YVLyNVBXr']
+    },
     pathParameters: null,
     stageVariables: null,
     requestContext: {
-        resourceId: '3f13c7',
+        resourceId: 'inxefu',
         authorizer: {
             renewedAccessToken:
                 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzg5MDIxMDgsImV4cCI6MTY3ODkwNTcwOH0.Uv3_Qs6Fm0pZa1dulCR5drcawZF3iu4qxfWeHqMfKgw',
             role: 'superadmin',
             principalId: '199163834',
             language: 'ru',
-            integrationLatency: 109,
+            integrationLatency: 53,
             id: '199163834',
             first_name: 'Nick',
             iat: '1678902108',
             username: 'LikeAHurricane'
         },
-        resourcePath: '/UserSubscriptionPlans/List',
+        resourcePath: '/UserSubscriptionPlanOptions/List',
         httpMethod: 'GET',
-        extendedRequestId: 'Cbs_DHbZIAMF-aQ=',
-        requestTime: '27/Mar/2023:09:02:11 +0000',
-        path: '/UserSubscriptionPlans/List',
+        extendedRequestId: 'Cb9J-E2BIAMFYVA=',
+        requestTime: '27/Mar/2023:10:52:34 +0000',
+        path: '/UserSubscriptionPlanOptions/List',
         accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'SecureAPI',
         domainPrefix: 'secure-api',
-        requestTimeEpoch: 1679907731275,
-        requestId: 'df3b3e66-f678-4dbb-b507-e7c9bc67a6df',
+        requestTimeEpoch: 1679914354736,
+        requestId: 'dfe329a5-aaee-400f-9084-a5529e16b2d4',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
@@ -83,7 +89,7 @@ const event = {
 };
 
 async function main() {
-    ListUserSubscriptionPlansHandler(event as any, {} as any);
+    ListUserSubscriptionPlanOptionsHandler(event as any, {} as any);
 }
 
 main();
