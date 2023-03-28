@@ -8,7 +8,7 @@ import { ParseDeleteItemResult, ParseListItemsResult, ReturnRestApiResult } from
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import FileS3Configurator from '/opt/FileS3Configurator';
 import BotManager from '/opt/BotManager';
 
 export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -29,7 +29,7 @@ export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: 
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.DeleteMessageFile(telegramUser.id, bodyObject.BOTUUID, bodyObject.id);
+    const result = await FileS3Configurator.DeleteMessageFile(telegramUser.id, bodyObject.BOTUUID, bodyObject.id);
 
     if (result && result.fileSize) {
         const botManager = await BotManager.GetOrCreate({

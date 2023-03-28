@@ -8,7 +8,7 @@ import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Re
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import FileS3Configurator from '/opt/FileS3Configurator';
 
 export async function ListMessageFilesHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -27,7 +27,7 @@ export async function ListMessageFilesHandler(event: APIGatewayEvent, context: C
         tags = event.queryStringParameters!.tags!.split(',');
     }
 
-    const result = await ContentConfigurator.ListMyMessageFiles(telegramUser.id, event.queryStringParameters!.BOTUUID!, tags);
+    const result = await FileS3Configurator.ListMyMessageFiles(telegramUser.id, event.queryStringParameters!.BOTUUID!, tags);
 
     const listResults = ParseListItemsResult(result);
 

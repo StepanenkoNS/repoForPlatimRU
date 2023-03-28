@@ -7,7 +7,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import FileS3Configurator from '/opt/FileS3Configurator';
 import BotManager from '/opt/BotManager';
 import { S3Helper } from '/opt/S3/S3Utils';
 //@ts-ignore
@@ -49,7 +49,7 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
     }
 
     if (validateLimits === true) {
-        const result = await ContentConfigurator.AddMessageFile({
+        const result = await FileS3Configurator.AddMessageFile({
             masterId: telegramUser.id,
             messageFile: {
                 discriminator: 'IMessageFile',

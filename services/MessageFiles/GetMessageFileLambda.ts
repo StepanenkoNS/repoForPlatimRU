@@ -8,7 +8,7 @@ import { ParseGetItemResult, ParseListItemsResult, ReturnRestApiResult } from '/
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import FileS3Configurator from '/opt/FileS3Configurator';
 
 export async function GetMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -24,7 +24,7 @@ export async function GetMessageFileHandler(event: APIGatewayEvent, context: Con
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.GetMyMessageFileById(telegramUser.id, event.queryStringParameters!.BOTUUID!, event.queryStringParameters!.id!);
+    const result = await FileS3Configurator.GetMyMessageFileById(telegramUser.id, event.queryStringParameters!.BOTUUID!, event.queryStringParameters!.id!);
     console.log('result', result);
     const getResult = ParseGetItemResult(result);
 

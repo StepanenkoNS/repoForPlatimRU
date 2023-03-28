@@ -7,9 +7,8 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
-//@ts-ignore
-import { EMessageFileType } from '/opt/ContentTypes';
+import FileS3Configurator from '/opt/FileS3Configurator';
+
 import BotManager from '/opt/BotManager';
 import { S3Helper } from '/opt/S3/S3Utils';
 
@@ -44,7 +43,7 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
     }
 
     //если указан s3Key - то будем менять старый файл
-    const result = await ContentConfigurator.UpdateMessageFile({
+    const result = await FileS3Configurator.UpdateMessageFile({
         masterId: telegramUser.id,
         messageFile: {
             discriminator: 'IMessageFile',
