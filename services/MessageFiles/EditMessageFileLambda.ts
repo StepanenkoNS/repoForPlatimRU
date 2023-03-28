@@ -47,6 +47,7 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
     const result = await ContentConfigurator.UpdateMessageFile({
         masterId: telegramUser.id,
         messageFile: {
+            discriminator: 'IMessageFile',
             BOTUUID: bodyObject.BOTUUID,
             id: bodyObject.id,
             name: bodyObject.name,

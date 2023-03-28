@@ -10,7 +10,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
-import { EContentPlanType } from '/opt/ContentTypes';
+import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
 
 export async function AddContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -35,14 +35,11 @@ export async function AddContentPlanHandler(event: APIGatewayEvent, context: Con
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const contentPlan = {
-        BOTUUID: bodyObject.BOTUUID,
-        name: bodyObject.name,
-        price: bodyObject.price,
-        currency: bodyObject.currency,
-        lengthInDays: bodyObject.lengthInDays,
-        description: bodyObject.description,
-        enabled: bodyObject.enabled
+    const contentPlan: IContentPlan = {
+        discriminator: 'IContentPlan',
+        BOTUUID: bodyObject.BOTUUID.toString(),
+        name: bodyObject.name.toString(),
+        description: bodyObject.description.toString()
     };
 
     console.log(contentPlan);

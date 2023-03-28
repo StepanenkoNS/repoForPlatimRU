@@ -25,11 +25,7 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
         { key: 'BOTUUID', datatype: 'string' },
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
-        { key: 'price', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'currency', datatype: 'string' },
-        { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
-        { key: 'description', datatype: 'string' },
-        { key: 'enabled', datatype: 'boolean' }
+        { key: 'description', datatype: 'string' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
@@ -39,14 +35,11 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
         chatId: telegramUser.id,
 
         contentPlan: {
+            discriminator: 'IContentPlan',
             id: bodyObject.id,
             BOTUUID: bodyObject.BOTUUID,
             name: bodyObject.name,
-            price: bodyObject.price,
-            currency: bodyObject.currency,
-            lengthInDays: bodyObject.lengthInDays,
-            description: bodyObject.description,
-            enabled: bodyObject.enabled
+            description: bodyObject.description
         }
     });
 

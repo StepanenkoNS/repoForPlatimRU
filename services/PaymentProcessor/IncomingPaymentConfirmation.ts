@@ -36,7 +36,7 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                     BOTUUID: updatePaymentResult.BOTUUID,
                     chatId: updatePaymentResult.chatId,
                     masterId: updatePaymentResult.masterId,
-                    contentPlanId: updatePaymentResult.contentPlanId
+                    userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
                 });
 
                 if (result === true) {

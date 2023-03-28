@@ -52,6 +52,7 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         const result = await ContentConfigurator.AddMessageFile({
             masterId: telegramUser.id,
             messageFile: {
+                discriminator: 'IMessageFile',
                 BOTUUID: bodyObject.BOTUUID,
                 name: bodyObject.name,
                 s3key: bodyObject.s3key,
