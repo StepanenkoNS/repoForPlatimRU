@@ -27,7 +27,7 @@ export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, con
     const e = [ESupportedCurrency.EUR.toString(), ESupportedCurrency.GBP.toString(), ESupportedCurrency.RUB.toString(), ESupportedCurrency.TRY.toString(), ESupportedCurrency.USD.toString()];
     console.log('EnumToArray', e);
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
         { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'price', datatype: 'number(nonZeroPositive)' },
@@ -42,7 +42,7 @@ export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, con
     const result = await UserSubscriptionPlan.AddUserSubscriptionPlan({
         masterId: telegramUser.id,
         discriminator: 'IUserSubscriptionPlan',
-        BOTUUID: bodyObject.BOTUUID,
+        botId: bodyObject.botId,
         currency: bodyObject.currency,
         enabled: bodyObject.enabled,
         lengthInDays: bodyObject.lengthInDays,

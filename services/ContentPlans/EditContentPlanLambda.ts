@@ -10,7 +10,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
-import { EContentPlanType } from '/opt/ContentTypes';
+import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
 
 export async function EditContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -22,7 +22,7 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 'description', datatype: 'string' }
@@ -31,17 +31,15 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.UpdateContentPlan({
-        chatId: telegramUser.id,
-
-        contentPlan: {
-            discriminator: 'IContentPlan',
-            id: bodyObject.id,
-            BOTUUID: bodyObject.BOTUUID,
-            name: bodyObject.name,
-            description: bodyObject.description
-        }
-    });
+    const contentPlan: IContentPlan = {
+        discriminator: 'IContentPlan',
+        masterId: telegramUser.id,
+        id: bodyObject.id,
+        botId: Number(bodyObject.botId),
+        name: bodyObject.name,
+        description: bodyObject.description
+    };
+    const result = await ContentConfigurator.UpdateContentPlan(contentPlan);
 
     const updateResult = ParseUpdateItemResult(result);
 

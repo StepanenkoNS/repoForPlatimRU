@@ -27,7 +27,7 @@ export async function EditUserSubscriptionPlanHandler(event: APIGatewayEvent, co
     console.log('EnumToArray', e);
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
         { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'price', datatype: 'number(nonZeroPositive)' },
@@ -43,7 +43,7 @@ export async function EditUserSubscriptionPlanHandler(event: APIGatewayEvent, co
             id: bodyObject.id,
             masterId: telegramUser.id,
             discriminator: 'IUserSubscriptionPlan',
-            BOTUUID: bodyObject.BOTUUID,
+            botId: bodyObject.botId,
             currency: bodyObject.currency,
             enabled: bodyObject.enabled,
             lengthInDays: bodyObject.lengthInDays,

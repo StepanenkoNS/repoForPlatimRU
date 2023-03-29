@@ -22,7 +22,7 @@ export async function AddContentPlanPostHandler(event: APIGatewayEvent, context:
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'contentPlanId', datatype: 'string' },
         { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
@@ -36,17 +36,17 @@ export async function AddContentPlanPostHandler(event: APIGatewayEvent, context:
     }
 
     const result = await ContentConfigurator.AddContentPlanPost({
+        botId: bodyObject.botId,
         masterId: telegramUser.id,
-        contentPlanPost: {
-            BOTUUID: bodyObject.BOTUUID,
-            contentPlanId: bodyObject.contentPlanId,
-            sendMethod: bodyObject.sendMethod,
-            name: bodyObject.name,
-            draft: bodyObject.draft,
-            message: bodyObject.message,
-            trigger: bodyObject.trigger,
-            interaction: bodyObject.interaction
-        }
+        discriminator: 'IContentPlanPost',
+
+        contentPlanId: bodyObject.contentPlanId,
+        sendMethod: bodyObject.sendMethod,
+        name: bodyObject.name,
+
+        message: bodyObject.message,
+        trigger: bodyObject.trigger,
+        interaction: bodyObject.interaction
     });
 
     const addResult = ParseInsertItemResult(result);

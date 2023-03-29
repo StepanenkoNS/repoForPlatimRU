@@ -20,7 +20,7 @@ export async function DeleteContentPlanHandler(event: APIGatewayEvent, context: 
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'id', datatype: 'string' }
     ]);
     if (bodyObject === false) {
@@ -28,7 +28,11 @@ export async function DeleteContentPlanHandler(event: APIGatewayEvent, context: 
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.DeleteContentPlan(telegramUser.id, bodyObject.BOTUUID, bodyObject.id);
+    const result = await ContentConfigurator.DeleteContentPlan({
+        masterId: telegramUser.id,
+        botId: Number(bodyObject.botId),
+        id: bodyObject.id
+    });
 
     const deleteResult = ParseDeleteItemResult(result);
 

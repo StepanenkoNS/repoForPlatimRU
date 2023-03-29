@@ -20,11 +20,15 @@ export async function GetMessageFileHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['id', 'BOTUUID'])) {
+    if (!ValidateStringParameters(event, ['id', 'botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await FileS3Configurator.GetMyMessageFileById(telegramUser.id, event.queryStringParameters!.BOTUUID!, event.queryStringParameters!.id!);
+    const result = await FileS3Configurator.GetMyMessageFileById({
+        masterId: telegramUser.id,
+        botId: Number(event.queryStringParameters!.botId!),
+        id: event.queryStringParameters!.id!
+    });
     console.log('result', result);
     const getResult = ParseGetItemResult(result);
 

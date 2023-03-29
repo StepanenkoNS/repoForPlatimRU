@@ -26,7 +26,7 @@ export async function GetPreSignedUrlHandler(event: APIGatewayEvent, context: Co
     }
 
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'fileName', datatype: 'string' },
         { key: 'fileType', datatype: 'string' },
         { key: 'fileSize', datatype: 'number(nonZeroPositiveInteger)' }
@@ -48,7 +48,7 @@ export async function GetPreSignedUrlHandler(event: APIGatewayEvent, context: Co
     console.log('validateLimits', validateLimits);
 
     if (validateLimits) {
-        const s3Result = await S3Helper.GeneratePreSignedURL_Put(process.env.tempUploadsBucketName!, telegramUser.id, bodyObject.BOTUUID, bodyObject.fileName, bodyObject.fileType, 1);
+        const s3Result = await S3Helper.GeneratePreSignedURL_Put(process.env.tempUploadsBucketName!, telegramUser.id, bodyObject.botId, bodyObject.fileName, bodyObject.fileType, 1);
         console.log(s3Result);
 
         const getResult = ParseGetItemResult(s3Result);

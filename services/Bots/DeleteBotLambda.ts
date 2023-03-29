@@ -26,9 +26,9 @@ export async function DeleteBotHandler(event: APIGatewayEvent, context: Context)
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const BOTUUID = event.queryStringParameters!.id!;
+    const botId = event.queryStringParameters!.id!;
 
-    const result = await BotManager.DeleteMyBot(telegramUser.id, BOTUUID);
+    const result = await BotManager.DeleteMyBot(telegramUser.id, Number(botId));
     const deleteResult = ParseGetItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

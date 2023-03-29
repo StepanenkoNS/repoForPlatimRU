@@ -22,14 +22,18 @@ export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: 
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
-        { key: 'BOTUUID', datatype: 'string' }
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' }
     ]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await FileS3Configurator.DeleteMessageFile(telegramUser.id, bodyObject.BOTUUID, bodyObject.id);
+    const result = await FileS3Configurator.DeleteMessageFile({
+        masterId: telegramUser.id,
+        botId: Number(bodyObject.botId),
+        id: bodyObject.id
+    });
 
     if (result && result.fileSize) {
         const botManager = await BotManager.GetOrCreate({

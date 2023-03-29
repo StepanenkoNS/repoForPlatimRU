@@ -44,7 +44,7 @@ export async function SendTestMessageHandler(event: APIGatewayEvent, context: Co
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'sendMethod', datatype: ['sendMessage', 'sendPhoto', 'sendAudio', 'sendDocument', 'sendDocument', 'sendVideo', 'sendAnimation', 'sendVoice', 'sendVideoNote'] },
         { key: 'message', datatype: 'object', objectKeys: [] }
     ]);
@@ -62,7 +62,7 @@ export async function SendTestMessageHandler(event: APIGatewayEvent, context: Co
     }
 
     const sendMethod = getSendMethodEnum(bodyObject.sendMethod);
-    const result = await MessageSender.SendTestMessage(telegramUser.id, bodyObject.BOTUUID, sendMethod!, bodyObject.message);
+    const result = await MessageSender.SendTestMessage(telegramUser.id, Number(bodyObject.botId), sendMethod!, bodyObject.message);
 
     console.log('MessageSender.SendTestMessage result', result);
 

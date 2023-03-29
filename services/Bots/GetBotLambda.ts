@@ -28,9 +28,9 @@ export async function GetBotHandler(event: APIGatewayEvent, context: Context): P
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const BOTUUID = event.queryStringParameters!.id!;
+    const botId = event.queryStringParameters!.id!;
 
-    const result = await BotManager.GetMyBot(telegramUser.id, BOTUUID);
+    const result = await BotManager.GetMyBot(telegramUser.id, Number(botId));
     const getResult = ParseGetItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

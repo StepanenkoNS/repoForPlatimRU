@@ -25,7 +25,7 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
             if (updatePaymentResult === false) {
                 //посылаем сообщение, что не удалось обновить
                 const sendResultAdmin = await MessageSender.SendTextMessage({
-                    BOTUUID: request.BOTUUID,
+                    botId: request.botId,
                     masterId: request.masterId,
                     recipientChatId: request.masterId,
                     text: 'Этот платеж был подтвержден ранее'
@@ -33,7 +33,6 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
             } else {
                 const result = await UserBotProfile.SubscribeToContentPlanStatic({
                     botId: updatePaymentResult.botId,
-                    BOTUUID: updatePaymentResult.BOTUUID,
                     chatId: updatePaymentResult.chatId,
                     masterId: updatePaymentResult.masterId,
                     userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
@@ -51,13 +50,13 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                         let userText = 'Ваш платеж был отклонен администратором';
                     }
                     const sendResultAdmin = await MessageSender.SendTextMessage({
-                        BOTUUID: updatePaymentResult.BOTUUID,
+                        botId: updatePaymentResult.botId,
                         masterId: updatePaymentResult.masterId,
                         recipientChatId: updatePaymentResult.masterId,
                         text: adminText
                     });
                     const sendResultUser = await MessageSender.SendTextMessage({
-                        BOTUUID: updatePaymentResult.BOTUUID,
+                        botId: updatePaymentResult.botId,
                         masterId: updatePaymentResult.masterId,
                         recipientChatId: updatePaymentResult.chatId,
                         text: userText
@@ -65,7 +64,7 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                 } else {
                     //шлем сообщение админу, что операция провалилась
                     const sendResultAdmin = await MessageSender.SendTextMessage({
-                        BOTUUID: updatePaymentResult.BOTUUID,
+                        botId: updatePaymentResult.botId,
                         masterId: updatePaymentResult.masterId,
                         recipientChatId: updatePaymentResult.masterId,
                         text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой'

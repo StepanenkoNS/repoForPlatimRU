@@ -21,13 +21,13 @@ export async function UnRegisterBotHandler(event: APIGatewayEvent, context: Cont
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
+    if (!ValidateStringParameters(event, ['id'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const BOTUUID = event.queryStringParameters!.id!;
+    const botId = event.queryStringParameters!.id!;
 
-    const result = await BotManager.RegisterMyBot(telegramUser.id, BOTUUID);
+    const result = await BotManager.SetWebhook(telegramUser.id, Number(botId));
     const getResult = ParseGetItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

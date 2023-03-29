@@ -23,11 +23,15 @@ export async function ListContentPlanPostsHandler(event: APIGatewayEvent, contex
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['BOTUUID', 'contentPlanId'])) {
+    if (!ValidateStringParameters(event, ['botId', 'contentPlanId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.ListMyContentPlanPosts(telegramUser.id, event.queryStringParameters!.BOTUUID!, event.queryStringParameters!.contentPlanId!);
+    const result = await ContentConfigurator.ListMyContentPlanPosts({
+        masterId: telegramUser.id,
+        botId: Number(event.queryStringParameters!.botId!),
+        contentPlanId: event.queryStringParameters!.contentPlanId!
+    });
 
     const listResults = ParseListItemsResult(result);
 

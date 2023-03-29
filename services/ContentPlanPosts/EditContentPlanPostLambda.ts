@@ -22,7 +22,7 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'contentPlanId', datatype: 'string' },
         { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
@@ -37,20 +37,19 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
 
     const result = await ContentConfigurator.UpdateContentPlanPost({
         masterId: telegramUser.id,
-        contentPlanPost: {
-            id: bodyObject.id,
-            BOTUUID: bodyObject.BOTUUID,
-            contentPlanId: bodyObject.contentPlanId,
+        discriminator: 'IContentPlanPost',
 
-            name: bodyObject.name,
-            sendMethod: bodyObject.sendMethod,
+        id: bodyObject.id,
+        botId: bodyObject.botId,
+        contentPlanId: bodyObject.contentPlanId,
 
-            trigger: bodyObject.trigger,
-            message: bodyObject.message,
+        name: bodyObject.name,
+        sendMethod: bodyObject.sendMethod,
 
-            interaction: bodyObject.interaction,
-            draft: bodyObject.draft
-        }
+        trigger: bodyObject.trigger,
+        message: bodyObject.message,
+
+        interaction: bodyObject.interaction
     });
 
     const updateResult = ParseUpdateItemResult(result);

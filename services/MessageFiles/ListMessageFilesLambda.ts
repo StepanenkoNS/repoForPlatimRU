@@ -23,11 +23,17 @@ export async function ListMessageFilesHandler(event: APIGatewayEvent, context: C
     }
 
     let tags: string[] = [];
-    if (ValidateStringParameters(event, ['tags', 'BOTUUID'])) {
+    if (ValidateStringParameters(event, ['tags', 'botId'])) {
         tags = event.queryStringParameters!.tags!.split(',');
     }
 
-    const result = await FileS3Configurator.ListMyMessageFiles(telegramUser.id, event.queryStringParameters!.BOTUUID!, tags);
+    const result = await FileS3Configurator.ListMyMessageFiles(
+        {
+            masterId: telegramUser.id,
+            botId: Number(event.queryStringParameters!.botId!)
+        },
+        tags
+    );
 
     const listResults = ParseListItemsResult(result);
 

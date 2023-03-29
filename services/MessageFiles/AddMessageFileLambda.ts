@@ -10,6 +10,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import FileS3Configurator from '/opt/FileS3Configurator';
 import BotManager from '/opt/BotManager';
 import { S3Helper } from '/opt/S3/S3Utils';
+import { IMessageFile } from '/opt/ContentTypes';
 //@ts-ignore
 
 export async function AddMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -22,7 +23,7 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
         { key: 's3key', datatype: 'string' },
         { key: 'originalFileName', datatype: 'string' },
@@ -48,21 +49,21 @@ export async function AddMessageFileHandler(event: APIGatewayEvent, context: Con
         return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
     }
 
+    const messageFile: IMessageFile = {
+        discriminator: 'IMessageFile',
+        masterId: telegramUser.id,
+
+        botId: Number(bodyObject.botId),
+        name: bodyObject.name,
+        s3key: bodyObject.s3key,
+        originalFileName: bodyObject.originalFileName,
+        fileSize: bodyObject.fileSize,
+        mediaType: mediaType.type,
+        attachedToPosts: [],
+        tags: bodyObject.tags
+    };
     if (validateLimits === true) {
-        const result = await FileS3Configurator.AddMessageFile({
-            masterId: telegramUser.id,
-            messageFile: {
-                discriminator: 'IMessageFile',
-                BOTUUID: bodyObject.BOTUUID,
-                name: bodyObject.name,
-                s3key: bodyObject.s3key,
-                originalFileName: bodyObject.originalFileName,
-                fileSize: bodyObject.fileSize,
-                mediaType: mediaType.type,
-                attachedToPosts: [],
-                tags: bodyObject.tags
-            }
-        });
+        const result = await FileS3Configurator.AddMessageFile(messageFile);
 
         const addResult = ParseInsertItemResult(result);
 

@@ -22,7 +22,7 @@ export async function SendMessageSenderHandler(event: SQSEvent) {
         try {
             const body = JSON.parse(record.body);
             if (body.discriminator === 'IScheduledPostMessage') {
-                const post = await ContentConfigurator.GetMyContentPlanPostById(body.masterId, body.BOTUUID, body.contentPlanId, body.contentPlanPostId);
+                const post = await ContentConfigurator.GetMyContentPlanPostById({ masterId: body.masterId, botId: Number(body.botId), contentPlanId: body.contentPlanId, id: body.contentPlanPostId });
                 //console.log('post', post);
                 if (post === false) {
                     throw 'Post not found';

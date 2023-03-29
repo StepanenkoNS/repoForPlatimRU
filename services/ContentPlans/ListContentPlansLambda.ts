@@ -22,11 +22,14 @@ export async function ListContentPlansHandler(event: APIGatewayEvent, context: C
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['BOTUUID'])) {
+    if (!ValidateStringParameters(event, ['botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.ListMyBotContentPlans(telegramUser.id, event.queryStringParameters!.BOTUUID!);
+    const result = await ContentConfigurator.ListMyBotContentPlans({
+        masterId: telegramUser.id,
+        botId: Number(event.queryStringParameters!.botId!)
+    });
 
     const listResults = ParseListItemsResult(result);
 

@@ -9,6 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
 import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
+import { IAddUserSubscriptionPlanOption } from '/opt/UserSubscriptionTypes';
 
 export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -23,7 +24,7 @@ export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEven
     }
 
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'userSubscriptionPlanId', datatype: 'string' },
         { key: 'ids', datatype: 'array' }
     ]);
@@ -31,14 +32,14 @@ export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEven
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
-
-    const result = await UserSubscriptionPlan.AddUserSubscriptionPlanOption({
+    const userSubscriptionPlanOption: IAddUserSubscriptionPlanOption = {
         discriminator: 'IUserSubscriptionPlanOption',
         masterId: telegramUser.id,
-        BOTUUID: bodyObject.BOTUUID,
+        botId: Number(bodyObject.botId),
         userSubscriptionPlanId: bodyObject.userSubscriptionPlanId,
         ids: bodyObject.ids
-    });
+    };
+    const result = await UserSubscriptionPlan.AddUserSubscriptionPlanOption(userSubscriptionPlanOption);
     const addResult = ParseInsertItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);

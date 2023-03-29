@@ -22,7 +22,7 @@ export async function AddContentPlanHandler(event: APIGatewayEvent, context: Con
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
         // { key: 'type', datatype: [EContentPlanType.INTERACTIVE.toString(), EContentPlanType.SCHEDULLED.toString()] },
         { key: 'price', datatype: 'number(nonZeroPositiveInteger)' },
@@ -37,17 +37,15 @@ export async function AddContentPlanHandler(event: APIGatewayEvent, context: Con
 
     const contentPlan: IContentPlan = {
         discriminator: 'IContentPlan',
-        BOTUUID: bodyObject.BOTUUID.toString(),
+        botId: Number(bodyObject.botId),
+        masterId: telegramUser.id,
         name: bodyObject.name.toString(),
         description: bodyObject.description.toString()
     };
 
     console.log(contentPlan);
 
-    const result = await ContentConfigurator.AddContentPlan({
-        chatId: telegramUser.id,
-        contentPlan: contentPlan
-    });
+    const result = await ContentConfigurator.AddContentPlan(contentPlan);
 
     const addResult = ParseInsertItemResult(result);
 

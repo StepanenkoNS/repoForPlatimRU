@@ -98,7 +98,6 @@ export async function SendMessagesShedulerHandler(event: any, context: any): Pro
             discriminator: 'IScheduledPostMessage',
             PK: item.PK,
             SK: item.SK,
-            BOTUUID: item.BOTUUID,
             botId: Number(item.botId),
             masterId: Number(item.masterId),
             chatId: Number(item.chatId),

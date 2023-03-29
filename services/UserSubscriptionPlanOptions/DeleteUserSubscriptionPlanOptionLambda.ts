@@ -20,7 +20,7 @@ export async function DeleteUserSubscriptionPlanOptionHandler(event: APIGatewayE
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'BOTUUID', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'userSubscriptionPlanId', datatype: 'string' },
         { key: 'id', datatype: 'string' }
     ]);
@@ -31,7 +31,7 @@ export async function DeleteUserSubscriptionPlanOptionHandler(event: APIGatewayE
 
     const result = await UserSubscriptionPlan.DeleteUserSubscriptionPlanOption({
         masterId: telegramUser.id,
-        BOTUUID: bodyObject.BOTUUID,
+        botId: Number(bodyObject.botId),
         id: bodyObject.id,
         userSubscriptionPlanId: bodyObject.userSubscriptionPlanId
     });

@@ -22,7 +22,7 @@ export async function ListBotsHandler(event: APIGatewayEvent, context: Context):
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    const result = await BotManager.GetMyBots(telegramUser.id);
+    const result = await BotManager.ListMyBots(telegramUser.id);
 
     const listResults = ParseListItemsResult(result);
 
