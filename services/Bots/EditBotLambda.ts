@@ -22,10 +22,8 @@ export async function EditBotHandler(event: APIGatewayEvent, context: Context): 
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'id', datatype: 'string' },
-        { key: 'name', datatype: 'string' },
-        { key: 'description', datatype: 'string' },
-        { key: 'token', datatype: 'string' }
+        { key: 'id', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'description', datatype: 'string' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
@@ -34,11 +32,9 @@ export async function EditBotHandler(event: APIGatewayEvent, context: Context): 
     const bot: IMasterBot = {
         masterId: telegramUser.id,
         id: bodyObject.id,
-        name: bodyObject.name,
         description: bodyObject.description,
-        token: bodyObject.token ? bodyObject.token : '',
-        registered: false,
-        registeredBotId: undefined
+        token: bodyObject.token ? bodyObject.token : undefined,
+        discriminator: 'IMasterBot'
     };
     console.log('bot', bot);
     const result = await BotManager.UpdateMyBot(bot);

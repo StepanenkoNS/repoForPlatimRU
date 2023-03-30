@@ -18,6 +18,7 @@ import BotManager from '/opt/BotManager';
 import { IMasterBot } from '/opt/ConfiguratorTypes';
 
 export async function AddBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -27,7 +28,7 @@ export async function AddBotHandler(event: APIGatewayEvent, context: Context): P
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'name', datatype: 'string' },
+        { key: 'id', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'description', datatype: 'string' },
         { key: 'token', datatype: 'string' }
     ]);
@@ -36,12 +37,11 @@ export async function AddBotHandler(event: APIGatewayEvent, context: Context): P
     }
 
     const bot: IMasterBot = {
+        discriminator: 'IMasterBot',
         masterId: telegramUser.id,
-        name: bodyObject.name,
         description: bodyObject.description,
         token: bodyObject.token ? bodyObject.token : '',
-        registered: false,
-        registeredBotId: undefined
+        id: bodyObject.id
     };
     const result = await BotManager.AddMyBot(bot);
 

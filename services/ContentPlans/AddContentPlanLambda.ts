@@ -25,11 +25,8 @@ export async function AddContentPlanHandler(event: APIGatewayEvent, context: Con
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
         // { key: 'type', datatype: [EContentPlanType.INTERACTIVE.toString(), EContentPlanType.SCHEDULLED.toString()] },
-        { key: 'price', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'currency', datatype: 'string' },
-        { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
-        { key: 'description', datatype: 'string' },
-        { key: 'enabled', datatype: 'boolean' }
+
+        { key: 'description', datatype: 'string' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);

@@ -21,12 +21,12 @@ export async function RegisterBotHandler(event: APIGatewayEvent, context: Contex
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'number(nonZeroPositiveInteger)' }]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await BotManager.RegisterMyBot(telegramUser.id, bodyObject.id);
+    const result = await BotManager.SetWebhook(telegramUser.id, bodyObject.id);
 
     const addResult = ParseInsertItemResult(result);
 

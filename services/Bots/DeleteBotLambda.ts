@@ -22,13 +22,13 @@ export async function DeleteBotHandler(event: APIGatewayEvent, context: Context)
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event)) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'number(nonZeroPositiveInteger)' }]);
+    if (bodyObject === false) {
+        console.log('Error: mailformed JSON body');
+        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const botId = event.queryStringParameters!.id!;
-
-    const result = await BotManager.DeleteMyBot(telegramUser.id, Number(botId));
+    const result = await BotManager.DeleteMyBot(telegramUser.id, Number(bodyObject.id));
     const deleteResult = ParseGetItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }
