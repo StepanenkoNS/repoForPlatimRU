@@ -11,7 +11,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
 
-export async function EditContentPlanPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function EditFreePostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -23,7 +23,7 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(positiveInteger)' },
-        { key: 'contentPlanId', datatype: 'string' },
+
         { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
@@ -34,13 +34,12 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.UpdateContentPlanPost({
+    const result = await ContentConfigurator.UpdateFreePost({
         masterId: telegramUser.id,
-        discriminator: 'IContentPlanPost',
+        discriminator: 'IFreePost',
 
         id: bodyObject.id,
         botId: bodyObject.botId,
-        contentPlanId: bodyObject.contentPlanId,
 
         name: bodyObject.name,
         sendMethod: bodyObject.sendMethod,

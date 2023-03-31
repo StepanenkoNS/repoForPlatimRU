@@ -1,4 +1,7 @@
 {
+  "WebPublicPages": {
+    "WebPublicPagesGWAPIEndpoint145EF0D8": "https://fxs3adsi8g.execute-api.us-east-1.amazonaws.com/pagesAPI/"
+  },
   "WebRestServiceFiles": {
     "ExportsOutputFnGetAttListMessageFilesLambdaA8A6DBEAArn40DDE989": "arn:aws:lambda:us-east-1:993738567487:function:react-MessageFiles-List-Lambda",
     "ExportsOutputFnGetAttGetGetPresignedUrlLambda43F48E6FArn38B1BA68": "arn:aws:lambda:us-east-1:993738567487:function:react-GetPresignedUrl-Lambda",
@@ -10,43 +13,5 @@
     "ExportsOutputFnGetAttGetTelegramFileLambda0285A5D8Arn7A92FC36": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Get-Lambda",
     "ExportsOutputFnGetAttDeleteMessageFileLambdaE4E88A6AArnD4D92619": "arn:aws:lambda:us-east-1:993738567487:function:react-MessageFiles-Delete-Lambda",
     "ExportsOutputFnGetAttEditMessageFileLambda395F8673Arn2657FAF3": "arn:aws:lambda:us-east-1:993738567487:function:react-MessageFiles-Edit-Lambda"
-  },
-  "WebRestServiceMessagesAndPayments": {
-    "ExportsOutputFnGetAttSendTestMessageLambdaD3B92DD3Arn2DACEF4C": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendTestMessage-Lambda",
-    "ExportsOutputFnGetAttSendTestFileLambda65A31CEBArn8F991A6C": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendTestFile-Lambda"
-  },
-  "WebRestServicePlansAndPosts": {
-    "ExportsOutputFnGetAttListContentPlansLambda95AC08D7Arn9EA4958E": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-List-Lambda",
-    "ExportsOutputFnGetAttGetContentPlanPostLambdaA8AFC433Arn0B42A341": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Get-Lambda",
-    "ExportsOutputFnGetAttGetContentPlanLambda45DE78B9ArnAA90AFA2": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Get-Lambda",
-    "ExportsOutputFnGetAttEditContentPlanLambdaA1D9BCEDArn67D08860": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Edit-Lambda",
-    "ExportsOutputFnGetAttListContentPlanPostsLambda80CD292FArn1C08CB12": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-List-Lambda",
-    "ExportsOutputFnGetAttAddContentPlanLambda2A50CDCCArn9274FE09": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Add-Lambda",
-    "ExportsOutputFnGetAttDeleteContentPlanPostLambda9CD840D1Arn94C3F856": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Delete-Lambda",
-    "ExportsOutputFnGetAttEditContentPlanPostLambdaB4D253CEArnF266F911": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Edit-Lambda",
-    "ExportsOutputFnGetAttDeleteContentPlanLambda37ED3EAEArn7FB4BD17": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Delete-Lambda",
-    "ExportsOutputFnGetAttAddContentPlanPostLambda6114356CArn3F1CC64B": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Add-Lambda"
-  },
-  "WebRestServiceSubscriptions": {
-    "ExportsOutputFnGetAttListUserSubscriptionPlanOptionsListWithContentPlansLambda8DCE36EAArn3FE2BB55": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-ListWithContentPlans-Lambda",
-    "ExportsOutputFnGetAttDeleteUserSubscriptionPlanLambda51B6B16BArnD2AB2BD7": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlans-Delete-Lambda",
-    "ExportsOutputFnGetAttDeleteUserSubscriptionPlaOptionnLambdaC8D4C27AArn54AEB6F2": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-Delete-Lambda",
-    "ExportsOutputFnGetAttGetServiceSubscriptionPlanLambdaC5F18656Arn8675F395": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Get-Lambda",
-    "ExportsOutputFnGetAttGetSubscriptionSettingsLambdaD3B798F7ArnA800842A": "arn:aws:lambda:us-east-1:993738567487:function:react-SubscriptionSettings-Get-Lambda",
-    "ExportsOutputFnGetAttEditServiceSubscriptionPlanLambda1B47634DArn8F7D335B": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Edit-Lambda",
-    "ExportsOutputFnGetAttGetUserSubscriptionPlanLambda879BAD76Arn72611C2A": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlans-Get-Lambda",
-    "ExportsOutputFnGetAttListUserSubscriptionPlansLambda4657B164Arn3F8D999F": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlans-List-Lambda",
-    "ExportsOutputFnGetAttGetUserSubscriptionPlanOptionLambda4A632252Arn8860660D": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-Get-Lambda",
-    "ExportsOutputFnGetAttAddServiceSubscriptionPlanLambda886AAD48Arn19B9B27E": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Add-Lambda",
-    "ExportsOutputFnGetAttAddUserSubscriptionPlanOptionLambda1B43ADFAArnE7C47405": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-Add-Lambda",
-    "ExportsOutputFnGetAttListServiceSubscriptionPlansLambda4DAD3C04Arn06D4043F": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-List-Lambda",
-    "ExportsOutputFnGetAttListUserSubscriptionPlanOptionsLambda0737A259Arn0C45334E": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-List-Lambda",
-    "ExportsOutputFnGetAttAddUserSubscriptionPlanLambda5A176608Arn5AC37066": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlans-Add-Lambda",
-    "ExportsOutputFnGetAttEditUserSubscriptionPlanLambdaA70E5AC2ArnB7132BAF": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlans-Edit-Lambda",
-    "ExportsOutputFnGetAttDeleteServiceSubscriptionPlanLambda5FEE7EF0Arn66D28E0E": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Delete-Lambda"
-  },
-  "WebRestServiceMain": {
-    "WebRestServiceMainAPIGWSecureAPI": "https://fj31pj6yc1.execute-api.us-east-1.amazonaws.com/SecureAPI/",
-    "WebRestServiceMainGWAPIEndpointFEDB695E": "https://fj31pj6yc1.execute-api.us-east-1.amazonaws.com/SecureAPI/"
   }
 }

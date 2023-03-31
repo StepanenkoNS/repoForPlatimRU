@@ -10,7 +10,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 
-export async function DeleteContentPlanPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function DeleteFreePostPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -21,18 +21,16 @@ export async function DeleteContentPlanPostHandler(event: APIGatewayEvent, conte
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
-        { key: 'botId', datatype: 'number(positiveInteger)' },
-        { key: 'contentPlanId', datatype: 'string' }
+        { key: 'botId', datatype: 'number(positiveInteger)' }
     ]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.DeleteContentPlanPost({
+    const result = await ContentConfigurator.DeleteFreePost({
         masterId: telegramUser.id,
         botId: Number(bodyObject.botId),
-        contentPlanId: bodyObject.contentPlanId,
         id: bodyObject.id
     });
 

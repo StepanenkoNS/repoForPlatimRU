@@ -26,7 +26,6 @@ export async function AddContentPlanPostHandler(event: APIGatewayEvent, context:
         { key: 'contentPlanId', datatype: 'string' },
         { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
-        { key: 'draft', datatype: 'boolean' },
         { key: 'message', datatype: 'object', objectKeys: [] },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
         { key: 'interaction', datatype: 'object', objectKeys: [] }
