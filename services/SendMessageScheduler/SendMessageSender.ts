@@ -22,19 +22,26 @@ export async function SendMessageSenderHandler(event: SQSEvent) {
         try {
             const body = JSON.parse(record.body);
             if (body.discriminator === 'IScheduledPostMessage') {
-                const post = await ContentConfigurator.GetMyContentPlanPostById({ masterId: body.masterId, botId: Number(body.botId), contentPlanId: body.contentPlanId, id: body.contentPlanPostId });
-                //console.log('post', post);
-                if (post === false) {
-                    throw 'Post not found';
-                }
                 const result = await MessageSender.SendScheduledMessage(body);
-                if (result !== true) {
+                if (result === false) {
                     batchItemFailures.push({ itemIdentifier: record.messageId });
                 }
             }
             if (body.discriminator === 'IRequestForPaymentConfirmation') {
                 const result = await MessageSender.SendPaymentMethodToAdmin(body);
-                if (result !== true) {
+                if (result === false) {
+                    batchItemFailures.push({ itemIdentifier: record.messageId });
+                }
+            }
+            if (body.discriminator === 'IScheduledGenericMessage') {
+                const result = await MessageSender.SendGenericMessage({
+                    masterId: Number(body.masterId),
+                    botId: Number(body.botId),
+                    recipientChatId: Number(body.chatId),
+                    sendMethod: body.sendMethod,
+                    message: body.message
+                });
+                if (result === false) {
                     batchItemFailures.push({ itemIdentifier: record.messageId });
                 }
             }

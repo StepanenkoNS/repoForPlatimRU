@@ -27,7 +27,8 @@ export async function AddFreePostHandler(event: APIGatewayEvent, context: Contex
         { key: 'name', datatype: 'string' },
         { key: 'message', datatype: 'object', objectKeys: [] },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
-        { key: 'interaction', datatype: 'object', objectKeys: [] }
+        { key: 'interaction', datatype: 'object', objectKeys: [] },
+        { key: 'sendOnlyToTrialUsers', datatype: 'boolean' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
@@ -40,6 +41,7 @@ export async function AddFreePostHandler(event: APIGatewayEvent, context: Contex
 
         sendMethod: bodyObject.sendMethod,
         name: bodyObject.name,
+        sendOnlyToTrialUsers: bodyObject.sendOnlyToTrialUsers,
 
         message: bodyObject.message,
         trigger: bodyObject.trigger,

@@ -2,6 +2,9 @@
   "WebPublicPages": {
     "WebPublicPagesGWAPIEndpoint145EF0D8": "https://fxs3adsi8g.execute-api.us-east-1.amazonaws.com/pagesAPI/"
   },
+  "WebRestServiceCRM": {
+    "ExportsOutputFnGetAttListMyUsersLambdaB4FA7C52Arn83561E04": "arn:aws:lambda:us-east-1:993738567487:function:react-CRM-Users-List-Lambda"
+  },
   "WebRestServiceFiles": {
     "ExportsOutputFnGetAttListMessageFilesLambdaA8A6DBEAArn40DDE989": "arn:aws:lambda:us-east-1:993738567487:function:react-MessageFiles-List-Lambda",
     "ExportsOutputFnGetAttGetGetPresignedUrlLambda43F48E6FArn38B1BA68": "arn:aws:lambda:us-east-1:993738567487:function:react-GetPresignedUrl-Lambda",
@@ -13,5 +16,12 @@
     "ExportsOutputFnGetAttGetTelegramFileLambda0285A5D8Arn7A92FC36": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Get-Lambda",
     "ExportsOutputFnGetAttDeleteMessageFileLambdaE4E88A6AArnD4D92619": "arn:aws:lambda:us-east-1:993738567487:function:react-MessageFiles-Delete-Lambda",
     "ExportsOutputFnGetAttEditMessageFileLambda395F8673Arn2657FAF3": "arn:aws:lambda:us-east-1:993738567487:function:react-MessageFiles-Edit-Lambda"
+  },
+  "WebRestServiceLanding": {
+    "ExportsOutputFnGetAttSetBotLandingPageLamda13B7B859Arn11C00CF1": "arn:aws:lambda:us-east-1:993738567487:function:react-BotLanding-Update-Lambda"
+  },
+  "WebRestServiceMessagesAndPayments": {
+    "ExportsOutputFnGetAttSendTestMessageLambdaD3B92DD3Arn2DACEF4C": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendTestMessage-Lambda",
+    "ExportsOutputFnGetAttSendTestFileLambda65A31CEBArn8F991A6C": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendTestFile-Lambda"
   }
 }

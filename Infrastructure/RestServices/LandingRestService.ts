@@ -8,25 +8,10 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
-//@ts-ignore
-import { createAPIandAuthorizer } from '/opt/LambdaHelpers/CreateAPIwithAuth';
-import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
-import { CreateBotsLambdas } from './Lambdas/Bots';
-import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
-import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
-import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
-import { CreateSendMessagesLambdas } from './Lambdas/SendTestMessages';
-import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
-import { PaymentProcessor } from './Lambdas/PaymentProcessor';
-import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
-import { CreateUserSubscriptionPlansLambdas } from './Lambdas/UserSubscriptionPlans';
-import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
-import { CreateTelegramFilesLambdas } from './Lambdas/TelegramFiles';
+
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
-import { CreateFreePostsLambdas } from './Lambdas/FreePosts';
+
+import { CreateBotSetLandingLambdas } from './Lambdas/Landing';
 // import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 // import { CreateBotsLambdas } from './Lambdas/Bots';
 // import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
@@ -38,7 +23,7 @@ import { CreateFreePostsLambdas } from './Lambdas/FreePosts';
 
 // import { CreateSendMessagesLambdas } from './Lambdas/SendMessages';
 
-export class PlansAndPostsRestServicesStack extends Stack {
+export class BotLandingRestServicesStack extends Stack {
     constructor(
         scope: Construct,
         id: string,
@@ -62,8 +47,6 @@ export class PlansAndPostsRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        //CreateFreePostsLambdas(this, props.restServicesAPI.root.addResource('FreePosts'), layers, [botsTable]);
-        CreateContentPlanPostsLambdas(this, props.restServicesAPI.root.addResource('ContentPlanPosts'), layers, [botsTable]);
-        CreateContentPlansLambdas(this, props.restServicesAPI.root.addResource('ContentPlans'), layers, [botsTable]);
+        CreateBotSetLandingLambdas(this, props.restServicesAPI.root.addResource('Landing'), layers, [botsTable]);
     }
 }

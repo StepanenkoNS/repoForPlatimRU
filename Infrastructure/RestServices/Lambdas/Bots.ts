@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToSecrets } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToRoute53, GrantAccessToSecrets } from '/opt/LambdaHelpers/AccessHelper';
 
 export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
@@ -193,6 +193,7 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
 
     //Добавление политик
     GrantAccessToSecrets([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
+    GrantAccessToRoute53([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
 
     GrantAccessToDDB([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda], tables);
 }

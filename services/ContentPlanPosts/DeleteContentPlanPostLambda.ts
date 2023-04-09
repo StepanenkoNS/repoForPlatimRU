@@ -30,7 +30,7 @@ export async function DeleteContentPlanPostHandler(event: APIGatewayEvent, conte
     }
 
     const result = await ContentConfigurator.DeleteContentPlanPost({
-        masterId: telegramUser.id,
+        masterId: Number(telegramUser.id),
         botId: Number(bodyObject.botId),
         contentPlanId: bodyObject.contentPlanId,
         id: bodyObject.id

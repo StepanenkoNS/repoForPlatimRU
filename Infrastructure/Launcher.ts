@@ -13,6 +13,8 @@ import { FilesRestServicesStack } from './RestServices/FilesRestServices';
 import { MessagesAndPaymentsRestServicesStack } from './RestServices/MessagesAndPaymentsRestServices';
 import { PlansAndPostsRestServicesStack } from './RestServices/PlansAndPostsRestServices';
 import { SubscriptionsRestServicesStack } from './RestServices/SubscriptionsRestService';
+import { CRMRestServicesStack } from './RestServices/CRMRestService';
+import { BotLandingRestServicesStack } from './RestServices/LandingRestService';
 
 const app = new App();
 
@@ -84,6 +86,28 @@ const plansAndPostsRestServicesStack = new PlansAndPostsRestServicesStack(app, S
 
 const subscriptionsRestServicesStack = new SubscriptionsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(),
+    restServicesAPI: gateway,
+    certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
+    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    env: {
+        account: StaticEnvironment.GlobalAWSEnvironment.account,
+        region: StaticEnvironment.GlobalAWSEnvironment.region
+    }
+});
+
+const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceCRM.toString(), {
+    stackName: StaticEnvironment.StackName.WebRestServiceCRM.toString(),
+    restServicesAPI: gateway,
+    certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
+    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    env: {
+        account: StaticEnvironment.GlobalAWSEnvironment.account,
+        region: StaticEnvironment.GlobalAWSEnvironment.region
+    }
+});
+
+const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceLanding.toString(), {
+    stackName: StaticEnvironment.StackName.WebRestServiceLanding.toString(),
     restServicesAPI: gateway,
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],

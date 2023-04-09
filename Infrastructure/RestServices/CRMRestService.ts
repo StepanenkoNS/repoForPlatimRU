@@ -26,7 +26,7 @@ import { CreateUserSubscriptionPlansLambdas } from './Lambdas/UserSubscriptionPl
 import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
 import { CreateTelegramFilesLambdas } from './Lambdas/TelegramFiles';
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
-import { CreateFreePostsLambdas } from './Lambdas/FreePosts';
+import { CreateCRMLambdas } from './Lambdas/CRM';
 // import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 // import { CreateBotsLambdas } from './Lambdas/Bots';
 // import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
@@ -38,7 +38,7 @@ import { CreateFreePostsLambdas } from './Lambdas/FreePosts';
 
 // import { CreateSendMessagesLambdas } from './Lambdas/SendMessages';
 
-export class PlansAndPostsRestServicesStack extends Stack {
+export class CRMRestServicesStack extends Stack {
     constructor(
         scope: Construct,
         id: string,
@@ -62,8 +62,6 @@ export class PlansAndPostsRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        //CreateFreePostsLambdas(this, props.restServicesAPI.root.addResource('FreePosts'), layers, [botsTable]);
-        CreateContentPlanPostsLambdas(this, props.restServicesAPI.root.addResource('ContentPlanPosts'), layers, [botsTable]);
-        CreateContentPlansLambdas(this, props.restServicesAPI.root.addResource('ContentPlans'), layers, [botsTable]);
+        CreateCRMLambdas(this, props.restServicesAPI.root.addResource('CRM'), layers, [botsTable]);
     }
 }

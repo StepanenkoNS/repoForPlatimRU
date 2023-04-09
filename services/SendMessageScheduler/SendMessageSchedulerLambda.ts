@@ -60,7 +60,7 @@ const sendDataToLambda = (messages: IScheduledPostMessage[]) => {
         const arrayWeight = JSON.stringify(messages).length;
 
         const chunkCount = Math.ceil(arrayWeight / 220000);
-        const chunkSize = Math.ceil(arrayLength / chunkCount);
+        chunkSize = Math.ceil(arrayLength / chunkCount);
     }
 
     console.log('chunkSize', chunkSize);
@@ -90,81 +90,26 @@ export async function SendMessagesShedulerHandler(event: any, context: any): Pro
         return false;
     }
 
-    const messages: IScheduledPostMessage[] = [];
+    const messages = [];
 
     const promises = [];
     for (const item of dataItems) {
-        const message: IScheduledPostMessage = {
-            discriminator: 'IScheduledPostMessage',
-            PK: item.PK,
-            SK: item.SK,
-            botId: Number(item.botId),
-            masterId: Number(item.masterId),
-            chatId: Number(item.chatId),
-            contentPlanId: item.contentPlanId,
-            contentPlanPostId: item.contentPlanPostId,
-            status: item.GSI1PK,
-            sendDate: item.sendDate
-        };
-        messages.push(message);
-        // const messageParams: SQS.SendMessageRequest = {
-        //     QueueUrl: process.env.schedullerQueueURL!,
-        //     MessageBody: JSON.stringify(message),
-        //     MessageDeduplicationId: message.SK,
-        //     MessageGroupId: messageGroupId
-        // };
-        // const it: SQS.SendMessageBatchRequestEntry = {
-        //     Id: i.toString(),
-        //     MessageBody: JSON.stringify(message),
-        //     MessageDeduplicationId: message.SK,
-        //     MessageGroupId: messageGroupId
-        // };
-        //sqsEntries.push(it);
-
-        // const promiseSQS = sqs.sendMessage(messageParams).promise();
-        // promiseSQS
-        //     .then(() => {
-        //         console.log('promise ' + j + ' resolved');
-        //         j++;
-        //     })
-        //     .catch(() => {
-        //         console.log('promise ' + j + ' failed');
-        //         j++;
-        //     });
-        // promises.push(promiseSQS);
-
-        // const promiseDDB = ddbDocClient.update({
-        //     TableName: process.env.botsTable!,
-        //     Key: {
-        //         PK: item.PK,
-        //         SK: item.SK
-        //     },
-        //     UpdateExpression: 'SET #GSI1PK = :GSI1PK',
-        //     ExpressionAttributeNames: {
-        //         '#GSI1PK': 'GSI1PK'
-        //     },
-        //     ExpressionAttributeValues: {
-        //         ':GSI1PK': 'INPROGRESS'
-        //     }
-        // });
-        // promises.push(promiseDDB);
-        // i++;
-        // console.log('promise ' + i + ' started');
-        // const promise = ddbDocClient.update({
-        //     TableName: process.env.botsTable!,
-        //     Key: {
-        //         PK: item.PK,
-        //         SK: item.SK
-        //     },
-        //     UpdateExpression: 'SET #GSI1PK = :GSI1PK',
-        //     ExpressionAttributeNames: {
-        //         '#GSI1PK': 'GSI1PK'
-        //     },
-        //     ExpressionAttributeValues: {
-        //         ':GSI1PK': 'INPROGRESS'
-        //     }
-        // });
-        // promises.push(promise);
+        if (item.discriminator === 'IScheduledPostMessage') {
+            const message: IScheduledPostMessage = {
+                discriminator: 'IScheduledPostMessage',
+                PK: item.PK,
+                SK: item.SK,
+                botId: Number(item.botId),
+                masterId: Number(item.masterId),
+                chatId: Number(item.chatId),
+                contentPlanId: item.contentPlanId,
+                contentPlanPostId: item.contentPlanPostId,
+                status: item.GSI1PK,
+                sendDate: item.sendDate,
+                userSubscriptionPlanId: item.userSubscriptionPlanId
+            };
+            messages.push(message);
+        }
     }
 
     messages.sort((a, b) => {

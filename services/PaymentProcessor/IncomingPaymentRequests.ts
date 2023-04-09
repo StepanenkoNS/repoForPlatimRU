@@ -7,6 +7,7 @@ import { IRequestForPaymentConfirmation } from '/opt/PaymentTypes';
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
 //@ts-ignore
 import MessageSender from '/opt/MessageSender';
+import { ETelegramUserStatus } from '/opt/MessagingBotTypes';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -24,7 +25,15 @@ export async function IncomingPaymentRequestsHandler(event: SQSEvent): Promise<a
                 const item = { ...request };
                 item.id = addPaymentEventResult;
                 const sendResult = await MessageSender.SendPaymentMethodToAdmin(item);
-                if (sendResult !== true) {
+                if (sendResult === false) {
+                    batchItemFailures.push({ itemIdentifier: record.messageId });
+                }
+                if (sendResult === ETelegramUserStatus.THROTTLED) {
+                    console.log('request throttled by telegram');
+                    batchItemFailures.push({ itemIdentifier: record.messageId });
+                }
+                if (sendResult === ETelegramUserStatus.ERROR) {
+                    console.log('Unknown error');
                     batchItemFailures.push({ itemIdentifier: record.messageId });
                 }
             }

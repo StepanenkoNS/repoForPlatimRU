@@ -28,7 +28,8 @@ export async function EditFreePostHandler(event: APIGatewayEvent, context: Conte
         { key: 'name', datatype: 'string' },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
         { key: 'message', datatype: 'object', objectKeys: [] },
-        { key: 'interaction', datatype: 'object', objectKeys: [] }
+        { key: 'interaction', datatype: 'object', objectKeys: [] },
+        { key: 'sendOnlyToTrialUsers', datatype: 'boolean' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
@@ -44,6 +45,7 @@ export async function EditFreePostHandler(event: APIGatewayEvent, context: Conte
         name: bodyObject.name,
         sendMethod: bodyObject.sendMethod,
 
+        sendOnlyToTrialUsers: bodyObject.sendOnlyToTrialUsers,
         trigger: bodyObject.trigger,
         message: bodyObject.message,
 

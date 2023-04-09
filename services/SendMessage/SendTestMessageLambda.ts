@@ -36,6 +36,7 @@ function getSendMethodEnum(enumValue: string) {
 
 export async function SendTestMessageHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
+    console.log(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
     let renewedToken = undefined;
@@ -48,14 +49,6 @@ export async function SendTestMessageHandler(event: APIGatewayEvent, context: Co
         { key: 'sendMethod', datatype: ['sendMessage', 'sendPhoto', 'sendAudio', 'sendDocument', 'sendDocument', 'sendVideo', 'sendAnimation', 'sendVoice', 'sendVideoNote'] },
         { key: 'message', datatype: 'object', objectKeys: [] }
     ]);
-
-    //     sendMessage = 'sendMessage',
-    // sendPhoto = 'sendPhoto', //10mb limit, не более 10000 пикселей размер фото
-    // sendAudio = 'sendAudio', //50mb limit
-    // sendDocument = 'sendDocument', //50mb limit
-    // sendVideo = 'sendVideo', //50mb limit
-    // sendAnimation = 'sendAnimation', //??? limit
-    // sendVoice = 'sendVoice', //.ogg encoded with OPUS
 
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);

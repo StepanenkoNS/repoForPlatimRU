@@ -38,6 +38,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -73,7 +74,8 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
             paymentProcessorIncomingRequestQueueDLQ.queueArn,
             paymentProcessorIncomingRequestQueue.queueArn,
             paymentProcessorConfirmationQueueDLQ.queueArn,
-            paymentProcessorConfirmationQueue.queueArn
+            paymentProcessorConfirmationQueue.queueArn,
+            schedulerSendQueue.queueArn
         ],
         actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
         effect: Effect.ALLOW

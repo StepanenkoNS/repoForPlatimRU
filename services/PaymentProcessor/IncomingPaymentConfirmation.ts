@@ -2,14 +2,16 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 //@ts-ignore
-import { IRequestForPaymentConfirmation, IRequestToConfirmPayment } from '/opt/PaymentTypes';
+import { IRequestToConfirmPayment } from '/opt/PaymentTypes';
 //@ts-ignore
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
 //@ts-ignore
 import MessageSender from '/opt/MessageSender';
 //@ts-ignore
 import { UserBotProfile } from '/opt/MessagingBotUserBotProfile';
-import { IUserBotProfile } from '/opt/MessagingBotTypes';
+
+import { ETelegramSendMethod } from '/opt/TelegramTypes';
+import { EContentPostInteraction } from '/opt/ContentTypes';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -49,25 +51,57 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                         let adminText = 'Платеж успешно отклонен.';
                         let userText = 'Ваш платеж был отклонен администратором';
                     }
-                    const sendResultAdmin = await MessageSender.SendTextMessage({
+
+                    const msgIdAdmin = ksuid.randomSync(new Date()).string;
+                    await MessageSender.QueueSendGenericMessage({
+                        discriminator: 'IScheduledGenericMessage',
                         botId: updatePaymentResult.botId,
                         masterId: updatePaymentResult.masterId,
-                        recipientChatId: updatePaymentResult.masterId,
-                        text: adminText
+                        chatId: updatePaymentResult.masterId,
+                        sendMethod: ETelegramSendMethod.sendMessage,
+                        message: {
+                            id: msgIdAdmin,
+                            attachments: [],
+                            text: adminText,
+                            interaction: {
+                                type: EContentPostInteraction.NONE
+                            }
+                        }
                     });
-                    const sendResultUser = await MessageSender.SendTextMessage({
+
+                    const msgIdUser = ksuid.randomSync(new Date()).string;
+                    await MessageSender.QueueSendGenericMessage({
+                        discriminator: 'IScheduledGenericMessage',
                         botId: updatePaymentResult.botId,
                         masterId: updatePaymentResult.masterId,
-                        recipientChatId: updatePaymentResult.chatId,
-                        text: userText
+                        chatId: updatePaymentResult.masterId,
+                        sendMethod: ETelegramSendMethod.sendMessage,
+                        message: {
+                            id: msgIdAdmin,
+                            attachments: [],
+                            text: userText,
+                            interaction: {
+                                type: EContentPostInteraction.NONE
+                            }
+                        }
                     });
                 } else {
                     //шлем сообщение админу, что операция провалилась
-                    const sendResultAdmin = await MessageSender.SendTextMessage({
+                    const msgIdAdmin = ksuid.randomSync(new Date()).string;
+                    await MessageSender.QueueSendGenericMessage({
+                        discriminator: 'IScheduledGenericMessage',
                         botId: updatePaymentResult.botId,
                         masterId: updatePaymentResult.masterId,
-                        recipientChatId: updatePaymentResult.masterId,
-                        text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой'
+                        chatId: updatePaymentResult.masterId,
+                        sendMethod: ETelegramSendMethod.sendMessage,
+                        message: {
+                            id: msgIdAdmin,
+                            attachments: [],
+                            text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой',
+                            interaction: {
+                                type: EContentPostInteraction.NONE
+                            }
+                        }
                     });
                 }
             }
