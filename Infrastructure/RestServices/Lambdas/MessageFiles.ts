@@ -8,14 +8,10 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListMessageFilesResource = rootResource.addResource('List');
-    const lambdaGetMessageFilesResource = rootResource.addResource('Get');
-    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaEdutMessageFilesResource = rootResource.addResource('Edit');
-    const lambdaDeleteMessageFilesResource = rootResource.addResource('Delete');
 
     //Вывод списка
     const ListMessageFilesLambda = new NodejsFunction(that, 'ListMessageFilesLambda', {
@@ -37,8 +33,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationListMessageFiles = new apigateway.LambdaIntegration(ListMessageFilesLambda);
-    lambdaListMessageFilesResource.addMethod('GET', lambdaIntegrationListMessageFiles);
 
     //Вывод одного элемента
     const GetMessageFileLambda = new NodejsFunction(that, 'GetMessageFileLambda', {
@@ -60,8 +54,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationGetMessageFiles = new apigateway.LambdaIntegration(GetMessageFileLambda);
-    lambdaGetMessageFilesResource.addMethod('GET', lambdaIntegrationGetMessageFiles);
 
     //Добавлении типа подписки
     const AddMessageFileLambda = new NodejsFunction(that, 'AddMessageFileLambda', {
@@ -83,8 +75,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationAddMessageFile = new apigateway.LambdaIntegration(AddMessageFileLambda);
-    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddMessageFile);
 
     //редактирование опции оплаты
     const EditMessageFileLambda = new NodejsFunction(that, 'EditMessageFileLambda', {
@@ -106,8 +96,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationEditMessageFile = new apigateway.LambdaIntegration(EditMessageFileLambda);
-    lambdaEdutMessageFilesResource.addMethod('PUT', lambdaIntegrationEditMessageFile);
 
     //удаление опции оплаты
     const DeleteMessageFileLambda = new NodejsFunction(that, 'DeleteMessageFileLambda', {
@@ -129,8 +117,6 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteMessageFile = new apigateway.LambdaIntegration(DeleteMessageFileLambda);
-    lambdaDeleteMessageFilesResource.addMethod('DELETE', lambdaIntegrationDeleteMessageFile);
 
     GrantAccessToDDB([ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda], tables);
 
@@ -138,4 +124,35 @@ export function CreateMessageFilesLambdas(that: any, rootResource: apigateway.Re
         [ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda],
         [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
     );
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListMessageFilesLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetMessageFileLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddMessageFileLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: EditMessageFileLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: DeleteMessageFileLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

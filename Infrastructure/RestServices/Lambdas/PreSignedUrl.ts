@@ -7,11 +7,10 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-
-    const lambdaGetPresignedUrlsResource = rootResource;
 
     //Вывод одного элемента
     const GetPresignedUrlLambda = new NodejsFunction(that, 'GetGetPresignedUrlLambda', {
@@ -33,10 +32,16 @@ export function CreateGetPresignedUrlsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationGetGetPresignedUrls = new apigateway.LambdaIntegration(GetPresignedUrlLambda);
-    lambdaGetPresignedUrlsResource.addMethod('PUT', lambdaIntegrationGetGetPresignedUrls);
 
     GrantAccessToS3([GetPresignedUrlLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
     GrantAccessToDDB([GetPresignedUrlLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: GetPresignedUrlLambda,
+        resource: undefined,
+        httpMethod: 'PUT'
+    });
+    return returnArray;
 }

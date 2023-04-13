@@ -7,7 +7,7 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
+import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
 
 export async function GetUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -25,7 +25,7 @@ export async function GetUserSubscriptionPlanHandler(event: APIGatewayEvent, con
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlan.GetUserSubscriptionPlanById({
+    const result = await UserSubscriptionPlanChannel.GetUserSubscriptionPlanChannelById({
         id: event.queryStringParameters!.id!,
         botId: Number(event.queryStringParameters!.botId!),
         masterId: telegramUser.id

@@ -6,12 +6,10 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateSendMessagesLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-
-    const lambdaSendTestMessageResource = rootResource.addResource('SendTestMessage');
-    const lambdaSendTestFileResource = rootResource.addResource('SendTestFile');
 
     //Отправка сообщения себе
     const SendTestMessageLambda = new NodejsFunction(that, 'SendTestMessageLambda', {
@@ -34,8 +32,6 @@ export function CreateSendMessagesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationSendTestMessage = new apigateway.LambdaIntegration(SendTestMessageLambda);
-    lambdaSendTestMessageResource.addMethod('POST', lambdaIntegrationSendTestMessage);
 
     //Отправка файла себе
     const SendTestFileLambda = new NodejsFunction(that, 'SendTestFileLambda', {
@@ -58,9 +54,20 @@ export function CreateSendMessagesLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationSendTestFile = new apigateway.LambdaIntegration(SendTestFileLambda);
-    lambdaSendTestFileResource.addMethod('POST', lambdaIntegrationSendTestFile);
 
     GrantAccessToDDB([SendTestMessageLambda, SendTestFileLambda], tables);
     GrantAccessToS3([SendTestMessageLambda, SendTestFileLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: SendTestMessageLambda,
+        resource: 'SendTestMessage',
+        httpMethod: 'POST'
+    });
+    returnArray.push({
+        lambda: SendTestFileLambda,
+        resource: 'SendTestFile',
+        httpMethod: 'POST'
+    });
+    return returnArray;
 }

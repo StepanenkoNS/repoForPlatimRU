@@ -8,15 +8,9 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateTelegramFilesLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
-    //добавление ресурсов в шлюз
-    const lambdaListTelegramFilesResource = rootResource.addResource('List');
-    const lambdaGetTelegramFilesResource = rootResource.addResource('Get');
-
-    const lambdaEdutTelegramFilesResource = rootResource.addResource('Edit');
-    const lambdaDeleteTelegramFilesResource = rootResource.addResource('Delete');
-
+export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //Вывод списка
     const ListTelegramFilesLambda = new NodejsFunction(that, 'ListTelegramFilesLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'TelegramFiles', 'ListTelegramFilesLambda.ts'),
@@ -37,8 +31,6 @@ export function CreateTelegramFilesLambdas(that: any, rootResource: apigateway.R
         },
         layers: layers
     });
-    const lambdaIntegrationListTelegramFiles = new apigateway.LambdaIntegration(ListTelegramFilesLambda);
-    lambdaListTelegramFilesResource.addMethod('GET', lambdaIntegrationListTelegramFiles);
 
     //Вывод одного элемента
     const GetTelegramFileLambda = new NodejsFunction(that, 'GetTelegramFileLambda', {
@@ -60,8 +52,6 @@ export function CreateTelegramFilesLambdas(that: any, rootResource: apigateway.R
         },
         layers: layers
     });
-    const lambdaIntegrationGetTelegramFiles = new apigateway.LambdaIntegration(GetTelegramFileLambda);
-    lambdaGetTelegramFilesResource.addMethod('GET', lambdaIntegrationGetTelegramFiles);
 
     //редактирование опции оплаты
     const EditTelegramFileLambda = new NodejsFunction(that, 'EditTelegramFileLambda', {
@@ -83,8 +73,6 @@ export function CreateTelegramFilesLambdas(that: any, rootResource: apigateway.R
         },
         layers: layers
     });
-    const lambdaIntegrationEditTelegramFile = new apigateway.LambdaIntegration(EditTelegramFileLambda);
-    lambdaEdutTelegramFilesResource.addMethod('PUT', lambdaIntegrationEditTelegramFile);
 
     //удаление опции оплаты
     const DeleteTelegramFileLambda = new NodejsFunction(that, 'DeleteTelegramFileLambda', {
@@ -106,8 +94,6 @@ export function CreateTelegramFilesLambdas(that: any, rootResource: apigateway.R
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteTelegramFile = new apigateway.LambdaIntegration(DeleteTelegramFileLambda);
-    lambdaDeleteTelegramFilesResource.addMethod('DELETE', lambdaIntegrationDeleteTelegramFile);
 
     GrantAccessToDDB([ListTelegramFilesLambda, EditTelegramFileLambda, DeleteTelegramFileLambda, GetTelegramFileLambda], tables);
 
@@ -115,4 +101,30 @@ export function CreateTelegramFilesLambdas(that: any, rootResource: apigateway.R
         [ListTelegramFilesLambda, EditTelegramFileLambda, DeleteTelegramFileLambda, GetTelegramFileLambda],
         [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
     );
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListTelegramFilesLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetTelegramFileLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
+        lambda: EditTelegramFileLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: DeleteTelegramFileLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

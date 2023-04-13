@@ -11,7 +11,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { ESupportedCurrency } from '/opt/PaymentTypes';
 
 //@ts-ignore
-import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
+import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
 
 export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -39,9 +39,9 @@ export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, con
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlan.AddUserSubscriptionPlan({
+    const result = await UserSubscriptionPlanBot.AddUserSubscriptionPlanBot({
         masterId: telegramUser.id,
-        discriminator: 'IUserSubscriptionPlan',
+        discriminator: 'IUserSubscriptionPlanBot',
         botId: bodyObject.botId,
         currency: bodyObject.currency,
         enabled: bodyObject.enabled,

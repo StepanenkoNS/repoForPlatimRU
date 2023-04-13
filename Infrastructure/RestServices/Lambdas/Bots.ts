@@ -7,17 +7,10 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, GrantAccessToRoute53, GrantAccessToSecrets } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListBotsResource = rootResource.addResource('List');
-    const lambdaGetBotsResource = rootResource.addResource('Get');
-    const lambdaAddBotResource = rootResource.addResource('Add');
-    const lambdaEditBotsResource = rootResource.addResource('Edit');
-    const lambdaRegisterBotsResource = rootResource.addResource('Register');
-    const lambdaUnRegisterBotsResource = rootResource.addResource('UnRegister');
-
-    const lambdaDeleteBotsResource = rootResource.addResource('Delete');
 
     const ListBotsLambda = new NodejsFunction(that, 'ListBotsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'ListBotsLambda.ts'),
@@ -40,9 +33,6 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         layers: layers
     });
 
-    const lambdaIntegrationListBots = new apigateway.LambdaIntegration(ListBotsLambda);
-    lambdaListBotsResource.addMethod('GET', lambdaIntegrationListBots);
-
     //Вывод одного элемента
     const GetBotLambda = new NodejsFunction(that, 'GetBotLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'GetBotLambda.ts'),
@@ -64,8 +54,6 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         },
         layers: layers
     });
-    const lambdaIntegrationGetBots = new apigateway.LambdaIntegration(GetBotLambda);
-    lambdaGetBotsResource.addMethod('GET', lambdaIntegrationGetBots);
 
     //Добавление
     const AddBotLambda = new NodejsFunction(that, 'AddBotLambda', {
@@ -89,8 +77,6 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         },
         layers: layers
     });
-    const lambdaIntegrationAddBot = new apigateway.LambdaIntegration(AddBotLambda);
-    lambdaAddBotResource.addMethod('POST', lambdaIntegrationAddBot);
 
     //регистрация
     const RegisterBotLambda = new NodejsFunction(that, 'RegisterBotLambda', {
@@ -115,8 +101,6 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         },
         layers: layers
     });
-    const lambdaIntegrationRegisterBot = new apigateway.LambdaIntegration(RegisterBotLambda);
-    lambdaRegisterBotsResource.addMethod('PUT', lambdaIntegrationRegisterBot);
 
     //отмена регистрации
     const UnRegisterBotLambda = new NodejsFunction(that, 'UnRegisterBotLambda', {
@@ -140,8 +124,7 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         },
         layers: layers
     });
-    const lambdaIntegrationUnRegisterBot = new apigateway.LambdaIntegration(UnRegisterBotLambda);
-    lambdaUnRegisterBotsResource.addMethod('PUT', lambdaIntegrationUnRegisterBot);
+
     //редактирование
     const EditBotLambda = new NodejsFunction(that, 'EditBotLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'EditBotLambda.ts'),
@@ -164,8 +147,6 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         },
         layers: layers
     });
-    const lambdaIntegrationEditBot = new apigateway.LambdaIntegration(EditBotLambda);
-    lambdaEditBotsResource.addMethod('PUT', lambdaIntegrationEditBot);
 
     //удаление
     const DeleteBotLambda = new NodejsFunction(that, 'DeleteBotLambda', {
@@ -188,12 +169,49 @@ export function CreateBotsLambdas(that: any, rootResource: apigateway.Resource, 
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteBot = new apigateway.LambdaIntegration(DeleteBotLambda);
-    lambdaDeleteBotsResource.addMethod('DELETE', lambdaIntegrationDeleteBot);
 
     //Добавление политик
     GrantAccessToSecrets([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
     GrantAccessToRoute53([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
 
     GrantAccessToDDB([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListBotsLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddBotLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+    returnArray.push({
+        lambda: GetBotLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: EditBotLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+    returnArray.push({
+        lambda: RegisterBotLambda,
+        resource: 'Register',
+        httpMethod: 'PUT'
+    });
+    returnArray.push({
+        lambda: UnRegisterBotLambda,
+        resource: 'UnRegister',
+        httpMethod: 'PUT'
+    });
+    returnArray.push({
+        lambda: DeleteBotLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

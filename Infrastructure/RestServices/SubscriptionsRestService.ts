@@ -9,47 +9,30 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 //@ts-ignore
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
 //@ts-ignore
-import { createAPIandAuthorizer } from '/opt/LambdaHelpers/CreateAPIwithAuth';
-import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
-import { CreateBotsLambdas } from './Lambdas/Bots';
-import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
-import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
-import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
-import { CreateSendMessagesLambdas } from './Lambdas/SendTestMessages';
-import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
-import { PaymentProcessor } from './Lambdas/PaymentProcessor';
-import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
-import { CreateUserSubscriptionPlansLambdas } from './Lambdas/UserSubscriptionPlans';
-import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
-import { CreateTelegramFilesLambdas } from './Lambdas/TelegramFiles';
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
-// import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-// import { CreateBotsLambdas } from './Lambdas/Bots';
-// import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
-// import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
-// import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
-// import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-// import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-// import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
 
-// import { CreateSendMessagesLambdas } from './Lambdas/SendMessages';
+import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
+
+import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
+
+import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
+
+import { RestApi } from 'aws-cdk-lib/aws-apigateway';
+import { LambdaIntegrations } from './Helper/GWtypes';
+import { CreateUserSubscriptionPlansBotsLambdas } from './Lambdas/UserSubscriptionPlansBot';
+import { CreateUserSubscriptionPlansChannelsLambdas } from './Lambdas/UserSubscriptionPlansChannel';
 
 export class SubscriptionsRestServicesStack extends Stack {
+    lambdaIntegrations: LambdaIntegrations[];
     constructor(
         scope: Construct,
         id: string,
 
         props: StackProps & {
-            restServicesAPI: RestApi;
-            certificateARN: string;
             layerARNs: string[];
         }
     ) {
         super(scope, id, props);
-        // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
+        this.lambdaIntegrations = [];
 
         const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
         const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
@@ -61,12 +44,34 @@ export class SubscriptionsRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        CreateSubscriptionSettingsLambdas(this, props.restServicesAPI.root.addResource('ActiveSubscription'), layers, [botsTable]);
+        const subscriptionSettingsLambas = CreateSubscriptionSettingsLambdas(this, layers, [botsTable]);
 
-        CreateServiceSubscriptionPlansLambdas(this, props.restServicesAPI.root.addResource('ServiceSubscriptionPlans'), layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'ActiveSubscription',
+            lambdas: subscriptionSettingsLambas
+        });
+        const serviceSubscriptionPlansLambdas = CreateServiceSubscriptionPlansLambdas(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'ServiceSubscriptionPlans',
+            lambdas: serviceSubscriptionPlansLambdas
+        });
 
-        CreateUserSubscriptionPlansLambdas(this, props.restServicesAPI.root.addResource('UserSubscriptionPlans'), layers, [botsTable]);
+        const userSubscriptionPlansBotsLambdas = CreateUserSubscriptionPlansBotsLambdas(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'UserSubscriptionPlansBot',
+            lambdas: userSubscriptionPlansBotsLambdas
+        });
 
-        CreateUserSubscriptionPlanOptionsLambdas(this, props.restServicesAPI.root.addResource('UserSubscriptionPlanOptions'), layers, [botsTable]);
+        const userSubscriptionPlansChannelsLambdas = CreateUserSubscriptionPlansChannelsLambdas(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'UserSubscriptionPlansChannel',
+            lambdas: userSubscriptionPlansChannelsLambdas
+        });
+
+        const userSubscriptionPlanOptionsLambdas = CreateUserSubscriptionPlanOptionsLambdas(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'UserSubscriptionPlanOptions',
+            lambdas: userSubscriptionPlanOptionsLambdas
+        });
     }
 }

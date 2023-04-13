@@ -6,12 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateSubscriptionSettingsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
-    //добавление ресурсов в шлюз
-    // const lambdaGetSubscriptionSettingsResource = rootResource.addResource('Get');
-    // const lambdaEdutSubscriptionSettingsResource = rootResource.addResource('Set');
-    //Получение моей подписки
+export function CreateSubscriptionSettingsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     const GetSubscriptionSettingsLambda = new NodejsFunction(that, 'GetSubscriptionSettingsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionSettings', 'GetSubscriptionSettingsLambda.ts'),
         handler: 'GetSubscriptionSettingsHandler',
@@ -31,8 +28,14 @@ export function CreateSubscriptionSettingsLambdas(that: any, rootResource: apiga
         },
         layers: layers
     });
-    const lambdaIntegrationGetSubscriptionSettings = new apigateway.LambdaIntegration(GetSubscriptionSettingsLambda);
-    rootResource.addMethod('GET', lambdaIntegrationGetSubscriptionSettings);
 
     GrantAccessToDDB([GetSubscriptionSettingsLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: GetSubscriptionSettingsLambda,
+        resource: undefined,
+        httpMethod: 'GET'
+    });
+    return returnArray;
 }

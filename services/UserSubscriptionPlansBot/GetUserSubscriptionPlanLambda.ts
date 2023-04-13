@@ -9,7 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
 
-export async function GetUserSubscriptionPlanOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function GetUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -21,15 +21,14 @@ export async function GetUserSubscriptionPlanOptionHandler(event: APIGatewayEven
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['userSubscriptionPlanId', 'id', 'botId'])) {
+    if (!ValidateStringParameters(event, ['id', 'botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlanBot.GetUserSubscriptionPlanBotOptionById({
-        masterId: telegramUser.id,
-        botId: Number(event.queryStringParameters!.botId!),
+    const result = await UserSubscriptionPlanBot.GetUserSubscriptionPlanBotById({
         id: event.queryStringParameters!.id!,
-        userSubscriptionPlanId: event.queryStringParameters!.userSubscriptionPlanId!
+        botId: Number(event.queryStringParameters!.botId!),
+        masterId: telegramUser.id
     });
 
     const getResult = ParseGetItemResult(result);

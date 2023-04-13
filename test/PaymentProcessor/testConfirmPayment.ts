@@ -3,21 +3,21 @@ import { IncomingPaymentConfirmationHandler } from 'services/PaymentProcessor/In
 const event = {
     Records: [
         {
-            messageId: '5bfd4b78-e89c-4112-9a1a-ebcd56ea377c',
+            messageId: 'e21983bd-50ae-48c0-b6ef-fb2469978422',
             receiptHandle:
-                'AQEB6Dil7HepWE/6alLJBvbbUKe81HON14KyGGOn4ao68vfWoZIJljt8kiwtqUSE3eG/Os0TYzIEUi6q3dWkzCuHp+L4DvG2dpNyzFHH9Ad8cuzesQaSk21q9JDbMHqHFArZU3luMTaj0ThylZq+floRf/9Zmm5pVTfubm5WCZJwpEmHQB+19MM6ISN0cAvDcTXHA5a+omUFDjhLzGHRGPq1C1EKxVTVWi9GvkQRPTDJ9gOiyx0WRZx2v0T/iiMApEthvDNqLu7i9AtGHP0yl3gQgEruv9vIfys7mkGJPhBbRZzBv7bsmdlW7SrIBEexHe+k',
-            body: '{"discriminator":"IRequestToConfirmPayment","chatId":"199163834","botId":5795087844,"masterId":199163834,"BOTUUID":"2MNHTeQWWxcV6r3T82vZQVzKR4l","id":"2NeEFbhyfMwbOE12bBOSmu0ht1x","action":"1"}',
+                'AQEBByeIzNisxtmEVmI2b8OFvNKubDT/Mu3bJdzLNuYl7/0e/ab37rcZxfo5TGXDxiY54s1fWmXCVmmeqV7hhwF5hiTdeaA/Yi75uxoyyMEZKY6cqcsuUSvjCIXPYUxkPnvj+5Vri7O0bMGgD/0PLlfSx3NieKqm7QAftr3E7MFbj4oY9Qo4t1I1P0VWQwW+JzI2BnIYkYPMMuwP3lhFt1WMrzp+e8RKqXIKJjQXlIj9FkGPOcXDe7gduoEvQoE+7ED7z21BN1eb9ljUzbDQ1vzuGBdbn7hqRPBJNB+1Dij5gNOVIjrZw7vbTnEwmgvGKApW',
+            body: '{"discriminator":"IRequestToConfirmPayment","chatId":"1862254","botId":5795087844,"masterId":"199163834","id":"2OMn7y4oskSn4ehZ5aEcxTAFLst","action":"1"}',
             attributes: {
                 ApproximateReceiveCount: '1',
-                SentTimestamp: '1680016067571',
-                SequenceNumber: '18876828187007727616',
+                SentTimestamp: '1681379431893',
+                SequenceNumber: '18877177208274160128',
                 MessageGroupId: '5795087844',
                 SenderId: 'AIDA6OX3PF47UX6FRE7SI',
-                MessageDeduplicationId: '2NeEIOdtMfCG2oejJyPnHlr6kns',
-                ApproximateFirstReceiveTimestamp: '1680016067571'
+                MessageDeduplicationId: '2OMngaUBNTByxlzULZbc7Txs1a4',
+                ApproximateFirstReceiveTimestamp: '1681379431893'
             },
             messageAttributes: {},
-            md5OfBody: '8af5f0ea279f0bb68937b2772959c5ea',
+            md5OfBody: '6bc98195b745239046447114947ad896',
             eventSource: 'aws:sqs',
             eventSourceARN: 'arn:aws:sqs:us-east-1:993738567487:paymentProcessor-ConfirmationRequest.fifo',
             awsRegion: 'us-east-1'

@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateBotSetLandingLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
 
     //Вывод списка
@@ -30,10 +31,16 @@ export function CreateBotSetLandingLambdas(that: any, rootResource: apigateway.R
         },
         layers: layers
     });
-    const lambdaIntegrationUpdateBotLanding = new apigateway.LambdaIntegration(UpdateBotLandingPage);
-    rootResource.addMethod('PUT', lambdaIntegrationUpdateBotLanding);
 
     //предоставление доступа
 
     GrantAccessToDDB([UpdateBotLandingPage], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: UpdateBotLandingPage,
+        resource: undefined,
+        httpMethod: 'PUT'
+    });
+    return returnArray;
 }

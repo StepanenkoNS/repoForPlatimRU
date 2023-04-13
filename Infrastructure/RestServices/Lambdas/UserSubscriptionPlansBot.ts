@@ -6,20 +6,16 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateFreePostsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListFreePostsResource = rootResource.addResource('List');
-    const lambdaGetFreePostsResource = rootResource.addResource('Get');
-    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaEdutFreePostsResource = rootResource.addResource('Edit');
-    const lambdaDeleteFreePostsResource = rootResource.addResource('Delete');
 
     //Вывод списка
-    const ListFreePostsLambda = new NodejsFunction(that, 'ListFreePostsLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'FreePosts', 'ListFreePostsLambda.ts'),
-        handler: 'ListFreePostsHandler',
-        functionName: 'react-FreePosts-List-Lambda',
+    const ListUserSubscriptionPlansBotsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansBotsLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'ListUserSubscriptionPlansLambda.ts'),
+        handler: 'ListUserSubscriptionPlansHandler',
+        functionName: 'react-UserSubscriptionPlansBot-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -35,20 +31,19 @@ export function CreateFreePostsLambdas(that: any, rootResource: apigateway.Resou
         },
         layers: layers
     });
-    const lambdaIntegrationListFreePosts = new apigateway.LambdaIntegration(ListFreePostsLambda);
-    lambdaListFreePostsResource.addMethod('GET', lambdaIntegrationListFreePosts);
 
     //Вывод одного элемента
-    const GetFreePostLambda = new NodejsFunction(that, 'GetFreePostLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'FreePosts', 'GetFreePostLambda.ts'),
-        handler: 'GetFreePostHandler',
-        functionName: 'react-FreePosts-Get-Lambda',
+    const GetSubscriptionPlanBotLambda = new NodejsFunction(that, 'GetSubscriptionPlanBotLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'GetUserSubscriptionPlanLambda.ts'),
+        handler: 'GetUserSubscriptionPlanHandler',
+        functionName: 'react-UserSubscriptionPlansBot-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
+
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -58,20 +53,19 @@ export function CreateFreePostsLambdas(that: any, rootResource: apigateway.Resou
         },
         layers: layers
     });
-    const lambdaIntegrationGetFreePosts = new apigateway.LambdaIntegration(GetFreePostLambda);
-    lambdaGetFreePostsResource.addMethod('GET', lambdaIntegrationGetFreePosts);
 
     //Добавлении типа подписки
-    const AddFreePostLambda = new NodejsFunction(that, 'AddFreePostLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'FreePosts', 'AddFreePostLambda.ts'),
-        handler: 'AddFreePostHandler',
-        functionName: 'react-FreePosts-Add-Lambda',
+    const AddSubscriptionPlanBotLambda = new NodejsFunction(that, 'AddSubscriptionPlanBotLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'AddUserSubscriptionPlanLambda.ts'),
+        handler: 'AddUserSubscriptionPlanHandler',
+        functionName: 'react-UserSubscriptionPlansBot-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
+
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -81,41 +75,37 @@ export function CreateFreePostsLambdas(that: any, rootResource: apigateway.Resou
         },
         layers: layers
     });
-    const lambdaIntegrationAddFreePost = new apigateway.LambdaIntegration(AddFreePostLambda);
-    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddFreePost);
 
     //редактирование опции оплаты
-    const EditFreePostLambda = new NodejsFunction(that, 'EditFreePostLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'FreePosts', 'EditFreePostLambda.ts'),
-        handler: 'EditFreePostHandler',
-        functionName: 'react-FreePosts-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
-        environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-        },
-        bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
-        },
-        layers: layers
-    });
-    const lambdaIntegrationEditFreePost = new apigateway.LambdaIntegration(EditFreePostLambda);
-    lambdaEdutFreePostsResource.addMethod('PUT', lambdaIntegrationEditFreePost);
-
-    //удаление опции оплаты
-    const DeleteFreePostLambda = new NodejsFunction(that, 'DeleteFreePostLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'FreePosts', 'DeleteFreePostLambda.ts'),
-        handler: 'DeleteFreePostHandler',
-        functionName: 'react-FreePosts-Delete-Lambda',
+    const EditSubscriptionPlanBotLambda = new NodejsFunction(that, 'EditSubscriptionPlanBotLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'EditUserSubscriptionPlanLambda.ts'),
+        handler: 'EditUserSubscriptionPlanHandler',
+        functionName: 'react-UserSubscriptionPlansBot-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
+            region: StaticEnvironment.GlobalAWSEnvironment.region,
 
+            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
+            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    //удаление опции оплаты
+    const DeleteSubscriptionPlanBotLambda = new NodejsFunction(that, 'DeleteSubscriptionPlanBotLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'DeleteUserSubscriptionPlanLambda.ts'),
+        handler: 'DeleteUserSubscriptionPlanHandler',
+        functionName: 'react-UserSubscriptionPlansBot-Delete-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
             region: StaticEnvironment.GlobalAWSEnvironment.region,
@@ -128,8 +118,37 @@ export function CreateFreePostsLambdas(that: any, rootResource: apigateway.Resou
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteFreePost = new apigateway.LambdaIntegration(DeleteFreePostLambda);
-    lambdaDeleteFreePostsResource.addMethod('DELETE', lambdaIntegrationDeleteFreePost);
 
-    GrantAccessToDDB([ListFreePostsLambda, AddFreePostLambda, EditFreePostLambda, DeleteFreePostLambda, GetFreePostLambda], tables);
+    GrantAccessToDDB([ListUserSubscriptionPlansBotsLambda, AddSubscriptionPlanBotLambda, EditSubscriptionPlanBotLambda, DeleteSubscriptionPlanBotLambda, GetSubscriptionPlanBotLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListUserSubscriptionPlansBotsLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetSubscriptionPlanBotLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddSubscriptionPlanBotLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: EditSubscriptionPlanBotLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: DeleteSubscriptionPlanBotLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

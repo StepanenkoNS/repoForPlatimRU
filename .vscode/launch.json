@@ -50,7 +50,8 @@
                 "refreshTokenExpirationDays": "365",
 
                 "allowedOrigins": "http://localhost, https://zuzona.com, http://127.0.0.1",
-                "webTable": "web"
+                "webTable": "web",
+                "schedulerSendQueue": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-schedulerSendQueue.fifo"
             }
         }
     ]

@@ -8,7 +8,7 @@ import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
 
-export async function DeleteUserSubscriptionPlanOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function DeleteUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -20,20 +20,18 @@ export async function DeleteUserSubscriptionPlanOptionHandler(event: APIGatewayE
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'userSubscriptionPlanId', datatype: 'string' },
-        { key: 'id', datatype: 'string' }
+        { key: 'id', datatype: 'string' },
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' }
     ]);
     if (bodyObject === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlanBot.DeleteUserSubscriptionPlanBotOption({
+    const result = await UserSubscriptionPlanBot.DeleteUserSubscriptionPlanBot({
         masterId: telegramUser.id,
-        botId: Number(bodyObject.botId),
-        id: bodyObject.id,
-        userSubscriptionPlanId: bodyObject.userSubscriptionPlanId
+        botId: bodyObject.botId,
+        id: bodyObject.id
     });
 
     const deleteResult = ParseDeleteItemResult(result);

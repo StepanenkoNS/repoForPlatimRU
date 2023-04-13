@@ -10,7 +10,7 @@ import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 
 import { EnumToArray } from 'services/Helper/EnumToArray';
 import { ESupportedCurrency } from '/opt/PaymentTypes';
-import UserSubscriptionPlan from '/opt/UserSubscriptionPlan';
+import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
 
 export async function EditUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -32,23 +32,25 @@ export async function EditUserSubscriptionPlanHandler(event: APIGatewayEvent, co
         { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'price', datatype: 'number(nonZeroPositive)' },
         { key: 'currency', datatype: e },
-        { key: 'enabled', datatype: 'boolean' }
+        { key: 'enabled', datatype: 'boolean' },
+        { key: 'channelId', datatype: 'number(integer)' }
     ]);
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
     try {
-        const result = await UserSubscriptionPlan.UpdateUserSubscriptionPlan({
+        const result = await UserSubscriptionPlanChannel.UpdateUserSubscriptionPlanChannel({
             id: bodyObject.id,
             masterId: telegramUser.id,
-            discriminator: 'IUserSubscriptionPlan',
+            discriminator: 'IUserSubscriptionPlanChannel',
             botId: bodyObject.botId,
             currency: bodyObject.currency,
             enabled: bodyObject.enabled,
             lengthInDays: bodyObject.lengthInDays,
             name: bodyObject.name,
-            price: bodyObject.price
+            price: bodyObject.price,
+            channelId: bodyObject.channelId
         });
 
         const updateResult = ParseUpdateItemResult(result);

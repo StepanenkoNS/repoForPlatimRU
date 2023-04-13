@@ -20,8 +20,71 @@
   "WebRestServiceLanding": {
     "ExportsOutputFnGetAttSetBotLandingPageLamda13B7B859Arn11C00CF1": "arn:aws:lambda:us-east-1:993738567487:function:react-BotLanding-Update-Lambda"
   },
+  "WebRestServiceMain": {
+    "ExportsOutputFnGetAttGetChannelLambdaE5A9F403Arn6617CF58": "arn:aws:lambda:us-east-1:993738567487:function:react-Channels-Get-Lambda",
+    "ExportsOutputFnGetAttEditChannelLambdaAE9A056AArn8C776BEA": "arn:aws:lambda:us-east-1:993738567487:function:react-Channels-Edit-Lambda",
+    "ExportsOutputFnGetAttGetPaymentOptionLambdaD6DBF61AArn18D20D5D": "arn:aws:lambda:us-east-1:993738567487:function:react-PaymentOptions-Get-Lambda",
+    "ExportsOutputFnGetAttUnRegisterBotLambda0B03CDDEArn070643C9": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-UnRegister-Lambda",
+    "ExportsOutputFnGetAttGetBotLambda0C4EA18FArn4F8416C0": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-Get-Lambda",
+    "ExportsOutputFnGetAttEditPaymentOptionLambda398037A2Arn5595B7A0": "arn:aws:lambda:us-east-1:993738567487:function:react-PaymentOptions-Edit-Lambda",
+    "ExportsOutputFnGetAttEditCurrencySettingsLambda8DC44B43ArnE58A6219": "arn:aws:lambda:us-east-1:993738567487:function:react-CurrencySettings-Update-Lambda",
+    "ExportsOutputFnGetAttAddPaymentOptionLambdaBFF77B7FArn872A1AA4": "arn:aws:lambda:us-east-1:993738567487:function:react-PaymentOptions-Add-Lambda",
+    "ExportsOutputFnGetAttDeleteChannelLambda8045FC58Arn562C1279": "arn:aws:lambda:us-east-1:993738567487:function:react-Channels-Delete-Lambda",
+    "ExportsOutputFnGetAttListChannelsLambda0D2B8521Arn5D199E53": "arn:aws:lambda:us-east-1:993738567487:function:react-Channels-List-Lambda",
+    "ExportsOutputFnGetAttGetCurrencySettingsLambdaCBDD42E1Arn130D052C": "arn:aws:lambda:us-east-1:993738567487:function:react-CurrencySettings-Get-Lambda",
+    "ExportsOutputFnGetAttAddBotLambda25A32D8FArn56F0CC80": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-Add-Lambda",
+    "ExportsOutputFnGetAttListPaymentOptionsLambdaACAA5262Arn4EB69170": "arn:aws:lambda:us-east-1:993738567487:function:react-PaymentOptions-List-Lambda",
+    "ExportsOutputFnGetAttDeletePaymentOptionLambdaEC66351CArn3F9622FF": "arn:aws:lambda:us-east-1:993738567487:function:react-PaymentOptions-Delete-Lambda",
+    "ExportsOutputFnGetAttEditBotLambda82B1C036Arn196628BE": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-Edit-Lambda",
+    "ExportsOutputFnGetAttDeleteBotLambda6B24EC61ArnD57686A7": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-Delete-Lambda",
+    "ExportsOutputFnGetAttListBotsLambdaC9B0E149Arn911E2DAF": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-List-Lambda",
+    "ExportsOutputFnGetAttRegisterBotLambda695100A4Arn6ABB23B6": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-Register-Lambda"
+  },
   "WebRestServiceMessagesAndPayments": {
     "ExportsOutputFnGetAttSendTestMessageLambdaD3B92DD3Arn2DACEF4C": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendTestMessage-Lambda",
     "ExportsOutputFnGetAttSendTestFileLambda65A31CEBArn8F991A6C": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendTestFile-Lambda"
+  },
+  "WebRestServicePlansAndPosts": {
+    "ExportsOutputFnGetAttListContentPlansLambda95AC08D7Arn9EA4958E": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-List-Lambda",
+    "ExportsOutputFnGetAttGetContentPlanPostLambdaA8AFC433Arn0B42A341": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Get-Lambda",
+    "ExportsOutputFnGetAttGetContentPlanLambda45DE78B9ArnAA90AFA2": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Get-Lambda",
+    "ExportsOutputFnGetAttEditContentPlanLambdaA1D9BCEDArn67D08860": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Edit-Lambda",
+    "ExportsOutputFnGetAttListContentPlanPostsLambda80CD292FArn1C08CB12": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-List-Lambda",
+    "ExportsOutputFnGetAttAddContentPlanLambda2A50CDCCArn9274FE09": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Add-Lambda",
+    "ExportsOutputFnGetAttDeleteContentPlanPostLambda9CD840D1Arn94C3F856": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Delete-Lambda",
+    "ExportsOutputFnGetAttEditContentPlanPostLambdaB4D253CEArnF266F911": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Edit-Lambda",
+    "ExportsOutputFnGetAttDeleteContentPlanLambda37ED3EAEArn7FB4BD17": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlans-Delete-Lambda",
+    "ExportsOutputFnGetAttAddContentPlanPostLambda6114356CArn3F1CC64B": "arn:aws:lambda:us-east-1:993738567487:function:react-ContentPlanPosts-Add-Lambda"
+  },
+  "WebRestServiceSubscriptions": {
+    "ExportsOutputFnGetAttEditSubscriptionPlanBotLambdaE9CE979CArn06838E5E": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansBot-Edit-Lambda",
+    "ExportsOutputFnGetAttListUserSubscriptionPlanOptionsListWithContentPlansLambda8DCE36EAArn3FE2BB55": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-ListWithContentPlans-Lambda",
+    "ExportsOutputFnGetAttGetSubscriptionPlanChannelLambdaECD513DEArn3491567A": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-Get-Lambda",
+    "ExportsOutputFnGetAttAddSubscriptionPlanBotLambdaFB7D5F07Arn87E30106": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansBot-Add-Lambda",
+    "ExportsOutputFnGetAttListUserSubscriptionPlansBotsLambda8ABC0BCFArn71867F26": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansBot-List-Lambda",
+    "ExportsOutputFnGetAttAddSubscriptionPlanChannelLambda6DD69303ArnB6102E9B": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-Add-Lambda",
+    "ExportsOutputFnGetAttDeleteSubscriptionPlanChannelLambdaE97A9809Arn861C66D6": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-Delete-Lambda",
+    "ExportsOutputFnGetAttDeleteUserSubscriptionPlaOptionnLambdaC8D4C27AArn54AEB6F2": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-Delete-Lambda",
+    "ExportsOutputFnGetAttListUserSubscriptionPlansChannelsLambda53E507FCArn6B90CC61": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-List-Lambda",
+    "ExportsOutputFnGetAttGetServiceSubscriptionPlanLambdaC5F18656Arn8675F395": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Get-Lambda",
+    "ExportsOutputFnGetAttGetSubscriptionSettingsLambdaD3B798F7ArnA800842A": "arn:aws:lambda:us-east-1:993738567487:function:react-SubscriptionSettings-Get-Lambda",
+    "ExportsOutputFnGetAttEditServiceSubscriptionPlanLambda1B47634DArn8F7D335B": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Edit-Lambda",
+    "ExportsOutputFnGetAttDeleteSubscriptionPlanBotLambda0DF8E1DAArnEFE65144": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansBot-Delete-Lambda",
+    "ExportsOutputFnGetAttGetSubscriptionPlanBotLambdaC174835FArn2A3E58D5": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansBot-Get-Lambda",
+    "ExportsOutputFnGetAttGetUserSubscriptionPlanOptionLambda4A632252Arn8860660D": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-Get-Lambda",
+    "ExportsOutputFnGetAttAddServiceSubscriptionPlanLambda886AAD48Arn19B9B27E": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Add-Lambda",
+    "ExportsOutputFnGetAttEditSubscriptionPlanChannelLambdaEFC3485DArnD5A6B091": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-Edit-Lambda",
+    "ExportsOutputFnGetAttAddUserSubscriptionPlanOptionLambda1B43ADFAArnE7C47405": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-Add-Lambda",
+    "ExportsOutputFnGetAttListServiceSubscriptionPlansLambda4DAD3C04Arn06D4043F": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-List-Lambda",
+    "ExportsOutputFnGetAttListUserSubscriptionPlanOptionsLambda0737A259Arn0C45334E": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlanOptions-List-Lambda",
+    "ExportsOutputFnGetAttDeleteServiceSubscriptionPlanLambda5FEE7EF0Arn66D28E0E": "arn:aws:lambda:us-east-1:993738567487:function:react-ServiceSubscriptionPlans-Delete-Lambda"
+  },
+  "WebTokenService": {
+    "WebTokenServiceGWAPItokenApi": "https://8fu0fusfik.execute-api.us-east-1.amazonaws.com/GetToken/",
+    "WebTokenServiceGWAPIEndpoint9329497D": "https://8fu0fusfik.execute-api.us-east-1.amazonaws.com/GetToken/"
+  },
+  "WebGatewayService": {
+    "WebGatewayServiceGWAPIEndpoint49AFF60C": "https://vv49b6zsb3.execute-api.us-east-1.amazonaws.com/SecureAPI/",
+    "WebGatewayServiceAPIGWSecureAPI": "https://vv49b6zsb3.execute-api.us-east-1.amazonaws.com/SecureAPI/"
   }
 }

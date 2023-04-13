@@ -10,45 +10,27 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
 //@ts-ignore
 import { createAPIandAuthorizer } from '/opt/LambdaHelpers/CreateAPIwithAuth';
-import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
+
 import { CreateBotsLambdas } from './Lambdas/Bots';
-import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
+
 import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
 import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
-import { CreateSendMessagesLambdas } from './Lambdas/SendTestMessages';
-import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
-import { PaymentProcessor } from './Lambdas/PaymentProcessor';
-import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
-import { CreateUserSubscriptionPlansLambdas } from './Lambdas/UserSubscriptionPlans';
-import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
-import { CreateTelegramFilesLambdas } from './Lambdas/TelegramFiles';
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
-// import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-// import { CreateBotsLambdas } from './Lambdas/Bots';
-// import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
-// import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
-// import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
-// import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-// import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-// import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
-
-// import { CreateSendMessagesLambdas } from './Lambdas/SendMessages';
+import { LambdaIntegrations } from './Helper/GWtypes';
+import { CreateChannelsLambdas } from './Lambdas/Channels';
 
 export class MainRestServicesStack extends Stack {
-    restServicesAPI: RestApi;
+    lambdaIntegrations: LambdaIntegrations[];
     constructor(
         scope: Construct,
         id: string,
 
         props: StackProps & {
-            certificateARN: string;
             layerARNs: string[];
         }
     ) {
         super(scope, id, props);
+        this.lambdaIntegrations = [];
         // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
 
         const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
@@ -61,17 +43,32 @@ export class MainRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        this.restServicesAPI = createAPIandAuthorizer(this, props.certificateARN, layers, [botsTable]);
+        const botLambdas = CreateBotsLambdas(this, layers, [botsTable]);
 
-        CreateBotsLambdas(this, this.restServicesAPI.root.addResource('Bots'), layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'Bots',
+            lambdas: botLambdas
+        });
 
-        CreateCurrencySettingsLambdas(this, this.restServicesAPI.root.addResource('DefaultCurrency'), layers, [botsTable]);
+        const channelLambdas = CreateChannelsLambdas(this, layers, [botsTable]);
 
-        CreatePaymentOptionsLambdas(this, this.restServicesAPI.root.addResource('PaymentOptions'), layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'Channels',
+            lambdas: channelLambdas
+        });
 
-        new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {
-            value: this.restServicesAPI.deploymentStage.urlForPath(),
-            exportName: this.stackName + '-APIGW-SecureAPI'
+        const currencyLambdas = CreateCurrencySettingsLambdas(this, layers, [botsTable]);
+
+        this.lambdaIntegrations.push({
+            rootResource: 'DefaultCurrency',
+            lambdas: currencyLambdas
+        });
+
+        const paymentOptionsLambdas = CreatePaymentOptionsLambdas(this, layers, [botsTable]);
+
+        this.lambdaIntegrations.push({
+            rootResource: 'PaymentOptions',
+            lambdas: paymentOptionsLambdas
         });
     }
 }

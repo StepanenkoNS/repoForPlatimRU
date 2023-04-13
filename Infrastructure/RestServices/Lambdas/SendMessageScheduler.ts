@@ -14,8 +14,6 @@ import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-
 import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    //добавление ресурсов в шлюз
-
     const schedulerSendQueueDLQ = Queue.fromQueueArn(that, 'imported-schedulerSendQueueDLQSendMessageScheduler', DynamicEnvironment.SQS.SchedulerQueue.dlqSQS_arn);
 
     const schedulerSendQueue = Queue.fromQueueArn(that, 'imported-schedulerSendQueueSendMessageScheduler', DynamicEnvironment.SQS.SchedulerQueue.basicSQS_arn);

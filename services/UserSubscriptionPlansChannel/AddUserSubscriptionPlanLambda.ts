@@ -8,10 +8,12 @@ import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
-import { IAddUserSubscriptionPlanOption } from '/opt/UserSubscriptionTypes';
+import { ESupportedCurrency } from '/opt/PaymentTypes';
 
-export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+//@ts-ignore
+import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
+
+export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -22,24 +24,33 @@ export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEven
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-
+    const e = [ESupportedCurrency.EUR.toString(), ESupportedCurrency.GBP.toString(), ESupportedCurrency.RUB.toString(), ESupportedCurrency.TRY.toString(), ESupportedCurrency.USD.toString()];
+    console.log('EnumToArray', e);
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'userSubscriptionPlanId', datatype: 'string' },
-        { key: 'ids', datatype: 'array' }
+        { key: 'name', datatype: 'string' },
+        { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'price', datatype: 'number(nonZeroPositive)' },
+        { key: 'currency', datatype: e },
+        { key: 'enabled', datatype: 'boolean' },
+        { key: 'channelId', datatype: 'number(integer)' }
     ]);
 
     if (bodyObject === false) {
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
-    const userSubscriptionPlanOption: IAddUserSubscriptionPlanOption = {
-        discriminator: 'IUserSubscriptionPlanOption',
+
+    const result = await UserSubscriptionPlanChannel.AddUserSubscriptionPlanChannel({
         masterId: telegramUser.id,
-        botId: Number(bodyObject.botId),
-        userSubscriptionPlanId: bodyObject.userSubscriptionPlanId,
-        ids: bodyObject.ids
-    };
-    const result = await UserSubscriptionPlanBot.AddUserSubscriptionPlanBotOption(userSubscriptionPlanOption);
+        discriminator: 'IUserSubscriptionPlanChannel',
+        botId: bodyObject.botId,
+        currency: bodyObject.currency,
+        enabled: bodyObject.enabled,
+        lengthInDays: bodyObject.lengthInDays,
+        name: bodyObject.name,
+        price: bodyObject.price,
+        channelId: bodyObject.channelId
+    });
     const addResult = ParseInsertItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);

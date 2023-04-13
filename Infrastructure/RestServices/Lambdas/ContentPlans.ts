@@ -6,14 +6,10 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListContentPlansResource = rootResource.addResource('List');
-    const lambdaGetContentPlansResource = rootResource.addResource('Get');
-    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaEdutContentPlansResource = rootResource.addResource('Edit');
-    const lambdaDeleteContentPlansResource = rootResource.addResource('Delete');
 
     //Вывод списка
     const ListContentPlansLambda = new NodejsFunction(that, 'ListContentPlansLambda', {
@@ -35,8 +31,6 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationListContentPlans = new apigateway.LambdaIntegration(ListContentPlansLambda);
-    lambdaListContentPlansResource.addMethod('GET', lambdaIntegrationListContentPlans);
 
     //Вывод одного элемента
     const GetContentPlanLambda = new NodejsFunction(that, 'GetContentPlanLambda', {
@@ -58,8 +52,6 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationGetContentPlans = new apigateway.LambdaIntegration(GetContentPlanLambda);
-    lambdaGetContentPlansResource.addMethod('GET', lambdaIntegrationGetContentPlans);
 
     //Добавление
     const AddContentPlanLambda = new NodejsFunction(that, 'AddContentPlanLambda', {
@@ -81,8 +73,6 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationAddContentPlan = new apigateway.LambdaIntegration(AddContentPlanLambda);
-    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddContentPlan);
 
     //редактирование
     const EditContentPlanLambda = new NodejsFunction(that, 'EditContentPlanLambda', {
@@ -104,8 +94,6 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationEditContentPlan = new apigateway.LambdaIntegration(EditContentPlanLambda);
-    lambdaEdutContentPlansResource.addMethod('PUT', lambdaIntegrationEditContentPlan);
 
     //удаление
     const DeleteContentPlanLambda = new NodejsFunction(that, 'DeleteContentPlanLambda', {
@@ -127,10 +115,39 @@ export function CreateContentPlansLambdas(that: any, rootResource: apigateway.Re
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteContentPlan = new apigateway.LambdaIntegration(DeleteContentPlanLambda);
-    lambdaDeleteContentPlansResource.addMethod('DELETE', lambdaIntegrationDeleteContentPlan);
 
     //предоставление доступа
 
     GrantAccessToDDB([ListContentPlansLambda, AddContentPlanLambda, EditContentPlanLambda, DeleteContentPlanLambda, GetContentPlanLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListContentPlansLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetContentPlanLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddContentPlanLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: EditContentPlanLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: DeleteContentPlanLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

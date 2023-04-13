@@ -2,14 +2,14 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
 
-export async function GetUserSubscriptionPlanOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function ListUserSubscriptionPlansHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -21,18 +21,15 @@ export async function GetUserSubscriptionPlanOptionHandler(event: APIGatewayEven
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['userSubscriptionPlanId', 'id', 'botId'])) {
+    if (!ValidateStringParameters(event, ['botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlanBot.GetUserSubscriptionPlanBotOptionById({
-        masterId: telegramUser.id,
+    const result = await UserSubscriptionPlanBot.ListUserSubscriptionPlansBot({
         botId: Number(event.queryStringParameters!.botId!),
-        id: event.queryStringParameters!.id!,
-        userSubscriptionPlanId: event.queryStringParameters!.userSubscriptionPlanId!
+        masterId: telegramUser.id
     });
+    const listResult = ParseListItemsResult(result);
 
-    const getResult = ParseGetItemResult(result);
-
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    return ReturnRestApiResult(listResult.code, listResult.body, true, origin, renewedToken);
 }

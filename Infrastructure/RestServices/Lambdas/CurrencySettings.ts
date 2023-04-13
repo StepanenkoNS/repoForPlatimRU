@@ -6,12 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, GrantAccessToSecrets } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateCurrencySettingsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
-    //добавление ресурсов в шлюз
-    // const lambdaGetCurrencySettingsResource = rootResource.addResource('Get');
-    // const lambdaEdutCurrencySettingsResource = rootResource.addResource('Set');
-    //Получение валюты по-умолчанию
+export function CreateCurrencySettingsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     const GetCurrencySettingsLambda = new NodejsFunction(that, 'GetCurrencySettingsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CurrencySettings', 'GetCurrencySettingsLambda.ts'),
         handler: 'GetCurrencySettingsHandler',
@@ -31,8 +28,6 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationGetCurrencySettings = new apigateway.LambdaIntegration(GetCurrencySettingsLambda);
-    rootResource.addMethod('GET', lambdaIntegrationGetCurrencySettings);
 
     //редактирование валюты по-умолчанию
     const EditCurrencySettingsLambda = new NodejsFunction(that, 'EditCurrencySettingsLambda', {
@@ -54,11 +49,23 @@ export function CreateCurrencySettingsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationEditCurrencySettings = new apigateway.LambdaIntegration(EditCurrencySettingsLambda);
-    rootResource.addMethod('PUT', lambdaIntegrationEditCurrencySettings);
 
     //Добавление политик
     GrantAccessToSecrets([GetCurrencySettingsLambda, EditCurrencySettingsLambda]);
 
     GrantAccessToDDB([GetCurrencySettingsLambda, EditCurrencySettingsLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: GetCurrencySettingsLambda,
+        resource: undefined,
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: EditCurrencySettingsLambda,
+        resource: undefined,
+        httpMethod: 'PUT'
+    });
+
+    return returnArray;
 }

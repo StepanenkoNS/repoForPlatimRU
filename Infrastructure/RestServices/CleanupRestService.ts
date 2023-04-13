@@ -15,8 +15,9 @@ import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
 
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { LambdaIntegrations } from './Helper/GWtypes';
+import { CreateCleanupProcessor } from './Lambdas/CleanUpProcessor';
 
-export class PlansAndPostsRestServicesStack extends Stack {
+export class CleanupRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
     constructor(
         scope: Construct,
@@ -40,16 +41,6 @@ export class PlansAndPostsRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const contenPlanPostsLamdas = CreateContentPlanPostsLambdas(this, layers, [botsTable]);
-
-        this.lambdaIntegrations.push({
-            rootResource: 'ContentPlanPosts',
-            lambdas: contenPlanPostsLamdas
-        });
-        const contenPlansLamdas = CreateContentPlansLambdas(this, layers, [botsTable]);
-        this.lambdaIntegrations.push({
-            rootResource: 'ContentPlans',
-            lambdas: contenPlansLamdas
-        });
+        const cleanupProcessor = CreateCleanupProcessor(this, layers, [botsTable]);
     }
 }

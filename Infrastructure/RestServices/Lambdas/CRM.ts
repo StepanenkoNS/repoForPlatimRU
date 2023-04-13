@@ -6,11 +6,10 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateCRMLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const usersResource = rootResource.addResource('Users');
-    const usersResourceList = usersResource.addResource('List');
 
     //Вывод списка
     const ListMyUsersLambda = new NodejsFunction(that, 'ListMyUsersLambda', {
@@ -32,10 +31,17 @@ export function CreateCRMLambdas(that: any, rootResource: apigateway.Resource, l
         },
         layers: layers
     });
-    const lambdaIntegrationListUsers = new apigateway.LambdaIntegration(ListMyUsersLambda);
-    usersResourceList.addMethod('GET', lambdaIntegrationListUsers);
 
     //предоставление доступа
 
     GrantAccessToDDB([ListMyUsersLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListMyUsersLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+
+    return returnArray;
 }

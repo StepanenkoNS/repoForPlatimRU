@@ -10,11 +10,9 @@ import MessageSender from '/opt/MessageSender';
 //@ts-ignore
 import { UserBotProfile } from '/opt/MessagingBotUserBotProfile';
 
-import { ETelegramSendMethod, TelegramCallbackTypeKey } from '/opt/TelegramTypes';
-import { EContentPostInteraction } from '/opt/ContentTypes';
-import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
-import { TelegramCallbackPayload } from '../../../TGBot-CoreLayers/LambdaLayers/Models/TelegramCallbackPayload';
+import { TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
 import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
+import { ETelegramSendMethod } from '../../../TGBot-CoreLayers/LambdaLayers/Types/TelegramTypes';
 
 const sqs = new SQS({ region: process.env.region });
 

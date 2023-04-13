@@ -6,14 +6,10 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateContentPlanPostsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListContentPlanPostsResource = rootResource.addResource('List');
-    const lambdaGetContentPlanPostsResource = rootResource.addResource('Get');
-    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaEdutContentPlanPostsResource = rootResource.addResource('Edit');
-    const lambdaDeleteContentPlanPostsResource = rootResource.addResource('Delete');
 
     //Вывод списка
     const ListContentPlanPostsLambda = new NodejsFunction(that, 'ListContentPlanPostsLambda', {
@@ -35,8 +31,6 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationListContentPlanPosts = new apigateway.LambdaIntegration(ListContentPlanPostsLambda);
-    lambdaListContentPlanPostsResource.addMethod('GET', lambdaIntegrationListContentPlanPosts);
 
     //Вывод одного элемента
     const GetContentPlanPostLambda = new NodejsFunction(that, 'GetContentPlanPostLambda', {
@@ -58,8 +52,6 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationGetContentPlanPosts = new apigateway.LambdaIntegration(GetContentPlanPostLambda);
-    lambdaGetContentPlanPostsResource.addMethod('GET', lambdaIntegrationGetContentPlanPosts);
 
     //Добавлении типа подписки
     const AddContentPlanPostLambda = new NodejsFunction(that, 'AddContentPlanPostLambda', {
@@ -81,8 +73,6 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationAddContentPlanPost = new apigateway.LambdaIntegration(AddContentPlanPostLambda);
-    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddContentPlanPost);
 
     //редактирование опции оплаты
     const EditContentPlanPostLambda = new NodejsFunction(that, 'EditContentPlanPostLambda', {
@@ -104,8 +94,6 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationEditContentPlanPost = new apigateway.LambdaIntegration(EditContentPlanPostLambda);
-    lambdaEdutContentPlanPostsResource.addMethod('PUT', lambdaIntegrationEditContentPlanPost);
 
     //удаление опции оплаты
     const DeleteContentPlanPostLambda = new NodejsFunction(that, 'DeleteContentPlanPostLambda', {
@@ -128,8 +116,37 @@ export function CreateContentPlanPostsLambdas(that: any, rootResource: apigatewa
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteContentPlanPost = new apigateway.LambdaIntegration(DeleteContentPlanPostLambda);
-    lambdaDeleteContentPlanPostsResource.addMethod('DELETE', lambdaIntegrationDeleteContentPlanPost);
 
     GrantAccessToDDB([ListContentPlanPostsLambda, AddContentPlanPostLambda, EditContentPlanPostLambda, DeleteContentPlanPostLambda, GetContentPlanPostLambda], tables);
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListContentPlanPostsLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetContentPlanPostLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddContentPlanPostLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: EditContentPlanPostLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: DeleteContentPlanPostLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

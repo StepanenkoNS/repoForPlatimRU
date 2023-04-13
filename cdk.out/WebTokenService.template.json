@@ -124,10 +124,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:238",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:152",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:133",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:15"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:254",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:169",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:141",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:16"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -236,7 +236,7 @@
     "Runtime": "nodejs14.x",
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "5fa1330271b8967d9254ba2d4a07144f8acefe8b77e6d6bba38261373a50d5f8.zip"
+     "S3Key": "f5b6a6d08a8206e67d0b54e2a29abd7e0472d835abc71037de3a93545b5edacc.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -251,7 +251,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
-    "aws:asset:path": "asset.5fa1330271b8967d9254ba2d4a07144f8acefe8b77e6d6bba38261373a50d5f8",
+    "aws:asset:path": "asset.f5b6a6d08a8206e67d0b54e2a29abd7e0472d835abc71037de3a93545b5edacc",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -1139,7 +1139,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "34beac7d160965a96ce896871cfbdca28814200989c74fab0e1ef0f4bfcec123.zip"
+     "S3Key": "93d4963306216a9c4bf68e6d8b69958040b1812029cb78b74b9a2189b274e66a.zip"
     },
     "Timeout": 900,
     "MemorySize": 128,
@@ -1157,14 +1157,14 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler",
-    "aws:asset:path": "asset.34beac7d160965a96ce896871cfbdca28814200989c74fab0e1ef0f4bfcec123",
+    "aws:asset:path": "asset.93d4963306216a9c4bf68e6d8b69958040b1812029cb78b74b9a2189b274e66a",
     "aws:asset:property": "Code"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9lt2DN0CbtmMZ2glYVbQzMqlXAk1cNQkIVf33JSkDtpPfs+PnZ2cCL2/w9IAnO5LlYVSrLXRrh/IgCrLsW0ki1DZdjXpb4sZwSXsLqxQ+vJFOsREKNXQF1yTev02KOddKniMdUC/sdIPWkrOQxRA4zLw8kJuhJTHIQxcarqqxmVqtrA2sFzVXFhZcFeTIpAfYqAodnfAM3SIJBM8ua1SycYOZlOyNE3Nqaj7r0B2zdywsXCXvA/jdPDlbkttxGYsXdL3LMGTAXzY05jUm1zcyZ43KrFCn13csSufodktsGmWqWP2X6kXL3tHzFLqsIMltOQyMaE2u70W6Y3R8Ebg39uld48Oa3jrWt8Ifmrd8VCW1vYi/Cnv7eBy/wngC44e9VWrUhpspTVAM8QfEvE3+KgIAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu7BG6Bpu5ahnYBVRTsjk3ol0CRVnYBQ1X9fkjJgO/k9O35+dqbwOoPnEZ55LMvjuFY76DYO5VEUxNa3kkSobbsa9a7ErbElHRjWKXx4I52yRijU0BW2JvH+bVLMba3kJdIB9YJnW2Qmx5DFEDjMvTySmyOTGOShCw031dhMrVbMgfWithXD0lYFOTLpATaqQkdnvEC3TALBs8salWzcYSal9caJBTW1vejQHbMPLCxcJe8D+N08OVuR29syFq/odpdhyIC/ODTmNSbXd7KwGpVZo06vH1iUztHtV9g0ylSx+i/Vi9Z6Ry8z6LKCpG3LYWBEG3J9L9Ido+OrwKOxT+8aH9b07Ky+F/7QvLUnVVLbi/ircOCn0+QNJlOYjA6s1LgNN1OaoBjiD0H8cfcqAgAA"
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

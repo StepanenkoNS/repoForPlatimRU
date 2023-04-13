@@ -6,15 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateServiceSubscriptionPlansLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
-    //добавление ресурсов в шлюз
-    const lambdaListServiceSubscriptionPlansResource = rootResource.addResource('List');
-    const lambdaGetServiceSubscriptionPlansResource = rootResource.addResource('Get');
-    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaEdutServiceSubscriptionPlansResource = rootResource.addResource('Edit');
-    const lambdaDeleteServiceSubscriptionPlansResource = rootResource.addResource('Delete');
-
+export function CreateServiceSubscriptionPlansLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //Вывод списка
     const ListServiceSubscriptionPlansLambda = new NodejsFunction(that, 'ListServiceSubscriptionPlansLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ServiceSubscriptionPlans', 'ListServiceSubscriptionPlansLambda.ts'),
@@ -35,8 +29,6 @@ export function CreateServiceSubscriptionPlansLambdas(that: any, rootResource: a
         },
         layers: layers
     });
-    const lambdaIntegrationListServiceSubscriptionPlans = new apigateway.LambdaIntegration(ListServiceSubscriptionPlansLambda);
-    lambdaListServiceSubscriptionPlansResource.addMethod('GET', lambdaIntegrationListServiceSubscriptionPlans);
 
     //Вывод одного элемента
     const GetServiceSubscriptionPlanLambda = new NodejsFunction(that, 'GetServiceSubscriptionPlanLambda', {
@@ -59,8 +51,6 @@ export function CreateServiceSubscriptionPlansLambdas(that: any, rootResource: a
         },
         layers: layers
     });
-    const lambdaIntegrationGetServiceSubscriptionPlans = new apigateway.LambdaIntegration(GetServiceSubscriptionPlanLambda);
-    lambdaGetServiceSubscriptionPlansResource.addMethod('GET', lambdaIntegrationGetServiceSubscriptionPlans);
 
     //Добавлении типа подписки
     const AddServiceSubscriptionPlanLambda = new NodejsFunction(that, 'AddServiceSubscriptionPlanLambda', {
@@ -83,8 +73,6 @@ export function CreateServiceSubscriptionPlansLambdas(that: any, rootResource: a
         },
         layers: layers
     });
-    const lambdaIntegrationAddServiceSubscriptionPlan = new apigateway.LambdaIntegration(AddServiceSubscriptionPlanLambda);
-    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddServiceSubscriptionPlan);
 
     //редактирование опции оплаты
     const EditServiceSubscriptionPlanLambda = new NodejsFunction(that, 'EditServiceSubscriptionPlanLambda', {
@@ -107,8 +95,6 @@ export function CreateServiceSubscriptionPlansLambdas(that: any, rootResource: a
         },
         layers: layers
     });
-    const lambdaIntegrationEditServiceSubscriptionPlan = new apigateway.LambdaIntegration(EditServiceSubscriptionPlanLambda);
-    lambdaEdutServiceSubscriptionPlansResource.addMethod('PUT', lambdaIntegrationEditServiceSubscriptionPlan);
 
     //удаление опции оплаты
     const DeleteServiceSubscriptionPlanLambda = new NodejsFunction(that, 'DeleteServiceSubscriptionPlanLambda', {
@@ -130,11 +116,40 @@ export function CreateServiceSubscriptionPlansLambdas(that: any, rootResource: a
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteServiceSubscriptionPlan = new apigateway.LambdaIntegration(DeleteServiceSubscriptionPlanLambda);
-    lambdaDeleteServiceSubscriptionPlansResource.addMethod('DELETE', lambdaIntegrationDeleteServiceSubscriptionPlan);
 
     GrantAccessToDDB(
         [ListServiceSubscriptionPlansLambda, AddServiceSubscriptionPlanLambda, EditServiceSubscriptionPlanLambda, DeleteServiceSubscriptionPlanLambda, GetServiceSubscriptionPlanLambda],
         tables
     );
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListServiceSubscriptionPlansLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetServiceSubscriptionPlanLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddServiceSubscriptionPlanLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: EditServiceSubscriptionPlanLambda,
+        resource: 'Edit',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: DeleteServiceSubscriptionPlanLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

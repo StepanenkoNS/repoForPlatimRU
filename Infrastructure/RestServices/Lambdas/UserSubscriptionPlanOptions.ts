@@ -6,14 +6,10 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource: apigateway.Resource, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateUserSubscriptionPlanOptionsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
-    const lambdaListUserSubscriptionPlanOptionsResource = rootResource.addResource('List');
-    const lambdaListUserSubscriptionPlanOptionsWithContentPlansResource = rootResource.addResource('ListWithContentPlans');
-    const lambdaGetUserSubscriptionPlanOptionsResource = rootResource.addResource('Get');
-    const lambdaAddSubscriptionResource = rootResource.addResource('Add');
-    const lambdaDeleteUserSubscriptionPlanOptionsResource = rootResource.addResource('Delete');
 
     //Вывод списка
     const ListUserSubscriptionPlanOptionsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlanOptionsLambda', {
@@ -35,8 +31,6 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
         },
         layers: layers
     });
-    const lambdaIntegrationListUserSubscriptionPlanOptions = new apigateway.LambdaIntegration(ListUserSubscriptionPlanOptionsLambda);
-    lambdaListUserSubscriptionPlanOptionsResource.addMethod('GET', lambdaIntegrationListUserSubscriptionPlanOptions);
 
     //Вывод списка2
     const ListUserSubscriptionPlanOptionsListWithContentPlansLambda = new NodejsFunction(that, 'ListUserSubscriptionPlanOptionsListWithContentPlansLambda', {
@@ -58,8 +52,6 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
         },
         layers: layers
     });
-    const lambdaIntegrationListUserSubscriptionPlanOptionsWithContentPlans = new apigateway.LambdaIntegration(ListUserSubscriptionPlanOptionsListWithContentPlansLambda);
-    lambdaListUserSubscriptionPlanOptionsWithContentPlansResource.addMethod('GET', lambdaIntegrationListUserSubscriptionPlanOptionsWithContentPlans);
 
     //Вывод одного элемента
     const GetSubscriptionPlanLambda = new NodejsFunction(that, 'GetUserSubscriptionPlanOptionLambda', {
@@ -82,8 +74,6 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
         },
         layers: layers
     });
-    const lambdaIntegrationGetUserSubscriptionPlanOptions = new apigateway.LambdaIntegration(GetSubscriptionPlanLambda);
-    lambdaGetUserSubscriptionPlanOptionsResource.addMethod('GET', lambdaIntegrationGetUserSubscriptionPlanOptions);
 
     //Добавлении типа подписки
     const AddSubscriptionPlanLambda = new NodejsFunction(that, 'AddUserSubscriptionPlanOptionLambda', {
@@ -106,8 +96,6 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
         },
         layers: layers
     });
-    const lambdaIntegrationAddSubscriptionPlan = new apigateway.LambdaIntegration(AddSubscriptionPlanLambda);
-    lambdaAddSubscriptionResource.addMethod('POST', lambdaIntegrationAddSubscriptionPlan);
 
     //удаление опции оплаты
     const DeleteSubscriptionPlanLambda = new NodejsFunction(that, 'DeleteUserSubscriptionPlaOptionnLambda', {
@@ -129,11 +117,39 @@ export function CreateUserSubscriptionPlanOptionsLambdas(that: any, rootResource
         },
         layers: layers
     });
-    const lambdaIntegrationDeleteSubscriptionPlan = new apigateway.LambdaIntegration(DeleteSubscriptionPlanLambda);
-    lambdaDeleteUserSubscriptionPlanOptionsResource.addMethod('DELETE', lambdaIntegrationDeleteSubscriptionPlan);
 
     GrantAccessToDDB(
         [ListUserSubscriptionPlanOptionsLambda, AddSubscriptionPlanLambda, DeleteSubscriptionPlanLambda, GetSubscriptionPlanLambda, ListUserSubscriptionPlanOptionsListWithContentPlansLambda],
         tables
     );
+
+    const returnArray: LambdaAndResource[] = [];
+    returnArray.push({
+        lambda: ListUserSubscriptionPlanOptionsLambda,
+        resource: 'List',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: ListUserSubscriptionPlanOptionsListWithContentPlansLambda,
+        resource: 'ListWithContentPlans',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: GetSubscriptionPlanLambda,
+        resource: 'Get',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: AddSubscriptionPlanLambda,
+        resource: 'Add',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: DeleteSubscriptionPlanLambda,
+        resource: 'Delete',
+        httpMethod: 'DELETE'
+    });
+
+    return returnArray;
 }

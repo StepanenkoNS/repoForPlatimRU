@@ -26,7 +26,7 @@ export async function RegisterBotHandler(event: APIGatewayEvent, context: Contex
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
-    const result = await BotManager.SetWebhook(telegramUser.id, bodyObject.id);
+    const result = await BotManager.SetWebhook(Number(telegramUser.id), Number(bodyObject.id));
 
     const addResult = ParseInsertItemResult(result);
 
