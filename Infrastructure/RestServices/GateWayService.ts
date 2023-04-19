@@ -14,7 +14,7 @@ import { createAPIandAuthorizer } from '/opt/LambdaHelpers/CreateAPIwithAuth';
 
 import { Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
 
-import { LambdaAndResource, LambdaIntegrations } from './Helper/GWtypes';
+import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class GatewayServiceStack extends Stack {
     restServicesAPI: RestApi;

@@ -23,15 +23,15 @@ export async function DeleteUserSubscriptionPlanHandler(event: APIGatewayEvent, 
         { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' }
     ]);
-    if (bodyObject === false) {
+    if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const result = await UserSubscriptionPlanChannel.DeleteUserSubscriptionPlanChannel({
         masterId: telegramUser.id,
-        botId: bodyObject.botId,
-        id: bodyObject.id
+        botId: bodyObject.data.botId,
+        id: bodyObject.data.id
     });
 
     const deleteResult = ParseDeleteItemResult(result);

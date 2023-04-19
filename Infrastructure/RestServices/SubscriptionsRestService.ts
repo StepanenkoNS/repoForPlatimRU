@@ -10,13 +10,10 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateSubscriptionSettingsLambdas } from './Lambdas/SubscriptionSettings';
-
 import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
 
 import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
 
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateUserSubscriptionPlansBotsLambdas } from './Lambdas/UserSubscriptionPlansBot';
 import { CreateUserSubscriptionPlansChannelsLambdas } from './Lambdas/UserSubscriptionPlansChannel';
@@ -44,12 +41,6 @@ export class SubscriptionsRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const subscriptionSettingsLambas = CreateSubscriptionSettingsLambdas(this, layers, [botsTable]);
-
-        this.lambdaIntegrations.push({
-            rootResource: 'ActiveSubscription',
-            lambdas: subscriptionSettingsLambas
-        });
         const serviceSubscriptionPlansLambdas = CreateServiceSubscriptionPlansLambdas(this, layers, [botsTable]);
         this.lambdaIntegrations.push({
             rootResource: 'ServiceSubscriptionPlans',

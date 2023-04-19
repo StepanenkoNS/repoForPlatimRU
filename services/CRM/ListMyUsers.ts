@@ -7,9 +7,8 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
-import { UserBotProfile } from '/opt/MessagingBotUserBotProfile';
+
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function ListMyUsersHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -27,8 +26,8 @@ export async function ListMyUsersHandler(event: APIGatewayEvent, context: Contex
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await UserBotProfile.ListMyUsers({
-        masterId: telegramUser.id,
+    const result = await MessagingBotManager.ListBotUsers({
+        masterId: Number(telegramUser.id),
         botId: Number(event.queryStringParameters!.botId!)
     });
 

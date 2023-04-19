@@ -14,7 +14,7 @@ import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
 import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
 
 import { CreateTelegramFilesLambdas } from './Lambdas/TelegramFiles';
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
+
 import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class FilesRestServicesStack extends Stack {

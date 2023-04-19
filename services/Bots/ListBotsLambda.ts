@@ -8,7 +8,7 @@ import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, Return
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
-import BotManager from '/opt/BotManager';
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function ListBotsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -22,7 +22,7 @@ export async function ListBotsHandler(event: APIGatewayEvent, context: Context):
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    const result = await BotManager.ListMyBots(telegramUser.id);
+    const result = await MessagingBotManager.ListMyBots(Number(telegramUser.id));
 
     const listResults = ParseListItemsResult(result);
 

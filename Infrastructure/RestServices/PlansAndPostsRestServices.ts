@@ -13,7 +13,6 @@ import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
 import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
 import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
 
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class PlansAndPostsRestServicesStack extends Stack {

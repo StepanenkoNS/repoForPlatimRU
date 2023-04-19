@@ -30,25 +30,25 @@ export async function EditContentPlanPostHandler(event: APIGatewayEvent, context
         { key: 'message', datatype: 'object', objectKeys: [] },
         { key: 'interaction', datatype: 'object', objectKeys: [] }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const result = await ContentConfigurator.UpdateContentPlanPost({
-        masterId: telegramUser.id,
+        masterId: Number(telegramUser.id),
         discriminator: 'IContentPlanPost',
 
-        id: bodyObject.id,
-        botId: bodyObject.botId,
-        contentPlanId: bodyObject.contentPlanId,
+        id: bodyObject.data.id,
+        botId: Number(bodyObject.data.botId),
+        contentPlanId: bodyObject.data.contentPlanId,
 
-        name: bodyObject.name,
-        sendMethod: bodyObject.sendMethod,
+        name: bodyObject.data.name,
+        sendMethod: bodyObject.data.sendMethod,
 
-        trigger: bodyObject.trigger,
-        message: bodyObject.message,
+        trigger: bodyObject.data.trigger,
+        message: bodyObject.data.message,
 
-        interaction: bodyObject.interaction
+        interaction: bodyObject.data.interaction
     });
 
     const updateResult = ParseUpdateItemResult(result);

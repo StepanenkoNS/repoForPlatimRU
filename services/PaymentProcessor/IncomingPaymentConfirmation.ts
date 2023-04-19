@@ -7,14 +7,10 @@ import { IRequestToConfirmPayment } from '/opt/PaymentTypes';
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
 //@ts-ignore
 import MessageSender from '/opt/MessageSender';
-//@ts-ignore
-import { UserBotProfile } from '/opt/MessagingBotUserBotProfile';
 
-import { ETelegramSendMethod, TelegramCallbackTypeKey } from '/opt/TelegramTypes';
-import { EContentPostInteraction } from '/opt/ContentTypes';
-import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
-import { TelegramCallbackPayload } from '../../../TGBot-CoreLayers/LambdaLayers/Models/TelegramCallbackPayload';
-import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
+import { ETelegramSendMethod } from '/opt/TelegramTypes';
+
+import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -30,7 +26,7 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
             //определяем, что за тип подписки
 
             const paymentDetails = await PaymentOptionsManager.GetPaymentRequest({
-                botId: request.botId,
+                botId: Number(request.botId),
                 masterId: Number(request.masterId),
                 paymentId: request.id
             });
@@ -42,116 +38,42 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
             }
             //это долгая подписка на бота
 
-            const updatePaymentResult = await PaymentOptionsManager.ConfirmDIRECTPaymentRequest(request);
+            const updatePaymentResult = await PaymentOptionsManager.ConfirmPaymentRequest(request);
 
             if (updatePaymentResult === false) {
-                //посылаем сообщение, что не удалось обновить
-                const sendResultAdmin = await MessageSender.SendTextMessage({
-                    botId: request.botId,
-                    masterId: request.masterId,
-                    recipientChatId: request.masterId,
-                    text: 'Этот платеж был обработан ранее'
+                //посылаем сообщение админу, что не удалось обновить платеж
+
+                await MessageSender.QueueSendGenericMessage({
+                    discriminator: 'IScheduledGenericMessage',
+                    botId: Number(request.botId),
+                    masterId: Number(request.masterId),
+                    chatId: Number(request.masterId),
+                    sendMethod: ETelegramSendMethod.sendMessage,
+                    message: {
+                        id: ksuid.randomSync(new Date()).string,
+                        attachments: [],
+                        text: 'Этот платеж был обработан ранее',
+                        reply_markup: undefined
+                    }
                 });
             } else {
-                let result = false;
-
-                //подписываем на бота
-                if (paymentDetails.subscriptionTarget === 'BOT') {
-                    result = await UserBotProfile.SubscribeToContentPlanBotStatic({
-                        botId: updatePaymentResult.botId,
-                        chatId: updatePaymentResult.chatId,
-                        masterId: updatePaymentResult.masterId,
-                        userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
-                    });
-                }
-                let replyMarkup = undefined;
-                if (paymentDetails.subscriptionTarget === 'CHANNEL') {
-                    result = await UserBotProfile.SubscribeToContentPlanChannelStatic({
-                        botId: updatePaymentResult.botId,
-                        chatId: updatePaymentResult.chatId,
-                        masterId: updatePaymentResult.masterId,
-                        userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
-                    });
-
-                    const plan = await UserSubscriptionPlanChannel.GetUserSubscriptionPlanChannelById({
-                        masterId: updatePaymentResult.masterId,
-                        botId: updatePaymentResult.botId,
-                        id: updatePaymentResult.subscriptionPlanId
-                    });
-                    if (plan === false) {
-                        return false;
-                    }
-                    const callbackDataJoin = {
-                        id: request.id!,
-                        type: 'JoinChannel',
-                        channelId: Number(plan.channelId),
-                        chatId: Number(request.chatId)
-                    };
-                    replyMarkup = {
-                        inline_keyboard: [
-                            [
-                                {
-                                    text: 'Join',
-                                    callback_data: TelegramCallbackPayload.EncodePayload(callbackDataJoin)
-                                }
-                            ]
-                        ]
-                    };
-                }
-
-                if (result === true) {
-                    let adminText = 'Пользователь был успешно подписан';
-                    let userText = 'Вы были успешно подписаны';
-
-                    if (request.action.toString() === '0') {
-                        adminText = 'Платеж успешно отклонен.';
-                        userText = 'Ваш платеж был отклонен администратором';
-                    }
-
-                    const msgIdAdmin = ksuid.randomSync(new Date()).string;
-                    await MessageSender.QueueSendGenericMessage({
-                        discriminator: 'IScheduledGenericMessage',
-                        botId: updatePaymentResult.botId,
-                        masterId: updatePaymentResult.masterId,
-                        chatId: updatePaymentResult.masterId,
-                        sendMethod: ETelegramSendMethod.sendMessage,
-                        message: {
-                            id: msgIdAdmin,
-                            attachments: [],
-                            text: adminText
-                        }
-                    });
-
-                    const msgIdUser = ksuid.randomSync(new Date()).string;
-                    await MessageSender.QueueSendGenericMessage({
-                        discriminator: 'IScheduledGenericMessage',
-                        botId: Number(updatePaymentResult.botId),
-                        masterId: Number(updatePaymentResult.masterId),
-                        chatId: Number(updatePaymentResult.chatId),
-                        sendMethod: ETelegramSendMethod.sendMessage,
-                        message: {
-                            id: msgIdUser,
-                            attachments: [],
-                            text: userText,
-                            reply_markup: replyMarkup
-                        }
-                    });
-                } else {
-                    //шлем сообщение админу, что операция провалилась
-                    const msgIdAdmin = ksuid.randomSync(new Date()).string;
-                    await MessageSender.QueueSendGenericMessage({
-                        discriminator: 'IScheduledGenericMessage',
-                        botId: updatePaymentResult.botId,
-                        masterId: updatePaymentResult.masterId,
-                        chatId: updatePaymentResult.masterId,
-                        sendMethod: ETelegramSendMethod.sendMessage,
-                        message: {
-                            id: msgIdAdmin,
-                            attachments: [],
-                            text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой'
-                        }
-                    });
-                }
+                const sqsRequest: ISubscribeUser = {
+                    id: request.id,
+                    type: paymentDetails.subscriptionType,
+                    botId: updatePaymentResult.botId,
+                    chatId: updatePaymentResult.chatId,
+                    masterId: updatePaymentResult.masterId,
+                    userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
+                };
+                const id = ksuid.randomSync(new Date()).string;
+                const messageParams: SQS.SendMessageRequest = {
+                    QueueUrl: process.env.SubscriptionProcessorQueueURL!,
+                    MessageBody: JSON.stringify(sqsRequest),
+                    MessageDeduplicationId: id,
+                    MessageGroupId: sqsRequest.botId.toString()
+                };
+                const sqs = new SQS({ region: process.env.region });
+                await sqs.sendMessage(messageParams).promise();
             }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);

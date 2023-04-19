@@ -1,11 +1,11 @@
-import { Context, APIGatewayEvent } from 'aws-lambda';
+import { APIGatewayEvent } from 'aws-lambda';
 import { CreateNewTokens } from '../utils/GetNewToken';
 import { LogOut, ReturnResult } from '../utils/ReturnResult';
 import { ValidateTokenFromCookies } from '../utils/ValidateTokenFromCookies';
 //@ts-ignore
 import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
 
-export async function LambdaTokenServiceHandler(event: APIGatewayEvent, context: Context) {
+export async function LambdaTokenServiceHandler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));
     if (!event) {
         const result = {

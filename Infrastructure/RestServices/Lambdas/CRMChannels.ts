@@ -8,11 +8,15 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateSubscriptionSettingsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    const GetSubscriptionSettingsLambda = new NodejsFunction(that, 'GetSubscriptionSettingsLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionSettings', 'GetSubscriptionSettingsLambda.ts'),
-        handler: 'GetSubscriptionSettingsHandler',
-        functionName: 'react-SubscriptionSettings-Get-Lambda',
+export function CreateCRMChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+    //добавление ресурсов в шлюз
+
+    //Вывод списка
+
+    const ListChannelSubscriptionsLambda = new NodejsFunction(that, 'ListChannelSubscriptions', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRMChannels', 'ListChannelSubscriptions.ts'),
+        handler: 'ListChannelSubscriptionsHandler',
+        functionName: 'react-CRMChannels-Subscriptions-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -29,13 +33,16 @@ export function CreateSubscriptionSettingsLambdas(that: any, layers: ILayerVersi
         layers: layers
     });
 
-    GrantAccessToDDB([GetSubscriptionSettingsLambda], tables);
+    //предоставление доступа
+
+    GrantAccessToDDB([ListChannelSubscriptionsLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
-        lambda: GetSubscriptionSettingsLambda,
-        resource: undefined,
+        lambda: ListChannelSubscriptionsLambda,
+        resource: 'ListSubscriptions',
         httpMethod: 'GET'
     });
+
     return returnArray;
 }

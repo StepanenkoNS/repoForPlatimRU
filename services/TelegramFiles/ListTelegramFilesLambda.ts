@@ -1,4 +1,4 @@
-import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -10,7 +10,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import FileTelegramConfigurator from '/opt/FileTelegramConfigurator';
 
-export async function ListTelegramFilesHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function ListTelegramFilesHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

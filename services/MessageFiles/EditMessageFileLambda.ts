@@ -9,7 +9,6 @@ import { ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from
 //@ts-ignore
 import FileS3Configurator from '/opt/FileS3Configurator';
 
-import BotManager from '/opt/BotManager';
 import { S3Helper } from '/opt/S3/S3Utils';
 import { IMessageFile } from '/opt/ContentTypes';
 
@@ -32,11 +31,11 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
         { key: 'fileSize', datatype: 'number(positiveInteger)' },
         { key: 'tags', datatype: 'array' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const mediaType = S3Helper.GetMediaType(bodyObject.originalFileName);
+    const mediaType = S3Helper.GetMediaType(bodyObject.data.originalFileName);
     if (mediaType === false) {
         const addResult = ParseUpdateItemResult(undefined);
 
@@ -45,29 +44,19 @@ export async function EditMessageFileHandler(event: APIGatewayEvent, context: Co
 
     const messageFile: IMessageFile = {
         discriminator: 'IMessageFile',
-        masterId: telegramUser.id,
-        botId: Number(bodyObject.botId),
+        masterId: Number(telegramUser.id),
+        botId: Number(bodyObject.data.botId),
 
-        id: bodyObject.id,
-        name: bodyObject.name,
-        s3key: bodyObject.s3key,
+        id: bodyObject.data.id,
+        name: bodyObject.data.name,
+        s3key: bodyObject.data.s3key,
         mediaType: mediaType.type,
-        originalFileName: bodyObject.originalFileName,
-        fileSize: bodyObject.fileSize,
-        tags: bodyObject.tags
+        originalFileName: bodyObject.data.originalFileName,
+        fileSize: bodyObject.data.fileSize,
+        tags: bodyObject.data.tags
     };
     //если указан s3Key - то будем менять старый файл
     const result = await FileS3Configurator.UpdateMessageFile(messageFile);
-
-    if (result !== undefined && result !== false) {
-        const botManager = await BotManager.GetOrCreate({
-            masterId: telegramUser.id,
-            userName: telegramUser.username
-        });
-        const validateLimits = await botManager.UpdateSubscriptionLimit({
-            resourceConsumption_mediaFiles: result.newFileSize - result.oldFileSize
-        });
-    }
 
     const updateResult = ParseUpdateItemResult(result);
 

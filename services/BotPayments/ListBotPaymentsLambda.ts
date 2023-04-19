@@ -1,7 +1,4 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -9,9 +6,12 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-export async function ListFreePostsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+//@ts-ignore
+import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+
+export async function ListBotPaymentsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -23,16 +23,21 @@ export async function ListFreePostsHandler(event: APIGatewayEvent, context: Cont
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['botId'])) {
+    if (!ValidateStringParameters(event, ['botId', 'type'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.ListMyFreePosts({
-        masterId: telegramUser.id,
-        botId: Number(event.queryStringParameters!.botId!)
+    let type = event.queryStringParameters!.type!;
+    if (!['NEW', 'CONFIRMED', 'REJECTED'].includes(type)) {
+        return ReturnRestApiResult(422, { error: 'QueryString parameter type is invald' }, false, origin, renewedToken);
+    }
+
+    const result = await PaymentOptionsManager.ListMyBotPayments({
+        masterId: Number(telegramUser.id),
+        botId: Number(event.queryStringParameters!.botId!),
+        type: type as any
     });
+    const listResult = ParseListItemsResult(result);
 
-    const listResults = ParseListItemsResult(result);
-
-    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+    return ReturnRestApiResult(listResult.code, listResult.body, true, origin, renewedToken);
 }

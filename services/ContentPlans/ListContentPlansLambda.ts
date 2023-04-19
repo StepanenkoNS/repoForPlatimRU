@@ -27,7 +27,7 @@ export async function ListContentPlansHandler(event: APIGatewayEvent, context: C
     }
 
     const result = await ContentConfigurator.ListMyBotContentPlans({
-        masterId: telegramUser.id,
+        masterId: Number(telegramUser.id),
         botId: Number(event.queryStringParameters!.botId!)
     });
 

@@ -30,26 +30,24 @@ export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, con
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
         { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'price', datatype: 'number(nonZeroPositive)' },
-        { key: 'currency', datatype: e },
+        { key: 'prices', datatype: 'array' },
         { key: 'enabled', datatype: 'boolean' },
         { key: 'channelId', datatype: 'number(integer)' }
     ]);
 
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const result = await UserSubscriptionPlanChannel.AddUserSubscriptionPlanChannel({
         masterId: telegramUser.id,
         discriminator: 'IUserSubscriptionPlanChannel',
-        botId: bodyObject.botId,
-        currency: bodyObject.currency,
-        enabled: bodyObject.enabled,
-        lengthInDays: bodyObject.lengthInDays,
-        name: bodyObject.name,
-        price: bodyObject.price,
-        channelId: bodyObject.channelId
+        botId: bodyObject.data.botId,
+        enabled: bodyObject.data.enabled,
+        lengthInDays: bodyObject.data.lengthInDays,
+        name: bodyObject.data.name,
+        prices: bodyObject.data.prices,
+        channelId: bodyObject.data.channelId
     });
     const addResult = ParseInsertItemResult(result);
 

@@ -2,10 +2,10 @@ import { RefreshTokenFromCookie } from './RefreshToken';
 import * as jwt from 'jsonwebtoken';
 
 import { APIGatewayEvent } from 'aws-lambda';
-//@ts-ignore
-import BotManager from '/opt/BotManager';
+
 //@ts-ignore
 import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
+import MasterManager from '../../../../TGBot-CoreLayers/LambdaLayers/Models/MasterManager';
 
 function getTokenFromCookes(cookies: string) {
     let accessToken = cookies.split('; ').reduce((r, v) => {
@@ -73,29 +73,27 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
                 userProfile.username = undefined;
             }
 
-            let botManager: BotManager;
-            try {
-                botManager = await BotManager.GetOrCreate({
-                    masterId: userProfile.id,
-                    userName: userProfile.username
-                });
-            } catch (error) {
+            const master = await MasterManager.UpsertMaster({
+                discriminator: 'IMasterManager',
+                id: Number(userProfile.id)
+            });
+
+            if (master === false) {
                 const err = {
                     error: JSON.stringify({ error: 'BotManager.GetOrCreate error' })
                 };
-                console.log('Error:ValidateTokenFromCookies\n', error);
+                console.log('Error:ValidateTokenFromCookies\n', err);
                 throw err;
             }
 
-            console.log('isBannedCheck ' + userProfile.id.toString(), botManager.isBanned());
-            if (botManager.isBanned()) {
+            if (master.banned === true) {
                 const err = {
                     error: JSON.stringify({ error: 'user is banned' })
                 };
                 console.log('Error:ValidateTokenFromCookies', err);
                 throw err;
             }
-            salt = botManager.getSalt();
+            salt = master.salt;
             if (!salt) {
                 const err = {
                     error: JSON.stringify({ error: 'salt is undefined' })

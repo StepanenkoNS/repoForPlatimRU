@@ -25,7 +25,7 @@ export async function GetMessageFileHandler(event: APIGatewayEvent, context: Con
     }
 
     const result = await FileS3Configurator.GetMyMessageFileById({
-        masterId: telegramUser.id,
+        masterId: Number(telegramUser.id),
         botId: Number(event.queryStringParameters!.botId!),
         id: event.queryStringParameters!.id!
     });

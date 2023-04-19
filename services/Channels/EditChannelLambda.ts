@@ -26,15 +26,15 @@ export async function EditChannelHandler(event: APIGatewayEvent, context: Contex
         { key: 'id', datatype: 'number(integer)' },
         { key: 'name', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const telegramChannel: ITelegramChannel = {
         discriminator: 'ITelegramChannel',
         masterId: Number(telegramUser.id),
-        id: Number(bodyObject.id),
-        name: bodyObject.name
+        id: Number(bodyObject.data.id),
+        name: bodyObject.data.name
     };
     const result = await ChannelManager.UpdateChannel(telegramChannel);
 

@@ -10,7 +10,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
-import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
+import { IContentPlan } from '/opt/ContentTypes';
 
 export async function AddContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -28,16 +28,16 @@ export async function AddContentPlanHandler(event: APIGatewayEvent, context: Con
 
         { key: 'description', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const contentPlan: IContentPlan = {
         discriminator: 'IContentPlan',
-        botId: Number(bodyObject.botId),
-        masterId: telegramUser.id,
-        name: bodyObject.name.toString(),
-        description: bodyObject.description.toString()
+        botId: Number(bodyObject.data.botId),
+        masterId: Number(telegramUser.id),
+        name: bodyObject.data.name.toString(),
+        description: bodyObject.data.description.toString()
     };
 
     console.log(contentPlan);

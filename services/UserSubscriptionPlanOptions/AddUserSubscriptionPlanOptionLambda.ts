@@ -29,15 +29,15 @@ export async function AddUserSubscriptionPlanOptionHandler(event: APIGatewayEven
         { key: 'ids', datatype: 'array' }
     ]);
 
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
     const userSubscriptionPlanOption: IAddUserSubscriptionPlanOption = {
         discriminator: 'IUserSubscriptionPlanOption',
         masterId: telegramUser.id,
-        botId: Number(bodyObject.botId),
-        userSubscriptionPlanId: bodyObject.userSubscriptionPlanId,
-        ids: bodyObject.ids
+        botId: Number(bodyObject.data.botId),
+        userSubscriptionPlanId: bodyObject.data.userSubscriptionPlanId,
+        ids: bodyObject.data.ids
     };
     const result = await UserSubscriptionPlanBot.AddUserSubscriptionPlanBotOption(userSubscriptionPlanOption);
     const addResult = ParseInsertItemResult(result);

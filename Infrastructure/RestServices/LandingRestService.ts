@@ -9,8 +9,6 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 //@ts-ignore
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
 
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
-
 import { CreateBotSetLandingLambdas } from './Lambdas/Landing';
 import { LambdaIntegrations } from './Helper/GWtypes';
 

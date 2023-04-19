@@ -2,15 +2,10 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import {
-    ParseDeleteItemResult,
-    ParseGetItemResult,
-    ParseInsertItemResult,
-    ParseListItemsResult,
     ParseSendMessageResult,
-    ParseUpdateItemResult,
     ReturnRestApiResult
     //@ts-ignore
 } from '/opt/LambdaHelpers/ReturnRestApiResult';
@@ -50,12 +45,12 @@ export async function SendTestMessageHandler(event: APIGatewayEvent, context: Co
         { key: 'message', datatype: 'object', objectKeys: [] }
     ]);
 
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const sendMethod = getSendMethodEnum(bodyObject.sendMethod);
-    const result = await MessageSender.SendTestMessage(telegramUser.id, Number(bodyObject.botId), sendMethod!, bodyObject.message);
+    const sendMethod = getSendMethodEnum(bodyObject.data.sendMethod);
+    const result = await MessageSender.SendTestMessage(Number(telegramUser.id), Number(bodyObject.data.botId), sendMethod!, bodyObject.data.message);
 
     console.log('MessageSender.SendTestMessage result', result);
 

@@ -14,8 +14,9 @@ import { CreateSendMessagesLambdas } from './Lambdas/SendTestMessages';
 import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
 import { PaymentProcessor } from './Lambdas/PaymentProcessor';
 
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { LambdaIntegrations } from './Helper/GWtypes';
+import { CreateBotPaymentsLambdas } from './Lambdas/BotPayments';
+import { CreateSubscriptionProcessor } from './Lambdas/SubscriptionProcessor';
 
 export class MessagesAndPaymentsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -48,8 +49,17 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
             lambdas: sendMessagesLambas
         });
 
+        const BotPaymentsLambas = CreateBotPaymentsLambdas(this, layers, [botsTable]);
+
+        this.lambdaIntegrations.push({
+            rootResource: 'BotPayments',
+            lambdas: BotPaymentsLambas
+        });
+
         SendMessageScheduler(this, layers, [botsTable]);
 
         PaymentProcessor(this, layers, [botsTable]);
+
+        CreateSubscriptionProcessor(this, layers, [botsTable]);
     }
 }

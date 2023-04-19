@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 
 import { ValidateTelegramHash } from './ValidateTGUser';
 //@ts-ignore
-import BotManager from '/opt/BotManager';
+import MasterManager from '/opt/MasterManager';
 import { ReturnResult } from './ReturnResult';
 //@ts-ignore
 import { TelegramUser, TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
@@ -17,12 +17,21 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
         }
 
         //get or create
-        const botManager = await BotManager.GetOrCreate({
-            masterId: user.id,
-            userName: user.username
+        const master = await MasterManager.UpsertMaster({
+            discriminator: 'IMasterManager',
+            id: Number(user.id)
         });
+        if (master === false) {
+            const result = {
+                error: JSON.stringify({ error: 'UpsertMaster failed' })
+            };
+            return ReturnResult(403, result, origin, {
+                accessToken: '',
+                refreshToken: ''
+            });
+        }
 
-        if (botManager.isBanned()) {
+        if (master.banned === true) {
             const result = {
                 error: JSON.stringify({ error: 'user is banned' })
             };
@@ -31,7 +40,7 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
                 refreshToken: ''
             });
         }
-        const salt = botManager.getSalt();
+        const salt = master.salt;
         if (!salt) {
             const result = {
                 error: JSON.stringify({ error: 'salt is undefined' })
@@ -52,7 +61,7 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
             last_name: user.last_name,
             photo_url: user.photo_url,
             username: user.username,
-            language: botManager.GetBotManagerMenuLanguage(),
+            language: master.menuLanguage!,
             role: role
         };
 

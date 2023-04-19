@@ -4,9 +4,9 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingArray, ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 //@ts-ignore
 import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
@@ -30,12 +30,12 @@ export async function EditServiceSubscriptionPlanHandler(event: APIGatewayEvent,
         { key: 'enabled', datatype: 'boolean' },
         { key: 'options', datatype: 'array' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    if (bodyObject.durationType === ESubscriptionDurationName.DAYS) {
-        let arrayValidationResult = ValidateIncomingArray(bodyObject.options, [
+    if (bodyObject.data.durationType === ESubscriptionDurationName.DAYS) {
+        let arrayValidationResult = ValidateIncomingArray(bodyObject.data.options, [
             { key: 'id', datatype: 'string' },
             { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
             { key: 'name', datatype: 'string' },
@@ -48,8 +48,8 @@ export async function EditServiceSubscriptionPlanHandler(event: APIGatewayEvent,
         }
     }
 
-    if (bodyObject.durationType === ESubscriptionDurationName.DATES) {
-        let arrayValidationResult = ValidateIncomingArray(bodyObject.options, [
+    if (bodyObject.data.durationType === ESubscriptionDurationName.DATES) {
+        let arrayValidationResult = ValidateIncomingArray(bodyObject.data.options, [
             { key: 'id', datatype: 'string' },
             { key: 'orderN', datatype: 'number(nonZeroPositiveInteger)' },
             { key: 'name', datatype: 'string' },
@@ -64,12 +64,12 @@ export async function EditServiceSubscriptionPlanHandler(event: APIGatewayEvent,
     }
 
     try {
-        const result = await BotSubscriptionConfigurator.UpdateSubscriptionPlan(telegramUser.id, {
-            id: bodyObject.id,
-            durationType: bodyObject.durationType,
-            name: bodyObject.name,
-            enabled: bodyObject.enabled,
-            options: bodyObject.options
+        const result = await BotSubscriptionConfigurator.UpdateSubscriptionPlan(Number(telegramUser.id), {
+            id: bodyObject.data.id,
+            durationType: bodyObject.data.durationType,
+            name: bodyObject.data.name,
+            enabled: bodyObject.data.enabled,
+            options: bodyObject.data.options
         });
 
         const updateResult = ParseUpdateItemResult(result);

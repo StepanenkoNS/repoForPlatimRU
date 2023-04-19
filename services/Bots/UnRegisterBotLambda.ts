@@ -8,8 +8,8 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-//@ts-ignore
-import BotManager from '/opt/BotManager';
+//@ts-ignore//@ts-ignore
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function UnRegisterBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -27,7 +27,10 @@ export async function UnRegisterBotHandler(event: APIGatewayEvent, context: Cont
 
     const botId = event.queryStringParameters!.id!;
 
-    const result = await BotManager.SetWebhook(telegramUser.id, Number(botId));
+    const result = await MessagingBotManager.RemoveWebhook({
+        masterId: Number(telegramUser.id),
+        botId: Number(botId)
+    });
     const getResult = ParseGetItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

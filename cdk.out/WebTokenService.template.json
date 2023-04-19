@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "852da088049833a71d886b99db18717916fe916deea62dfafcdaf921f2723301.zip"
+     "S3Key": "7848ee30092daeb3c1004f137d2e1e0d3e7719fdbdd7f3953dc3b9a892b4c3b5.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -124,10 +124,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.LambdaTokenServiceHandler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:254",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:169",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:141",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:16"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:319",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:244",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:162",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:18"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -137,7 +137,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.852da088049833a71d886b99db18717916fe916deea62dfafcdaf921f2723301",
+    "aws:asset:path": "asset.7848ee30092daeb3c1004f137d2e1e0d3e7719fdbdd7f3953dc3b9a892b4c3b5",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -1164,7 +1164,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu7BG6Bpu5ahnYBVRTsjk3ol0CRVnYBQ1X9fkjJgO/k9O35+dqbwOoPnEZ55LMvjuFY76DYO5VEUxNa3kkSobbsa9a7ErbElHRjWKXx4I52yRijU0BW2JvH+bVLMba3kJdIB9YJnW2Qmx5DFEDjMvTySmyOTGOShCw031dhMrVbMgfWithXD0lYFOTLpATaqQkdnvEC3TALBs8salWzcYSal9caJBTW1vejQHbMPLCxcJe8D+N08OVuR29syFq/odpdhyIC/ODTmNSbXd7KwGpVZo06vH1iUztHtV9g0ylSx+i/Vi9Z6Ry8z6LKCpG3LYWBEG3J9L9Ido+OrwKOxT+8aH9b07Ky+F/7QvLUnVVLbi/ircOCn0+QNJlOYjA6s1LgNN1OaoBjiD0H8cfcqAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9lt2DN2DTdi1DOwGrinZGJvVKoImrJgGhqv++JGXAdvJ7dvz87Ezg9RmeHvBkR7I8jGq1hW7tUB5EQZZ9K0mE2qarUW9L3BguaW9hlcKHN9IpNkKhhq7gmsT7t0kx51rJc6QD6oWdbtBachayGAKHmZcHcjO0JAZ56ELDVTU2U6uVtYH1oubKwoKrghyZ9AAbVaGjE56hWySB4NlljUo2bjCTkr1xYk5NzWcdumP2joWFq+R9AL+bJ2dLcjsuY/GCrncZhgz4y4bGvMbk+kbmrFGZFer0+o5F6RzdbolNo0wVq/9SvWjZO3qZQpcVJLkth4ERrcn1vUh3jI4vAvfGPr1rfFjTW8f6VvhD85aPqqS2F/FXYW8fj+M3GE9g/LC3So3acDOlCYoh/gCcGeYFKgIAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

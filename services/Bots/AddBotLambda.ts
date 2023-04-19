@@ -6,19 +6,16 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
-import { EContentPlanType } from '/opt/ContentTypes';
-//@ts-ignore
-import BotManager from '/opt/BotManager';
-import { IMasterBot } from '/opt/ConfiguratorTypes';
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function AddBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    console.log(event);
+    console.log(event.body);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -32,18 +29,18 @@ export async function AddBotHandler(event: APIGatewayEvent, context: Context): P
         { key: 'description', datatype: 'string' },
         { key: 'token', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const bot: IMasterBot = {
-        discriminator: 'IMasterBot',
-        masterId: telegramUser.id,
-        description: bodyObject.description,
-        token: bodyObject.token ? bodyObject.token : '',
-        id: bodyObject.id
+    const bot: IMessagingBot = {
+        discriminator: 'IMessagingBot',
+        masterId: Number(telegramUser.id),
+        description: bodyObject.data.description,
+        token: bodyObject.data.token ? bodyObject.data.token : '',
+        id: bodyObject.data.id
     };
-    const result = await BotManager.AddMyBot(bot);
+    const result = await MessagingBotManager.AddMyBot(bot);
 
     const addResult = ParseInsertItemResult(result);
 

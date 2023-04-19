@@ -29,7 +29,7 @@ export async function ListMessageFilesHandler(event: APIGatewayEvent, context: C
 
     const result = await FileS3Configurator.ListMyMessageFiles(
         {
-            masterId: telegramUser.id,
+            masterId: Number(telegramUser.id),
             botId: Number(event.queryStringParameters!.botId!)
         },
         tags

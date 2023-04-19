@@ -32,7 +32,6 @@
                 "sendMessageGWAPI": "https://s6myi3fwfd.execute-api.us-east-1.amazonaws.com/test/",
                 "APIKeyValue": "mape0trhAr53LCf9gPA5Q1SRNh55VcQsaRRj0i6q",
                 "botsTable": "bots",
-                "chatsTable": "chats",
                 "sessionsTable": "sessions",
                 "sqsToQueueMessages": "https://sqs.us-east-1.amazonaws.com/993738567487/sendMessageToBot-sqs.fifo",
                 "s3BotsBucket": "bots-bucket",
@@ -51,7 +50,8 @@
 
                 "allowedOrigins": "http://localhost, https://zuzona.com, http://127.0.0.1",
                 "webTable": "web",
-                "schedulerSendQueue": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-schedulerSendQueue.fifo"
+                "schedulerSendQueue": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-schedulerSendQueue.fifo",
+                "SubscriptionProcessorSubsriptionPlanURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessorQueue.fifo"
             }
         }
     ]

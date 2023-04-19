@@ -25,7 +25,7 @@ export async function GetContentPlanHandler(event: APIGatewayEvent, context: Con
     }
 
     const result = await ContentConfigurator.GetMyContentPlanById({
-        masterId: telegramUser.id,
+        masterId: Number(telegramUser.id),
         botId: Number(event.queryStringParameters!.botId!),
         id: event.queryStringParameters!.id!
     });

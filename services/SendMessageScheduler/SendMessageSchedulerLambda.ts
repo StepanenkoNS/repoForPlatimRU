@@ -1,17 +1,9 @@
-import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
-//@ts-ignore
-import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
-//@ts-ignore
-import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { ddbDocClient } from '/opt/DDB/ddbDocClient';
+
+import AWS from 'aws-sdk';
+
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
-import AWS, { SQS } from 'aws-sdk';
-import ksuid from 'ksuid';
 import { IScheduledPostMessage } from '/opt/ContentTypes';
 
 const lambda = new AWS.Lambda();

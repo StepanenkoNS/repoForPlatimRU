@@ -2,9 +2,9 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
@@ -22,13 +22,20 @@ export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'string' }]);
-    if (bodyObject === false) {
+    let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'id', datatype: 'string' },
+        { key: 'botId', datatype: 'number(positiveInteger)' }
+    ]);
+    if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await PaymentOptionsManager.DeletePaymentOption(telegramUser.id, bodyObject.id);
+    const result = await PaymentOptionsManager.DeletePaymentOption({
+        masterId: Number(telegramUser.id),
+        botId: Number(bodyObject.data.botId),
+        id: bodyObject.data.id
+    });
     const deleteResult = ParseDeleteItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

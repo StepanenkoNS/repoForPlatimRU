@@ -8,14 +8,11 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
-//@ts-ignore
-import { createAPIandAuthorizer } from '/opt/LambdaHelpers/CreateAPIwithAuth';
 
 import { CreateBotsLambdas } from './Lambdas/Bots';
 
-import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
 import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
+
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateChannelsLambdas } from './Lambdas/Channels';
 
@@ -31,7 +28,6 @@ export class MainRestServicesStack extends Stack {
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
-        // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
 
         const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
         const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
@@ -55,13 +51,6 @@ export class MainRestServicesStack extends Stack {
         this.lambdaIntegrations.push({
             rootResource: 'Channels',
             lambdas: channelLambdas
-        });
-
-        const currencyLambdas = CreateCurrencySettingsLambdas(this, layers, [botsTable]);
-
-        this.lambdaIntegrations.push({
-            rootResource: 'DefaultCurrency',
-            lambdas: currencyLambdas
         });
 
         const paymentOptionsLambdas = CreatePaymentOptionsLambdas(this, layers, [botsTable]);

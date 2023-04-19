@@ -5,9 +5,9 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 //@ts-ignore
@@ -30,22 +30,22 @@ export async function AddContentPlanPostHandler(event: APIGatewayEvent, context:
         { key: 'trigger', datatype: 'object', objectKeys: [] },
         { key: 'interaction', datatype: 'object', objectKeys: [] }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const result = await ContentConfigurator.AddContentPlanPost({
-        botId: bodyObject.botId,
-        masterId: telegramUser.id,
+        botId: Number(bodyObject.data.botId),
+        masterId: Number(telegramUser.id),
         discriminator: 'IContentPlanPost',
 
-        contentPlanId: bodyObject.contentPlanId,
-        sendMethod: bodyObject.sendMethod,
-        name: bodyObject.name,
+        contentPlanId: bodyObject.data.contentPlanId,
+        sendMethod: bodyObject.data.sendMethod,
+        name: bodyObject.data.name,
 
-        message: bodyObject.message,
-        trigger: bodyObject.trigger,
-        interaction: bodyObject.interaction
+        message: bodyObject.data.message,
+        trigger: bodyObject.data.trigger,
+        interaction: bodyObject.data.interaction
     });
 
     const addResult = ParseInsertItemResult(result);

@@ -5,12 +5,11 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-//@ts-ignore
-import BotManager from '/opt/BotManager';
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function DeleteBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -23,12 +22,15 @@ export async function DeleteBotHandler(event: APIGatewayEvent, context: Context)
     }
 
     let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'number(nonZeroPositiveInteger)' }]);
-    if (bodyObject === false) {
+    if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await BotManager.DeleteMyBot(telegramUser.id, Number(bodyObject.id));
+    const result = await MessagingBotManager.DeleteMyBot({
+        masterId: Number(telegramUser.id),
+        botId: Number(bodyObject.data.id)
+    });
     const deleteResult = ParseGetItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

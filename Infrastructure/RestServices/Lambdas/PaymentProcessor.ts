@@ -24,6 +24,18 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
 
     const paymentProcessorConfirmationQueue = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmationQueueDQL', DynamicEnvironment.SQS.PaymentProcessorConfirmationQueue.basicSQS_arn);
 
+    const SubscribeToSubscriptionPlanQueue = Queue.fromQueueArn(
+        that,
+        'imported-SubscribeToSubscriptionPlanQueue-forPaymentProcessor',
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToSubscriptionPlanQueue.basicSQS_arn
+    );
+
+    const SubscribeToContentPlanQueue = Queue.fromQueueArn(
+        that,
+        'imported-SubscribeToContentPlanQueue-forPaymentProcessor',
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToContentPlanQueue.basicSQS_arn
+    );
+
     //Лямбда - принимает сообщение и запускает его обработку
     const paymentProcessorIncomingRequestsLambda = new NodejsFunction(that, 'paymentProcessorIncomingRequests', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'IncomingPaymentRequests.ts'),
@@ -38,6 +50,8 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
+            SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
+            SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -61,6 +75,8 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
             allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
             cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
+            SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
+            SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -75,7 +91,8 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
             paymentProcessorIncomingRequestQueue.queueArn,
             paymentProcessorConfirmationQueueDLQ.queueArn,
             paymentProcessorConfirmationQueue.queueArn,
-            schedulerSendQueue.queueArn
+            schedulerSendQueue.queueArn,
+            SubscribeToSubscriptionPlanQueue.queueArn
         ],
         actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
         effect: Effect.ALLOW

@@ -2,12 +2,12 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { EPaymentType, PaymentOptionDirectCardTransfer, PaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
+import { EPaymentType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
 
 //@ts-ignore
 import PaymentOptionsManager from '/opt/PaymentOptionsManager';
@@ -27,42 +27,50 @@ export async function EditPaymentOptionHandler(event: APIGatewayEvent, context: 
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
+        { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'type', datatype: ['DIRECT', 'INTEGRATION'] },
         { key: 'description', datatype: 'string' },
-        { key: 'currency', datatype: 'string' },
-        { key: 'conversionRatio', datatype: 'number(nonZeroPositive)' }
+        { key: 'currency', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    if (bodyObject.type === EPaymentType.INTEGRATION) {
+    if (bodyObject.data.type === EPaymentType.INTEGRATION) {
         bodyObject = ValidateIncomingEventBody(event, [{ key: 'token', datatype: 'string' }]);
-        if (bodyObject === false) {
-            return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body - token not provided' }, false, origin, renewedToken);
+        if (bodyObject.success === false) {
+            return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
         }
     }
-    const chatId = telegramUser.id;
 
-    let result: boolean | PaymentOptionDirectCardTransfer | PaymentOptionPaymentIntegration | undefined = false;
-    if (bodyObject.type === EPaymentType.INTEGRATION)
-        result = await PaymentOptionsManager.EditPaymentOption(chatId, bodyObject.id, {
-            name: bodyObject.name,
+    let result: boolean | IPaymentOptionDirectCardTransfer | IPaymentOptionPaymentIntegration | undefined = false;
+    if (bodyObject.data.type === EPaymentType.INTEGRATION) {
+        const integrationRequest: IPaymentOptionPaymentIntegration = {
+            id: bodyObject.data.id,
+            masterId: Number(telegramUser.id),
+            botId: Number(bodyObject.data.botId),
+            discriminator: 'IPaymentOptionPaymentIntegration',
+            name: bodyObject.data.name,
             type: EPaymentType.INTEGRATION,
-            token: bodyObject.token,
-            currency: bodyObject.currency,
-            conversionRatio: bodyObject.conversionRatio,
-            description: bodyObject.description
-        });
+            token: bodyObject.data.token,
+            currency: bodyObject.data.currency,
+            description: bodyObject.data.description
+        };
+        result = await PaymentOptionsManager.EditPaymentOption(integrationRequest);
+    }
 
-    if (bodyObject.type === EPaymentType.DIRECT)
-        result = await PaymentOptionsManager.EditPaymentOption(chatId, bodyObject.id, {
-            name: bodyObject.name,
+    if (bodyObject.data.type === EPaymentType.DIRECT) {
+        result = await PaymentOptionsManager.EditPaymentOption({
+            id: bodyObject.data.id,
+            masterId: Number(telegramUser.id),
+            botId: Number(bodyObject.data.botId),
+            discriminator: 'IPaymentOptionDirectCardTransfer',
+            name: bodyObject.data.name,
             type: EPaymentType.DIRECT,
-            currency: bodyObject.currency,
-            conversionRatio: bodyObject.conversionRatio,
-            description: bodyObject.description
+            currency: bodyObject.data.currency,
+            description: bodyObject.data.description
         });
+    }
     const udpateResult = ParseUpdateItemResult(result);
     return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
 }

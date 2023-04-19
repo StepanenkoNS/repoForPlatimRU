@@ -38,4 +38,15 @@ export function CreateCleanupProcessor(that: any, layers: ILayerVersion[], table
     });
 
     GrantAccessToDDB([CleanupChannelLambda], tables);
+    const eventRule: events.Rule = new events.Rule(that, 'oneHourCleanupChannels', {
+        schedule: events.Schedule.rate(Duration.hours(1)),
+        ruleName: 'oneHourCleanupChannels'
+    });
+
+    eventRule.addTarget(
+        new targets.LambdaFunction(CleanupChannelLambda, {
+            event: events.RuleTargetInput.fromObject({ message: 'Hello Lambda' })
+        })
+    );
+    targets.addLambdaPermission(eventRule, CleanupChannelLambda);
 }

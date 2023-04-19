@@ -5,12 +5,13 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { IMasterBot } from '/opt/ConfiguratorTypes';
-import BotManager from '/opt/BotManager';
+import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
+//@ts-ignore
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function EditBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -25,19 +26,19 @@ export async function EditBotHandler(event: APIGatewayEvent, context: Context): 
         { key: 'id', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'description', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const bot: IMasterBot = {
-        masterId: telegramUser.id,
-        id: bodyObject.id,
-        description: bodyObject.description,
-        token: bodyObject.token ? bodyObject.token : undefined,
-        discriminator: 'IMasterBot'
+    const bot: IMessagingBot = {
+        masterId: Number(telegramUser.id),
+        id: Number(bodyObject.data.id),
+        description: bodyObject.data.description,
+        token: bodyObject.data.token ? bodyObject.data.token : undefined,
+        discriminator: 'IMessagingBot'
     };
     console.log('bot', bot);
-    const result = await BotManager.UpdateMyBot(bot);
+    const result = await MessagingBotManager.UpdateMyBot(bot);
 
     const addResult = ParseInsertItemResult(result);
 

@@ -4,9 +4,9 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import ContentConfigurator from '/opt/ContentConfigurator';
 
@@ -24,16 +24,16 @@ export async function DeleteContentPlanPostHandler(event: APIGatewayEvent, conte
         { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'contentPlanId', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
+    if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const result = await ContentConfigurator.DeleteContentPlanPost({
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.botId),
-        contentPlanId: bodyObject.contentPlanId,
-        id: bodyObject.id
+        botId: Number(bodyObject.data.botId),
+        contentPlanId: bodyObject.data.contentPlanId,
+        id: bodyObject.data.id
     });
 
     const deleteResult = ParseDeleteItemResult(result);

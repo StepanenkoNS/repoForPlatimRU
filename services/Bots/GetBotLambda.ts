@@ -2,17 +2,12 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-//@ts-ignore
-import BotManager from '/opt/BotManager';
-
-function isNumber(value: string | number): boolean {
-    return value != null && value !== '' && !isNaN(Number(value.toString()));
-}
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function GetBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -30,7 +25,10 @@ export async function GetBotHandler(event: APIGatewayEvent, context: Context): P
 
     const botId = event.queryStringParameters!.id!;
 
-    const result = await BotManager.GetMyBot(telegramUser.id, Number(botId));
+    const result = await MessagingBotManager.GetMyBot({
+        masterId: Number(telegramUser.id),
+        botId: Number(botId)
+    });
     const getResult = ParseGetItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

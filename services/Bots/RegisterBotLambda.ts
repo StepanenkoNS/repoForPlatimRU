@@ -9,7 +9,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 //@ts-ignore
-import BotManager from '/opt/BotManager';
+import MessagingBotManager from '/opt/MessagingBotManager';
 
 export async function RegisterBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -22,11 +22,11 @@ export async function RegisterBotHandler(event: APIGatewayEvent, context: Contex
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'number(nonZeroPositiveInteger)' }]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await BotManager.SetWebhook(Number(telegramUser.id), Number(bodyObject.id));
+    const result = await MessagingBotManager.SetWebhook(Number(telegramUser.id), Number(bodyObject.data.id));
 
     const addResult = ParseInsertItemResult(result);
 

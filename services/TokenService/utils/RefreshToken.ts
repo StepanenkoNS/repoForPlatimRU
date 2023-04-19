@@ -1,8 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 //@ts-ignore
 import { TelegramUserProfile } from '/opt/AuthTypes';
-//@ts-ignore
-import BotManager from '/opt/BotManager';
 
 export async function RefreshTokenFromCookie(userProfile: TelegramUserProfile, salt: string) {
     try {

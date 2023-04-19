@@ -27,17 +27,17 @@ export async function EditContentPlanHandler(event: APIGatewayEvent, context: Co
         { key: 'name', datatype: 'string' },
         { key: 'description', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const contentPlan: IContentPlan = {
         discriminator: 'IContentPlan',
-        masterId: telegramUser.id,
-        id: bodyObject.id,
-        botId: Number(bodyObject.botId),
-        name: bodyObject.name,
-        description: bodyObject.description
+        masterId: Number(telegramUser.id),
+        id: bodyObject.data.id,
+        botId: Number(bodyObject.data.botId),
+        name: bodyObject.data.name,
+        description: bodyObject.data.description
     };
     const result = await ContentConfigurator.UpdateContentPlan(contentPlan);
 

@@ -20,14 +20,14 @@ export async function DeleteChannelHandler(event: APIGatewayEvent, context: Cont
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [{ key: 'id', datatype: 'number(integer)' }]);
-    if (bodyObject === false) {
+    if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const result = await ChannelManager.DeleteChannel({
-        masterId: telegramUser.id,
-        id: Number(bodyObject.id)
+        masterId: Number(telegramUser.id),
+        id: Number(bodyObject.data.id)
     });
 
     const deleteResult = ParseDeleteItemResult(result);

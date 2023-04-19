@@ -10,7 +10,7 @@ import BotLanging from '/opt/BotLanding';
 import { IBotLanding } from '/opt/BotLandingTypes';
 
 export async function UpdateBotLandingHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
-    console.log(JSON.stringify(event));
+    //console.log(JSON.stringify(event));
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -25,18 +25,19 @@ export async function UpdateBotLandingHandler(event: APIGatewayEvent): Promise<A
         { key: 'subdomain', datatype: 'string' },
         { key: 'title', datatype: 'string' }
     ]);
-    if (bodyObject === false) {
-        return ReturnRestApiResult(422, { success: false, error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+    if (bodyObject.success === false) {
+        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
     const botLanding: IBotLanding = {
         discriminator: 'IBotLanding',
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.botId),
-        body: bodyObject.body,
-        subdomain: bodyObject.subdomain,
-        title: bodyObject.title
+        botId: Number(bodyObject.data.botId),
+        body: bodyObject.data.body,
+        subdomain: bodyObject.data.subdomain,
+        title: bodyObject.data.title
     };
+    console.log('botLanding', botLanding);
     const result = await BotLanging.UpdateBotLanging(botLanding);
 
     const updateResult = ParseUpdateItemResult(result);

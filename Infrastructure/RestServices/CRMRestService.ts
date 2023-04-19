@@ -10,19 +10,9 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
 //@ts-ignore
 
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { CreateCRMLambdas } from './Lambdas/CRM';
 import { LambdaIntegrations } from './Helper/GWtypes';
-// import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
-// import { CreateBotsLambdas } from './Lambdas/Bots';
-// import { CreateSubscriptionPlansLambdas } from './Lambdas/SubscriptionPlans';
-// import { CreateCurrencySettingsLambdas } from './Lambdas/CurrencySettings';
-// import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
-// import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-// import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-// import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
-
-// import { CreateSendMessagesLambdas } from './Lambdas/SendMessages';
+import { CreateCRMChannelsLambdas } from './Lambdas/CRMChannels';
 
 export class CRMRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -52,6 +42,12 @@ export class CRMRestServicesStack extends Stack {
         this.lambdaIntegrations.push({
             rootResource: 'CRMUsers',
             lambdas: crmLambdas
+        });
+
+        const crmChannelsLambads = CreateCRMChannelsLambdas(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'CRMChannels',
+            lambdas: crmChannelsLambads
         });
     }
 }

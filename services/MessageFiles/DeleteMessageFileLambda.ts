@@ -9,7 +9,6 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
 import FileS3Configurator from '/opt/FileS3Configurator';
-import BotManager from '/opt/BotManager';
 
 export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -24,26 +23,17 @@ export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: 
         { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' }
     ]);
-    if (bodyObject === false) {
+    if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
         return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
     }
 
     const result = await FileS3Configurator.DeleteMessageFile({
-        masterId: telegramUser.id,
-        botId: Number(bodyObject.botId),
-        id: bodyObject.id
+        masterId: Number(telegramUser.id),
+        botId: Number(bodyObject.data.botId),
+        id: bodyObject.data.id
     });
 
-    if (result && result.fileSize) {
-        const botManager = await BotManager.GetOrCreate({
-            masterId: telegramUser.id,
-            userName: telegramUser.username
-        });
-        const validateLimits = await botManager.UpdateSubscriptionLimit({
-            resourceConsumption_mediaFiles: -result.fileSize
-        });
-    }
     const deleteResult = ParseDeleteItemResult(result);
 
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);

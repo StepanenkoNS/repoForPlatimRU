@@ -2,9 +2,9 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
@@ -22,7 +22,14 @@ export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context:
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    const result = await PaymentOptionsManager.ListMyPaymentOptions(telegramUser.id);
+    if (!ValidateStringParameters(event, ['botId'])) {
+        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+    }
+
+    const result = await PaymentOptionsManager.ListMyPaymentOptions({
+        masterId: Number(telegramUser.id),
+        botId: Number(event.queryStringParameters!.botId!)
+    });
     const listResult = ParseListItemsResult(result);
     return ReturnRestApiResult(listResult.code, listResult.body, true, origin, renewedToken);
 }
