@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
@@ -46,10 +46,6 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
             schedulerDDBUpdateQueue: schedulerDDBUpdateQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -70,11 +66,6 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         reservedConcurrentExecutions: 1,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-
             SendMessagePreProcessor: SendMessagePreProcessor.functionName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -104,10 +95,6 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         reservedConcurrentExecutions: 1,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -142,10 +129,6 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         reservedConcurrentExecutions: 1,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

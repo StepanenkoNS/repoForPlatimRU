@@ -14,7 +14,6 @@ import { CRMRestServicesStack } from './RestServices/CRMRestService';
 import { BotLandingRestServicesStack } from './RestServices/LandingRestService';
 import { GatewayServiceStack } from './RestServices/GateWayService';
 import { LambdaIntegrations } from './RestServices/Helper/GWtypes';
-import { CleanupRestServicesStack } from './RestServices/CleanupRestService';
 
 const app = new App();
 
@@ -119,16 +118,6 @@ const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticE
     }
 });
 lambdaIntegrations.push(...botLandingRestServicesStack.lambdaIntegrations);
-
-const cleanupRestServicesStack = new CleanupRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceCleanup.toString(), {
-    stackName: StaticEnvironment.StackName.WebRestServiceCleanup.toString(),
-
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    env: {
-        account: StaticEnvironment.GlobalAWSEnvironment.account,
-        region: StaticEnvironment.GlobalAWSEnvironment.region
-    }
-});
 
 const gatewayServiceStack = new GatewayServiceStack(app, StaticEnvironment.StackName.WebGatewayService.toString(), {
     stackName: StaticEnvironment.StackName.WebGatewayService.toString(),

@@ -7,7 +7,7 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 
 //@ts-ignore
-import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
 export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
@@ -22,10 +22,6 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -43,10 +39,6 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -64,10 +56,6 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -85,10 +73,6 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -106,10 +90,6 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

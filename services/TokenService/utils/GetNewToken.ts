@@ -19,7 +19,9 @@ export async function CreateNewTokens(user: TelegramUser, origin: string) {
         //get or create
         const master = await MasterManager.UpsertMaster({
             discriminator: 'IMasterManager',
-            id: Number(user.id)
+            id: Number(user.id),
+            masterSubscriptionBotMode: undefined,
+            masterSubscriptionChannelMode: undefined
         });
         if (master === false) {
             const result = {

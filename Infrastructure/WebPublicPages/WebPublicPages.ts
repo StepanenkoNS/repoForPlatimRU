@@ -11,7 +11,7 @@ import { createAPI, GrantAccessToDDB } from './Helper';
 import { CreateHelpCenterLambdas } from './Lambdas/HelpCenterLambdas';
 import { CreatePublicPagesLambdas } from './Lambdas/PublicPages';
 import { CreateGetBotLandingLambda } from './Lambdas/BotLandingPublic';
-import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
 export class WebPublicPagesStack extends Stack {
     constructor(

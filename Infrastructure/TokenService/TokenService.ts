@@ -44,13 +44,11 @@ export class TokenServiceStack extends Stack {
             runtime: StaticEnvironment.LambdaSettinds.runtime,
             logRetention: StaticEnvironment.LambdaSettinds.logRetention,
             environment: {
-                botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-                region: StaticEnvironment.GlobalAWSEnvironment.region,
                 accessTokenExpirationMinutes: StaticEnvironment.TokenService.accessTokenExpirationMinutes.toString(),
                 refreshTokenExpirationDays: StaticEnvironment.TokenService.refreshTokenExpirationDays.toString(),
-                allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
+
                 AllowUsers: StaticEnvironment.TokenService.AllowUsers,
-                cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
                 ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
             },
             bundling: {

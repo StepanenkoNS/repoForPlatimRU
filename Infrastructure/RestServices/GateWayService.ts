@@ -8,9 +8,9 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
-import { createAPIandAuthorizer } from '/opt/LambdaHelpers/CreateAPIwithAuth';
+import { createAPIandAuthorizer } from '/opt/DevHelpers/CreateAPIwithAuth';
 
 import { Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
 

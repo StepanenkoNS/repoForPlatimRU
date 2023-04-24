@@ -5,7 +5,7 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
 export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
@@ -20,10 +20,6 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -41,11 +37,6 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -63,11 +54,6 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -85,11 +71,6 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -107,10 +88,6 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

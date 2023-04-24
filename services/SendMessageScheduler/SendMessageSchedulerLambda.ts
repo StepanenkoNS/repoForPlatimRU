@@ -1,5 +1,5 @@
 //@ts-ignore
-import { ddbDocClient } from '/opt/DDB/ddbDocClient';
+import { ddbDocClient, ddbDocClientClass } from '/opt/DDB/ddbDocClient';
 
 import AWS from 'aws-sdk';
 

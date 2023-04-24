@@ -19,9 +19,7 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToRoute53, GrantAccessToSecrets } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToRoute53, GrantAccessToSecrets } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
 export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
@@ -21,10 +21,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -43,10 +40,6 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -66,10 +59,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -89,10 +79,6 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -113,10 +99,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -136,10 +119,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -158,10 +138,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
+
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

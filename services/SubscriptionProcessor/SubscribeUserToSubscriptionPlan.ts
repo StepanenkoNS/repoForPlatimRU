@@ -10,7 +10,7 @@ import MessagingBotSubscriptionManager from '/opt/MessagingBotSubscriptionManage
 
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
-import { TelegramCallbackPayload } from '../../../TGBot-CoreLayers/LambdaLayers/Models/TelegramCallbackPayload';
+import { PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
 import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
 import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
 
@@ -36,6 +36,20 @@ export async function SubscribeUserToSubscriptionPlanHandler(event: SQSEvent): P
                         masterId: request.masterId,
                         userSubscriptionPlanId: request.userSubscriptionPlanId
                     });
+                    const msgIdUser = ksuid.randomSync(new Date()).string;
+                    await MessageSender.QueueSendGenericMessage({
+                        discriminator: 'IScheduledGenericMessage',
+                        botId: Number(request.botId),
+                        masterId: Number(request.masterId),
+                        chatId: Number(request.chatId),
+                        sendMethod: ETelegramSendMethod.sendMessage,
+                        message: {
+                            id: msgIdUser,
+                            attachments: [],
+                            text: 'Вы были успешно подписаны',
+                            reply_markup: replyMarkup
+                        }
+                    });
                     break;
                 }
                 case 'CHANNEL': {
@@ -52,12 +66,12 @@ export async function SubscribeUserToSubscriptionPlanHandler(event: SQSEvent): P
                         id: request.userSubscriptionPlanId
                     });
                     if (plan === false) {
-                        console.log('plan not founde');
+                        console.log('plan not found');
                         return false;
                     }
-                    const callbackDataJoin = {
-                        id: request.id!,
-                        type: 'JoinChannel',
+                    const callbackDataJoin: PayloadType = {
+                        //id: request.id!,
+                        callBack: 'JoinChannel',
                         channelId: Number(plan.channelId),
                         chatId: Number(request.chatId)
                     };

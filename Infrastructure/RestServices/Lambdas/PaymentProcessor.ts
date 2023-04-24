@@ -6,12 +6,12 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-sqs';
-import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
     const schedulerSendQueue = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForPaymentProcessor', DynamicEnvironment.SQS.SchedulerQueue.basicSQS_arn);
@@ -45,10 +45,6 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
@@ -70,10 +66,6 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,

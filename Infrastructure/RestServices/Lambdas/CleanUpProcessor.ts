@@ -5,13 +5,10 @@ import { ILayerVersion, Runtime, StartingPosition } from 'aws-cdk-lib/aws-lambda
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-sqs';
-import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function CreateCleanupProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //Лямбда - принимает сообщение и запускает его обработку
@@ -24,11 +21,6 @@ export function CreateCleanupProcessor(that: any, layers: ILayerVersion[], table
         timeout: StaticEnvironment.LambdaSettinds.timeout.LONG,
         reservedConcurrentExecutions: 1,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

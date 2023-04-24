@@ -18,10 +18,6 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

@@ -1,7 +1,7 @@
-import { CleanUpChannelProcessorHandler } from 'services/CleanUpProcessor/CleanUpChannelProcessor';
+import { SubscriptionCleanUpChannelProcessorHandler } from 'services/SubscriptionProcessor/SubscriptionCleanUpChannelProcessor';
 
 async function main() {
-    CleanUpChannelProcessorHandler('' as any);
+    SubscriptionCleanUpChannelProcessorHandler('' as any);
 }
 
 main();

@@ -7,7 +7,7 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateBotsLambdas } from './Lambdas/Bots';
 

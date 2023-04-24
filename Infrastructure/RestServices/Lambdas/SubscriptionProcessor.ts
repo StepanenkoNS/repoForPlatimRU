@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/LambdaHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
@@ -46,15 +46,11 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     const SubscriptionProcessorContentPlanLambda = new NodejsFunction(that, 'SubscriptionProcessorLambdaContentPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscribeUserToContentPlan.ts'),
         handler: 'SubscribeUserToContentPlanHandler',
-        functionName: 'Subscribe-User-To-ContentPlan',
+        functionName: 'subscriptionProcessor-Subscribe-User-To-ContentPlan',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
@@ -70,15 +66,11 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     const SubscriptionProcessorSubscriptionPlanLambda = new NodejsFunction(that, 'SubscriptionProcessorSubscriptionPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscribeUserToSubscriptionPlan.ts'),
         handler: 'SubscribeUserToSubscriptionPlanHandler',
-        functionName: 'Subscribe-User-To-SubscriptionPlan',
+        functionName: 'subscriptionProcessor-Subscribe-User-To-SubscriptionPlan',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
-            botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-            region: StaticEnvironment.GlobalAWSEnvironment.region,
-            allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-            cookieDomain: StaticEnvironment.WebResources.mainDomainName,
             schedulerSendQueue: schedulerSendQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
@@ -130,6 +122,35 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     SubscriptionProcessorContentPlanLambda.addEventSource(eventSourceContentIncomingEvent);
     SubscriptionProcessorContentPlanLambda.addEventSource(eventSourceContentIncomingEventDlq);
 
-    GrantAccessToDDB([SubscriptionProcessorContentPlanLambda, SubscriptionProcessorSubscriptionPlanLambda], tables);
+    const CleanupChannelLambda = new NodejsFunction(that, 'CleanupChannelLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscriptionCleanUpChannelProcessor.ts'),
+        handler: 'CleanUpChannelProcessorHandler',
+        functionName: 'subscriptionProcessor-Cleanup-Channels',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.LONG,
+        reservedConcurrentExecutions: 1,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const eventRule: events.Rule = new events.Rule(that, 'oneHourCleanupChannels', {
+        schedule: events.Schedule.rate(Duration.hours(1)),
+        ruleName: 'oneHourCleanupChannels'
+    });
+
+    eventRule.addTarget(
+        new targets.LambdaFunction(CleanupChannelLambda, {
+            event: events.RuleTargetInput.fromObject({ message: 'Hello Lambda' })
+        })
+    );
+    targets.addLambdaPermission(eventRule, CleanupChannelLambda);
+
+    GrantAccessToDDB([CleanupChannelLambda, SubscriptionProcessorContentPlanLambda, SubscriptionProcessorSubscriptionPlanLambda], tables);
     //     GrantAccessToS3([SubscriptionProcessorLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 }

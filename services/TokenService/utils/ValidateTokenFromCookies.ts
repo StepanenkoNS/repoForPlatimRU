@@ -75,7 +75,9 @@ export async function ValidateTokenFromCookies(event: APIGatewayEvent): Promise<
 
             const master = await MasterManager.UpsertMaster({
                 discriminator: 'IMasterManager',
-                id: Number(userProfile.id)
+                id: Number(userProfile.id),
+                masterSubscriptionBotMode: undefined,
+                masterSubscriptionChannelMode: undefined
             });
 
             if (master === false) {

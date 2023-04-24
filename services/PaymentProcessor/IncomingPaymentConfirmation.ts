@@ -39,41 +39,51 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
             //это долгая подписка на бота
 
             const updatePaymentResult = await PaymentOptionsManager.ConfirmPaymentRequest(request);
+            console.log('PaymentOptionsManager.ConfirmPaymentRequest result', updatePaymentResult);
 
             if (updatePaymentResult === false) {
                 //посылаем сообщение админу, что не удалось обновить платеж
-
-                await MessageSender.QueueSendGenericMessage({
-                    discriminator: 'IScheduledGenericMessage',
-                    botId: Number(request.botId),
-                    masterId: Number(request.masterId),
-                    chatId: Number(request.masterId),
-                    sendMethod: ETelegramSendMethod.sendMessage,
-                    message: {
-                        id: ksuid.randomSync(new Date()).string,
-                        attachments: [],
-                        text: 'Этот платеж был обработан ранее',
-                        reply_markup: undefined
-                    }
-                });
+                try {
+                    await MessageSender.QueueSendGenericMessage({
+                        discriminator: 'IScheduledGenericMessage',
+                        botId: Number(request.botId),
+                        masterId: Number(request.masterId),
+                        chatId: Number(request.masterId),
+                        sendMethod: ETelegramSendMethod.sendMessage,
+                        message: {
+                            id: ksuid.randomSync(new Date()).string,
+                            attachments: [],
+                            text: 'Этот платеж был обработан ранее',
+                            reply_markup: undefined
+                        }
+                    });
+                } catch (error) {
+                    console.log('Error:IncomingPaymentConfirmationHandler:MessageSender.QueueSendGenericMessage', error);
+                    throw error;
+                }
             } else {
-                const sqsRequest: ISubscribeUser = {
-                    id: request.id,
-                    type: paymentDetails.subscriptionType,
-                    botId: updatePaymentResult.botId,
-                    chatId: updatePaymentResult.chatId,
-                    masterId: updatePaymentResult.masterId,
-                    userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
-                };
-                const id = ksuid.randomSync(new Date()).string;
-                const messageParams: SQS.SendMessageRequest = {
-                    QueueUrl: process.env.SubscriptionProcessorQueueURL!,
-                    MessageBody: JSON.stringify(sqsRequest),
-                    MessageDeduplicationId: id,
-                    MessageGroupId: sqsRequest.botId.toString()
-                };
-                const sqs = new SQS({ region: process.env.region });
-                await sqs.sendMessage(messageParams).promise();
+                try {
+                    const sqsRequest: ISubscribeUser = {
+                        id: request.id,
+                        type: paymentDetails.subscriptionType,
+                        botId: updatePaymentResult.botId,
+                        chatId: updatePaymentResult.chatId,
+                        masterId: updatePaymentResult.masterId,
+                        userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
+                    };
+                    const id = ksuid.randomSync(new Date()).string;
+                    const messageParams: SQS.SendMessageRequest = {
+                        QueueUrl: process.env.SubscribeToSubscriptionPlanQueueURL!,
+                        MessageBody: JSON.stringify(sqsRequest),
+                        MessageDeduplicationId: id,
+                        MessageGroupId: sqsRequest.botId.toString()
+                    };
+                    const sqs = new SQS({ region: process.env.region });
+                    await sqs.sendMessage(messageParams).promise();
+                } catch (error) {
+                    console.log('Error:IncomingPaymentConfirmationHandler:SubscribeToSubscriptionPlanQueueURL: queue message', error);
+                    throw error;
+                }
             }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);
