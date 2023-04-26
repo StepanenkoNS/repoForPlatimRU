@@ -1,12 +1,15 @@
 import { APIGatewayEvent } from 'aws-lambda';
-import { CreateNewTokens } from '../utils/GetNewToken';
-import { LogOut, ReturnResult } from '../utils/ReturnResult';
-import { ValidateTokenFromCookies } from '../utils/ValidateTokenFromCookies';
+//@ts-ignore
+import { CreateNewTokens } from '/opt/AuthHelpers/GetNewToken';
+import { LogOut, ReturnResult } from '/opt/AuthHelpers/ReturnResult';
+//@ts-ignore
+import { ValidateTokenFromCookies } from '/opt/AuthHelpers/ValidateTokenFromCookies';
 //@ts-ignore
 import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
 
 export async function LambdaTokenServiceHandler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));
+
     if (!event) {
         const result = {
             error: 'Error: event is not defined'
@@ -22,6 +25,7 @@ export async function LambdaTokenServiceHandler(event: APIGatewayEvent) {
             origin = event.headers.origin;
         }
     }
+
     if (event.resource === '/getToken' && event.httpMethod === 'POST') {
         if (!event.requestContext || !event.requestContext.resourcePath) {
             const result = {
@@ -29,6 +33,7 @@ export async function LambdaTokenServiceHandler(event: APIGatewayEvent) {
             };
             return ReturnResult(422, result, origin);
         }
+
         let bodyObject: any;
         try {
             bodyObject = JSON.parse(event.body!);
@@ -38,7 +43,21 @@ export async function LambdaTokenServiceHandler(event: APIGatewayEvent) {
             };
             return ReturnResult(422, result, origin);
         }
+        try {
+            if (process.env.AllowUsers != '') {
+                const usersArray = process.env.AllowUsers!.split(',');
+                console.log('usersArray', usersArray);
 
+                if (usersArray.length > 0) {
+                    if (!usersArray.includes(bodyObject.id.toString())) {
+                        return { effect: 'Deny', message: 'Guarded mode: only allowed users' };
+                    }
+                }
+                console.log('user is allowed to proceed');
+            }
+        } catch (error) {
+            console.log('Allowed users detection failed', error);
+        }
         try {
             const result = await CreateNewTokens(bodyObject, origin);
             return result;

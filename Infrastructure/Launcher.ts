@@ -4,7 +4,7 @@ import * as StaticEnvironment from '../../ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
 import * as DynamicEnvironment from '../../ReadmeAndConfig/DynamicEnvironment';
 import { MainRestServicesStack } from './RestServices/MainRestServices';
-import { TokenServiceStack } from './TokenService/TokenService';
+import { TokenServiceStack } from './TokenService/TokenServices';
 import { WebPublicPagesStack } from './WebPublicPages/WebPublicPages';
 import { FilesRestServicesStack } from './RestServices/FilesRestServices';
 import { MessagesAndPaymentsRestServicesStack } from './RestServices/MessagesAndPaymentsRestServices';
