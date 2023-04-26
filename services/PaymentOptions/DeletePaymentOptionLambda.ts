@@ -8,8 +8,7 @@ import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 export async function DeletePaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

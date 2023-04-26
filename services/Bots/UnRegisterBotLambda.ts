@@ -8,8 +8,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-//@ts-ignore//@ts-ignore
-import MessagingBotManager from '/opt/MessagingBotManager';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function UnRegisterBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

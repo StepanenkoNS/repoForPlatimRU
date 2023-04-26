@@ -8,9 +8,7 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 //@ts-ignore
 import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { EnumToArray } from 'services/Helper/EnumToArray';
-import { ESupportedCurrency } from '/opt/PaymentTypes';
-import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
+import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
 
 export async function EditUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

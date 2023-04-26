@@ -8,10 +8,9 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import ChannelManager from '/opt/ChannelManager';
-//@ts-ignore
-import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
-import { ITelegramChannel } from '../../../TGBot-CoreLayers/LambdaLayers/Types/ChannelTypes';
+import { ChannelManager } from '/opt/ChannelManager';
+
+import { ITelegramChannel } from '/opt/ChannelTypes';
 
 export async function EditChannelHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

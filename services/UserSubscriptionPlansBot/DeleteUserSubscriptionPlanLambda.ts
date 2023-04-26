@@ -6,7 +6,8 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
+
+import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
 
 export async function DeleteUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

@@ -10,8 +10,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { ESupportedCurrency } from '/opt/PaymentTypes';
 
-//@ts-ignore
-import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
+import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
 export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

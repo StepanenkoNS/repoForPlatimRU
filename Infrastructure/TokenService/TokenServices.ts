@@ -2,8 +2,6 @@ import { CfnOutput, Duration, Fn, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { join } from 'path';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import { aws_apigatewayv2 as apigatewayv2 } from 'aws-cdk-lib';
-//import * as apigatewayv2_alpha from '@aws-cdk/aws-apigatewayv2-alpha';
 
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { ILayerVersion, LayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';

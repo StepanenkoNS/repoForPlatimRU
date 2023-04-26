@@ -3,14 +3,16 @@ import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 //@ts-ignore
 import { IRequestToConfirmPayment } from '/opt/PaymentTypes';
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
-//@ts-ignore
-import MessageSender from '/opt/MessageSender';
+
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+
+import { MessageSender } from '/opt/MessageSender';
 
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
 import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
+//@ts-ignore
+import { MasterManager } from '/opt/MasterManager';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -62,6 +64,12 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                     throw error;
                 }
             } else {
+                // обновляем количество триальных подписчиков
+
+                if (paymentDetails.subscriptionType === 'CHANNEL') {
+                    await MasterManager.IncrementTrialChannelSubscriptionCounter(Number(request.masterId));
+                }
+                // отправляем в очередь на создание подписок
                 try {
                     const sqsRequest: ISubscribeUser = {
                         id: request.id,

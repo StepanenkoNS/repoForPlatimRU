@@ -9,8 +9,8 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 export async function AddPaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

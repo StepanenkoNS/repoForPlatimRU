@@ -8,7 +8,7 @@ import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, Return
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
-import MessagingBotManager from '/opt/MessagingBotManager';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function ListBotsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

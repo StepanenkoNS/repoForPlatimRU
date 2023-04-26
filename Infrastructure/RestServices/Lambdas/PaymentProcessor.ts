@@ -45,7 +45,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
-            schedulerSendQueue: schedulerSendQueue.queueUrl,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
 
@@ -66,7 +66,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
-            schedulerSendQueue: schedulerSendQueue.queueUrl,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables

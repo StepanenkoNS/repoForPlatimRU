@@ -8,7 +8,7 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 //@ts-ignore
 import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
+import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
 export async function ListChannelSubscriptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

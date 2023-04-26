@@ -2,16 +2,11 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 
+import { MessageSender } from '/opt/MessageSender';
 //@ts-ignore
-import MessageSender from '/opt/MessageSender';
-
-//@ts-ignore
-import MessagingBotSubscriptionManager from '/opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
-
-import { TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
-import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
 
 import { IScheduleContentPlan } from '/opt/ContentTypes';
 

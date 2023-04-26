@@ -7,7 +7,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
-import FileS3Configurator from '/opt/FileS3Configurator';
+import { FileS3Configurator } from '/opt/FileS3Configurator';
 import { S3Helper } from '/opt/S3/S3Utils';
 import { IMessageFile } from '/opt/ContentTypes';
 //@ts-ignore

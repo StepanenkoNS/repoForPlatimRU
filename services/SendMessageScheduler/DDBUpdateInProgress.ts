@@ -13,7 +13,6 @@ import ContentConfigurator from '/opt/ContentConfigurator';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 import { IScheduledPostMessage } from '/opt/ContentTypes';
-import MessageSender from '/opt/MessageSender';
 
 export async function DDBUpdateInProgressHandler(event: SQSEvent) {
     const batchItemFailures: any[] = [];

@@ -6,9 +6,8 @@ import { ValidateIncomingArray, ValidateIncomingEventBody } from '/opt/LambdaHel
 //@ts-ignore
 import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-
 //@ts-ignore
-import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
+import { BotSubscriptionConfigurator } from '/opt/BotSubscriptionConfigurator';
 import { ESubscriptionDurationName } from '/opt/SubscriptionTypes';
 
 export async function AddServiceSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {

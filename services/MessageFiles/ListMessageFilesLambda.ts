@@ -7,8 +7,7 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-//@ts-ignore
-import FileS3Configurator from '/opt/FileS3Configurator';
+import { FileS3Configurator } from '/opt/FileS3Configurator';
 
 export async function ListMessageFilesHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

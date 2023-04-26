@@ -7,8 +7,7 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

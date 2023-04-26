@@ -7,7 +7,7 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
+import { BotSubscriptionConfigurator } from '/opt/BotSubscriptionConfigurator';
 
 export async function GetServiceSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

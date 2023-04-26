@@ -7,8 +7,9 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+
 //@ts-ignore
-import ChannelManager from '/opt/ChannelManager';
+import { ChannelManager } from '/opt/ChannelManager';
 
 export async function DeleteChannelHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

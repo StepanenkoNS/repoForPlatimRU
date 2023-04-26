@@ -12,7 +12,7 @@ import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 //@ts-ignore
 import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
-import MessagingBotManager from '/opt/MessagingBotManager';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function AddBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event.body);

@@ -50,7 +50,7 @@
 
                 "allowedOrigins": "http://localhost, https://zuzona.com, http://127.0.0.1",
                 "webTable": "web",
-                "schedulerSendQueue": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-schedulerSendQueue.fifo",
+                "schedulerSendQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-schedulerSendQueue.fifo",
                 "SubscriptionProcessorSubsriptionPlanURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessorQueue.fifo",
                 "SubscribeToContentPlanQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-SubscribeTo-ContentPlan.fifo",
                 "SubscribeToSubscriptionPlanQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-SubscribeTo-SubscriptionPlan.fifo",

@@ -2,16 +2,14 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 
-//@ts-ignore
-import MessageSender from '/opt/MessageSender';
+import { MessageSender } from '/opt/MessageSender';
 
-//@ts-ignore
-import MessagingBotSubscriptionManager from '/opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
 import { PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
-import UserSubscriptionPlanChannel from '/opt/UserSubscriptionPlanChannel';
+import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
 
 const sqs = new SQS({ region: process.env.region });

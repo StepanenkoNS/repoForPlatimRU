@@ -6,8 +6,8 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import FileTelegramConfigurator from '/opt/FileTelegramConfigurator';
+
+import { FileTelegramConfigurator } from '/opt/FileTelegramConfigurator';
 
 export async function EditTelegramFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

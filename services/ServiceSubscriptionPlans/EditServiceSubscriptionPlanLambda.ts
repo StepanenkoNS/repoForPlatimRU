@@ -9,7 +9,7 @@ import { ValidateIncomingArray, ValidateIncomingEventBody } from '/opt/LambdaHel
 import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 //@ts-ignore
-import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
+import { BotSubscriptionConfigurator } from '/opt/BotSubscriptionConfigurator';
 import { ESubscriptionDurationName } from '/opt/SubscriptionTypes';
 
 export async function EditServiceSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {

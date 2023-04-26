@@ -3,10 +3,10 @@ import { SQS } from 'aws-sdk';
 
 //@ts-ignore
 import { EPaymentType, IRequestForPaymentConfirmation, IRequestForSubscriptionDIRECTPayment } from '/opt/PaymentTypes';
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
-//@ts-ignore
-import MessageSender from '/opt/MessageSender';
+
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+
+import { MessageSender } from '/opt/MessageSender';
 import { ETelegramUserStatus } from '/opt/MessagingBotManagerTypes';
 
 const sqs = new SQS({ region: process.env.region });

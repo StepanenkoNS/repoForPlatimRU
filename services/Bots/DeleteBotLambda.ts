@@ -9,7 +9,7 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 //@ts-ignore
 import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import MessagingBotManager from '/opt/MessagingBotManager';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function DeleteBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

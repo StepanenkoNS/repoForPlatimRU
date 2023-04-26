@@ -6,8 +6,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import FileS3Configurator from '/opt/FileS3Configurator';
+import { FileS3Configurator } from '/opt/FileS3Configurator';
 
 import { S3Helper } from '/opt/S3/S3Utils';
 import { IMessageFile } from '/opt/ContentTypes';

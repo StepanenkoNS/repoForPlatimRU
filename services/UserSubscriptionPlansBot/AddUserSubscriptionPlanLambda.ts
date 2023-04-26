@@ -7,11 +7,7 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-//@ts-ignore
-import { ESupportedCurrency } from '/opt/PaymentTypes';
-
-//@ts-ignore
-import UserSubscriptionPlanBot from '/opt/UserSubscriptionPlanBot';
+import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
 
 export async function AddUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

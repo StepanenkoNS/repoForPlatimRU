@@ -6,7 +6,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import BotSubscriptionConfigurator from '/opt/BotSubscriptionConfigurator';
+import { BotSubscriptionConfigurator } from '/opt/BotSubscriptionConfigurator';
 
 export async function ListServiceSubscriptionPlansHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

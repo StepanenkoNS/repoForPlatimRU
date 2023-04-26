@@ -7,9 +7,9 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
-//@ts-ignore
+
+import { ContentConfigurator } from '/opt/ContentConfigurator';
+
 import { IContentPlan } from '/opt/ContentTypes';
 
 export async function AddContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {

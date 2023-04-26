@@ -6,7 +6,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import BotLanging from '/opt/BotLanding';
+import { BotLanging } from '/opt/BotLanding';
 import { IBotLanding } from '/opt/BotLandingTypes';
 
 export async function UpdateBotLandingHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

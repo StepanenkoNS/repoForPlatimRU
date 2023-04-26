@@ -51,7 +51,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
-            schedulerSendQueue: schedulerSendQueue.queueUrl,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
 
@@ -71,7 +71,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
-            schedulerSendQueue: schedulerSendQueue.queueUrl,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
 

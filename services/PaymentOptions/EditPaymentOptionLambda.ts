@@ -9,8 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { EPaymentType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
 
-//@ts-ignore
-import PaymentOptionsManager from '/opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 export async function EditPaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);

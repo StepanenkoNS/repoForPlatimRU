@@ -12,8 +12,6 @@ import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
 
-import { CreateUserSubscriptionPlanOptionsLambdas } from './Lambdas/UserSubscriptionPlanOptions';
-
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateUserSubscriptionPlansBotsLambdas } from './Lambdas/UserSubscriptionPlansBot';
 import { CreateUserSubscriptionPlansChannelsLambdas } from './Lambdas/UserSubscriptionPlansChannel';
@@ -57,12 +55,6 @@ export class SubscriptionsRestServicesStack extends Stack {
         this.lambdaIntegrations.push({
             rootResource: 'UserSubscriptionPlansChannel',
             lambdas: userSubscriptionPlansChannelsLambdas
-        });
-
-        const userSubscriptionPlanOptionsLambdas = CreateUserSubscriptionPlanOptionsLambdas(this, layers, [botsTable]);
-        this.lambdaIntegrations.push({
-            rootResource: 'UserSubscriptionPlanOptions',
-            lambdas: userSubscriptionPlanOptionsLambdas
         });
     }
 }

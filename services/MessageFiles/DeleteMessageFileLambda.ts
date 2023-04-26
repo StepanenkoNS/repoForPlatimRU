@@ -7,8 +7,7 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 import { ParseDeleteItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-//@ts-ignore
-import FileS3Configurator from '/opt/FileS3Configurator';
+import { FileS3Configurator } from '/opt/FileS3Configurator';
 
 export async function DeleteMessageFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

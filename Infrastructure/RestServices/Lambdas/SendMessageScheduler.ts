@@ -46,7 +46,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            schedulerSendQueue: schedulerSendQueue.queueUrl,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
             schedulerDDBUpdateQueue: schedulerDDBUpdateQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },

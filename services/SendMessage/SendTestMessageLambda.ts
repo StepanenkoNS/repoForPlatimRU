@@ -13,9 +13,7 @@ import {
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
-//@ts-ignore
-import MessageSender from '/opt/MessageSender';
+import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 //@ts-ignore
 

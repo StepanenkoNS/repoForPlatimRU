@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { GetItemFromDB } from '/opt/LambdaHelpers/WebPagesHelper';
 import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
-import BotLanging from '/opt/BotLanding';
+import { BotLanging } from '/opt/BotLanding';
 
 type Page = {
     pagePath: string;

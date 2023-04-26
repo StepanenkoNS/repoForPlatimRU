@@ -8,8 +8,8 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
-import ContentConfigurator from '/opt/ContentConfigurator';
+
+import { ContentConfigurator } from '/opt/ContentConfigurator';
 //@ts-ignore
 
 export async function AddContentPlanPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {

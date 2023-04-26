@@ -47,12 +47,12 @@ export async function SendMessagePreProcessorHandler(event: IScheduledPostMessag
     }
     let end = new Date().getTime() - start;
     console.log('event has been parced', end);
-    const schedulerSendQueue = process.env.schedulerSendQueue;
+    const schedulerSendQueueURL = process.env.schedulerSendQueueURL!;
     const schedulerDDBUpdateQueue = process.env.schedulerDDBUpdateQueue;
-    console.log(schedulerSendQueue, schedulerDDBUpdateQueue);
+    console.log(schedulerSendQueueURL, schedulerDDBUpdateQueue);
     const promises = [];
     start = new Date().getTime();
-    const sendPromises = SQSSendBatch(schedulerSendQueue!, sqsSend);
+    const sendPromises = SQSSendBatch(schedulerSendQueueURL, sqsSend);
     const ddbPromises = SQSSendBatch(schedulerDDBUpdateQueue!, ddbSend);
     end = new Date().getTime() - start;
     console.log('batching completed', end);
