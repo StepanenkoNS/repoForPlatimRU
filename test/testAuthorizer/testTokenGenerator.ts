@@ -80,7 +80,7 @@ const event = {
         domainName: 'auth.zuzona.com',
         apiId: '8fu0fusfik'
     },
-    body: '{"id":1862254,"first_name":"Tania","last_name":"Selfreflexia","username":"radiojoy","photo_url":"https://t.me/i/userpic/320/UVuG3YvyUShnue3BuiDRkHlHYMi6UGBhco6mmyNQGB8.jpg","auth_date":1682335088,"hash":"820b5ea45b4e46a08428e36cfee6c3636d3268942d1b2231d3f1516f5a20bbd7"}',
+    body: '{    "id": 199163834,"first_name": "Nick","username": "LikeAHurricane","auth_date": 1668542054,"hash": "20fc7635528bb976f5b5b37792acf12e83f99bc401db5674c075e6327d552f66"}',
     isBase64Encoded: false
 };
 
@@ -95,3 +95,8 @@ async function main() {
 }
 
 main();
+
+//     },
+//     body: '{"id":1862254,"first_name":"Tania","last_name":"Selfreflexia","username":"radiojoy","photo_url":"https://t.me/i/userpic/320/UVuG3YvyUShnue3BuiDRkHlHYMi6UGBhco6mmyNQGB8.jpg","auth_date":1682335088,"hash":"820b5ea45b4e46a08428e36cfee6c3636d3268942d1b2231d3f1516f5a20bbd7"}',
+//     isBase64Encoded: false
+// };

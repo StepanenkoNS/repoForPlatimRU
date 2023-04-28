@@ -16,6 +16,7 @@ import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateUserSubscriptionPlansBotsLambdas } from './Lambdas/UserSubscriptionPlansBot';
 import { CreateUserSubscriptionPlansChannelsLambdas } from './Lambdas/UserSubscriptionPlansChannel';
 import { CreateCleanupProcessor } from './Lambdas/CleanUpProcessor';
+import { CreateMasterManagerLambdas } from './Lambdas/MasterManager';
 export class SubscriptionsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
     constructor(
@@ -55,6 +56,12 @@ export class SubscriptionsRestServicesStack extends Stack {
         this.lambdaIntegrations.push({
             rootResource: 'UserSubscriptionPlansChannel',
             lambdas: userSubscriptionPlansChannelsLambdas
+        });
+
+        const masterManagerLambdas = CreateMasterManagerLambdas(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'MasterManager',
+            lambdas: masterManagerLambdas
         });
     }
 }

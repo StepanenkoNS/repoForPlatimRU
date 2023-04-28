@@ -67,7 +67,53 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                 // обновляем количество триальных подписчиков
 
                 if (paymentDetails.subscriptionType === 'CHANNEL') {
-                    await MasterManager.IncrementTrialChannelSubscriptionCounter(Number(request.masterId));
+                    const endTrialChannel = await MasterManager.IncrementOrExpireTrialChannelSubscriptionCounter(Number(request.masterId));
+                    if (endTrialChannel) {
+                        const msgIdAdmin = ksuid.randomSync(new Date()).string;
+                        let text =
+                            'Здравствуйте!\n' +
+                            'Только что была подтверждена оплата последней подписки в рамках пробного лимита на канал. Это значит, что новые подписчики не смогут подписаться на ваш канал с помощью сервиса zuzona.\nДругих ограничений нет.\nЧтобы продолжить принимать оплаты, оплатите платную PRO-подписку на канал на сайте.\nС уважением, поддержка сервиса';
+                        await MessageSender.QueueSendGenericMessage({
+                            discriminator: 'IScheduledGenericMessage',
+                            botId: paymentDetails.botId,
+                            masterId: paymentDetails.masterId,
+                            chatId: paymentDetails.masterId,
+                            sendMethod: ETelegramSendMethod.sendMessage,
+                            message: {
+                                id: msgIdAdmin,
+                                attachments: [],
+                                text: text,
+                                reply_markup: {
+                                    parse_mode: 'HTML'
+                                }
+                            }
+                        });
+                    }
+                }
+
+                if (paymentDetails.subscriptionType === 'BOT') {
+                    const endTrialChannel = await MasterManager.IncrementOrExpireTrialBotSubscriptionCounter(Number(request.masterId));
+                    if (endTrialChannel) {
+                        const msgIdAdmin = ksuid.randomSync(new Date()).string;
+                        let text =
+                            'Здравствуйте!\n' +
+                            'Только что была подтверждена оплата последней подписки в рамках пробного лимита на бота. Это значит, что новые подписчики не смогут подписаться на ваш канал с помощью сервиса zuzona.\nДругих ограничений нет.\nЧтобы продолжить принимать оплаты, оплатите платную PRO-подписку на канал на сайте.\nС уважением, поддержка сервиса';
+                        await MessageSender.QueueSendGenericMessage({
+                            discriminator: 'IScheduledGenericMessage',
+                            botId: paymentDetails.botId,
+                            masterId: paymentDetails.masterId,
+                            chatId: paymentDetails.masterId,
+                            sendMethod: ETelegramSendMethod.sendMessage,
+                            message: {
+                                id: msgIdAdmin,
+                                attachments: [],
+                                text: text,
+                                reply_markup: {
+                                    parse_mode: 'HTML'
+                                }
+                            }
+                        });
+                    }
                 }
                 // отправляем в очередь на создание подписок
                 try {
