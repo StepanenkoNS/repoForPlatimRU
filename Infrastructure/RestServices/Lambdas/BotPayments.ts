@@ -13,7 +13,7 @@ export function CreateBotPaymentsLambdas(that: any, layers: ILayerVersion[], tab
     //Вывод списка
     const ListBotPaymentsLambda = new NodejsFunction(that, 'ListBotPaymentsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'BotPayments', 'ListBotPaymentsLambda.ts'),
-        handler: 'ListBotPaymentsHandler',
+        handler: 'handler',
         functionName: 'react-BotPayments-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

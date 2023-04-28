@@ -9,7 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
 
-export async function DeleteUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

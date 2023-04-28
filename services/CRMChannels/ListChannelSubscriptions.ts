@@ -10,7 +10,7 @@ import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Re
 //@ts-ignore
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
-export async function ListChannelSubscriptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

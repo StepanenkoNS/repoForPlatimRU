@@ -11,7 +11,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 //@ts-ignore
 import { ChannelManager } from '/opt/ChannelManager';
 
-export async function DeleteChannelHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

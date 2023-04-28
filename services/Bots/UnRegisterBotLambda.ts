@@ -10,7 +10,7 @@ import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, Return
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
-export async function UnRegisterBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

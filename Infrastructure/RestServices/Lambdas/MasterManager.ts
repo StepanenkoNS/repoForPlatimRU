@@ -13,7 +13,7 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
     //Вывод одного элемента
     const GetMasterManagerMeLambda = new NodejsFunction(that, 'GetMasterManagerMeLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'GetMasterManagerMeLambda.ts'),
-        handler: 'GetMasterManagerMeHandler',
+        handler: 'handler',
         functionName: 'react-MasterManager-GetMe-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -30,7 +30,7 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
 
     const SubscribeToPaidSubscriptionLambda = new NodejsFunction(that, 'SubscribeToPaidSubscriptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'SubscribeToPaidSubscriptionLambda.ts'),
-        handler: 'SubscribeToPaidSubscriptionHandler',
+        handler: 'handler',
         functionName: 'react-MasterManager-SubscribeToPaidSubscription-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -47,7 +47,7 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
 
     const ListMasterManagerSubscriptionsLambda = new NodejsFunction(that, 'ListMasterManagerSubscriptionsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'ListMasterManagerSubscriptionsLambda.ts'),
-        handler: 'ListMasterManagerSubscriptionsHandler',
+        handler: 'handler',
         functionName: 'react-MasterManager-ListSubscriptions-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

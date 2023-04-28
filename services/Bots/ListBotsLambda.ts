@@ -10,7 +10,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
-export async function ListBotsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

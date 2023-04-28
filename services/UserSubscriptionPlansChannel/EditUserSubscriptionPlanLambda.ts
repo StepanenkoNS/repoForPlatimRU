@@ -11,7 +11,7 @@ import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 import { ESupportedCurrency } from '/opt/PaymentTypes';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
-export async function EditUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

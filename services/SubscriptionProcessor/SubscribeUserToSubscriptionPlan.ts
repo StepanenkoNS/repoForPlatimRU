@@ -14,7 +14,7 @@ import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
 
 const sqs = new SQS({ region: process.env.region });
 
-export async function SubscribeUserToSubscriptionPlanHandler(event: SQSEvent): Promise<any> {
+export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
     console.log('IncomingEvent', JSON.stringify(event));
     for (const record of event.Records) {

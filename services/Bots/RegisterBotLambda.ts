@@ -10,7 +10,7 @@ import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, Return
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
-export async function RegisterBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
     console.log(event);
 

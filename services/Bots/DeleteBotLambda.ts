@@ -11,7 +11,7 @@ import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Retu
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
-export async function DeleteBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

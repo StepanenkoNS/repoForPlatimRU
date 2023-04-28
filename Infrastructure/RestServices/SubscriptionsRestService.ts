@@ -10,12 +10,10 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateServiceSubscriptionPlansLambdas } from './Lambdas/ServiceSubscriptionPlans';
-
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateUserSubscriptionPlansBotsLambdas } from './Lambdas/UserSubscriptionPlansBot';
 import { CreateUserSubscriptionPlansChannelsLambdas } from './Lambdas/UserSubscriptionPlansChannel';
-import { CreateCleanupProcessor } from './Lambdas/CleanUpProcessor';
+
 import { CreateMasterManagerLambdas } from './Lambdas/MasterManager';
 export class SubscriptionsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -39,12 +37,6 @@ export class SubscriptionsRestServicesStack extends Stack {
         for (const layerARN of props.layerARNs) {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
-
-        const serviceSubscriptionPlansLambdas = CreateServiceSubscriptionPlansLambdas(this, layers, [botsTable]);
-        this.lambdaIntegrations.push({
-            rootResource: 'ServiceSubscriptionPlans',
-            lambdas: serviceSubscriptionPlansLambdas
-        });
 
         const userSubscriptionPlansBotsLambdas = CreateUserSubscriptionPlansBotsLambdas(this, layers, [botsTable]);
         this.lambdaIntegrations.push({

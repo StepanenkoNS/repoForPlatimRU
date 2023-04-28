@@ -14,7 +14,7 @@ export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], t
     //Вывод списка
     const UpdateBotLandingPage = new NodejsFunction(that, 'SetBotLandingPageLamda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebBotLandingPages', 'UpdateBotLanding.ts'),
-        handler: 'UpdateBotLandingHandler',
+        handler: 'handler',
         functionName: 'react-BotLanding-Update-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

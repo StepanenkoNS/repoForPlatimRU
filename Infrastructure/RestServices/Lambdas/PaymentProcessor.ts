@@ -39,7 +39,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
     //Лямбда - принимает сообщение и запускает его обработку
     const paymentProcessorIncomingRequestsLambda = new NodejsFunction(that, 'paymentProcessorIncomingRequests', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'IncomingPaymentRequests.ts'),
-        handler: 'IncomingPaymentRequestsHandler',
+        handler: 'handler',
         functionName: 'paymentProcessor-incomingRequests',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -60,7 +60,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
     //Лямбда - принимает подтверждение или отказ от админа и запускает его обработку
     const paymentProcessorincomingConfirmationRequestRequestsLambda = new NodejsFunction(that, 'paymentProcessorConfirmationRequests', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'IncomingPaymentConfirmation.ts'),
-        handler: 'IncomingPaymentConfirmationHandler',
+        handler: 'handler',
         functionName: 'paymentProcessor-IncomingPaymentConfirmation',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

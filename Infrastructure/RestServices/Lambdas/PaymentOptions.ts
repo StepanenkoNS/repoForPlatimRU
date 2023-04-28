@@ -14,7 +14,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
     //вывод список опций оплаты
     const ListPaymentOptionsLambda = new NodejsFunction(that, 'ListPaymentOptionsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'ListPaymentOptionsLambda.ts'),
-        handler: 'ListPaymentOptionsHandler',
+        handler: 'handler',
         functionName: 'react-PaymentOptions-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
     //Вывод одного элемента
     const GetPaymentOptionLambda = new NodejsFunction(that, 'GetPaymentOptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'GetPaymentOptionLambda.ts'),
-        handler: 'GetPaymentOptionHandler',
+        handler: 'handler',
         functionName: 'react-PaymentOptions-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -48,7 +48,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
     //добавление опции оплаты
     const AddPaymentOptionLambda = new NodejsFunction(that, 'AddPaymentOptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'AddPaymentOptionLambda.ts'),
-        handler: 'AddPaymentOptionHandler',
+        handler: 'handler',
         functionName: 'react-PaymentOptions-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
     //редактирование опции оплаты
     const EditPaymentOptionLambda = new NodejsFunction(that, 'EditPaymentOptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'EditPaymentOptionLambda.ts'),
-        handler: 'EditPaymentOptionHandler',
+        handler: 'handler',
         functionName: 'react-PaymentOptions-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -82,7 +82,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
     //удаление опции оплаты
     const DeletePaymentOptionLambda = new NodejsFunction(that, 'DeletePaymentOptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentOptions', 'DeletePaymentOptionLambda.ts'),
-        handler: 'DeletePaymentOptionHandler',
+        handler: 'handler',
         functionName: 'react-PaymentOptions-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

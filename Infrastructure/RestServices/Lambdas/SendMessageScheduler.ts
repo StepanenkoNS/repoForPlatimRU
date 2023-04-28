@@ -40,7 +40,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
     //Лямбда - раскидывает сообщения на 2 очереди: DDB и отправка
     const SendMessagePreProcessor = new NodejsFunction(that, 'SendMessagePreProcessor', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessagePreProcessor.ts'),
-        handler: 'SendMessagePreProcessorHandler',
+        handler: 'handler',
         functionName: 'scheduler-SendMessagePreProcessor-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -59,7 +59,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
     //Лямбда - вызываемая EB и запускающая процессинг
     const SendMessagescheduler = new NodejsFunction(that, 'SendMessagescheduler', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessageSchedulerLambda.ts'),
-        handler: 'SendMessagesShedulerHandler',
+        handler: 'handler',
         functionName: 'scheduler-ScheduleMessages-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -88,7 +88,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
     //Лямбда - отправляющаяя сообщения в TG
     const SendMessageSender = new NodejsFunction(that, 'SendMessageSender', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessageSender.ts'),
-        handler: 'SendMessageSenderHandler',
+        handler: 'handler',
         functionName: 'scheduler-SendMessageSender-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -122,7 +122,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
 
     const sendMessageDDBUpdateInProgress = new NodejsFunction(that, 'SendMessageDDBUpdateInProgress', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'DDBUpdateInProgress.ts'),
-        handler: 'DDBUpdateInProgressHandler',
+        handler: 'handler',
         functionName: 'scheduler-DDBUpdateInProgress-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

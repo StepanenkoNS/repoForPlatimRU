@@ -15,7 +15,7 @@ export function CreateCRMChannelsLambdas(that: any, layers: ILayerVersion[], tab
 
     const ListChannelSubscriptionsLambda = new NodejsFunction(that, 'ListChannelSubscriptions', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CRMChannels', 'ListChannelSubscriptions.ts'),
-        handler: 'ListChannelSubscriptionsHandler',
+        handler: 'handler',
         functionName: 'react-CRMChannels-Subscriptions-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

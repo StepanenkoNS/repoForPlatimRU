@@ -14,7 +14,7 @@ import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
-export async function AddBotHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event.body);
     const origin = SetOrigin(event);
 

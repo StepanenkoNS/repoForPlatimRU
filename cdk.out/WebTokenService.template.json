@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "563f8c432fca685961be16eb025d9dccc25582d39c55ed8ec9f79e12bde0b81b.zip"
+     "S3Key": "33a7205d01b43041b066f0ccc75637a84eec3201874280c0fb001d01e580ac42.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -126,11 +126,11 @@
      }
     },
     "FunctionName": "WebTokenService-Lambda",
-    "Handler": "index.LambdaTokenServiceHandler",
+    "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:368",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:373",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:285",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:179",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:185",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:23"
     ],
     "Runtime": "nodejs16.x"
@@ -141,7 +141,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.563f8c432fca685961be16eb025d9dccc25582d39c55ed8ec9f79e12bde0b81b",
+    "aws:asset:path": "asset.33a7205d01b43041b066f0ccc75637a84eec3201874280c0fb001d01e580ac42",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

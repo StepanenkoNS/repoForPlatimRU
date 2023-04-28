@@ -52,7 +52,9 @@ export class GatewayServiceStack extends Stack {
                 if (lambda.resource) {
                     res = res.addResource(lambda.resource);
                 }
-                const lambdaIntegration = new apigateway.LambdaIntegration(lambda.lambda);
+                const lambdaIntegration = new apigateway.LambdaIntegration(lambda.lambda, {
+                    allowTestInvoke: false
+                });
                 res.addMethod(lambda.httpMethod, lambdaIntegration);
             }
         }

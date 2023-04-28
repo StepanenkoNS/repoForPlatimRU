@@ -12,7 +12,7 @@ import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 //@ts-ignore
 
-export async function AddContentPlanPostHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

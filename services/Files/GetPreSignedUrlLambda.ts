@@ -12,7 +12,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { S3Helper } from '/opt/S3/S3Utils';
 
-export async function GetPreSignedUrlHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

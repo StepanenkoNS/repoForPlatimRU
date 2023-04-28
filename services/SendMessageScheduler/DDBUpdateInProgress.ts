@@ -14,7 +14,7 @@ import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 import { IScheduledPostMessage } from '/opt/ContentTypes';
 
-export async function DDBUpdateInProgressHandler(event: SQSEvent) {
+export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];
     console.log('SendMessageSchedullerHandler - incoming event', JSON.stringify(event));
     return { batchItemFailures };

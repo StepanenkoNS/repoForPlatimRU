@@ -71,7 +71,7 @@ const sendDataToLambda = (messages: IScheduledPostMessage[]) => {
     return promises;
 };
 
-export async function SendMessagesShedulerHandler(event: any, context: any): Promise<any> {
+export async function handler(event: any, context: any): Promise<any> {
     console.log('SendMessageSchedullerHandler - incoming event', event);
     console.log('start query', new Date().toISOString());
 

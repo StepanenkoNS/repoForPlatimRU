@@ -14,7 +14,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
     //Вывод списка
     const ListUserSubscriptionPlansChannelsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansChannelsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'ListUserSubscriptionPlansLambda.ts'),
-        handler: 'ListUserSubscriptionPlansHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
     //Вывод одного элемента
     const GetSubscriptionPlanChannelLambda = new NodejsFunction(that, 'GetSubscriptionPlanChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'GetUserSubscriptionPlanLambda.ts'),
-        handler: 'GetUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -48,7 +48,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
     //Добавлении типа подписки
     const AddSubscriptionPlanChannelLambda = new NodejsFunction(that, 'AddSubscriptionPlanChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'AddUserSubscriptionPlanLambda.ts'),
-        handler: 'AddUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
     //редактирование опции оплаты
     const EditSubscriptionPlanChannelLambda = new NodejsFunction(that, 'EditSubscriptionPlanChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'EditUserSubscriptionPlanLambda.ts'),
-        handler: 'EditUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -82,7 +82,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
     //удаление опции оплаты
     const DeleteSubscriptionPlanChannelLambda = new NodejsFunction(that, 'DeleteSubscriptionPlanChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'DeleteUserSubscriptionPlanLambda.ts'),
-        handler: 'DeleteUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

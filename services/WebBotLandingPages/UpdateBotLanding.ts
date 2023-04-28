@@ -9,7 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { BotLanging } from '/opt/BotLanding';
 import { IBotLanding } from '/opt/BotLandingTypes';
 
-export async function UpdateBotLandingHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     //console.log(JSON.stringify(event));
     const origin = SetOrigin(event);
 

@@ -14,7 +14,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], t
     //Вывод списка
     const ListTelegramFilesLambda = new NodejsFunction(that, 'ListTelegramFilesLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'TelegramFiles', 'ListTelegramFilesLambda.ts'),
-        handler: 'ListTelegramFilesHandler',
+        handler: 'handler',
         functionName: 'react-TelegramFiles-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], t
     //Вывод одного элемента
     const GetTelegramFileLambda = new NodejsFunction(that, 'GetTelegramFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'TelegramFiles', 'GetTelegramFileLambda.ts'),
-        handler: 'GetTelegramFileHandler',
+        handler: 'handler',
         functionName: 'react-TelegramFiles-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -48,7 +48,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], t
     //редактирование опции оплаты
     const EditTelegramFileLambda = new NodejsFunction(that, 'EditTelegramFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'TelegramFiles', 'EditTelegramFileLambda.ts'),
-        handler: 'EditTelegramFileHandler',
+        handler: 'handler',
         functionName: 'react-TelegramFiles-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], t
     //удаление опции оплаты
     const DeleteTelegramFileLambda = new NodejsFunction(that, 'DeleteTelegramFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'TelegramFiles', 'DeleteTelegramFileLambda.ts'),
-        handler: 'DeleteTelegramFileHandler',
+        handler: 'handler',
         functionName: 'react-TelegramFiles-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

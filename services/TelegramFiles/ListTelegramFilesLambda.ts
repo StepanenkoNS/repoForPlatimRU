@@ -8,7 +8,7 @@ import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Re
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { FileTelegramConfigurator } from '/opt/FileTelegramConfigurator';
 
-export async function ListTelegramFilesHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

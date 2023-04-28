@@ -11,7 +11,7 @@ import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, Parse
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
 
-export async function EditContentPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

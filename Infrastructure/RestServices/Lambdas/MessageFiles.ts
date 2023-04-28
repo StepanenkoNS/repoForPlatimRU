@@ -16,7 +16,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
     //Вывод списка
     const ListMessageFilesLambda = new NodejsFunction(that, 'ListMessageFilesLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'ListMessageFilesLambda.ts'),
-        handler: 'ListMessageFilesHandler',
+        handler: 'handler',
         functionName: 'react-MessageFiles-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -33,7 +33,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
     //Вывод одного элемента
     const GetMessageFileLambda = new NodejsFunction(that, 'GetMessageFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'GetMessageFileLambda.ts'),
-        handler: 'GetMessageFileHandler',
+        handler: 'handler',
         functionName: 'react-MessageFiles-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -50,7 +50,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
     //Добавлении типа подписки
     const AddMessageFileLambda = new NodejsFunction(that, 'AddMessageFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'AddMessageFileLambda.ts'),
-        handler: 'AddMessageFileHandler',
+        handler: 'handler',
         functionName: 'react-MessageFiles-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -67,7 +67,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
     //редактирование опции оплаты
     const EditMessageFileLambda = new NodejsFunction(that, 'EditMessageFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'EditMessageFileLambda.ts'),
-        handler: 'EditMessageFileHandler',
+        handler: 'handler',
         functionName: 'react-MessageFiles-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -84,7 +84,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
     //удаление опции оплаты
     const DeleteMessageFileLambda = new NodejsFunction(that, 'DeleteMessageFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'DeleteMessageFileLambda.ts'),
-        handler: 'DeleteMessageFileHandler',
+        handler: 'handler',
         functionName: 'react-MessageFiles-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

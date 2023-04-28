@@ -8,7 +8,7 @@ import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Re
 
 import { MessageSender } from '/opt/MessageSender';
 
-export async function SendMessageSenderHandler(event: SQSEvent) {
+export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];
     console.log('SendMessageSchedullerHandler - incoming event', JSON.stringify(event));
     for (const record of event.Records) {

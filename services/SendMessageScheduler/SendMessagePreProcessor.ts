@@ -18,7 +18,7 @@ function SQSSendBatch(queueUrl: string, arrayOfMessage: any[]) {
     return promises;
 }
 
-export async function SendMessagePreProcessorHandler(event: IScheduledPostMessage[]): Promise<any> {
+export async function handler(event: IScheduledPostMessage[]): Promise<any> {
     console.log('SendMessageSchedullerHandler - incoming event', event);
     let start = new Date().getTime();
     const sqsSend = [];

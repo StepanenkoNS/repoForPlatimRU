@@ -9,7 +9,7 @@ import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 
 import { FileTelegramConfigurator } from '/opt/FileTelegramConfigurator';
 
-export async function EditTelegramFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

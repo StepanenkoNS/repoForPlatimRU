@@ -26,7 +26,7 @@ function getSendMethodEnum(enumValue: string) {
     if (enumValue === 'sendVoice') return ETelegramSendMethod.sendVoice;
 }
 
-export async function SendTestFileHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
     console.log(event);
 

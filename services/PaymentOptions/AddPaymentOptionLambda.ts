@@ -12,7 +12,7 @@ import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
-export async function AddPaymentOptionHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

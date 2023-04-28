@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/b30dc51315cb6b2da44be98d7104398ad75f7a43ad757dd719f446b111753ddb.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ecfc4b25eaeb4ab86f7ba10fdee4fe17bd0f79f8c1a6dbf93fe0da12976eedce.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/668d39bf18de153020241ca8adc095b9e0785e9425def0f87e5df6b53e51926e.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a114fe8c74afa05443722b99d0a964619b1bd916311f1553383a4c673998a680.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -729,7 +729,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/2750e2fb4b47298e7677667b76e9c5d4e153dd6c1deabaa48f9b6ad4327b05cc.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e1d184f6ef403c416ac024d2d62c31825c280fae81c7ffc21a619ab023393b03.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1280,7 +1280,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/bcba3b0379e79a55cc181db65514a458c58ade0e63191b7e2315be3ca6a9e664.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d198d15d09dfb2602255c8bad52f5028beb1f91fb5b7ff451116429f4cc32715.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1651,7 +1651,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f4f57d565864ee0d2c8ef3afe6e7bfc4a419263b57659e8b0c8a4887920702e2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/19ae60198ec0300aaec1a10af510496ac21193d56c1f8598948a3fb5ee052708.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2069,6 +2069,42 @@
             "data": "oneHourCleanupChannelsAllowEventRuleWebRestServiceMessagesAndPaymentsCleanupChannelLambda1E435F11E8E7E745"
           }
         ],
+        "/WebRestServiceMessagesAndPayments/ZuzonaSubscriptionCleanUpProcessor/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ZuzonaSubscriptionCleanUpProcessorServiceRole3550F7A2"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ZuzonaSubscriptionCleanUpProcessor/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ZuzonaSubscriptionCleanUpProcessorServiceRoleDefaultPolicy24706F2E"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ZuzonaSubscriptionCleanUpProcessor/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ZuzonaSubscriptionCleanUpProcessor132C370C"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ZuzonaSubscriptionCleanUpProcessor/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ZuzonaSubscriptionCleanUpProcessorLogRetentionE5081E3D"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/oneHourCleanupZuzona/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oneHourCleanupZuzona98A62E54"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/oneHourCleanupZuzona/AllowEventRuleWebRestServiceMessagesAndPaymentsZuzonaSubscriptionCleanUpProcessorF5181F35": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oneHourCleanupZuzonaAllowEventRuleWebRestServiceMessagesAndPaymentsZuzonaSubscriptionCleanUpProcessorF5181F35521D7362"
+          }
+        ],
         "/WebRestServiceMessagesAndPayments/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -2124,7 +2160,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/aabcbf147e0154bf26273fe67a7523176a614fafd1fde229538d1bea90ddc978.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9065bfa9709585d75bf656533395828a3cb534a27afdf0cd3f328213d99761ed.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2495,7 +2531,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/72c4ebf4bde59d3a6414e8b2949179c108fac54ac9e8a461b86a425572114085.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/378f7fd22cd9b3cac623abe50a8de25b7ba9e0b65cf3480c13ac159f56d6446f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2511,144 +2547,6 @@
         "WebRestServiceSubscriptions.assets"
       ],
       "metadata": {
-        "/WebRestServiceSubscriptions/ListServiceSubscriptionPlansLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListServiceSubscriptionPlansLambdaServiceRoleFBDB0D1F"
-          }
-        ],
-        "/WebRestServiceSubscriptions/ListServiceSubscriptionPlansLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListServiceSubscriptionPlansLambdaServiceRoleDefaultPolicy5EE78A16"
-          }
-        ],
-        "/WebRestServiceSubscriptions/ListServiceSubscriptionPlansLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListServiceSubscriptionPlansLambda4DAD3C04"
-          }
-        ],
-        "/WebRestServiceSubscriptions/ListServiceSubscriptionPlansLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListServiceSubscriptionPlansLambdaLogRetention38D7CEA1"
-          }
-        ],
-        "/WebRestServiceSubscriptions/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
-          }
-        ],
-        "/WebRestServiceSubscriptions/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
-          }
-        ],
-        "/WebRestServiceSubscriptions/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
-          }
-        ],
-        "/WebRestServiceSubscriptions/GetServiceSubscriptionPlanLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GetServiceSubscriptionPlanLambdaServiceRole7C9A270D"
-          }
-        ],
-        "/WebRestServiceSubscriptions/GetServiceSubscriptionPlanLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GetServiceSubscriptionPlanLambdaServiceRoleDefaultPolicyBCD22DA1"
-          }
-        ],
-        "/WebRestServiceSubscriptions/GetServiceSubscriptionPlanLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GetServiceSubscriptionPlanLambdaC5F18656"
-          }
-        ],
-        "/WebRestServiceSubscriptions/GetServiceSubscriptionPlanLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GetServiceSubscriptionPlanLambdaLogRetention26F61071"
-          }
-        ],
-        "/WebRestServiceSubscriptions/AddServiceSubscriptionPlanLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AddServiceSubscriptionPlanLambdaServiceRoleDAD5C3DB"
-          }
-        ],
-        "/WebRestServiceSubscriptions/AddServiceSubscriptionPlanLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AddServiceSubscriptionPlanLambdaServiceRoleDefaultPolicyE185098D"
-          }
-        ],
-        "/WebRestServiceSubscriptions/AddServiceSubscriptionPlanLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AddServiceSubscriptionPlanLambda886AAD48"
-          }
-        ],
-        "/WebRestServiceSubscriptions/AddServiceSubscriptionPlanLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AddServiceSubscriptionPlanLambdaLogRetention70EF0A1D"
-          }
-        ],
-        "/WebRestServiceSubscriptions/EditServiceSubscriptionPlanLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "EditServiceSubscriptionPlanLambdaServiceRole7493D54B"
-          }
-        ],
-        "/WebRestServiceSubscriptions/EditServiceSubscriptionPlanLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "EditServiceSubscriptionPlanLambdaServiceRoleDefaultPolicyF2127BE9"
-          }
-        ],
-        "/WebRestServiceSubscriptions/EditServiceSubscriptionPlanLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "EditServiceSubscriptionPlanLambda1B47634D"
-          }
-        ],
-        "/WebRestServiceSubscriptions/EditServiceSubscriptionPlanLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "EditServiceSubscriptionPlanLambdaLogRetention27945254"
-          }
-        ],
-        "/WebRestServiceSubscriptions/DeleteServiceSubscriptionPlanLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteServiceSubscriptionPlanLambdaServiceRoleA2326D13"
-          }
-        ],
-        "/WebRestServiceSubscriptions/DeleteServiceSubscriptionPlanLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteServiceSubscriptionPlanLambdaServiceRoleDefaultPolicy1F41512D"
-          }
-        ],
-        "/WebRestServiceSubscriptions/DeleteServiceSubscriptionPlanLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteServiceSubscriptionPlanLambda5FEE7EF0"
-          }
-        ],
-        "/WebRestServiceSubscriptions/DeleteServiceSubscriptionPlanLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteServiceSubscriptionPlanLambdaLogRetention81C7F5B9"
-          }
-        ],
         "/WebRestServiceSubscriptions/ListUserSubscriptionPlansBotsLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -2671,6 +2569,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ListUserSubscriptionPlansBotsLambdaLogRetentionE49B320F"
+          }
+        ],
+        "/WebRestServiceSubscriptions/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+          }
+        ],
+        "/WebRestServiceSubscriptions/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+          }
+        ],
+        "/WebRestServiceSubscriptions/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
           }
         ],
         "/WebRestServiceSubscriptions/GetSubscriptionPlanBotLambda/ServiceRole/Resource": [
@@ -2967,36 +2883,6 @@
             "data": "CDKMetadata"
           }
         ],
-        "/WebRestServiceSubscriptions/Exports/Output{\"Fn::GetAtt\":[\"ListServiceSubscriptionPlansLambda4DAD3C04\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttListServiceSubscriptionPlansLambda4DAD3C04Arn06D4043F"
-          }
-        ],
-        "/WebRestServiceSubscriptions/Exports/Output{\"Fn::GetAtt\":[\"GetServiceSubscriptionPlanLambdaC5F18656\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttGetServiceSubscriptionPlanLambdaC5F18656Arn8675F395"
-          }
-        ],
-        "/WebRestServiceSubscriptions/Exports/Output{\"Fn::GetAtt\":[\"AddServiceSubscriptionPlanLambda886AAD48\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttAddServiceSubscriptionPlanLambda886AAD48Arn19B9B27E"
-          }
-        ],
-        "/WebRestServiceSubscriptions/Exports/Output{\"Fn::GetAtt\":[\"EditServiceSubscriptionPlanLambda1B47634D\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttEditServiceSubscriptionPlanLambda1B47634DArn8F7D335B"
-          }
-        ],
-        "/WebRestServiceSubscriptions/Exports/Output{\"Fn::GetAtt\":[\"DeleteServiceSubscriptionPlanLambda5FEE7EF0\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttDeleteServiceSubscriptionPlanLambda5FEE7EF0Arn66D28E0E"
-          }
-        ],
         "/WebRestServiceSubscriptions/Exports/Output{\"Fn::GetAtt\":[\"ListUserSubscriptionPlansBotsLambda8ABC0BCF\",\"Arn\"]}": [
           {
             "type": "aws:cdk:logicalId",
@@ -3106,7 +2992,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/cdb5c2cb88f419ffa4f25ed52baffef55d05427eff37e82bf6a9e04483a9d827.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/02f3d1f0f7404699c54ae44dd45e3396a957d2183cab5b1e8c524bdd03e1aa12.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3237,7 +3123,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/7f56638a71543fb90e1aa37a76452b440474991b721da1b102be60c978c1742f.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ae896078aed8d91b03cf33bb2f526b3f7d3a7c2c677226d06b18dbed27946bf4.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3338,7 +3224,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a2901194001abbdbcd2e31110666327d8a630495346b3a7263f5b508c1b7a208.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f030d27d9e35d03114fe30c5c0b246deccf105561798dc457c08839557b767d2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3429,7 +3315,7 @@
         "/WebGatewayService/WebGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIDeploymentE2155CA18108054e9749c4d8c09e1ec268cf722d"
+            "data": "WebGatewayServiceGWAPIDeploymentE2155CA14cb9fbf78108d083b8a3dda64f2b1059"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -3480,12 +3366,6 @@
             "data": "WebGatewayServiceGWAPIBotsListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETBotsListE815BF8A"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..Bots.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETBotsList33DBDFAB"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3508,12 +3388,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIBotsAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTBotsAdd6C3E7A53"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..Bots.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTBotsAdd0D109B35"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Add/POST/Resource": [
@@ -3540,12 +3414,6 @@
             "data": "WebGatewayServiceGWAPIBotsGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETBotsGetD0CF618F"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..Bots.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETBotsGet2D959B2A"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Get/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3568,12 +3436,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIBotsEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTBotsEditD5507801"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..Bots.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTBotsEditC1DCB902"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Edit/PUT/Resource": [
@@ -3600,12 +3462,6 @@
             "data": "WebGatewayServiceGWAPIBotsRegisterPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTBotsRegister8CCAB503"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Register/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..Bots.Register": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsRegisterPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTBotsRegisterC7271771"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Register/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3630,12 +3486,6 @@
             "data": "WebGatewayServiceGWAPIBotsUnRegisterPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTBotsUnRegisterD2470E08"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/UnRegister/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..Bots.UnRegister": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsUnRegisterPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTBotsUnRegister32D75CDD"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/UnRegister/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3658,12 +3508,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIBotsDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEBotsDeleteF22C8EC2"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..Bots.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotsDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEBotsDeleteE2363D5F"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Bots/Delete/DELETE/Resource": [
@@ -3702,12 +3546,6 @@
             "data": "WebGatewayServiceGWAPIChannelsListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETChannelsList367218B8"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..Channels.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIChannelsListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETChannelsList717A9653"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3730,12 +3568,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIChannelsGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETChannelsGetC1548770"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..Channels.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIChannelsGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETChannelsGet9A71BD6F"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/Get/GET/Resource": [
@@ -3762,12 +3594,6 @@
             "data": "WebGatewayServiceGWAPIChannelsEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTChannelsEditCF386D3D"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..Channels.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIChannelsEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTChannelsEdit2EDD7BF9"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3790,12 +3616,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIChannelsDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEChannelsDeleteB8C9B69D"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..Channels.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIChannelsDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEChannelsDelete53457B83"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Channels/Delete/DELETE/Resource": [
@@ -3834,12 +3654,6 @@
             "data": "WebGatewayServiceGWAPIPaymentOptionsListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETPaymentOptionsList3D9CAE70"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..PaymentOptions.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIPaymentOptionsListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETPaymentOptionsList87E77211"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3862,12 +3676,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIPaymentOptionsGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETPaymentOptionsGet67939F75"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..PaymentOptions.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIPaymentOptionsGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETPaymentOptionsGet08ADC6CC"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Get/GET/Resource": [
@@ -3894,12 +3702,6 @@
             "data": "WebGatewayServiceGWAPIPaymentOptionsAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTPaymentOptionsAdd663C35F8"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..PaymentOptions.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIPaymentOptionsAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTPaymentOptionsAdd642B9795"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3924,12 +3726,6 @@
             "data": "WebGatewayServiceGWAPIPaymentOptionsEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTPaymentOptionsEdit06A6F054"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..PaymentOptions.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIPaymentOptionsEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTPaymentOptionsEditBCE26FBB"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -3952,12 +3748,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIPaymentOptionsDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEPaymentOptionsDelete8EF9DFE1"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..PaymentOptions.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIPaymentOptionsDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEPaymentOptionsDeleteE70D2A92"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/PaymentOptions/Delete/DELETE/Resource": [
@@ -3996,12 +3786,6 @@
             "data": "WebGatewayServiceGWAPIMessageFilesListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMessageFilesList9208AE21"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..MessageFiles.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMessageFilesListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMessageFilesListAF7A8E7A"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4024,12 +3808,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIMessageFilesGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMessageFilesGet09127C92"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..MessageFiles.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMessageFilesGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMessageFilesGetCC39638B"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Get/GET/Resource": [
@@ -4056,12 +3834,6 @@
             "data": "WebGatewayServiceGWAPIMessageFilesAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTMessageFilesAdd64825786"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..MessageFiles.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMessageFilesAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTMessageFilesAddC23572C3"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4086,12 +3858,6 @@
             "data": "WebGatewayServiceGWAPIMessageFilesEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTMessageFilesEdit3F95CB78"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..MessageFiles.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMessageFilesEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTMessageFilesEdit1298C9D4"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4114,12 +3880,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIMessageFilesDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEMessageFilesDelete5672E7AD"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..MessageFiles.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMessageFilesDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEMessageFilesDelete428CE787"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MessageFiles/Delete/DELETE/Resource": [
@@ -4158,12 +3918,6 @@
             "data": "WebGatewayServiceGWAPITelegramFilesListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETTelegramFilesList1E61B018"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..TelegramFiles.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPITelegramFilesListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETTelegramFilesListB5959A0C"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4186,12 +3940,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPITelegramFilesGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETTelegramFilesGet50A40AC6"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..TelegramFiles.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPITelegramFilesGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETTelegramFilesGet508920A7"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/Get/GET/Resource": [
@@ -4218,12 +3966,6 @@
             "data": "WebGatewayServiceGWAPITelegramFilesEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTTelegramFilesEdit186CD599"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..TelegramFiles.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPITelegramFilesEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTTelegramFilesEdit4280AA75"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4248,12 +3990,6 @@
             "data": "WebGatewayServiceGWAPITelegramFilesDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETETelegramFilesDeleteE683A572"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..TelegramFiles.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPITelegramFilesDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETETelegramFilesDelete3C58F3EF"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/TelegramFiles/Delete/DELETE/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4276,12 +4012,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIPreSignedUrlsPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTPreSignedUrls4F97D38F"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/PreSignedUrls/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..PreSignedUrls": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIPreSignedUrlsPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTPreSignedUrls0D9AD7C1"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/PreSignedUrls/PUT/Resource": [
@@ -4320,12 +4050,6 @@
             "data": "WebGatewayServiceGWAPISendTestMessagePOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTSendTestMessageSendTestMessage21EEBE04"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/SendTestMessage/SendTestMessage/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..SendTestMessage.SendTestMessage": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPISendTestMessagePOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTSendTestMessageSendTestMessage166773DD"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/SendTestMessage/SendTestMessage/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4348,12 +4072,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPISendTestMessageSendTestFilePOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTSendTestMessageSendTestFile296C9C0C"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/SendTestMessage/SendTestFile/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..SendTestMessage.SendTestFile": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPISendTestMessageSendTestFilePOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTSendTestMessageSendTestFile9A3BFA2D"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/SendTestMessage/SendTestFile/POST/Resource": [
@@ -4392,12 +4110,6 @@
             "data": "WebGatewayServiceGWAPIBotPaymentsListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETBotPaymentsList352D7BAC"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/BotPayments/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..BotPayments.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIBotPaymentsListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETBotPaymentsListA98D4C97"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/BotPayments/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4434,12 +4146,6 @@
             "data": "WebGatewayServiceGWAPIContentPlanPostsListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlanPostsList85FC017F"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ContentPlanPosts.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlanPostsListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlanPostsListEE5E317C"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4462,12 +4168,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIContentPlanPostsGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlanPostsGetE579BD48"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ContentPlanPosts.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlanPostsGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlanPostsGet28868BB6"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Get/GET/Resource": [
@@ -4494,12 +4194,6 @@
             "data": "WebGatewayServiceGWAPIContentPlanPostsAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTContentPlanPostsAdd22C7905E"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..ContentPlanPosts.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlanPostsAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTContentPlanPostsAdd0F9297AB"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4524,12 +4218,6 @@
             "data": "WebGatewayServiceGWAPIContentPlanPostsEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTContentPlanPostsEdit31E6D173"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..ContentPlanPosts.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlanPostsEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTContentPlanPostsEdit19963D23"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4552,12 +4240,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIContentPlanPostsDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEContentPlanPostsDeleteE3AB0F91"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..ContentPlanPosts.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlanPostsDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEContentPlanPostsDelete364A4DE6"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlanPosts/Delete/DELETE/Resource": [
@@ -4596,12 +4278,6 @@
             "data": "WebGatewayServiceGWAPIContentPlansListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlansListF5CB88A0"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ContentPlans.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlansListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlansList59DDD91E"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4624,12 +4300,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIContentPlansGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlansGet704A9643"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ContentPlans.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlansGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETContentPlansGet3E275F59"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Get/GET/Resource": [
@@ -4656,12 +4326,6 @@
             "data": "WebGatewayServiceGWAPIContentPlansAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTContentPlansAdd501970CE"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..ContentPlans.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlansAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTContentPlansAdd5A9BBF04"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4684,12 +4348,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIContentPlansEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTContentPlansEditD5E63665"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..ContentPlans.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlansEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTContentPlansEdit4B9C6C10"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Edit/PUT/Resource": [
@@ -4716,178 +4374,10 @@
             "data": "WebGatewayServiceGWAPIContentPlansDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEContentPlansDeleteB7BB6414"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..ContentPlans.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIContentPlansDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEContentPlansDelete774A1877"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/ContentPlans/Delete/DELETE/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIContentPlansDeleteDELETE01BE9119"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlans5E37BA5C"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansOPTIONS1685A4F4"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/List/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansList57A3D060"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/List/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansListOPTIONSB030E476"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/List/GET/ApiPermission.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ServiceSubscriptionPlans.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETServiceSubscriptionPlansListAB18976A"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ServiceSubscriptionPlans.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETServiceSubscriptionPlansList0D743E88"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/List/GET/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansListGET3E2A165E"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Get/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansGet72B5D478"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Get/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansGetOPTIONS9ECA8A47"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Get/GET/ApiPermission.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ServiceSubscriptionPlans.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETServiceSubscriptionPlansGet7620FFD8"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..ServiceSubscriptionPlans.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETServiceSubscriptionPlansGetDB40A625"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Get/GET/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansGetGETB46948CF"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Add/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansAdd83A2AC25"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Add/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansAddOPTIONSE9B5487D"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Add/POST/ApiPermission.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..ServiceSubscriptionPlans.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTServiceSubscriptionPlansAdd6AF8FB69"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..ServiceSubscriptionPlans.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTServiceSubscriptionPlansAdd42E8FDDB"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Add/POST/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansAddPOST5D300BD9"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Edit/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansEdit0EB56A49"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Edit/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansEditOPTIONS675C7E1F"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Edit/PUT/ApiPermission.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..ServiceSubscriptionPlans.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTServiceSubscriptionPlansEdit2F9FBFC5"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..ServiceSubscriptionPlans.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTServiceSubscriptionPlansEditFB93381E"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Edit/PUT/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansEditPUT1576A8F9"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Delete/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansDelete89146BC7"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Delete/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansDeleteOPTIONS4DD18E13"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Delete/DELETE/ApiPermission.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..ServiceSubscriptionPlans.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEServiceSubscriptionPlansDeleteF538F63D"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..ServiceSubscriptionPlans.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEServiceSubscriptionPlansDelete6AEC5094"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/ServiceSubscriptionPlans/Delete/DELETE/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIServiceSubscriptionPlansDeleteDELETED127DC90"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Resource": [
@@ -4920,12 +4410,6 @@
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansBotList75BCF531"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..UserSubscriptionPlansBot.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansBotList22BDE6D4"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -4948,12 +4432,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansBotGetBB3B8145"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..UserSubscriptionPlansBot.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansBotGet5F3848C3"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Get/GET/Resource": [
@@ -4980,12 +4458,6 @@
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTUserSubscriptionPlansBotAddE8F1C083"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..UserSubscriptionPlansBot.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTUserSubscriptionPlansBotAdd82409CFD"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5010,12 +4482,6 @@
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTUserSubscriptionPlansBotEdit70CD86AE"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..UserSubscriptionPlansBot.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTUserSubscriptionPlansBotEditB24A69D3"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5038,12 +4504,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEUserSubscriptionPlansBotDeleteFDCCD46E"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..UserSubscriptionPlansBot.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansBotDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEUserSubscriptionPlansBotDeleteB9E24788"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansBot/Delete/DELETE/Resource": [
@@ -5082,12 +4542,6 @@
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansChannelListF1B23DFD"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..UserSubscriptionPlansChannel.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansChannelListF7D095BC"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5110,12 +4564,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelGetGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansChannelGet53D0E84D"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Get/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..UserSubscriptionPlansChannel.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelGetGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETUserSubscriptionPlansChannelGetFD53894E"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Get/GET/Resource": [
@@ -5142,12 +4590,6 @@
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelAddPOSTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTUserSubscriptionPlansChannelAdd172F0948"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Add/POST/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.POST..UserSubscriptionPlansChannel.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelAddPOSTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0POSTUserSubscriptionPlansChannelAddF4D1D21B"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5172,12 +4614,6 @@
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelEditPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTUserSubscriptionPlansChannelEdit89C2CA34"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Edit/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..UserSubscriptionPlansChannel.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelEditPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTUserSubscriptionPlansChannelEdit90CEBE97"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5200,12 +4636,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelDeleteDELETEApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEUserSubscriptionPlansChannelDeleteC5A744D3"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Delete/DELETE/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.DELETE..UserSubscriptionPlansChannel.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIUserSubscriptionPlansChannelDeleteDELETEApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0DELETEUserSubscriptionPlansChannelDeleteEDDB759F"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/UserSubscriptionPlansChannel/Delete/DELETE/Resource": [
@@ -5244,12 +4674,6 @@
             "data": "WebGatewayServiceGWAPIMasterManagerGetMeGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMasterManagerGetMe6A1AA914"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MasterManager/GetMe/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..MasterManager.GetMe": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMasterManagerGetMeGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMasterManagerGetMe4220C7FD"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MasterManager/GetMe/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5274,12 +4698,6 @@
             "data": "WebGatewayServiceGWAPIMasterManagerSubscribeToPaidSubscriptionPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTMasterManagerSubscribeToPaidSubscriptionEB408672"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MasterManager/SubscribeToPaidSubscription/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..MasterManager.SubscribeToPaidSubscription": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMasterManagerSubscribeToPaidSubscriptionPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTMasterManagerSubscribeToPaidSubscriptionCA2ED81A"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MasterManager/SubscribeToPaidSubscription/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5302,12 +4720,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPIMasterManagerListMySubscriptionsGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMasterManagerListMySubscriptions433DBB7C"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/MasterManager/ListMySubscriptions/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..MasterManager.ListMySubscriptions": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPIMasterManagerListMySubscriptionsGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETMasterManagerListMySubscriptionsDE2FED54"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/MasterManager/ListMySubscriptions/GET/Resource": [
@@ -5346,12 +4758,6 @@
             "data": "WebGatewayServiceGWAPICRMUsersListGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETCRMUsersList6464499E"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/CRMUsers/List/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..CRMUsers.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPICRMUsersListGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETCRMUsersList6EEF7954"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/CRMUsers/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5388,12 +4794,6 @@
             "data": "WebGatewayServiceGWAPICRMChannelsListSubscriptionsGETApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETCRMChannelsListSubscriptionsCD9E8C54"
           }
         ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/CRMChannels/ListSubscriptions/GET/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.GET..CRMChannels.ListSubscriptions": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPICRMChannelsListSubscriptionsGETApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0GETCRMChannelsListSubscriptions90801528"
-          }
-        ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/CRMChannels/ListSubscriptions/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -5416,12 +4816,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebGatewayServiceGWAPILandingPUTApiPermissionWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTLanding0B4614FE"
-          }
-        ],
-        "/WebGatewayService/WebGatewayService-GWAPI/Default/Landing/PUT/ApiPermission.Test.WebGatewayServiceWebGatewayServiceGWAPI7B8B82B0.PUT..Landing": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebGatewayServiceGWAPILandingPUTApiPermissionTestWebGatewayServiceWebGatewayServiceGWAPI7B8B82B0PUTLanding88A4C051"
           }
         ],
         "/WebGatewayService/WebGatewayService-GWAPI/Default/Landing/PUT/Resource": [

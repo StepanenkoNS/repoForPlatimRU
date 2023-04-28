@@ -13,7 +13,7 @@ type Page = {
 };
 const fallbackLocale = defaultMenuLanguage;
 
-export async function GetHCLandingLambdaHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     try {

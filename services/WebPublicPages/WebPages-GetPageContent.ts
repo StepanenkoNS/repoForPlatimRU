@@ -13,7 +13,7 @@ type Page = {
 };
 const fallbackLocale = defaultMenuLanguage;
 
-export async function GetWebPageContentHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(JSON.stringify(event));
 
     const origin = SetOrigin(event);

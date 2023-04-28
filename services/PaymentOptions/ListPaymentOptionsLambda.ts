@@ -9,7 +9,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
-export async function ListPaymentOptionsHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

@@ -8,7 +8,7 @@ import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
-export async function DeleteUserSubscriptionPlanHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

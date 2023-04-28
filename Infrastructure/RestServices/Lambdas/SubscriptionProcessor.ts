@@ -45,7 +45,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     //Лямбда - принимает сообщение с планом подписки и выполняет его обработку
     const SubscriptionProcessorContentPlanLambda = new NodejsFunction(that, 'SubscriptionProcessorLambdaContentPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscribeUserToContentPlan.ts'),
-        handler: 'SubscribeUserToContentPlanHandler',
+        handler: 'handler',
         functionName: 'subscriptionProcessor-Subscribe-User-To-ContentPlan',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
 
     const SubscriptionProcessorSubscriptionPlanLambda = new NodejsFunction(that, 'SubscriptionProcessorSubscriptionPlanLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscribeUserToSubscriptionPlan.ts'),
-        handler: 'SubscribeUserToSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'subscriptionProcessor-Subscribe-User-To-SubscriptionPlan',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -124,11 +124,11 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
 
     const CleanupChannelLambda = new NodejsFunction(that, 'CleanupChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscriptionCleanUpChannelProcessor.ts'),
-        handler: 'CleanUpChannelProcessorHandler',
+        handler: 'handler',
         functionName: 'subscriptionProcessor-Cleanup-Channels',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.LONG,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         reservedConcurrentExecutions: 1,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -139,18 +139,47 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         layers: layers
     });
 
-    const eventRule: events.Rule = new events.Rule(that, 'oneHourCleanupChannels', {
-        schedule: events.Schedule.rate(Duration.hours(1)),
+    const eventRuleChannels: events.Rule = new events.Rule(that, 'oneHourCleanupChannels', {
+        schedule: events.Schedule.rate(Duration.hours(24)),
         ruleName: 'oneHourCleanupChannels'
     });
 
-    eventRule.addTarget(
+    eventRuleChannels.addTarget(
         new targets.LambdaFunction(CleanupChannelLambda, {
             event: events.RuleTargetInput.fromObject({ message: 'Hello Lambda' })
         })
     );
-    targets.addLambdaPermission(eventRule, CleanupChannelLambda);
+    targets.addLambdaPermission(eventRuleChannels, CleanupChannelLambda);
 
-    GrantAccessToDDB([CleanupChannelLambda, SubscriptionProcessorContentPlanLambda, SubscriptionProcessorSubscriptionPlanLambda], tables);
+    const ZuzonaSubscriptionCleanUpProcessor = new NodejsFunction(that, 'ZuzonaSubscriptionCleanUpProcessor', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'ZuzonaSubscriptionCleanUpProcessor.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-Cleanup-Zuzona',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        reservedConcurrentExecutions: 1,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const eventRuleZuzona: events.Rule = new events.Rule(that, 'oneHourCleanupZuzona', {
+        schedule: events.Schedule.rate(Duration.hours(24)),
+        ruleName: 'oneHourCleanupZuzona'
+    });
+
+    eventRuleZuzona.addTarget(
+        new targets.LambdaFunction(ZuzonaSubscriptionCleanUpProcessor, {
+            event: events.RuleTargetInput.fromObject({ message: 'oneHourCleanupZuzona' })
+        })
+    );
+    targets.addLambdaPermission(eventRuleZuzona, ZuzonaSubscriptionCleanUpProcessor);
+
+    GrantAccessToDDB([CleanupChannelLambda, SubscriptionProcessorContentPlanLambda, SubscriptionProcessorSubscriptionPlanLambda, ZuzonaSubscriptionCleanUpProcessor], tables);
     //     GrantAccessToS3([SubscriptionProcessorLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 }

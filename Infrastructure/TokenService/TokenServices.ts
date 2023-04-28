@@ -37,7 +37,7 @@ export class TokenServiceStack extends Stack {
 
         const TokenServiceLambda = new NodejsFunction(this, 'TokenServiceLambda', {
             entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaTokenService.ts'),
-            handler: 'LambdaTokenServiceHandler',
+            handler: 'handler',
             functionName: this.stackName + '-Lambda',
             runtime: StaticEnvironment.LambdaSettinds.runtime,
             logRetention: StaticEnvironment.LambdaSettinds.logRetention,

@@ -14,7 +14,7 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
     //Вывод списка
     const ListMyUsersLambda = new NodejsFunction(that, 'ListMyUsersLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ListMyUsers.ts'),
-        handler: 'ListMyUsersHandler',
+        handler: 'handler',
         functionName: 'react-CRM-Users-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

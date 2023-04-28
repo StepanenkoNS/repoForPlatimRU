@@ -12,7 +12,7 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
 
     const GetSubdomainLambda = new NodejsFunction(that, 'GetSubdomainLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebBotLandingPages', 'GetBotLanding.ts'),
-        handler: 'GetBotLandingHandler',
+        handler: 'handler',
         functionName: 'react-BotLanding-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

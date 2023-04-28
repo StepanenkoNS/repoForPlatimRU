@@ -11,7 +11,7 @@ import { ETelegramUserStatus } from '/opt/MessagingBotManagerTypes';
 
 const sqs = new SQS({ region: process.env.region });
 
-export async function IncomingPaymentRequestsHandler(event: SQSEvent): Promise<any> {
+export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
     console.log('IncomingPaymentRequestsHandler - incoming event', JSON.stringify(event));
     for (const record of event.Records) {

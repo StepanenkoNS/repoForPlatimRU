@@ -7,7 +7,7 @@ import { ValidateTokenFromCookies } from '/opt/AuthHelpers/ValidateTokenFromCook
 //@ts-ignore
 import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
 
-export async function LambdaTokenServiceHandler(event: APIGatewayEvent) {
+export async function handler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));
 
     if (!event) {

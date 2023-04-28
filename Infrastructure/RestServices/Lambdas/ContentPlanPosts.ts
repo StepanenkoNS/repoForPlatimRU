@@ -14,7 +14,7 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
     //Вывод списка
     const ListContentPlanPostsLambda = new NodejsFunction(that, 'ListContentPlanPostsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'ListContentPlanPostsLambda.ts'),
-        handler: 'ListContentPlanPostsHandler',
+        handler: 'handler',
         functionName: 'react-ContentPlanPosts-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
     //Вывод одного элемента
     const GetContentPlanPostLambda = new NodejsFunction(that, 'GetContentPlanPostLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'GetContentPlanPostLambda.ts'),
-        handler: 'GetContentPlanPostHandler',
+        handler: 'handler',
         functionName: 'react-ContentPlanPosts-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -48,7 +48,7 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
     //Добавлении типа подписки
     const AddContentPlanPostLambda = new NodejsFunction(that, 'AddContentPlanPostLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'AddContentPlanPostLambda.ts'),
-        handler: 'AddContentPlanPostHandler',
+        handler: 'handler',
         functionName: 'react-ContentPlanPosts-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
     //редактирование опции оплаты
     const EditContentPlanPostLambda = new NodejsFunction(that, 'EditContentPlanPostLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'EditContentPlanPostLambda.ts'),
-        handler: 'EditContentPlanPostHandler',
+        handler: 'handler',
         functionName: 'react-ContentPlanPosts-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -82,7 +82,7 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
     //удаление опции оплаты
     const DeleteContentPlanPostLambda = new NodejsFunction(that, 'DeleteContentPlanPostLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'DeleteContentPlanPostLambda.ts'),
-        handler: 'DeleteContentPlanPostHandler',
+        handler: 'handler',
         functionName: 'react-ContentPlanPosts-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

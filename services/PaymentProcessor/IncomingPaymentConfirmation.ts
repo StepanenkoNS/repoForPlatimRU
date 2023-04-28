@@ -16,7 +16,7 @@ import { MasterManager } from '/opt/MasterManager';
 
 const sqs = new SQS({ region: process.env.region });
 
-export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promise<any> {
+export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
     console.log('IncomingPaymentConfirmation - incoming event', JSON.stringify(event));
     for (const record of event.Records) {
@@ -67,7 +67,7 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                 // обновляем количество триальных подписчиков
 
                 if (paymentDetails.subscriptionType === 'CHANNEL') {
-                    const endTrialChannel = await MasterManager.IncrementOrExpireTrialChannelSubscriptionCounter(Number(request.masterId));
+                    const endTrialChannel = await MasterManager.IncrementConnectedPaidChannelUsers(Number(request.masterId));
                     if (endTrialChannel) {
                         const msgIdAdmin = ksuid.randomSync(new Date()).string;
                         let text =
@@ -92,7 +92,7 @@ export async function IncomingPaymentConfirmationHandler(event: SQSEvent): Promi
                 }
 
                 if (paymentDetails.subscriptionType === 'BOT') {
-                    const endTrialChannel = await MasterManager.IncrementOrExpireTrialBotSubscriptionCounter(Number(request.masterId));
+                    const endTrialChannel = await MasterManager.IncrementConnectedPaidBotUsers(Number(request.masterId));
                     if (endTrialChannel) {
                         const msgIdAdmin = ksuid.randomSync(new Date()).string;
                         let text =

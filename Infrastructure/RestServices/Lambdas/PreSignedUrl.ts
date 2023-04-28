@@ -15,7 +15,7 @@ export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[]
     //Вывод одного элемента
     const GetPresignedUrlLambda = new NodejsFunction(that, 'GetGetPresignedUrlLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Files', 'GetPreSignedUrlLambda.ts'),
-        handler: 'GetPreSignedUrlHandler',
+        handler: 'handler',
         functionName: 'react-GetPresignedUrl-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

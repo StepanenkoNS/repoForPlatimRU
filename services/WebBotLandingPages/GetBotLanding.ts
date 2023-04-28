@@ -13,9 +13,8 @@ type Page = {
     itemName?: string;
     pageId?: string;
 };
-const fallbackLocale = defaultMenuLanguage;
 
-export async function GetBotLandingHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));
 
     const origin = SetOrigin(event);

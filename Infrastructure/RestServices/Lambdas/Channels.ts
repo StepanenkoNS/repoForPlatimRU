@@ -14,7 +14,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
     //Вывод списка
     const ListChannelsLambda = new NodejsFunction(that, 'ListChannelsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'ListChannelsLambda.ts'),
-        handler: 'ListChannelsHandler',
+        handler: 'handler',
         functionName: 'react-Channels-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
     //Вывод одного элемента
     const GetChannelLambda = new NodejsFunction(that, 'GetChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'GetChannelLambda.ts'),
-        handler: 'GetChannelHandler',
+        handler: 'handler',
         functionName: 'react-Channels-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -48,7 +48,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
     //редактирование опции оплаты
     const EditChannelLambda = new NodejsFunction(that, 'EditChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'EditChannelLambda.ts'),
-        handler: 'EditChannelHandler',
+        handler: 'handler',
         functionName: 'react-Channels-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
     //удаление опции оплаты
     const DeleteChannelLambda = new NodejsFunction(that, 'DeleteChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'DeleteChannelLambda.ts'),
-        handler: 'DeleteChannelHandler',
+        handler: 'handler',
         functionName: 'react-Channels-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

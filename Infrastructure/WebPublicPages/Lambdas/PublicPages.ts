@@ -12,7 +12,7 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
 
     const getWebPageContentLambda = new NodejsFunction(that, 'GetWebPageContentLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'WebPages-GetPageContent.ts'),
-        handler: 'GetWebPageContentHandler',
+        handler: 'handler',
         functionName: 'react-Content-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

@@ -18,7 +18,7 @@ type Page = {
 };
 const fallbackLocale = defaultLocale;
 
-export async function GetHCArticleLambdaHandler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);

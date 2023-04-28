@@ -10,7 +10,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { MasterManager } from '/opt/MasterManager';
 
-export async function ListMasterManagerSubscriptionsHandler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

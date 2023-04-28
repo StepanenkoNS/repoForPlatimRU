@@ -14,7 +14,7 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
     //Отправка сообщения себе
     const SendTestMessageLambda = new NodejsFunction(that, 'SendTestMessageLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessage', 'SendTestMessageLambda.ts'),
-        handler: 'SendTestMessageHandler',
+        handler: 'handler',
         functionName: 'react-SendMessages-SendTestMessage-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
     //Отправка файла себе
     const SendTestFileLambda = new NodejsFunction(that, 'SendTestFileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessage', 'SendTestFileLambda.ts'),
-        handler: 'SendTestFileHandler',
+        handler: 'handler',
         functionName: 'react-SendMessages-SendTestFile-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

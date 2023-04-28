@@ -12,7 +12,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
 
     const getHCLangingLambda = new NodejsFunction(that, 'GetHCLandingLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'HC-LandingLambda.ts'),
-        handler: 'GetHCLandingLambdaHandler',
+        handler: 'handler',
         functionName: 'react-HelpCenter-Landing-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -33,7 +33,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
 
     const getHCsubcategoryLambda = new NodejsFunction(that, 'GetHCsubcategoryLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'HC-SubCategoryLambda.ts'),
-        handler: 'GetHCsubcategoryLambdaHandler',
+        handler: 'handler',
         functionName: 'react-HelpCenter-Subcategory-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -53,7 +53,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
 
     const getHCArticleLambda = new NodejsFunction(that, 'GetHCArticleLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'HC-ArticleLambda.ts'),
-        handler: 'GetHCArticleLambdaHandler',
+        handler: 'handler',
         functionName: 'react-HelpCenter-Article-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,

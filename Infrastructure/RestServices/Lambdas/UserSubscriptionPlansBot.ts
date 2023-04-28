@@ -14,7 +14,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
     //Вывод списка
     const ListUserSubscriptionPlansBotsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansBotsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'ListUserSubscriptionPlansLambda.ts'),
-        handler: 'ListUserSubscriptionPlansHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -31,7 +31,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
     //Вывод одного элемента
     const GetSubscriptionPlanBotLambda = new NodejsFunction(that, 'GetSubscriptionPlanBotLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'GetUserSubscriptionPlanLambda.ts'),
-        handler: 'GetUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -48,7 +48,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
     //Добавлении типа подписки
     const AddSubscriptionPlanBotLambda = new NodejsFunction(that, 'AddSubscriptionPlanBotLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'AddUserSubscriptionPlanLambda.ts'),
-        handler: 'AddUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -65,7 +65,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
     //редактирование опции оплаты
     const EditSubscriptionPlanBotLambda = new NodejsFunction(that, 'EditSubscriptionPlanBotLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'EditUserSubscriptionPlanLambda.ts'),
-        handler: 'EditUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -82,7 +82,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
     //удаление опции оплаты
     const DeleteSubscriptionPlanBotLambda = new NodejsFunction(that, 'DeleteSubscriptionPlanBotLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'DeleteUserSubscriptionPlanLambda.ts'),
-        handler: 'DeleteUserSubscriptionPlanHandler',
+        handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
