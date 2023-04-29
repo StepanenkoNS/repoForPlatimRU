@@ -27,7 +27,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
         { key: 'subscriptionPlan', datatype: ['PAIDCHANNEL', 'PAIDBOT'] },
-        { key: 'numberOfPaidBotLimits', datatype: 'number(positiveInteger)' },
+        { key: 'subscriptionLevel', datatype: 'number(positiveInteger)' },
         { key: 'pricePaid', datatype: 'number(positiveInteger)' },
         { key: 'currency', datatype: SupportedCurrenciesArray }
     ]);
@@ -41,7 +41,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             masterId: Number(telegramUser.id),
             lengthInDays: Number(bodyObject.data.lengthInDays),
             subscriptionPlan: bodyObject.data.subscriptionPlan,
-            numberOfPaidBotLimits: Number(bodyObject.data.numberOfPaidBotLimits),
+            subscriptionLevel: Number(bodyObject.data.subscriptionLevel),
             pricePaid: Number(bodyObject.data.pricePaid),
             currency: bodyObject.data.currency
         });
