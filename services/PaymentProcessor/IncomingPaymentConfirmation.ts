@@ -10,7 +10,7 @@ import { MessageSender } from '/opt/MessageSender';
 
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
-import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
+import { ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 //@ts-ignore
 import { MasterManager } from '/opt/MasterManager';
 
@@ -38,7 +38,6 @@ export async function handler(event: SQSEvent): Promise<any> {
             if (paymentDetails === false) {
                 return false;
             }
-            //это долгая подписка на бота
 
             const updatePaymentResult = await PaymentOptionsManager.ConfirmPaymentRequest(request);
             console.log('PaymentOptionsManager.ConfirmPaymentRequest result', updatePaymentResult);
@@ -117,13 +116,15 @@ export async function handler(event: SQSEvent): Promise<any> {
                 }
                 // отправляем в очередь на создание подписок
                 try {
-                    const sqsRequest: ISubscribeUser = {
+                    const sqsRequest: ISubscribeUserToSubscriptionPlan = {
                         id: request.id,
                         type: paymentDetails.subscriptionType,
                         botId: updatePaymentResult.botId,
                         chatId: updatePaymentResult.chatId,
                         masterId: updatePaymentResult.masterId,
-                        userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId
+                        userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId,
+                        pricePaid: updatePaymentResult.price,
+                        currency: updatePaymentResult.currency
                     };
                     const id = ksuid.randomSync(new Date()).string;
                     const messageParams: SQS.SendMessageRequest = {

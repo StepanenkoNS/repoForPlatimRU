@@ -25,7 +25,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     const SubscribeToSubscriptionPlanQueueDLQ = Queue.fromQueueArn(
         that,
         'imported-SubscribeToSubscriptionPlanQueueDLQ-CreateSubscriptionProcessor',
-        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToContentPlanQueue.dlqSQS_arn
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToSubscriptionPlanQueue.dlqSQS_arn
     );
 
     const SubscribeToContentPlanQueue = Queue.fromQueueArn(
@@ -37,7 +37,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     const SubscribeToContentPlanQueueDLQ = Queue.fromQueueArn(
         that,
         'imported-SubscribeToContentPlanQueueDLQ-CreateSubscriptionProcessor',
-        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToSubscriptionPlanQueue.dlqSQS_arn
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToContentPlanQueue.dlqSQS_arn
     );
 
     //SubscriptionProcessorQueueURL
@@ -92,35 +92,35 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQS);
     SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQS);
 
-    const eventSourceSubscriptionIncomingEvent = new SqsEventSource(SubscribeToSubscriptionPlanQueue, {
+    const subscriptionEvent = new SqsEventSource(SubscribeToSubscriptionPlanQueue, {
         enabled: true,
         reportBatchItemFailures: true,
         batchSize: 1
     });
 
-    const eventSourceSubscriptionIncomingEventDlq = new SqsEventSource(SubscribeToSubscriptionPlanQueueDLQ, {
+    const subscriptionEventDLQ = new SqsEventSource(SubscribeToSubscriptionPlanQueueDLQ, {
         enabled: false,
         reportBatchItemFailures: true,
         batchSize: 1
     });
 
-    SubscriptionProcessorSubscriptionPlanLambda.addEventSource(eventSourceSubscriptionIncomingEvent);
-    SubscriptionProcessorSubscriptionPlanLambda.addEventSource(eventSourceSubscriptionIncomingEventDlq);
+    SubscriptionProcessorSubscriptionPlanLambda.addEventSource(subscriptionEvent);
+    SubscriptionProcessorSubscriptionPlanLambda.addEventSource(subscriptionEventDLQ);
 
-    const eventSourceContentIncomingEvent = new SqsEventSource(SubscribeToContentPlanQueue, {
+    const contentEventDLQ = new SqsEventSource(SubscribeToContentPlanQueue, {
         enabled: true,
         reportBatchItemFailures: true,
         batchSize: 1
     });
 
-    const eventSourceContentIncomingEventDlq = new SqsEventSource(SubscribeToContentPlanQueueDLQ, {
+    const contentEvent = new SqsEventSource(SubscribeToContentPlanQueueDLQ, {
         enabled: false,
         reportBatchItemFailures: true,
         batchSize: 1
     });
 
-    SubscriptionProcessorContentPlanLambda.addEventSource(eventSourceContentIncomingEvent);
-    SubscriptionProcessorContentPlanLambda.addEventSource(eventSourceContentIncomingEventDlq);
+    SubscriptionProcessorContentPlanLambda.addEventSource(contentEvent);
+    SubscriptionProcessorContentPlanLambda.addEventSource(contentEventDLQ);
 
     const CleanupChannelLambda = new NodejsFunction(that, 'CleanupChannelLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscriptionCleanUpChannelProcessor.ts'),

@@ -12,7 +12,6 @@ import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateCRMLambdas } from './Lambdas/CRM';
 import { LambdaIntegrations } from './Helper/GWtypes';
-import { CreateCRMChannelsLambdas } from './Lambdas/CRMChannels';
 
 export class CRMRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -40,14 +39,8 @@ export class CRMRestServicesStack extends Stack {
         const crmLambdas = CreateCRMLambdas(this, layers, [botsTable]);
 
         this.lambdaIntegrations.push({
-            rootResource: 'CRMUsers',
+            rootResource: 'CRM',
             lambdas: crmLambdas
-        });
-
-        const crmChannelsLambads = CreateCRMChannelsLambdas(this, layers, [botsTable]);
-        this.lambdaIntegrations.push({
-            rootResource: 'CRMChannels',
-            lambdas: crmChannelsLambads
         });
     }
 }

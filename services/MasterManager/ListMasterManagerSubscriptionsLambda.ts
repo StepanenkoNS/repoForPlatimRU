@@ -20,7 +20,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    const result = await MasterManager.ListSubsriptions(Number(telegramUser.id));
+    const result = await MasterManager.ListMySubsriptions(Number(telegramUser.id));
     const listResults = ParseListItemsResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);

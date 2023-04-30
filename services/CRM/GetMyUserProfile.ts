@@ -23,16 +23,17 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['botId'])) {
+    if (!ValidateStringParameters(event, ['botId', 'id'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await CrmManager.ListMyBotUsers({
+    const result = await CrmManager.GetMySubscriberProfile({
         masterId: Number(telegramUser.id),
-        botId: Number(event.queryStringParameters!.botId!)
+        botId: Number(event.queryStringParameters!.botId!),
+        chatId: Number(event.queryStringParameters!.chatId)
     });
 
-    const listResults = ParseListItemsResult(result);
+    const listResults = ParseGetItemResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

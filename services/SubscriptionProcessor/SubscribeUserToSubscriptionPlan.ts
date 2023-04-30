@@ -10,7 +10,7 @@ import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
 import { PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
-import { ISubscribeUser } from '/opt/UserSubscriptionTypes';
+import { IBotSubscription, IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -21,18 +21,19 @@ export async function handler(event: SQSEvent): Promise<any> {
         try {
             console.log('record', record);
 
-            const request = JSON.parse(record.body) as ISubscribeUser;
-
-            let subscriptionResult = false;
+            const request = JSON.parse(record.body) as ISubscribeUserToSubscriptionPlan;
+            let subscriptionResult: false | IChannelSubscription | IBotSubscription = false;
             let replyMarkup = undefined;
             //подписываем на бота
             switch (request.type) {
                 case 'BOT': {
-                    subscriptionResult = await MessagingBotSubscriptionManager.SubscribeToContentPlanBotStatic({
+                    subscriptionResult = await MessagingBotSubscriptionManager.SubscribeToSubscriptionPlanBot({
                         botId: request.botId,
                         chatId: request.chatId,
                         masterId: request.masterId,
-                        userSubscriptionPlanId: request.userSubscriptionPlanId
+                        userSubscriptionPlanId: request.userSubscriptionPlanId,
+                        pricePaid: request.pricePaid,
+                        currency: request.currency
                     });
                     const msgIdUser = ksuid.randomSync(new Date()).string;
                     await MessageSender.QueueSendGenericMessage({
@@ -51,26 +52,24 @@ export async function handler(event: SQSEvent): Promise<any> {
                     break;
                 }
                 case 'CHANNEL': {
-                    subscriptionResult = await MessagingBotSubscriptionManager.SubscribeToContentPlanChannelStatic({
+                    subscriptionResult = await MessagingBotSubscriptionManager.SubscribeToSubscriptionPlanChannel({
                         botId: request.botId,
                         chatId: request.chatId,
                         masterId: request.masterId,
-                        userSubscriptionPlanId: request.userSubscriptionPlanId
+                        userSubscriptionPlanId: request.userSubscriptionPlanId,
+                        pricePaid: request.pricePaid,
+                        currency: request.currency
                     });
 
-                    const plan = await UserSubscriptionPlanChannel.GetUserSubscriptionPlanChannelById({
-                        masterId: request.masterId,
-                        botId: request.botId,
-                        id: request.userSubscriptionPlanId
-                    });
-                    if (plan === false) {
-                        console.log('plan not found');
+                    if (subscriptionResult === false) {
+                        console.log('subscriptionResult === false');
                         return false;
                     }
+
                     const callbackDataJoin: PayloadType = {
                         //id: request.id!,
                         callBack: 'JoinChannel',
-                        channelId: Number(plan.channelId),
+                        channelId: Number((subscriptionResult as IChannelSubscription).channelId),
                         chatId: Number(request.chatId)
                     };
 
@@ -101,55 +100,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                     break;
                 }
             }
-
-            // if (subscriptionResult === true) {
-            //     let adminText = 'Пользователь был успешно подписан';
-            //     let userText = 'Вы были успешно подписаны';
-
-            //     const msgIdAdmin = ksuid.randomSync(new Date()).string;
-            //     await MessageSender.QueueSendGenericMessage({
-            //         discriminator: 'IScheduledGenericMessage',
-            //         botId: Number(request.botId),
-            //         masterId: Number(request.masterId),
-            //         chatId: Number(request.masterId),
-            //         sendMethod: ETelegramSendMethod.sendMessage,
-            //         message: {
-            //             id: msgIdAdmin,
-            //             attachments: [],
-            //             text: adminText
-            //         }
-            //     });
-
-            //     const msgIdUser = ksuid.randomSync(new Date()).string;
-            //     await MessageSender.QueueSendGenericMessage({
-            //         discriminator: 'IScheduledGenericMessage',
-            //         botId: Number(request.botId),
-            //         masterId: Number(request.masterId),
-            //         chatId: Number(request.chatId),
-            //         sendMethod: ETelegramSendMethod.sendMessage,
-            //         message: {
-            //             id: msgIdUser,
-            //             attachments: [],
-            //             text: userText,
-            //             reply_markup: replyMarkup
-            //         }
-            //     });
-            // } else {
-            //     //шлем сообщение админу, что операция провалилась
-            //     const msgIdAdmin = ksuid.randomSync(new Date()).string;
-            //     await MessageSender.QueueSendGenericMessage({
-            //         discriminator: 'IScheduledGenericMessage',
-            //         botId: request.botId,
-            //         masterId: request.masterId,
-            //         chatId: request.masterId,
-            //         sendMethod: ETelegramSendMethod.sendMessage,
-            //         message: {
-            //             id: msgIdAdmin,
-            //             attachments: [],
-            //             text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой'
-            //         }
-            //     });
-            // }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);
             batchItemFailures.push({ itemIdentifier: record.messageId });

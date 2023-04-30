@@ -21,7 +21,7 @@ export async function handler(event: SQSEvent): Promise<any> {
 
             const request = JSON.parse(record.body) as IScheduleContentPlan;
 
-            const subscriptionResult = await MessagingBotSubscriptionManager.ScheduleContentPlanPostsOnSubscriptionStatic(request);
+            const subscriptionResult = await MessagingBotSubscriptionManager.ScheduleContentPlanPostsOnSubscription(request);
 
             if (subscriptionResult === true) {
                 // let adminText = 'Новый пользователь зарегистрирован и подписан на контент план ' + request.contentPlanId + ' в рамках плана подписки ' + request.userSubscriptionPlanId;

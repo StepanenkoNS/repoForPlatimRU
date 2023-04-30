@@ -8,7 +8,6 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-//@ts-ignore
 import { CrmManager } from '/opt/CrmManager';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -27,7 +26,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await CrmManager.ListMyBotUsers({
+    const result = await CrmManager.ListMyChannelsSubscriptions({
         masterId: Number(telegramUser.id),
         botId: Number(event.queryStringParameters!.botId!)
     });
