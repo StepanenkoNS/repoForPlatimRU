@@ -1,4 +1,4 @@
-import { ListChannelSubscriptionsHandler } from 'services/CRMChannels/ListChannelSubscriptions';
+import { handler } from 'services/CRMChannels/ListChannelSubscriptions';
 const event = {
     resource: '/CRMChannels/ListSubscriptions',
     path: '/CRMChannels/ListSubscriptions/',
@@ -81,7 +81,7 @@ const event = {
     isBase64Encoded: false
 };
 async function main() {
-    ListChannelSubscriptionsHandler(event as any, '' as any);
+    handler(event as any, '' as any);
 }
 
 main();

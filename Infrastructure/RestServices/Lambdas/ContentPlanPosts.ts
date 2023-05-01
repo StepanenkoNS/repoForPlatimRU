@@ -7,9 +7,22 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+
+    const AddScheduledPostQueue = Queue.fromQueueArn(that, 'imported-AddScheduledPostQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.PostScheduler.AddPost.basicSQS_arn);
+
+    const DeleteScheduledPostQueue = Queue.fromQueueArn(that, 'imported-DeleteScheduledPostQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.PostScheduler.DeletePost.basicSQS_arn);
+
+    const statementSQS = new PolicyStatement({
+        resources: [AddScheduledPostQueue.queueArn, DeleteScheduledPostQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
 
     //Вывод списка
     const ListContentPlanPostsLambda = new NodejsFunction(that, 'ListContentPlanPostsLambda', {
@@ -54,13 +67,16 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            AddScheduledPostQueueURL: AddScheduledPostQueue.queueUrl,
+            DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
         },
         layers: layers
     });
+    AddContentPlanPostLambda.addToRolePolicy(statementSQS);
 
     //редактирование опции оплаты
     const EditContentPlanPostLambda = new NodejsFunction(that, 'EditContentPlanPostLambda', {
@@ -89,14 +105,16 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
 
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            AddScheduledPostQueueURL: AddScheduledPostQueue.queueUrl,
+            DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
         },
         layers: layers
     });
-
+    DeleteContentPlanPostLambda.addToRolePolicy(statementSQS);
     GrantAccessToDDB([ListContentPlanPostsLambda, AddContentPlanPostLambda, EditContentPlanPostLambda, DeleteContentPlanPostLambda, GetContentPlanPostLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];

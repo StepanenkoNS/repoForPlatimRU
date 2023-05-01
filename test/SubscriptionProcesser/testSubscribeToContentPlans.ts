@@ -1,4 +1,4 @@
-import { SubscribeUserToContentPlanHandler } from 'services/SubscriptionProcessor/SubscribeUserToContentPlan';
+import { handler } from 'services/SubscriptionProcessor/SubscribeUserToContentPlan';
 
 const event = {
     Records: [
@@ -25,7 +25,7 @@ const event = {
     ]
 };
 async function main() {
-    SubscribeUserToContentPlanHandler(event as any);
+    handler(event as any);
 }
 
 main();

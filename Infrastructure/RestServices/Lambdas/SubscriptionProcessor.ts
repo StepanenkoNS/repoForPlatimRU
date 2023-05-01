@@ -40,7 +40,87 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToContentPlanQueue.dlqSQS_arn
     );
 
-    //SubscriptionProcessorQueueURL
+    const AddScheduledPostQueue = Queue.fromQueueArn(that, 'imported-PostScheduler-AddScheduledPostQueue-CreateSubscriptionProcessor', DynamicEnvironment.SQS.PostScheduler.AddPost.basicSQS_arn);
+
+    const AddScheduledPostQueueDLQ = Queue.fromQueueArn(that, 'imported-PostScheduler-AddScheduledPostQueueDLQ-CreateSubscriptionProcessor', DynamicEnvironment.SQS.PostScheduler.AddPost.dlqSQS_arn);
+
+    const DeleteScheduledPostQueue = Queue.fromQueueArn(
+        that,
+        'imported-PostScheduler-DeleteScheduledPostQueue-CreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.PostScheduler.DeletePost.basicSQS_arn
+    );
+
+    const DeleteScheduledPostQueueDLQ = Queue.fromQueueArn(
+        that,
+        'imported-PostScheduler-DeleteScheduledPostQueueDLQ-CreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.PostScheduler.DeletePost.dlqSQS_arn
+    );
+
+    const SubscriptionProcessorAddScheduledPostLambda = new NodejsFunction(that, 'SubscriptionProcessorAddScheduledPostLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'AddScheduledPost.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-Scheduler-Add-New-Post',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        memorySize: 256,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const SubscriptionProcessorDeleteScheduledPostLambda = new NodejsFunction(that, 'SubscriptionProcessorDeleteScheduledPostLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'DeleteScheduledPost.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-Scheduler-Delete-Post',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        memorySize: 256,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            schedulerSendQueueURL: schedulerSendQueue.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const AddScheduledPostEvent = new SqsEventSource(AddScheduledPostQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const AddScheduledPostEventDLQ = new SqsEventSource(AddScheduledPostQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    SubscriptionProcessorAddScheduledPostLambda.addEventSource(AddScheduledPostEvent);
+    SubscriptionProcessorAddScheduledPostLambda.addEventSource(AddScheduledPostEventDLQ);
+
+    const DeleteScheduledPostEvent = new SqsEventSource(DeleteScheduledPostQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const DeleteScheduledPostEventDLQ = new SqsEventSource(DeleteScheduledPostQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    SubscriptionProcessorDeleteScheduledPostLambda.addEventSource(DeleteScheduledPostEvent);
+    SubscriptionProcessorDeleteScheduledPostLambda.addEventSource(DeleteScheduledPostEventDLQ);
 
     //Лямбда - принимает сообщение с планом подписки и выполняет его обработку
     const SubscriptionProcessorContentPlanLambda = new NodejsFunction(that, 'SubscriptionProcessorLambdaContentPlanLambda', {
@@ -180,6 +260,16 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     );
     targets.addLambdaPermission(eventRuleZuzona, ZuzonaSubscriptionCleanUpProcessor);
 
-    GrantAccessToDDB([CleanupChannelLambda, SubscriptionProcessorContentPlanLambda, SubscriptionProcessorSubscriptionPlanLambda, ZuzonaSubscriptionCleanUpProcessor], tables);
+    GrantAccessToDDB(
+        [
+            CleanupChannelLambda,
+            SubscriptionProcessorContentPlanLambda,
+            SubscriptionProcessorSubscriptionPlanLambda,
+            ZuzonaSubscriptionCleanUpProcessor,
+            SubscriptionProcessorAddScheduledPostLambda,
+            SubscriptionProcessorDeleteScheduledPostLambda
+        ],
+        tables
+    );
     //     GrantAccessToS3([SubscriptionProcessorLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 }

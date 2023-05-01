@@ -30,7 +30,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const result = await CrmManager.GetMySubscriberProfile({
         masterId: Number(telegramUser.id),
         botId: Number(event.queryStringParameters!.botId!),
-        chatId: Number(event.queryStringParameters!.chatId)
+        chatId: Number(event.queryStringParameters!.id!)
     });
 
     const listResults = ParseGetItemResult(result);

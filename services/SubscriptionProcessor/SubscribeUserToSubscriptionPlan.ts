@@ -9,7 +9,7 @@ import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionMa
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
 import { PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
-import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
+
 import { IBotSubscription, IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 
 const sqs = new SQS({ region: process.env.region });

@@ -9,7 +9,10 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
+import { SQS } from 'aws-sdk';
+import ksuid from 'ksuid';
 
+const sqs = new SQS({ region: process.env.region });
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
@@ -35,6 +38,30 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         contentPlanId: bodyObject.data.contentPlanId,
         id: bodyObject.data.id
     });
+
+    if (result !== false && result !== undefined) {
+        //делаем push в SQS
+        try {
+            const post = {
+                masterId: Number(telegramUser.id),
+                botId: Number(bodyObject.data.botId),
+                contentPlanId: bodyObject.data.contentPlanId,
+                contentPlanPostId: bodyObject.data.id
+            };
+
+            const messageGroupId: string = '#POSTID#' + result.id!;
+            const id = ksuid.randomSync(new Date()).string;
+            const messageParams: SQS.SendMessageRequest = {
+                QueueUrl: process.env.DeleteScheduledPostQueueURL!,
+                MessageBody: JSON.stringify(post),
+                MessageDeduplicationId: id,
+                MessageGroupId: messageGroupId
+            };
+            await sqs.sendMessage(messageParams).promise();
+        } catch (error) {
+            console.log('sqs send error', error);
+        }
+    }
 
     const deleteResult = ParseDeleteItemResult(result);
 
