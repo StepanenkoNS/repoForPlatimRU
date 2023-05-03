@@ -14,9 +14,13 @@ import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
 
-    const AddScheduledPostQueue = Queue.fromQueueArn(that, 'imported-AddScheduledPostQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.PostScheduler.AddPost.basicSQS_arn);
+    const AddScheduledPostQueue = Queue.fromQueueArn(that, 'imported-AddScheduledPostQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.ContentPlanPostScheduler.AddPost.basicSQS_arn);
 
-    const DeleteScheduledPostQueue = Queue.fromQueueArn(that, 'imported-DeleteScheduledPostQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.PostScheduler.DeletePost.basicSQS_arn);
+    const DeleteScheduledPostQueue = Queue.fromQueueArn(
+        that,
+        'imported-DeleteScheduledPostQueue-CreateContentPlanPostsLambdas',
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.DeletePost.basicSQS_arn
+    );
 
     const statementSQS = new PolicyStatement({
         resources: [AddScheduledPostQueue.queueArn, DeleteScheduledPostQueue.queueArn],

@@ -8,7 +8,7 @@ import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionMa
 
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
-import { PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
+import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
 
 import { IBotSubscription, IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 
@@ -23,7 +23,7 @@ export async function handler(event: SQSEvent): Promise<any> {
 
             const request = JSON.parse(record.body) as ISubscribeUserToSubscriptionPlan;
             let subscriptionResult: false | IChannelSubscription | IBotSubscription = false;
-            let replyMarkup = undefined;
+            let replyMarkup = null;
             //подписываем на бота
             switch (request.type) {
                 case 'BOT': {
@@ -36,17 +36,15 @@ export async function handler(event: SQSEvent): Promise<any> {
                         currency: request.currency
                     });
                     const msgIdUser = ksuid.randomSync(new Date()).string;
-                    await MessageSender.QueueSendGenericMessage({
-                        discriminator: 'IScheduledGenericMessage',
+                    await MessageSender.QueueSendPlainMessage({
+                        discriminator: 'ITelegramMessage',
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.chatId),
                         sendMethod: ETelegramSendMethod.sendMessage,
                         message: {
-                            id: msgIdUser,
                             attachments: [],
-                            text: 'Вы были успешно подписаны',
-                            reply_markup: replyMarkup
+                            text: 'Вы были успешно подписаны'
                         }
                     });
                     break;
@@ -68,7 +66,7 @@ export async function handler(event: SQSEvent): Promise<any> {
 
                     const callbackDataJoin: PayloadType = {
                         //id: request.id!,
-                        callBack: 'JoinChannel',
+                        callBack: ETelegramCallbackTypeKey.JoinChannel,
                         channelId: Number((subscriptionResult as IChannelSubscription).channelId),
                         chatId: Number(request.chatId)
                     };
@@ -84,14 +82,14 @@ export async function handler(event: SQSEvent): Promise<any> {
                         ]
                     };
                     const msgIdUser = ksuid.randomSync(new Date()).string;
-                    await MessageSender.QueueSendGenericMessage({
-                        discriminator: 'IScheduledGenericMessage',
+                    await MessageSender.QueueSendPlainMessage({
+                        discriminator: 'ITelegramMessage',
+
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.chatId),
                         sendMethod: ETelegramSendMethod.sendMessage,
                         message: {
-                            id: msgIdUser,
                             attachments: [],
                             text: 'Вы были успешно подписаны на канал, нажмите на кнопку чтобы присоединиться',
                             reply_markup: replyMarkup

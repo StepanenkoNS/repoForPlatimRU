@@ -7,36 +7,17 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessageSender } from '/opt/MessageSender';
+import { IMessageSenderInput } from '/opt/ContentTypes';
 
 export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];
     console.log('SendMessageSchedullerHandler - incoming event', JSON.stringify(event));
     for (const record of event.Records) {
         try {
-            const body = JSON.parse(record.body);
-            if (body.discriminator === 'IScheduledPostMessage') {
-                const result = await MessageSender.SendScheduledMessage(body);
-                if (result === false) {
-                    batchItemFailures.push({ itemIdentifier: record.messageId });
-                }
-            }
-            if (body.discriminator === 'IRequestForPaymentConfirmation') {
-                const result = await MessageSender.SendPaymentMethodToAdmin(body);
-                if (result === false) {
-                    batchItemFailures.push({ itemIdentifier: record.messageId });
-                }
-            }
-            if (body.discriminator === 'IScheduledGenericMessage') {
-                const result = await MessageSender.SendGenericMessage({
-                    masterId: Number(body.masterId),
-                    botId: Number(body.botId),
-                    recipientChatId: Number(body.chatId),
-                    sendMethod: body.sendMethod,
-                    message: body.message
-                });
-                if (result === false) {
-                    batchItemFailures.push({ itemIdentifier: record.messageId });
-                }
+            const body = JSON.parse(record.body) as IMessageSenderInput;
+            const result = await MessageSender.SendQueuedMessage(body);
+            if (result === false) {
+                throw 'SendQueuedMessage result is false';
             }
         } catch (e) {
             console.log(`Error in processing SQS consumer: ${record.body}`);

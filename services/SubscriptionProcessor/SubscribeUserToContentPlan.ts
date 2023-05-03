@@ -24,46 +24,16 @@ export async function handler(event: SQSEvent): Promise<any> {
             const subscriptionResult = await MessagingBotSubscriptionManager.ScheduleAllContentPlanPostsOnSubscription(request);
 
             if (subscriptionResult === true) {
-                // let adminText = 'Новый пользователь зарегистрирован и подписан на контент план ' + request.contentPlanId + ' в рамках плана подписки ' + request.userSubscriptionPlanId;
-                // let userText = 'Вы были успешно зарегистрированы и подписаны на контент план ' + request.contentPlanId + ' в рамках плана подписки ' + request.userSubscriptionPlanId;
-                // const msgIdAdmin = ksuid.randomSync(new Date()).string;
-                // await MessageSender.QueueSendGenericMessage({
-                //     discriminator: 'IScheduledGenericMessage',
-                //     botId: Number(request.botId),
-                //     masterId: Number(request.masterId),
-                //     chatId: Number(request.masterId),
-                //     sendMethod: ETelegramSendMethod.sendMessage,
-                //     message: {
-                //         id: msgIdAdmin,
-                //         attachments: [],
-                //         text: adminText
-                //     }
-                // });
-                // const msgIdUser = ksuid.randomSync(new Date()).string;
-                // await MessageSender.QueueSendGenericMessage({
-                //     discriminator: 'IScheduledGenericMessage',
-                //     botId: Number(request.botId),
-                //     masterId: Number(request.masterId),
-                //     chatId: Number(request.chatId),
-                //     sendMethod: ETelegramSendMethod.sendMessage,
-                //     message: {
-                //         id: msgIdUser,
-                //         attachments: [],
-                //         text: userText,
-                //         reply_markup: undefined
-                //     }
-                // });
             } else {
                 //шлем сообщение админу, что операция провалилась
                 const msgIdAdmin = ksuid.randomSync(new Date()).string;
-                await MessageSender.QueueSendGenericMessage({
-                    discriminator: 'IScheduledGenericMessage',
+                await MessageSender.QueueSendPlainMessage({
+                    discriminator: 'ITelegramMessage',
                     botId: request.botId,
                     masterId: request.masterId,
                     chatId: request.masterId,
                     sendMethod: ETelegramSendMethod.sendMessage,
                     message: {
-                        id: msgIdAdmin,
                         attachments: [],
                         text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой'
                     }

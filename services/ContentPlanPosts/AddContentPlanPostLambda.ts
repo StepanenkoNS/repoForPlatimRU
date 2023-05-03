@@ -51,25 +51,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         interaction: bodyObject.data.interaction
     });
 
-    if (result !== false) {
-        //делаем push в SQS
-        try {
-            const post = { masterId: result.masterId, botId: result.botId, contentPlanId: result.contentPlanId, contentPlanPostId: result.id!, trigger: result.trigger };
-
-            const messageGroupId: string = '#POSTID#' + result.id!;
-            const id = ksuid.randomSync(new Date()).string;
-            const messageParams: SQS.SendMessageRequest = {
-                QueueUrl: process.env.AddScheduledPostQueueURL!,
-                MessageBody: JSON.stringify(post),
-                MessageDeduplicationId: id,
-                MessageGroupId: messageGroupId
-            };
-            await sqs.sendMessage(messageParams).promise();
-        } catch (error) {
-            console.log('sqs send error', sqs);
-        }
-    }
-
     const addResult = ParseInsertItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);

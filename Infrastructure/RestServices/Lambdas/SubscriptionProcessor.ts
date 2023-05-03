@@ -14,7 +14,11 @@ import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-
 import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    const schedulerSendQueue = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForCreateSubscriptionProcessor', DynamicEnvironment.SQS.SchedulerQueue.basicSQS_arn);
+    const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(
+        that,
+        'imported-SendMessageSchedulerQueueSecondForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn
+    );
 
     const SubscribeToSubscriptionPlanQueue = Queue.fromQueueArn(
         that,
@@ -40,20 +44,28 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToContentPlanQueue.dlqSQS_arn
     );
 
-    const AddScheduledPostQueue = Queue.fromQueueArn(that, 'imported-PostScheduler-AddScheduledPostQueue-CreateSubscriptionProcessor', DynamicEnvironment.SQS.PostScheduler.AddPost.basicSQS_arn);
+    const AddScheduledPostQueue = Queue.fromQueueArn(
+        that,
+        'imported-PostScheduler-AddScheduledPostQueue-CreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.AddPost.basicSQS_arn
+    );
 
-    const AddScheduledPostQueueDLQ = Queue.fromQueueArn(that, 'imported-PostScheduler-AddScheduledPostQueueDLQ-CreateSubscriptionProcessor', DynamicEnvironment.SQS.PostScheduler.AddPost.dlqSQS_arn);
+    const AddScheduledPostQueueDLQ = Queue.fromQueueArn(
+        that,
+        'imported-PostScheduler-AddScheduledPostQueueDLQ-CreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.AddPost.dlqSQS_arn
+    );
 
     const DeleteScheduledPostQueue = Queue.fromQueueArn(
         that,
         'imported-PostScheduler-DeleteScheduledPostQueue-CreateSubscriptionProcessor',
-        DynamicEnvironment.SQS.PostScheduler.DeletePost.basicSQS_arn
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.DeletePost.basicSQS_arn
     );
 
     const DeleteScheduledPostQueueDLQ = Queue.fromQueueArn(
         that,
         'imported-PostScheduler-DeleteScheduledPostQueueDLQ-CreateSubscriptionProcessor',
-        DynamicEnvironment.SQS.PostScheduler.DeletePost.dlqSQS_arn
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.DeletePost.dlqSQS_arn
     );
 
     const SubscriptionProcessorAddScheduledPostLambda = new NodejsFunction(that, 'SubscriptionProcessorAddScheduledPostLambda', {
@@ -66,7 +78,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         memorySize: 256,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -84,7 +96,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         memorySize: 256,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl
+            SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -131,7 +143,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
 
@@ -151,7 +163,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
 
@@ -164,7 +176,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     });
 
     const statementSQS = new PolicyStatement({
-        resources: [schedulerSendQueue.queueArn],
+        resources: [SendMessageSchedulerQueueSecond.queueArn],
         actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
         effect: Effect.ALLOW
     });

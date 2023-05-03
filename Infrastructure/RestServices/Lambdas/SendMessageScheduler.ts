@@ -14,40 +14,40 @@ import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-
 import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    const schedulerSendQueueDLQ = Queue.fromQueueArn(that, 'imported-schedulerSendQueueDLQSendMessageScheduler', DynamicEnvironment.SQS.SchedulerQueue.dlqSQS_arn);
+    const SendMessageSchedulerQueueFirstDLQ = Queue.fromQueueArn(
+        that,
+        'imported-SendMessageSchedulerQueueFirstDLQ-forSendMessageScheduler',
+        DynamicEnvironment.SQS.SendMessageSchedulerQueue.First.dlqSQS_arn
+    );
 
-    const schedulerSendQueue = Queue.fromQueueArn(that, 'imported-schedulerSendQueueSendMessageScheduler', DynamicEnvironment.SQS.SchedulerQueue.basicSQS_arn);
+    const SendMessageSchedulerQueueFirst = Queue.fromQueueArn(
+        that,
+        'imported-SendMessageSchedulerQueueFirst-forSendMessageScheduler',
+        DynamicEnvironment.SQS.SendMessageSchedulerQueue.First.basicSQS_arn
+    );
 
-    const schedulerDDBUpdateQueueDLQ = new Queue(that, 'scheduler-schedulerDDBUpdateQueueDLQ.fifo', {
-        fifo: true,
-        queueName: 'scheduler-schedulerDDBUpdateQueueDLQ.fifo',
-        deduplicationScope: DeduplicationScope.MESSAGE_GROUP,
-        fifoThroughputLimit: FifoThroughputLimit.PER_MESSAGE_GROUP_ID,
-        visibilityTimeout: Duration.seconds(900)
-    });
-    const schedulerDDBUpdateQueue = new Queue(that, 'scheduler-schedulerDDBUpdateQueue.fifo', {
-        fifo: true,
-        queueName: 'scheduler-schedulerDDBUpdateQueue.fifo',
-        deduplicationScope: DeduplicationScope.MESSAGE_GROUP,
-        fifoThroughputLimit: FifoThroughputLimit.PER_MESSAGE_GROUP_ID,
-        deadLetterQueue: {
-            queue: schedulerDDBUpdateQueueDLQ,
-            maxReceiveCount: 3
-        },
-        visibilityTimeout: Duration.seconds(900)
-    });
+    const SendMessageSchedulerQueueSecondDLQ = Queue.fromQueueArn(
+        that,
+        'imported-SendMessageSchedulerQueueSecondDLQ-forSendMessageScheduler',
+        DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.dlqSQS_arn
+    );
 
-    //Лямбда - раскидывает сообщения на 2 очереди: DDB и отправка
-    const SendMessagePreProcessor = new NodejsFunction(that, 'SendMessagePreProcessor', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessagePreProcessor.ts'),
+    const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(
+        that,
+        'imported-SendMessageSchedulerQueueSecond-forSendMessageScheduler',
+        DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn
+    );
+
+    //Первая Лямбда - вызывется EB раз минуту и собирает зашедуленные сообщения для последующей отправки
+    const SendMessageSchedullerFirstStageLambda = new NodejsFunction(that, 'SendMessage-Scheduller-First-Stage', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessage-Scheduller-First-Stage.ts'),
         handler: 'handler',
-        functionName: 'scheduler-SendMessagePreProcessor-Lambda',
+        functionName: 'SendMessage-Scheduller-First-Stage',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
-            schedulerDDBUpdateQueue: schedulerDDBUpdateQueue.queueUrl,
+            SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -56,34 +56,58 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         layers: layers
     });
 
-    //Лямбда - вызываемая EB и запускающая процессинг
-    const SendMessagescheduler = new NodejsFunction(that, 'SendMessagescheduler', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessageSchedulerLambda.ts'),
-        handler: 'handler',
-        functionName: 'scheduler-ScheduleMessages-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
-        reservedConcurrentExecutions: 1,
-        environment: {
-            SendMessagePreProcessor: SendMessagePreProcessor.functionName,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-        },
-        bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
-        },
-        layers: layers
-    });
-
-    SendMessagePreProcessor.grantInvoke(SendMessagescheduler);
-
-    const statementSQS = new PolicyStatement({
-        resources: [schedulerSendQueue.queueArn, schedulerDDBUpdateQueue.queueArn],
+    //разрешаем пушить первой лямбде в следующую очередь во флоу
+    const statementSQSforFirstLambda = new PolicyStatement({
+        resources: [SendMessageSchedulerQueueFirst.queueArn],
         actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
         effect: Effect.ALLOW
     });
 
-    SendMessagePreProcessor.addToRolePolicy(statementSQS);
+    SendMessageSchedullerFirstStageLambda.addToRolePolicy(statementSQSforFirstLambda);
+
+    //Вторая Лямбда - получает из SQS батч с сообщениями в разрезе бот/пользователей и процессит дальше
+    const SendMessageSchedullerSecondStageLambda = new NodejsFunction(that, 'SendMessage-Scheduller-Second-Stage', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessage-Scheduller-Second-Stage.ts'),
+        handler: 'handler',
+        functionName: 'SendMessage-Scheduller-Second-Stage',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    //разрешаем пушить второй лямбде во вторую очередь
+    const statementSQSforSecondLamda = new PolicyStatement({
+        resources: [SendMessageSchedulerQueueSecond.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
+    SendMessageSchedullerSecondStageLambda.addToRolePolicy(statementSQSforSecondLamda);
+
+    //добавляем для второй лямбды event sourcing, ссылающийся на первую очередь
+    const eventSourceForSecondStageLambda = new SqsEventSource(SendMessageSchedulerQueueFirst, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const eventSourceForSecondStageLambdaDLQ = new SqsEventSource(SendMessageSchedulerQueueFirstDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    SendMessageSchedullerSecondStageLambda.addEventSource(eventSourceForSecondStageLambda);
+    SendMessageSchedullerSecondStageLambda.addEventSource(eventSourceForSecondStageLambdaDLQ);
 
     //Лямбда - отправляющаяя сообщения в TG
     const SendMessageSender = new NodejsFunction(that, 'SendMessageSender', {
@@ -92,8 +116,8 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         functionName: 'scheduler-SendMessageSender-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
-        reservedConcurrentExecutions: 1,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        //reservedConcurrentExecutions: 1,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -103,128 +127,24 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         layers: layers
     });
 
-    const eventSourceIncomingEvent = new SqsEventSource(schedulerSendQueue, {
+    const eventSourceForSenderStageLambda = new SqsEventSource(SendMessageSchedulerQueueSecond, {
         enabled: true,
         reportBatchItemFailures: true,
         batchSize: 1
     });
 
-    const eventSourceIncomingEventDlq = new SqsEventSource(schedulerSendQueueDLQ, {
+    const eventSourceForSenderStageLambdaDLQ = new SqsEventSource(SendMessageSchedulerQueueSecondDLQ, {
         enabled: false,
         reportBatchItemFailures: true,
         batchSize: 1
     });
 
-    SendMessageSender.addEventSource(eventSourceIncomingEvent);
-    SendMessageSender.addEventSource(eventSourceIncomingEventDlq);
+    SendMessageSender.addEventSource(eventSourceForSenderStageLambda);
+    SendMessageSender.addEventSource(eventSourceForSenderStageLambdaDLQ);
 
-    //Лямбда - обновляющая данные в DDB на INPROGRESS
-
-    const sendMessageDDBUpdateInProgress = new NodejsFunction(that, 'SendMessageDDBUpdateInProgress', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'DDBUpdateInProgress.ts'),
-        handler: 'handler',
-        functionName: 'scheduler-DDBUpdateInProgress-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
-        reservedConcurrentExecutions: 1,
-        environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-        },
-        bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
-        },
-        layers: layers
-    });
-
-    const eventSourceIncomingDDBEvent = new SqsEventSource(schedulerDDBUpdateQueue, {
-        enabled: true,
-        reportBatchItemFailures: true,
-        batchSize: 1
-    });
-
-    const eventSourceIncomingDDBEventDlq = new SqsEventSource(schedulerDDBUpdateQueueDLQ, {
-        enabled: false,
-        reportBatchItemFailures: true,
-        batchSize: 1
-    });
-
-    sendMessageDDBUpdateInProgress.addEventSource(eventSourceIncomingDDBEvent);
-    sendMessageDDBUpdateInProgress.addEventSource(eventSourceIncomingDDBEventDlq);
-
-    // const rule = new events.Rule(that, 'oneMinuteRule', {
-    //     schedule: events.Schedule.cron({ minute: '0/1' })
-    // });
-
-    // const target = new targets.LambdaFunction(SendMessagescheduler);
-
-    // rule.addTarget(target);
-
-    // targets.addLambdaPermission(rule, SendMessagescheduler);
-
-    // const DDBStreaming_SchdeduledMessages_dlqSQS = new Queue(that, 'DDBStreaming_ScheduledMessages_dlq', {
-    //     queueName: 'DDBStreaming_ScheduledMessages_dlq'
-    // });
-
-    // const dlqschedulerSQS = new SqsDlq(DDBStreaming_SchdeduledMessages_dlqSQS);
-    // const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-    // const botsTable = Table.fromTableAttributes(that, 'imported-BotsTable2', {
-    //     tableArn: DynamicEnvironment.DynamoDbTables.botsTable.arn,
-    //     globalIndexes: botsIndexes,
-    //     tableStreamArn: DynamicEnvironment.DynamoDbTables.botsTable.streamARN
-    // });
-    // const DDBEventSourceBots = new DynamoEventSource(botsTable, {
-    //     startingPosition: StartingPosition.TRIM_HORIZON,
-    //     batchSize: 100,
-    //     bisectBatchOnError: true,
-    //     onFailure: dlqschedulerSQS,
-    //     retryAttempts: 10,
-    //     filters: [
-    //         {
-    //             pattern: JSON.stringify({
-    //                 eventName: ['MODIFY'],
-    //                 dynamodb: {
-    //                     NewImage: {
-    //                         GSI1PK: { S: ['INPROGRESS'] }
-    //                     },
-    //                     OldImage: {
-    //                         GSI1PK: { S: ['SCHEDULED'] }
-    //                     }
-    //                 }
-    //             })
-    //         }
-    //     ]
-    // });
-
-    // const lambdaDDBStreamProcessor = new NodejsFunction(that, 'scheduledMessagesStreamProcessor-Lambda', {
-    //     entry: join(__dirname, '..', '..', '..', 'services', 'DDBStreaming', 'scheduledMessagesStreamProcessor.ts'),
-    //     handler: 'scheduledMessagesStreamProcessor',
-    //     functionName: 'scheduledMessagesStreamProcessor-Lambda',
-    //     runtime: StaticEnvironment.LambdaSettinds.runtime,
-    //     logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-    //     timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
-    //     environment: {
-    //         botsTable: StaticEnvironment.DynamoDbTables.botsTable.name,
-    //         region: StaticEnvironment.GlobalAWSEnvironment.region,
-    //         allowedOrigins: StaticEnvironment.WebResources.allowedOrigins.toString(),
-    //         cookieDomain: StaticEnvironment.WebResources.mainDomainName,
-    //         schedulerQueueURL: schedulledMessages_SQS.queueUrl,
-    //         schedulerQueueARN: schedulledMessages_SQS.queueArn,
-    //         ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-    //     },
-    //     bundling: {
-    //         externalModules: ['aws-sdk', '/opt/*']
-    //     },
-    //     layers: layers
-    // });
-
-    // lambdaDDBStreamProcessor.addToRolePolicy(statementSQS);
-
-    // lambdaDDBStreamProcessor.addEventSource(DDBEventSourceBots);
-
-    GrantAccessToDDB([SendMessagescheduler, SendMessagePreProcessor, SendMessagePreProcessor, sendMessageDDBUpdateInProgress, SendMessageSender], tables);
+    GrantAccessToDDB([SendMessageSchedullerFirstStageLambda, SendMessageSchedullerSecondStageLambda, SendMessageSender], tables);
     GrantAccessToS3(
-        [SendMessagescheduler, SendMessagePreProcessor, SendMessagePreProcessor, sendMessageDDBUpdateInProgress, SendMessageSender],
+        [SendMessageSchedullerFirstStageLambda, SendMessageSchedullerSecondStageLambda, SendMessageSender],
         [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
     );
 }

@@ -54,7 +54,11 @@
                 "SubscriptionProcessorSubsriptionPlanURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessorQueue.fifo",
                 "SubscribeToContentPlanQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-SubscribeTo-ContentPlan.fifo",
                 "SubscribeToSubscriptionPlanQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-SubscribeTo-SubscriptionPlan.fifo",
-                "AllowUsers": "199163834,1862254"
+                "AllowUsers": "199163834,1862254",
+                "AddScheduledPostQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-Scheduler-AddPost.fifo",
+                "DeleteScheduledPostQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-Scheduler-DeletePost.fifo",
+                "SendMessageSchedulerQueueFirstURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-First-Queue.fifo",
+                "SendMessageSchedulerQueueSecondURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-Second-Queue.fifo"
             }
         }
     ]

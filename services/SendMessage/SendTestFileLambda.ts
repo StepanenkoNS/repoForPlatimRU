@@ -16,16 +16,6 @@ import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 //@ts-ignore
 
-function getSendMethodEnum(enumValue: string) {
-    if (enumValue === 'sendMessage') return ETelegramSendMethod.sendMessage;
-    if (enumValue === 'sendPhoto') return ETelegramSendMethod.sendPhoto;
-    if (enumValue === 'sendAudio') return ETelegramSendMethod.sendAudio;
-    if (enumValue === 'sendDocument') return ETelegramSendMethod.sendDocument;
-    if (enumValue === 'sendVideo') return ETelegramSendMethod.sendVideo;
-    if (enumValue === 'sendAnimation') return ETelegramSendMethod.sendAnimation;
-    if (enumValue === 'sendVoice') return ETelegramSendMethod.sendVoice;
-}
-
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
     console.log(event);

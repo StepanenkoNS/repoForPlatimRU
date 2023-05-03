@@ -14,18 +14,8 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
 import { MessageSender } from '/opt/MessageSender';
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
-//@ts-ignore
 
-function getSendMethodEnum(enumValue: string) {
-    if (enumValue === 'sendMessage') return ETelegramSendMethod.sendMessage;
-    if (enumValue === 'sendPhoto') return ETelegramSendMethod.sendPhoto;
-    if (enumValue === 'sendAudio') return ETelegramSendMethod.sendAudio;
-    if (enumValue === 'sendDocument') return ETelegramSendMethod.sendDocument;
-    if (enumValue === 'sendVideo') return ETelegramSendMethod.sendVideo;
-    if (enumValue === 'sendAnimation') return ETelegramSendMethod.sendAnimation;
-    if (enumValue === 'sendVoice') return ETelegramSendMethod.sendVoice;
-}
+//@ts-ignore
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -39,21 +29,29 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'contentPlanId', datatype: 'string' },
+        { key: 'contentPlanPostId', datatype: 'string' },
         { key: 'sendMethod', datatype: ['sendMessage', 'sendPhoto', 'sendAudio', 'sendDocument', 'sendDocument', 'sendVideo', 'sendAnimation', 'sendVoice', 'sendVideoNote'] },
-        { key: 'message', datatype: 'object', objectKeys: [] }
+        { key: 'message', datatype: 'object', objectKeys: [] },
+        { key: 'interaction', datatype: 'object', objectKeys: [] }
     ]);
 
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const sendMethod = getSendMethodEnum(bodyObject.data.sendMethod);
-    const result = await MessageSender.SendTestMessage(Number(telegramUser.id), Number(bodyObject.data.botId), sendMethod!, bodyObject.data.message);
-
-    console.log('MessageSender.SendTestMessage result', result);
+    const result = await MessageSender.SendTestContentPlanMessage({
+        masterId: Number(telegramUser.id),
+        botId: Number(bodyObject.data.botId),
+        contentPlanId: bodyObject.data.contentPlanId,
+        contentPlanPostId: bodyObject.data.contentPlanPostId,
+        interaction: bodyObject.data.interaction,
+        message: bodyObject.data.message,
+        sendMethod: bodyObject.data.sendMethod
+    });
 
     const sendResult = ParseSendMessageResult(result);
-    console.log('sendResult', sendResult);
+
     const returnRestApiResult = ReturnRestApiResult(sendResult.code, sendResult.body, false, origin, renewedToken);
     console.log('returnRestApiResult', returnRestApiResult);
     return returnRestApiResult;

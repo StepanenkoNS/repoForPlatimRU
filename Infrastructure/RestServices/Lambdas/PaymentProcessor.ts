@@ -14,7 +14,7 @@ import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    const schedulerSendQueue = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForPaymentProcessor', DynamicEnvironment.SQS.SchedulerQueue.basicSQS_arn);
+    const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForPaymentProcessor', DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn);
 
     const paymentProcessorIncomingRequestQueueDLQ = Queue.fromQueueArn(that, 'imported-PaymentProcessorQueue', DynamicEnvironment.SQS.PaymentProcessorQueue.dlqSQS_arn);
 
@@ -45,7 +45,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
 
@@ -66,7 +66,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
-            schedulerSendQueueURL: schedulerSendQueue.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -83,7 +83,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
             paymentProcessorIncomingRequestQueue.queueArn,
             paymentProcessorConfirmationQueueDLQ.queueArn,
             paymentProcessorConfirmationQueue.queueArn,
-            schedulerSendQueue.queueArn,
+            SendMessageSchedulerQueueSecond.queueArn,
             SubscribeToSubscriptionPlanQueue.queueArn
         ],
         actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],

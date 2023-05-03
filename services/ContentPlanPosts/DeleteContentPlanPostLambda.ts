@@ -39,30 +39,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         id: bodyObject.data.id
     });
 
-    if (result !== false && result !== undefined) {
-        //делаем push в SQS
-        try {
-            const post = {
-                masterId: Number(telegramUser.id),
-                botId: Number(bodyObject.data.botId),
-                contentPlanId: bodyObject.data.contentPlanId,
-                contentPlanPostId: bodyObject.data.id
-            };
-
-            const messageGroupId: string = '#POSTID#' + result.id!;
-            const id = ksuid.randomSync(new Date()).string;
-            const messageParams: SQS.SendMessageRequest = {
-                QueueUrl: process.env.DeleteScheduledPostQueueURL!,
-                MessageBody: JSON.stringify(post),
-                MessageDeduplicationId: id,
-                MessageGroupId: messageGroupId
-            };
-            await sqs.sendMessage(messageParams).promise();
-        } catch (error) {
-            console.log('sqs send error', error);
-        }
-    }
-
     const deleteResult = ParseDeleteItemResult(result);
 
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);

@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a2e765cd42e5e0438d7ec8d521e6fd0164256fca8bbccbead3084779972ccac3.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/79f60569e95f05fad47960a3fcd3f4a7d238076fb39475773522115f4425539d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e7c47856461ba19fe4bb87070bd08176cfa591a4a1fa522d0826fb16fb02c39d.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/73542dd19e06a26967425e3cf49296dbc48fbfacadc2f745b9fe7152ee5b5727.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -729,7 +729,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/82bd8a4a5751b8a4ab07941e3c9203852d5cc06fff8babceb7c99a2e99534bea.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/946baf1b90a4f28f34afcfdbd97864e137d2e6bd8ca561cbd850df4ae5222394.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1280,7 +1280,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9e5059e7c47cc17c4e93c4b45b73a525dcd727ce53efa50044e3c292cd07c1b7.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/421f76506f42b49bf06de5a698a35e54fc80efa71c4bfa41cbea5103e95e8bc8.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1651,7 +1651,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9c49877044d4fc1f840ce43c6f0eb692368713f55deadc6915786a95ebf8d6e2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c04bbf094cf46683983ea7d4e02c9359e5437a3463967455360aefc89c13d6d7.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1757,64 +1757,64 @@
             "data": "ListBotPaymentsLambdaLogRetention412A79F8"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/scheduler-schedulerDDBUpdateQueueDLQ.fifo/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-First-Stage/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "schedulerschedulerDDBUpdateQueueDLQfifo50CC9D1C"
+            "data": "SendMessageSchedullerFirstStageServiceRole398BD03F"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/scheduler-schedulerDDBUpdateQueue.fifo/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-First-Stage/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "schedulerschedulerDDBUpdateQueuefifo91FFC94F"
+            "data": "SendMessageSchedullerFirstStageServiceRoleDefaultPolicyBB62FB3C"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagePreProcessor/ServiceRole/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-First-Stage/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessagePreProcessorServiceRole0AE9DB21"
+            "data": "SendMessageSchedullerFirstStage8B41BE99"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagePreProcessor/ServiceRole/DefaultPolicy/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-First-Stage/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessagePreProcessorServiceRoleDefaultPolicyC4D4AA01"
+            "data": "SendMessageSchedullerFirstStageLogRetentionE9EE387E"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagePreProcessor/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-Second-Stage/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessagePreProcessor8295B848"
+            "data": "SendMessageSchedullerSecondStageServiceRoleD3D8EC4E"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagePreProcessor/LogRetention/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-Second-Stage/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessagePreProcessorLogRetentionAF37044B"
+            "data": "SendMessageSchedullerSecondStageServiceRoleDefaultPolicy06851C85"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagescheduler/ServiceRole/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-Second-Stage/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessageschedulerServiceRole18DB892C"
+            "data": "SendMessageSchedullerSecondStageF93D5734"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagescheduler/ServiceRole/DefaultPolicy/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-Second-Stage/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessageschedulerServiceRoleDefaultPolicy84D10FB6"
+            "data": "SendMessageSchedullerSecondStageLogRetention6AC3564C"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagescheduler/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-Second-Stage/SqsEventSource:WebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueFirstforSendMessageScheduler209AB93A/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessagescheduler68E4C964"
+            "data": "SendMessageSchedullerSecondStageSqsEventSourceWebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueFirstforSendMessageScheduler209AB93A622C18F8"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessagescheduler/LogRetention/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-Second-Stage/SqsEventSource:WebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueFirstDLQforSendMessageScheduler1B22D5D2/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessageschedulerLogRetention14C56C40"
+            "data": "SendMessageSchedullerSecondStageSqsEventSourceWebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueFirstDLQforSendMessageScheduler1B22D5D2130ACD47"
           }
         ],
         "/WebRestServiceMessagesAndPayments/SendMessageSender/ServiceRole/Resource": [
@@ -1841,52 +1841,16 @@
             "data": "SendMessageSenderLogRetention650D1B3F"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessageSender/SqsEventSource:WebRestServiceMessagesAndPaymentsimportedschedulerSendQueueSendMessageScheduler5096D21A/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessageSender/SqsEventSource:WebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueSecondforSendMessageScheduler4BC2FFF1/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessageSenderSqsEventSourceWebRestServiceMessagesAndPaymentsimportedschedulerSendQueueSendMessageScheduler5096D21A6A2BDC5A"
+            "data": "SendMessageSenderSqsEventSourceWebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueSecondforSendMessageScheduler4BC2FFF1F7AD2A4F"
           }
         ],
-        "/WebRestServiceMessagesAndPayments/SendMessageSender/SqsEventSource:WebRestServiceMessagesAndPaymentsimportedschedulerSendQueueDLQSendMessageScheduler54D2A888/Resource": [
+        "/WebRestServiceMessagesAndPayments/SendMessageSender/SqsEventSource:WebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueSecondDLQforSendMessageSchedulerBD376BE8/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SendMessageSenderSqsEventSourceWebRestServiceMessagesAndPaymentsimportedschedulerSendQueueDLQSendMessageScheduler54D2A8881E5FEFCD"
-          }
-        ],
-        "/WebRestServiceMessagesAndPayments/SendMessageDDBUpdateInProgress/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "SendMessageDDBUpdateInProgressServiceRole7D4D0484"
-          }
-        ],
-        "/WebRestServiceMessagesAndPayments/SendMessageDDBUpdateInProgress/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "SendMessageDDBUpdateInProgressServiceRoleDefaultPolicyDE676324"
-          }
-        ],
-        "/WebRestServiceMessagesAndPayments/SendMessageDDBUpdateInProgress/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "SendMessageDDBUpdateInProgressB178F9F3"
-          }
-        ],
-        "/WebRestServiceMessagesAndPayments/SendMessageDDBUpdateInProgress/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "SendMessageDDBUpdateInProgressLogRetention1ADDE414"
-          }
-        ],
-        "/WebRestServiceMessagesAndPayments/SendMessageDDBUpdateInProgress/SqsEventSource:WebRestServiceMessagesAndPaymentsschedulerschedulerDDBUpdateQueuefifoD65C045B/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "SendMessageDDBUpdateInProgressSqsEventSourceWebRestServiceMessagesAndPaymentsschedulerschedulerDDBUpdateQueuefifoD65C045BDB123F31"
-          }
-        ],
-        "/WebRestServiceMessagesAndPayments/SendMessageDDBUpdateInProgress/SqsEventSource:WebRestServiceMessagesAndPaymentsschedulerschedulerDDBUpdateQueueDLQfifoAD223F1A/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "SendMessageDDBUpdateInProgressSqsEventSourceWebRestServiceMessagesAndPaymentsschedulerschedulerDDBUpdateQueueDLQfifoAD223F1ABA30176B"
+            "data": "SendMessageSenderSqsEventSourceWebRestServiceMessagesAndPaymentsimportedSendMessageSchedulerQueueSecondDLQforSendMessageSchedulerBD376BE8A16ADC31"
           }
         ],
         "/WebRestServiceMessagesAndPayments/paymentProcessorIncomingRequests/ServiceRole/Resource": [
@@ -2232,7 +2196,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ef4fe710746fa209eff0616d3c679f76285d8891248e4053ab47e7f9062707c9.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/8bdd5472e1d867a5e3a3d08728e113204250317b7af7668a82b5db5dde4d0a18.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2603,7 +2567,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/4719064b58e5d399e5e6560a3fe073a3dadd4c0faa9218e21faf80443be9a0c7.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a0f03183c0830a339b57b98723f4fb7da3fc3a6d06605f4e124bc50db801051d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3064,7 +3028,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/19fa26a5c79c872b309c54831495891cea2b40e77e9eae67eed3566fca7a5b47.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6285d95b5d3d06135d5f363d79e618636106f7001044699ddcfd8a6db77df3c2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3255,7 +3219,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9728f554b8ac7f480fe95242213659ce6ebf5070cd825411db065208ae7a1861.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ac9d617a60d2a2de37a82edba2145bfcac26d08b6e66e4f223cf2c1237773a4f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
