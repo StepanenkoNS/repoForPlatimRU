@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -33,10 +34,10 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const contentPlan: IContentPlan = {
         discriminator: 'IContentPlan',
         masterId: Number(telegramUser.id),
-        id: bodyObject.data.id,
-        botId: Number(bodyObject.data.botId),
-        name: bodyObject.data.name,
-        description: bodyObject.data.description
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
     };
     const result = await ContentConfigurator.UpdateContentPlan(contentPlan);
 

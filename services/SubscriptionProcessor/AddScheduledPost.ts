@@ -1,16 +1,10 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
-import { SQS } from 'aws-sdk';
-import ksuid from 'ksuid';
 
-import { MessageSender } from '/opt/MessageSender';
 //@ts-ignore
 import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
-
-import { IScheduleContentPlan, PostTrigger } from '/opt/ContentTypes';
-
-const sqs = new SQS({ region: process.env.region });
+import { PostTrigger } from '/opt/ContentTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

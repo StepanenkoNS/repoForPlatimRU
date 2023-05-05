@@ -1,3 +1,5 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
+
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -39,11 +41,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (Number(telegramUser.id) === 199163834) {
         result = await MasterManager.AddSubscription({
             masterId: Number(telegramUser.id),
-            lengthInDays: Number(bodyObject.data.lengthInDays),
-            subscriptionPlan: bodyObject.data.subscriptionPlan,
-            subscriptionLevel: Number(bodyObject.data.subscriptionLevel),
-            pricePaid: Number(bodyObject.data.pricePaid),
-            currency: bodyObject.data.currency
+            lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
+            subscriptionPlan: TextHelper.SanitizeToDirectText(bodyObject.data.subscriptionPlan) as any,
+            subscriptionLevel: Number(TextHelper.SanitizeToDirectText(bodyObject.data.subscriptionLevel)),
+            pricePaid: Number(TextHelper.SanitizeToDirectText(bodyObject.data.pricePaid)),
+            currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any
         });
     }
 

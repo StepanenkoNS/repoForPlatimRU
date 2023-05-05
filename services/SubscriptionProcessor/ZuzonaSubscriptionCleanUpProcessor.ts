@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 //@ts-ignore
 import { MasterManager } from '/opt/MasterManager';
 

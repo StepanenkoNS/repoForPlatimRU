@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -25,7 +26,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await MessagingBotManager.SetWebhook(Number(telegramUser.id), Number(bodyObject.data.id));
+    const result = await MessagingBotManager.SetWebhook(Number(telegramUser.id), Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)));
 
     const addResult = ParseInsertItemResult(result);
 

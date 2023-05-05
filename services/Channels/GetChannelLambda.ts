@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
@@ -25,7 +26,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await ChannelManager.GetMyChannelById({
         masterId: Number(telegramUser.id),
-        id: Number(event.queryStringParameters!.id!)
+        id: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
     });
     const getResult = ParseGetItemResult(result);
 

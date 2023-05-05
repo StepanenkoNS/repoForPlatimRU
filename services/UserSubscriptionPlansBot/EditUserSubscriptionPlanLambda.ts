@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 

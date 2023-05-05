@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
@@ -44,14 +45,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const messageFile: IMessageFile = {
         discriminator: 'IMessageFile',
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.data.botId),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
 
-        id: bodyObject.data.id,
-        name: bodyObject.data.name,
-        s3key: bodyObject.data.s3key,
-        mediaType: mediaType.type,
-        originalFileName: bodyObject.data.originalFileName,
-        fileSize: bodyObject.data.fileSize,
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        s3key: TextHelper.SanitizeToDirectText(bodyObject.data.s3key),
+        mediaType: TextHelper.SanitizeToDirectText(mediaType.type) as any,
+        originalFileName: TextHelper.SanitizeToDirectText(bodyObject.data.originalFileName),
+        fileSize: Number(TextHelper.SanitizeToDirectText(bodyObject.data.fileSize)),
         tags: bodyObject.data.tags
     };
     //если указан s3Key - то будем менять старый файл

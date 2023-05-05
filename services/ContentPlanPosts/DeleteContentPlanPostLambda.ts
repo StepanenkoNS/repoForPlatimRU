@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -10,7 +11,6 @@ import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/R
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 import { SQS } from 'aws-sdk';
-import ksuid from 'ksuid';
 
 const sqs = new SQS({ region: process.env.region });
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -34,9 +34,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await ContentConfigurator.DeleteContentPlanPost({
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.data.botId),
-        contentPlanId: bodyObject.data.contentPlanId,
-        id: bodyObject.data.id
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
 
     const deleteResult = ParseDeleteItemResult(result);

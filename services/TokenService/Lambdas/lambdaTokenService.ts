@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent } from 'aws-lambda';
 //@ts-ignore
 import { CreateNewTokens } from '/opt/AuthHelpers/GetNewToken';

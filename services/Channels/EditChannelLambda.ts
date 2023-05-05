@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -32,8 +33,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const telegramChannel: ITelegramChannel = {
         discriminator: 'ITelegramChannel',
         masterId: Number(telegramUser.id),
-        id: Number(bodyObject.data.id),
-        name: bodyObject.data.name
+        id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name)
     };
     const result = await ChannelManager.UpdateChannel(telegramChannel);
 

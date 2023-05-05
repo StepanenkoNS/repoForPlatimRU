@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
@@ -29,7 +30,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const result = await FileS3Configurator.ListMyMessageFiles(
         {
             masterId: Number(telegramUser.id),
-            botId: Number(event.queryStringParameters!.botId!)
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
         },
         tags
     );

@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 const StringIsNumber = (value: any) => isNaN(Number(value)) === false;
 
 // Turn enum into array

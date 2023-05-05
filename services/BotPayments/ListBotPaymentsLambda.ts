@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
@@ -37,8 +38,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await PaymentOptionsManager.ListMyBotPayments({
         masterId: Number(telegramUser.id),
-        botId: Number(event.queryStringParameters!.botId!),
-        type: type as any
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        type: TextHelper.SanitizeToDirectText(type) as any
     });
     const listResult = ParseListItemsResult(result);
 

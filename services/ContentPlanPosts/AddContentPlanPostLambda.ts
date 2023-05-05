@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
@@ -38,13 +39,13 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await ContentConfigurator.AddContentPlanPost({
-        botId: Number(bodyObject.data.botId),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
         discriminator: 'IContentPlanPost',
 
-        contentPlanId: bodyObject.data.contentPlanId,
-        sendMethod: bodyObject.data.sendMethod,
-        name: bodyObject.data.name,
+        contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
+        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
 
         message: bodyObject.data.message,
         trigger: bodyObject.data.trigger,

@@ -15,6 +15,7 @@ import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateChannelsLambdas } from './Lambdas/Channels';
+import { CreateBotCommandsLambdas } from './Lambdas/BotCommands';
 
 export class MainRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -46,6 +47,12 @@ export class MainRestServicesStack extends Stack {
             lambdas: botLambdas
         });
 
+        const botCommands = CreateBotCommandsLambdas(this, layers, [botsTable]);
+
+        this.lambdaIntegrations.push({
+            rootResource: 'BotCommands',
+            lambdas: botCommands
+        });
         const channelLambdas = CreateChannelsLambdas(this, layers, [botsTable]);
 
         this.lambdaIntegrations.push({

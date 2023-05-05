@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
@@ -25,8 +26,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await ContentConfigurator.GetMyContentPlanById({
         masterId: Number(telegramUser.id),
-        botId: Number(event.queryStringParameters!.botId!),
-        id: event.queryStringParameters!.id!
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
     });
     const getResult = ParseGetItemResult(result);
 

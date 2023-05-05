@@ -1,3 +1,5 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
+
 import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 

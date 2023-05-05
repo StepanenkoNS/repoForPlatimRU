@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -32,9 +33,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const bot: IMessagingBot = {
         masterId: Number(telegramUser.id),
-        id: Number(bodyObject.data.id),
-        description: bodyObject.data.description,
-        token: bodyObject.data.token ? bodyObject.data.token : undefined,
+        id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)),
+        description: TextHelper.SanitizeToDirectText(bodyObject.data.description),
+        token: bodyObject.data.token ? TextHelper.SanitizeToDirectText(bodyObject.data.token) : undefined,
         discriminator: 'IMessagingBot'
     };
     console.log('bot', bot);

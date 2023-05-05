@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
@@ -37,9 +38,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const s3Result = await S3Helper.GeneratePreSignedURL_Put(
         process.env.tempUploadsBucketName!,
         Number(telegramUser.id),
-        Number(bodyObject.data.botId),
-        bodyObject.data.fileName,
-        bodyObject.data.fileType,
+        Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        TextHelper.SanitizeToDirectText(bodyObject.data.fileName),
+        TextHelper.SanitizeToDirectText(bodyObject.data.fileType),
         1
     );
     console.log(s3Result);

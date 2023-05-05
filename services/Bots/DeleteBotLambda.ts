@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -29,7 +30,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await MessagingBotManager.DeleteMyBot({
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.data.id)
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
     });
     const deleteResult = ParseGetItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);

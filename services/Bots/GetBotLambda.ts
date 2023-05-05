@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
@@ -27,7 +28,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await MessagingBotManager.GetMyBot({
         masterId: Number(telegramUser.id),
-        botId: Number(botId)
+        botId: Number(TextHelper.SanitizeToDirectText(botId))
     });
     const getResult = ParseGetItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);

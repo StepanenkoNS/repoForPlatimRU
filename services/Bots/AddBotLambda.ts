@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
@@ -36,9 +37,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const bot: IMessagingBot = {
         discriminator: 'IMessagingBot',
         masterId: Number(telegramUser.id),
-        description: bodyObject.data.description,
-        token: bodyObject.data.token ? bodyObject.data.token : '',
-        id: bodyObject.data.id
+        description: TextHelper.SanitizeToDirectText(bodyObject.data.description),
+        token: bodyObject.data.token ? TextHelper.SanitizeToDirectText(bodyObject.data.token) : '',
+        id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
     };
     const result = await MessagingBotManager.AddMyBot(bot);
 

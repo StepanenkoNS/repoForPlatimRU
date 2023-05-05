@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -45,24 +46,24 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     if (bodyObject.data.type === 'DIRECT') {
         result = await PaymentOptionsManager.AddDirectPaymentOption({
             masterId: Number(telegramUser.id),
-            botId: Number(bodyObject.data.botId),
+            botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionDirectCardTransfer',
-            name: bodyObject.data.name,
+            name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
             type: EPaymentType.DIRECT,
-            currency: bodyObject.data.currency,
-            description: bodyObject.data.description
+            currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
+            description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
         });
     }
     if (bodyObject.data.type === 'INTEGRATION') {
         result = await PaymentOptionsManager.AddIntegrationPaymentOption({
             masterId: Number(telegramUser.id),
-            botId: Number(bodyObject.data.botId),
+            botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionPaymentIntegration',
-            name: bodyObject.data.name,
+            name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
             type: EPaymentType.INTEGRATION,
-            token: bodyObject.data.token,
-            currency: bodyObject.data.currency,
-            description: bodyObject.data.description
+            token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
+            currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
+            description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
         });
     }
     const addResult = ParseInsertItemResult(result);

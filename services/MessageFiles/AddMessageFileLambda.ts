@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
@@ -44,12 +45,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         discriminator: 'IMessageFile',
         masterId: Number(telegramUser.id),
 
-        botId: Number(bodyObject.data.botId),
-        name: bodyObject.data.name,
-        s3key: bodyObject.data.s3key,
-        originalFileName: bodyObject.data.originalFileName,
-        fileSize: bodyObject.data.fileSize,
-        mediaType: mediaType.type,
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        s3key: TextHelper.SanitizeToDirectText(bodyObject.data.s3key),
+        originalFileName: TextHelper.SanitizeToDirectText(bodyObject.data.originalFileName),
+        fileSize: Number(TextHelper.SanitizeToDirectText(bodyObject.data.fileSize)),
+        mediaType: TextHelper.SanitizeToDirectText(mediaType.type) as any,
         attachedToPosts: [],
         tags: bodyObject.data.tags
     };

@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 

@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -37,12 +38,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         masterId: Number(telegramUser.id),
         discriminator: 'IContentPlanPost',
 
-        id: bodyObject.data.id,
-        botId: Number(bodyObject.data.botId),
-        contentPlanId: bodyObject.data.contentPlanId,
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
 
-        name: bodyObject.data.name,
-        sendMethod: bodyObject.data.sendMethod,
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
 
         trigger: bodyObject.data.trigger,
         message: bodyObject.data.message,

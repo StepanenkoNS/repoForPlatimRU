@@ -14,6 +14,18 @@ import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-
 import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
+    const expireSubscriptionQueue = Queue.fromQueueArn(
+        that,
+        'imported-expireSubscriptionQueue-ForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.expireSubscriptionQueue.basicSQS_arn
+    );
+
+    const expireSubscriptionQueueDLQ = Queue.fromQueueArn(
+        that,
+        'imported-expireSubscriptionQueueDLQ-ForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.expireSubscriptionQueue.dlqSQS_arn
+    );
+
     const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(
         that,
         'imported-SendMessageSchedulerQueueSecondForCreateSubscriptionProcessor',
@@ -214,16 +226,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     SubscriptionProcessorContentPlanLambda.addEventSource(contentEvent);
     SubscriptionProcessorContentPlanLambda.addEventSource(contentEventDLQ);
 
-    const CleanupChannelLambda = new NodejsFunction(that, 'CleanupChannelLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscriptionCleanUpChannelProcessor.ts'),
+    const expiteChannelSubscriptionLambda = new NodejsFunction(that, 'expiteChannelSubscriptionLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expiteChannelSubscriptionLambda.ts'),
         handler: 'handler',
-        functionName: 'subscriptionProcessor-Cleanup-Channels',
+        functionName: 'subscriptionProcessor-Expire-ChannelSubsriptions',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         reservedConcurrentExecutions: 1,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -231,17 +244,56 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         layers: layers
     });
 
-    const eventRuleChannels: events.Rule = new events.Rule(that, 'oneHourCleanupChannels', {
-        schedule: events.Schedule.rate(Duration.hours(24)),
-        ruleName: 'oneHourCleanupChannels'
+    const eventRuleChannels: events.Rule = new events.Rule(that, 'oneHourExpireChannelSubscription', {
+        schedule: events.Schedule.rate(Duration.hours(1)),
+        ruleName: 'oneHourExpireChannelSubscription'
     });
 
     eventRuleChannels.addTarget(
-        new targets.LambdaFunction(CleanupChannelLambda, {
+        new targets.LambdaFunction(expiteChannelSubscriptionLambda, {
             event: events.RuleTargetInput.fromObject({ message: 'Hello Lambda' })
         })
     );
-    targets.addLambdaPermission(eventRuleChannels, CleanupChannelLambda);
+    targets.addLambdaPermission(eventRuleChannels, expiteChannelSubscriptionLambda);
+
+    const expiteBotSubscriptionLambda = new NodejsFunction(that, 'expiteBotSubscriptionLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expiteBotSubscriptionLambda.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-Expire-BotSubscriptions',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        reservedConcurrentExecutions: 1,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const eventRuleBots: events.Rule = new events.Rule(that, 'oneHourExpireBotSubscription', {
+        schedule: events.Schedule.rate(Duration.hours(1)),
+        ruleName: 'oneHourExpireBotSubscription'
+    });
+
+    eventRuleBots.addTarget(
+        new targets.LambdaFunction(expiteBotSubscriptionLambda, {
+            event: events.RuleTargetInput.fromObject({ message: 'Hello Lambda' })
+        })
+    );
+    targets.addLambdaPermission(eventRuleBots, expiteBotSubscriptionLambda);
+
+    const statementSQSexpireSubscriptionQueue = new PolicyStatement({
+        resources: [expireSubscriptionQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
+    expiteBotSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
+    expiteChannelSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
 
     const ZuzonaSubscriptionCleanUpProcessor = new NodejsFunction(that, 'ZuzonaSubscriptionCleanUpProcessor', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'ZuzonaSubscriptionCleanUpProcessor.ts'),
@@ -272,16 +324,50 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     );
     targets.addLambdaPermission(eventRuleZuzona, ZuzonaSubscriptionCleanUpProcessor);
 
+    const expireUserSubscriptionItemLambda = new NodejsFunction(that, 'expireUserSubscriptionItem', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expireUserSubscriptionItem.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-Expire-expireUserSubscriptionItem',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        reservedConcurrentExecutions: 1,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const expireSubscriptionItemEvent = new SqsEventSource(expireSubscriptionQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const expireSubscriptionItemEventDLQ = new SqsEventSource(expireSubscriptionQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    expireUserSubscriptionItemLambda.addEventSource(expireSubscriptionItemEvent);
+    expireUserSubscriptionItemLambda.addEventSource(expireSubscriptionItemEventDLQ);
+
     GrantAccessToDDB(
         [
-            CleanupChannelLambda,
             SubscriptionProcessorContentPlanLambda,
             SubscriptionProcessorSubscriptionPlanLambda,
             ZuzonaSubscriptionCleanUpProcessor,
             SubscriptionProcessorAddScheduledPostLambda,
-            SubscriptionProcessorDeleteScheduledPostLambda
+            SubscriptionProcessorDeleteScheduledPostLambda,
+            expireUserSubscriptionItemLambda,
+            expiteBotSubscriptionLambda,
+            expiteChannelSubscriptionLambda
         ],
         tables
     );
-    //     GrantAccessToS3([SubscriptionProcessorLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
+    // GrantAccessToS3([SubscriptionProcessorLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 }

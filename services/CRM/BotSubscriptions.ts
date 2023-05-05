@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -28,7 +29,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await CrmManager.ListMyBotsSubscriptions({
         masterId: Number(telegramUser.id),
-        botId: Number(event.queryStringParameters!.botId!)
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
     });
 
     const listResults = ParseListItemsResult(result);

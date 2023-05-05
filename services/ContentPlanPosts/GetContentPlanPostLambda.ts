@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -27,9 +28,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await ContentConfigurator.GetMyContentPlanPostById({
         masterId: Number(telegramUser.id),
-        botId: Number(event.queryStringParameters!.botId!),
-        contentPlanId: event.queryStringParameters!.contentPlanId!,
-        id: event.queryStringParameters!.id!
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        contentPlanId: TextHelper.SanitizeToDirectText(event.queryStringParameters!.contentPlanId!),
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
     });
     const getResult = ParseGetItemResult(result);
 

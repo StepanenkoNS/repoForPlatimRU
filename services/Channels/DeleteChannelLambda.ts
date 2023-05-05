@@ -1,3 +1,4 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
@@ -28,7 +29,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await ChannelManager.DeleteChannel({
         masterId: Number(telegramUser.id),
-        id: Number(bodyObject.data.id)
+        id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
     });
 
     const deleteResult = ParseDeleteItemResult(result);
