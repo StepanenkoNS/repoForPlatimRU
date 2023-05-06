@@ -30,8 +30,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await FileTelegramConfigurator.DeleteTelegramFile({
         masterId: telegramUser.id,
-        botId: Number(bodyObject.data.botId),
-        id: bodyObject.data.id
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
 
     const deleteResult = ParseDeleteItemResult(result);

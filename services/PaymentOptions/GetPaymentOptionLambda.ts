@@ -26,8 +26,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await PaymentOptionsManager.GetMyPaymentOptionById({
         masterId: Number(telegramUser.id),
-        botId: Number(event.queryStringParameters!.botId!),
-        id: event.queryStringParameters!.id!
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
     });
     const getResult = ParseGetItemResult(result);
 

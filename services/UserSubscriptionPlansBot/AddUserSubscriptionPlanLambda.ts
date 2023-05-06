@@ -38,11 +38,11 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const result = await UserSubscriptionPlanBot.AddUserSubscriptionPlanBot({
         masterId: telegramUser.id,
         discriminator: 'IUserSubscriptionPlanBot',
-        botId: bodyObject.data.botId,
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         contentPlans: bodyObject.data.contentPlans,
         enabled: bodyObject.data.enabled,
-        lengthInDays: bodyObject.data.lengthInDays,
-        name: bodyObject.data.name,
+        lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         prices: bodyObject.data.prices
     });
     const addResult = ParseInsertItemResult(result);

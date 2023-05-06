@@ -72,7 +72,6 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tab
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },

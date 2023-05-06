@@ -31,9 +31,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await UserSubscriptionPlanBot.DeleteUserSubscriptionPlanBot({
-        masterId: telegramUser.id,
-        botId: bodyObject.data.botId,
-        id: bodyObject.data.id
+        masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
 
     const deleteResult = ParseDeleteItemResult(result);

@@ -24,7 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, undefined);
     }
 
-    const result = await BotLanging.GetBotLanging(event.queryStringParameters!.id!);
+    const result = await BotLanging.GetBotLanging(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!));
     const getResult = ParseGetItemResult(result);
 
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, undefined);

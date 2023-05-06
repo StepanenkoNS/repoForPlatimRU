@@ -39,14 +39,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     try {
         const result = await UserSubscriptionPlanBot.UpdateUserSubscriptionPlanBot({
-            id: bodyObject.data.id,
-            masterId: telegramUser.id,
+            id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
+            masterId: Number(telegramUser.id),
             discriminator: 'IUserSubscriptionPlanBot',
-            botId: bodyObject.data.botId,
+            botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             enabled: bodyObject.data.enabled,
             contentPlans: bodyObject.data.contentPlans,
-            lengthInDays: bodyObject.data.lengthInDays,
-            name: bodyObject.data.name,
+            lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
+            name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
             prices: bodyObject.data.prices
         });
 

@@ -33,10 +33,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     const botLanding: IBotLanding = {
         discriminator: 'IBotLanding',
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.data.botId),
-        body: bodyObject.data.body,
-        subdomain: bodyObject.data.subdomain,
-        title: bodyObject.data.title
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        body: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.body),
+        subdomain: TextHelper.SanitizeToDirectText(bodyObject.data.subdomain),
+        title: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.title)
     };
     console.log('botLanding', botLanding);
     const result = await BotLanging.UpdateBotLanging(botLanding);

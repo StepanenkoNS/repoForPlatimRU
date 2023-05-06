@@ -34,7 +34,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     const result = await FileTelegramConfigurator.ListMyTelegramFiles(
         {
             masterId: telegramUser.id,
-            botId: Number(event.queryStringParameters!.botId!)
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
         },
         tags
     );

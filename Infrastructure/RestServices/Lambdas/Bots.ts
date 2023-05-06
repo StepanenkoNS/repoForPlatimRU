@@ -58,8 +58,6 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
-
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -78,7 +76,6 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -98,7 +95,6 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -118,7 +114,6 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            telegramFacingAPIurl: DynamicEnvironment.GateWays.messageBotTelegramFacingGW,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },

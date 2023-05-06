@@ -27,9 +27,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await UserSubscriptionPlanBot.GetUserSubscriptionPlanBotById({
-        id: event.queryStringParameters!.id!,
-        botId: Number(event.queryStringParameters!.botId!),
-        masterId: telegramUser.id
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!),
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        masterId: Number(telegramUser.id)
     });
 
     const getResult = ParseGetItemResult(result);

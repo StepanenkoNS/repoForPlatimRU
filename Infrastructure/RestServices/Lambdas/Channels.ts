@@ -5,10 +5,14 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //Вывод списка
@@ -79,7 +83,119 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         layers: layers
     });
 
-    GrantAccessToDDB([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda], tables);
+    ///////////миграция пользователей канала
+    //очереди сообщений
+    const migrateChannelFirstQueue = Queue.fromQueueArn(that, 'imported-migrateChannelFirstQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.migrateChannelQueue.First.basicSQS_arn);
+    const migrateChannelFirstQueueDLQ = Queue.fromQueueArn(that, 'imported-migrateChannelFirstQueueDLQ-CreateChannelsLambdas', DynamicEnvironment.SQS.migrateChannelQueue.First.dlqSQS_arn);
+
+    const migrateChannelSecondQueue = Queue.fromQueueArn(that, 'imported-migrateChannelSecondQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.migrateChannelQueue.Second.basicSQS_arn);
+    const migrateChannelSecondQueueDLQ = Queue.fromQueueArn(that, 'imported-migrateChannelSecondQueueDLQ-CreateChannelsLambdas', DynamicEnvironment.SQS.migrateChannelQueue.Second.dlqSQS_arn);
+
+    //очередь для отправки сообщений в ТГ о процессе
+    const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(that, 'imported-schedulerSendQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn);
+
+    //очереди для upsert user
+    const SubscribeToSubscriptionPlanQueue = Queue.fromQueueArn(
+        that,
+        'imported-SubscribeToSubscriptionPlanQueue-CreateChannelsLambdas',
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToSubscriptionPlanQueue.basicSQS_arn
+    );
+    const SubscribeToContentPlanQueue = Queue.fromQueueArn(
+        that,
+        'imported-SubscribeToContentPlanQueue-CreateChannelsLambdas',
+        DynamicEnvironment.SQS.SubscriptionProcessorQueue.SubscribeToContentPlanQueue.basicSQS_arn
+    );
+    //миграция канала - первая стадия опции оплаты
+    const MigrateChannelFirstStageLambda = new NodejsFunction(that, 'MigrateChannelFirstStage', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'MigrateChannelFirstStage.ts'),
+        handler: 'handler',
+        functionName: 'react-Channels-Migrate-first',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            migrateChannelSecondQueueURL: migrateChannelSecondQueue.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+    //миграция канала - первая стадия опции оплаты
+    const MigrateChannelSecondStageLambda = new NodejsFunction(that, 'MigrateChannelSecondStage', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'MigrateChannelSecondStage.ts'),
+        handler: 'handler',
+        functionName: 'react-Channels-Migrate-second',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
+            SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    //ивент сорсинг для первой лямбды
+    const eventSourceForFirstStageLambda = new SqsEventSource(migrateChannelFirstQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const eventSourceForFirstStageLambdaDLQ = new SqsEventSource(migrateChannelFirstQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    MigrateChannelFirstStageLambda.addEventSource(eventSourceForFirstStageLambda);
+    MigrateChannelFirstStageLambda.addEventSource(eventSourceForFirstStageLambdaDLQ);
+
+    //ивент сорсинг для второй лямбды
+    const eventSourceForSecondStageLambda = new SqsEventSource(migrateChannelSecondQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const eventSourceForSecondStageLambdaDLQ = new SqsEventSource(migrateChannelSecondQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    MigrateChannelSecondStageLambda.addEventSource(eventSourceForSecondStageLambda);
+    MigrateChannelSecondStageLambda.addEventSource(eventSourceForSecondStageLambdaDLQ);
+
+    //разрешаем пушить первой лямбде в следующую очередь во флоу и отправлять сообщения назад в ТГ
+    const statementSQSforFirstLambda = new PolicyStatement({
+        resources: [SendMessageSchedulerQueueSecond.queueArn, migrateChannelSecondQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
+    MigrateChannelFirstStageLambda.addToRolePolicy(statementSQSforFirstLambda);
+
+    //разрешаем втрой лямбде очереди для UpsertBotUser первой лямбде в следующую очередь во флоу и отправлять сообщения назад в ТГ
+    const statementSQSforSecondLambda = new PolicyStatement({
+        resources: [SubscribeToSubscriptionPlanQueue.queueArn, SubscribeToContentPlanQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
+    MigrateChannelSecondStageLambda.addToRolePolicy(statementSQSforSecondLambda);
+
+    //SubscribeToSubscriptionPlanQueue
+
+    GrantAccessToDDB([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda, MigrateChannelFirstStageLambda, MigrateChannelSecondStageLambda], tables);
 
     GrantAccessToS3([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 

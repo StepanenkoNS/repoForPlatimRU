@@ -43,12 +43,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await MessageSender.SendTestContentPlanMessage({
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.data.botId),
-        contentPlanId: bodyObject.data.contentPlanId,
-        contentPlanPostId: bodyObject.data.contentPlanPostId,
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
+        contentPlanPostId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanPostId),
         interaction: bodyObject.data.interaction,
         message: bodyObject.data.message,
-        sendMethod: bodyObject.data.sendMethod
+        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any
     });
 
     const sendResult = ParseSendMessageResult(result);

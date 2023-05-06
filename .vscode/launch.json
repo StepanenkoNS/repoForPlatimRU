@@ -58,7 +58,9 @@
                 "AddScheduledPostQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-Scheduler-AddPost.fifo",
                 "DeleteScheduledPostQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessor-Scheduler-DeletePost.fifo",
                 "SendMessageSchedulerQueueFirstURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-First-Queue.fifo",
-                "SendMessageSchedulerQueueSecondURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-Second-Queue.fifo"
+                "SendMessageSchedulerQueueSecondURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-Second-Queue.fifo",
+                "migrateChannelFirstQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/migrateChannel-firstStage.fifo",
+                "migrateChannelSecondQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/migrateChannel-secondStage.fifo"
             }
         }
     ]

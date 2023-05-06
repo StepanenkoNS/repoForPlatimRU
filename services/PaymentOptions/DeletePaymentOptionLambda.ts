@@ -33,8 +33,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await PaymentOptionsManager.DeletePaymentOption({
         masterId: Number(telegramUser.id),
-        botId: Number(bodyObject.data.botId),
-        id: bodyObject.data.id
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
     const deleteResult = ParseDeleteItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);

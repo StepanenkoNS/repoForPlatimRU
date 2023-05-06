@@ -40,14 +40,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await UserSubscriptionPlanChannel.AddUserSubscriptionPlanChannel({
-        masterId: telegramUser.id,
+        masterId: Number(telegramUser.id),
         discriminator: 'IUserSubscriptionPlanChannel',
-        botId: bodyObject.data.botId,
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         enabled: bodyObject.data.enabled,
-        lengthInDays: bodyObject.data.lengthInDays,
-        name: bodyObject.data.name,
+        lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         prices: bodyObject.data.prices,
-        channelId: bodyObject.data.channelId
+        channelId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.channelId))
     });
     const addResult = ParseInsertItemResult(result);
 

@@ -26,8 +26,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await FileTelegramConfigurator.GetMyTelegramFileById({
         masterId: telegramUser.id,
-        botId: Number(event.queryStringParameters!.botId!),
-        id: event.queryStringParameters!.id!
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
     });
     console.log('result', result);
     const getResult = ParseGetItemResult(result);

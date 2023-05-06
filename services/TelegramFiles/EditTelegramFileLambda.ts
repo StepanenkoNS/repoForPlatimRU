@@ -32,9 +32,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const messageFile = {
         masterId: telegramUser.id,
-        botId: Number(bodyObject.data.botId),
-        id: bodyObject.data.id,
-        name: bodyObject.data.name,
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         tags: bodyObject.data.tags
     };
     //если указан s3Key - то будем менять старый файл

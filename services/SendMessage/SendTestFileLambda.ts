@@ -36,7 +36,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await MessageSender.SendTestFile(Number(telegramUser.id), Number(bodyObject.data.botId), bodyObject.data.fileId);
+    const result = await MessageSender.SendTestFile(Number(telegramUser.id), Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)), TextHelper.SanitizeToDirectText(bodyObject.data.fileId));
 
     const sendResult = ParseSendMessageResult(result);
     console.log('sendResult', sendResult);
