@@ -1,4 +1,4 @@
-import { UpdateBotLandingHandler } from 'services/WebBotLandingPages/UpdateBotLanding';
+import { handler } from 'services/WebBotLandingPages/UpdateBotLanding';
 
 const event = {
     resource: '/Landing',
@@ -98,7 +98,7 @@ const event = {
 };
 
 async function main() {
-    UpdateBotLandingHandler(event as any);
+    handler(event as any);
 }
 
 main();

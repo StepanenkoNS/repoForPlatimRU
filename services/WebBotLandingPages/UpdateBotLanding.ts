@@ -11,7 +11,7 @@ import { BotLanging } from '/opt/BotLanding';
 import { IBotLanding } from '/opt/BotLandingTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
-    //console.log(JSON.stringify(event));
+    console.log(JSON.stringify(event));
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -22,9 +22,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'body', datatype: 'string' },
         { key: 'subdomain', datatype: 'string' },
-        { key: 'title', datatype: 'string' }
+        { key: 'title', datatype: 'string' },
+        { key: 'header', datatype: 'string' },
+        { key: 'body', datatype: 'string' },
+        { key: 'footer', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
@@ -34,11 +36,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         discriminator: 'IBotLanding',
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        title: TextHelper.SanitizeToDirectText(bodyObject.data.title),
+        header: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.header),
         body: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.body),
-        subdomain: TextHelper.SanitizeToDirectText(bodyObject.data.subdomain),
-        title: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.title)
+        footer: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.footer),
+        subdomain: TextHelper.SanitizeToDirectText(bodyObject.data.subdomain)
     };
-    console.log('botLanding', botLanding);
+
     const result = await BotLanging.UpdateBotLanging(botLanding);
 
     const updateResult = ParseUpdateItemResult(result);
