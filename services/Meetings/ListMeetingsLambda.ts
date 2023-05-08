@@ -1,17 +1,15 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-
+import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-
-import { MessagingBotManager } from '/opt/MessagingBotManager';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+//@ts-ignore
+import { MeetingsConfiguratior } from '/opt/MeetingsConfiguratior';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -24,18 +22,13 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-
-    if (!ValidateStringParameters(event, ['botId', 'id'])) {
+    if (!ValidateStringParameters(event, ['botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
+    [];
+    const result = await MeetingsConfiguratior.ListMyMeetings({ masterId: Number(telegramUser.id), botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)) });
 
-    const result = await MessagingBotManager.GetBotUser({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
-    });
-
-    const listResults = ParseGetItemResult(result);
+    const listResults = ParseListItemsResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

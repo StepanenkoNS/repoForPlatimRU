@@ -44,10 +44,42 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         layers: layers
     });
 
+    const crmBotSubscriptionsByUserLambda = new NodejsFunction(that, 'crmBotSubscriptionsByUserLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'BotSubscriptionsByUser.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-Bot-Subscriptions-ByUser-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     const crmChannelSubscriptionsLambda = new NodejsFunction(that, 'crmChannelSubscriptionsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ChannelSubscriptions.ts'),
         handler: 'handler',
         functionName: 'react-CRM-Channel-Subscriptions-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const crmChannelSubscriptionsByUserLambda = new NodejsFunction(that, 'crmChannelSubscriptionsByUserLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ChannelSubscriptionsByUser.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-Channel-Subscriptions-ByUser-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -75,9 +107,52 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         },
         layers: layers
     });
+    const crmBanLambda = new NodejsFunction(that, 'crmBanLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'BanUserLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-BanUser-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const crmEditUserNotesLambda = new NodejsFunction(that, 'crmEditUserNotesLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'EditUserNotesLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-EditUserNotes-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
 
     //предоставление доступа
-    GrantAccessToDDB([crmListMyUsersLambda, crmChannelSubscriptionsLambda, crmBotSubscriptionsLambda, crmUserProfileLambda], tables);
+    GrantAccessToDDB(
+        [
+            crmListMyUsersLambda,
+            crmChannelSubscriptionsLambda,
+            crmBotSubscriptionsLambda,
+            crmUserProfileLambda,
+            crmEditUserNotesLambda,
+            crmBanLambda,
+            crmBotSubscriptionsByUserLambda,
+            crmChannelSubscriptionsByUserLambda
+        ],
+        tables
+    );
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
@@ -91,6 +166,13 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         resource: 'ListMyBotSubscriptions',
         httpMethod: 'GET'
     });
+
+    returnArray.push({
+        lambda: crmBotSubscriptionsByUserLambda,
+        resource: 'ListMyBotSubscriptionsByUser',
+        httpMethod: 'GET'
+    });
+
     returnArray.push({
         lambda: crmChannelSubscriptionsLambda,
         resource: 'ListMyChannelsSubscriptions',
@@ -98,9 +180,26 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
     });
 
     returnArray.push({
+        lambda: crmChannelSubscriptionsByUserLambda,
+        resource: 'ListMyChannelSubscriptionsByUser',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
         lambda: crmUserProfileLambda,
         resource: 'UserProfile',
         httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: crmBanLambda,
+        resource: 'BanUser',
+        httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: crmEditUserNotesLambda,
+        resource: 'EditUserNotes',
+        httpMethod: 'PUT'
     });
 
     return returnArray;

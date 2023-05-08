@@ -9,9 +9,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-//@ts-ignore
-
-import { MessagingBotManager } from '/opt/MessagingBotManager';
+import { CrmManager } from '/opt/CrmManager';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -29,13 +27,13 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await MessagingBotManager.GetBotUser({
+    const result = await CrmManager.ListMyChannelSubscriptionsByUser({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
+        chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
     });
 
-    const listResults = ParseGetItemResult(result);
+    const listResults = ParseListItemsResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

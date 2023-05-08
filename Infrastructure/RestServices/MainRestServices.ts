@@ -16,6 +16,7 @@ import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateChannelsLambdas } from './Lambdas/Channels';
 import { CreateBotCommandsLambdas } from './Lambdas/BotCommands';
+import { CreateMeetingsLambdas } from './Lambdas/Meetings';
 
 export class MainRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -58,6 +59,13 @@ export class MainRestServicesStack extends Stack {
         this.lambdaIntegrations.push({
             rootResource: 'Channels',
             lambdas: channelLambdas
+        });
+
+        const meetingLambdas = CreateMeetingsLambdas(this, layers, [botsTable]);
+
+        this.lambdaIntegrations.push({
+            rootResource: 'Meetings',
+            lambdas: meetingLambdas
         });
 
         const paymentOptionsLambdas = CreatePaymentOptionsLambdas(this, layers, [botsTable]);

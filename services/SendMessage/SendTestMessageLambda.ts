@@ -34,7 +34,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'contentPlanPostId', datatype: 'string' },
         { key: 'sendMethod', datatype: ['sendMessage', 'sendPhoto', 'sendAudio', 'sendDocument', 'sendDocument', 'sendVideo', 'sendAnimation', 'sendVoice', 'sendVideoNote'] },
         { key: 'message', datatype: 'object', objectKeys: [] },
-        { key: 'interaction', datatype: 'object', objectKeys: [] }
+        { key: 'interaction', datatype: 'object', objectKeys: [] },
+        { key: 'trigger', datatype: 'object', objectKeys: [] }
     ]);
 
     if (bodyObject.success === false) {
@@ -47,8 +48,15 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
         contentPlanPostId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanPostId),
         interaction: bodyObject.data.interaction,
-        message: bodyObject.data.message,
-        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any
+        message:
+            TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId) === 'PAIDPOST'
+                ? {
+                      text: 'Оплатите, чтобы получить доступ к посту',
+                      attachments: []
+                  }
+                : bodyObject.data.message,
+        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
+        trigger: bodyObject.data.trigger
     });
 
     const sendResult = ParseSendMessageResult(result);

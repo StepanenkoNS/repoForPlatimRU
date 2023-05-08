@@ -1,21 +1,17 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-
-//@ts-ignore
+import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
-
+import { ETelegramBotCommand } from '/opt/MessagingBotManagerTypes';
+import { MeetingsConfiguratior } from '/opt/MeetingsConfiguratior';
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    console.log(event);
-
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -29,13 +25,11 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await MessagingBotManager.GetBotUser({
+    const result = await MeetingsConfiguratior.GetMyMeetingById({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!) as any
     });
-
-    const listResults = ParseGetItemResult(result);
-
-    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+    const getResult = ParseGetItemResult(result);
+    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }
