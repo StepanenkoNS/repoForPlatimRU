@@ -9,14 +9,14 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 //@ts-ignore
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
-import { CreateBotsLambdas } from './Lambdas/Bots';
+import { CreateBotsLambdas } from './RestLambdas/Bots';
 
-import { CreatePaymentOptionsLambdas } from './Lambdas/PaymentOptions';
+import { CreatePaymentOptionsLambdas } from './RestLambdas/PaymentOptions';
 
 import { LambdaIntegrations } from './Helper/GWtypes';
-import { CreateChannelsLambdas } from './Lambdas/Channels';
-import { CreateBotCommandsLambdas } from './Lambdas/BotCommands';
-import { CreateMeetingsLambdas } from './Lambdas/Meetings';
+import { CreateChannelsLambdas } from './RestLambdas/Channels';
+import { CreateBotCommandsLambdas } from './RestLambdas/BotCommands';
+import { CreateMeetingsLambdas } from './RestLambdas/Meetings';
 
 export class MainRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];

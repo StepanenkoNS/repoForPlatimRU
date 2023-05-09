@@ -11,10 +11,10 @@ import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
 import { LambdaIntegrations } from './Helper/GWtypes';
-import { CreateUserSubscriptionPlansBotsLambdas } from './Lambdas/UserSubscriptionPlansBot';
-import { CreateUserSubscriptionPlansChannelsLambdas } from './Lambdas/UserSubscriptionPlansChannel';
+import { CreateUserSubscriptionPlansBotsLambdas } from './RestLambdas/UserSubscriptionPlansBot';
+import { CreateUserSubscriptionPlansChannelsLambdas } from './RestLambdas/UserSubscriptionPlansChannel';
 
-import { CreateMasterManagerLambdas } from './Lambdas/MasterManager';
+import { CreateMasterManagerLambdas } from './RestLambdas/MasterManager';
 export class SubscriptionsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
     constructor(

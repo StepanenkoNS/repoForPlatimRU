@@ -10,10 +10,10 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateMessageFilesLambdas } from './Lambdas/MessageFiles';
-import { CreateGetPresignedUrlsLambdas } from './Lambdas/PreSignedUrl';
+import { CreateMessageFilesLambdas } from './RestLambdas/MessageFiles';
+import { CreateGetPresignedUrlsLambdas } from './RestLambdas/PreSignedUrl';
 
-import { CreateTelegramFilesLambdas } from './Lambdas/TelegramFiles';
+import { CreateTelegramFilesLambdas } from './RestLambdas/TelegramFiles';
 
 import { LambdaIntegrations } from './Helper/GWtypes';
 

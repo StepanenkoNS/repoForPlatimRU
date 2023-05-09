@@ -10,7 +10,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateCRMLambdas } from './Lambdas/CRM';
+import { CreateCRMLambdas } from './CRMLambdas/CRM';
 import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class CRMRestServicesStack extends Stack {

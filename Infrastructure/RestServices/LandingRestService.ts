@@ -9,7 +9,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 //@ts-ignore
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
-import { CreateBotSetLandingLambdas } from './Lambdas/Landing';
+import { CreateBotSetLandingLambdas } from './RestLambdas/Landing';
 import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class BotLandingRestServicesStack extends Stack {

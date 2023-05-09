@@ -1,0 +1,50 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+//@ts-ignore
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+//@ts-ignore
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+//@ts-ignore
+import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+
+import { CrmManager } from '/opt/CrmManager';
+
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
+
+    const origin = SetOrigin(event);
+
+    const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
+    let renewedToken = undefined;
+
+    if (event?.requestContext?.authorizer?.renewedAccessToken) {
+        renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
+    }
+
+    if (!ValidateStringParameters(event, ['botId', 'id'])) {
+        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+    }
+
+    let type: 'NEW' | 'CONFIRMED' | 'REJECTED' | undefined = undefined;
+
+    if (ValidateStringParameters(event, ['type'])) {
+        const tempType = TextHelper.SanitizeToDirectText(event.queryStringParameters!.type!);
+        if (tempType == 'NEW' || tempType == 'CONFIRMED' || tempType == 'REJECTED') {
+            type = tempType;
+        } else {
+            return ReturnRestApiResult(422, { error: 'Type parameter is invalid' }, false, origin, renewedToken);
+        }
+    }
+
+    const result = await CrmManager.ListScheduledPostsByUser({
+        masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
+    });
+
+    const listResults = ParseListItemsResult(result);
+
+    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+}

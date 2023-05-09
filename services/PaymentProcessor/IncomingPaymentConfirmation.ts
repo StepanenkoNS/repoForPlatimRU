@@ -56,7 +56,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                         sendMethod: ETelegramSendMethod.sendMessage,
                         message: {
                             attachments: [],
-                            text: 'Этот платеж был обработан ранее'
+                            text: 'Что-то пошло не так и платеж не был обработан'
                         }
                     });
                 } catch (error) {
@@ -117,7 +117,8 @@ export async function handler(event: SQSEvent): Promise<any> {
                         masterId: updatePaymentResult.masterId,
                         userSubscriptionPlanId: updatePaymentResult.subscriptionPlanId,
                         pricePaid: updatePaymentResult.price,
-                        currency: updatePaymentResult.currency
+                        currency: updatePaymentResult.currency,
+                        paymentId: updatePaymentResult.id
                     };
 
                     await SQSHelper.SendSQSMessage({

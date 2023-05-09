@@ -26,6 +26,7 @@ export class GatewayServiceStack extends Stack {
             certificateARN: string;
             layerARNs: string[];
             lambdaIntegrations: LambdaIntegrations[];
+            subDomain: string;
         }
     ) {
         super(scope, id, props);
@@ -40,7 +41,12 @@ export class GatewayServiceStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        this.restServicesAPI = createAPIandAuthorizer(this, props.certificateARN, layers, [botsTable]);
+        this.restServicesAPI = createAPIandAuthorizer(this, {
+            certificateARN: props.certificateARN,
+            layers: layers,
+            tables: [botsTable],
+            subDomainName: props.subDomain
+        });
 
         let res = undefined;
         let resource: Resource | undefined = undefined;

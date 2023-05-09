@@ -3,7 +3,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody, DataValidationParameter } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import {
     ParseSendMessageResult,
@@ -15,7 +15,8 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
 import { MessageSender } from '/opt/MessageSender';
-import { ETelegramSendMethods } from '/opt/TelegramTypes';
+import { ITelegramSimpleFile } from '/opt/ContentTypes';
+import { ETelegramSendMethod, ETelegramSendMethods } from '/opt/TelegramTypes';
 
 //@ts-ignore
 
@@ -31,36 +32,33 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'contentPlanId', datatype: 'string' },
-        { key: 'contentPlanPostId', datatype: 'string' },
-        { key: 'interaction', datatype: 'object', objectKeys: [] },
+        { key: 'chatId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'message', datatype: 'object', objectKeys: [] },
         {
             key: 'sendMethod',
             datatype: [...ETelegramSendMethods.map((value) => value.toString())]
-        },
-        { key: 'trigger', datatype: 'object', objectKeys: [] }
+        }
     ]);
 
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await MessageSender.SendTestContentPlanMessage({
+    const result = await MessageSender.SendPlainMessage({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
-        contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
-        contentPlanPostId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanPostId),
-        interaction: bodyObject.data.interaction,
-        message:
-            TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId) === 'PAIDPOST'
-                ? {
-                      text: 'Оплатите, чтобы получить доступ к посту',
-                      attachments: []
-                  }
-                : bodyObject.data.message,
-        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
-        trigger: bodyObject.data.trigger
+
+        message: {
+            text: TextHelper.KeepOnlyTelegramTags(bodyObject.data.message.text),
+            attachments: (bodyObject.data.message.attachments as Array<ITelegramSimpleFile>).map((value) => {
+                return {
+                    id: TextHelper.SanitizeToDirectText(value.id),
+                    name: TextHelper.SanitizeToDirectText(value.name)
+                } as ITelegramSimpleFile;
+            })
+        },
+        recipientChatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId)),
+        sendMethod: bodyObject.data.sendMethod
     });
 
     const sendResult = ParseSendMessageResult(result);

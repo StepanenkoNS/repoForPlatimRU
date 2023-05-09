@@ -10,8 +10,8 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateContentPlanPostsLambdas } from './Lambdas/ContentPlanPosts';
-import { CreateContentPlansLambdas } from './Lambdas/ContentPlans';
+import { CreateContentPlanPostsLambdas } from './RestLambdas/ContentPlanPosts';
+import { CreateContentPlansLambdas } from './RestLambdas/ContentPlans';
 
 import { LambdaIntegrations } from './Helper/GWtypes';
 

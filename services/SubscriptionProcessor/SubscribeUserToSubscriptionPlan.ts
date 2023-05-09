@@ -34,7 +34,8 @@ export async function handler(event: SQSEvent): Promise<any> {
                         masterId: request.masterId,
                         userSubscriptionPlanId: request.userSubscriptionPlanId,
                         pricePaid: request.pricePaid,
-                        currency: request.currency
+                        currency: request.currency,
+                        paymentId: request.paymentId
                     });
                     const msgIdUser = ksuid.randomSync(new Date()).string;
                     await MessageSender.QueueSendPlainMessage({
@@ -57,7 +58,8 @@ export async function handler(event: SQSEvent): Promise<any> {
                         masterId: request.masterId,
                         userSubscriptionPlanId: request.userSubscriptionPlanId,
                         pricePaid: request.pricePaid,
-                        currency: request.currency
+                        currency: request.currency,
+                        paymentId: request.paymentId
                     });
 
                     if (subscriptionResult === false) {

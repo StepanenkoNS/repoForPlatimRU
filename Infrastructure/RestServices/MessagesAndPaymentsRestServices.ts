@@ -10,13 +10,13 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateSendMessagesLambdas } from './Lambdas/SendTestMessages';
-import { SendMessageScheduler } from './Lambdas/SendMessageScheduler';
-import { PaymentProcessor } from './Lambdas/PaymentProcessor';
+import { CreateSendMessagesLambdas } from './RestLambdas/SendTestMessages';
+import { SendMessageScheduler } from './RestLambdas/SendMessageScheduler';
+import { PaymentProcessor } from './RestLambdas/PaymentProcessor';
 
 import { LambdaIntegrations } from './Helper/GWtypes';
-import { CreateBotPaymentsLambdas } from './Lambdas/BotPayments';
-import { CreateSubscriptionProcessor } from './Lambdas/SubscriptionProcessor';
+import { CreateBotPaymentsLambdas } from './RestLambdas/BotPayments';
+import { CreateSubscriptionProcessor } from './RestLambdas/SubscriptionProcessor';
 
 export class MessagesAndPaymentsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];

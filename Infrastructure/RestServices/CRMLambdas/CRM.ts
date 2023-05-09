@@ -92,6 +92,54 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         layers: layers
     });
 
+    const botPaymentsLambda = new NodejsFunction(that, 'botPaymentsLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'BotPayments.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-Bot-Payments-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const botPaymentsByUserLambda = new NodejsFunction(that, 'botPaymentsByUserLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'BotPaymentsByUser.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-Bot-Payments-ByUser-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const scheduledPostsByUserLambda = new NodejsFunction(that, 'scheduledPostsByUserLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ScheduledPostsByUser.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-ScheduledPosts-ByUser-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     const crmUserProfileLambda = new NodejsFunction(that, 'crmUserProfileLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'GetMyUserProfile.ts'),
         handler: 'handler',
@@ -139,6 +187,22 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         layers: layers
     });
 
+    const GetMyBotAnalitics = new NodejsFunction(that, 'GetMyBotAnalitics', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'GetMyBotAnalitics.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-GetMyBot-Analitics-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     //предоставление доступа
     GrantAccessToDDB(
         [
@@ -149,7 +213,11 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
             crmEditUserNotesLambda,
             crmBanLambda,
             crmBotSubscriptionsByUserLambda,
-            crmChannelSubscriptionsByUserLambda
+            crmChannelSubscriptionsByUserLambda,
+            botPaymentsLambda,
+            botPaymentsByUserLambda,
+            scheduledPostsByUserLambda,
+            GetMyBotAnalitics
         ],
         tables
     );
@@ -186,6 +254,24 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
     });
 
     returnArray.push({
+        lambda: botPaymentsLambda,
+        resource: 'ListMyBotPayments',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
+        lambda: botPaymentsByUserLambda,
+        resource: 'ListMyBotPaymentsByUser',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
+        lambda: scheduledPostsByUserLambda,
+        resource: 'ListScheduledPostsByUser',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
         lambda: crmUserProfileLambda,
         resource: 'UserProfile',
         httpMethod: 'GET'
@@ -200,6 +286,12 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         lambda: crmEditUserNotesLambda,
         resource: 'EditUserNotes',
         httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: GetMyBotAnalitics,
+        resource: 'GetMyBotAnalitics',
+        httpMethod: 'GET'
     });
 
     return returnArray;

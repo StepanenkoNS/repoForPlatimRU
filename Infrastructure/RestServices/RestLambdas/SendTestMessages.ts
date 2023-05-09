@@ -45,8 +45,25 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
         layers: layers
     });
 
-    GrantAccessToDDB([SendTestMessageLambda, SendTestFileLambda], tables);
-    GrantAccessToS3([SendTestMessageLambda, SendTestFileLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
+    //Отправка сообщения от админа пользователю себе
+    const SendDirectMessageFromAdminLambda = new NodejsFunction(that, 'SendDirectMessageFromAdminLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SendMessage', 'SendDirectMessageFromAdminLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-SendMessages-SendDirectMessageFromAdmin-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    GrantAccessToDDB([SendTestMessageLambda, SendTestFileLambda, SendDirectMessageFromAdminLambda], tables);
+    GrantAccessToS3([SendTestMessageLambda, SendTestFileLambda, SendDirectMessageFromAdminLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
@@ -59,5 +76,11 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
         resource: 'SendTestFile',
         httpMethod: 'POST'
     });
+    returnArray.push({
+        lambda: SendDirectMessageFromAdminLambda,
+        resource: 'SendDirectMessage',
+        httpMethod: 'POST'
+    });
+
     return returnArray;
 }

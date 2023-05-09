@@ -17,7 +17,8 @@ import { LambdaIntegrations } from './RestServices/Helper/GWtypes';
 
 const app = new App();
 
-const lambdaIntegrations: LambdaIntegrations[] = [];
+const lambdaRestIntegrations: LambdaIntegrations[] = [];
+const lambdaCRMIntegrations: LambdaIntegrations[] = [];
 
 const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebTokenService.toString(), {
     stackName: StaticEnvironment.StackName.WebTokenService.toString(),
@@ -50,7 +51,7 @@ const mainRestServicesStack = new MainRestServicesStack(app, StaticEnvironment.S
     }
 });
 
-lambdaIntegrations.push(...mainRestServicesStack.lambdaIntegrations);
+lambdaRestIntegrations.push(...mainRestServicesStack.lambdaIntegrations);
 
 const filesRestServicesStack = new FilesRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceFiles.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceFiles.toString(),
@@ -61,7 +62,7 @@ const filesRestServicesStack = new FilesRestServicesStack(app, StaticEnvironment
         region: StaticEnvironment.GlobalAWSEnvironment.region
     }
 });
-lambdaIntegrations.push(...filesRestServicesStack.lambdaIntegrations);
+lambdaRestIntegrations.push(...filesRestServicesStack.lambdaIntegrations);
 
 const messagesAndPaymentsRestServicesStack = new MessagesAndPaymentsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceMessagesAndPayments.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceMessagesAndPayments.toString(),
@@ -72,7 +73,7 @@ const messagesAndPaymentsRestServicesStack = new MessagesAndPaymentsRestServices
         region: StaticEnvironment.GlobalAWSEnvironment.region
     }
 });
-lambdaIntegrations.push(...messagesAndPaymentsRestServicesStack.lambdaIntegrations);
+lambdaRestIntegrations.push(...messagesAndPaymentsRestServicesStack.lambdaIntegrations);
 
 const plansAndPostsRestServicesStack = new PlansAndPostsRestServicesStack(app, StaticEnvironment.StackName.WebRestServicePlansAndPosts.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServicePlansAndPosts.toString(),
@@ -84,7 +85,7 @@ const plansAndPostsRestServicesStack = new PlansAndPostsRestServicesStack(app, S
     }
 });
 
-lambdaIntegrations.push(...plansAndPostsRestServicesStack.lambdaIntegrations);
+lambdaRestIntegrations.push(...plansAndPostsRestServicesStack.lambdaIntegrations);
 
 const subscriptionsRestServicesStack = new SubscriptionsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(),
@@ -95,7 +96,7 @@ const subscriptionsRestServicesStack = new SubscriptionsRestServicesStack(app, S
         region: StaticEnvironment.GlobalAWSEnvironment.region
     }
 });
-lambdaIntegrations.push(...subscriptionsRestServicesStack.lambdaIntegrations);
+lambdaRestIntegrations.push(...subscriptionsRestServicesStack.lambdaIntegrations);
 
 const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceCRM.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceCRM.toString(),
@@ -106,7 +107,7 @@ const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.Sta
         region: StaticEnvironment.GlobalAWSEnvironment.region
     }
 });
-lambdaIntegrations.push(...cRMRestServicesStack.lambdaIntegrations);
+lambdaCRMIntegrations.push(...cRMRestServicesStack.lambdaIntegrations);
 
 const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceLanding.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceLanding.toString(),
@@ -117,13 +118,26 @@ const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticE
         region: StaticEnvironment.GlobalAWSEnvironment.region
     }
 });
-lambdaIntegrations.push(...botLandingRestServicesStack.lambdaIntegrations);
+lambdaRestIntegrations.push(...botLandingRestServicesStack.lambdaIntegrations);
 
-const gatewayServiceStack = new GatewayServiceStack(app, StaticEnvironment.StackName.WebGatewayService.toString(), {
-    stackName: StaticEnvironment.StackName.WebGatewayService.toString(),
+const gatewayRestServiceStack = new GatewayServiceStack(app, StaticEnvironment.StackName.WebRestGatewayService.toString(), {
+    stackName: StaticEnvironment.StackName.WebRestGatewayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
-    lambdaIntegrations: lambdaIntegrations,
+    lambdaIntegrations: lambdaRestIntegrations,
     layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    subDomain: StaticEnvironment.WebResources.subDomains.apiBackend.backendAPISubdomain,
+    env: {
+        account: StaticEnvironment.GlobalAWSEnvironment.account,
+        region: StaticEnvironment.GlobalAWSEnvironment.region
+    }
+});
+
+const gatewayCRMServiceStack = new GatewayServiceStack(app, StaticEnvironment.StackName.WebCRMGatewayService.toString(), {
+    stackName: StaticEnvironment.StackName.WebCRMGatewayService.toString(),
+    certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
+    lambdaIntegrations: lambdaCRMIntegrations,
+    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    subDomain: StaticEnvironment.WebResources.subDomains.apiBackend.crmAPISubdomain,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
