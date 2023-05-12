@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessageSender } from '/opt/MessageSender';
 import { IMessageSenderInput } from '/opt/ContentTypes';

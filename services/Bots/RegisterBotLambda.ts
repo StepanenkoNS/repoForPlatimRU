@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
@@ -28,7 +28,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const result = await MessagingBotManager.SetWebhook(Number(telegramUser.id), Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)));
 
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

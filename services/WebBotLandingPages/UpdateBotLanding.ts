@@ -1,6 +1,6 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const result = await BotLanging.UpdateBotLanging(botLanding);
 
-    const updateResult = ParseUpdateItemResult(result);
+    const updateResult = ParseItemResult(result);
 
     return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
 }

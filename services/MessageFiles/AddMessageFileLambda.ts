@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { FileS3Configurator } from '/opt/FileS3Configurator';
@@ -36,7 +36,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const mediaType = S3Helper.GetMediaType(bodyObject.data.originalFileName);
     if (mediaType === false) {
-        const addResult = ParseInsertItemResult(mediaType);
+        const addResult = ParseItemResult(mediaType);
 
         return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
     }
@@ -57,7 +57,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await FileS3Configurator.AddMessageFile(messageFile);
 
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

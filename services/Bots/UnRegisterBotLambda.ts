@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
@@ -31,6 +31,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(botId))
     });
-    const getResult = ParseGetItemResult(result);
+    const getResult = ParseItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

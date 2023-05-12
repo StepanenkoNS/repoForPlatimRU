@@ -9,7 +9,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
@@ -27,23 +27,24 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'description', datatype: 'string' },
         { key: 'token', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
+    if (TextHelper.SanitizeToDirectText(bodyObject.data.token).trim() == '') {
+        return ReturnRestApiResult(422, { error: 'Token is empty' }, false, origin, renewedToken);
+    }
+
     const bot: IMessagingBot = {
-        discriminator: 'IMessagingBot',
         masterId: Number(telegramUser.id),
-        description: TextHelper.SanitizeToDirectText(bodyObject.data.description),
-        token: bodyObject.data.token ? TextHelper.SanitizeToDirectText(bodyObject.data.token) : '',
+        token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
         id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
     };
     const result = await MessagingBotManager.AddMyBot(bot);
 
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

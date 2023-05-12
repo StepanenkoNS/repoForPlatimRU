@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         prices: bodyObject.data.prices
     });
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

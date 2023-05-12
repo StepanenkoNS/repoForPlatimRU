@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
@@ -25,7 +25,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const result = await MessagingBotManager.ListMyBots(Number(telegramUser.id));
 
-    const listResults = ParseListItemsResult(result);
+    const listResults = ParseListResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

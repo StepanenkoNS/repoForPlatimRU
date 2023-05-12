@@ -6,7 +6,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { FileS3Configurator } from '/opt/FileS3Configurator';
 
 import { S3Helper } from '/opt/S3/S3Utils';
@@ -37,7 +37,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const mediaType = S3Helper.GetMediaType(bodyObject.data.originalFileName);
     if (mediaType === false) {
-        const addResult = ParseUpdateItemResult(undefined);
+        const addResult = ParseItemResult(undefined);
 
         return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
     }
@@ -58,7 +58,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     //если указан s3Key - то будем менять старый файл
     const result = await FileS3Configurator.UpdateMessageFile(messageFile);
 
-    const updateResult = ParseUpdateItemResult(result);
+    const updateResult = ParseItemResult(result);
 
     return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
 }

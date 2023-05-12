@@ -5,7 +5,7 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
 export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
@@ -63,7 +63,6 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
     });
 
     GrantAccessToDDB([SendTestMessageLambda, SendTestFileLambda, SendDirectMessageFromAdminLambda], tables);
-    GrantAccessToS3([SendTestMessageLambda, SendTestFileLambda, SendDirectMessageFromAdminLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

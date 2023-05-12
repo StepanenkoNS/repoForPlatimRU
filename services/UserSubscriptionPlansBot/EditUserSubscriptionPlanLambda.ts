@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
 
@@ -50,7 +50,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             prices: bodyObject.data.prices
         });
 
-        const updateResult = ParseUpdateItemResult(result);
+        const updateResult = ParseItemResult(result);
         return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
     } catch (error) {
         return ReturnRestApiResult(500, { success: false, error: 'Internal server error' }, false, origin, renewedToken);

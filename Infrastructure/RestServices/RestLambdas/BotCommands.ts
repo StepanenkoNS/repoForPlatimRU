@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToRoute53, GrantAccessToSecrets } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
 export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {

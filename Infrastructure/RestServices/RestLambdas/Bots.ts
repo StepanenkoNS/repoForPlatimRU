@@ -6,11 +6,16 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToRoute53, GrantAccessToSecrets } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToRoute53 } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+    const deleteBotDataQueue = Queue.fromQueueArn(that, 'imported-deleteBotDataQueue-forCreateBotsLambdas', DynamicEnvironment.SQS.deleteBotDataQueue.basicSQS_arn);
+
+    const deleteBotDataQueueDLQ = Queue.fromQueueArn(that, 'imported-deleteBotDataQueueDLQ-forCreateBotsLambdas', DynamicEnvironment.SQS.deleteBotDataQueue.dlqSQS_arn);
 
     const ListBotsLambda = new NodejsFunction(that, 'ListBotsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'ListBotsLambda.ts'),
@@ -142,11 +147,43 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         layers: layers
     });
 
-    //Добавление политик
-    GrantAccessToSecrets([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
-    GrantAccessToRoute53([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
+    const DeleteBotDataLambda = new NodejsFunction(that, 'DeleteBotDataLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'DeleteBotDataLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-Bots-DeleteData-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        environment: {
+            WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
+            deleteBotDataQueueURL: deleteBotDataQueue.queueUrl,
 
-    GrantAccessToDDB([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda], tables);
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const eventDeleteBotData = new SqsEventSource(deleteBotDataQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const eventDeleteBotDataDLQ = new SqsEventSource(deleteBotDataQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    DeleteBotDataLambda.addEventSource(eventDeleteBotData);
+    DeleteBotDataLambda.addEventSource(eventDeleteBotDataDLQ);
+
+    GrantAccessToRoute53([AddBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
+
+    GrantAccessToDDB([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda, DeleteBotDataLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

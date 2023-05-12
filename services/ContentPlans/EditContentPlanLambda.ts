@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
@@ -41,7 +41,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     };
     const result = await ContentConfigurator.UpdateContentPlan(contentPlan);
 
-    const updateResult = ParseUpdateItemResult(result);
+    const updateResult = ParseItemResult(result);
 
     return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
 }

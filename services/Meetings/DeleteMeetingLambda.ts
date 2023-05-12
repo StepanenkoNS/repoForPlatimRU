@@ -8,7 +8,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { ETelegramBotCommand } from '/opt/MessagingBotManagerTypes';
@@ -37,6 +37,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id) as any
     });
-    const deleteResult = ParseGetItemResult(result);
+    const deleteResult = ParseItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

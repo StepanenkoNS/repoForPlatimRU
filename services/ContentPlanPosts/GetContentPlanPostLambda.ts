@@ -8,7 +8,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
@@ -32,7 +32,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         contentPlanId: TextHelper.SanitizeToDirectText(event.queryStringParameters!.contentPlanId!),
         id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
     });
-    const getResult = ParseGetItemResult(result);
+    const getResult = ParseItemResult(result);
 
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

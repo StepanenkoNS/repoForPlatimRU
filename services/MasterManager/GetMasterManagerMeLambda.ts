@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
@@ -22,6 +22,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const result = await MasterManager.GetMaster(Number(telegramUser.id));
-    const getResult = ParseGetItemResult(result);
+    const getResult = ParseItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

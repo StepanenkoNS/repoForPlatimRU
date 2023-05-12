@@ -3,13 +3,13 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { EPaymentType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
+import { EPaymentOptionType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
@@ -49,9 +49,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionDirectCardTransfer',
             name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            type: EPaymentType.DIRECT,
+            type: EPaymentOptionType.DIRECT,
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
-            description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
+            description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         });
     }
     if (bodyObject.data.type === 'INTEGRATION') {
@@ -60,12 +60,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionPaymentIntegration',
             name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            type: EPaymentType.INTEGRATION,
+            type: EPaymentOptionType.INTEGRATION,
             token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
-            description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
+            description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         });
     }
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

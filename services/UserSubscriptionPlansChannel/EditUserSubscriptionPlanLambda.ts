@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ESupportedCurrency } from '/opt/PaymentTypes';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
@@ -53,7 +53,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             channelId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.channelId))
         });
 
-        const updateResult = ParseUpdateItemResult(result);
+        const updateResult = ParseItemResult(result);
         return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
     } catch (error) {
         return ReturnRestApiResult(500, { success: false, error: 'Internal server error' }, false, origin, renewedToken);

@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
@@ -36,6 +36,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
-    const deleteResult = ParseDeleteItemResult(result);
+    const deleteResult = ParseItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

@@ -10,7 +10,6 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { CreateMessageFilesLambdas } from './RestLambdas/MessageFiles';
 import { CreateGetPresignedUrlsLambdas } from './RestLambdas/PreSignedUrl';
 
 import { CreateTelegramFilesLambdas } from './RestLambdas/TelegramFiles';
@@ -41,11 +40,11 @@ export class FilesRestServicesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const messageFilesLambdas = CreateMessageFilesLambdas(this, layers, [botsTable]);
-        this.lambdaIntegrations.push({
-            rootResource: 'MessageFiles',
-            lambdas: messageFilesLambdas
-        });
+        // const messageFilesLambdas = CreateMessageFilesLambdas(this, layers, [botsTable]);
+        // this.lambdaIntegrations.push({
+        //     rootResource: 'MessageFiles',
+        //     lambdas: messageFilesLambdas
+        // });
         const telegramFilesLambdas = CreateTelegramFilesLambdas(this, layers, [botsTable]);
         this.lambdaIntegrations.push({
             rootResource: 'TelegramFiles',

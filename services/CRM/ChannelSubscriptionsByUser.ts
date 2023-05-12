@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { CrmManager } from '/opt/CrmManager';
 
@@ -33,7 +33,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
     });
 
-    const listResults = ParseListItemsResult(result);
+    const listResults = ParseListResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

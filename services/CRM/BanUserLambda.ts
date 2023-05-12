@@ -6,7 +6,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { FileTelegramConfigurator } from '/opt/FileTelegramConfigurator';
 import { MessagingBotManager } from '../../../TGBot-CoreLayers/LambdaLayers/Models/MessagingBotManager';
@@ -39,7 +39,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     //если указан s3Key - то будем менять старый файл
     const result = await MessagingBotManager.BanBotUser(key);
 
-    const updateResult = ParseUpdateItemResult(result);
+    const updateResult = ParseItemResult(result);
 
     return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
 }

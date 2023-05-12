@@ -143,8 +143,4 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
     SendMessageSender.addEventSource(eventSourceForSenderStageLambdaDLQ);
 
     GrantAccessToDDB([SendMessageSchedullerFirstStageLambda, SendMessageSchedullerSecondStageLambda, SendMessageSender], tables);
-    GrantAccessToS3(
-        [SendMessageSchedullerFirstStageLambda, SendMessageSchedullerSecondStageLambda, SendMessageSender],
-        [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
-    );
 }

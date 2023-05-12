@@ -4,66 +4,100 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 
 //@ts-ignore
-import { EPaymentType, IRequestForPaymentConfirmation, IRequestForSubscriptionDIRECTPayment } from '/opt/PaymentTypes';
+import { EPaymentOptionType, EPaymentTarget, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, IRequestForSubscriptionDIRECTPayment, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 import { MessageSender } from '/opt/MessageSender';
 import { ETelegramUserStatus } from '/opt/MessagingBotManagerTypes';
 
-const sqs = new SQS({ region: process.env.region });
-
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
     console.log('IncomingPaymentRequestsHandler - incoming event', JSON.stringify(event));
     for (const record of event.Records) {
         try {
-            const request = JSON.parse(record.body) as IRequestForPaymentConfirmation;
-            const dataItem: IRequestForSubscriptionDIRECTPayment = {
-                discriminator: 'IRequestForSubscriptionDIRECTPayment',
-                id: undefined,
-                chatId: Number(request.chatId),
-                masterId: Number(request.masterId),
-                botId: Number(request.botId),
-
-                subscriptionPlanId: request.subscriptionPlanId,
-                subscriptionPlanName: request.subscriptionPlanName,
-                subscriptionType: request.subscriptionType,
-                price: request.price,
-                currency: request.currency,
-                paymentOptionId: request.paymentOptionId,
-                paymentOptionType: EPaymentType.DIRECT,
-                status: 'NEW',
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString()
-            };
-            const addPaymentEventResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
-
-            if (addPaymentEventResult === false) {
-                batchItemFailures.push({ itemIdentifier: record.messageId });
-            } else {
-                //отправляем сообщение
-                const itemMessage: IRequestForPaymentConfirmation = {
-                    discriminator: 'IRequestForPaymentConfirmation',
-                    id: addPaymentEventResult.id,
+            let addPaymentEventResult: false | any = false;
+            let ConfirmationMessageText = '';
+            const parsedInputData = JSON.parse(record.body) as IRequestForPaymentConfirmation;
+            if (parsedInputData.paymentTarget === EPaymentTarget.SUBSCRIPTION) {
+                const request = parsedInputData as unknown as ISubscriptionPaymentInDB;
+                const dataItem: ISubscriptionPaymentInDB = {
+                    id: undefined,
                     chatId: Number(request.chatId),
                     masterId: Number(request.masterId),
                     botId: Number(request.botId),
-
+                    paymentTarget: request.paymentTarget,
                     subscriptionPlanId: request.subscriptionPlanId,
                     subscriptionPlanName: request.subscriptionPlanName,
                     subscriptionType: request.subscriptionType,
                     price: request.price,
                     currency: request.currency,
                     paymentOptionId: request.paymentOptionId,
-                    paymentOptionType: request.paymentOptionType,
+                    paymentOptionType: EPaymentOptionType.DIRECT,
+                    status: 'NEW',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                addPaymentEventResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+
+                ConfirmationMessageText =
+                    'Запрос на подписку ' +
+                    dataItem.subscriptionType +
+                    '\nОплачено: ' +
+                    dataItem.price +
+                    ' ' +
+                    dataItem.currency.toString() +
+                    '\nИмя подписки: ' +
+                    dataItem.subscriptionPlanName +
+                    '\nid подписчика: ' +
+                    dataItem.chatId;
+            }
+
+            if (parsedInputData.paymentTarget === EPaymentTarget.PAIDPOST) {
+                const request = parsedInputData as unknown as IPaidPostPaymentInDB;
+                const dataItem: IPaidPostPaymentInDB = {
+                    id: undefined,
+                    chatId: Number(request.chatId),
+                    masterId: Number(request.masterId),
+                    botId: Number(request.botId),
+                    paymentTarget: request.paymentTarget,
+                    paidPostId: request.paidPostId,
+                    price: request.price,
+                    currency: request.currency,
+                    paymentOptionId: request.paymentOptionId,
+                    paymentOptionType: EPaymentOptionType.DIRECT,
+                    status: 'NEW',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                addPaymentEventResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+
+                ConfirmationMessageText = 'Запрос на оплату платного поста ' + '\nОплачено: ' + dataItem.price + ' ' + dataItem.currency.toString() + '\nid подписчика: ' + dataItem.chatId;
+            }
+
+            if (addPaymentEventResult === false) {
+                batchItemFailures.push({ itemIdentifier: record.messageId });
+            } else {
+                //отправляем сообщение
+                const itemMessage: IRequestForPaymentConfirmation = {
+                    id: addPaymentEventResult.id,
+                    chatId: Number(parsedInputData.chatId),
+                    masterId: Number(parsedInputData.masterId),
+                    botId: Number(parsedInputData.botId),
+                    confirmationMessageText: ConfirmationMessageText,
+                    paymentTarget: parsedInputData.paymentTarget,
+
+                    price: parsedInputData.price,
+                    currency: parsedInputData.currency,
+                    paymentOptionId: parsedInputData.paymentOptionId,
+                    paymentOptionType: parsedInputData.paymentOptionType,
 
                     status: addPaymentEventResult.status!,
                     createdAt: addPaymentEventResult.createdAt,
                     updatedAt: addPaymentEventResult.updatedAt,
-                    telegramMessageText: request.telegramMessageText,
-                    telegramFileId: request.telegramFileId,
-                    telegramSendMethod: request.telegramSendMethod
+                    telegramMessageText: parsedInputData.telegramMessageText,
+                    telegramFileId: parsedInputData.telegramFileId,
+                    telegramSendMethod: parsedInputData.telegramSendMethod
                 };
 
                 const sendResult = await MessageSender.SendPaymentMethodToAdmin(itemMessage);

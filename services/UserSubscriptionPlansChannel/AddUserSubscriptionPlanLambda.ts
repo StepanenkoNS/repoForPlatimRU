@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
@@ -13,7 +13,7 @@ import { ESupportedCurrency } from '/opt/PaymentTypes';
 
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
 
     const origin = SetOrigin(event);
@@ -24,16 +24,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    const e = [ESupportedCurrency.EUR.toString(), ESupportedCurrency.GBP.toString(), ESupportedCurrency.RUB.toString(), ESupportedCurrency.TRY.toString(), ESupportedCurrency.USD.toString()];
-    console.log('EnumToArray', e);
-    let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'name', datatype: 'string' },
-        { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'prices', datatype: 'array' },
-        { key: 'enabled', datatype: 'boolean' },
-        { key: 'channelId', datatype: 'number(integer)' }
-    ]);
+
+    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'prices', datatype: 'array' }]);
+    // let bodyObject = ValidateIncomingEventBody(event, [
+    //     { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
+    //     { key: 'name', datatype: 'string' },
+    //     { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
+    //     { key: 'prices', datatype: 'array' },
+    //     { key: 'enabled', datatype: 'boolean' },
+    //     { key: 'channelId', datatype: 'number(integer)' }
+    // ]);
 
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
@@ -49,7 +49,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         prices: bodyObject.data.prices,
         channelId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.channelId))
     });
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

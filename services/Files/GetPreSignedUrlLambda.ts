@@ -6,7 +6,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseGetItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     );
     console.log(s3Result);
 
-    const getResult = ParseGetItemResult(s3Result);
+    const getResult = ParseItemResult(s3Result);
 
     console.log('getResult', getResult);
 

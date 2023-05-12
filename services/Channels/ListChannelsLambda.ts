@@ -7,8 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-//@ts-ignore
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { ChannelManager } from '/opt/ChannelManager';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
@@ -23,13 +22,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    // if (!ValidateStringParameters(event, ['botId'])) {
-    //     return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
-    // }
+    if (!ValidateStringParameters(event, ['botId'])) {
+        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+    }
 
-    const result = await ChannelManager.ListMyChannels(Number(telegramUser.id));
+    const result = await ChannelManager.ListMyBotsChannels({
+        masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+    });
 
-    const listResults = ParseListItemsResult(result);
+    const listResults = ParseListResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

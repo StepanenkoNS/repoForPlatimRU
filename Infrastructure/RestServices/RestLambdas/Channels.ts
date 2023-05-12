@@ -8,7 +8,7 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 
 //@ts-ignore
-import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
@@ -196,8 +196,6 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
     //SubscribeToSubscriptionPlanQueue
 
     GrantAccessToDDB([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda, MigrateChannelFirstStageLambda, MigrateChannelSecondStageLambda], tables);
-
-    GrantAccessToS3([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

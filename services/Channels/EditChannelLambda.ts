@@ -7,7 +7,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { ChannelManager } from '/opt/ChannelManager';
 
@@ -24,6 +24,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'number(integer)' },
+        { key: 'botId', datatype: 'number(integer)' },
         { key: 'name', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
@@ -31,14 +32,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const telegramChannel: ITelegramChannel = {
-        discriminator: 'ITelegramChannel',
         masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name)
     };
     const result = await ChannelManager.UpdateChannel(telegramChannel);
 
-    const updateResult = ParseUpdateItemResult(result);
+    const updateResult = ParseItemResult(result);
 
     return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
 }

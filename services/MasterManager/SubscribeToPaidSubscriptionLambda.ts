@@ -4,13 +4,13 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { EPaymentType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration, SupportedCurrenciesArray } from '/opt/PaymentTypes';
+import { EPaymentOptionType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration, SupportedCurrenciesArray } from '/opt/PaymentTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseInsertItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 //@ts-ignore
 import { MasterManager } from '/opt/MasterManager';
@@ -49,6 +49,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         });
     }
 
-    const addResult = ParseInsertItemResult(result);
+    const addResult = ParseItemResult(result);
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }

@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
@@ -124,8 +124,4 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
     paymentProcessorincomingConfirmationRequestRequestsLambda.addEventSource(eventSourceConfirmationEventDlq);
 
     GrantAccessToDDB([paymentProcessorIncomingRequestsLambda, paymentProcessorincomingConfirmationRequestRequestsLambda], tables);
-    GrantAccessToS3(
-        [paymentProcessorIncomingRequestsLambda, paymentProcessorincomingConfirmationRequestRequestsLambda],
-        [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
-    );
 }

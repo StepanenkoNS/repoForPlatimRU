@@ -5,7 +5,7 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseDeleteItemResult, ParseGetItemResult, ParseInsertItemResult, ParseListItemsResult, ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
@@ -30,7 +30,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
         masterId: Number(telegramUser.id)
     });
-    const listResult = ParseListItemsResult(result);
+    const listResult = ParseListResult(result);
 
     return ReturnRestApiResult(listResult.code, listResult.body, true, origin, renewedToken);
 }

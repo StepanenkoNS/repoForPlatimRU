@@ -16,6 +16,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethods } from '/opt/TelegramTypes';
+import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from '/opt/ContentTypes';
 
 //@ts-ignore
 
@@ -46,19 +47,22 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
+    const trigger = bodyObject.data.trigger as PostTrigger;
+    let message: ITelegramNaivMessageContent = bodyObject.data.message;
+    if (trigger.type === EPostTriggerType.PAID_POST) {
+        message = {
+            text: trigger.teaserMessage,
+            attachments: []
+        };
+    }
+
     const result = await MessageSender.SendTestContentPlanMessage({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
         contentPlanPostId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanPostId),
         interaction: bodyObject.data.interaction,
-        message:
-            TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId) === 'PAIDPOST'
-                ? {
-                      text: 'Оплатите, чтобы получить доступ к посту',
-                      attachments: []
-                  }
-                : bodyObject.data.message,
+        message: message,
         sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
         trigger: bodyObject.data.trigger
     });

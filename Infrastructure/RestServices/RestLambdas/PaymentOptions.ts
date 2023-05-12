@@ -5,7 +5,7 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, GrantAccessToSecrets } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
 export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
@@ -97,7 +97,6 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
     });
 
     //Добавление политик
-    GrantAccessToSecrets([AddPaymentOptionLambda, DeletePaymentOptionLambda, EditPaymentOptionLambda]);
 
     GrantAccessToDDB([ListPaymentOptionsLambda, AddPaymentOptionLambda, DeletePaymentOptionLambda, EditPaymentOptionLambda, GetPaymentOptionLambda], tables);
 

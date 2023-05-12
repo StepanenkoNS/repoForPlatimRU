@@ -5,10 +5,10 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseUpdateItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { EPaymentType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
+import { EPaymentOptionType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
@@ -36,7 +36,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    if (bodyObject.data.type === EPaymentType.INTEGRATION) {
+    if (bodyObject.data.type === EPaymentOptionType.INTEGRATION) {
         bodyObject = ValidateIncomingEventBody(event, [{ key: 'token', datatype: 'string' }]);
         if (bodyObject.success === false) {
             return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
@@ -44,33 +44,33 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     let result: boolean | IPaymentOptionDirectCardTransfer | IPaymentOptionPaymentIntegration | undefined = false;
-    if (bodyObject.data.type === EPaymentType.INTEGRATION) {
+    if (bodyObject.data.type === EPaymentOptionType.INTEGRATION) {
         const integrationRequest: IPaymentOptionPaymentIntegration = {
             id: bodyObject.data.id,
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionPaymentIntegration',
             name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            type: EPaymentType.INTEGRATION,
+            type: EPaymentOptionType.INTEGRATION,
             token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
-            description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
+            description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         };
         result = await PaymentOptionsManager.EditPaymentOption(integrationRequest);
     }
 
-    if (bodyObject.data.type === EPaymentType.DIRECT) {
+    if (bodyObject.data.type === EPaymentOptionType.DIRECT) {
         result = await PaymentOptionsManager.EditPaymentOption({
             id: bodyObject.data.id,
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionDirectCardTransfer',
             name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            type: EPaymentType.DIRECT,
+            type: EPaymentOptionType.DIRECT,
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
-            description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
+            description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         });
     }
-    const udpateResult = ParseUpdateItemResult(result);
+    const udpateResult = ParseItemResult(result);
     return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
 }

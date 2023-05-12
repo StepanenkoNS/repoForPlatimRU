@@ -5,7 +5,7 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 
 //@ts-ignore
-import { GrantAccessToDDB, GrantAccessToS3 } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 
 import { LambdaAndResource } from '../Helper/GWtypes';
 
@@ -28,8 +28,6 @@ export function CreateBotPaymentsLambdas(that: any, layers: ILayerVersion[], tab
     });
 
     GrantAccessToDDB([ListBotPaymentsLambda], tables);
-
-    GrantAccessToS3([ListBotPaymentsLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
