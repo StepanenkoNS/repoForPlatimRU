@@ -6,6 +6,7 @@ import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 import { ESupportedCurrency } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
@@ -15,20 +16,25 @@ export async function handler(event: SQSEvent): Promise<any> {
             //console.log('record', record);
 
             const request = JSON.parse(record.body) as { masterId: number; botId: number; channelId: number; subscriptionLengthInDays: number };
-            const participants = await LoadChannelParticipants({ channelId: request.channelId });
 
-            if (participants == false) {
+            const participants = await LoadChannelParticipants({ channelId: request.channelId, masterId: request.masterId, botId: request.botId });
+
+            if (participants.success == false || !participants.data) {
+                let text =
+                    'В процессе миграции пользователей не удалось получить список пользователей вашего канала из Telegram, проверьте пожалуйста, что бот zuzona добавлен в канал с правами администратора.\n';
+                if (record.attributes.ApproximateReceiveCount == '3') {
+                    text = text + 'Это последняя попытка 3-я попытка';
+                } else {
+                    text = text + 'Это попытка ' + record.attributes.ApproximateReceiveCount + ' из 3. Следующая попытка будет через 15 минут';
+                }
                 await MessageSender.QueueSendPlainMessage({
-                    botId: Number(process.env.botFatherId!),
+                    botId: request.botId,
                     chatId: request.masterId,
                     discriminator: 'ITelegramMessage',
                     masterId: request.masterId,
                     message: {
                         attachments: [],
-                        text:
-                            'Не удалось получить список пользователей вашего канала из Telegram, проверьте пожалуйста, что бот zuzona добавлен в канал с правами администратора\nЭто попытка ' +
-                            record.attributes.ApproximateReceiveCount +
-                            ' из 3. Следующая попытка будет через 15 минут'
+                        text: text
                     },
                     sendMethod: ETelegramSendMethod.sendMessage
                 });
@@ -46,29 +52,35 @@ export async function handler(event: SQSEvent): Promise<any> {
                 name: 'MIGRATION',
                 prices: [{ price: 0, currency: ESupportedCurrency.USD }]
             });
-            if (addPlanResult == false) {
+            if (addPlanResult.success == false || !addPlanResult.data) {
+                let text = 'В процессе миграции пользователей произошла ошибка - мы не смогли создать миграционный план для переноса пользователейю. \n';
+                if (record.attributes.ApproximateReceiveCount == '3') {
+                    text = text + 'Это последняя попытка 3-я попытка';
+                } else {
+                    text = text + 'Это попытка ' + record.attributes.ApproximateReceiveCount + ' из 3. Следующая попытка будет через 15 минут';
+                }
                 await MessageSender.QueueSendPlainMessage({
-                    botId: Number(process.env.botFatherId!),
+                    botId: request.botId,
                     chatId: request.masterId,
                     discriminator: 'ITelegramMessage',
                     masterId: request.masterId,
                     message: {
                         attachments: [],
-                        text: 'Мы не смогли создать миграционный план для переноса пользователей' + record.attributes.ApproximateReceiveCount + ' из 3. Следующая попытка будет через 15 минут'
+                        text: text
                     },
                     sendMethod: ETelegramSendMethod.sendMessage
                 });
                 throw 'Error: AddUserSubscriptionPlanChannel == false\n' + JSON.stringify(request, null, 4);
             }
 
-            const arrayToSend = participants.map((participant) => {
+            const arrayToSend = participants.data.map((participant) => {
                 return {
                     masterId: request.masterId,
                     botId: request.botId,
                     channelId: request.channelId,
                     chatId: participant.id,
                     userName: participant.userName,
-                    subscriptionPlanId: addPlanResult.id!
+                    subscriptionPlanId: addPlanResult.data!.id!
                 };
             });
             await MessageSender.QueueSendPlainMessage({
@@ -78,7 +90,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                 masterId: request.masterId,
                 message: {
                     attachments: [],
-                    text: 'Мы начали импорт подписчиков из вашего канала. Всего будет импортировано ' + arrayToSend.length + ' записей'
+                    text: 'Мы начали импорт подписчиков из вашего канала в систему Zuzona. Всего будет импортировано ' + arrayToSend.length + ' записей'
                 },
                 sendMethod: ETelegramSendMethod.sendMessage
             });
@@ -96,7 +108,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                 masterId: request.masterId,
                 message: {
                     attachments: [],
-                    text: 'Импорт успешно завершен. Пользователи отобразятся в системе в течении 15 минут'
+                    text: 'Импорт успешно завершен. Пользователи отобразятся в системе в течении 5 минут'
                 },
                 sendMethod: ETelegramSendMethod.sendMessage
             });

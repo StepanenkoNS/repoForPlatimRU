@@ -22,13 +22,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['id', 'botId'])) {
+    if (!ValidateStringParameters(event, ['id', 'channelId', 'botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
     const result = await UserSubscriptionPlanChannel.GetUserSubscriptionPlanChannelById({
         id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        channelId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.channelId!)),
         masterId: telegramUser.id
     });
 

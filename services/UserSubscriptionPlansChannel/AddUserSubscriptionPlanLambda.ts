@@ -25,15 +25,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    let bodyObject = ValidateIncomingEventBody(event, [{ key: 'prices', datatype: 'array' }]);
-    // let bodyObject = ValidateIncomingEventBody(event, [
-    //     { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-    //     { key: 'name', datatype: 'string' },
-    //     { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
-    //     { key: 'prices', datatype: 'array' },
-    //     { key: 'enabled', datatype: 'boolean' },
-    //     { key: 'channelId', datatype: 'number(integer)' }
-    // ]);
+    let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'name', datatype: 'string' },
+        { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'prices', datatype: 'array' },
+        { key: 'enabled', datatype: 'boolean' },
+        { key: 'channelId', datatype: 'number(integer)' }
+    ]);
 
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);

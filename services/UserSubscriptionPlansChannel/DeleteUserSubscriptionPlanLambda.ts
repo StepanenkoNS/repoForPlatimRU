@@ -22,7 +22,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
-        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' }
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'channelId', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
@@ -32,6 +33,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const result = await UserSubscriptionPlanChannel.DeleteUserSubscriptionPlanChannel({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        channelId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.channelId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
 

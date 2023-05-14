@@ -1,10 +1,10 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { GetItemFromDB } from '/opt/LambdaHelpers/WebPagesHelper';
+import { PublicWebPageManager } from '/opt/PublicWebPageManager';
 
 type Page = {
     pagePath: string;
@@ -19,7 +19,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const origin = SetOrigin(event);
 
-    let locale: string;
+    let locale: string = fallbackLocale;
     let pagePath: string | undefined;
 
     const queryParams = event.queryStringParameters;
@@ -36,18 +36,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const returnObject = ReturnRestApiResult(422, { success: false, error: 'query param pagePath not provided' }, false, origin);
         return returnObject as APIGatewayProxyResult;
     }
-    try {
-        const result = await GetItemFromDB(locale, 'publicPages', pagePath);
 
-        if (result === false) {
-            const message = 'Item not found in DB\nLocale:' + locale + '\nPrefix: publicPages' + '\nSK:' + pagePath;
-            return ReturnRestApiResult(404, { success: false, error: message }, false, origin);
-        }
+    const result = await PublicWebPageManager.GetPublicWebPageContent({
+        locale: locale,
+        PKPostfix: 'publicPages',
+        pagePath: pagePath
+    });
 
-        return ReturnRestApiResult(200, { success: true, item: result }, false, origin);
-    } catch (error) {
-        console.log('DynamoDB error\n', error);
-        const returnObject = ReturnRestApiResult(500, { success: false, error: 'Database error' }, false, origin);
-        return returnObject as APIGatewayProxyResult;
-    }
+    const getResult = ParseItemResult(result);
+
+    return ReturnRestApiResult(getResult.code, getResult.body, false, origin);
 }

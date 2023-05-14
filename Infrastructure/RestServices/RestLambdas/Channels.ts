@@ -116,7 +116,9 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             migrateChannelSecondQueueURL: migrateChannelSecondQueue.queueUrl,
-            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
+            API_ID: StaticEnvironment.Secrets.API_ID,
+            API_HASH: StaticEnvironment.Secrets.API_HASH
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -135,7 +137,9 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
-            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
+            SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
+            API_ID: StaticEnvironment.Secrets.API_ID,
+            API_HASH: StaticEnvironment.Secrets.API_HASH
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
