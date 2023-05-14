@@ -23,7 +23,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'channelId', datatype: 'string' }
+        { key: 'channelId', datatype: 'number(integer)' }
     ]);
     if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
