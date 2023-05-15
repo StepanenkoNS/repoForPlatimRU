@@ -27,7 +27,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
-        { key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'lifeTime', datatype: 'boolean' },
+        { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
+
         { key: 'contentPlans', datatype: 'array' },
         { key: 'prices', datatype: 'array' },
 
@@ -36,13 +38,19 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
-
+    if (bodyObject.data.lifeTime == false) {
+        const step2 = ValidateIncomingEventBody(event, [{ key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' }]);
+        if (step2.success === false) {
+            return ReturnRestApiResult(422, { success: false, error: 'lengthInDays should not be empty when lifeTime is false' }, false, origin, renewedToken);
+        }
+    }
     try {
         const result = await UserSubscriptionPlanBot.UpdateUserSubscriptionPlanBot({
             id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
             masterId: Number(telegramUser.id),
             discriminator: 'IUserSubscriptionPlanBot',
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+            lifeTime: bodyObject.data.lifeTime,
             enabled: bodyObject.data.enabled,
             contentPlans: bodyObject.data.contentPlans,
             lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
