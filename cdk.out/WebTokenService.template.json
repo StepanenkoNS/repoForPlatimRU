@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "33a7205d01b43041b066f0ccc75637a84eec3201874280c0fb001d01e580ac42.zip"
+     "S3Key": "fbea9dd931d8b2e6ac42bedef5054f775bec2ce3c8cd1a15400963d22ab06a32.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -102,7 +102,7 @@
     },
     "Environment": {
      "Variables": {
-      "accessTokenExpirationMinutes": "60",
+      "accessTokenExpirationMinutes": "5",
       "refreshTokenExpirationDays": "365",
       "AllowUsers": "",
       "LOG_LEVEL": "info",
@@ -131,10 +131,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -144,7 +144,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.33a7205d01b43041b066f0ccc75637a84eec3201874280c0fb001d01e580ac42",
+    "aws:asset:path": "asset.fbea9dd931d8b2e6ac42bedef5054f775bec2ce3c8cd1a15400963d22ab06a32",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

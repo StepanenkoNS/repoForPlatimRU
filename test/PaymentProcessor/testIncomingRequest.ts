@@ -1,23 +1,23 @@
-import { IncomingPaymentRequestsHandler } from 'services/PaymentProcessor/IncomingPaymentRequests';
+import { handler } from 'services/PaymentProcessor/IncomingPaymentRequests';
 
 const event = {
     Records: [
         {
-            messageId: 'aaa066fa-ad2d-456a-9f84-41be2f1217e6',
+            messageId: '33a8049f-b572-4604-bf74-300555691fd1',
             receiptHandle:
-                'AQEB/KM+CEOWSh2HK7GyG7nO7c+gQzIvLZUOCQRQK+n7NTQzLWjvyg0es+1e9kOfhDyQeu+FrzSdWKM1m1HYmy7UAzfRwewovvsGYQV6LmZSe/+VhdBY+mjU8kxOmNw8ZL+xsSnUpgEwZKWjeiiCMTImY20UY4Et2EwF0Z6yPXFNdh8rUBF6FmYBt2RExWP0uxElFI6gmmxZ6RLuW1dUxJARFlTpwyduzCP105hLa5AF3ObuU2zR5nyczoMXbQXTFzx0f9iUHml7mtWHXanDTqy0w2WdmGL3Tr3009DtxeP88w9se53kDENIzoYhTDH8DOjY',
-            body: '{"discriminator":"IRequestForPaymentConfirmation","telegramSendMethod":"sendPhoto","chatId":199163834,"botId":5795087844,"masterId":"199163834","subscriptionPlanId":"4XkAl1WZAo6s","subscriptionPlanName":"План подписки бота#1","subscriptionType":"BOT","price":200,"currency":"RUB","paymentOptionId":"AZUBqGcJndzm","paymentOptionType":"DIRECT","telegramMessageText":"","telegramFileId":"AgACAgIAAxkBAAIGv2Q_25hmmaXItGBFeHuScrH-tAwRAAIexzEbfWgAAUr2aRxAodZ6ywEAAwIAA3kAAy8E"}',
+                'AQEB387AmZGH+eNO+EhgIQDa/frjxtOH83ECMRNs4WOD1NagLd+Hz1bPytIiF5DsRFfL8ZQzj+g9cpAmrrea8/llgFxZqVi2SWHtV2AnjkfbL/tf9P1NCT4jaXTMYTgAwSl+ohYt3C520n4bsDJAPzGXyWigTqtAqi7/dnbMsj/0swOx3M2z9zeif+gGToIR18bDk7Kp5A61bbyqCH7FKcqWltReniWrfSTzz9UV5FUoFtZ/Ojw0/WqV/oxmNwb/i7XFKLwoi5jGOwnGNCwrBApaq3OjdxsE/1yq+VhQdPCRSgjH2dWu4u9UgTclwAzkVzSj',
+            body: '{"chatId":199163834,"botId":5795087844,"masterId":199163834,"paymentTarget":"SUBSCRIPTION","subscriptionPlanId":"-RFuaathceto","channelId":-1001881460213,"subscriptionPlanName":"qqewrew","subscriptionType":"CHANNEL","price":20000,"currency":"RUB","paymentOptionId":"oeghzkwkzudE","paymentOptionType":"DIRECT","telegramMessageText":"","telegramSendMethod":"sendPhoto","telegramFileId":"AgACAgIAAxkBAAIXFWRiDQ_i_EXR7V7GZI5FJ9KMZS3rAAIyxzEblbARS1Fti9z-2igeAQADAgADeQADLwQ"}',
             attributes: {
                 ApproximateReceiveCount: '1',
-                SentTimestamp: '1681906604630',
-                SequenceNumber: '18877312164494833920',
+                SentTimestamp: '1684147897953',
+                SequenceNumber: '18877885935585520128',
                 MessageGroupId: '5795087844',
                 SenderId: 'AIDA6OX3PF47UX6FRE7SI',
-                MessageDeduplicationId: '2Oe2D3JiHeN0rGpNynAAX6MbnaX',
-                ApproximateFirstReceiveTimestamp: '1681906604630'
+                MessageDeduplicationId: '2PpJ4QjsjVfsdZPGWqIPGzxfx4W',
+                ApproximateFirstReceiveTimestamp: '1684147897953'
             },
             messageAttributes: {},
-            md5OfBody: '526dc89212b4b3cfe6e06299d0043b9f',
+            md5OfBody: 'b66008e5b89c41269e2e2ceb0ed99770',
             eventSource: 'aws:sqs',
             eventSourceARN: 'arn:aws:sqs:us-east-1:993738567487:paymentProcessor-IncomingRequests.fifo',
             awsRegion: 'us-east-1'
@@ -25,7 +25,7 @@ const event = {
     ]
 };
 async function main() {
-    IncomingPaymentRequestsHandler(event as any);
+    handler(event as any);
 }
 
 main();

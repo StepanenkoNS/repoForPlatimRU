@@ -12,6 +12,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+import { ItemResponse } from '/opt/GeneralTypes';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -42,9 +43,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         }
     }
 
-    let result: boolean | IPaymentOptionDirectCardTransfer | IPaymentOptionPaymentIntegration = false;
     if (bodyObject.data.type === 'DIRECT') {
-        result = await PaymentOptionsManager.AddDirectPaymentOption({
+        const data: IPaymentOptionDirectCardTransfer = {
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionDirectCardTransfer',
@@ -52,10 +52,13 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             type: EPaymentOptionType.DIRECT,
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
             description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
-        });
+        };
+        const result = await PaymentOptionsManager.AddDirectPaymentOption(data);
+        const addResult = ParseItemResult(result);
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
     }
     if (bodyObject.data.type === 'INTEGRATION') {
-        result = await PaymentOptionsManager.AddIntegrationPaymentOption({
+        const result = await PaymentOptionsManager.AddIntegrationPaymentOption({
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
             discriminator: 'IPaymentOptionPaymentIntegration',
@@ -65,7 +68,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
             description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         });
+        const addResult = ParseItemResult(result);
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
     }
-    const addResult = ParseItemResult(result);
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    const mockResult = ParseItemResult(undefined);
+    return ReturnRestApiResult(mockResult.code, mockResult.body, false, origin, renewedToken);
 }

@@ -32,33 +32,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -227,7 +227,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "33a7205d01b43041b066f0ccc75637a84eec3201874280c0fb001d01e580ac42.zip"
+                      "s3Key": "fbea9dd931d8b2e6ac42bedef5054f775bec2ce3c8cd1a15400963d22ab06a32.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -237,7 +237,7 @@
                     },
                     "environment": {
                       "variables": {
-                        "accessTokenExpirationMinutes": "60",
+                        "accessTokenExpirationMinutes": "5",
                         "refreshTokenExpirationDays": "365",
                         "AllowUsers": "",
                         "LOG_LEVEL": "info",
@@ -266,10 +266,10 @@
                     "functionName": "WebTokenService-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x"
                   }
@@ -1657,33 +1657,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -3586,10 +3586,10 @@
                     "functionName": "react-HelpCenter-Landing-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -3975,10 +3975,10 @@
                     "functionName": "react-HelpCenter-Subcategory-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4221,10 +4221,10 @@
                     "functionName": "react-HelpCenter-Article-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4467,10 +4467,10 @@
                     "functionName": "react-Content-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4699,10 +4699,10 @@
                     "functionName": "react-BotLanding-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4797,33 +4797,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -5032,10 +5032,10 @@
                     "functionName": "react-Bots-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5408,10 +5408,10 @@
                     "functionName": "react-Bots-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5651,10 +5651,10 @@
                     "functionName": "react-Bots-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5894,10 +5894,10 @@
                     "functionName": "react-Bots-Register-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -6137,10 +6137,10 @@
                     "functionName": "react-Bots-UnRegister-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -6380,10 +6380,10 @@
                     "functionName": "react-Bots-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -6623,10 +6623,10 @@
                     "functionName": "react-Bots-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -6890,10 +6890,10 @@
                     "functionName": "react-Bots-DeleteData-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -7186,10 +7186,10 @@
                     "functionName": "react-BotCommands-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7418,10 +7418,10 @@
                     "functionName": "react-BotCommands-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7650,10 +7650,10 @@
                     "functionName": "react-BotCommands-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7883,10 +7883,10 @@
                     "functionName": "react-BotCommands-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8115,10 +8115,10 @@
                     "functionName": "react-BotCommands-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8347,10 +8347,10 @@
                     "functionName": "react-Channels-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8579,10 +8579,10 @@
                     "functionName": "react-Channels-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8811,10 +8811,10 @@
                     "functionName": "react-Channels-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -9043,10 +9043,10 @@
                     "functionName": "react-Channels-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -9391,10 +9391,10 @@
                     "functionName": "react-Channels-Migrate-first",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -9685,7 +9685,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "253c8f6f2a79cf16e6c982fb79615282626e496cc244fe72a42961e2cc8f6876.zip"
+                      "s3Key": "9482113a484e145e95729b0c6379180bf9242a43fa91e3bb6cae78bc0eadd6d8.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -9759,10 +9759,10 @@
                     "functionName": "react-Channels-Migrate-second",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -10055,10 +10055,10 @@
                     "functionName": "react-Meetings-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10287,10 +10287,10 @@
                     "functionName": "react-Meetings-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10519,10 +10519,10 @@
                     "functionName": "react-Meetings-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10752,10 +10752,10 @@
                     "functionName": "react-Meetings-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10984,10 +10984,10 @@
                     "functionName": "react-Meetings-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11216,10 +11216,10 @@
                     "functionName": "react-PaymentOptions-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11448,10 +11448,10 @@
                     "functionName": "react-PaymentOptions-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11644,7 +11644,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "55c606deddfceb52ed47d72b6d1864548a95c9583795ccf3ffe7e9a442aa9344.zip"
+                      "s3Key": "b37e1cb53878338697a7f218cb9e3f2e801e8ad71293ae7f8ab0b0e196229d6c.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -11680,10 +11680,10 @@
                     "functionName": "react-PaymentOptions-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11876,7 +11876,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "169864006b045ae026c4d4c327fdcbd7eefb720dbe1f0a051f11461231ba1f6d.zip"
+                      "s3Key": "68890511de78298d3f0804b338b390222514235c4675e2bfc5daafe0d4546ee1.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -11912,10 +11912,10 @@
                     "functionName": "react-PaymentOptions-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -12144,10 +12144,10 @@
                     "functionName": "react-PaymentOptions-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -12460,33 +12460,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -12694,10 +12694,10 @@
                     "functionName": "react-TelegramFiles-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -13085,10 +13085,10 @@
                     "functionName": "react-TelegramFiles-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -13333,10 +13333,10 @@
                     "functionName": "react-TelegramFiles-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -13581,10 +13581,10 @@
                     "functionName": "react-TelegramFiles-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -13829,10 +13829,10 @@
                     "functionName": "react-GetPresignedUrl-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -13977,33 +13977,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -14195,10 +14195,10 @@
                     "functionName": "react-SendMessages-SendTestMessage-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -14570,10 +14570,10 @@
                     "functionName": "react-SendMessages-SendTestFile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -14802,10 +14802,10 @@
                     "functionName": "react-SendMessages-SendDirectMessageFromAdmin-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -15034,10 +15034,10 @@
                     "functionName": "react-BotPayments-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -15319,10 +15319,10 @@
                     "functionName": "SendMessage-Scheduller-First-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -15362,6 +15362,71 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
+              "version": "2.78.0"
+            }
+          },
+          "oneMinuteSendMessageSchedullerFirstStage": {
+            "id": "oneMinuteSendMessageSchedullerFirstStage",
+            "path": "WebRestServiceMessagesAndPayments/oneMinuteSendMessageSchedullerFirstStage",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "WebRestServiceMessagesAndPayments/oneMinuteSendMessageSchedullerFirstStage/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::Rule",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "oneMinuteSendMessageSchedullerFirstStage",
+                    "scheduleExpression": "rate(1 minute)",
+                    "state": "ENABLED",
+                    "targets": [
+                      {
+                        "id": "Target0",
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "SendMessageSchedullerFirstStage8B41BE99",
+                            "Arn"
+                          ]
+                        },
+                        "input": "{\"message\":\"SendMessageSchedullerFirstStageLambda\"}"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnRule",
+                  "version": "2.78.0"
+                }
+              },
+              "AllowEventRuleWebRestServiceMessagesAndPaymentsSendMessageSchedullerFirstStage4AE89C53": {
+                "id": "AllowEventRuleWebRestServiceMessagesAndPaymentsSendMessageSchedullerFirstStage4AE89C53",
+                "path": "WebRestServiceMessagesAndPayments/oneMinuteSendMessageSchedullerFirstStage/AllowEventRuleWebRestServiceMessagesAndPaymentsSendMessageSchedullerFirstStage4AE89C53",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "SendMessageSchedullerFirstStage8B41BE99",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "oneMinuteSendMessageSchedullerFirstStageAC4FC767",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.78.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.Rule",
               "version": "2.78.0"
             }
           },
@@ -15606,10 +15671,10 @@
                     "functionName": "SendMessage-Scheduller-Second-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -15924,10 +15989,10 @@
                     "functionName": "scheduler-SendMessageSender-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16278,7 +16343,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "aeed4927019b032f7db8676e580ea6c2c3ebbc6629b729a32e8c7a4b76c310ab.zip"
+                      "s3Key": "9bcb1bcbbe1b788395f2490bdab3f9f4f3ebe1c77a6dd2e4f6198e7b2e68b2b0.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -16350,10 +16415,10 @@
                     "functionName": "paymentProcessor-incomingRequests",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -16648,7 +16713,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "6ca88936bdd7109d9bf46adb365f98257f7cc527b97ad9f69831347bc1f19372.zip"
+                      "s3Key": "175b1931a92ae258817eab223ccdd98d7e6f5fc09e3ae97e86e61d2a6e0aa5c6.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -16720,10 +16785,10 @@
                     "functionName": "paymentProcessor-IncomingPaymentConfirmation",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -17138,10 +17203,10 @@
                     "functionName": "subscriptionProcessor-Scheduler-Add-New-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "memorySize": 256,
                     "runtime": "nodejs16.x",
@@ -17469,10 +17534,10 @@
                     "functionName": "subscriptionProcessor-Scheduler-Delete-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "memorySize": 256,
                     "runtime": "nodejs16.x",
@@ -17833,10 +17898,10 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-ContentPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -18124,7 +18189,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "7afee0ad3e880beabeae8f5c5832b30a6397555583b82c8a9967a96b64e9390c.zip"
+                      "s3Key": "be7ee9f3575d93892bd518d4900ab9085d709df7f1068fa2b0db51220792158e.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -18196,10 +18261,10 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-SubscriptionPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -18513,10 +18578,10 @@
                     "functionName": "subscriptionProcessor-Expire-ChannelSubsriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -18832,10 +18897,10 @@
                     "functionName": "subscriptionProcessor-Expire-BotSubscriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -19130,10 +19195,10 @@
                     "functionName": "subscriptionProcessor-Cleanup-Zuzona",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -19450,10 +19515,10 @@
                     "functionName": "subscriptionProcessor-Expire-expireUserSubscriptionItem",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -19655,33 +19720,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -19889,10 +19954,10 @@
                     "functionName": "react-ContentPlanPosts-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20264,10 +20329,10 @@
                     "functionName": "react-ContentPlanPosts-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20532,10 +20597,10 @@
                     "functionName": "react-ContentPlanPosts-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20764,10 +20829,10 @@
                     "functionName": "react-ContentPlanPosts-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -21032,10 +21097,10 @@
                     "functionName": "react-ContentPlanPosts-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21264,10 +21329,10 @@
                     "functionName": "react-ContentPlans-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21496,10 +21561,10 @@
                     "functionName": "react-ContentPlans-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21728,10 +21793,10 @@
                     "functionName": "react-ContentPlans-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21960,10 +22025,10 @@
                     "functionName": "react-ContentPlans-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22192,10 +22257,10 @@
                     "functionName": "react-ContentPlans-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22380,33 +22445,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -22598,10 +22663,10 @@
                     "functionName": "react-UserSubscriptionPlansBot-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22973,10 +23038,10 @@
                     "functionName": "react-UserSubscriptionPlansBot-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -23205,10 +23270,10 @@
                     "functionName": "react-UserSubscriptionPlansBot-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -23437,10 +23502,10 @@
                     "functionName": "react-UserSubscriptionPlansBot-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -23669,10 +23734,10 @@
                     "functionName": "react-UserSubscriptionPlansBot-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -23865,7 +23930,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "cfe1a24e12a986e977f021729ec39cc2124b4bdf1f3dce5b94244ff32424bc4f.zip"
+                      "s3Key": "3db61353e71c1c65bd22d9984aa6e23a951dedd97dba9ac75748dd8d29afdf36.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -23901,10 +23966,10 @@
                     "functionName": "react-UserSubscriptionPlansChannel-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -24133,10 +24198,10 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -24365,10 +24430,10 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -24597,10 +24662,10 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -24829,10 +24894,10 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -25062,10 +25127,10 @@
                     "functionName": "react-MasterManager-GetMe-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -25295,10 +25360,10 @@
                     "functionName": "react-MasterManager-SubscribeToPaidSubscription-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -25528,10 +25593,10 @@
                     "functionName": "react-MasterManager-ListSubscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -25740,33 +25805,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -25958,10 +26023,10 @@
                     "functionName": "react-CRM-Users-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -26333,10 +26398,10 @@
                     "functionName": "react-CRM-Bot-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -26565,10 +26630,10 @@
                     "functionName": "react-CRM-Bot-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -26797,10 +26862,10 @@
                     "functionName": "react-CRM-Channel-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -27029,10 +27094,10 @@
                     "functionName": "react-CRM-Channel-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -27261,10 +27326,10 @@
                     "functionName": "react-CRM-Bot-Payments-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -27493,10 +27558,10 @@
                     "functionName": "react-CRM-Bot-Payments-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -27725,10 +27790,10 @@
                     "functionName": "react-CRM-ScheduledPosts-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -27957,10 +28022,10 @@
                     "functionName": "react-CRM-UserProfile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -28153,7 +28218,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "653e05456ce6768b33a9d970fde84e88cb48cfb902c207cd23b11b637ee2fe29.zip"
+                      "s3Key": "3dac1eccbb6b515c081c8761c511180b6c77abed7d9ad5497b05cae1a541fa6e.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -28189,10 +28254,10 @@
                     "functionName": "react-CRM-BanUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -28385,7 +28450,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ad3414477d497db3b522e08bbdd7be808eba00ddfd59dafbd11665dd67e51029.zip"
+                      "s3Key": "b345068f5baa9cb706b49205c5329f1e4b936bd5ac757ec836dda2cf27acf645.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -28421,10 +28486,10 @@
                     "functionName": "react-CRM-EditUserNotes-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -28653,10 +28718,10 @@
                     "functionName": "react-CRM-GetMyBot-Analitics-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -28857,33 +28922,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -29075,10 +29140,10 @@
                     "functionName": "react-BotLanding-Update-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -29334,33 +29399,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -42203,33 +42268,33 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
-            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:515",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
+            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:536",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
-            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:317",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
+            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:322",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
-            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:262",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
+            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:270",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
-            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:36",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
+            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:37",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"

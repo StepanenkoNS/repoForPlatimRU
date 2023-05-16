@@ -26,7 +26,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await UserSubscriptionPlanChannel.ListUserSubscriptionPlansChannel({
+    const result = await UserSubscriptionPlanChannel.ListUserSubscriptionPlansChannelByChannelId({
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
         channelId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.channelId!)),
         masterId: Number(telegramUser.id)

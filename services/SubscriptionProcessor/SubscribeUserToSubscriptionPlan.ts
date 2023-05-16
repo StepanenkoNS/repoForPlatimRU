@@ -23,12 +23,12 @@ export async function handler(event: SQSEvent): Promise<any> {
             console.log('record', record);
 
             const request = JSON.parse(record.body) as ISubscribeUserToSubscriptionPlan;
-            let subscriptionResult: false | IChannelSubscription | IBotSubscription = false;
+
             let replyMarkup = null;
             //подписываем на бота
             switch (request.type) {
                 case 'BOT': {
-                    subscriptionResult = await MessagingBotSubscriptionManager.SubscribeToSubscriptionPlanBot({
+                    const subscribeToBot = await MessagingBotSubscriptionManager.SubscribeToSubscriptionPlanBot({
                         botId: request.botId,
                         chatId: request.chatId,
                         masterId: request.masterId,
@@ -37,7 +37,10 @@ export async function handler(event: SQSEvent): Promise<any> {
                         currency: request.currency,
                         paymentId: request.paymentId
                     });
-                    const msgIdUser = ksuid.randomSync(new Date()).string;
+
+                    if (subscribeToBot.success == false || !subscribeToBot.data) {
+                        throw 'SubscribeToSubscriptionPlanBot failed';
+                    }
                     await MessageSender.QueueSendPlainMessage({
                         discriminator: 'ITelegramMessage',
                         botId: Number(request.botId),
@@ -52,25 +55,25 @@ export async function handler(event: SQSEvent): Promise<any> {
                     break;
                 }
                 case 'CHANNEL': {
-                    subscriptionResult = await MessagingBotSubscriptionManager.SubscribeToSubscriptionPlanChannel({
+                    const subscribeToChannel = await MessagingBotSubscriptionManager.SubscribeToSubscriptionPlanChannel({
                         botId: request.botId,
                         chatId: request.chatId,
                         masterId: request.masterId,
+                        channelId: request.channelId!,
                         userSubscriptionPlanId: request.userSubscriptionPlanId,
                         pricePaid: request.pricePaid,
                         currency: request.currency,
                         paymentId: request.paymentId
                     });
 
-                    if (subscriptionResult === false) {
-                        console.log('subscriptionResult === false');
-                        return false;
+                    if (subscribeToChannel.success === false || !subscribeToChannel.data) {
+                        throw 'SubscribeToSubscriptionPlanChannel failed';
                     }
 
                     const callbackDataJoin: PayloadType = {
                         //id: request.id!,
                         callBack: ETelegramCallbackTypeKey.JoinChannel,
-                        channelId: Number((subscriptionResult as IChannelSubscription).channelId),
+                        channelId: Number((subscribeToChannel.data as IChannelSubscription).channelId),
                         chatId: Number(request.chatId)
                     };
 

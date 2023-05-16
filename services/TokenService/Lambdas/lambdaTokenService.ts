@@ -78,7 +78,7 @@ export async function handler(event: APIGatewayEvent) {
             };
             return ReturnResult(401, result, origin);
         } else {
-            let role = ZuzonaRole.admin;
+            let role = validateTokenResult.userProfile.role;
             if (validateTokenResult.userProfile.id === 199163834) {
                 role = ZuzonaRole.superadmin;
             }
@@ -89,7 +89,8 @@ export async function handler(event: APIGatewayEvent) {
                 photo_url: validateTokenResult.userProfile.photo_url,
                 username: validateTokenResult.userProfile.username,
                 language: validateTokenResult.userProfile.language,
-                role: role
+                role: role,
+                zuzonaSubscription: validateTokenResult.userProfile.zuzonaSubscription
             };
             if (validateTokenResult.context.renewedAccessToken) {
                 return ReturnResult(201, { userProfile: userProfile }, origin, {

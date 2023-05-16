@@ -43,7 +43,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         }
     }
 
-    let result: boolean | IPaymentOptionDirectCardTransfer | IPaymentOptionPaymentIntegration | undefined = false;
     if (bodyObject.data.type === EPaymentOptionType.INTEGRATION) {
         const integrationRequest: IPaymentOptionPaymentIntegration = {
             id: bodyObject.data.id,
@@ -56,11 +55,13 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
             description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         };
-        result = await PaymentOptionsManager.EditPaymentOption(integrationRequest);
+        const result = await PaymentOptionsManager.EditPaymentOption(integrationRequest);
+        const udpateResult = ParseItemResult(result);
+        return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
     }
 
     if (bodyObject.data.type === EPaymentOptionType.DIRECT) {
-        result = await PaymentOptionsManager.EditPaymentOption({
+        const result = await PaymentOptionsManager.EditPaymentOption({
             id: bodyObject.data.id,
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
@@ -70,7 +71,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
             description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
         });
+        const udpateResult = ParseItemResult(result);
+        return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
     }
-    const udpateResult = ParseItemResult(result);
-    return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
+    const mockResult = ParseItemResult(undefined);
+    return ReturnRestApiResult(mockResult.code, mockResult.body, false, origin, renewedToken);
 }

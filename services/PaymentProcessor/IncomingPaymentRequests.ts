@@ -16,7 +16,7 @@ export async function handler(event: SQSEvent): Promise<any> {
     console.log('IncomingPaymentRequestsHandler - incoming event', JSON.stringify(event));
     for (const record of event.Records) {
         try {
-            let addPaymentEventResult: false | any = false;
+            let addPaymentEventResult: any | undefined = undefined;
             let ConfirmationMessageText = '';
             const parsedInputData = JSON.parse(record.body) as IRequestForPaymentConfirmation;
             if (parsedInputData.paymentTarget === EPaymentTarget.SUBSCRIPTION) {
@@ -30,6 +30,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                     subscriptionPlanId: request.subscriptionPlanId,
                     subscriptionPlanName: request.subscriptionPlanName,
                     subscriptionType: request.subscriptionType,
+                    channelId: request.channelId ? request.channelId : undefined,
                     price: request.price,
                     currency: request.currency,
                     paymentOptionId: request.paymentOptionId,
@@ -38,8 +39,12 @@ export async function handler(event: SQSEvent): Promise<any> {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                addPaymentEventResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
+                    throw 'AddDIRECTPaymentRequest.success === false';
+                }
 
+                addPaymentEventResult = tmpPaymentResult.data;
                 ConfirmationMessageText =
                     'Запрос на подписку ' +
                     dataItem.subscriptionType +
@@ -70,13 +75,19 @@ export async function handler(event: SQSEvent): Promise<any> {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                addPaymentEventResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+
+                if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
+                    throw 'AddDIRECTPaymentRequest.success === false';
+                }
+
+                addPaymentEventResult = tmpPaymentResult.data;
 
                 ConfirmationMessageText = 'Запрос на оплату платного поста ' + '\nОплачено: ' + dataItem.price + ' ' + dataItem.currency.toString() + '\nid подписчика: ' + dataItem.chatId;
             }
 
-            if (addPaymentEventResult === false) {
-                batchItemFailures.push({ itemIdentifier: record.messageId });
+            if (addPaymentEventResult === undefined) {
+                throw 'addPaymentEventResult === undefined';
             } else {
                 //отправляем сообщение
                 const itemMessage: IRequestForPaymentConfirmation = {
@@ -101,20 +112,20 @@ export async function handler(event: SQSEvent): Promise<any> {
                 };
 
                 const sendResult = await MessageSender.SendPaymentMethodToAdmin(itemMessage);
-                if (sendResult === false) {
+                if (sendResult.success === false || !sendResult.data) {
                     batchItemFailures.push({ itemIdentifier: record.messageId });
                 }
-                if (sendResult === ETelegramUserStatus.THROTTLED) {
+                if (sendResult.data!.status === ETelegramUserStatus.THROTTLED) {
                     console.log('request throttled by telegram');
                     batchItemFailures.push({ itemIdentifier: record.messageId });
                 }
-                if (sendResult === ETelegramUserStatus.ERROR) {
+                if (sendResult.data!.status === ETelegramUserStatus.ERROR) {
                     console.log('Unknown error');
                     batchItemFailures.push({ itemIdentifier: record.messageId });
                 }
             }
 
-            console.log(record);
+            //console.log(record);
         } catch (e) {
             console.log(`Error in processing SQS consumer: ${record.body}`);
             console.log(e);

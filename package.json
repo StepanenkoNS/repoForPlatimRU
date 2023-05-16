@@ -10,6 +10,7 @@
         "deploy:gw": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebGatewayService'",
         "deploy:token": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebTokenService'",
         "deploy:sub": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebRestServiceSubscriptions'",
+        "deploy:main": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebRestServiceMain'",
         "git": "git add . ; git commit -m \"automated commit\" ; git push "
     },
     "repository": {

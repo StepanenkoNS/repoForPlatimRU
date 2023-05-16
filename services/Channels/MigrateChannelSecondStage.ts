@@ -18,7 +18,8 @@ export async function handler(event: SQSEvent): Promise<any> {
                 menuLanguage: defaultLocale,
                 userName: request.userName,
                 channelMigration: {
-                    subscriptionPlanId: request.subscriptionPlanId
+                    subscriptionPlanId: request.subscriptionPlanId,
+                    channelId: request.channelId
                 }
             });
         } catch (error) {

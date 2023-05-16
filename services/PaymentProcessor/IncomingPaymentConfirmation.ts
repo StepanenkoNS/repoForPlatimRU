@@ -36,17 +36,17 @@ export async function handler(event: SQSEvent): Promise<any> {
                 paymentId: request.id
             });
 
-            console.log('paymentDetails', paymentDetails);
+            //console.log('paymentDetails', paymentDetails);
 
-            if (paymentDetails === false) {
-                return false;
+            if (paymentDetails.success === false || !paymentDetails.data) {
+                throw 'paymentDetails === false';
             }
 
             //подтверждаем платеж в БД
             const updatePaymentResult = await PaymentOptionsManager.ConfirmPaymentRequest(request);
-            console.log('PaymentOptionsManager.ConfirmPaymentRequest result', updatePaymentResult);
+            //console.log('PaymentOptionsManager.ConfirmPaymentRequest result', updatePaymentResult);
 
-            if (updatePaymentResult === false) {
+            if (updatePaymentResult.success === false || !updatePaymentResult.data) {
                 //посылаем сообщение админу, что не удалось обновить платеж
                 try {
                     await MessageSender.QueueSendPlainMessage({
@@ -67,9 +67,9 @@ export async function handler(event: SQSEvent): Promise<any> {
             } else {
                 //обрабатываем платеж
 
-                if (paymentDetails.paymentTarget === EPaymentTarget.SUBSCRIPTION) {
+                if (paymentDetails.data.paymentTarget === EPaymentTarget.SUBSCRIPTION) {
                     // обновляем количество триальных подписчиков
-                    const details = paymentDetails as ISubscriptionPaymentInDB;
+                    const details = paymentDetails.data as ISubscriptionPaymentInDB;
                     if (details.subscriptionType === 'CHANNEL') {
                         const endTrialChannel = await MasterManager.IncrementConnectedPaidChannelUsers(Number(request.masterId));
                         if (endTrialChannel == 'EXPIRED') {
@@ -79,9 +79,9 @@ export async function handler(event: SQSEvent): Promise<any> {
                                 'Только что была подтверждена оплата последней подписки в рамках пробного лимита на канал. Это значит, что новые подписчики не смогут подписаться на ваш канал с помощью сервиса zuzona.\nДругих ограничений нет.\nЧтобы продолжить принимать оплаты, оплатите платную PRO-подписку на канал на сайте.\nС уважением, поддержка сервиса';
                             await MessageSender.QueueSendPlainMessage({
                                 discriminator: 'ITelegramMessage',
-                                botId: paymentDetails.botId,
-                                masterId: paymentDetails.masterId,
-                                chatId: paymentDetails.masterId,
+                                botId: paymentDetails.data.botId,
+                                masterId: paymentDetails.data.masterId,
+                                chatId: paymentDetails.data.masterId,
                                 sendMethod: ETelegramSendMethod.sendMessage,
                                 message: {
                                     attachments: [],
@@ -93,15 +93,14 @@ export async function handler(event: SQSEvent): Promise<any> {
                     if (details.subscriptionType === 'BOT') {
                         const endTrialChannel = await MasterManager.IncrementConnectedPaidBotUsers(Number(request.masterId));
                         if (endTrialChannel == 'EXPIRED') {
-                            const msgIdAdmin = ksuid.randomSync(new Date()).string;
                             let text =
                                 'Здравствуйте!\n' +
                                 'Только что была подтверждена оплата последней подписки в рамках пробного лимита на бота. Это значит, что новые подписчики не смогут подписаться на ваш канал с помощью сервиса zuzona.\nДругих ограничений нет.\nЧтобы продолжить принимать оплаты, оплатите платную PRO-подписку на канал на сайте.\nС уважением, поддержка сервиса';
                             await MessageSender.QueueSendPlainMessage({
                                 discriminator: 'ITelegramMessage',
-                                botId: paymentDetails.botId,
-                                masterId: paymentDetails.masterId,
-                                chatId: paymentDetails.masterId,
+                                botId: paymentDetails.data.botId,
+                                masterId: paymentDetails.data.masterId,
+                                chatId: paymentDetails.data.masterId,
                                 sendMethod: ETelegramSendMethod.sendMessage,
                                 message: {
                                     attachments: [],
@@ -115,19 +114,20 @@ export async function handler(event: SQSEvent): Promise<any> {
                         const sqsRequest: ISubscribeUserToSubscriptionPlan = {
                             id: request.id,
                             type: details.subscriptionType,
-                            botId: updatePaymentResult.botId,
-                            chatId: updatePaymentResult.chatId,
-                            masterId: updatePaymentResult.masterId,
+                            botId: updatePaymentResult.data.botId,
+                            chatId: updatePaymentResult.data.chatId,
+                            masterId: updatePaymentResult.data.masterId,
+                            channelId: details.channelId ? details.channelId : undefined,
                             userSubscriptionPlanId: details.subscriptionPlanId,
-                            pricePaid: updatePaymentResult.price,
-                            currency: updatePaymentResult.currency,
-                            paymentId: updatePaymentResult.id
+                            pricePaid: updatePaymentResult.data.price,
+                            currency: updatePaymentResult.data.currency,
+                            paymentId: updatePaymentResult.data.id!
                         };
-
+                        console.log('sending SQS', sqsRequest);
                         await SQSHelper.SendSQSMessage({
                             QueueUrl: process.env.SubscribeToSubscriptionPlanQueueURL!,
                             message: sqsRequest,
-                            messageGroupId: sqsRequest.botId.toString()
+                            messageGroupId: 'BOTID#' + sqsRequest.botId.toString() + '#CHATID#' + sqsRequest.chatId
                         });
                     } catch (error) {
                         console.log('Error:IncomingPaymentConfirmationHandler:SubscribeToSubscriptionPlanQueueURL: queue message', error);
@@ -135,16 +135,16 @@ export async function handler(event: SQSEvent): Promise<any> {
                     }
                 }
 
-                if (paymentDetails.paymentTarget === EPaymentTarget.PAIDPOST) {
+                if (paymentDetails.data.paymentTarget === EPaymentTarget.PAIDPOST) {
                     // обновляем количество триальных подписчиков
-                    const details = paymentDetails as IPaidPostPaymentInDB;
+                    const details = paymentDetails.data as IPaidPostPaymentInDB;
 
                     //подписываем на подписки - если  target = subscription
                     try {
                         const result = await MessagingBotSubscriptionManager.QueueContentPlanPostSendWithoutLogs({
-                            masterId: updatePaymentResult.masterId,
-                            botId: updatePaymentResult.botId,
-                            chatId: updatePaymentResult.chatId,
+                            masterId: updatePaymentResult.data.masterId,
+                            botId: updatePaymentResult.data.botId,
+                            chatId: updatePaymentResult.data.chatId,
                             contentPlanId: 'PAIDPOST',
                             contentPlanPostId: details.paidPostId
                         });

@@ -6,12 +6,12 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToS3, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { DeduplicationScope, FifoThroughputLimit, Queue } from 'aws-cdk-lib/aws-sqs';
-import { DynamoEventSource, SqsDlq, SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables: ITable[]) {
     const SendMessageSchedulerQueueFirstDLQ = Queue.fromQueueArn(
@@ -55,6 +55,19 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         },
         layers: layers
     });
+
+    const eventRuleSendMessages: events.Rule = new events.Rule(that, 'oneMinuteSendMessageSchedullerFirstStage', {
+        schedule: events.Schedule.rate(Duration.minutes(1)),
+        ruleName: 'oneMinuteSendMessageSchedullerFirstStage',
+        enabled: true
+    });
+
+    eventRuleSendMessages.addTarget(
+        new targets.LambdaFunction(SendMessageSchedullerFirstStageLambda, {
+            event: events.RuleTargetInput.fromObject({ message: 'SendMessageSchedullerFirstStageLambda' })
+        })
+    );
+    targets.addLambdaPermission(eventRuleSendMessages, SendMessageSchedullerFirstStageLambda);
 
     //разрешаем пушить первой лямбде в следующую очередь во флоу
     const statementSQSforFirstLambda = new PolicyStatement({

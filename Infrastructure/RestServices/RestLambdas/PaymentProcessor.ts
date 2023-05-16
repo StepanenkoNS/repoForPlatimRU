@@ -7,8 +7,7 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
-import * as events from 'aws-cdk-lib/aws-events';
-import * as targets from 'aws-cdk-lib/aws-events-targets';
+
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
