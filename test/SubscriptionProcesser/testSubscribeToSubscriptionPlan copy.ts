@@ -3,21 +3,22 @@ import { handler } from 'services/SubscriptionProcessor/SubscribeUserToSubscript
 const event = {
     Records: [
         {
-            messageId: '2f75d76f-ba79-4ead-9e15-97483b611bb6',
+            messageId: '2aa5175d-4032-4ff0-82f0-94eb5bd334b7',
             receiptHandle:
-                'AQEBsOXSh+X8rOQLGjs3oxLMyj582hBubwoY9YxniLJlv/QzWlznGlZ+nVBIuSScZ4Q2m7Ms21YcQzh+dJYFtAKAmgLNjIRYH/NwIssfv4JhZyE8SF8yzUZHfUZnWxlSFqB9tUQC9rQiNWJO6/lF4kttTf3tbsfUKfHk6oiDDGmExpMkxL7qGGp6t8bcvqOBrsbCJX9yxcFD+JDu2InnUAVsuZbmyOMQQrwscJ7ixvqyTWddZQ87kSQt5o4hAi0F+z7+XX21e/Dmuj3UYPERZtV6xUDcMG2EpbojDo3tuQGex7Uja3ymlz4FakPa3VoJ5X6kkWkiQ4jU7M5GHSjcyglJfg==',
-            body: '{"id":"2PpKpnQHqB5N4DQ2i6FdSGuSVPn","type":"CHANNEL","botId":5795087844,"chatId":199163834,"masterId":199163834,"channelId":-1001881460213,"userSubscriptionPlanId":"XYb5N0Z6cQZT","pricePaid":100,"currency":"RUB","paymentId":"2PpKpnQHqB5N4DQ2i6FdSGuSVPn"}',
+                'AQEB67szv0wpN1M0NuLk2/Q2m0Dgd/0ofz9WJaOk+FPTjdBQxpLIgWGfWc0oFJa3X3JLhWab48wmzclfY2VznUJp9jdJjeP40+3dlgGK6bf1RL4rmkKKNzY3cTjwk527TXIHMFmSPrx0gQnp03DoB1ALDbvEjQ3WDPvmspzfjOPCDytX6OYXCuO8Shp3BTMgP5/bZlwhNzeSQR5ds9BuCksvRArN57bbq0J4JNgPnTKDvkERotDamPb3T0lvgBLHBKBx5jL+8Nzs8w8Icx8zVkx1IxMZDPRips3rtc4OZYZFNlxWnjo3qm1B1ZRJ6GFD8wuXdB+kKJf7OPBkUrIbmP3/1g==',
+            body: '{"id":"2PrkCPgIWNQyn56FN7UTDqYap8U","type":"BOT","botId":5795087844,"chatId":199163834,"masterId":199163834,"userSubscriptionPlanId":"X-fNVHzi_jqL","pricePaid":10000,"currency":"RUB","paymentId":"2PrkCPgIWNQyn56FN7UTDqYap8U"}',
             attributes: {
                 ApproximateReceiveCount: '1',
-                SentTimestamp: '1684149143932',
-                SequenceNumber: '18877886254556144640',
+                AWSTraceHeader: 'Root=1-6463324e-ca9c53e461c6cde1fbae372e;Parent=3976c2f84438e5c5;Sampled=0;Lineage=7acea675:0|47d82b4f:0|afaacee2:0',
+                SentTimestamp: '1684222544274',
+                SequenceNumber: '18877905045043695872',
                 MessageGroupId: 'BOTID#5795087844#CHATID#199163834',
-                SenderId: 'AIDA6OX3PF47UX6FRE7SI',
-                MessageDeduplicationId: '2PpLb1NeHRi2X33CoaeiEpmvqjt',
-                ApproximateFirstReceiveTimestamp: '1684149143932'
+                SenderId: 'AROA6OX3PF47YHSNJQCXT:paymentProcessor-IncomingPaymentConfirmation',
+                MessageDeduplicationId: '2PrkMzncrdnx5PbWHrlKT4qb9HJ',
+                ApproximateFirstReceiveTimestamp: '1684222544274'
             },
             messageAttributes: {},
-            md5OfBody: 'f3bc4c26318820346649a806020ddabe',
+            md5OfBody: 'ccfb7782e1f86315797b09e65e9c9c1b',
             eventSource: 'aws:sqs',
             eventSourceARN: 'arn:aws:sqs:us-east-1:993738567487:SubscriptionProcessor-SubscribeTo-SubscriptionPlan.fifo',
             awsRegion: 'us-east-1'

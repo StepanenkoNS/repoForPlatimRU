@@ -203,6 +203,54 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
         layers: layers
     });
 
+    const GetContentPlanPostStats = new NodejsFunction(that, 'ContentPlanPostStats', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ContentPlanPostStats.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-ContentPlanPostStats-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const ContentPlanPostFeedBacks = new NodejsFunction(that, 'ContentPlanPostFeedBacks', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ContentPlanPostFeedBacks.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-ContentPlanPostFeedBacks-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const ContentPlanPostRates = new NodejsFunction(that, 'ContentPlanPostRates', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'ContentPlanPostRates.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-ContentPlanPostRates-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     //предоставление доступа
     GrantAccessToDDB(
         [
@@ -217,7 +265,10 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
             botPaymentsLambda,
             botPaymentsByUserLambda,
             scheduledPostsByUserLambda,
-            GetMyBotAnalitics
+            GetMyBotAnalitics,
+            GetContentPlanPostStats,
+            ContentPlanPostFeedBacks,
+            ContentPlanPostRates
         ],
         tables
     );
@@ -291,6 +342,22 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], tables: ITa
     returnArray.push({
         lambda: GetMyBotAnalitics,
         resource: 'GetMyBotAnalitics',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
+        lambda: GetContentPlanPostStats,
+        resource: 'GetContentPlanPostStats',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: ContentPlanPostFeedBacks,
+        resource: 'ContentPlanPostFeedBacks',
+        httpMethod: 'GET'
+    });
+    returnArray.push({
+        lambda: ContentPlanPostRates,
+        resource: 'ContentPlanPostRates',
         httpMethod: 'GET'
     });
 
