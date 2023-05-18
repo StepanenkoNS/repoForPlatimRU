@@ -72,18 +72,6 @@ export class TokenServiceStack extends Stack {
             // },
             defaultCorsPreflightOptions: {
                 allowHeaders: StaticEnvironment.APIGWSettings.allowHeaders,
-                //'*'
-                // 'Content-Type',
-                // 'X-Amz-Date',
-                // 'Authorization',
-                // 'X-Api-Key',
-                // 'X-Requested-With',
-                // 'X-Requested-With, X-HTTP-Method-Override',
-                // 'Access-Control-Allow-Origin',
-                // 'Access-Control-Allow-Method',
-                // 'Access-Control-Allow-Headers',
-                // 'Access-Control-Allow-Credentials',
-                // 'Origin'
 
                 allowMethods: ['POST'],
 

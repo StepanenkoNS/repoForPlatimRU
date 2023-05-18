@@ -17,6 +17,8 @@ import { PaymentProcessor } from './RestLambdas/PaymentProcessor';
 import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateBotPaymentsLambdas } from './RestLambdas/BotPayments';
 import { CreateSubscriptionProcessor } from './RestLambdas/SubscriptionProcessor';
+import { CreateDigitalStoreCategories } from './RestLambdas/DigitalStoreCategories';
+import { CreateDigitalStoreItems } from './RestLambdas/DigitalStoreItems';
 
 export class MessagesAndPaymentsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -53,6 +55,18 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
 
         this.lambdaIntegrations.push({
             rootResource: 'BotPayments',
+            lambdas: BotPaymentsLambas
+        });
+
+        const digitalStoreCategories = CreateDigitalStoreCategories(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'DigitalStoreCategories',
+            lambdas: BotPaymentsLambas
+        });
+
+        const digitalStoreItems = CreateDigitalStoreItems(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'DigitalStoreItems',
             lambdas: BotPaymentsLambas
         });
 

@@ -16,7 +16,7 @@ import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    console.log(event.body);
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -43,7 +43,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const command: IMessagingBotCommand = {
-        discriminator: 'IMessagingBotCommand',
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id) as any,
