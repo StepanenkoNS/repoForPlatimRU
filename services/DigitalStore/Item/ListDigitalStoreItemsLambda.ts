@@ -24,14 +24,18 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['botId', 'id'])) {
+    if (!ValidateStringParameters(event, ['botId', 'digitalStoreCategoryId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await DigitalStoreManager.ListDigitalStoreCategoryItems({
+    const key = {
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.digitalStoreCategoryId!)
+        digitalStoreCategoryId: TextHelper.SanitizeToDirectText(event.queryStringParameters!.digitalStoreCategoryId!)
+    };
+
+    const result = await DigitalStoreManager.ListDigitalStoreCategoryItems({
+        key: key
     });
 
     const listResults = ParseListResult(result);

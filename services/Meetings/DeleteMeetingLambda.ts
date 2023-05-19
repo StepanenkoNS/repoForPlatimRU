@@ -9,10 +9,9 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+//@ts-ignore
+import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 
-import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { ETelegramBotCommand } from '/opt/MessagingBotManagerTypes';
-import { MeetingsConfiguratior } from '/opt/MeetingsConfiguratior';
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
@@ -32,7 +31,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await MeetingsConfiguratior.DeleteMeeting({
+    const result = await CalendarMeetingsConfiguratior.DeleteMeeting({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id) as any

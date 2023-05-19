@@ -58,16 +58,16 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
             lambdas: BotPaymentsLambas
         });
 
-        const digitalStoreCategories = CreateDigitalStoreCategories(this, layers, [botsTable]);
+        const digitalStoreCategoryLambda = CreateDigitalStoreCategories(this, layers, [botsTable]);
         this.lambdaIntegrations.push({
             rootResource: 'DigitalStoreCategories',
-            lambdas: BotPaymentsLambas
+            lambdas: digitalStoreCategoryLambda
         });
 
-        const digitalStoreItems = CreateDigitalStoreItems(this, layers, [botsTable]);
+        const digitalStoreItemsLambdas = CreateDigitalStoreItems(this, layers, [botsTable]);
         this.lambdaIntegrations.push({
             rootResource: 'DigitalStoreItems',
-            lambdas: BotPaymentsLambas
+            lambdas: digitalStoreItemsLambdas
         });
 
         SendMessageScheduler(this, layers, [botsTable]);

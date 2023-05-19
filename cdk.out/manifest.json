@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/52bb0416d617085f6fa52f2ae3eb943d442bff4ade58cbad9ecabc310254b1e6.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6402378b513421aa439ab84451dc87412c14f6feac6595140c8d20b2507f1c56.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d228b64c0fb8afee2ea6638f18c4631f2c67f39e97f5def6d15efc3b55c978e3.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f490fc9fc88cd2261bbade63dcf7bcefdfbb6a799e206c3149232d4e55601609.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -729,7 +729,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9dc1475288b0273547634cef69bfdb54e3e7d3265772f8864d3b399bf2e66800.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/221402b03a28bbbad8e347a69b55d97d099e0ea15042abd3e6197cb05329465c.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1688,7 +1688,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/1929c97fa6e1d7715a1871df2d518b8a041e186b56a46b109c8cda46978cb6e6.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/395f1802ed3b6f4a8bdcd3dc0625149480f0cdffe27f0bb0f83a3596322ca682.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1909,7 +1909,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/1845f8b9548af5b5fe54757e7cbb6c4c337fa32b25dff5dd30e1da44235ceded.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/b52d47c48f9f83e9bb74d738ffa2ec7892a6f6fe2bfe24273e26a8427af251ec.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2037,6 +2037,246 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ListBotPaymentsLambdaLogRetention412A79F8"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreCategoriesLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreCategoriesLambdaServiceRoleCEBAC488"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreCategoriesLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreCategoriesLambdaServiceRoleDefaultPolicy8565EAFA"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreCategoriesLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreCategoriesLambda6DBA20AE"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreCategoriesLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreCategoriesLambdaLogRetention9009BC6C"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreCategoryLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreCategoryLambdaServiceRoleF8E49D12"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreCategoryLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreCategoryLambdaServiceRoleDefaultPolicy8E8D4DD4"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreCategoryLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreCategoryLambdaDC94DDF8"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreCategoryLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreCategoryLambdaLogRetention37CECD54"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreCategoryLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreCategoryLambdaServiceRole5FC05928"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreCategoryLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreCategoryLambdaServiceRoleDefaultPolicyD2B5CE41"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreCategoryLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreCategoryLambda6A9CF57A"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreCategoryLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreCategoryLambdaLogRetention9077A689"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreCategoryLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreCategoryLambdaServiceRole7F8A1A01"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreCategoryLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreCategoryLambdaServiceRoleDefaultPolicy76D0570F"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreCategoryLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreCategoryLambdaBFA95C19"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreCategoryLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreCategoryLambdaLogRetentionA30FAAEF"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreCategoryLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreCategoryLambdaServiceRole1D6BD3F6"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreCategoryLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreCategoryLambdaServiceRoleDefaultPolicy5A0478F3"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreCategoryLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreCategoryLambdaEEDC7382"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreCategoryLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreCategoryLambdaLogRetention49FD79DE"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreItemsLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreItemsLambdaServiceRole420BC30C"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreItemsLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreItemsLambdaServiceRoleDefaultPolicy616F1F5B"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreItemsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreItemsLambda8AE9AC9B"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ListDigitalStoreItemsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListDigitalStoreItemsLambdaLogRetentionE1948762"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreItemLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreItemLambdaServiceRoleC3663644"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreItemLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreItemLambdaServiceRoleDefaultPolicy1AD67D50"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreItemLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreItemLambdaF44BF501"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/GetDigitalStoreItemLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetDigitalStoreItemLambdaLogRetentionCC686458"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreItemLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreItemLambdaServiceRole9440EC5E"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreItemLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreItemLambdaServiceRoleDefaultPolicy79CA9B25"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreItemLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreItemLambda6822F670"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/AddDigitalStoreItemLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDigitalStoreItemLambdaLogRetentionE966DEFA"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreItemLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreItemLambdaServiceRole14B9AA7B"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreItemLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreItemLambdaServiceRoleDefaultPolicy4871DD01"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreItemLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreItemLambda5AF818E1"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/EditDigitalStoreItemLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditDigitalStoreItemLambdaLogRetentionBDFFEF1A"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreItemLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreItemLambdaServiceRole9FC4DFB6"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreItemLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreItemLambdaServiceRoleDefaultPolicyCA99E138"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreItemLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreItemLambda946778DB"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/DeleteDigitalStoreItemLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteDigitalStoreItemLambdaLogRetentionB3C8D106"
           }
         ],
         "/WebRestServiceMessagesAndPayments/SendMessage-Scheduller-First-Stage/ServiceRole/Resource": [
@@ -2537,6 +2777,66 @@
             "data": "ExportsOutputFnGetAttListBotPaymentsLambda8AE1421EArn7D313D43"
           }
         ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"ListDigitalStoreCategoriesLambda6DBA20AE\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttListDigitalStoreCategoriesLambda6DBA20AEArn37A5480E"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"GetDigitalStoreCategoryLambdaDC94DDF8\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttGetDigitalStoreCategoryLambdaDC94DDF8ArnCDAE8971"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"AddDigitalStoreCategoryLambda6A9CF57A\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttAddDigitalStoreCategoryLambda6A9CF57AArn55FA668C"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"EditDigitalStoreCategoryLambdaBFA95C19\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttEditDigitalStoreCategoryLambdaBFA95C19ArnD4AC2BE5"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"DeleteDigitalStoreCategoryLambdaEEDC7382\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttDeleteDigitalStoreCategoryLambdaEEDC7382Arn6FE29EA9"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"ListDigitalStoreItemsLambda8AE9AC9B\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttListDigitalStoreItemsLambda8AE9AC9BArnD67E1AF0"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"GetDigitalStoreItemLambdaF44BF501\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttGetDigitalStoreItemLambdaF44BF501Arn0B622CE3"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"AddDigitalStoreItemLambda6822F670\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttAddDigitalStoreItemLambda6822F670Arn2328B0A4"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"EditDigitalStoreItemLambda5AF818E1\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttEditDigitalStoreItemLambda5AF818E1ArnC3B396A5"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"DeleteDigitalStoreItemLambda946778DB\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttDeleteDigitalStoreItemLambda946778DBArnF8EDFD81"
+          }
+        ],
         "/WebRestServiceMessagesAndPayments/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
@@ -2568,7 +2868,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d7383fc1edd2bbad7a6efb8906edef5fbd1960824ef1071f8808aab0d19ea9a8.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6d7b0f08cc5b7011e058bc47dc0789636f6a735f7ae633ef3835ba9671688ae0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2939,7 +3239,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6274383b6e615d26b1598112eb750aded34b24240286f631dfd81301f2a576c9.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c5aa53bb3997d64725d4e277ff6e118aff882bb8911cc45e5d51a1b473e9c3d9.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3400,7 +3700,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/572230fb54d7ef06fd66b2d21c6d7c00d99fc2432ff82c247f10f43e79e01006.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/341a76e394fecb748ecdc0305934aed46c5a2069aea39873363f9483476c08b7.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3921,7 +4221,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/b9d86bf602deec1cae67c32fa1efa044e5fb4e46cc42f2237fcb9352a83c0e0b.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/918e54b58e9ab261663a5803a70ef81988434beb82f50d7cb369ccbe7c2e4be0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4022,7 +4322,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/43cf2182deae2eb3059e6798aa79179032bb7c47d8837d8a6bcc0a75b9132864.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9e976696140c638c8045f5cf4ac35f69ff90808623165a64f2e33fb94865b04b.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4112,7 +4412,7 @@
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A02b80f38aff7330f9ac8d3570c64c8ac3"
+            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A0753737578f9312e6dd3d28e97729f04a"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -5067,6 +5367,270 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebRestGatewayServiceGWAPIBotPaymentsListGET127675EB"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategories1A93F837"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesOPTIONSA3720066"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesList2E1CC25C"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesListOPTIONSEC0391AC"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..DigitalStoreCategories.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesListGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETDigitalStoreCategoriesList7374F996"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesListGET7296495F"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Get/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesGet22ABA026"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Get/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesGetOPTIONS571D8440"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..DigitalStoreCategories.Get": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesGetGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETDigitalStoreCategoriesGet1D3D1E5F"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Get/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesGetGETB43A7991"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Add/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesAdd1E041F0B"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Add/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesAddOPTIONS6801BF44"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..DigitalStoreCategories.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesAddPOSTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPOSTDigitalStoreCategoriesAdd9BE24113"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Add/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesAddPOSTFA03C144"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Edit/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesEdit2A48B265"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Edit/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesEditOPTIONS38EFB837"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..DigitalStoreCategories.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesEditPUTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPUTDigitalStoreCategoriesEditC96A282D"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Edit/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesEditPUT6053F7DF"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesDelete4A21118C"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Delete/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesDeleteOPTIONSE2FC584A"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..DigitalStoreCategories.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesDeleteDELETEApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DDELETEDigitalStoreCategoriesDelete63D34183"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreCategories/Delete/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreCategoriesDeleteDELETE5819E747"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsD1978B37"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsOPTIONSF71AD546"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsListB644FCC5"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsListOPTIONS8B3F2ED5"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..DigitalStoreItems.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsListGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETDigitalStoreItemsListB26A427E"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsListGET9768DBF8"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Get/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsGetBB70059C"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Get/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsGetOPTIONS46D05BEC"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..DigitalStoreItems.Get": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsGetGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETDigitalStoreItemsGet96190EA6"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Get/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsGetGET8D5191A6"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Add/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsAddB10B9CC4"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Add/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsAddOPTIONSD41EA0E2"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..DigitalStoreItems.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsAddPOSTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPOSTDigitalStoreItemsAddDDCBF96A"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Add/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsAddPOSTD72D0DB7"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Edit/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsEditAB50DF0D"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Edit/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsEditOPTIONS256B8292"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..DigitalStoreItems.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsEditPUTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPUTDigitalStoreItemsEditD4FA3F82"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Edit/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsEditPUT8C0F2BB3"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsDeleteB2E97243"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Delete/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsDeleteOPTIONSA6A46654"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..DigitalStoreItems.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsDeleteDELETEApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DDELETEDigitalStoreItemsDeleteC226218F"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/DigitalStoreItems/Delete/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsDeleteDELETEDCB03AB9"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/ContentPlanPosts/Resource": [

@@ -27,9 +27,11 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await DigitalStoreManager.GetMyBotDigitalStoreCategoryById({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+            id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
+        }
     });
     const getResult = ParseItemResult(result);
 

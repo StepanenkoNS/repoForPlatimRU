@@ -26,7 +26,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
-        { key: 'description', datatype: 'string' },
+        { key: 'text', datatype: 'string' },
+        { key: 'buttonCaption', datatype: 'string' },
         { key: 'enabled', datatype: 'boolean' }
     ]);
     if (bodyObject.success === false) {
@@ -36,8 +37,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const item: IDigitalStoreCategory = {
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
+        buttonCaption: TextHelper.SanitizeToDirectText(bodyObject.data.buttonCaption),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-        description: TextHelper.SanitizeToDirectText(bodyObject.data.description),
+        text: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.text),
         enabled: bodyObject.data.enabled
     };
 

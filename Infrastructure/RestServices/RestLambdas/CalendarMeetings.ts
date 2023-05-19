@@ -7,7 +7,7 @@ import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironm
 import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import { LambdaAndResource } from '../Helper/GWtypes';
 
-export function CreateMeetingsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
 
     const ListMeetingsLambda = new NodejsFunction(that, 'ListMeetingsLambda', {

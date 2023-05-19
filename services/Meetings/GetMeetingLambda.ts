@@ -8,9 +8,8 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { ETelegramBotCommand } from '/opt/MessagingBotManagerTypes';
-import { MeetingsConfiguratior } from '/opt/MeetingsConfiguratior';
+//@ts-ignore
+import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
@@ -25,7 +24,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await MeetingsConfiguratior.GetMyMeetingById({
+    const result = await CalendarMeetingsConfiguratior.GetMyMeetingById({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
         id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!) as any

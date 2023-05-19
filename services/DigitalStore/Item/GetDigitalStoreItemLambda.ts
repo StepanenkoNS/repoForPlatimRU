@@ -13,6 +13,7 @@ import { ContentConfigurator } from '/opt/ContentConfigurator';
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -27,10 +28,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await DigitalStoreManager.GetMyDigitalStoreItemById({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!),
-        digitalStoreCategoryId: TextHelper.SanitizeToDirectText(event.queryStringParameters!.digitalStoreCategoryId!)
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+            id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!),
+            digitalStoreCategoryId: TextHelper.SanitizeToDirectText(event.queryStringParameters!.digitalStoreCategoryId!)
+        }
     });
     const getResult = ParseItemResult(result);
 
