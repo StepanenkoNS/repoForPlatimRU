@@ -64,7 +64,7 @@ export class MainRestServicesStack extends Stack {
         const meetingLambdas = CreateCalendarMeetingsLambdas(this, layers, [botsTable]);
 
         this.lambdaIntegrations.push({
-            rootResource: 'Meetings',
+            rootResource: 'CalendarMeeting',
             lambdas: meetingLambdas
         });
 

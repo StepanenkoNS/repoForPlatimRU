@@ -729,7 +729,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/221402b03a28bbbad8e347a69b55d97d099e0ea15042abd3e6197cb05329465c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a23fe6e2dbb8fb174d354cadbf8ff02ed6ce4c9c42f45f8eec688e87339cf2e9.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4322,7 +4322,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9e976696140c638c8045f5cf4ac35f69ff90808623165a64f2e33fb94865b04b.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/61a5014d295f0d5b444f4fa7087f6e4a43af972496cadb5479d32a8b9524b348.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4412,7 +4412,7 @@
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A0753737578f9312e6dd3d28e97729f04a"
+            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A08c09bc325ae0eff89ccafaf36b54d7f4"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -4853,136 +4853,136 @@
             "data": "WebRestGatewayServiceGWAPIChannelsDeleteDELETEB6DC3E31"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+            "data": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/OPTIONS/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsOPTIONS66E92322"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingOPTIONS1116AE78"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsList9E740FE6"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingList3E9A241E"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/OPTIONS/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsListOPTIONS962691CF"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingListOPTIONS13AF6357"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.List": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.List": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsListGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETMeetingsList1B9F5E8E"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingListGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETCalendarMeetingList3787002A"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/GET/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsListGET7BA4B2B9"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingListGET26DB13D8"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsAddD33F8E62"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingAdd346AFB8A"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/OPTIONS/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsAddOPTIONSEAC442F6"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingAddOPTIONS718320D4"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..Meetings.Add": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..CalendarMeeting.Add": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsAddPOSTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPOSTMeetingsAddD091F26A"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingAddPOSTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPOSTCalendarMeetingAdd03CB62D4"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/POST/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsAddPOSTA69249F1"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingAddPOST41C844E2"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsGetEF7736C6"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingGetB292CC53"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/OPTIONS/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsGetOPTIONSD7803280"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingGetOPTIONS65C99303"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.Get": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.Get": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsGetGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETMeetingsGetA350C9B1"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingGetGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETCalendarMeetingGet7D7F2314"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/GET/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsGetGETB5305934"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingGetGET64D875D1"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsEdit2E96CAE1"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingEdit04EACEF7"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/OPTIONS/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsEditOPTIONS178C1EEC"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingEditOPTIONS3B344FBF"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..Meetings.Edit": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..CalendarMeeting.Edit": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsEditPUTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPUTMeetingsEditD65B0C36"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingEditPUTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPUTCalendarMeetingEdit43DC787B"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/PUT/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/PUT/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsEditPUTBAF53203"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingEditPUT9DBEEEBC"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsDelete0CF05861"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingDelete1AE17C0D"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/OPTIONS/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsDeleteOPTIONSD3C02E41"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingDeleteOPTIONS70DECFCD"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..Meetings.Delete": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..CalendarMeeting.Delete": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsDeleteDELETEApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DDELETEMeetingsDeleteE1579BA8"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingDeleteDELETEApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DDELETECalendarMeetingDeleteA874471F"
           }
         ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/DELETE/Resource": [
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/DELETE/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIMeetingsDeleteDELETE31914015"
+            "data": "WebRestGatewayServiceGWAPICalendarMeetingDeleteDELETE22C9277A"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/PaymentOptions/Resource": [

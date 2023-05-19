@@ -10019,7 +10019,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "2ba2b8337a7c01fb81a3b1d2d823f56fef696b9c210b541715a3c615b342496a.zip"
+                      "s3Key": "1eb9505475679f09af806ce0c15bb68e08bff3f1aabeba5f0116c14002bced38.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -10251,7 +10251,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "3f45370065b09f7c3f12e2e20c4f40504dc7225cfadf7c046a558c75d0042755.zip"
+                      "s3Key": "ae09711c383bf9ccdd475b1b8b59b0944497cae50d24514a39105ba09de4390e.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -10483,7 +10483,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "442399c717900d022883840ce505afce02e0e74db2f8cde801b7c77704704cac.zip"
+                      "s3Key": "b4a1cb6192b0a32cca676ab5886b3dce1cb037451fd5d5fed4a8b5ef498af0a5.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -10715,7 +10715,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "8348122cad421077a2d38a4722881c83fbf747babc0425955f6cb7c7d012998d.zip"
+                      "s3Key": "ed2d4c687e088cea6492fc553d167bec35740e8256ccda49b134145b71edb0cc.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -32770,7 +32770,7 @@
                           "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
                         },
                         "deploymentId": {
-                          "Ref": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A0753737578f9312e6dd3d28e97729f04a"
+                          "Ref": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A08c09bc325ae0eff89ccafaf36b54d7f4"
                         },
                         "methodSettings": [
                           {
@@ -36141,13 +36141,13 @@
                       "version": "2.78.0"
                     }
                   },
-                  "Meetings": {
-                    "id": "Meetings",
-                    "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings",
+                  "CalendarMeeting": {
+                    "id": "CalendarMeeting",
+                    "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Resource",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -36157,7 +36157,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "Meetings",
+                            "pathPart": "CalendarMeeting",
                             "restApiId": {
                               "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
                             }
@@ -36170,17 +36170,17 @@
                       },
                       "OPTIONS": {
                         "id": "OPTIONS",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/OPTIONS",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/OPTIONS",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/OPTIONS/Resource",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/OPTIONS/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "OPTIONS",
                                 "resourceId": {
-                                  "Ref": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+                                  "Ref": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
                                 },
                                 "restApiId": {
                                   "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36234,16 +36234,16 @@
                       },
                       "List": {
                         "id": "List",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/Resource",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+                                  "Ref": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
                                 },
                                 "pathPart": "List",
                                 "restApiId": {
@@ -36258,17 +36258,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/OPTIONS",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/OPTIONS/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsList9E740FE6"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingList3E9A241E"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36322,11 +36322,11 @@
                           },
                           "GET": {
                             "id": "GET",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/GET",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/GET",
                             "children": {
-                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.List": {
-                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.List",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.List",
+                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.List": {
+                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.List",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.List",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -36351,7 +36351,7 @@
                                           {
                                             "Ref": "WebRestGatewayServiceGWAPIDeploymentStageSecureAPI345F138C"
                                           },
-                                          "/GET/Meetings/List"
+                                          "/GET/CalendarMeeting/List"
                                         ]
                                       ]
                                     }
@@ -36364,13 +36364,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/List/GET/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/List/GET/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "GET",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsList9E740FE6"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingList3E9A241E"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36420,16 +36420,16 @@
                       },
                       "Add": {
                         "id": "Add",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/Resource",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+                                  "Ref": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
                                 },
                                 "pathPart": "Add",
                                 "restApiId": {
@@ -36444,17 +36444,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/OPTIONS",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/OPTIONS/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsAddD33F8E62"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingAdd346AFB8A"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36508,11 +36508,11 @@
                           },
                           "POST": {
                             "id": "POST",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/POST",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/POST",
                             "children": {
-                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..Meetings.Add": {
-                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..Meetings.Add",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..Meetings.Add",
+                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..CalendarMeeting.Add": {
+                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..CalendarMeeting.Add",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..CalendarMeeting.Add",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -36537,7 +36537,7 @@
                                           {
                                             "Ref": "WebRestGatewayServiceGWAPIDeploymentStageSecureAPI345F138C"
                                           },
-                                          "/POST/Meetings/Add"
+                                          "/POST/CalendarMeeting/Add"
                                         ]
                                       ]
                                     }
@@ -36550,13 +36550,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Add/POST/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Add/POST/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "POST",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsAddD33F8E62"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingAdd346AFB8A"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36606,16 +36606,16 @@
                       },
                       "Get": {
                         "id": "Get",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/Resource",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+                                  "Ref": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
                                 },
                                 "pathPart": "Get",
                                 "restApiId": {
@@ -36630,17 +36630,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/OPTIONS",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/OPTIONS/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsGetEF7736C6"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingGetB292CC53"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36694,11 +36694,11 @@
                           },
                           "GET": {
                             "id": "GET",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/GET",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/GET",
                             "children": {
-                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.Get": {
-                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.Get",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Meetings.Get",
+                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.Get": {
+                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.Get",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CalendarMeeting.Get",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -36723,7 +36723,7 @@
                                           {
                                             "Ref": "WebRestGatewayServiceGWAPIDeploymentStageSecureAPI345F138C"
                                           },
-                                          "/GET/Meetings/Get"
+                                          "/GET/CalendarMeeting/Get"
                                         ]
                                       ]
                                     }
@@ -36736,13 +36736,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Get/GET/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Get/GET/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "GET",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsGetEF7736C6"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingGetB292CC53"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36792,16 +36792,16 @@
                       },
                       "Edit": {
                         "id": "Edit",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/Resource",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+                                  "Ref": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
                                 },
                                 "pathPart": "Edit",
                                 "restApiId": {
@@ -36816,17 +36816,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/OPTIONS",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/OPTIONS/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsEdit2E96CAE1"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingEdit04EACEF7"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36880,11 +36880,11 @@
                           },
                           "PUT": {
                             "id": "PUT",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/PUT",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/PUT",
                             "children": {
-                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..Meetings.Edit": {
-                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..Meetings.Edit",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..Meetings.Edit",
+                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..CalendarMeeting.Edit": {
+                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..CalendarMeeting.Edit",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..CalendarMeeting.Edit",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -36909,7 +36909,7 @@
                                           {
                                             "Ref": "WebRestGatewayServiceGWAPIDeploymentStageSecureAPI345F138C"
                                           },
-                                          "/PUT/Meetings/Edit"
+                                          "/PUT/CalendarMeeting/Edit"
                                         ]
                                       ]
                                     }
@@ -36922,13 +36922,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Edit/PUT/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Edit/PUT/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "PUT",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsEdit2E96CAE1"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingEdit04EACEF7"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -36978,16 +36978,16 @@
                       },
                       "Delete": {
                         "id": "Delete",
-                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete",
+                        "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/Resource",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
                                 "parentId": {
-                                  "Ref": "WebRestGatewayServiceGWAPIMeetings0F6FB269"
+                                  "Ref": "WebRestGatewayServiceGWAPICalendarMeeting18658F41"
                                 },
                                 "pathPart": "Delete",
                                 "restApiId": {
@@ -37002,17 +37002,17 @@
                           },
                           "OPTIONS": {
                             "id": "OPTIONS",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/OPTIONS",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/OPTIONS",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/OPTIONS/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/OPTIONS/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "OPTIONS",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsDelete0CF05861"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingDelete1AE17C0D"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
@@ -37066,11 +37066,11 @@
                           },
                           "DELETE": {
                             "id": "DELETE",
-                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/DELETE",
+                            "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/DELETE",
                             "children": {
-                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..Meetings.Delete": {
-                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..Meetings.Delete",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..Meetings.Delete",
+                              "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..CalendarMeeting.Delete": {
+                                "id": "ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..CalendarMeeting.Delete",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..CalendarMeeting.Delete",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -37095,7 +37095,7 @@
                                           {
                                             "Ref": "WebRestGatewayServiceGWAPIDeploymentStageSecureAPI345F138C"
                                           },
-                                          "/DELETE/Meetings/Delete"
+                                          "/DELETE/CalendarMeeting/Delete"
                                         ]
                                       ]
                                     }
@@ -37108,13 +37108,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Meetings/Delete/DELETE/Resource",
+                                "path": "WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CalendarMeeting/Delete/DELETE/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "DELETE",
                                     "resourceId": {
-                                      "Ref": "WebRestGatewayServiceGWAPIMeetingsDelete0CF05861"
+                                      "Ref": "WebRestGatewayServiceGWAPICalendarMeetingDelete1AE17C0D"
                                     },
                                     "restApiId": {
                                       "Ref": "WebRestGatewayServiceGWAPIDAB8AE6A"
