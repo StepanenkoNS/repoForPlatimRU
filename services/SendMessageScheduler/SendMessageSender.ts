@@ -17,7 +17,7 @@ export async function handler(event: SQSEvent) {
         try {
             const body = JSON.parse(record.body) as IMessageSenderInput;
             const result = await MessageSender.SendQueuedMessage(body);
-            if (result === false) {
+            if (result.success === false) {
                 throw 'SendQueuedMessage result is false';
             }
         } catch (e) {

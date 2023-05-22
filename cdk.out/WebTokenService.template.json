@@ -117,7 +117,7 @@
       "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
       "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
       "botsTable": "bots",
-      "sessionsTable": "sessions",
+      "sessionsTable": "telegramSessions",
       "region": "us-east-1",
       "s3BotsBucket": "bots-bucket",
       "allowedOrigins": "http://localhost,http://localhost:8080,http://localhost:8081,https://zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
@@ -131,10 +131,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:557",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:327",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:282",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:39"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:578",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:330",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:292",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:44"
     ],
     "Runtime": "nodejs16.x"
    },

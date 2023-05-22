@@ -31,11 +31,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await PaymentOptionsManager.DeletePaymentOption({
+    const key = {
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
-    });
+    };
+    const result = await PaymentOptionsManager.DeletePaymentOption(key);
     const deleteResult = ParseItemResult(result);
     return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
 }

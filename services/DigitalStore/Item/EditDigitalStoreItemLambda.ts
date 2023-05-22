@@ -30,6 +30,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'buttonCaption', datatype: 'string' },
         { key: 'text', datatype: 'string' },
         { key: 'enabled', datatype: 'boolean' },
+        { key: 'free', datatype: 'boolean' },
         { key: 'digitalStoreCategoryId', datatype: 'string' },
         { key: 'items', datatype: 'array' },
         { key: 'prices', datatype: 'array' }
@@ -48,6 +49,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         enabled: bodyObject.data.enabled,
         digitalStoreCategoryId: TextHelper.SanitizeToDirectText(bodyObject.data.digitalStoreCategoryId),
         items: bodyObject.data.items,
+        free: bodyObject.data.free,
         prices: bodyObject.data.prices
     };
 

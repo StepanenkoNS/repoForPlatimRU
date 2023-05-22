@@ -15,6 +15,7 @@ import { EContentPlanType, IContentPlan, IDigitalStoreCategory } from '/opt/Cont
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -36,10 +37,10 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const item: IDigitalStoreCategory = {
-        id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
-        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
-        buttonCaption: TextHelper.SanitizeToDirectText(bodyObject.data.buttonCaption),
         masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
+        buttonCaption: TextHelper.SanitizeToDirectText(bodyObject.data.buttonCaption),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         text: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.text),
         enabled: bodyObject.data.enabled

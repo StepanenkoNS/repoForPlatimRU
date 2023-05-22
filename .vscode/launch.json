@@ -32,7 +32,7 @@
                 "sendMessageGWAPI": "https://s6myi3fwfd.execute-api.us-east-1.amazonaws.com/test/",
                 "APIKeyValue": "mape0trhAr53LCf9gPA5Q1SRNh55VcQsaRRj0i6q",
                 "botsTable": "bots",
-                "sessionsTable": "sessions",
+                "sessionsTable": "telegramSessions",
                 "sqsToQueueMessages": "https://sqs.us-east-1.amazonaws.com/993738567487/sendMessageToBot-sqs.fifo",
                 "s3BotsBucket": "bots-bucket",
                 "incomingMessagesSQSURL": "https://sqs.us-east-1.amazonaws.com/993738567487/ProcessAsyncMessages-incomingMessages.fifo",

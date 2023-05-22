@@ -31,6 +31,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'enabled', datatype: 'boolean' },
         { key: 'digitalStoreCategoryId', datatype: 'string' },
         { key: 'items', datatype: 'array' },
+        { key: 'free', datatype: 'boolean' },
         { key: 'prices', datatype: 'array' }
     ]);
     if (bodyObject.success === false) {
@@ -46,6 +47,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         enabled: bodyObject.data.enabled,
         digitalStoreCategoryId: TextHelper.SanitizeToDirectText(bodyObject.data.digitalStoreCategoryId),
         items: bodyObject.data.items,
+        free: bodyObject.data.free,
         prices: bodyObject.data.prices
     };
 

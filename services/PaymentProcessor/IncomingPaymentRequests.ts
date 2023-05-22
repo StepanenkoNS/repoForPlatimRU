@@ -4,7 +4,7 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 
 //@ts-ignore
-import { EPaymentOptionType, EPaymentTarget, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, IRequestForSubscriptionDIRECTPayment, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
+import { EPaymentOptionType, EPaymentTarget, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 

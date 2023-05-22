@@ -3,7 +3,7 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 //@ts-ignore
-import { EPaymentTarget, IPaidPostPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
+import { EPaymentTarget, IDigitalStorePaymentInDB, IPaidPostPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
@@ -16,6 +16,7 @@ import { ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 import { MasterManager } from '/opt/MasterManager';
 import { SQSHelper } from '/opt/SQS/SQSHelper';
 import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
+import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -28,7 +29,7 @@ export async function handler(event: SQSEvent): Promise<any> {
 
             const request = JSON.parse(record.body) as IRequestToConfirmPayment;
 
-            //определяем, что за тип подписки
+            //определяем, что за платеж
 
             const paymentDetails = await PaymentOptionsManager.GetPaymentRequest({
                 botId: Number(request.botId),
@@ -136,10 +137,9 @@ export async function handler(event: SQSEvent): Promise<any> {
                 }
 
                 if (paymentDetails.data.paymentTarget === EPaymentTarget.PAIDPOST) {
-                    // обновляем количество триальных подписчиков
                     const details = paymentDetails.data as IPaidPostPaymentInDB;
 
-                    //подписываем на подписки - если  target = subscription
+                    //отправляем платный пост
                     try {
                         const result = await MessagingBotSubscriptionManager.QueueContentPlanPostSendWithoutLogs({
                             masterId: updatePaymentResult.data.masterId,
@@ -156,7 +156,28 @@ export async function handler(event: SQSEvent): Promise<any> {
                         throw error;
                     }
                 }
-                // отправляем в очередь на создание подписок
+
+                if (paymentDetails.data.paymentTarget === EPaymentTarget.DIGITALSTORE) {
+                    const details = paymentDetails.data as IDigitalStorePaymentInDB;
+
+                    try {
+                        const result = await DigitalStoreManager.AddDigitalStoreItemToUser({
+                            masterId: details.masterId,
+                            botId: details.botId,
+                            chatId: details.chatId,
+                            pricePaid: { price: details.price, currency: details.currency },
+                            digitalStoreCategoryId: details.digitalStoreCategoryId,
+                            digitalStoreItemId: details.digitalStoreItemId
+                        });
+
+                        if (result.success == false || !result.data) {
+                            throw 'cant add digital store item to user';
+                        }
+                    } catch (error) {
+                        console.log('Error:IncomingPaymentConfirmationHandler:SubscribeToSubscriptionPlanQueueURL: queue message', error);
+                        throw error;
+                    }
+                }
             }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);

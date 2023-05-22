@@ -1,4 +1,4 @@
-import { handler } from 'services/Meetings/EditMeetingLambda';
+import { handler } from 'services/Channels/ListChannelsLambda';
 const event = {
     resource: '/Channels/List',
     path: '/Channels/List',
