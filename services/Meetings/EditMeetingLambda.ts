@@ -11,8 +11,9 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
-import { ECalendarMeetingFormat, ECalendarMeetingFormatArray, IAddEditCalendarMeeting, ICalendarMeeting } from '/opt/CalendarMeetingTypes';
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

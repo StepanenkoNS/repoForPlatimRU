@@ -22,27 +22,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-    if (!ValidateStringParameters(event, ['botId', 'ds', 'df'])) {
+    if (!ValidateStringParameters(event, ['botId', 'calendarMeetingId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
+    const key = {
+        masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.calendarMeetingId!)
+    };
 
-    const dsAsDate = new Date(TextHelper.SanitizeToDirectText(event.queryStringParameters!.ds!));
-    const dfAsDate = new Date(TextHelper.SanitizeToDirectText(event.queryStringParameters!.df!));
-
-    const diff = Math.abs(dsAsDate.getTime() - dfAsDate.getTime());
-    const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-
-    if (diffDays > 101) {
-        return ReturnRestApiResult(422, { error: 'too long range selected' }, false, origin, renewedToken);
-    }
-
-    const result = await CalendarMeetingsConfiguratior.ListMyMeetings({
-        key: { masterId: Number(telegramUser.id), botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)) },
-        range: {
-            ds: TextHelper.SanitizeToDirectText(event.queryStringParameters!.ds!),
-            df: TextHelper.SanitizeToDirectText(event.queryStringParameters!.df!)
-        }
-    });
+    const result = await CalendarMeetingsConfiguratior.ListMeetingParticipants(key);
 
     const listResults = ParseListResult(result);
 

@@ -4,7 +4,7 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 
 //@ts-ignore
-import { EPaymentOptionType, EPaymentTarget, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
+import { EPaymentOptionType, EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
@@ -84,6 +84,72 @@ export async function handler(event: SQSEvent): Promise<any> {
                 addPaymentEventResult = tmpPaymentResult.data;
 
                 ConfirmationMessageText = 'Запрос на оплату платного поста ' + '\nОплачено: ' + dataItem.price + ' ' + dataItem.currency.toString() + '\nid подписчика: ' + dataItem.chatId;
+            }
+
+            if (parsedInputData.paymentTarget === EPaymentTarget.DIGITALSTORE) {
+                const request = parsedInputData as unknown as IDigitalStorePaymentInDB;
+                const dataItem: IDigitalStorePaymentInDB = {
+                    id: undefined,
+                    chatId: Number(request.chatId),
+                    masterId: Number(request.masterId),
+                    botId: Number(request.botId),
+                    paymentTarget: request.paymentTarget,
+
+                    digitalStoreCategoryId: request.digitalStoreCategoryId,
+                    digitalStoreItemId: request.digitalStoreItemId,
+                    itemNameForUser: request.itemNameForUser,
+                    categoryNameForUser: request.categoryNameForUser,
+
+                    price: request.price,
+                    currency: request.currency,
+                    paymentOptionId: request.paymentOptionId,
+                    paymentOptionType: EPaymentOptionType.DIRECT,
+
+                    status: 'NEW',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+
+                if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
+                    throw 'AddDIRECTPaymentRequest.success === false';
+                }
+
+                addPaymentEventResult = tmpPaymentResult.data;
+
+                ConfirmationMessageText = 'Запрос на оплату товара в цифровом магазине ' + '\nОплачено: ' + dataItem.price + ' ' + dataItem.currency.toString() + '\nid подписчика: ' + dataItem.chatId;
+            }
+
+            if (parsedInputData.paymentTarget === EPaymentTarget.TICKET) {
+                const request = parsedInputData as unknown as IMeetingPaymentInDB;
+                const dataItem: IMeetingPaymentInDB = {
+                    id: undefined,
+                    chatId: Number(request.chatId),
+                    masterId: Number(request.masterId),
+                    botId: Number(request.botId),
+                    paymentTarget: request.paymentTarget,
+                    calendarMeetingId: request.calendarMeetingId,
+
+                    itemNameForUser: request.itemNameForUser,
+
+                    price: request.price,
+                    currency: request.currency,
+                    paymentOptionId: request.paymentOptionId,
+                    paymentOptionType: EPaymentOptionType.DIRECT,
+
+                    status: 'NEW',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+
+                if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
+                    throw 'AddDIRECTPaymentRequest.success === false';
+                }
+
+                addPaymentEventResult = tmpPaymentResult.data;
+
+                ConfirmationMessageText = 'Запрос на оплату товара в цифровом магазине ' + '\nОплачено: ' + dataItem.price + ' ' + dataItem.currency.toString() + '\nid подписчика: ' + dataItem.chatId;
             }
 
             if (addPaymentEventResult === undefined) {

@@ -96,7 +96,24 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         layers: layers
     });
 
-    GrantAccessToDDB([ListMeetingsLambda, AddMeetingLambda, GetMeetingLambda, EditMeetingLambda, DeleteMeetingLambda], tables);
+    //Список участников встречи
+    const ListMeetingParticipantsLambda = new NodejsFunction(that, 'ListMeetingParticipantsLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'ListMeetingParticipants.ts'),
+        handler: 'handler',
+        functionName: 'react-Meetings-ListParticipants-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    GrantAccessToDDB([ListMeetingsLambda, AddMeetingLambda, GetMeetingLambda, EditMeetingLambda, DeleteMeetingLambda, ListMeetingParticipantsLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
@@ -126,5 +143,10 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         httpMethod: 'DELETE'
     });
 
+    returnArray.push({
+        lambda: ListMeetingParticipantsLambda,
+        resource: 'ListParticipants',
+        httpMethod: 'GET'
+    });
     return returnArray;
 }

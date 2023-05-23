@@ -25,9 +25,11 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const result = await CalendarMeetingsConfiguratior.GetMyMeetingById({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!) as any
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+            id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
+        }
     });
     const getResult = ParseItemResult(result);
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
