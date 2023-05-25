@@ -11,22 +11,22 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
     //добавление ресурсов в шлюз
 
     //Вывод одного элемента
-    const GetMasterManagerMeLambda = new NodejsFunction(that, 'GetMasterManagerMeLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'GetMasterManagerMeLambda.ts'),
-        handler: 'handler',
-        functionName: 'react-MasterManager-GetMe-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
-        environment: {
-            WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-        },
-        bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
-        },
-        layers: layers
-    });
+    // const GetMasterManagerMeLambda = new NodejsFunction(that, 'GetMasterManagerMeLambda', {
+    //     entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'GetMasterManagerMeLambda.ts'),
+    //     handler: 'handler',
+    //     functionName: 'react-MasterManager-GetMe-Lambda',
+    //     runtime: StaticEnvironment.LambdaSettinds.runtime,
+    //     logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+    //     timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+    //     environment: {
+    //         WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
+    //         ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+    //     },
+    //     bundling: {
+    //         externalModules: ['aws-sdk', '/opt/*']
+    //     },
+    //     layers: layers
+    // });
 
     const SubscribeToPaidSubscriptionLambda = new NodejsFunction(that, 'SubscribeToPaidSubscriptionLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'SubscribeToPaidSubscriptionLambda.ts'),
@@ -64,14 +64,14 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
 
     //Добавление политик
 
-    GrantAccessToDDB([GetMasterManagerMeLambda, SubscribeToPaidSubscriptionLambda, ListMasterManagerSubscriptionsLambda], tables);
+    GrantAccessToDDB([SubscribeToPaidSubscriptionLambda, ListMasterManagerSubscriptionsLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
-    returnArray.push({
-        lambda: GetMasterManagerMeLambda,
-        resource: 'GetMe',
-        httpMethod: 'GET'
-    });
+    // returnArray.push({
+    //     lambda: GetMasterManagerMeLambda,
+    //     resource: 'GetMe',
+    //     httpMethod: 'GET'
+    // });
 
     returnArray.push({
         lambda: SubscribeToPaidSubscriptionLambda,
