@@ -5,11 +5,13 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
-
+//@ts-ignore
+import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
+import { IZuzonaSubscriptionShort } from '/opt/MasterManagerTypes';
+import { MasterManager } from '/opt/MasterManager';
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
@@ -24,10 +26,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await PaymentOptionsManager.ListMyPaymentOptions({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+    const currentSubscription = JSON.parse(telegramUser.zuzonaSubscription) as IZuzonaSubscriptionShort;
+    const limits = MasterManager.GetZuzonaSubscriptionLimits(currentSubscription);
+
+    const result = await CalendarMeetingsConfiguratior.CheckSubscription_AddMeeting({
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        },
+        limit: limits.ContentItems.Meetings.count
     });
-    const listResult = ParseListResult(result);
-    return ReturnRestApiResult(listResult.code, listResult.body, true, origin, renewedToken);
+    const getResult = ParseItemResult(result);
+    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
 }

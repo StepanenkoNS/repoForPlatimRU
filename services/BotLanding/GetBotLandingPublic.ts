@@ -2,29 +2,26 @@ import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { GetLandingSubdomainFromOrigin, SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { GetItemFromDB } from '/opt/LambdaHelpers/WebPagesHelper';
 import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 import { BotLanging } from '/opt/BotLanding';
-
-type Page = {
-    pagePath: string;
-    locale: ESupportedLanguages;
-    itemName?: string;
-    pageId?: string;
-};
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));
 
     const origin = SetOrigin(event);
 
-    if (!ValidateStringParameters(event, ['id'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, undefined);
+    if (origin == '') {
+        return ReturnRestApiResult(422, { error: 'origin is incorrect' }, false, event.headers?.origin ? event.headers.origin : '', undefined);
     }
 
-    const result = await BotLanging.GetBotLanging(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!));
+    //const subdomain = TextHelper.SanitizeToDirectText(GetLandingSubdomainFromOrigin(event));
+
+    const subdomain = 'zuzonabot';
+
+    const result = await BotLanging.GetBotLangingPublic(subdomain);
     const getResult = ParseItemResult(result);
 
     return ReturnRestApiResult(getResult.code, getResult.body, false, origin, undefined);

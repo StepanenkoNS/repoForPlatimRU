@@ -13,7 +13,6 @@ import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
-    console.log(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
     let renewedToken = undefined;

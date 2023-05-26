@@ -10,10 +10,10 @@ import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
 export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
 
-    const GetSubdomainLambda = new NodejsFunction(that, 'GetSubdomainLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'WebBotLandingPages', 'GetBotLanding.ts'),
+    const GetBotLandingPublicLambda = new NodejsFunction(that, 'GetBotLandingPublic', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'BotLanding', 'GetBotLandingPublic.ts'),
         handler: 'handler',
-        functionName: 'react-BotLanding-Get-Lambda',
+        functionName: 'react-BotLanding-GetPublic-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -26,8 +26,8 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
         layers: layers
     });
 
-    const lambdaIntegrationWebPageContent = addLambdaIntegration(GetSubdomainLambda, enableAPICache);
+    const lambdaIntegrationWebPageContent = addLambdaIntegration(GetBotLandingPublicLambda, enableAPICache);
     addMethod(rootResource, undefined, 'GET', lambdaIntegrationWebPageContent, enableAPICache);
 
-    GrantAccessToDDB([GetSubdomainLambda], tables);
+    GrantAccessToDDB([GetBotLandingPublicLambda], tables);
 }

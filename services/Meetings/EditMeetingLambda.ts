@@ -13,7 +13,6 @@ import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
-    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

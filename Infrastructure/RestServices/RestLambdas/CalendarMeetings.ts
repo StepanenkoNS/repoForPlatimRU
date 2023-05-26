@@ -113,7 +113,26 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         layers: layers
     });
 
-    GrantAccessToDDB([ListMeetingsLambda, AddMeetingLambda, GetMeetingLambda, EditMeetingLambda, DeleteMeetingLambda, ListMeetingParticipantsLambda], tables);
+    //редактирование
+    const CheckAddMeetingSubscriptionLambda = new NodejsFunction(that, 'CheckAddMeetingSubscriptionLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'CheckAddMeetingSubscriptionLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-Meetings-CheckLimits-AddMeeting-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
+
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    GrantAccessToDDB([ListMeetingsLambda, AddMeetingLambda, GetMeetingLambda, EditMeetingLambda, DeleteMeetingLambda, ListMeetingParticipantsLambda, CheckAddMeetingSubscriptionLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
@@ -146,6 +165,12 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
     returnArray.push({
         lambda: ListMeetingParticipantsLambda,
         resource: 'ListParticipants',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
+        lambda: CheckAddMeetingSubscriptionLambda,
+        resource: 'CheckAddMeetingLimit',
         httpMethod: 'GET'
     });
     return returnArray;

@@ -13,7 +13,7 @@ export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], t
 
     //Вывод списка
     const UpdateBotLandingPage = new NodejsFunction(that, 'SetBotLandingPageLamda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'WebBotLandingPages', 'UpdateBotLanding.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'BotLanding', 'UpdateBotLanding.ts'),
         handler: 'handler',
         functionName: 'react-BotLanding-Update-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -28,15 +28,36 @@ export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], t
         layers: layers
     });
 
+    const GetBotLandingPrivateLambda = new NodejsFunction(that, 'GetBotLandingPrivate', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'BotLanding', 'GetBotLandingPrivate.ts'),
+        handler: 'handler',
+        functionName: 'react-BotLanding-GetPrivate-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
     //предоставление доступа
 
-    GrantAccessToDDB([UpdateBotLandingPage], tables);
+    GrantAccessToDDB([UpdateBotLandingPage, GetBotLandingPrivateLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
         lambda: UpdateBotLandingPage,
         resource: undefined,
         httpMethod: 'PUT'
+    });
+
+    returnArray.push({
+        lambda: GetBotLandingPrivateLambda,
+        resource: undefined,
+        httpMethod: 'GET'
     });
     return returnArray;
 }

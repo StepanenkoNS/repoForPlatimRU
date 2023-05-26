@@ -13,7 +13,7 @@ import { IBotLanding } from '/opt/BotLandingTypes';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(JSON.stringify(event));
     const origin = SetOrigin(event);
-
+    console.log('origin', origin);
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
     let renewedToken = undefined;
 

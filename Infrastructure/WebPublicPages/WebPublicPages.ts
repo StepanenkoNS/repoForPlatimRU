@@ -7,12 +7,14 @@ import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aw
 import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
-import { createAPI, GrantAccessToDDB } from './Helper';
 import { CreateHelpCenterLambdas } from './Lambdas/HelpCenterLambdas';
 import { CreatePublicPagesLambdas } from './Lambdas/PublicPages';
 import { CreateGetBotLandingLambda } from './Lambdas/BotLandingPublic';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
+//@ts-ignore
+import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
+
 export class WebPublicPagesStack extends Stack {
     constructor(
         scope: Construct,
@@ -37,7 +39,7 @@ export class WebPublicPagesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const webPublicPagesAPI = createAPI(this, props.enableAPICache, props.certificateARN);
+        const webPublicPagesAPI = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN);
 
         CreateHelpCenterLambdas(this, webPublicPagesAPI.root.addResource('help-center'), props.enableAPICache, layers, [webTable]);
 

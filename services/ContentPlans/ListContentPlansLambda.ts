@@ -12,8 +12,6 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    console.log(event);
-
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

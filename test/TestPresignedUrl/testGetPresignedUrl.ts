@@ -99,7 +99,6 @@ const event = {
 };
 
 async function main() {
-    console.log(event);
     await GetPreSignedUrlHandler(event as any, {} as any);
 }
 
