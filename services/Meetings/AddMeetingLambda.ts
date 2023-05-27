@@ -16,7 +16,8 @@ import { TextHelper } from '/opt/TextHelpers/textHelper';
 //@ts-ignore
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 
-import { ECalendarMeetingFormatArray, IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
+import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
+import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event.body);
     const origin = SetOrigin(event);
@@ -66,6 +67,22 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         sendOfflineTicket: bodyObject.data.sendOfflineTicket,
         freeEvent: bodyObject.data.freeEvent
     };
+
+    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddMeeting({
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        },
+        userJsonData: telegramUser
+    });
+
+    if (limitsValidationResult.success == false || !limitsValidationResult.data) {
+        return ReturnRestApiResult(422, { error: 'not valid subscription data' }, false, origin, renewedToken);
+    }
+
+    if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
+        return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
+    }
 
     const result = await CalendarMeetingsConfiguratior.AddMeeting(command);
 

@@ -14,6 +14,8 @@ import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
+//@ts-ignore
+import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     console.log(event.body);
@@ -42,6 +44,21 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
         id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
     };
+
+    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddBot({
+        masterId: Number(telegramUser.id),
+
+        userJsonData: telegramUser
+    });
+
+    if (limitsValidationResult.success == false || !limitsValidationResult.data) {
+        return ReturnRestApiResult(422, { error: 'not valid subscription data' }, false, origin, renewedToken);
+    }
+
+    if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
+        return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
+    }
+
     const result = await MessagingBotManager.AddMyBot(bot);
 
     const addResult = ParseItemResult(result);

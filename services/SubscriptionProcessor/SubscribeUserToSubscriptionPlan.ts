@@ -11,7 +11,7 @@ import { ETelegramSendMethod } from '/opt/TelegramTypes';
 
 import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
 
-import { IBotSubscription, IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
+import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 
 const sqs = new SQS({ region: process.env.region });
 

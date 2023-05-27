@@ -5,12 +5,15 @@ import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 
 export async function handler(event: any): Promise<any> {
     const data = await UserSubscriptionPlanChannel.ListChannelSubscriptionsToExpire();
-    console.log('data.length', data.length);
+    if (data.success == false || !data.data) {
+        console.log('Error: data is empty');
+    }
+    console.log('data.length', data.data.length);
 
     //если он большой - то разбиваем еще на пакет кусков
     const promises = [];
     const batchLimit = 10;
-    for (const item of data) {
+    for (const item of data.data) {
         const message = { ...item, ...{ discriminator: 'IChannelSubscriptionInDB' } };
         const promise = SQSHelper.SendSQSMessage({
             message: message,
