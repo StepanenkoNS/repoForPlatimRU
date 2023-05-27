@@ -39,7 +39,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                const tmpPaymentResult = await PaymentOptionsManager.AddPaymentRequest_DIRECT(dataItem);
                 if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
                     throw 'AddDIRECTPaymentRequest.success === false';
                 }
@@ -75,7 +75,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                const tmpPaymentResult = await PaymentOptionsManager.AddPaymentRequest_DIRECT(dataItem);
 
                 if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
                     throw 'AddDIRECTPaymentRequest.success === false';
@@ -109,7 +109,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                const tmpPaymentResult = await PaymentOptionsManager.AddPaymentRequest_DIRECT(dataItem);
 
                 if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
                     throw 'AddDIRECTPaymentRequest.success === false';
@@ -141,7 +141,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                const tmpPaymentResult = await PaymentOptionsManager.AddDIRECTPaymentRequest(dataItem);
+                const tmpPaymentResult = await PaymentOptionsManager.AddPaymentRequest_DIRECT(dataItem);
 
                 if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
                     throw 'AddDIRECTPaymentRequest.success === false';

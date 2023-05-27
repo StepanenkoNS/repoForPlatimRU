@@ -13,6 +13,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
 import { IDigitalStoreCategory, IDigitalStoreItem } from '/opt/ContentTypes';
+import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -50,6 +51,23 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         free: bodyObject.data.free,
         prices: bodyObject.data.prices
     };
+
+    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategoryItem({
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+            digitalStoreCategoryId: item.digitalStoreCategoryId
+        },
+        userJsonData: telegramUser
+    });
+
+    if (limitsValidationResult.success == false || !limitsValidationResult.data) {
+        return ReturnRestApiResult(422, { error: 'not valid subscription data' }, false, origin, renewedToken);
+    }
+
+    if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
+        return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
+    }
 
     const result = await DigitalStoreManager.AddDigitalStoreItem(item);
 

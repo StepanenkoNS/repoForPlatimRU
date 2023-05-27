@@ -47,6 +47,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id) as any,
         text: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.text)
     };
+
     const result = await MessagingBotManager.AddMyBotCommand(command);
 
     const addResult = ParseItemResult(result);

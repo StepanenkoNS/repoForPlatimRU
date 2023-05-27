@@ -33,7 +33,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const botLanding: IBotLanding = {
-        discriminator: 'IBotLanding',
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         title: TextHelper.SanitizeToDirectText(bodyObject.data.title),

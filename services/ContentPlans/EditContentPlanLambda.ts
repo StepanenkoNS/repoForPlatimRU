@@ -39,6 +39,11 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
     };
+
+    if (contentPlan.id === 'FREEPLAN' || contentPlan.id == 'PAIDPOST') {
+        return ReturnRestApiResult(403, { success: false, error: 'Reserved content plan ID. Action forbidden' }, false, origin, renewedToken);
+    }
+
     const result = await ContentConfigurator.UpdateContentPlan(contentPlan);
 
     const updateResult = ParseItemResult(result);

@@ -13,6 +13,7 @@ import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -34,13 +35,18 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: 'Token is empty' }, false, origin, renewedToken);
     }
 
-    const bot: IMessagingBot = {
+    const potentialBot: IMessagingBot = {
         masterId: Number(telegramUser.id),
         id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)),
         token: TextHelper.SanitizeToDirectText(bodyObject.data.token)
     };
 
-    const result = await MessagingBotManager.UpdateMyBot(bot);
+    const validationResult = await SchemaValidator.Bot_Validation(potentialBot);
+    if (validationResult.success == false || !validationResult.item) {
+        return ReturnRestApiResult(422, { error: validationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await MessagingBotManager.UpdateMyBot(validationResult.item);
 
     const addResult = ParseItemResult(result);
 

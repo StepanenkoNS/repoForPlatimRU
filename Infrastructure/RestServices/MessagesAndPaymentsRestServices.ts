@@ -15,7 +15,7 @@ import { SendMessageScheduler } from './RestLambdas/SendMessageScheduler';
 import { PaymentProcessor } from './RestLambdas/PaymentProcessor';
 
 import { LambdaIntegrations } from './Helper/GWtypes';
-import { CreateBotPaymentsLambdas } from './RestLambdas/BotPayments';
+
 import { CreateSubscriptionProcessor } from './RestLambdas/SubscriptionProcessor';
 import { CreateDigitalStoreCategories } from './RestLambdas/DigitalStoreCategories';
 import { CreateDigitalStoreItems } from './RestLambdas/DigitalStoreItems';
@@ -49,13 +49,6 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
         this.lambdaIntegrations.push({
             rootResource: 'SendTestMessage',
             lambdas: sendMessagesLambas
-        });
-
-        const BotPaymentsLambas = CreateBotPaymentsLambdas(this, layers, [botsTable]);
-
-        this.lambdaIntegrations.push({
-            rootResource: 'BotPayments',
-            lambdas: BotPaymentsLambas
         });
 
         const digitalStoreCategoryLambda = CreateDigitalStoreCategories(this, layers, [botsTable]);

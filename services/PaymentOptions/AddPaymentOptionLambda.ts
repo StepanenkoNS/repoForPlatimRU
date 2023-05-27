@@ -3,7 +3,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { EPaymentOptionType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration } from '/opt/PaymentTypes';
+import { EPaymentOptionType, IPaymentOption } from '/opt/PaymentTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -26,49 +26,21 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'name', datatype: 'string' },
-        { key: 'type', datatype: ['DIRECT', 'INTEGRATION'] },
-        { key: 'description', datatype: 'string' },
+        { key: 'type', datatype: 'object', objectKeys: [] },
         { key: 'currency', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    if (bodyObject.data.type === 'INTEGRATION') {
-        bodyObject = ValidateIncomingEventBody(event, [{ key: 'token', datatype: 'string' }]);
-        if (bodyObject.success === false) {
-            return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
-        }
-    }
-
-    if (bodyObject.data.type === 'DIRECT') {
-        const data: IPaymentOptionDirectCardTransfer = {
-            masterId: Number(telegramUser.id),
-            botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
-            discriminator: 'IPaymentOptionDirectCardTransfer',
-            name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            type: EPaymentOptionType.DIRECT,
-            currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
-            description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
-        };
-        const result = await PaymentOptionsManager.AddDirectPaymentOption(data);
-        const addResult = ParseItemResult(result);
-        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
-    }
-    if (bodyObject.data.type === 'INTEGRATION') {
-        const result = await PaymentOptionsManager.AddIntegrationPaymentOption({
-            masterId: Number(telegramUser.id),
-            botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
-            discriminator: 'IPaymentOptionPaymentIntegration',
-            name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            type: EPaymentOptionType.INTEGRATION,
-            token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
-            currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any,
-            description: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.description)
-        });
-        const addResult = ParseItemResult(result);
-        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
-    }
-    const mockResult = ParseItemResult(undefined);
-    return ReturnRestApiResult(mockResult.code, mockResult.body, false, origin, renewedToken);
+    const data: IPaymentOption = {
+        masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        type: bodyObject.data.type,
+        currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any
+    };
+    const result = await PaymentOptionsManager.AddPaymentOption(data);
+    const addResult = ParseItemResult(result);
+    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
 }
