@@ -9,6 +9,8 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { FileTelegramConfigurator } from '/opt/FileTelegramConfigurator';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -29,15 +31,21 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const messageFile = {
+    const potentialMessageFile = {
         masterId: telegramUser.id,
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         tags: bodyObject.data.tags
     };
+
+    const schemaValidationResult = await SchemaValidator.TelegramFile_Validator(potentialMessageFile);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
     //если указан s3Key - то будем менять старый файл
-    const result = await FileTelegramConfigurator.UpdateTelegramFile(messageFile);
+    const result = await FileTelegramConfigurator.UpdateTelegramFile(schemaValidationResult.item as any);
 
     const updateResult = ParseItemResult(result);
 

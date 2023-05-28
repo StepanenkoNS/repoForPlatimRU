@@ -38,7 +38,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                 //посылаем сообщение админу, что не удалось обновить платеж
                 try {
                     await MessageSender.QueueSendPlainMessage({
-                        discriminator: 'ITelegramMessage',
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.masterId),
@@ -128,7 +127,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                             //посылаем сообщение пользователю, что все зоебись
                             try {
                                 await MessageSender.QueueSendPlainMessage({
-                                    discriminator: 'ITelegramMessage',
                                     botId: Number(request.botId),
                                     masterId: Number(request.masterId),
                                     chatId: details.chatId,

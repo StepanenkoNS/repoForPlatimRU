@@ -12,10 +12,13 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-import { IDigitalStoreCategory, IDigitalStoreItem } from '/opt/ContentTypes';
+import { IDigitalStoreItem } from '/opt/ContentTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -39,7 +42,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const item: IDigitalStoreItem = {
+    const potentialItem: IDigitalStoreItem = {
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
         buttonCaption: TextHelper.SanitizeToDirectText(bodyObject.data.buttonCaption),
@@ -52,11 +55,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         prices: bodyObject.data.prices
     };
 
+    const schemaValidationResult = await SchemaValidator.DigitalStoreItem_Validator(potentialItem);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategoryItem({
         key: {
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-            digitalStoreCategoryId: item.digitalStoreCategoryId
+            digitalStoreCategoryId: potentialItem.digitalStoreCategoryId
         },
         userJsonData: telegramUser
     });
@@ -69,7 +77,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
     }
 
-    const result = await DigitalStoreManager.AddDigitalStoreItem(item);
+    const result = await DigitalStoreManager.AddDigitalStoreItem(schemaValidationResult.item as any);
 
     const addResult = ParseItemResult(result);
 

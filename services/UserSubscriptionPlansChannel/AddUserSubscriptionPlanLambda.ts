@@ -9,11 +9,14 @@ import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import { ESupportedCurrency } from '/opt/PaymentTypes';
 
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { IUserSubscriptionPlanChannel } from '/opt/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -43,9 +46,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         }
     }
 
-    const result = await UserSubscriptionPlanChannel.AddUserSubscriptionPlanChannel({
+    const potentialItem: IUserSubscriptionPlanChannel = {
         masterId: Number(telegramUser.id),
-        discriminator: 'IUserSubscriptionPlanChannel',
+
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         lifeTime: bodyObject.data.lifeTime,
         enabled: bodyObject.data.enabled,
@@ -53,7 +56,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         prices: bodyObject.data.prices,
         channelId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.channelId))
-    });
+    };
+
+    const schemaValidationResult = await SchemaValidator.UserSubscriptionPlanChannel_Validator(potentialItem);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+    const result = await UserSubscriptionPlanChannel.AddUserSubscriptionPlanChannel(schemaValidationResult.item as any);
     const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);

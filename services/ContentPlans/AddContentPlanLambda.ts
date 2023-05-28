@@ -15,6 +15,7 @@ import { IContentPlan } from '/opt/ContentTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -35,7 +36,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const contentPlan: IContentPlan = {
-        discriminator: 'IContentPlan',
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),

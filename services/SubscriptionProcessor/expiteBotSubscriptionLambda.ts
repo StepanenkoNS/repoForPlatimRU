@@ -13,7 +13,7 @@ export async function handler(event: any): Promise<any> {
     const promises = [];
     const batchLimit = 10;
     for (const item of data.data) {
-        const message = { ...item, ...{ discriminator: 'IBotSubscriptionInDB' } };
+        const message = { ...item };
         const promise = SQSHelper.SendSQSMessage({
             message: message,
             QueueUrl: process.env.expireSubscriptionQueueURL!,

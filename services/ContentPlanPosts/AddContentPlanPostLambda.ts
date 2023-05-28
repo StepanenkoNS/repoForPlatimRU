@@ -16,9 +16,12 @@ import { SQS } from 'aws-sdk';
 import { IContentPlanPost } from '/opt/ContentTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 //@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+//@ts-ignore
 
 const sqs = new SQS({ region: process.env.region });
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -40,10 +43,9 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const contentPlanPost: IContentPlanPost = {
+    const potentialContentPlanPost: IContentPlanPost = {
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
-        discriminator: 'IContentPlanPost',
 
         contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
         sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
@@ -54,11 +56,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         interaction: bodyObject.data.interaction
     };
 
+    const schemaValidationResult = await SchemaValidator.ContentPlanPost_Validator(potentialContentPlanPost);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddContentPlanPost({
         key: {
-            masterId: contentPlanPost.masterId,
-            botId: contentPlanPost.botId,
-            contentPlanId: contentPlanPost.contentPlanId
+            masterId: potentialContentPlanPost.masterId,
+            botId: potentialContentPlanPost.botId,
+            contentPlanId: potentialContentPlanPost.contentPlanId
         },
         userJsonData: telegramUser
     });
@@ -71,7 +78,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.AddContentPlanPost(contentPlanPost);
+    const result = await ContentConfigurator.AddContentPlanPost(schemaValidationResult.item as any);
 
     const addResult = ParseItemResult(result);
 

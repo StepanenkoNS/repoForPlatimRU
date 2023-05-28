@@ -10,9 +10,10 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
-import { EContentPlanType, IContentPlan } from '/opt/ContentTypes';
+import { IContentPlan } from '/opt/ContentTypes';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -32,7 +33,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const contentPlan: IContentPlan = {
-        discriminator: 'IContentPlan',
         masterId: Number(telegramUser.id),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),

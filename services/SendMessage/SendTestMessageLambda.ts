@@ -17,6 +17,8 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethods } from '/opt/TelegramTypes';
 import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from '/opt/ContentTypes';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 //@ts-ignore
 

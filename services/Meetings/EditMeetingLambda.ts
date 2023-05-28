@@ -12,7 +12,10 @@ import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 //@ts-ignore
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -44,7 +47,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const command: IAddEditCalendarMeeting = {
+    const potentialMeeting: IAddEditCalendarMeeting = {
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
@@ -63,7 +66,12 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         freeEvent: bodyObject.data.freeEvent
     };
 
-    const result = await CalendarMeetingsConfiguratior.UpdateMeeting(command);
+    const schemaValidationResult = await SchemaValidator.Meeting_Validator(potentialMeeting);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await CalendarMeetingsConfiguratior.UpdateMeeting(schemaValidationResult.item as any);
 
     const addResult = ParseItemResult(result);
 

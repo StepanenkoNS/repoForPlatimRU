@@ -18,8 +18,10 @@ import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratio
 
 import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-    console.log(event.body);
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -50,7 +52,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const command: IAddEditCalendarMeeting = {
+    const potentialMeeting: IAddEditCalendarMeeting = {
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
@@ -68,6 +70,11 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         freeEvent: bodyObject.data.freeEvent
     };
 
+    const schemaValidationResult = await SchemaValidator.Meeting_Validator(potentialMeeting);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddMeeting({
         key: {
             masterId: Number(telegramUser.id),
@@ -84,7 +91,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
     }
 
-    const result = await CalendarMeetingsConfiguratior.AddMeeting(command);
+    const result = await CalendarMeetingsConfiguratior.AddMeeting(schemaValidationResult.item as any);
 
     const addResult = ParseItemResult(result);
 

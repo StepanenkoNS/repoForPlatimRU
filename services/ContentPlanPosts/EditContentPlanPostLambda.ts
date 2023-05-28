@@ -8,10 +8,13 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -34,9 +37,8 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await ContentConfigurator.UpdateContentPlanPost({
+    const potentialContentPlanPost = {
         masterId: Number(telegramUser.id),
-        discriminator: 'IContentPlanPost',
 
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
@@ -49,7 +51,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         message: bodyObject.data.message,
 
         interaction: bodyObject.data.interaction
-    });
+    };
+
+    const schemaValidationResult = await SchemaValidator.ContentPlanPost_Validator(potentialContentPlanPost);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await ContentConfigurator.UpdateContentPlanPost(schemaValidationResult.item as any);
 
     const updateResult = ParseItemResult(result);
 

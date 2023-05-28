@@ -42,7 +42,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     }
 
     const messageFile: IMessageFile = {
-        discriminator: 'IMessageFile',
         masterId: Number(telegramUser.id),
 
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),

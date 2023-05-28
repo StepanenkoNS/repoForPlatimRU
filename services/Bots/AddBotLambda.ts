@@ -40,6 +40,16 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     if (TextHelper.SanitizeToDirectText(bodyObject.data.token).trim() == '') {
         return ReturnRestApiResult(422, { error: 'Token is empty' }, false, origin, renewedToken);
     }
+    const potentialBot: IMessagingBot = {
+        masterId: Number(telegramUser.id),
+        token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
+        id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
+    };
+
+    const validationResult = await SchemaValidator.Bot_Validation(potentialBot);
+    if (validationResult.success == false || !validationResult.item) {
+        return ReturnRestApiResult(422, { error: validationResult.error }, false, origin, renewedToken);
+    }
 
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddBot({
         masterId: Number(telegramUser.id),
@@ -53,17 +63,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
         return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
-    }
-
-    const potentialBot: IMessagingBot = {
-        masterId: Number(telegramUser.id),
-        token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
-        id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
-    };
-
-    const validationResult = await SchemaValidator.Bot_Validation(potentialBot);
-    if (validationResult.success == false || !validationResult.item) {
-        return ReturnRestApiResult(422, { error: validationResult.error }, false, origin, renewedToken);
     }
 
     const result = await MessagingBotManager.AddMyBot(validationResult.item);

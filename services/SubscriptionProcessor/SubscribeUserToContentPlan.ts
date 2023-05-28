@@ -29,7 +29,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                 //шлем сообщение админу, что операция провалилась
                 const msgIdAdmin = ksuid.randomSync(new Date()).string;
                 await MessageSender.QueueSendPlainMessage({
-                    discriminator: 'ITelegramMessage',
                     botId: request.botId,
                     masterId: request.masterId,
                     chatId: request.masterId,

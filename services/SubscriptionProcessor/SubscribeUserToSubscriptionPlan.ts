@@ -42,7 +42,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                         throw 'SubscribeToSubscriptionPlanBot failed';
                     }
                     await MessageSender.QueueSendPlainMessage({
-                        discriminator: 'ITelegramMessage',
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.chatId),
@@ -89,8 +88,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                     };
                     const msgIdUser = ksuid.randomSync(new Date()).string;
                     await MessageSender.QueueSendPlainMessage({
-                        discriminator: 'ITelegramMessage',
-
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.chatId),

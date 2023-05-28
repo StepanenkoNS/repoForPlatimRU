@@ -10,8 +10,12 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { IUserSubscriptionPlanBot } from '/opt/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -43,18 +47,25 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         }
     }
     try {
-        const result = await UserSubscriptionPlanBot.UpdateUserSubscriptionPlanBot({
+        const potentialItem: IUserSubscriptionPlanBot = {
             id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
-            masterId: Number(telegramUser.id),
-            discriminator: 'IUserSubscriptionPlanBot',
+            masterId: telegramUser.id,
+
             botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+            contentPlans: bodyObject.data.contentPlans,
             lifeTime: bodyObject.data.lifeTime,
             enabled: bodyObject.data.enabled,
-            contentPlans: bodyObject.data.contentPlans,
             lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
             name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
             prices: bodyObject.data.prices
-        });
+        };
+
+        const schemaValidationResult = await SchemaValidator.UserSubscriptionPlanBot_Validator(potentialItem);
+        if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+            return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        }
+
+        const result = await UserSubscriptionPlanBot.UpdateUserSubscriptionPlanBot(schemaValidationResult.item as any);
 
         const updateResult = ParseItemResult(result);
         return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);

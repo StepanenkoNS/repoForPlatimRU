@@ -5,7 +5,7 @@ import { SQSHelper } from '/opt/SQS/SQSHelper';
 import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
-import { ESupportedCurrency } from '../../../TGBot-CoreLayers/LambdaLayers/Types/PaymentTypes';
+import { ESupportedCurrency } from '/opt/PaymentTypes';
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function handler(event: SQSEvent): Promise<any> {
@@ -30,7 +30,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                 await MessageSender.QueueSendPlainMessage({
                     botId: request.botId,
                     chatId: request.masterId,
-                    discriminator: 'ITelegramMessage',
+
                     masterId: request.masterId,
                     message: {
                         attachments: [],
@@ -45,12 +45,13 @@ export async function handler(event: SQSEvent): Promise<any> {
             const addPlanResult = await UserSubscriptionPlanChannel.AddUserSubscriptionPlanChannel({
                 channelId: request.channelId,
                 botId: request.botId,
-                discriminator: 'IUserSubscriptionPlanChannel',
+
                 enabled: false,
                 lengthInDays: request.subscriptionLengthInDays,
                 masterId: request.masterId,
                 name: 'MIGRATION',
-                prices: [{ price: 0, currency: ESupportedCurrency.USD }]
+                prices: [{ price: 0, currency: ESupportedCurrency.USD }],
+                lifeTime: false
             });
             if (addPlanResult.success == false || !addPlanResult.data) {
                 let text = 'В процессе миграции пользователей произошла ошибка - мы не смогли создать миграционный план для переноса пользователейю. \n';
@@ -62,7 +63,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                 await MessageSender.QueueSendPlainMessage({
                     botId: request.botId,
                     chatId: request.masterId,
-                    discriminator: 'ITelegramMessage',
+
                     masterId: request.masterId,
                     message: {
                         attachments: [],
@@ -86,7 +87,7 @@ export async function handler(event: SQSEvent): Promise<any> {
             await MessageSender.QueueSendPlainMessage({
                 botId: Number(process.env.botFatherId!),
                 chatId: request.masterId,
-                discriminator: 'ITelegramMessage',
+
                 masterId: request.masterId,
                 message: {
                     attachments: [],
@@ -104,7 +105,7 @@ export async function handler(event: SQSEvent): Promise<any> {
             await MessageSender.QueueSendPlainMessage({
                 botId: Number(process.env.botFatherId!),
                 chatId: request.masterId,
-                discriminator: 'ITelegramMessage',
+
                 masterId: request.masterId,
                 message: {
                     attachments: [],

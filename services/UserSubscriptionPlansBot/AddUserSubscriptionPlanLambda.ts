@@ -9,8 +9,12 @@ import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { IUserSubscriptionPlanBot } from '/opt/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -40,9 +44,10 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
             return ReturnRestApiResult(422, { success: false, error: 'lengthInDays should not be empty when lifeTime is false' }, false, origin, renewedToken);
         }
     }
-    const result = await UserSubscriptionPlanBot.AddUserSubscriptionPlanBot({
+
+    const potentialItem: IUserSubscriptionPlanBot = {
         masterId: telegramUser.id,
-        discriminator: 'IUserSubscriptionPlanBot',
+
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         contentPlans: bodyObject.data.contentPlans,
         lifeTime: bodyObject.data.lifeTime,
@@ -50,7 +55,14 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         prices: bodyObject.data.prices
-    });
+    };
+
+    const schemaValidationResult = await SchemaValidator.UserSubscriptionPlanBot_Validator(potentialItem);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await UserSubscriptionPlanBot.AddUserSubscriptionPlanBot(schemaValidationResult.item as any);
     const addResult = ParseItemResult(result);
 
     return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);

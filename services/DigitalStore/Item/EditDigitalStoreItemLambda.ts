@@ -9,12 +9,14 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { ContentConfigurator } from '/opt/ContentConfigurator';
-import { EContentPlanType, IContentPlan, IDigitalStoreCategory, IDigitalStoreItem } from '/opt/ContentTypes';
+import { IDigitalStoreItem } from '/opt/ContentTypes';
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -39,7 +41,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const item: IDigitalStoreItem = {
+    const potentialItem: IDigitalStoreItem = {
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
@@ -53,7 +55,12 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         prices: bodyObject.data.prices
     };
 
-    const result = await DigitalStoreManager.UpdateDigitalStoreItem(item);
+    const schemaValidationResult = await SchemaValidator.DigitalStoreItem_Validator(potentialItem);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await DigitalStoreManager.UpdateDigitalStoreItem(schemaValidationResult.item as any);
 
     const updateResult = ParseItemResult(result);
 

@@ -1,4 +1,3 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 import { BanChannelMember } from './helpers/expireChannelInTG';
 import { IChannelSubscriptionInDB, IBotSubscriptionInDB } from '/opt/UserSubscriptionTypes';
@@ -12,43 +11,33 @@ export async function handler(event: SQSEvent): Promise<any> {
         try {
             console.log('record', record);
             const request = JSON.parse(record.body);
-            if (!request.discriminator) {
-                throw 'request.discriminator not provided';
-            }
-
-            if (['IChannelSubscriptionInDB', 'IBotSubscriptionInDB'].includes(request.discriminator)) {
-                if (request.discriminator === 'IBotSubscriptionInDB') {
-                    const data = request as IBotSubscriptionInDB;
-                    //channel
-
-                    await UserSubscriptionPlanBot.ExpireUserBotSubscription({
-                        masterId: data.masterId,
-                        botId: data.botId,
-                        chatId: data.chatId,
-                        id: data.id
-                    });
+            if (request.channelId != undefined) {
+                const data = request as IChannelSubscriptionInDB;
+                //channel
+                const banResult = await BanChannelMember({
+                    chatId: data.chatId,
+                    channelId: data.channelId
+                });
+                if (banResult == false) {
+                    throw 'Error:cant connect to telegram';
                 }
-
-                if (request.discriminator === 'IChannelSubscriptionInDB') {
-                    const data = request as IChannelSubscriptionInDB;
-                    //channel
-                    const banResult = await BanChannelMember({
-                        chatId: data.chatId,
-                        channelId: data.channelId
-                    });
-                    if (banResult == false) {
-                        throw 'Error:cant connect to telegram';
-                    }
-                    await UserSubscriptionPlanChannel.ExpireUserChannelSubscription({
-                        masterId: data.masterId,
-                        botId: data.botId,
-                        channelId: data.channelId,
-                        chatId: data.chatId,
-                        id: data.id
-                    });
-                }
+                await UserSubscriptionPlanChannel.ExpireUserChannelSubscription({
+                    masterId: data.masterId,
+                    botId: data.botId,
+                    channelId: data.channelId,
+                    chatId: data.chatId,
+                    id: data.id
+                });
             } else {
-                throw 'request.discriminator is invalid';
+                const data = request as IBotSubscriptionInDB;
+                //channel
+
+                await UserSubscriptionPlanBot.ExpireUserBotSubscription({
+                    masterId: data.masterId,
+                    botId: data.botId,
+                    chatId: data.chatId,
+                    id: data.id
+                });
             }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);

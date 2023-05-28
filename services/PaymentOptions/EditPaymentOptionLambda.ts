@@ -11,8 +11,11 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 import { IPaymentOption } from '/opt/PaymentTypes';
 
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+//@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -33,7 +36,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const command: IPaymentOption = {
+    const potentialPaymentOption: IPaymentOption = {
         id: bodyObject.data.id,
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
@@ -41,7 +44,13 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         type: bodyObject.data.type,
         currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any
     };
-    const result = await PaymentOptionsManager.EditPaymentOption(command);
+
+    const schemaValidationResult = await SchemaValidator.PaymentOption_Validator(potentialPaymentOption);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await PaymentOptionsManager.EditPaymentOption(schemaValidationResult.item as any);
     const udpateResult = ParseItemResult(result);
     return ReturnRestApiResult(udpateResult.code, udpateResult.body, false, origin, renewedToken);
 }

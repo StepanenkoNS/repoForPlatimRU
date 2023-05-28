@@ -15,6 +15,7 @@ import { EContentPlanType, IContentPlan, IDigitalStoreCategory } from '/opt/Cont
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

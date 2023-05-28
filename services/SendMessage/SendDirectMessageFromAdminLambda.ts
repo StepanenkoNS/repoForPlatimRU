@@ -16,9 +16,10 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { MessageSender } from '/opt/MessageSender';
 import { ITelegramSimpleFile } from '/opt/ContentTypes';
-import { ETelegramSendMethod, ETelegramSendMethods } from '/opt/TelegramTypes';
+import { ETelegramSendMethods } from '/opt/TelegramTypes';
 
 //@ts-ignore
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
