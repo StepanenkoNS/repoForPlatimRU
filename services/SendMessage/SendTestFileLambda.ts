@@ -17,7 +17,7 @@ import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 //@ts-ignore
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

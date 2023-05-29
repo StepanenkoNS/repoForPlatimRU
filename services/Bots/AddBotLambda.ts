@@ -19,7 +19,7 @@ import { MessagingBotManager } from '/opt/MessagingBotManager';
 //@ts-ignore
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event.body);
     const origin = SetOrigin(event);
 
@@ -51,9 +51,10 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         return ReturnRestApiResult(422, { error: validationResult.error }, false, origin, renewedToken);
     }
 
+    const botId = Number(TextHelper.SanitizeToDirectText(bodyObject.data.id));
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddBot({
         masterId: Number(telegramUser.id),
-
+        botId: botId,
         userJsonData: telegramUser
     });
 

@@ -21,7 +21,7 @@ import { ETelegramSendMethods } from '/opt/TelegramTypes';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -55,10 +55,10 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
                     id: TextHelper.SanitizeToDirectText(value.id),
                     name: TextHelper.SanitizeToDirectText(value.name)
                 } as ITelegramSimpleFile;
-            })
+            }),
+            sendMethod: bodyObject.data.message.sendMethod
         },
-        recipientChatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId)),
-        sendMethod: bodyObject.data.sendMethod
+        recipientChatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId))
     });
 
     const sendResult = ParseSendMessageResult(result);

@@ -45,10 +45,11 @@ export async function handler(event: SQSEvent): Promise<any> {
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.chatId),
-                        sendMethod: ETelegramSendMethod.sendMessage,
+
                         message: {
                             attachments: [],
-                            text: 'Вы были успешно подписаны'
+                            text: 'Вы были успешно подписаны',
+                            sendMethod: ETelegramSendMethod.sendMessage
                         }
                     });
                     break;
@@ -91,11 +92,12 @@ export async function handler(event: SQSEvent): Promise<any> {
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.chatId),
-                        sendMethod: ETelegramSendMethod.sendMessage,
+
                         message: {
                             attachments: [],
                             text: 'Вы были успешно подписаны на канал, нажмите на кнопку чтобы присоединиться',
-                            reply_markup: replyMarkup
+                            reply_markup: replyMarkup,
+                            sendMethod: ETelegramSendMethod.sendMessage
                         }
                     });
                     break;

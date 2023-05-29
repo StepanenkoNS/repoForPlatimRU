@@ -17,9 +17,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: 'origin is incorrect' }, false, event.headers?.origin ? event.headers.origin : '', undefined);
     }
 
-    //const subdomain = TextHelper.SanitizeToDirectText(GetLandingSubdomainFromOrigin(event));
+    let subdomain = TextHelper.SanitizeToDirectText(GetLandingSubdomainFromOrigin(event));
 
-    const subdomain = 'zuzonabot';
+    if (subdomain == '') {
+        subdomain = 'zuzonabot';
+    }
 
     const result = await BotLanging.GetBotLangingPublic(subdomain);
     const getResult = ParseItemResult(result);

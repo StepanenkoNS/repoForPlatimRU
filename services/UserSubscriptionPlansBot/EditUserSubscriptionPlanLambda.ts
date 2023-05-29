@@ -14,7 +14,7 @@ import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 import { IUserSubscriptionPlanBot } from '/opt/UserSubscriptionTypes';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

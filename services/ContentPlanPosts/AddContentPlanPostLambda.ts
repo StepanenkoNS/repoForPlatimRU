@@ -20,7 +20,7 @@ import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 //@ts-ignore
 
 const sqs = new SQS({ region: process.env.region });
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

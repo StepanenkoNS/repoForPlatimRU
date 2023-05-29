@@ -32,10 +32,11 @@ export async function handler(event: SQSEvent): Promise<any> {
                     botId: request.botId,
                     masterId: request.masterId,
                     chatId: request.masterId,
-                    sendMethod: ETelegramSendMethod.sendMessage,
+
                     message: {
                         attachments: [],
-                        text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой'
+                        text: 'Платеж был успешно подтвержден, но подписки добавить не удалось. Свяжитесь с технической поддержкой',
+                        sendMethod: ETelegramSendMethod.sendMessage
                     }
                 });
             }

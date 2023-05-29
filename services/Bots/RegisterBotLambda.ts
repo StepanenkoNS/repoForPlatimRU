@@ -26,9 +26,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
+    const botId = Number(TextHelper.SanitizeToDirectText(bodyObject.data.id));
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddBot({
         masterId: Number(telegramUser.id),
-
+        botId: botId,
         userJsonData: telegramUser
     });
 
@@ -39,7 +40,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
         return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
     }
-    const result = await MessagingBotManager.SetWebhook(Number(telegramUser.id), Number(TextHelper.SanitizeToDirectText(bodyObject.data.id)));
+    const result = await MessagingBotManager.SetWebhook(Number(telegramUser.id), botId);
 
     const addResult = ParseItemResult(result);
 

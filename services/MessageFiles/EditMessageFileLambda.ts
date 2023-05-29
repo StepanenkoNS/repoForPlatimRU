@@ -12,7 +12,7 @@ import { FileS3Configurator } from '/opt/FileS3Configurator';
 import { S3Helper } from '/opt/S3/S3Utils';
 import { IMessageFile } from '/opt/ContentTypes';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

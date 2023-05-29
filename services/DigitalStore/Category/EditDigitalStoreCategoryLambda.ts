@@ -13,7 +13,7 @@ import { IDigitalStoreCategory } from '/opt/DigitalStoreTypes';
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

@@ -13,7 +13,7 @@ import { ContentConfigurator } from '/opt/ContentConfigurator';
 import { SQS } from 'aws-sdk';
 
 const sqs = new SQS({ region: process.env.region });
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

@@ -10,7 +10,7 @@ import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

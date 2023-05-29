@@ -15,7 +15,7 @@ import { ETelegramBotCommand, IMessagingBotCommand } from '/opt/MessagingBotMana
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

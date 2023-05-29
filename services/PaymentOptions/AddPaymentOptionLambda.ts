@@ -17,7 +17,7 @@ import { ItemResponse } from '/opt/GeneralTypes';
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

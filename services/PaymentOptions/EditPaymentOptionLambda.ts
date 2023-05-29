@@ -14,7 +14,7 @@ import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 

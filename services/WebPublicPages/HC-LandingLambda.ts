@@ -14,7 +14,7 @@ type Page = {
 };
 const fallbackLocale = defaultMenuLanguage;
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
     try {
