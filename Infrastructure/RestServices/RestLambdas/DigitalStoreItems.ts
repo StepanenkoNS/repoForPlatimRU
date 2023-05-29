@@ -28,6 +28,23 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         layers: layers
     });
 
+    //Вывод списка
+    const ListDigitalStoreItemsForContentPlanPostLambda = new NodejsFunction(that, 'ListDigitalStoreItemsForContentPlanPostLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'ListDigitalStoreItemsForContentPlanPostLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-DigitalStoreItems-List-forContentPlanPost-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     //Вывод одного элемента
     const GetDigitalStoreItemLambda = new NodejsFunction(that, 'GetDigitalStoreItemLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'GetDigitalStoreItemLambda.ts'),
@@ -98,14 +115,24 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
 
     //предоставление доступа
 
-    GrantAccessToDDB([ListDigitalStoreItemsLambda, AddDigitalStoreItemLambda, EditDigitalStoreItemLambda, DeleteDigitalStoreItemLambda, GetDigitalStoreItemLambda], tables);
+    GrantAccessToDDB(
+        [ListDigitalStoreItemsLambda, AddDigitalStoreItemLambda, EditDigitalStoreItemLambda, DeleteDigitalStoreItemLambda, GetDigitalStoreItemLambda, ListDigitalStoreItemsForContentPlanPostLambda],
+        tables
+    );
 
     const returnArray: LambdaAndResource[] = [];
+
     returnArray.push({
         lambda: ListDigitalStoreItemsLambda,
         resource: 'List',
         httpMethod: 'GET'
     });
+    returnArray.push({
+        lambda: ListDigitalStoreItemsForContentPlanPostLambda,
+        resource: 'ListForPost',
+        httpMethod: 'GET'
+    });
+
     returnArray.push({
         lambda: GetDigitalStoreItemLambda,
         resource: 'Get',

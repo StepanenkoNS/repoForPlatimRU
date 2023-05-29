@@ -12,10 +12,10 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-import { IDigitalStoreCategory } from '/opt/ContentTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { IDigitalStoreCategory } from '/opt/DigitalStoreTypes';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 
@@ -48,7 +48,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategory({
         key: {
             masterId: Number(telegramUser.id),
-            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+            botId: item.botId
         },
         userJsonData: telegramUser
     });

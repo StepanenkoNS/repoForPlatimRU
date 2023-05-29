@@ -9,7 +9,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { IDigitalStoreItem } from '/opt/ContentTypes';
+import { IDigitalStoreItem } from '/opt/DigitalStoreTypes';
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 //@ts-ignore
@@ -29,7 +29,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
-        { key: 'buttonCaption', datatype: 'string' },
+        { key: 'itemNameForUser', datatype: 'string' },
         { key: 'text', datatype: 'string' },
         { key: 'enabled', datatype: 'boolean' },
         { key: 'free', datatype: 'boolean' },
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
-        buttonCaption: TextHelper.SanitizeToDirectText(bodyObject.data.buttonCaption),
+        itemNameForUser: TextHelper.SanitizeToDirectText(bodyObject.data.itemNameForUser),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         text: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.text),
         enabled: bodyObject.data.enabled,

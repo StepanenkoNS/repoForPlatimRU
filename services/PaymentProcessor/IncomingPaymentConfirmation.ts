@@ -18,6 +18,7 @@ import { SQSHelper } from '/opt/SQS/SQSHelper';
 import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
+import { ContentConfigurator } from '/opt/ContentConfigurator';
 
 const sqs = new SQS({ region: process.env.region });
 
@@ -80,27 +81,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                                 message: sqsRequest,
                                 messageGroupId: 'BOTID#' + sqsRequest.botId.toString() + '#CHATID#' + sqsRequest.chatId
                             });
-                        } catch (error) {
-                            console.log('Error:IncomingPaymentConfirmationHandler:SubscribeToSubscriptionPlanQueueURL: queue message', error);
-                            throw error;
-                        }
-                    }
-
-                    if (updatedPaymentData.paymentTarget === EPaymentTarget.PAIDPOST) {
-                        const details = updatedPaymentData as IPaidPostPaymentInDB;
-
-                        //отправляем платный пост
-                        try {
-                            const result = await MessagingBotSubscriptionManager.QueueContentPlanPostSendWithoutLogs({
-                                masterId: details.masterId,
-                                botId: details.botId,
-                                chatId: details.chatId,
-                                contentPlanId: 'PAIDPOST',
-                                contentPlanPostId: details.paidPostId
-                            });
-                            if (result == false) {
-                                throw 'cant send paid post message';
-                            }
                         } catch (error) {
                             console.log('Error:IncomingPaymentConfirmationHandler:SubscribeToSubscriptionPlanQueueURL: queue message', error);
                             throw error;

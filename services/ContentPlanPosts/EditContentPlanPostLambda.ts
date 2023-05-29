@@ -27,7 +27,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'contentPlanId', datatype: 'string' },
-        { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
         { key: 'message', datatype: 'object', objectKeys: [] },
@@ -45,7 +44,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
 
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
 
         trigger: bodyObject.data.trigger,
         message: bodyObject.data.message,

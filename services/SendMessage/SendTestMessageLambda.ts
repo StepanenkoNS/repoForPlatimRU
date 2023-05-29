@@ -23,6 +23,7 @@ import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 //@ts-ignore
 
 export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -37,10 +38,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         { key: 'contentPlanPostId', datatype: 'string' },
         { key: 'interaction', datatype: 'object', objectKeys: [] },
         { key: 'message', datatype: 'object', objectKeys: [] },
-        {
-            key: 'sendMethod',
-            datatype: [...ETelegramSendMethods.map((value) => value.toString())]
-        },
         { key: 'trigger', datatype: 'object', objectKeys: [] }
     ]);
 
@@ -50,23 +47,18 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
 
     const trigger = bodyObject.data.trigger as PostTrigger;
     let message: ITelegramNaivMessageContent = bodyObject.data.message;
-    if (trigger.type === EPostTriggerType.PAID_POST) {
-        message = {
-            text: trigger.teaserMessage,
-            attachments: []
-        };
-    }
 
-    const result = await MessageSender.SendTestContentPlanMessage({
+    const msgContent = {
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
         contentPlanPostId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanPostId),
         interaction: bodyObject.data.interaction,
         message: message,
-        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
         trigger: bodyObject.data.trigger
-    });
+    };
+
+    const result = await MessageSender.SendTestContentPlanMessage(msgContent);
 
     const sendResult = ParseSendMessageResult(result);
 

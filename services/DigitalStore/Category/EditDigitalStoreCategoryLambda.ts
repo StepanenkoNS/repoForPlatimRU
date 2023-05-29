@@ -9,8 +9,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { ContentConfigurator } from '/opt/ContentConfigurator';
-import { EContentPlanType, IContentPlan, IDigitalStoreCategory } from '/opt/ContentTypes';
+import { IDigitalStoreCategory } from '/opt/DigitalStoreTypes';
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 

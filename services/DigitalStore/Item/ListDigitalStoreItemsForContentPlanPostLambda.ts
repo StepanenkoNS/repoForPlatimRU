@@ -1,18 +1,19 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { ContentConfigurator } from '/opt/ContentConfigurator';
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -22,19 +23,18 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['id', 'botId', 'digitalStoreCategoryId'])) {
+    if (!ValidateStringParameters(event, ['botId'])) {
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await DigitalStoreManager.GetMyDigitalStoreItemById({
-        key: {
-            masterId: Number(telegramUser.id),
-            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-            id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!),
-            digitalStoreCategoryId: TextHelper.SanitizeToDirectText(event.queryStringParameters!.digitalStoreCategoryId!)
-        }
-    });
-    const getResult = ParseItemResult(result);
+    const key = {
+        masterId: Number(telegramUser.id),
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+    };
 
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    const result = await DigitalStoreManager.ListDigitalStoreItems_ForContentPlanPost(key);
+
+    const listResults = ParseListResult(result);
+
+    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
 }

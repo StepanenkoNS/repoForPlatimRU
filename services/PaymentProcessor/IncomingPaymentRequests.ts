@@ -58,34 +58,6 @@ export async function handler(event: SQSEvent): Promise<any> {
                     dataItem.chatId;
             }
 
-            if (parsedInputData.paymentTarget === EPaymentTarget.PAIDPOST) {
-                const request = parsedInputData as unknown as IPaidPostPaymentInDB;
-                const dataItem: IPaidPostPaymentInDB = {
-                    id: undefined,
-                    chatId: Number(request.chatId),
-                    masterId: Number(request.masterId),
-                    botId: Number(request.botId),
-                    paymentTarget: request.paymentTarget,
-                    paidPostId: request.paidPostId,
-                    price: request.price,
-                    currency: request.currency,
-                    paymentOptionId: request.paymentOptionId,
-                    paymentOptionType: EPaymentOptionType.DIRECT,
-                    status: 'NEW',
-                    createdAt: new Date().toISOString(),
-                    updatedAt: new Date().toISOString()
-                };
-                const tmpPaymentResult = await PaymentOptionsManager.AddPaymentRequest_DIRECT(dataItem);
-
-                if (tmpPaymentResult.success === false || !tmpPaymentResult.data) {
-                    throw 'AddDIRECTPaymentRequest.success === false';
-                }
-
-                addPaymentEventResult = tmpPaymentResult.data;
-
-                ConfirmationMessageText = 'Запрос на оплату платного поста ' + '\nОплачено: ' + dataItem.price + ' ' + dataItem.currency.toString() + '\nid подписчика: ' + dataItem.chatId;
-            }
-
             if (parsedInputData.paymentTarget === EPaymentTarget.DIGITALSTORE) {
                 const request = parsedInputData as unknown as IDigitalStorePaymentInDB;
                 const dataItem: IDigitalStorePaymentInDB = {

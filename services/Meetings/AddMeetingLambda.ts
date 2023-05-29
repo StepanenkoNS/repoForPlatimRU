@@ -20,7 +20,7 @@ import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 
@@ -78,7 +78,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddMeeting({
         key: {
             masterId: Number(telegramUser.id),
-            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+            botId: potentialMeeting.botId
         },
         userJsonData: telegramUser
     });

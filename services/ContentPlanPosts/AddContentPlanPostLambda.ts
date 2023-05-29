@@ -33,7 +33,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(positiveInteger)' },
         { key: 'contentPlanId', datatype: 'string' },
-        { key: 'sendMethod', datatype: 'string' },
         { key: 'name', datatype: 'string' },
         { key: 'message', datatype: 'object', objectKeys: [] },
         { key: 'trigger', datatype: 'object', objectKeys: [] },
@@ -48,7 +47,6 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
         masterId: Number(telegramUser.id),
 
         contentPlanId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanId),
-        sendMethod: TextHelper.SanitizeToDirectText(bodyObject.data.sendMethod) as any,
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
 
         message: bodyObject.data.message,

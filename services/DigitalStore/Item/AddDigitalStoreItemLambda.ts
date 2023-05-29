@@ -12,12 +12,12 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-import { IDigitalStoreItem } from '/opt/ContentTypes';
 import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { IDigitalStoreItem } from '/opt/DigitalStoreTypes';
 
-export async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
     const origin = SetOrigin(event);
 
@@ -30,7 +30,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
-        { key: 'buttonCaption', datatype: 'string' },
+        { key: 'itemNameForUser', datatype: 'string' },
         { key: 'text', datatype: 'string' },
         { key: 'enabled', datatype: 'boolean' },
         { key: 'digitalStoreCategoryId', datatype: 'string' },
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const potentialItem: IDigitalStoreItem = {
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
-        buttonCaption: TextHelper.SanitizeToDirectText(bodyObject.data.buttonCaption),
+        itemNameForUser: TextHelper.SanitizeToDirectText(bodyObject.data.itemNameForUser),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
         text: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.text),
         enabled: bodyObject.data.enabled,
@@ -63,7 +63,7 @@ export async function handler(event: APIGatewayEvent, context: Context): Promise
     const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategoryItem({
         key: {
             masterId: Number(telegramUser.id),
-            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+            botId: potentialItem.botId,
             digitalStoreCategoryId: potentialItem.digitalStoreCategoryId
         },
         userJsonData: telegramUser
