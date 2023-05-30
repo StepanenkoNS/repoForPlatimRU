@@ -6,7 +6,7 @@ import { LogOut, ReturnResult } from '/opt/AuthHelpers/ReturnResult';
 //@ts-ignore
 import { ValidateTokenFromCookies } from '/opt/AuthHelpers/ValidateTokenFromCookies';
 //@ts-ignore
-import { TelegramUserProfile, ZuzonaRole } from '/opt/AuthTypes';
+import { TelegramUserProfile, PomponaRole } from '/opt/AuthTypes';
 
 export async function handler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));
@@ -18,7 +18,7 @@ export async function handler(event: APIGatewayEvent) {
 
         return ReturnResult(422, result, '*');
     }
-    let origin = 'https://zuzona.com';
+    let origin = 'https://pompona.net';
     if (event.headers && event.headers.origin) {
         //todo - удалить перед деплоем
         const array = process.env.allowedOrigins!.split(',');
@@ -80,7 +80,7 @@ export async function handler(event: APIGatewayEvent) {
         } else {
             let role = validateTokenResult.userProfile.role;
             if (validateTokenResult.userProfile.id === 199163834) {
-                role = ZuzonaRole.superadmin;
+                role = PomponaRole.superadmin;
             }
             const userProfile: TelegramUserProfile = {
                 id: validateTokenResult.userProfile.id,
@@ -90,7 +90,7 @@ export async function handler(event: APIGatewayEvent) {
                 username: validateTokenResult.userProfile.username,
                 language: validateTokenResult.userProfile.language,
                 role: role,
-                zuzonaSubscription: validateTokenResult.userProfile.zuzonaSubscription
+                pomponaSubscription: validateTokenResult.userProfile.pomponaSubscription
             };
             if (validateTokenResult.context.renewedAccessToken) {
                 return ReturnResult(201, { userProfile: userProfile }, origin, {

@@ -14,7 +14,7 @@ import { ContentConfigurator } from '/opt/ContentConfigurator';
 import ksuid from 'ksuid';
 import { SQS } from 'aws-sdk';
 import { IContentPlanPost } from '/opt/ContentTypes';
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 //@ts-ignore
@@ -59,7 +59,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
     }
 
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddContentPlanPost({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddContentPlanPost({
         key: {
             masterId: potentialContentPlanPost.masterId,
             botId: potentialContentPlanPost.botId,

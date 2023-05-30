@@ -53,6 +53,8 @@ const mainRestServicesStack = new MainRestServicesStack(app, StaticEnvironment.S
 
 lambdaRestIntegrations.push(...mainRestServicesStack.lambdaIntegrations);
 
+mainRestServicesStack.addDependency(tokenService);
+
 const filesRestServicesStack = new FilesRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceFiles.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceFiles.toString(),
 
@@ -64,6 +66,8 @@ const filesRestServicesStack = new FilesRestServicesStack(app, StaticEnvironment
 });
 lambdaRestIntegrations.push(...filesRestServicesStack.lambdaIntegrations);
 
+filesRestServicesStack.addDependency(mainRestServicesStack);
+
 const messagesAndPaymentsRestServicesStack = new MessagesAndPaymentsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceMessagesAndPayments.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceMessagesAndPayments.toString(),
 
@@ -74,6 +78,8 @@ const messagesAndPaymentsRestServicesStack = new MessagesAndPaymentsRestServices
     }
 });
 lambdaRestIntegrations.push(...messagesAndPaymentsRestServicesStack.lambdaIntegrations);
+
+messagesAndPaymentsRestServicesStack.addDependency(filesRestServicesStack);
 
 const plansAndPostsRestServicesStack = new PlansAndPostsRestServicesStack(app, StaticEnvironment.StackName.WebRestServicePlansAndPosts.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServicePlansAndPosts.toString(),
@@ -87,6 +93,8 @@ const plansAndPostsRestServicesStack = new PlansAndPostsRestServicesStack(app, S
 
 lambdaRestIntegrations.push(...plansAndPostsRestServicesStack.lambdaIntegrations);
 
+plansAndPostsRestServicesStack.addDependency(messagesAndPaymentsRestServicesStack);
+
 const subscriptionsRestServicesStack = new SubscriptionsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(),
 
@@ -97,6 +105,8 @@ const subscriptionsRestServicesStack = new SubscriptionsRestServicesStack(app, S
     }
 });
 lambdaRestIntegrations.push(...subscriptionsRestServicesStack.lambdaIntegrations);
+
+subscriptionsRestServicesStack.addDependency(plansAndPostsRestServicesStack);
 
 const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceCRM.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceCRM.toString(),
@@ -109,6 +119,8 @@ const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.Sta
 });
 lambdaCRMIntegrations.push(...cRMRestServicesStack.lambdaIntegrations);
 
+cRMRestServicesStack.addDependency(tokenService);
+
 const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceLanding.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceLanding.toString(),
 
@@ -119,6 +131,8 @@ const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticE
     }
 });
 lambdaRestIntegrations.push(...botLandingRestServicesStack.lambdaIntegrations);
+
+botLandingRestServicesStack.addDependency(mainRestServicesStack);
 
 const gatewayRestServiceStack = new GatewayServiceStack(app, StaticEnvironment.StackName.WebRestGatewayService.toString(), {
     stackName: StaticEnvironment.StackName.WebRestGatewayService.toString(),
@@ -132,6 +146,8 @@ const gatewayRestServiceStack = new GatewayServiceStack(app, StaticEnvironment.S
     }
 });
 
+gatewayRestServiceStack.addDependency(botLandingRestServicesStack);
+
 const gatewayCRMServiceStack = new GatewayServiceStack(app, StaticEnvironment.StackName.WebCRMGatewayService.toString(), {
     stackName: StaticEnvironment.StackName.WebCRMGatewayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
@@ -143,3 +159,5 @@ const gatewayCRMServiceStack = new GatewayServiceStack(app, StaticEnvironment.St
         region: StaticEnvironment.GlobalAWSEnvironment.region
     }
 });
+
+gatewayCRMServiceStack.addDependency(cRMRestServicesStack);

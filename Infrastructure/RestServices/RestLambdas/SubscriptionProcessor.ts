@@ -187,14 +187,23 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         layers: layers
     });
 
-    const statementSQS = new PolicyStatement({
+    const statementSQSmessage = new PolicyStatement({
         resources: [SendMessageSchedulerQueueSecond.queueArn],
         actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
         effect: Effect.ALLOW
     });
 
-    SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQS);
-    SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQS);
+    const statementSQS_ContentPlanQueue = new PolicyStatement({
+        resources: [SubscribeToContentPlanQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
+    SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQSmessage);
+    SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQSmessage);
+
+    SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQS_ContentPlanQueue);
+    SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQS_ContentPlanQueue);
 
     const subscriptionEvent = new SqsEventSource(SubscribeToSubscriptionPlanQueue, {
         enabled: true,
@@ -295,10 +304,10 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     expiteBotSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
     expiteChannelSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
 
-    const ZuzonaSubscriptionCleanUpProcessor = new NodejsFunction(that, 'ZuzonaSubscriptionCleanUpProcessor', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'ZuzonaSubscriptionCleanUpProcessor.ts'),
+    const PomponaSubscriptionCleanUpProcessor = new NodejsFunction(that, 'PomponaSubscriptionCleanUpProcessor', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'PomponaSubscriptionCleanUpProcessor.ts'),
         handler: 'handler',
-        functionName: 'subscriptionProcessor-Cleanup-Zuzona',
+        functionName: 'subscriptionProcessor-Cleanup-Pompona',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
@@ -312,17 +321,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         layers: layers
     });
 
-    const eventRuleZuzona: events.Rule = new events.Rule(that, 'oneHourCleanupZuzona', {
+    const eventRulePompona: events.Rule = new events.Rule(that, 'oneHourCleanupPompona', {
         schedule: events.Schedule.rate(Duration.hours(24)),
-        ruleName: 'oneHourCleanupZuzona'
+        ruleName: 'oneHourCleanupPompona'
     });
 
-    eventRuleZuzona.addTarget(
-        new targets.LambdaFunction(ZuzonaSubscriptionCleanUpProcessor, {
-            event: events.RuleTargetInput.fromObject({ message: 'oneHourCleanupZuzona' })
+    eventRulePompona.addTarget(
+        new targets.LambdaFunction(PomponaSubscriptionCleanUpProcessor, {
+            event: events.RuleTargetInput.fromObject({ message: 'oneHourCleanupPompona' })
         })
     );
-    targets.addLambdaPermission(eventRuleZuzona, ZuzonaSubscriptionCleanUpProcessor);
+    targets.addLambdaPermission(eventRulePompona, PomponaSubscriptionCleanUpProcessor);
 
     const expireUserSubscriptionItemLambda = new NodejsFunction(that, 'expireUserSubscriptionItem', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expireUserSubscriptionItem.ts'),
@@ -360,7 +369,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         [
             SubscriptionProcessorContentPlanLambda,
             SubscriptionProcessorSubscriptionPlanLambda,
-            ZuzonaSubscriptionCleanUpProcessor,
+            PomponaSubscriptionCleanUpProcessor,
             SubscriptionProcessorAddScheduledPostLambda,
             SubscriptionProcessorDeleteScheduledPostLambda,
             expireUserSubscriptionItemLambda,

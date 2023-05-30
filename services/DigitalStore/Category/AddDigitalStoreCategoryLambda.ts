@@ -12,7 +12,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 import { IDigitalStoreCategory } from '/opt/DigitalStoreTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         enabled: bodyObject.data.enabled
     };
 
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategory({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategory({
         key: {
             masterId: Number(telegramUser.id),
             botId: item.botId

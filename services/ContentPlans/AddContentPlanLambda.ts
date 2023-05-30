@@ -12,7 +12,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
 import { IContentPlan } from '/opt/ContentTypes';
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -42,7 +42,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         description: TextHelper.SanitizeToDirectText(bodyObject.data.description)
     };
 
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddContentPlan({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddContentPlan({
         key: {
             masterId: contentPlan.masterId,
             botId: contentPlan.botId

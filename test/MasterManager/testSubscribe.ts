@@ -10,7 +10,7 @@ const event = {
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'content-type': 'application/x-www-form-urlencoded',
         cookie: '_ym_uid=1682491530212273390; _ym_d=1682491530; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODI2MDM1OTMsImV4cCI6MTcxNDEzOTU5M30.FztUED01YbCmiWRK_XxUQ5XkFdP7vPTPY7YoOl5ElGQ; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODI2MDM1OTMsImV4cCI6MTY4MjYwNzE5M30.OW4OsoCjd5iA-snwJNH6vGNWylVNJDUZtKuKmpOYVcM',
-        Host: 'secure-api.zuzona.com',
+        Host: 'secure-api.pompona.net',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
         'sec-ch-ua': '"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"',
@@ -33,7 +33,7 @@ const event = {
         cookie: [
             '_ym_uid=1682491530212273390; _ym_d=1682491530; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODI2MDM1OTMsImV4cCI6MTcxNDEzOTU5M30.FztUED01YbCmiWRK_XxUQ5XkFdP7vPTPY7YoOl5ElGQ; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODI2MDM1OTMsImV4cCI6MTY4MjYwNzE5M30.OW4OsoCjd5iA-snwJNH6vGNWylVNJDUZtKuKmpOYVcM'
         ],
-        Host: ['secure-api.zuzona.com'],
+        Host: ['secure-api.pompona.net'],
         origin: ['http://localhost:8080'],
         referer: ['http://localhost:8080/'],
         'sec-ch-ua': ['"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"'],
@@ -91,7 +91,7 @@ const event = {
             userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
             user: null
         },
-        domainName: 'secure-api.zuzona.com',
+        domainName: 'secure-api.pompona.net',
         apiId: 'we4r6e3su1'
     },
     body: '{"currency":"RUB","lengthInDays":30,"masterId":0,"pricePaid":1000,"subscriptionType":"CHANNEL","subscriptionPlan":"PAID"}',

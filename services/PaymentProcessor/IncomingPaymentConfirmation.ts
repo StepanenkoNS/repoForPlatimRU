@@ -42,10 +42,11 @@ export async function handler(event: SQSEvent): Promise<any> {
                         botId: Number(request.botId),
                         masterId: Number(request.masterId),
                         chatId: Number(request.masterId),
-                        sendMethod: ETelegramSendMethod.sendMessage,
+
                         message: {
                             attachments: [],
-                            text: 'Что-то пошло не так и платеж не был обработан'
+                            text: 'Что-то пошло не так и платеж не был обработан',
+                            sendMethod: ETelegramSendMethod.sendMessage
                         }
                     });
                 } catch (error) {
@@ -110,10 +111,11 @@ export async function handler(event: SQSEvent): Promise<any> {
                                     botId: Number(request.botId),
                                     masterId: Number(request.masterId),
                                     chatId: details.chatId,
-                                    sendMethod: ETelegramSendMethod.sendMessage,
+
                                     message: {
                                         attachments: [],
-                                        text: 'Товар успешно добавлен в вашу библиотеку'
+                                        text: 'Товар успешно добавлен в вашу библиотеку',
+                                        sendMethod: ETelegramSendMethod.sendMessage
                                     }
                                 });
                             } catch (error) {

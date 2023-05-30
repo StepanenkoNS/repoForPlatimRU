@@ -23,8 +23,9 @@ export class TokenServiceStack extends Stack {
     ) {
         super(scope, id, props);
         const siteDomain = StaticEnvironment.WebResources.mainDomainName;
-        const myZone = route53.HostedZone.fromLookup(this, 'Zone', {
-            domainName: siteDomain
+        const myZone = route53.HostedZone.fromHostedZoneAttributes(this, 'Zone', {
+            hostedZoneId: StaticEnvironment.WebResources.hostedZone.hostedZoneId,
+            zoneName: StaticEnvironment.WebResources.hostedZone.zoneName
         });
 
         const certificate = acm.Certificate.fromCertificateArn(this, 'imported-certificate', props.certificateARN);

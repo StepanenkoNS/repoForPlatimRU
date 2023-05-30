@@ -10,7 +10,7 @@ const event = {
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'content-type': 'application/x-www-form-urlencoded',
         cookie: 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzc0MzI2MjIsImV4cCI6MTcwODk2ODYyMn0.py8XeUoxno8oDv_syklWxkjfQmhx0UAqd222OHuqD70; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzc0MzI2MjIsImV4cCI6MTY3NzQzNjIyMn0.UM472F7ek2_bOxkRJC-osk07Ig4PM_wbgmE-w2WK-GE',
-        Host: 'secure-api.zuzona.com',
+        Host: 'secure-api.pompona.net',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
         'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
@@ -33,7 +33,7 @@ const event = {
         cookie: [
             'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzc0MzI2MjIsImV4cCI6MTcwODk2ODYyMn0.py8XeUoxno8oDv_syklWxkjfQmhx0UAqd222OHuqD70; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2Nzc0MzI2MjIsImV4cCI6MTY3NzQzNjIyMn0.UM472F7ek2_bOxkRJC-osk07Ig4PM_wbgmE-w2WK-GE'
         ],
-        Host: ['secure-api.zuzona.com'],
+        Host: ['secure-api.pompona.net'],
         origin: ['http://localhost:8080'],
         referer: ['http://localhost:8080/'],
         'sec-ch-ua': ['"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"'],
@@ -91,7 +91,7 @@ const event = {
             userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
             user: null
         },
-        domainName: 'secure-api.zuzona.com',
+        domainName: 'secure-api.pompona.net',
         apiId: 'h3qyfsqlr1'
     },
     body: '{"BOTUUID":"2MECqb1sqZJ7fZ2fUaojyZDf0Kl","fileName":"index.html","fileType":"text/html","fileSize":36}',

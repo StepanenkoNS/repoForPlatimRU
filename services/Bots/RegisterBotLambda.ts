@@ -10,7 +10,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseItemResult, ParseItemResult, ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -27,7 +27,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const botId = Number(TextHelper.SanitizeToDirectText(bodyObject.data.id));
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddBot({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddBot({
         masterId: Number(telegramUser.id),
         botId: botId,
         userJsonData: telegramUser

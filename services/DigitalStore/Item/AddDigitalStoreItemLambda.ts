@@ -12,7 +12,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 //@ts-ignore
 import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 import { IDigitalStoreItem } from '/opt/DigitalStoreTypes';
@@ -60,7 +60,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
     }
 
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategoryItem({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddDigitalStoreCategoryItem({
         key: {
             masterId: Number(telegramUser.id),
             botId: potentialItem.botId,

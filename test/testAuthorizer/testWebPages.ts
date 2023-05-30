@@ -9,8 +9,8 @@ const event = {
         'accept-encoding': 'gzip, deflate, br',
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'content-type': 'application/x-www-form-urlencoded',
-        cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1IiwiaWF0IjoxNjY5MjI1NTQ2LCJleHAiOjE2NjkyMjU2MDZ9.g-eEksC6TGJ0sDPDmTfGlmi2OoIu3TCTUpbb11CvaHk; Expires=Wed, 23 Nov 2022 17:46:46 GMT; Secure; SameSite=None; Domain=.zuzona.com; Path=/; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1IiwiaWF0IjoxNjY5MjI1NTQ2LCJleHAiOjE3MDA3NjE1NDZ9.Y0_rC_9Gsc5KsBt8EC9Wh5rt9YVQ6XOTevxnHbaP058; Expires=Wed, 23 Nov 2022 23:50:46 GMT; Secure; SameSite=None; Domain=.zuzona.com; Path=/',
-        Host: 'auth.zuzona.com',
+        cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1IiwiaWF0IjoxNjY5MjI1NTQ2LCJleHAiOjE2NjkyMjU2MDZ9.g-eEksC6TGJ0sDPDmTfGlmi2OoIu3TCTUpbb11CvaHk; Expires=Wed, 23 Nov 2022 17:46:46 GMT; Secure; SameSite=None; Domain=.pompona.net; Path=/; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1IiwiaWF0IjoxNjY5MjI1NTQ2LCJleHAiOjE3MDA3NjE1NDZ9.Y0_rC_9Gsc5KsBt8EC9Wh5rt9YVQ6XOTevxnHbaP058; Expires=Wed, 23 Nov 2022 23:50:46 GMT; Secure; SameSite=None; Domain=.pompona.net; Path=/',
+        Host: 'auth.pompona.net',
         origin: 'http://localhost',
         referer: 'http://localhost/',
         'sec-ch-ua': '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
@@ -33,7 +33,7 @@ const event = {
         cookie: [
             'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2Njg3MTMxMjIsImV4cCI6MTY2ODcxNjcyMn0.-v5Gq-Uj2W2JJbClK-K-Wm3nqPvUY0xisQmFhvephoY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2Njg3MTMxMjIsImV4cCI6MTcwMDI0OTEyMn0.tEl4LKAUAqbQHdR7GpJjtqqnwascXOfqzCZhEdXEJS4'
         ],
-        Host: ['auth.zuzona.com'],
+        Host: ['auth.pompona.net'],
         origin: ['http://localhost'],
         referer: ['http://localhost/'],
         'sec-ch-ua': ['"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"'],
@@ -79,7 +79,7 @@ const event = {
             userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
             user: null
         },
-        domainName: 'auth.zuzona.com',
+        domainName: 'auth.pompona.net',
         apiId: 'hr7gpcp5hc'
     },
     body: '{"locale": "ru"}',

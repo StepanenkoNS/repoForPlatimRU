@@ -8,7 +8,7 @@ const event = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Cache-Control': 'no-cache',
         Cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJ1c2VybmFtZSI6Ikxpa2VBSHVycmljYW5lIiwiaWF0IjoxNjgyODQyMDI1LCJleHAiOjE2ODI4NDU2MjV9.wLZJFSVCYm1cySPy2p1eZ7T9SaJPrWZQYg19cB5Z0zY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODI3MDc1NDcsImV4cCI6MTcxNDI0MzU0N30.0GtB6N5fNLExRAH_qrHjiqc_gPz1s-f8zLOl7bpIySU',
-        Host: 'secure-api.zuzona.com',
+        Host: 'secure-api.pompona.net',
         'Postman-Token': 'c2c8088a-7c21-439c-82de-7f5101da5c56',
         'User-Agent': 'PostmanRuntime/7.32.2',
         'X-Amzn-Trace-Id': 'Root=1-644e21b2-28b0c2096075b0d205cff969',
@@ -23,7 +23,7 @@ const event = {
         Cookie: [
             'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJ1c2VybmFtZSI6Ikxpa2VBSHVycmljYW5lIiwiaWF0IjoxNjgyODQyMDI1LCJleHAiOjE2ODI4NDU2MjV9.wLZJFSVCYm1cySPy2p1eZ7T9SaJPrWZQYg19cB5Z0zY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODI3MDc1NDcsImV4cCI6MTcxNDI0MzU0N30.0GtB6N5fNLExRAH_qrHjiqc_gPz1s-f8zLOl7bpIySU'
         ],
-        Host: ['secure-api.zuzona.com'],
+        Host: ['secure-api.pompona.net'],
         'Postman-Token': ['c2c8088a-7c21-439c-82de-7f5101da5c56'],
         'User-Agent': ['PostmanRuntime/7.32.2'],
         'X-Amzn-Trace-Id': ['Root=1-644e21b2-28b0c2096075b0d205cff969'],
@@ -70,7 +70,7 @@ const event = {
             userAgent: 'PostmanRuntime/7.32.2',
             user: null
         },
-        domainName: 'secure-api.zuzona.com',
+        domainName: 'secure-api.pompona.net',
         apiId: 'icdpeahkaa'
     },
     body: null,

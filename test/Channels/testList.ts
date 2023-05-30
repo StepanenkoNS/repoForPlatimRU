@@ -8,7 +8,7 @@ const event = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Cache-Control': 'no-cache',
         Cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM4OTAyMDAsImV4cCI6MTY4Mzg5MzgwMH0.AtMXssoOib3AX3UQFX3ATYSMdmj79C86ds2JhgsBhUI; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM4OTAyMDAsImV4cCI6MTcxNTQyNjIwMH0.3YkDZebnCAUUl1LyOSK4npKem0Rqum7riZD7HqeC9zs',
-        Host: 'secure-api.zuzona.com',
+        Host: 'secure-api.pompona.net',
         'Postman-Token': '776adb14-88c4-49db-8728-6fe03af4814c',
         'User-Agent': 'PostmanRuntime/7.32.2',
         'X-Amzn-Trace-Id': 'Root=1-645e28a2-492d3cdc59d40d505fac84f7',
@@ -23,7 +23,7 @@ const event = {
         Cookie: [
             'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM4OTAyMDAsImV4cCI6MTY4Mzg5MzgwMH0.AtMXssoOib3AX3UQFX3ATYSMdmj79C86ds2JhgsBhUI; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM4OTAyMDAsImV4cCI6MTcxNTQyNjIwMH0.3YkDZebnCAUUl1LyOSK4npKem0Rqum7riZD7HqeC9zs'
         ],
-        Host: ['secure-api.zuzona.com'],
+        Host: ['secure-api.pompona.net'],
         'Postman-Token': ['776adb14-88c4-49db-8728-6fe03af4814c'],
         'User-Agent': ['PostmanRuntime/7.32.2'],
         'X-Amzn-Trace-Id': ['Root=1-645e28a2-492d3cdc59d40d505fac84f7'],
@@ -73,7 +73,7 @@ const event = {
             userAgent: 'PostmanRuntime/7.32.2',
             user: null
         },
-        domainName: 'secure-api.zuzona.com',
+        domainName: 'secure-api.pompona.net',
         apiId: 'n73jv50gif'
     },
     body: null,

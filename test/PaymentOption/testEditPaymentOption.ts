@@ -10,7 +10,7 @@ const event = {
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'content-type': 'application/x-www-form-urlencoded',
         cookie: '_ym_uid=1682491530212273390; _ym_d=1682491530; _ym_isad=1; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM3OTQxNDIsImV4cCI6MTY4Mzc5Nzc0Mn0.avBTllOTaV2vXJn6HImCqeA1Ss7LyfJ_xRfeXaRHiV4; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM3OTQxNDIsImV4cCI6MTcxNTMzMDE0Mn0.DHF1GX_IiJrolvEmv59n6uGerXCZWEydD4o_iOTZJ7w',
-        Host: 'secure-api.zuzona.com',
+        Host: 'secure-api.pompona.net',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
         'sec-ch-ua': '"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"',
@@ -33,7 +33,7 @@ const event = {
         cookie: [
             '_ym_uid=1682491530212273390; _ym_d=1682491530; _ym_isad=1; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM3OTQxNDIsImV4cCI6MTY4Mzc5Nzc0Mn0.avBTllOTaV2vXJn6HImCqeA1Ss7LyfJ_xRfeXaRHiV4; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE2ODM3OTQxNDIsImV4cCI6MTcxNTMzMDE0Mn0.DHF1GX_IiJrolvEmv59n6uGerXCZWEydD4o_iOTZJ7w'
         ],
-        Host: ['secure-api.zuzona.com'],
+        Host: ['secure-api.pompona.net'],
         origin: ['http://localhost:8080'],
         referer: ['http://localhost:8080/'],
         'sec-ch-ua': ['"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"'],
@@ -90,7 +90,7 @@ const event = {
             userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
             user: null
         },
-        domainName: 'secure-api.zuzona.com',
+        domainName: 'secure-api.pompona.net',
         apiId: '1974yjawb1'
     },
     body: '{"botId":5795087844,"discriminator":"IPaymentOptionPaymentIntegration","id":"RJsNE9JpXnqM","type":"INTEGRATION","currency":"USD","description":"<p></p>\\n","name":"Юкасса","token":"381764678:TEST:53067"}',

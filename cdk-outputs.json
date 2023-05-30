@@ -1,6 +1,10 @@
 {
   "WebPublicPages": {
-    "WebPublicPagesGWAPIEndpoint145EF0D8": "https://fxs3adsi8g.execute-api.us-east-1.amazonaws.com/pagesAPI/"
+    "WebPublicPagesGWAPIEndpoint145EF0D8": "https://j81gmuu3ka.execute-api.us-east-1.amazonaws.com/pagesAPI/"
+  },
+  "WebTokenService": {
+    "WebTokenServiceGWAPItokenApi": "https://zayyzfynk5.execute-api.us-east-1.amazonaws.com/GetToken/",
+    "WebTokenServiceGWAPIEndpoint9329497D": "https://zayyzfynk5.execute-api.us-east-1.amazonaws.com/GetToken/"
   },
   "WebRestServiceCRM": {
     "ExportsOutputFnGetAttGetMyBotAnaliticsF8D38A59Arn1426F978": "arn:aws:lambda:us-east-1:993738567487:function:react-CRM-GetMyBot-Analitics-Lambda",
@@ -18,17 +22,6 @@
     "ExportsOutputFnGetAttcrmChannelSubscriptionsByUserLambdaE3D1967BArnFDBB7C3A": "arn:aws:lambda:us-east-1:993738567487:function:react-CRM-Channel-Subscriptions-ByUser-Lambda",
     "ExportsOutputFnGetAttcrmChannelSubscriptionsLambdaF3058988Arn985ED147": "arn:aws:lambda:us-east-1:993738567487:function:react-CRM-Channel-Subscriptions-Lambda",
     "ExportsOutputFnGetAttContentPlanPostRatesE97D20AAArnCB7EE506": "arn:aws:lambda:us-east-1:993738567487:function:react-CRM-ContentPlanPostRates-Lambda"
-  },
-  "WebRestServiceFiles": {
-    "ExportsOutputFnGetAttGetGetPresignedUrlLambda43F48E6FArn38B1BA68": "arn:aws:lambda:us-east-1:993738567487:function:react-GetPresignedUrl-Lambda",
-    "ExportsOutputFnGetAttDeleteTelegramFileLambdaF1882CC1Arn9F939F63": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Delete-Lambda",
-    "ExportsOutputFnGetAttEditTelegramFileLambda541FB43BArn84EC7D28": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Edit-Lambda",
-    "ExportsOutputFnGetAttListTelegramFilesLambda11E43599ArnC7D2F951": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-List-Lambda",
-    "ExportsOutputFnGetAttGetTelegramFileLambda0285A5D8Arn7A92FC36": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Get-Lambda"
-  },
-  "WebRestServiceLanding": {
-    "ExportsOutputFnGetAttSetBotLandingPageLamda13B7B859Arn11C00CF1": "arn:aws:lambda:us-east-1:993738567487:function:react-BotLanding-Update-Lambda",
-    "ExportsOutputFnGetAttGetBotLandingPrivateD34067C9Arn5B36310B": "arn:aws:lambda:us-east-1:993738567487:function:react-BotLanding-GetPrivate-Lambda"
   },
   "WebRestServiceMain": {
     "ExportsOutputFnGetAttGetChannelLambdaE5A9F403Arn6617CF58": "arn:aws:lambda:us-east-1:993738567487:function:react-Channels-Get-Lambda",
@@ -59,6 +52,21 @@
     "ExportsOutputFnGetAttListBotsLambdaC9B0E149Arn911E2DAF": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-List-Lambda",
     "ExportsOutputFnGetAttListBotCommandsLambda223B4828Arn1F40E167": "arn:aws:lambda:us-east-1:993738567487:function:react-BotCommands-List-Lambda",
     "ExportsOutputFnGetAttRegisterBotLambda695100A4Arn6ABB23B6": "arn:aws:lambda:us-east-1:993738567487:function:react-Bots-Register-Lambda"
+  },
+  "WebCRMGatewayService": {
+    "WebCRMGatewayServiceAPIGWSecureAPI": "https://fuf6s62kui.execute-api.us-east-1.amazonaws.com/SecureAPI/",
+    "WebCRMGatewayServiceGWAPIEndpoint2DE780EE": "https://fuf6s62kui.execute-api.us-east-1.amazonaws.com/SecureAPI/"
+  },
+  "WebRestServiceFiles": {
+    "ExportsOutputFnGetAttGetGetPresignedUrlLambda43F48E6FArn38B1BA68": "arn:aws:lambda:us-east-1:993738567487:function:react-GetPresignedUrl-Lambda",
+    "ExportsOutputFnGetAttDeleteTelegramFileLambdaF1882CC1Arn9F939F63": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Delete-Lambda",
+    "ExportsOutputFnGetAttEditTelegramFileLambda541FB43BArn84EC7D28": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Edit-Lambda",
+    "ExportsOutputFnGetAttListTelegramFilesLambda11E43599ArnC7D2F951": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-List-Lambda",
+    "ExportsOutputFnGetAttGetTelegramFileLambda0285A5D8Arn7A92FC36": "arn:aws:lambda:us-east-1:993738567487:function:react-TelegramFiles-Get-Lambda"
+  },
+  "WebRestServiceLanding": {
+    "ExportsOutputFnGetAttSetBotLandingPageLamda13B7B859Arn11C00CF1": "arn:aws:lambda:us-east-1:993738567487:function:react-BotLanding-Update-Lambda",
+    "ExportsOutputFnGetAttGetBotLandingPrivateD34067C9Arn5B36310B": "arn:aws:lambda:us-east-1:993738567487:function:react-BotLanding-GetPrivate-Lambda"
   },
   "WebRestServiceMessagesAndPayments": {
     "ExportsOutputFnGetAttSendDirectMessageFromAdminLambda39C70282Arn806777E9": "arn:aws:lambda:us-east-1:993738567487:function:react-SendMessages-SendDirectMessageFromAdmin-Lambda",
@@ -102,16 +110,8 @@
     "ExportsOutputFnGetAttDeleteSubscriptionPlanChannelLambdaE97A9809Arn861C66D6": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-Delete-Lambda",
     "ExportsOutputFnGetAttListUserSubscriptionPlansChannelsLambda53E507FCArn6B90CC61": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-List-Lambda"
   },
-  "WebTokenService": {
-    "WebTokenServiceGWAPItokenApi": "https://8fu0fusfik.execute-api.us-east-1.amazonaws.com/GetToken/",
-    "WebTokenServiceGWAPIEndpoint9329497D": "https://8fu0fusfik.execute-api.us-east-1.amazonaws.com/GetToken/"
-  },
-  "WebCRMGatewayService": {
-    "WebCRMGatewayServiceAPIGWSecureAPI": "https://uvw9p66u8i.execute-api.us-east-1.amazonaws.com/SecureAPI/",
-    "WebCRMGatewayServiceGWAPIEndpoint2DE780EE": "https://uvw9p66u8i.execute-api.us-east-1.amazonaws.com/SecureAPI/"
-  },
   "WebRestGatewayService": {
-    "WebRestGatewayServiceAPIGWSecureAPI": "https://lqn0tlx6vf.execute-api.us-east-1.amazonaws.com/SecureAPI/",
-    "WebRestGatewayServiceGWAPIEndpointC0912AA1": "https://lqn0tlx6vf.execute-api.us-east-1.amazonaws.com/SecureAPI/"
+    "WebRestGatewayServiceAPIGWSecureAPI": "https://vrw5kwvevf.execute-api.us-east-1.amazonaws.com/SecureAPI/",
+    "WebRestGatewayServiceGWAPIEndpointC0912AA1": "https://vrw5kwvevf.execute-api.us-east-1.amazonaws.com/SecureAPI/"
   }
 }

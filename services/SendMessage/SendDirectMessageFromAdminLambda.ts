@@ -33,11 +33,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'chatId', datatype: 'number(nonZeroPositiveInteger)' },
-        { key: 'message', datatype: 'object', objectKeys: [] },
-        {
-            key: 'sendMethod',
-            datatype: [...ETelegramSendMethods.map((value) => value.toString())]
-        }
+        { key: 'message', datatype: 'object', objectKeys: [] }
     ]);
 
     if (bodyObject.success === false) {

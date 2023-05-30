@@ -8,7 +8,7 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
 
@@ -23,7 +23,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
     }
 
-    const result = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddMeeting({
+    const result = await PomponaSubscriptionsProcessor.CheckSubscription_AddMeeting({
         key: {
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))

@@ -21,7 +21,7 @@ export async function handler(event: SQSEvent): Promise<any> {
 
             if (participants.success == false || !participants.data) {
                 let text =
-                    'В процессе миграции пользователей не удалось получить список пользователей вашего канала из Telegram, проверьте пожалуйста, что бот zuzona добавлен в канал с правами администратора.\n';
+                    'В процессе миграции пользователей не удалось получить список пользователей вашего канала из Telegram, проверьте пожалуйста, что бот pompona добавлен в канал с правами администратора.\n';
                 if (record.attributes.ApproximateReceiveCount == '3') {
                     text = text + 'Это последняя попытка 3-я попытка';
                 } else {
@@ -91,7 +91,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                 masterId: request.masterId,
                 message: {
                     attachments: [],
-                    text: 'Мы начали импорт подписчиков из вашего канала в систему Zuzona. Всего будет импортировано ' + arrayToSend.length + ' записей'
+                    text: 'Мы начали импорт подписчиков из вашего канала в систему Pompona. Всего будет импортировано ' + arrayToSend.length + ' записей'
                 },
                 sendMethod: ETelegramSendMethod.sendMessage
             });

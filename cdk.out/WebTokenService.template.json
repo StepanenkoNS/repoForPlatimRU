@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "fbea9dd931d8b2e6ac42bedef5054f775bec2ce3c8cd1a15400963d22ab06a32.zip"
+     "S3Key": "4f57944f3f2b64b0cc76462087e16e4b42b6eff026f93926429ff12c943e0942.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -108,22 +108,22 @@
       "LOG_LEVEL": "info",
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
-      "BOT_FATHER_TOKEN": "5645439521:AAGBFsjZ_HDP3aFaJRlPeWLrGlYcEKcn3V0",
+      "BOT_FATHER_TOKEN": "5944896623:AAEd3ACpkzMgwQyEZjihKiQjlglG9ja9zls",
       "tg_api_serverURI": "https://api.telegram.org",
       "botsBucketName": "bots-bucket",
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-      "zuzonaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
-      "mainDomainName": "zuzona.com",
+      "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+      "mainDomainName": "pompona.net",
       "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
       "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
       "botsTable": "bots",
       "sessionsTable": "telegramSessions",
       "region": "us-east-1",
       "s3BotsBucket": "bots-bucket",
-      "allowedOrigins": "http://localhost,http://localhost:8080,http://localhost:8081,https://zuzona.com,https://admin.zuzona.com,https://*.zuzona.com,http://127.0.0.1,zuzona.com,*.zuzona.com",
-      "cookieDomain": "zuzona.com",
-      "messagingBotAPIURL": "https://messagingbot-face.zuzona.com",
-      "managementBotAPIURL": "https://managementbot-face.zuzona.com",
+      "allowedOrigins": "http://localhost,http://localhost:8080,http://localhost:8081,https://pompona.net,https://admin.pompona.net,https://*.pompona.net,http://127.0.0.1,pompona.net,*.pompona.net",
+      "cookieDomain": "pompona.net",
+      "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
+      "managementBotAPIURL": "https://managementbot-face.pompona.net",
       "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
@@ -131,10 +131,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:640",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:365",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:331",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:62"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:643",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:372",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:336",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -144,7 +144,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.fbea9dd931d8b2e6ac42bedef5054f775bec2ce3c8cd1a15400963d22ab06a32",
+    "aws:asset:path": "asset.4f57944f3f2b64b0cc76462087e16e4b42b6eff026f93926429ff12c943e0942",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -327,7 +327,7 @@
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Account"
    }
   },
-  "WebTokenServiceGWAPIDeployment69CE11EBca32404ba7b55540242fee4e68a4cd61": {
+  "WebTokenServiceGWAPIDeployment69CE11EB0f893aafd89a31f187ca2858dfc41bc9": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -358,7 +358,7 @@
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
     "DeploymentId": {
-     "Ref": "WebTokenServiceGWAPIDeployment69CE11EBca32404ba7b55540242fee4e68a4cd61"
+     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB0f893aafd89a31f187ca2858dfc41bc9"
     },
     "MethodSettings": [
      {
@@ -403,7 +403,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://admin.zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://pompona.net\") || $origin.matches(\"https://admin.pompona.net\") || $origin.matches(\"https://*.pompona.net\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"pompona.net\") || $origin.matches(\"*.pompona.net\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -470,7 +470,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://admin.zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://pompona.net\") || $origin.matches(\"https://admin.pompona.net\") || $origin.matches(\"https://*.pompona.net\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"pompona.net\") || $origin.matches(\"*.pompona.net\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -644,7 +644,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://admin.zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://pompona.net\") || $origin.matches(\"https://admin.pompona.net\") || $origin.matches(\"https://*.pompona.net\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"pompona.net\") || $origin.matches(\"*.pompona.net\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -818,7 +818,7 @@
         "method.response.header.Access-Control-Allow-Credentials": "'true'"
        },
        "ResponseTemplates": {
-        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://zuzona.com\") || $origin.matches(\"https://admin.zuzona.com\") || $origin.matches(\"https://*.zuzona.com\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"zuzona.com\") || $origin.matches(\"*.zuzona.com\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
+        "application/json": "#set($origin = $input.params().header.get(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params().header.get(\"origin\")) #end\n#if($origin.matches(\"http://localhost:8080\") || $origin.matches(\"http://localhost:8081\") || $origin.matches(\"https://pompona.net\") || $origin.matches(\"https://admin.pompona.net\") || $origin.matches(\"https://*.pompona.net\") || $origin.matches(\"http://127.0.0.1\") || $origin.matches(\"pompona.net\") || $origin.matches(\"*.pompona.net\"))\n  #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin)\n#end"
        },
        "StatusCode": "204"
       }
@@ -983,13 +983,13 @@
   "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C": {
    "Type": "AWS::ApiGateway::DomainName",
    "Properties": {
-    "DomainName": "auth.zuzona.com",
+    "DomainName": "auth.pompona.net",
     "EndpointConfiguration": {
      "Types": [
       "REGIONAL"
      ]
     },
-    "RegionalCertificateArn": "arn:aws:acm:us-east-1:993738567487:certificate/664961d6-43be-4044-b8e6-fdfb850ddbed"
+    "RegionalCertificateArn": "arn:aws:acm:us-east-1:993738567487:certificate/b8223b58-c9cf-43f1-89c4-36ab41b581e7"
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Resource"
@@ -1015,7 +1015,7 @@
   "TokenServiceAPIGWARecordE9A60854": {
    "Type": "AWS::Route53::RecordSet",
    "Properties": {
-    "Name": "auth.zuzona.com.",
+    "Name": "auth.pompona.net.",
     "Type": "A",
     "AliasTarget": {
      "DNSName": {
@@ -1031,7 +1031,7 @@
       ]
      }
     },
-    "HostedZoneId": "Z08669732ES7CY5LRF03T"
+    "HostedZoneId": "Z03470091PWKKIZTYD5L4"
    },
    "DependsOn": [
     "TokenServiceAPIGWARecordDeleteExistingRecordSetCustomResource3B5F67CF"
@@ -1049,8 +1049,8 @@
       "Arn"
      ]
     },
-    "HostedZoneId": "Z08669732ES7CY5LRF03T",
-    "RecordName": "auth.zuzona.com.",
+    "HostedZoneId": "Z03470091PWKKIZTYD5L4",
+    "RecordName": "auth.pompona.net.",
     "RecordType": "A"
    },
    "UpdateReplacePolicy": "Delete",
@@ -1101,7 +1101,7 @@
             {
              "Ref": "AWS::Partition"
             },
-            ":route53:::hostedzone/Z08669732ES7CY5LRF03T"
+            ":route53:::hostedzone/Z03470091PWKKIZTYD5L4"
            ]
           ]
          }
@@ -1117,7 +1117,7 @@
             {
              "Ref": "AWS::Partition"
             },
-            ":route53:::hostedzone/Z08669732ES7CY5LRF03T"
+            ":route53:::hostedzone/Z03470091PWKKIZTYD5L4"
            ]
           ]
          },

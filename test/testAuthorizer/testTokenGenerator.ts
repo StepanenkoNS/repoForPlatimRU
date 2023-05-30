@@ -1,19 +1,19 @@
 import { handler } from '../../services/TokenService/Lambdas/lambdaTokenService';
 
 const event = {
-    resource: '/me',
-    path: '/me',
-    httpMethod: 'GET',
+    resource: '/getToken',
+    path: '/getToken',
+    httpMethod: 'POST',
     headers: {
         Accept: '*/*',
         'Accept-Encoding': 'gzip, deflate, br',
         'Cache-Control': 'no-cache',
-        Cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJ1c2VybmFtZSI6Ikxpa2VBSHVycmljYW5lIiwiaWF0IjoxNjg0MTU3MzUyLCJleHAiOjE2ODQxNTc2NTJ9.6uXLs-0T84i4dAFl8h3cPP4LvFuAHsVrNj72cRq9tYA; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUG91RHEzTnRpWHQwWllSTHZuWWxyVkRmZHQiLCJzdWJzY3JpcHRpb25QbGFuIjoiVFJJQUwiLCJEUyI6IjIwMjMtMDUtMTVUMDc6Mjc6MTguMzUzWiIsIkRGIjoiMjAyNC0wNS0xNFQwNzoyNzoxOC4zNTNaIiwic3Vic2NyaXB0aW9uTGV2ZWwiOjB9LCJpYXQiOjE2ODQxNTcxMTUsImV4cCI6MTcxNTY5MzExNX0.-ZCnqs8-UFrjKdG5UO4V_hgYzw82c5_ekmsogBNEbTI',
-        Host: 'auth.zuzona.com',
-        'Postman-Token': 'cbc04295-68f3-49ad-b3d8-bf8d0bfa0f1d',
+        'Content-Type': 'application/json',
+        Host: 'auth.pompona.net',
+        'Postman-Token': '3731088f-ffc2-40ad-bbae-dc64cb040f2b',
         'User-Agent': 'PostmanRuntime/7.32.2',
-        'X-Amzn-Trace-Id': 'Root=1-646233cd-0b9998544489aa8753f628b3',
-        'X-Forwarded-For': '176.232.61.19',
+        'X-Amzn-Trace-Id': 'Root=1-6475d548-6a7ab0f32de1acad7a6bb2af',
+        'X-Forwarded-For': '176.232.63.145',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
     },
@@ -21,14 +21,12 @@ const event = {
         Accept: ['*/*'],
         'Accept-Encoding': ['gzip, deflate, br'],
         'Cache-Control': ['no-cache'],
-        Cookie: [
-            'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJ1c2VybmFtZSI6Ikxpa2VBSHVycmljYW5lIiwiaWF0IjoxNjg0MTU3MzUyLCJleHAiOjE2ODQxNTc2NTJ9.6uXLs-0T84i4dAFl8h3cPP4LvFuAHsVrNj72cRq9tYA; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUG91RHEzTnRpWHQwWllSTHZuWWxyVkRmZHQiLCJzdWJzY3JpcHRpb25QbGFuIjoiVFJJQUwiLCJEUyI6IjIwMjMtMDUtMTVUMDc6Mjc6MTguMzUzWiIsIkRGIjoiMjAyNC0wNS0xNFQwNzoyNzoxOC4zNTNaIiwic3Vic2NyaXB0aW9uTGV2ZWwiOjB9LCJpYXQiOjE2ODQxNTcxMTUsImV4cCI6MTcxNTY5MzExNX0.-ZCnqs8-UFrjKdG5UO4V_hgYzw82c5_ekmsogBNEbTI'
-        ],
-        Host: ['auth.zuzona.com'],
-        'Postman-Token': ['cbc04295-68f3-49ad-b3d8-bf8d0bfa0f1d'],
+        'Content-Type': ['application/json'],
+        Host: ['auth.pompona.net'],
+        'Postman-Token': ['3731088f-ffc2-40ad-bbae-dc64cb040f2b'],
         'User-Agent': ['PostmanRuntime/7.32.2'],
-        'X-Amzn-Trace-Id': ['Root=1-646233cd-0b9998544489aa8753f628b3'],
-        'X-Forwarded-For': ['176.232.61.19'],
+        'X-Amzn-Trace-Id': ['Root=1-6475d548-6a7ab0f32de1acad7a6bb2af'],
+        'X-Forwarded-For': ['176.232.63.145'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
@@ -37,24 +35,24 @@ const event = {
     pathParameters: null,
     stageVariables: null,
     requestContext: {
-        resourceId: 'iwnpr6',
-        resourcePath: '/me',
-        httpMethod: 'GET',
-        extendedRequestId: 'E90IGH42oAMFk6g=',
-        requestTime: '15/May/2023:13:29:49 +0000',
-        path: '/me',
+        resourceId: 'b7bro6',
+        resourcePath: '/getToken',
+        httpMethod: 'POST',
+        extendedRequestId: 'Fu5DZGQiIAMFVkw=',
+        requestTime: '30/May/2023:10:51:52 +0000',
+        path: '/getToken',
         accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'GetToken',
         domainPrefix: 'auth',
-        requestTimeEpoch: 1684157389164,
-        requestId: '071e3277-59ae-46f7-875e-e8a9fd71e944',
+        requestTimeEpoch: 1685443912672,
+        requestId: 'd69847af-d66e-4c67-bba2-d7675be49da5',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
             cognitoIdentityId: null,
             caller: null,
-            sourceIp: '176.232.61.19',
+            sourceIp: '176.232.63.145',
             principalOrgId: null,
             accessKey: null,
             cognitoAuthenticationType: null,
@@ -63,10 +61,10 @@ const event = {
             userAgent: 'PostmanRuntime/7.32.2',
             user: null
         },
-        domainName: 'auth.zuzona.com',
-        apiId: '8fu0fusfik'
+        domainName: 'auth.pompona.net',
+        apiId: 'zayyzfynk5'
     },
-    body: null,
+    body: '{"id":199163834,\n"first_name":"Nick",\n"username":"LikeAHurricane",\n"photo_url":"https://t.me/i/userpic/320/DoQAgE8qIeUTYNunz_mwxXZcwuObFbcdDNXYeIKRBRo.jpg",\n"auth_date":1685443639,\n"hash":"de4a3955c6b4c17cd5af53e95ab18beb68210ffa3b2bfca4f1effc55bb6ab640"}',
     isBase64Encoded: false
 };
 
@@ -77,7 +75,7 @@ async function main() {
     //     console.log(key);
     // }
 
-    handler(event as any);
+    await handler(event as any);
 }
 
 main();

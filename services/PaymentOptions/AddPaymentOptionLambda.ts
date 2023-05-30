@@ -15,7 +15,7 @@ import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 import { ItemResponse } from '/opt/GeneralTypes';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -50,7 +50,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: JSON.stringify(schemaValidationResult.error) }, false, origin, renewedToken);
     }
 
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddPaymentOtion({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddPaymentOtion({
         key: {
             masterId: schemaValidationResult.item.masterId,
             botId: schemaValidationResult.item.botId

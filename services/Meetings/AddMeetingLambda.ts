@@ -17,7 +17,7 @@ import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 
 import { IAddEditCalendarMeeting } from '/opt/CalendarMeetingTypes';
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
@@ -75,7 +75,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
     }
 
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddMeeting({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddMeeting({
         key: {
             masterId: Number(telegramUser.id),
             botId: potentialMeeting.botId

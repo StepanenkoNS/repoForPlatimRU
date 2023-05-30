@@ -10,7 +10,7 @@ const event = {
         'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         'content-type': 'application/json',
         cookie: '_ym_uid=1682491530212273390; _ym_d=1682491530; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUHJvcjVZSnhoMEM0M2lxQ0xnNFB0dmNIdjMiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNS0xNlQwODoxMjozNi40MzRaIiwiREYiOiIyMDI0LTA1LTE1VDA4OjEyOjM2LjQzNFoiLCJzdWJzY3JpcHRpb25MZXZlbCI6MX0sImlhdCI6MTY4NDIzMjg2MSwiZXhwIjoxNzE1NzY4ODYxfQ.55NKZf8ROiNQDe70cmEAcnMaF4eBS5AD1A8tI1Oiijk; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsibWFzdGVySWQiOjE5OTE2MzgzNCwiREYiOiIyMDI0LTA1LTE1VDA4OjEyOjM2LjQzNFoiLCJkYXRlUGFpZCI6IjIwMjMtMDUtMTZUMDg6MTI6MzYuNDM1WiIsInN1YnNjcmlwdGlvbkxldmVsIjoxLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsImN1cnJlbmN5IjoiUlVCIiwiaWQiOiIyUHJvcjVZSnhoMEM0M2lxQ0xnNFB0dmNIdjMiLCJwcmljZVBhaWQiOjIwMDAwLCJEUyI6IjIwMjMtMDUtMTZUMDg6MTI6MzYuNDM0WiJ9LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2ODQ2ODMzODMsImV4cCI6MTY4NDY4MzY4M30.VH_NvnZbMk8dk-TbVdPmOyaPYQ-tEXrsdIgr_gpVTSk',
-        Host: 'secure-api.zuzona.com',
+        Host: 'secure-api.pompona.net',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
         'sec-ch-ua': '"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"',
@@ -33,7 +33,7 @@ const event = {
         cookie: [
             '_ym_uid=1682491530212273390; _ym_d=1682491530; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUHJvcjVZSnhoMEM0M2lxQ0xnNFB0dmNIdjMiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNS0xNlQwODoxMjozNi40MzRaIiwiREYiOiIyMDI0LTA1LTE1VDA4OjEyOjM2LjQzNFoiLCJzdWJzY3JpcHRpb25MZXZlbCI6MX0sImlhdCI6MTY4NDIzMjg2MSwiZXhwIjoxNzE1NzY4ODYxfQ.55NKZf8ROiNQDe70cmEAcnMaF4eBS5AD1A8tI1Oiijk; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsibWFzdGVySWQiOjE5OTE2MzgzNCwiREYiOiIyMDI0LTA1LTE1VDA4OjEyOjM2LjQzNFoiLCJkYXRlUGFpZCI6IjIwMjMtMDUtMTZUMDg6MTI6MzYuNDM1WiIsInN1YnNjcmlwdGlvbkxldmVsIjoxLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsImN1cnJlbmN5IjoiUlVCIiwiaWQiOiIyUHJvcjVZSnhoMEM0M2lxQ0xnNFB0dmNIdjMiLCJwcmljZVBhaWQiOjIwMDAwLCJEUyI6IjIwMjMtMDUtMTZUMDg6MTI6MzYuNDM0WiJ9LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJpYXQiOjE2ODQ2ODMzODMsImV4cCI6MTY4NDY4MzY4M30.VH_NvnZbMk8dk-TbVdPmOyaPYQ-tEXrsdIgr_gpVTSk'
         ],
-        Host: ['secure-api.zuzona.com'],
+        Host: ['secure-api.pompona.net'],
         origin: ['http://localhost:8080'],
         referer: ['http://localhost:8080/'],
         'sec-ch-ua': ['"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"'],
@@ -55,7 +55,7 @@ const event = {
     requestContext: {
         resourceId: 'aa8wny',
         authorizer: {
-            zuzonaSubscription:
+            pomponaSubscription:
                 '{"masterId":199163834,"DF":"2024-05-15T08:12:36.434Z","datePaid":"2023-05-16T08:12:36.435Z","subscriptionLevel":1,"subscriptionPlan":"PAIDBOT","currency":"RUB","id":"2Pror5YJxh0C43iqCLg4PtvcHv3","pricePaid":20000,"DS":"2023-05-16T08:12:36.434Z"}',
             role: 'superadmin',
             principalId: '199163834',
@@ -92,7 +92,7 @@ const event = {
             userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
             user: null
         },
-        domainName: 'secure-api.zuzona.com',
+        domainName: 'secure-api.pompona.net',
         apiId: 'n73jv50gif'
     },
     body: '{"botId":5795087844,"id":"HkjFJ3vPjrt0"}',

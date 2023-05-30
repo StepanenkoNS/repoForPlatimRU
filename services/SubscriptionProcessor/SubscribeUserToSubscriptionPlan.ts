@@ -41,17 +41,21 @@ export async function handler(event: SQSEvent): Promise<any> {
                     if (subscribeToBot.success == false || !subscribeToBot.data) {
                         throw 'SubscribeToSubscriptionPlanBot failed';
                     }
-                    await MessageSender.QueueSendPlainMessage({
-                        botId: Number(request.botId),
-                        masterId: Number(request.masterId),
-                        chatId: Number(request.chatId),
+                    try {
+                        await MessageSender.QueueSendPlainMessage({
+                            botId: Number(request.botId),
+                            masterId: Number(request.masterId),
+                            chatId: Number(request.chatId),
 
-                        message: {
-                            attachments: [],
-                            text: 'Вы были успешно подписаны',
-                            sendMethod: ETelegramSendMethod.sendMessage
-                        }
-                    });
+                            message: {
+                                attachments: [],
+                                text: 'Вы были успешно подписаны',
+                                sendMethod: ETelegramSendMethod.sendMessage
+                            }
+                        });
+                    } catch (error) {
+                        console.log('Error:MessageSender.QueueSendPlainMessage', error);
+                    }
                     break;
                 }
                 case 'CHANNEL': {

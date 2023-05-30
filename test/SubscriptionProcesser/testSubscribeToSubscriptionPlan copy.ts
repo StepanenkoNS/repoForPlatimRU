@@ -3,22 +3,22 @@ import { handler } from 'services/SubscriptionProcessor/SubscribeUserToSubscript
 const event = {
     Records: [
         {
-            messageId: '94405942-70fa-4832-9b34-dd4634251761',
+            messageId: '0ecb8ecb-713f-4f13-9630-ac3be06e74c5',
             receiptHandle:
-                'AQEBFpmedf81OcGJpk7wVy69rHo5rzG7zWJd766QgvKAhb0agmeo/i7+wtcZKC8rILXVhusIIZRTkFRCFooT68j7hJpkSX4edAZQAhjoAcnj0OsLDE7e5kAYJGvek7tQEuRBfgig7kaHL9lsY+GikEdRyWaxtpiKGzOCLzJLp40YHg5Z5RRziMugZTxIA/o1qwVlSMVa5qZOzpXImhrgnxjMgHRN4e7yVE/agRuxgS2KD+mNxnAkef3jJhsNEoI6UL0/eXULwDz00twHif3w+doFTlDFPNQ6FBDedmuoAxm7qvTvPlg5AjKibTjWugjfwOG45Z2SeBQHp0gWNOS7QgHi7g==',
-            body: '{"id":"2QT7xzI9By3cHn3a5tev7aefNM6","type":"CHANNEL","botId":5795087844,"chatId":199163834,"masterId":199163834,"channelId":-1001881460213,"userSubscriptionPlanId":"0O60fczhTCJp","pricePaid":100,"currency":"RUB","paymentId":"2QT7xzI9By3cHn3a5tev7aefNM6"}',
+                'AQEBdDNksYj5Hjm1cQxTLJSFbDCinxUUbM6WAf5j4PTaj9BDWM1SKtgaS9LCffUxi7/jTKkUhmWbObi9sTpR5bMpvoZa4TMHuqflkrjwT8P7cMXSIqC1O0B/ahdxSV+VpEbt7Lpf+ghulbfkKdQmIzEQ1lUBRNy6rQUDBtnEBJ0yrBDBgZIGwHdmqAXaAQI5vdV6rEpwNtwyztZ6p1ntyd+ikUncnVS6lIYl/qc2wdKUPjuNN8bVZeO+imuGY8+aDUF0+jyPUIXOt++XFcoe1FauaxS9L81/eTgUQQJCXRuWx8+enXdLYVXTA1ddFdPFTBSL4acEx3CbKkkyyYFQhXwItA==',
+            body: '{"id":"2QTPnHIkiWUyaZFZwx5RVvQUNcq","type":"BOT","botId":5795087844,"chatId":199163834,"masterId":199163834,"userSubscriptionPlanId":"GXi-AlSGxVtN","pricePaid":100,"currency":"RUB","paymentId":"2QTPnHIkiWUyaZFZwx5RVvQUNcq"}',
             attributes: {
                 ApproximateReceiveCount: '1',
-                AWSTraceHeader: 'Root=1-6474a76f-54ad1ec92fd1c50dcbd056bd;Parent=5acfac01030b45d7;Sampled=0;Lineage=7acea675:0|47d82b4f:0|afaacee2:0',
-                SentTimestamp: '1685366640886',
-                SequenceNumber: '18878197933776368128',
+                AWSTraceHeader: 'Root=1-6474c730-6c48f597a7313162bb8db9c5;Parent=73fbd27e6c569c62;Sampled=0;Lineage=7acea675:0|47d82b4f:0|afaacee2:0',
+                SentTimestamp: '1685374769313',
+                SequenceNumber: '18878200014653680896',
                 MessageGroupId: 'BOTID#5795087844#CHATID#199163834',
                 SenderId: 'AROA6OX3PF47YHSNJQCXT:paymentProcessor-IncomingPaymentConfirmation',
-                MessageDeduplicationId: '2QT9KUIQjPttkK9nPEYz97Ou9XP',
-                ApproximateFirstReceiveTimestamp: '1685366640886'
+                MessageDeduplicationId: '2QTPo3nse205WHbZwLFPYjiuHFf',
+                ApproximateFirstReceiveTimestamp: '1685374769313'
             },
             messageAttributes: {},
-            md5OfBody: '0abe38da3a11cb770552e6802e76f513',
+            md5OfBody: '31cbe16682b32bf29635cabc24eb2528',
             eventSource: 'aws:sqs',
             eventSourceARN: 'arn:aws:sqs:us-east-1:993738567487:SubscriptionProcessor-SubscribeTo-SubscriptionPlan.fifo',
             awsRegion: 'us-east-1'

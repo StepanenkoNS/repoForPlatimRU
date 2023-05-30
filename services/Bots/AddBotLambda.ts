@@ -17,7 +17,7 @@ import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 //@ts-ignore
-import { ZuzonaSubscriptionsProcessor } from '/opt/ZuzonaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event.body);
@@ -52,7 +52,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const botId = Number(TextHelper.SanitizeToDirectText(bodyObject.data.id));
-    const limitsValidationResult = await ZuzonaSubscriptionsProcessor.CheckSubscription_AddBot({
+    const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddBot({
         masterId: Number(telegramUser.id),
         botId: botId,
         userJsonData: telegramUser

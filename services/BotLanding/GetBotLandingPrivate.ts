@@ -33,7 +33,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     //const subdomain = TextHelper.SanitizeToDirectText(GetLandingSubdomainFromOrigin(event));
 
-    const subdomain = 'zuzonabot';
+    const subdomain = 'pomponabot';
 
     const result = await BotLanging.GetBotLangingPrivate(Number(botId));
     const getResult = ParseItemResult(result);

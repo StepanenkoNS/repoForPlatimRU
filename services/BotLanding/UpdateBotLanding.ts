@@ -24,7 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'subdomain', datatype: 'string' },
         { key: 'title', datatype: 'string' },
-        { key: 'header', datatype: 'string' },
+        { key: 'elements', datatype: 'array' },
         { key: 'body', datatype: 'string' },
         { key: 'footer', datatype: 'string' }
     ]);
@@ -36,9 +36,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         title: TextHelper.SanitizeToDirectText(bodyObject.data.title),
-        header: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.header),
-        body: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.body),
-        footer: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.footer),
+        elements: bodyObject.data.elements,
         subdomain: TextHelper.SanitizeToDirectText(bodyObject.data.subdomain)
     };
 
