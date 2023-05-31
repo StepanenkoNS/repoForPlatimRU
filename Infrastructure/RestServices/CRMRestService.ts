@@ -7,11 +7,10 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
 import { CreateCRMLambdas } from './CRMLambdas/CRM';
-import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class CRMRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];

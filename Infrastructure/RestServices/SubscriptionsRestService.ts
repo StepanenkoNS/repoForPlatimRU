@@ -10,7 +10,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
-import { LambdaIntegrations } from './Helper/GWtypes';
+import { LambdaIntegrations } from '../Helper/GWtypes';
 import { CreateUserSubscriptionPlansBotsLambdas } from './RestLambdas/UserSubscriptionPlansBot';
 import { CreateUserSubscriptionPlansChannelsLambdas } from './RestLambdas/UserSubscriptionPlansChannel';
 

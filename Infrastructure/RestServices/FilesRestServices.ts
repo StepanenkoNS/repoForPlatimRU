@@ -7,14 +7,12 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
 import { CreateGetPresignedUrlsLambdas } from './RestLambdas/PreSignedUrl';
 
 import { CreateTelegramFilesLambdas } from './RestLambdas/TelegramFiles';
-
-import { LambdaIntegrations } from './Helper/GWtypes';
 
 export class FilesRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];

@@ -1,21 +1,19 @@
-import { CfnOutput, Stack, StackProps } from 'aws-cdk-lib';
+import { CfnOutput, Duration, Fn, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import { join } from 'path';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
 import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
-import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
-//@ts-ignore
 import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
-import { createAPIandAuthorizer } from '/opt/DevHelpers/CreateAPIwithAuth';
+import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
+import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
 
-import { Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
-
-export class GatewayServiceStack extends Stack {
-    restServicesAPI: RestApi;
+export class PaymentIntegrationsStack extends Stack {
     constructor(
         scope: Construct,
         id: string,
@@ -23,11 +21,12 @@ export class GatewayServiceStack extends Stack {
         props: StackProps & {
             certificateARN: string;
             layerARNs: string[];
-            lambdaIntegrations: LambdaIntegrations[];
-            subDomain: string;
+            enableAPICache: boolean;
         }
     ) {
         super(scope, id, props);
+
+        const lambdaIntegrations: LambdaIntegrations[] = [];
 
         const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
         const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
@@ -39,16 +38,17 @@ export class GatewayServiceStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        this.restServicesAPI = createAPIandAuthorizer(this, {
-            certificateARN: props.certificateARN,
-            layers: layers,
-            tables: [botsTable],
-            subDomainName: props.subDomain
+        const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.paymentIntegrations);
+
+        const modulLambdas = modulBankCallbacksLambdas(this, layers, [botsTable]);
+        lambdaIntegrations.push({
+            rootResource: 'modul_ru',
+            lambdas: modulLambdas
         });
 
-        let resource: Resource | undefined = undefined;
-        for (const item of props.lambdaIntegrations) {
-            resource = this.restServicesAPI.root.addResource(item.rootResource);
+        let resource: apigateway.Resource | undefined = undefined;
+        for (const item of lambdaIntegrations) {
+            resource = paymentsApi.root.addResource(item.rootResource);
 
             for (const lambda of item.lambdas) {
                 let res = resource;
@@ -61,10 +61,5 @@ export class GatewayServiceStack extends Stack {
                 res.addMethod(lambda.httpMethod, lambdaIntegration);
             }
         }
-
-        new CfnOutput(this, this.stackName + '-APIGW-SecureAPI', {
-            value: this.restServicesAPI.deploymentStage.urlForPath(),
-            exportName: this.stackName + '-APIGW-SecureAPI'
-        });
     }
 }

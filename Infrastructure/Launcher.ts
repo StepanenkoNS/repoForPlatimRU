@@ -13,7 +13,9 @@ import { SubscriptionsRestServicesStack } from './RestServices/SubscriptionsRest
 import { CRMRestServicesStack } from './RestServices/CRMRestService';
 import { BotLandingRestServicesStack } from './RestServices/LandingRestService';
 import { GatewayServiceStack } from './RestServices/GateWayService';
-import { LambdaIntegrations } from './RestServices/Helper/GWtypes';
+
+import { PaymentIntegrationsStack } from './PaymentIntegrations/PaymentIntegrations';
+import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
 
 const app = new App();
 
@@ -41,6 +43,8 @@ const webPublicPagesStack = new WebPublicPagesStack(app, StaticEnvironment.Stack
     }
 });
 
+webPublicPagesStack.addDependency(tokenService);
+
 const mainRestServicesStack = new MainRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceMain.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceMain.toString(),
 
@@ -53,7 +57,7 @@ const mainRestServicesStack = new MainRestServicesStack(app, StaticEnvironment.S
 
 lambdaRestIntegrations.push(...mainRestServicesStack.lambdaIntegrations);
 
-mainRestServicesStack.addDependency(tokenService);
+mainRestServicesStack.addDependency(webPublicPagesStack);
 
 const filesRestServicesStack = new FilesRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceFiles.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceFiles.toString(),
@@ -161,3 +165,16 @@ const gatewayCRMServiceStack = new GatewayServiceStack(app, StaticEnvironment.St
 });
 
 gatewayCRMServiceStack.addDependency(cRMRestServicesStack);
+
+const paymentIntegrationsStack = new PaymentIntegrationsStack(app, StaticEnvironment.StackName.PaymentIntegrations.toString(), {
+    stackName: StaticEnvironment.StackName.PaymentIntegrations.toString(),
+    certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
+    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    enableAPICache: false,
+    env: {
+        account: StaticEnvironment.GlobalAWSEnvironment.account,
+        region: StaticEnvironment.GlobalAWSEnvironment.region
+    }
+});
+
+paymentIntegrationsStack.addDependency(gatewayRestServiceStack);

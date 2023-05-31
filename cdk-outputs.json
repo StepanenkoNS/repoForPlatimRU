@@ -1,10 +1,10 @@
 {
-  "WebPublicPages": {
-    "WebPublicPagesGWAPIEndpoint145EF0D8": "https://j81gmuu3ka.execute-api.us-east-1.amazonaws.com/pagesAPI/"
-  },
   "WebTokenService": {
     "WebTokenServiceGWAPItokenApi": "https://zayyzfynk5.execute-api.us-east-1.amazonaws.com/GetToken/",
     "WebTokenServiceGWAPIEndpoint9329497D": "https://zayyzfynk5.execute-api.us-east-1.amazonaws.com/GetToken/"
+  },
+  "WebPublicPages": {
+    "WebPublicPagesGWAPIEndpoint145EF0D8": "https://j81gmuu3ka.execute-api.us-east-1.amazonaws.com/pagesAPI/"
   },
   "WebRestServiceCRM": {
     "ExportsOutputFnGetAttGetMyBotAnaliticsF8D38A59Arn1426F978": "arn:aws:lambda:us-east-1:993738567487:function:react-CRM-GetMyBot-Analitics-Lambda",
@@ -78,6 +78,7 @@
     "ExportsOutputFnGetAttGetDigitalStoreCategoryLambdaDC94DDF8ArnCDAE8971": "arn:aws:lambda:us-east-1:993738567487:function:react-DigitalStoreCategories-Get-Lambda",
     "ExportsOutputFnGetAttListDigitalStoreItemsLambda8AE9AC9BArnD67E1AF0": "arn:aws:lambda:us-east-1:993738567487:function:react-DigitalStoreItems-List-Lambda",
     "ExportsOutputFnGetAttDeleteDigitalStoreItemLambda946778DBArnF8EDFD81": "arn:aws:lambda:us-east-1:993738567487:function:react-DigitalStoreItems-Delete-Lambda",
+    "ExportsOutputFnGetAttModulPaymentGenerateDataFCE9EB60Arn0A530F46": "arn:aws:lambda:us-east-1:993738567487:function:paymentProcessor-ModulPayment-generate",
     "ExportsOutputFnGetAttAddDigitalStoreCategoryLambda6A9CF57AArn55FA668C": "arn:aws:lambda:us-east-1:993738567487:function:react-DigitalStoreCategories-Add-Lambda",
     "ExportsOutputFnGetAttDeleteDigitalStoreCategoryLambdaEEDC7382Arn6FE29EA9": "arn:aws:lambda:us-east-1:993738567487:function:react-DigitalStoreCategories-Delete-Lambda",
     "ExportsOutputFnGetAttAddDigitalStoreItemLambda6822F670Arn2328B0A4": "arn:aws:lambda:us-east-1:993738567487:function:react-DigitalStoreItems-Add-Lambda",
@@ -111,7 +112,10 @@
     "ExportsOutputFnGetAttListUserSubscriptionPlansChannelsLambda53E507FCArn6B90CC61": "arn:aws:lambda:us-east-1:993738567487:function:react-UserSubscriptionPlansChannel-List-Lambda"
   },
   "WebRestGatewayService": {
-    "WebRestGatewayServiceAPIGWSecureAPI": "https://vrw5kwvevf.execute-api.us-east-1.amazonaws.com/SecureAPI/",
-    "WebRestGatewayServiceGWAPIEndpointC0912AA1": "https://vrw5kwvevf.execute-api.us-east-1.amazonaws.com/SecureAPI/"
+    "WebRestGatewayServiceAPIGWSecureAPI": "https://nvgz27hiu8.execute-api.us-east-1.amazonaws.com/SecureAPI/",
+    "WebRestGatewayServiceGWAPIEndpointC0912AA1": "https://nvgz27hiu8.execute-api.us-east-1.amazonaws.com/SecureAPI/"
+  },
+  "PaymentIntegrations": {
+    "PaymentIntegrationsGWAPIEndpoint88C7B1FF": "https://sutkxdzpkc.execute-api.us-east-1.amazonaws.com/pagesAPI/"
   }
 }

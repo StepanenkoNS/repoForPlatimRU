@@ -4,7 +4,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { EPaymentOptionType, IPaymentOptionDirectCardTransfer, IPaymentOptionPaymentIntegration, SupportedCurrenciesArray } from '/opt/PaymentTypes';
+import { SupportedCurrenciesArray } from '/opt/PaymentTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -13,7 +13,8 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 //@ts-ignore
-import { MasterManager } from '/opt/MasterManager';
+
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -35,9 +36,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    let result = false;
     if (Number(telegramUser.id) === 199163834) {
-        result = await MasterManager.AddSubscription({
+        const result = await PomponaSubscriptionsProcessor.AddSubscription({
             masterId: Number(telegramUser.id),
             lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
             subscriptionPlan: TextHelper.SanitizeToDirectText(bodyObject.data.subscriptionPlan) as any,
@@ -45,8 +45,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             pricePaid: Number(TextHelper.SanitizeToDirectText(bodyObject.data.pricePaid)),
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any
         });
+        const addResult = ParseItemResult(result);
+        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
     }
 
-    const addResult = ParseItemResult(result);
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    return ReturnRestApiResult(403, { success: false, error: 'forbidden' }, false, origin, renewedToken);
 }

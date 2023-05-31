@@ -131,9 +131,9 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:643",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:372",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:336",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:650",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:339",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
     ],
     "Runtime": "nodejs16.x"
@@ -168,8 +168,7 @@
        }
       ]
      ]
-    },
-    "RetentionInDays": 1
+    }
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/LogRetention/Resource"

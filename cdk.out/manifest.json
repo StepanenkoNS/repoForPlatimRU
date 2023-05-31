@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a13ff046a617c17a3d0467c39f57bd3958134b59e5e996c01aa9d78ff5cc027d.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/58875683a99d4ced54532dd1ba22417ee952574a79947080faea242bd98025f0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a7f5904d2cc9f7e1df257b9385fff85712ef8daeb15fe1aee13d110c1adbb4a4.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c781228b3fc4b1708d81d0a43932a3a6be658499151d3c1c3f24c055dc2ba029.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -305,6 +305,7 @@
         }
       },
       "dependencies": [
+        "WebTokenService",
         "WebPublicPages.assets"
       ],
       "metadata": {
@@ -729,7 +730,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f26f1eaa43e44f18cd3398b5f2746cbab0179de0078e3c5f3ff07c922c223345.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/68dd1dbf72abfcc0b4e8d213f817d3520d403866a0102554b116f61e145ebb76.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -742,7 +743,7 @@
         }
       },
       "dependencies": [
-        "WebTokenService",
+        "WebPublicPages",
         "WebRestServiceMain.assets"
       ],
       "metadata": {
@@ -1749,7 +1750,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/3eea0414db733340409dae7a2328d30cba9f4411942b79ade9e074d1b35694ac.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/7080264b7e7cfea96e969f8fea4869ca0a4a69d71496826a4ce3a947c63e93b4.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1971,7 +1972,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a91e05f8e9e81dc336972d765a439ac3cdb8e7038b67e3108bb3f4b8a6592649.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a49b9a92d00730649a7bd87ace188a92925ec02d881dd2ec1db2b22bbe343d77.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2810,6 +2811,30 @@
             "data": "expireUserSubscriptionItemSqsEventSourceWebRestServiceMessagesAndPaymentsimportedexpireSubscriptionQueueDLQForCreateSubscriptionProcessor55AD69D83F1031AC"
           }
         ],
+        "/WebRestServiceMessagesAndPayments/ModulPaymentGenerateData/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentGenerateDataServiceRole48393F8D"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ModulPaymentGenerateData/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentGenerateDataServiceRoleDefaultPolicyDD4431AA"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ModulPaymentGenerateData/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentGenerateDataFCE9EB60"
+          }
+        ],
+        "/WebRestServiceMessagesAndPayments/ModulPaymentGenerateData/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentGenerateDataLogRetentionE103C140"
+          }
+        ],
         "/WebRestServiceMessagesAndPayments/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -2900,6 +2925,12 @@
             "data": "ExportsOutputFnGetAttDeleteDigitalStoreItemLambda946778DBArnF8EDFD81"
           }
         ],
+        "/WebRestServiceMessagesAndPayments/Exports/Output{\"Fn::GetAtt\":[\"ModulPaymentGenerateDataFCE9EB60\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttModulPaymentGenerateDataFCE9EB60Arn0A530F46"
+          }
+        ],
         "/WebRestServiceMessagesAndPayments/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
@@ -2931,7 +2962,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f7c32e8ff7e9446980d90cf1231856d59685382fbb9b00a498c6d67cad57cb39.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/5c003c7000794f6c20b29f2394478af6fd6df88dcbc0ac105d75c562ba4e3ef3.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3303,7 +3334,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/626889adac03db690a53aba3cef93b924596efdb4fe46fc75693df1bb29d267f.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/7c38c7a73f31b523abfbd04a22b559c730513330a6825847b8dece182e1f20a5.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3735,7 +3766,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/56075d76fdaa83ebf597b48f556e0a73ff91bac5579f5b6efbef4a4ed2e6c0a1.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/25427e97e08c58ff6289ce84d3e962c2fd300da9e94a8ee642977d94d95589d9.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4257,7 +4288,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/78d0937e67e349db75553ddef11a5cf3e91f30a2b567dd778d6753c10baf0582.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/cd240be6e0075470903a9b6697ca3b9178bc49c75318dfa95b0a8bb01c5eb1af.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4389,7 +4420,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/bc5b7c75fab71e70dcf30e75f5dda33fecfa1a182472f59ea95176abceb041f6.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/2b675a8225904c67e80aa849c6c6f07e118548c5938c2b03bf8cd13b07888d08.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4422,10 +4453,10 @@
               "Function.addToPrincipal (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-iam/lib/grant.js:1:2028)",
               "Import.combinedGrant (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:7700)",
               "Import.grantReadWriteData (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:3546)",
-              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:19:19)",
+              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:27:19)",
               "createAPIandAuthorizer (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/CreateAPIwithAuth.ts:29:21)",
-              "new GatewayServiceStack (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/RestServices/GateWayService.ts:44:54)",
-              "Object.<anonymous> (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/Launcher.ts:137:33)",
+              "new GatewayServiceStack (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/RestServices/GateWayService.ts:42:54)",
+              "Object.<anonymous> (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/Launcher.ts:141:33)",
               "Module._compile (node:internal/modules/cjs/loader:1267:14)",
               "Module.m._compile (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/ts-node/src/index.ts:1618:23)",
               "Module._extensions..js (node:internal/modules/cjs/loader:1321:10)",
@@ -4479,7 +4510,7 @@
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A002b2ed1521345a05fbba3d3f99799ef6"
+            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A066a70ace5764986e81dd638bbdf6f239"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -5736,6 +5767,42 @@
             "data": "WebRestGatewayServiceGWAPIDigitalStoreItemsDeleteDELETEDCB03AB9"
           }
         ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/modul_ru/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPImodulru2BE4F7C1"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/modul_ru/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPImodulruOPTIONSFF97FCF2"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/modul_ru/GeneratePayment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPImodulruGeneratePayment9FAF790E"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/modul_ru/GeneratePayment/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPImodulruGeneratePaymentOPTIONS1BA7EC36"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/modul_ru/GeneratePayment/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..modul_ru.GeneratePayment": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPImodulruGeneratePaymentPOSTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPOSTmodulruGeneratePayment79FC9CF4"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/modul_ru/GeneratePayment/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPImodulruGeneratePaymentPOST05C6BC71"
+          }
+        ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/ContentPlanPosts/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -6473,10 +6540,10 @@
               "Function.addToPrincipal (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-iam/lib/grant.js:1:2028)",
               "Import.combinedGrant (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:7700)",
               "Import.grantReadWriteData (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:3546)",
-              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:19:19)",
+              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:27:19)",
               "createAPIandAuthorizer (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/CreateAPIwithAuth.ts:29:21)",
-              "new GatewayServiceStack (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/RestServices/GateWayService.ts:44:54)",
-              "Object.<anonymous> (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/Launcher.ts:151:32)",
+              "new GatewayServiceStack (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/RestServices/GateWayService.ts:42:54)",
+              "Object.<anonymous> (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/Launcher.ts:155:32)",
               "Module._compile (node:internal/modules/cjs/loader:1267:14)",
               "Module.m._compile (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/ts-node/src/index.ts:1618:23)",
               "Module._extensions..js (node:internal/modules/cjs/loader:1321:10)",
@@ -6991,6 +7058,222 @@
         ]
       },
       "displayName": "WebCRMGatewayService"
+    },
+    "PaymentIntegrations.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "PaymentIntegrations.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "PaymentIntegrations": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://993738567487/us-east-1",
+      "properties": {
+        "templateFile": "PaymentIntegrations.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/8ac9fe864ac6c80dd0720386fd55b97beb742b4cc975c5a5e4acf2fd41166c40.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "PaymentIntegrations.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "WebRestGatewayService",
+        "PaymentIntegrations.assets"
+      ],
+      "metadata": {
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPI20BD0803"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPICloudWatchRole57D0BD35"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIAccountA255A895"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIDeployment97BA9B801ead9e1acee18ba4623b82452734ae28"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/DeploymentStage.pagesAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIDeploymentStagepagesAPIAAC1B5C9"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIEndpoint88C7B1FF"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIOPTIONS40F567AE"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPImodulru426BB484"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPImodulruOPTIONSEF9B2F50"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPImodulrucallback854DB4B7"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPImodulrucallbackOPTIONSD8736160"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/POST/ApiPermission.PaymentIntegrationsPaymentIntegrationsGWAPI9705733B.POST..modul_ru.callback": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPImodulrucallbackPOSTApiPermissionPaymentIntegrationsPaymentIntegrationsGWAPI9705733BPOSTmodulrucallback17545CEE"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPImodulrucallbackPOST1EA51054"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/PaymentIntegrations-GWAPI-UsagePlan/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIPaymentIntegrationsGWAPIUsagePlanDA8AC01A"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/PaymentIntegrations-GW-SubDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIPaymentIntegrationsGWSubDomainFF9D50E3"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-GWAPI/PaymentIntegrations-GW-SubDomain/Map:--=>PaymentIntegrationsPaymentIntegrationsGWAPI9705733B/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsGWAPIPaymentIntegrationsGWSubDomainMapPaymentIntegrationsPaymentIntegrationsGWAPI9705733B1CF5C9A9"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-ARecord/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsARecord6DA33B24"
+          }
+        ],
+        "/PaymentIntegrations/PaymentIntegrations-ARecord/DeleteExistingRecordSetCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PaymentIntegrationsARecordDeleteExistingRecordSetCustomResourceBC062570"
+          }
+        ],
+        "/PaymentIntegrations/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
+          }
+        ],
+        "/PaymentIntegrations/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
+          }
+        ],
+        "/PaymentIntegrations/ModulPaymentCallBack/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentCallBackServiceRole0CBBBD70"
+          }
+        ],
+        "/PaymentIntegrations/ModulPaymentCallBack/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentCallBackServiceRoleDefaultPolicy3A799B09"
+          }
+        ],
+        "/PaymentIntegrations/ModulPaymentCallBack/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentCallBack85EC80ED"
+          }
+        ],
+        "/PaymentIntegrations/ModulPaymentCallBack/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ModulPaymentCallBackLogRetention02669938"
+          }
+        ],
+        "/PaymentIntegrations/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+          }
+        ],
+        "/PaymentIntegrations/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+          }
+        ],
+        "/PaymentIntegrations/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+          }
+        ],
+        "/PaymentIntegrations/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/PaymentIntegrations/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/PaymentIntegrations/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "PaymentIntegrations"
     },
     "Tree": {
       "type": "cdk:tree",

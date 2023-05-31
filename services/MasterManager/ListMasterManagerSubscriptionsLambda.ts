@@ -9,7 +9,8 @@ import { ParseItemResult, ParseListResult, ReturnRestApiResult } from '/opt/Lamb
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
-import { MasterManager } from '/opt/MasterManager';
+
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -21,7 +22,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    const result = await MasterManager.ListMySubsriptions(Number(telegramUser.id));
+    const result = await PomponaSubscriptionsProcessor.ListMySubsriptions(Number(telegramUser.id));
     const listResults = ParseListResult(result);
 
     return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);

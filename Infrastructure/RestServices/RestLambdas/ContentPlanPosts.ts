@@ -5,8 +5,8 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
-import { LambdaAndResource } from '../Helper/GWtypes';
+import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';

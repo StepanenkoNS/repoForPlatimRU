@@ -8,8 +8,8 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 
 //@ts-ignore
-import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
-import { LambdaAndResource } from '../Helper/GWtypes';
+import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';

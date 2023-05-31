@@ -39,7 +39,7 @@ export class WebPublicPagesStack extends Stack {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const webPublicPagesAPI = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN);
+        const webPublicPagesAPI = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.pagesDataSubDomain);
 
         CreateHelpCenterLambdas(this, webPublicPagesAPI.root.addResource('help-center'), props.enableAPICache, layers, [webTable]);
 

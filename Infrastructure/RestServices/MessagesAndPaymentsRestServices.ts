@@ -7,18 +7,17 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
 import { CreateSendMessagesLambdas } from './RestLambdas/SendTestMessages';
 import { SendMessageScheduler } from './RestLambdas/SendMessageScheduler';
 import { PaymentProcessor } from './RestLambdas/PaymentProcessor';
 
-import { LambdaIntegrations } from './Helper/GWtypes';
-
 import { CreateSubscriptionProcessor } from './RestLambdas/SubscriptionProcessor';
 import { CreateDigitalStoreCategories } from './RestLambdas/DigitalStoreCategories';
 import { CreateDigitalStoreItems } from './RestLambdas/DigitalStoreItems';
+import { PaymentsModul } from './RestLambdas/paymentsModul';
 
 export class MessagesAndPaymentsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -68,5 +67,11 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
         PaymentProcessor(this, layers, [botsTable]);
 
         CreateSubscriptionProcessor(this, layers, [botsTable]);
+
+        const modulLambdas = PaymentsModul(this, layers, [botsTable]);
+        this.lambdaIntegrations.push({
+            rootResource: 'modul_ru',
+            lambdas: modulLambdas
+        });
     }
 }

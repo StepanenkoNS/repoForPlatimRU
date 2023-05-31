@@ -7,13 +7,12 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateBotsLambdas } from './RestLambdas/Bots';
 
 import { CreatePaymentOptionsLambdas } from './RestLambdas/PaymentOptions';
 
-import { LambdaIntegrations } from './Helper/GWtypes';
 import { CreateChannelsLambdas } from './RestLambdas/Channels';
 import { CreateBotCommandsLambdas } from './RestLambdas/BotCommands';
 import { CreateCalendarMeetingsLambdas } from './RestLambdas/CalendarMeetings';
