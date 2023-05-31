@@ -22,9 +22,11 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], ta
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            modulSalt: StaticEnvironment.Secrets.modulSalt,
-            modulTestKey: StaticEnvironment.Secrets.modulTestKey,
-            modulProductionKey: StaticEnvironment.Secrets.modulProductionKey
+
+            modulMerchantId: StaticEnvironment.PaymentGateways.modulBank.MerchantId,
+            modulSuccess_url: StaticEnvironment.PaymentGateways.modulBank.success_url,
+            modulCallback_url: StaticEnvironment.PaymentGateways.modulBank.callback_url,
+            modulKey: StaticEnvironment.PaymentGateways.modulBank.TestKey
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
