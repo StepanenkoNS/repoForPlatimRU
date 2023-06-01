@@ -48,7 +48,7 @@
                 "accessTokenExpirationMinutes": "1",
                 "refreshTokenExpirationDays": "365",
 
-                "allowedOrigins": "http://localhost, https://pompona.net, http://127.0.0.1",
+                "allowedOrigins": "http://localhost,http://localhost:8080,http://localhost:8081,https://pompona.net,https://admin.pompona.net,https://*.pompona.net,http://127.0.0.1,pompona.net,*.pompona.net",
                 "webTable": "web",
                 "schedulerSendQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-schedulerSendQueue.fifo",
                 "SubscriptionProcessorSubsriptionPlanURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionProcessorQueue.fifo",

@@ -11,7 +11,7 @@ import { BotLanging } from '/opt/BotLanding';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));
 
-    const origin = SetOrigin(event);
+    let origin = SetOrigin(event);
 
     if (origin == '') {
         return ReturnRestApiResult(422, { error: 'origin is incorrect' }, false, event.headers?.origin ? event.headers.origin : '', undefined);
@@ -19,7 +19,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     let subdomain = TextHelper.SanitizeToDirectText(GetLandingSubdomainFromOrigin(event));
 
-    if (subdomain == '') {
+    if (subdomain == '' || subdomain.indexOf('localhost') > -1) {
         subdomain = 'pomponabot';
     }
 
