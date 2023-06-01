@@ -24,9 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'subdomain', datatype: 'string' },
         { key: 'title', datatype: 'string' },
-        { key: 'elements', datatype: 'array' },
-        { key: 'body', datatype: 'string' },
-        { key: 'footer', datatype: 'string' }
+        { key: 'elements', datatype: 'array' }
     ]);
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);

@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent) {
             return ReturnResult(422, result, origin);
         }
         try {
-            if (process.env.AllowUsers != '') {
+            if (process.env.AllowUsers && process.env.AllowUsers != '') {
                 const usersArray = process.env.AllowUsers!.split(',');
                 console.log('usersArray', usersArray);
 

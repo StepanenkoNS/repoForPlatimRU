@@ -1,32 +1,40 @@
 import { handler } from '../../services/TokenService/Lambdas/lambdaTokenService';
 
 const event = {
-    resource: '/getToken',
-    path: '/getToken',
-    httpMethod: 'POST',
+    resource: '/me',
+    path: '/me',
+    httpMethod: 'GET',
     headers: {
-        Accept: '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Cache-Control': 'no-cache',
-        'Content-Type': 'application/json',
+        accept: 'application/json, text/plain, */*',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-GB,en;q=0.9',
+        cookie: '_ym_isad=2; _ym_visorc=w; _ym_d=1685442148; _ym_uid=1685442148978851236',
         Host: 'auth.pompona.net',
-        'Postman-Token': '3731088f-ffc2-40ad-bbae-dc64cb040f2b',
-        'User-Agent': 'PostmanRuntime/7.32.2',
-        'X-Amzn-Trace-Id': 'Root=1-6475d548-6a7ab0f32de1acad7a6bb2af',
-        'X-Forwarded-For': '176.232.63.145',
+        origin: 'https://admin.pompona.net',
+        referer: 'https://admin.pompona.net/',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1',
+        'X-Amzn-Trace-Id': 'Root=1-64774790-51f1307c519a310a46d83d73',
+        'X-Forwarded-For': '5.176.5.95',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
     },
     multiValueHeaders: {
-        Accept: ['*/*'],
-        'Accept-Encoding': ['gzip, deflate, br'],
-        'Cache-Control': ['no-cache'],
-        'Content-Type': ['application/json'],
+        accept: ['application/json, text/plain, */*'],
+        'accept-encoding': ['gzip, deflate, br'],
+        'accept-language': ['en-GB,en;q=0.9'],
+        cookie: ['_ym_isad=2; _ym_visorc=w; _ym_d=1685442148; _ym_uid=1685442148978851236'],
         Host: ['auth.pompona.net'],
-        'Postman-Token': ['3731088f-ffc2-40ad-bbae-dc64cb040f2b'],
-        'User-Agent': ['PostmanRuntime/7.32.2'],
-        'X-Amzn-Trace-Id': ['Root=1-6475d548-6a7ab0f32de1acad7a6bb2af'],
-        'X-Forwarded-For': ['176.232.63.145'],
+        origin: ['https://admin.pompona.net'],
+        referer: ['https://admin.pompona.net/'],
+        'sec-fetch-dest': ['empty'],
+        'sec-fetch-mode': ['cors'],
+        'sec-fetch-site': ['same-site'],
+        'User-Agent': ['Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1'],
+        'X-Amzn-Trace-Id': ['Root=1-64774790-51f1307c519a310a46d83d73'],
+        'X-Forwarded-For': ['5.176.5.95'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
@@ -35,36 +43,36 @@ const event = {
     pathParameters: null,
     stageVariables: null,
     requestContext: {
-        resourceId: 'b7bro6',
-        resourcePath: '/getToken',
-        httpMethod: 'POST',
-        extendedRequestId: 'Fu5DZGQiIAMFVkw=',
-        requestTime: '30/May/2023:10:51:52 +0000',
-        path: '/getToken',
+        resourceId: 'tkno7h',
+        resourcePath: '/me',
+        httpMethod: 'GET',
+        extendedRequestId: 'FygelE4xoAMFUuA=',
+        requestTime: '31/May/2023:13:11:44 +0000',
+        path: '/me',
         accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'GetToken',
         domainPrefix: 'auth',
-        requestTimeEpoch: 1685443912672,
-        requestId: 'd69847af-d66e-4c67-bba2-d7675be49da5',
+        requestTimeEpoch: 1685538704249,
+        requestId: 'f30b7442-60af-4c0e-beb8-966774e19130',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
             cognitoIdentityId: null,
             caller: null,
-            sourceIp: '176.232.63.145',
+            sourceIp: '5.176.5.95',
             principalOrgId: null,
             accessKey: null,
             cognitoAuthenticationType: null,
             cognitoAuthenticationProvider: null,
             userArn: null,
-            userAgent: 'PostmanRuntime/7.32.2',
+            userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1',
             user: null
         },
         domainName: 'auth.pompona.net',
         apiId: 'zayyzfynk5'
     },
-    body: '{"id":199163834,\n"first_name":"Nick",\n"username":"LikeAHurricane",\n"photo_url":"https://t.me/i/userpic/320/DoQAgE8qIeUTYNunz_mwxXZcwuObFbcdDNXYeIKRBRo.jpg",\n"auth_date":1685443639,\n"hash":"de4a3955c6b4c17cd5af53e95ab18beb68210ffa3b2bfca4f1effc55bb6ab640"}',
+    body: null,
     isBase64Encoded: false
 };
 
@@ -75,7 +83,8 @@ async function main() {
     //     console.log(key);
     // }
 
-    await handler(event as any);
+    const result = await handler(event as any);
+    console.log(result);
 }
 
 main();

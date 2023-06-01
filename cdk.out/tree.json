@@ -32,17 +32,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebTokenService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -227,7 +227,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "4f57944f3f2b64b0cc76462087e16e4b42b6eff026f93926429ff12c943e0942.zip"
+                      "s3Key": "2c6ea3b48438b73aaccfba7a35f321734a4e8b52c1cf164337717ac93c039aa8.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -247,7 +247,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -266,8 +266,8 @@
                     "functionName": "WebTokenService-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -1657,17 +1657,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebPublicPages/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -3567,7 +3567,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -3586,8 +3586,8 @@
                     "functionName": "react-HelpCenter-Landing-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -3956,7 +3956,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -3975,8 +3975,8 @@
                     "functionName": "react-HelpCenter-Subcategory-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -4202,7 +4202,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -4221,8 +4221,8 @@
                     "functionName": "react-HelpCenter-Article-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -4448,7 +4448,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -4467,8 +4467,8 @@
                     "functionName": "react-Content-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -4680,7 +4680,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -4699,8 +4699,8 @@
                     "functionName": "react-BotLanding-GetPublic-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -4797,17 +4797,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServiceMain/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -5013,7 +5013,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -5032,8 +5032,8 @@
                     "functionName": "react-Bots-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -5389,7 +5389,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -5408,8 +5408,8 @@
                     "functionName": "react-Bots-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -5632,7 +5632,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -5651,8 +5651,8 @@
                     "functionName": "react-Bots-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -5875,7 +5875,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -5894,8 +5894,8 @@
                     "functionName": "react-Bots-Register-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -6118,7 +6118,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -6137,8 +6137,8 @@
                     "functionName": "react-Bots-UnRegister-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -6361,7 +6361,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -6380,8 +6380,8 @@
                     "functionName": "react-Bots-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -6604,7 +6604,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -6623,8 +6623,8 @@
                     "functionName": "react-Bots-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -6871,7 +6871,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -6890,8 +6890,8 @@
                     "functionName": "react-Bots-DeleteData-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -7167,7 +7167,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -7186,8 +7186,8 @@
                     "functionName": "react-BotCommands-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -7399,7 +7399,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -7418,8 +7418,8 @@
                     "functionName": "react-BotCommands-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -7631,7 +7631,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -7650,8 +7650,8 @@
                     "functionName": "react-BotCommands-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -7864,7 +7864,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -7883,8 +7883,8 @@
                     "functionName": "react-BotCommands-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -8096,7 +8096,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -8115,8 +8115,8 @@
                     "functionName": "react-BotCommands-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -8328,7 +8328,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -8347,8 +8347,8 @@
                     "functionName": "react-Channels-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -8560,7 +8560,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -8579,8 +8579,8 @@
                     "functionName": "react-Channels-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -8792,7 +8792,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -8811,8 +8811,8 @@
                     "functionName": "react-Channels-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -9024,7 +9024,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -9043,8 +9043,8 @@
                     "functionName": "react-Channels-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -9346,7 +9346,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -9391,8 +9391,8 @@
                     "functionName": "react-Channels-Migrate-first",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -9702,7 +9702,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -9759,8 +9759,8 @@
                     "functionName": "react-Channels-Migrate-second",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -10036,7 +10036,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -10055,8 +10055,8 @@
                     "functionName": "react-Meetings-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -10268,7 +10268,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -10287,8 +10287,8 @@
                     "functionName": "react-Meetings-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -10500,7 +10500,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -10519,8 +10519,8 @@
                     "functionName": "react-Meetings-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -10733,7 +10733,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -10752,8 +10752,8 @@
                     "functionName": "react-Meetings-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -10965,7 +10965,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -10984,8 +10984,8 @@
                     "functionName": "react-Meetings-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -11197,7 +11197,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -11216,8 +11216,8 @@
                     "functionName": "react-Meetings-ListParticipants-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -11430,7 +11430,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -11449,8 +11449,8 @@
                     "functionName": "react-Meetings-CheckLimits-AddMeeting-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -11662,7 +11662,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -11681,8 +11681,8 @@
                     "functionName": "react-PaymentOptions-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -11894,7 +11894,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -11913,8 +11913,8 @@
                     "functionName": "react-PaymentOptions-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -12126,7 +12126,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -12145,8 +12145,8 @@
                     "functionName": "react-PaymentOptions-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -12358,7 +12358,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -12377,8 +12377,8 @@
                     "functionName": "react-PaymentOptions-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -12590,7 +12590,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -12609,8 +12609,8 @@
                     "functionName": "react-PaymentOptions-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -12941,17 +12941,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServiceFiles/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -13156,7 +13156,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -13175,8 +13175,8 @@
                     "functionName": "react-TelegramFiles-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -13547,7 +13547,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -13566,8 +13566,8 @@
                     "functionName": "react-TelegramFiles-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -13795,7 +13795,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -13814,8 +13814,8 @@
                     "functionName": "react-TelegramFiles-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -14043,7 +14043,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -14062,8 +14062,8 @@
                     "functionName": "react-TelegramFiles-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -14291,7 +14291,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -14310,8 +14310,8 @@
                     "functionName": "react-GetPresignedUrl-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -14458,17 +14458,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServiceMessagesAndPayments/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -14657,7 +14657,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -14676,8 +14676,8 @@
                     "functionName": "react-SendMessages-SendTestMessage-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -15032,7 +15032,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -15051,8 +15051,8 @@
                     "functionName": "react-SendMessages-SendTestFile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -15264,7 +15264,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -15283,8 +15283,8 @@
                     "functionName": "react-SendMessages-SendDirectMessageFromAdmin-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -15496,7 +15496,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -15515,8 +15515,8 @@
                     "functionName": "react-DigitalStoreCategories-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -15728,7 +15728,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -15747,8 +15747,8 @@
                     "functionName": "react-DigitalStoreCategories-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -15960,7 +15960,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -15979,8 +15979,8 @@
                     "functionName": "react-DigitalStoreCategories-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -16192,7 +16192,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -16211,8 +16211,8 @@
                     "functionName": "react-DigitalStoreCategories-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -16424,7 +16424,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -16443,8 +16443,8 @@
                     "functionName": "react-DigitalStoreCategories-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -16656,7 +16656,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -16675,8 +16675,8 @@
                     "functionName": "react-DigitalStoreItems-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -16888,7 +16888,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -16907,8 +16907,8 @@
                     "functionName": "react-DigitalStoreItems-List-forContentPlanPost-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -17120,7 +17120,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -17139,8 +17139,8 @@
                     "functionName": "react-DigitalStoreItems-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -17352,7 +17352,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -17371,8 +17371,8 @@
                     "functionName": "react-DigitalStoreItems-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -17584,7 +17584,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -17603,8 +17603,8 @@
                     "functionName": "react-DigitalStoreItems-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -17816,7 +17816,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -17835,8 +17835,8 @@
                     "functionName": "react-DigitalStoreItems-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -18101,7 +18101,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -18120,8 +18120,8 @@
                     "functionName": "SendMessage-Scheduller-First-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -18453,7 +18453,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -18472,8 +18472,8 @@
                     "functionName": "SendMessage-Scheduller-Second-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -18771,7 +18771,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -18790,8 +18790,8 @@
                     "functionName": "scheduler-SendMessageSender-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -19197,7 +19197,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -19216,8 +19216,8 @@
                     "functionName": "paymentProcessor-incomingRequests",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -19567,7 +19567,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -19586,8 +19586,8 @@
                     "functionName": "paymentProcessor-IncomingPaymentConfirmation",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -19973,7 +19973,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -20004,8 +20004,8 @@
                     "functionName": "subscriptionProcessor-Scheduler-Add-New-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -20304,7 +20304,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -20335,8 +20335,8 @@
                     "functionName": "subscriptionProcessor-Scheduler-Delete-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -20689,7 +20689,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -20708,8 +20708,8 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-ContentPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -21061,7 +21061,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -21080,8 +21080,8 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-SubscriptionPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -21366,7 +21366,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -21397,8 +21397,8 @@
                     "functionName": "subscriptionProcessor-Expire-ChannelSubsriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -21685,7 +21685,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -21716,8 +21716,8 @@
                     "functionName": "subscriptionProcessor-Expire-BotSubscriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -21995,7 +21995,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -22014,8 +22014,8 @@
                     "functionName": "subscriptionProcessor-Cleanup-Pompona",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -22315,7 +22315,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -22334,8 +22334,8 @@
                     "functionName": "subscriptionProcessor-Expire-expireUserSubscriptionItem",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -22612,7 +22612,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -22635,8 +22635,8 @@
                     "functionName": "paymentProcessor-ModulPayment-generate",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -22863,17 +22863,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServicePlansAndPosts/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -23078,7 +23078,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -23097,8 +23097,8 @@
                     "functionName": "react-ContentPlanPosts-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -23453,7 +23453,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -23472,8 +23472,8 @@
                     "functionName": "react-ContentPlanPosts-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -23697,7 +23697,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -23740,8 +23740,8 @@
                     "functionName": "react-ContentPlanPosts-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -23953,7 +23953,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -23972,8 +23972,8 @@
                     "functionName": "react-ContentPlanPosts-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -24197,7 +24197,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -24240,8 +24240,8 @@
                     "functionName": "react-ContentPlanPosts-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -24453,7 +24453,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -24472,8 +24472,8 @@
                     "functionName": "react-ContentPlans-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -24685,7 +24685,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -24704,8 +24704,8 @@
                     "functionName": "react-ContentPlans-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -24917,7 +24917,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -24936,8 +24936,8 @@
                     "functionName": "react-ContentPlans-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -25149,7 +25149,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -25168,8 +25168,8 @@
                     "functionName": "react-ContentPlans-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -25381,7 +25381,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -25400,8 +25400,8 @@
                     "functionName": "react-ContentPlans-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -25588,17 +25588,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServiceSubscriptions/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -25787,7 +25787,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -25806,8 +25806,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -26162,7 +26162,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -26181,8 +26181,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -26394,7 +26394,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -26413,8 +26413,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -26626,7 +26626,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -26645,8 +26645,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -26858,7 +26858,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -26877,8 +26877,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -27090,7 +27090,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -27109,8 +27109,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -27322,7 +27322,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -27341,8 +27341,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -27554,7 +27554,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -27573,8 +27573,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -27786,7 +27786,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -27805,8 +27805,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -28018,7 +28018,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -28037,8 +28037,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -28251,7 +28251,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -28270,8 +28270,8 @@
                     "functionName": "react-MasterManager-SubscribeToPaidSubscription-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -28484,7 +28484,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -28503,8 +28503,8 @@
                     "functionName": "react-MasterManager-ListSubscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -28707,17 +28707,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServiceCRM/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -28906,7 +28906,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -28925,8 +28925,8 @@
                     "functionName": "react-CRM-Users-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -29281,7 +29281,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -29300,8 +29300,8 @@
                     "functionName": "react-CRM-Bot-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -29513,7 +29513,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -29532,8 +29532,8 @@
                     "functionName": "react-CRM-Bot-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -29745,7 +29745,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -29764,8 +29764,8 @@
                     "functionName": "react-CRM-Channel-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -29977,7 +29977,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -29996,8 +29996,8 @@
                     "functionName": "react-CRM-Channel-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -30209,7 +30209,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -30228,8 +30228,8 @@
                     "functionName": "react-CRM-Bot-Payments-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -30441,7 +30441,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -30460,8 +30460,8 @@
                     "functionName": "react-CRM-Bot-Payments-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -30673,7 +30673,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -30692,8 +30692,8 @@
                     "functionName": "react-CRM-ScheduledPosts-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -30905,7 +30905,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -30924,8 +30924,8 @@
                     "functionName": "react-CRM-UserProfile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -31137,7 +31137,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -31156,8 +31156,8 @@
                     "functionName": "react-CRM-BanUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -31369,7 +31369,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -31388,8 +31388,8 @@
                     "functionName": "react-CRM-EditUserNotes-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -31601,7 +31601,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -31620,8 +31620,8 @@
                     "functionName": "react-CRM-GetMyBot-Analitics-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -31833,7 +31833,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -31852,8 +31852,8 @@
                     "functionName": "react-CRM-ContentPlanPostStats-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -32065,7 +32065,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -32084,8 +32084,8 @@
                     "functionName": "react-CRM-ContentPlanPostFeedBacks-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -32297,7 +32297,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -32316,8 +32316,8 @@
                     "functionName": "react-CRM-ContentPlanPostRates-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -32544,17 +32544,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestServiceLanding/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -32726,7 +32726,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "e87698158fa11a6be9968a56f40d7ba22346cbf1f574d358978f6a2c98f92164.zip"
+                      "s3Key": "6cc02a57bddce51f16a188ce3309e906df40c79f533d5425fba0b71f33114eba.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -32743,7 +32743,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -32762,8 +32762,8 @@
                     "functionName": "react-BotLanding-Update-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -33118,7 +33118,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -33137,8 +33137,8 @@
                     "functionName": "react-BotLanding-GetPrivate-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],
@@ -33261,17 +33261,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebRestGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -48648,17 +48648,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "WebCRMGatewayService/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -52163,17 +52163,17 @@
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-            "path": "PaymentIntegrations/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+            "path": "PaymentIntegrations/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
-            "path": "PaymentIntegrations/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
+            "path": "PaymentIntegrations/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.78.0"
@@ -53112,7 +53112,7 @@
                         "tg_api_serverURI": "https://api.telegram.org",
                         "botsBucketName": "bots-bucket",
                         "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-                        "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+                        "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
                         "mainDomainName": "pompona.net",
                         "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
                         "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -53135,8 +53135,8 @@
                     "functionName": "paymentProcessor-ModulPayment-callback",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
                     ],

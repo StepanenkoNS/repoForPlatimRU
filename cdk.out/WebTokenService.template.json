@@ -92,7 +92,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "4f57944f3f2b64b0cc76462087e16e4b42b6eff026f93926429ff12c943e0942.zip"
+     "S3Key": "2c6ea3b48438b73aaccfba7a35f321734a4e8b52c1cf164337717ac93c039aa8.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -112,7 +112,7 @@
       "tg_api_serverURI": "https://api.telegram.org",
       "botsBucketName": "bots-bucket",
       "tempUploadsBucketName": "message-files-temp-uploads-bucket",
-      "pomponaHostedZoneId": "/hostedzone/Z08669732ES7CY5LRF03T",
+      "pomponaHostedZoneId": "/hostedzone/Z03470091PWKKIZTYD5L4",
       "mainDomainName": "pompona.net",
       "messagingBotTGWebHookSecretToken": "0RS5tfaLGJJPHu0TFRctiFVQHWYGMbdZcxuMH9cq",
       "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
@@ -131,8 +131,8 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:653",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:379",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:655",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:381",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:340",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
     ],
@@ -144,7 +144,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.4f57944f3f2b64b0cc76462087e16e4b42b6eff026f93926429ff12c943e0942",
+    "aws:asset:path": "asset.2c6ea3b48438b73aaccfba7a35f321734a4e8b52c1cf164337717ac93c039aa8",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
