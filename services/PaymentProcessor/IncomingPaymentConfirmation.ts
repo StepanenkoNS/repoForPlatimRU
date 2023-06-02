@@ -20,8 +20,6 @@ import { DigitalStoreManager } from '/opt/DigitalStoreManager';
 import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
-const sqs = new SQS({ region: process.env.region });
-
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
     console.log('IncomingPaymentConfirmation - incoming event', JSON.stringify(event));

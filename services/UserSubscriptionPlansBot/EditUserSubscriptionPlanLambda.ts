@@ -57,7 +57,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             enabled: bodyObject.data.enabled,
             lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
             name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
-            prices: bodyObject.data.prices
+            prices: bodyObject.data.prices,
+            updatedAt: new Date().toISOString()
         };
 
         const schemaValidationResult = await SchemaValidator.UserSubscriptionPlanBot_Validator(potentialItem);

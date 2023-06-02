@@ -1,7 +1,6 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 
 import { SQSEvent } from 'aws-lambda';
-import { SQS } from 'aws-sdk';
 
 //@ts-ignore
 import { EPaymentOptionType, EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';

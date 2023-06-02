@@ -14,6 +14,7 @@ import axios from 'axios';
 import ksuid from 'ksuid';
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 import { IPomponaAddSubscription } from '/opt/MasterManagerTypes';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));
@@ -37,7 +38,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
         }
 
-        const subscr: IPomponaAddSubscription = {
+        const potentialSubscription: IPomponaAddSubscription = {
             masterId: Number(telegramUser.id),
             lengthInDays: Number(TextHelper.SanitizeToDirectText(bodyObject.data.lengthInDays)),
             subscriptionPlan: TextHelper.SanitizeToDirectText(bodyObject.data.subscriptionPlan) as any,
@@ -46,15 +47,20 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any
         };
 
-        const paymentInDb = await PaymentOptionsManager.AddPomponaPayment(subscr, 'modulBank');
+        const schemaValidationResult = await SchemaValidator.PomponaSubscriptionPaymentValidator(potentialSubscription);
+        if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+            return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        }
+
+        const paymentInDb = await PaymentOptionsManager.AddPomponaPayment(schemaValidationResult.item as any, 'modulBank');
         if (paymentInDb.success == false || !paymentInDb.data) {
             throw 'error';
         }
 
         const item: IModulReceiptItem = {
-            name: 'Подписка Pompona - канал',
+            name: 'Pompona Subscription - ' + schemaValidationResult.item.subscriptionPlan,
             quantity: 1,
-            price: subscr.pricePaid,
+            price: schemaValidationResult.item.pricePaid,
             sno: 'patent',
             payment_object: 'service',
             payment_method: 'full_payment',
@@ -71,7 +77,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
         const order_id = paymentInDb.data.id!;
         const clientId = Number(telegramUser.id).toString();
-        const description = 'Оплата подписки Pompona';
+        const description = 'Pompona Subscription payment';
 
         const payment: IModulPaymentRequest = {
             merchant: modulMerchantId,
