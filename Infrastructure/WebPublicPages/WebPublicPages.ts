@@ -14,6 +14,7 @@ import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class WebPublicPagesStack extends Stack {
     constructor(
@@ -24,6 +25,7 @@ export class WebPublicPagesStack extends Stack {
             certificateARN: string;
             layerARNs: string[];
             enableAPICache: boolean;
+            role: IRole;
         }
     ) {
         super(scope, id, props);

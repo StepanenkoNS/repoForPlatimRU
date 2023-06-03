@@ -18,6 +18,7 @@ import { CreateSubscriptionProcessor } from './RestLambdas/SubscriptionProcessor
 import { CreateDigitalStoreCategories } from './RestLambdas/DigitalStoreCategories';
 import { CreateDigitalStoreItems } from './RestLambdas/DigitalStoreItems';
 import { PaymentsModul } from './RestLambdas/paymentsModul';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class MessagesAndPaymentsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -27,6 +28,7 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            role: IRole;
         }
     ) {
         super(scope, id, props);

@@ -11,6 +11,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class TokenServiceStack extends Stack {
     constructor(
@@ -18,7 +19,8 @@ export class TokenServiceStack extends Stack {
         id: string,
         props: StackProps & {
             certificateARN: string;
-            layerARNs: string[];
+            layers: ILayerVersion[];
+            role: IRole;
         }
     ) {
         super(scope, id, props);
@@ -30,11 +32,6 @@ export class TokenServiceStack extends Stack {
 
         const certificate = acm.Certificate.fromCertificateArn(this, 'imported-certificate', props.certificateARN);
         const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
-
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
 
         const TokenServiceLambda = new NodejsFunction(this, 'TokenServiceLambda', {
             entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaTokenService.ts'),
@@ -53,7 +50,7 @@ export class TokenServiceStack extends Stack {
             bundling: {
                 externalModules: ['aws-sdk', '/opt/*']
             },
-            layers: layers
+            layers: props.layers
         });
         botsTable.grantReadWriteData(TokenServiceLambda);
 

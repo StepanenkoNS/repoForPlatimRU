@@ -6,7 +6,6 @@ import { MessageSender } from '/opt/MessageSender';
 import { ETelegramSendMethod } from '/opt/TelegramTypes';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 import { ESupportedCurrency } from '/opt/PaymentTypes';
-import { MessagingBotManager } from '/opt/MessagingBotManager';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
@@ -34,9 +33,9 @@ export async function handler(event: SQSEvent): Promise<any> {
                     masterId: request.masterId,
                     message: {
                         attachments: [],
-                        text: text
-                    },
-                    sendMethod: ETelegramSendMethod.sendMessage
+                        text: text,
+                        sendMethod: ETelegramSendMethod.sendMessage
+                    }
                 });
                 throw 'Error: participants == false\n' + JSON.stringify(request, null, 4);
             }
@@ -67,9 +66,9 @@ export async function handler(event: SQSEvent): Promise<any> {
                     masterId: request.masterId,
                     message: {
                         attachments: [],
-                        text: text
-                    },
-                    sendMethod: ETelegramSendMethod.sendMessage
+                        text: text,
+                        sendMethod: ETelegramSendMethod.sendMessage
+                    }
                 });
                 throw 'Error: AddUserSubscriptionPlanChannel == false\n' + JSON.stringify(request, null, 4);
             }
@@ -91,9 +90,9 @@ export async function handler(event: SQSEvent): Promise<any> {
                 masterId: request.masterId,
                 message: {
                     attachments: [],
-                    text: 'Мы начали импорт подписчиков из вашего канала в систему Pompona. Всего будет импортировано ' + arrayToSend.length + ' записей'
-                },
-                sendMethod: ETelegramSendMethod.sendMessage
+                    text: 'Мы начали импорт подписчиков из вашего канала в систему Pompona. Всего будет импортировано ' + arrayToSend.length + ' записей',
+                    sendMethod: ETelegramSendMethod.sendMessage
+                }
             });
 
             await SQSHelper.SendSQSMessageSmallBatch({
@@ -109,9 +108,9 @@ export async function handler(event: SQSEvent): Promise<any> {
                 masterId: request.masterId,
                 message: {
                     attachments: [],
-                    text: 'Импорт успешно завершен. Пользователи отобразятся в системе в течении 5 минут'
-                },
-                sendMethod: ETelegramSendMethod.sendMessage
+                    text: 'Импорт успешно завершен. Пользователи отобразятся в системе в течении 5 минут',
+                    sendMethod: ETelegramSendMethod.sendMessage
+                }
             });
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);

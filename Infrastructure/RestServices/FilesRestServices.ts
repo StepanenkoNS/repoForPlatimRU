@@ -13,6 +13,7 @@ import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import { CreateGetPresignedUrlsLambdas } from './RestLambdas/PreSignedUrl';
 
 import { CreateTelegramFilesLambdas } from './RestLambdas/TelegramFiles';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class FilesRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -22,17 +23,18 @@ export class FilesRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
         // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
+        // const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
+        // const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
+        //     tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
+        //     globalIndexes: botsIndexes
+        // });
         const layers: ILayerVersion[] = [];
         for (const layerARN of props.layerARNs) {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
@@ -43,12 +45,12 @@ export class FilesRestServicesStack extends Stack {
         //     rootResource: 'MessageFiles',
         //     lambdas: messageFilesLambdas
         // });
-        const telegramFilesLambdas = CreateTelegramFilesLambdas(this, layers, [botsTable]);
+        const telegramFilesLambdas = CreateTelegramFilesLambdas(this, layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'TelegramFiles',
             lambdas: telegramFilesLambdas
         });
-        const preSignedUrlLambdas = CreateGetPresignedUrlsLambdas(this, layers, [botsTable]);
+        const preSignedUrlLambdas = CreateGetPresignedUrlsLambdas(this, layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'PreSignedUrls',
             lambdas: preSignedUrlLambdas

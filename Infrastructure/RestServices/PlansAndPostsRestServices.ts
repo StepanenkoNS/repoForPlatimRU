@@ -12,6 +12,7 @@ import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateContentPlanPostsLambdas } from './RestLambdas/ContentPlanPosts';
 import { CreateContentPlansLambdas } from './RestLambdas/ContentPlans';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class PlansAndPostsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -21,6 +22,7 @@ export class PlansAndPostsRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            role: IRole;
         }
     ) {
         super(scope, id, props);

@@ -16,6 +16,8 @@ import { CreatePaymentOptionsLambdas } from './RestLambdas/PaymentOptions';
 import { CreateChannelsLambdas } from './RestLambdas/Channels';
 import { CreateBotCommandsLambdas } from './RestLambdas/BotCommands';
 import { CreateCalendarMeetingsLambdas } from './RestLambdas/CalendarMeetings';
+import { CreateCascadeDelete } from './RestLambdas/CascadeDelete';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class MainRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -25,6 +27,7 @@ export class MainRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            role: IRole;
         }
     ) {
         super(scope, id, props);
@@ -73,5 +76,7 @@ export class MainRestServicesStack extends Stack {
             rootResource: 'PaymentOptions',
             lambdas: paymentOptionsLambdas
         });
+
+        const cascadeDeleteLambdas = CreateCascadeDelete(this, layers, [botsTable]);
     }
 }

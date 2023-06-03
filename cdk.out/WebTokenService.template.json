@@ -105,6 +105,7 @@
       "accessTokenExpirationMinutes": "5",
       "refreshTokenExpirationDays": "365",
       "AllowUsers": "",
+      "fifo_queues": "false",
       "LOG_LEVEL": "info",
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
@@ -133,9 +134,9 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:659",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:389",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:349",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:669",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:396",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:351",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
     ],
     "Runtime": "nodejs16.x"

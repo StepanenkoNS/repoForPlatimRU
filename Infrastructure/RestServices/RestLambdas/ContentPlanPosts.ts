@@ -13,6 +13,13 @@ import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
 
     const AddScheduledPostQueue = Queue.fromQueueArn(that, 'imported-AddScheduledPostQueue-CreateContentPlanPostsLambdas', DynamicEnvironment.SQS.ContentPlanPostScheduler.AddPost.basicSQS_arn);
 
@@ -111,7 +118,8 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             AddScheduledPostQueueURL: AddScheduledPostQueue.queueUrl,
-            DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl
+            DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -119,6 +127,7 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         layers: layers
     });
     DeleteContentPlanPostLambda.addToRolePolicy(statementSQS);
+    DeleteContentPlanPostLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
     GrantAccessToDDB([ListContentPlanPostsLambda, AddContentPlanPostLambda, EditContentPlanPostLambda, DeleteContentPlanPostLambda, GetContentPlanPostLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];

@@ -15,6 +15,14 @@ import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
     //Вывод списка
     const ListChannelsLambda = new NodejsFunction(that, 'ListChannelsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'ListChannelsLambda.ts'),
@@ -75,13 +83,16 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
         },
         layers: layers
     });
+
+    DeleteChannelLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     ///////////миграция пользователей канала
     //очереди сообщений

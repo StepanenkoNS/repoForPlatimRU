@@ -8,8 +8,9 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //Вывод списка
     const ListTelegramFilesLambda = new NodejsFunction(that, 'ListTelegramFilesLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'TelegramFiles', 'ListTelegramFilesLambda.ts'),

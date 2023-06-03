@@ -5,10 +5,35 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateUserSubscriptionPlansBotsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+    CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl;
+
+    const AddDeleteContentPlanFromSubscriptionQueue = Queue.fromQueueArn(
+        that,
+        'imported-AddDeleteContentPlanFromSubscriptionQueue-ForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.AddDeleteContentPlanFromSubscriptionQueue.basicSQS_arn
+    );
+
+    const AddDeleteContentPlanFromSubscriptionQueueDLQ = Queue.fromQueueArn(
+        that,
+        'imported-AddDeleteContentPlanFromSubscriptionQueueDLQ-ForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.ContentPlanPostScheduler.AddDeleteContentPlanFromSubscriptionQueue.dlqSQS_arn
+    );
 
     //Вывод списка
     const ListUserSubscriptionPlansBotsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansBotsLambda', {
@@ -53,7 +78,8 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -70,7 +96,8 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -78,14 +105,13 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         layers: layers
     });
 
-    //удаление опции оплаты
-    const DeleteSubscriptionPlanBotLambda = new NodejsFunction(that, 'DeleteSubscriptionPlanBotLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'DeleteUserSubscriptionPlanLambda.ts'),
+    const AddDeleteContentPlanFromSubscriptionLambda = new NodejsFunction(that, 'AddDeleteContentPlanFromSubscription', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'AddDeleteContentPlanFromSubscription.ts'),
         handler: 'handler',
-        functionName: 'react-UserSubscriptionPlansBot-Delete-Lambda',
+        functionName: 'react-AddDeleteContentPlanFromSubscriptionLambda-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -95,7 +121,63 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         layers: layers
     });
 
-    GrantAccessToDDB([ListUserSubscriptionPlansBotsLambda, AddSubscriptionPlanBotLambda, EditSubscriptionPlanBotLambda, DeleteSubscriptionPlanBotLambda, GetSubscriptionPlanBotLambda], tables);
+    const eventSourceForAddDeleteContentPlanFromSubscriptionLambda = new SqsEventSource(AddDeleteContentPlanFromSubscriptionQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const eventSourceForAddDeleteContentPlanFromSubscriptionLambdaDLQ = new SqsEventSource(AddDeleteContentPlanFromSubscriptionQueueDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    AddDeleteContentPlanFromSubscriptionLambda.addEventSource(eventSourceForAddDeleteContentPlanFromSubscriptionLambda);
+    AddDeleteContentPlanFromSubscriptionLambda.addEventSource(eventSourceForAddDeleteContentPlanFromSubscriptionLambdaDLQ);
+
+    const DeleteSubscriptionPlanBotLambda = new NodejsFunction(that, 'DeleteSubscriptionPlanBotLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'DeleteUserSubscriptionPlanLambda.ts'),
+        handler: 'handler',
+        functionName: 'react-UserSubscriptionPlansBot-Delete-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    DeleteSubscriptionPlanBotLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+
+    //разрешаем пушить лямбдам в очередь добавления контент планов
+    const statementSQStoAddContentPlanPost = new PolicyStatement({
+        resources: [AddDeleteContentPlanFromSubscriptionQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
+
+    DeleteSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
+    AddSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
+    EditSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
+
+    GrantAccessToDDB(
+        [
+            ListUserSubscriptionPlansBotsLambda,
+            AddSubscriptionPlanBotLambda,
+            EditSubscriptionPlanBotLambda,
+            DeleteSubscriptionPlanBotLambda,
+            GetSubscriptionPlanBotLambda,
+            AddDeleteContentPlanFromSubscriptionLambda
+        ],
+        tables
+    );
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

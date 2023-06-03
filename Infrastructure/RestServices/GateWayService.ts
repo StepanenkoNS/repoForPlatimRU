@@ -13,6 +13,7 @@ import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import { createAPIandAuthorizer } from '/opt/DevHelpers/CreateAPIwithAuth';
 
 import { Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class GatewayServiceStack extends Stack {
     restServicesAPI: RestApi;
@@ -25,6 +26,7 @@ export class GatewayServiceStack extends Stack {
             layerARNs: string[];
             lambdaIntegrations: LambdaIntegrations[];
             subDomain: string;
+            role: IRole;
         }
     ) {
         super(scope, id, props);

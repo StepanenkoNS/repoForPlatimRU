@@ -5,10 +5,20 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateContentPlansLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
 
     //Вывод списка
     const ListContentPlansLambda = new NodejsFunction(that, 'ListContentPlansLambda', {
@@ -87,7 +97,8 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -96,6 +107,8 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
     });
 
     //предоставление доступа
+
+    DeleteContentPlanLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     GrantAccessToDDB([ListContentPlansLambda, AddContentPlanLambda, EditContentPlanLambda, DeleteContentPlanLambda, GetContentPlanLambda], tables);
 

@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/17905653812d4d132170000cbfda35328b5ca5f130845f54e86ecf7aedfe454a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/19b58ff66e199911d4086134d90e39ce4e6dbeb232216535f0c410f60c0303ac.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -292,7 +292,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/71cd2cce82d4d3cd3088c8a4916b5326fba9a59acb590d35f1e68ffb9bd60e32.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/3a6c00e308f3bb7b798a860c3c736048509ba396f2903a159d97f6ae09aabc07.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -730,7 +730,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/5835d92b36e70df9dc51f71fb970402d6d01c76732aa4c08efbda2897f543819.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/76f56ddb8103c58902d8add449ad1494f77a889ea4698785f557ca5397ac6731.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -931,42 +931,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "DeleteBotLambdaLogRetention6418DC4F"
-          }
-        ],
-        "/WebRestServiceMain/DeleteBotDataLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteBotDataLambdaServiceRole521DE6F2"
-          }
-        ],
-        "/WebRestServiceMain/DeleteBotDataLambda/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteBotDataLambdaServiceRoleDefaultPolicy1F5512C8"
-          }
-        ],
-        "/WebRestServiceMain/DeleteBotDataLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteBotDataLambda16385280"
-          }
-        ],
-        "/WebRestServiceMain/DeleteBotDataLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteBotDataLambdaLogRetention9E1DF6FF"
-          }
-        ],
-        "/WebRestServiceMain/DeleteBotDataLambda/SqsEventSource:WebRestServiceMainimporteddeleteBotDataQueueforCreateBotsLambdasCF7E4BD3/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteBotDataLambdaSqsEventSourceWebRestServiceMainimporteddeleteBotDataQueueforCreateBotsLambdasCF7E4BD31B527B04"
-          }
-        ],
-        "/WebRestServiceMain/DeleteBotDataLambda/SqsEventSource:WebRestServiceMainimporteddeleteBotDataQueueDLQforCreateBotsLambdas045D3216/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteBotDataLambdaSqsEventSourceWebRestServiceMainimporteddeleteBotDataQueueDLQforCreateBotsLambdas045D32165CB5C99B"
           }
         ],
         "/WebRestServiceMain/ListBotCommandsLambda/ServiceRole/Resource": [
@@ -1545,6 +1509,42 @@
             "data": "DeletePaymentOptionLambdaLogRetentionDA6A51E6"
           }
         ],
+        "/WebRestServiceMain/CascadeDeleteLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CascadeDeleteLambdaServiceRoleE5E2AC12"
+          }
+        ],
+        "/WebRestServiceMain/CascadeDeleteLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CascadeDeleteLambdaServiceRoleDefaultPolicy9FEA31BB"
+          }
+        ],
+        "/WebRestServiceMain/CascadeDeleteLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CascadeDeleteLambdaA9805599"
+          }
+        ],
+        "/WebRestServiceMain/CascadeDeleteLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CascadeDeleteLambdaLogRetention87715DF8"
+          }
+        ],
+        "/WebRestServiceMain/CascadeDeleteLambda/SqsEventSource:WebRestServiceMainimportedCascadeDeleteQueueforCreateCascadeDeleteF0EEFCDD/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CascadeDeleteLambdaSqsEventSourceWebRestServiceMainimportedCascadeDeleteQueueforCreateCascadeDeleteF0EEFCDDEF17CA9B"
+          }
+        ],
+        "/WebRestServiceMain/CascadeDeleteLambda/SqsEventSource:WebRestServiceMainimportedCascadeDeleteQueueforCreateCascadeDeleteDLQ24B22339/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CascadeDeleteLambdaSqsEventSourceWebRestServiceMainimportedCascadeDeleteQueueforCreateCascadeDeleteDLQ24B22339E7A7C749"
+          }
+        ],
         "/WebRestServiceMain/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -1750,7 +1750,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a368b76118cacfa38e2f982a732f8a72ad2c091e9fcc28d43b436aeda855bcfb.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a73882990653d9957917c75f65a8ec0022778ec10c2014e933ec4a9ebea0d7ae.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1972,7 +1972,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/090c8bfc8138f6ffc937027befd85a92bc63950e453cec0cea598e78e4617c25.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c678ba7b15dd954c3514a10e2295f303e9d1c0726d729840fcdd01141d54740d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2962,7 +2962,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/efe48942dd5b597a77eed46802212ff35b72faaa77e14f795aa8aa4297270a4c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/41978149048391c538acec50a69172309a18732e379ed36b86d459ba8b8242c1.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3334,7 +3334,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/409b7be327d39ad8321ad40dea380be18726c6ed6f6aa4145a93ee7537aa54d0.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/fa263e6fed71232208fd69bbf7c0a4089e0adf23944096d241a9bc9e83b1e067.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3463,6 +3463,42 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "EditSubscriptionPlanBotLambdaLogRetention26104E3F"
+          }
+        ],
+        "/WebRestServiceSubscriptions/AddDeleteContentPlanFromSubscription/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDeleteContentPlanFromSubscriptionServiceRole8DC8CA38"
+          }
+        ],
+        "/WebRestServiceSubscriptions/AddDeleteContentPlanFromSubscription/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDeleteContentPlanFromSubscriptionServiceRoleDefaultPolicy9E932054"
+          }
+        ],
+        "/WebRestServiceSubscriptions/AddDeleteContentPlanFromSubscription/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDeleteContentPlanFromSubscription43134AC8"
+          }
+        ],
+        "/WebRestServiceSubscriptions/AddDeleteContentPlanFromSubscription/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDeleteContentPlanFromSubscriptionLogRetention1591DD0F"
+          }
+        ],
+        "/WebRestServiceSubscriptions/AddDeleteContentPlanFromSubscription/SqsEventSource:WebRestServiceSubscriptionsimportedAddDeleteContentPlanFromSubscriptionQueueForCreateSubscriptionProcessorF50BE4F3/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDeleteContentPlanFromSubscriptionSqsEventSourceWebRestServiceSubscriptionsimportedAddDeleteContentPlanFromSubscriptionQueueForCreateSubscriptionProcessorF50BE4F34CE8A5E8"
+          }
+        ],
+        "/WebRestServiceSubscriptions/AddDeleteContentPlanFromSubscription/SqsEventSource:WebRestServiceSubscriptionsimportedAddDeleteContentPlanFromSubscriptionQueueDLQForCreateSubscriptionProcessorE07BACEE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddDeleteContentPlanFromSubscriptionSqsEventSourceWebRestServiceSubscriptionsimportedAddDeleteContentPlanFromSubscriptionQueueDLQForCreateSubscriptionProcessorE07BACEEE9877C3B"
           }
         ],
         "/WebRestServiceSubscriptions/DeleteSubscriptionPlanBotLambda/ServiceRole/Resource": [
@@ -3766,7 +3802,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/521c8618e0e02ed4c2992da7a50d7a90425d57877e5365e2aa2ae6712b8d228a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6133355ec99b8a091d628adc6a3a83b387f3595e5e908b4f555812dedb472217.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4288,7 +4324,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/1301bc316cb65a28888e23013db832d487b64d6a226c744dba331552084d6b54.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0262abcc183551d50ba05c1ad3c389ae7647fbef144761022e058476d56c78db.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -4453,7 +4489,7 @@
               "Function.addToPrincipal (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-iam/lib/grant.js:1:2028)",
               "Import.combinedGrant (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:7700)",
               "Import.grantReadWriteData (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:3546)",
-              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:27:19)",
+              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:23:19)",
               "createAPIandAuthorizer (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/CreateAPIwithAuth.ts:29:21)",
               "new GatewayServiceStack (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/RestServices/GateWayService.ts:42:54)",
               "Object.<anonymous> (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/Launcher.ts:141:33)",
@@ -6540,7 +6576,7 @@
               "Function.addToPrincipal (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-iam/lib/grant.js:1:2028)",
               "Import.combinedGrant (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:7700)",
               "Import.grantReadWriteData (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/node_modules/aws-cdk-lib/aws-dynamodb/lib/table.js:1:3546)",
-              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:27:19)",
+              "GrantAccessToDDB (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/AccessHelper.ts:23:19)",
               "createAPIandAuthorizer (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-CoreLayers/LambdaLayers/Dev/DevHelpers/CreateAPIwithAuth.ts:29:21)",
               "new GatewayServiceStack (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/RestServices/GateWayService.ts:42:54)",
               "Object.<anonymous> (/Users/nick.stepanenko/Projects/TGBotWorkSpace/TGBot-React-Backend/infrastructure/Launcher.ts:155:32)",
@@ -7075,7 +7111,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c5109dd9d5018200f0cdf4a5484a2b259088443d4667ee00f009ba965eb15bb1.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e07fcc038e36934e2730cc76e1f5ef2047ee5563da67fe3bff05cdd2149b4836.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [

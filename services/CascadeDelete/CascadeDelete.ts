@@ -1,24 +1,8 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
-import { SQS } from 'aws-sdk';
-import ksuid from 'ksuid';
+import { ECascadeDeleteTarget, ICascadeDelete } from '/opt/GeneralTypes';
+
 //@ts-ignore
-import { EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
-
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
-
-import { MessageSender } from '/opt/MessageSender';
-
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
-
-import { ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
-//@ts-ignore
-import { MasterManager } from '/opt/MasterManager';
-import { SQSHelper } from '/opt/SQS/SQSHelper';
-import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
-import { DigitalStoreManager } from '/opt/DigitalStoreManager';
-import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
-import { ContentConfigurator } from '/opt/ContentConfigurator';
+import { CascadeDeleteProcessor } from '/opt/CascadeDeleteProcessor';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
@@ -26,6 +10,50 @@ export async function handler(event: SQSEvent): Promise<any> {
     for (const record of event.Records) {
         try {
             console.log('record', record);
+            const request = JSON.parse(record.body) as ICascadeDelete;
+            console.log(request);
+            switch (request.target) {
+                case ECascadeDeleteTarget.IContentPlanPost: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteContentPlanPost(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.IContentPlan: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteContentPlan(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.ITelegramChannel: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteTelegramChannel(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.IUserSubscriptionPlanChannel: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteUserSubsriptionPlanChannel(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.IUserSubscriptionPlanBot: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteUserSubscriptionPlanBot(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.IDigitalStoreItem: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteUserDigitalStoreItem(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.IDigitalStoreCategory: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteUserDigitalStoreCategory(params);
+                    break;
+                }
+                case ECascadeDeleteTarget.IMessagingBot: {
+                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
+                    CascadeDeleteProcessor.DeleteBot(params);
+                    break;
+                }
+            }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);
             batchItemFailures.push({ itemIdentifier: record.messageId });

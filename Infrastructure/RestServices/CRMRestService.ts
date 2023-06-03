@@ -11,6 +11,7 @@ import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
 import { CreateCRMLambdas } from './CRMLambdas/CRM';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class CRMRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -20,22 +21,18 @@ export class CRMRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
         const layers: ILayerVersion[] = [];
         for (const layerARN of props.layerARNs) {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
-        const crmLambdas = CreateCRMLambdas(this, layers, [botsTable]);
+        const crmLambdas = CreateCRMLambdas(this, layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'CRM',

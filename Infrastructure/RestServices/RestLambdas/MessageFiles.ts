@@ -8,11 +8,13 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { Role } from 'aws-cdk-lib/aws-iam';
 
 export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
 
     //Вывод списка
+
     const ListMessageFilesLambda = new NodejsFunction(that, 'ListMessageFilesLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'MessageFiles', 'ListMessageFilesLambda.ts'),
         handler: 'handler',

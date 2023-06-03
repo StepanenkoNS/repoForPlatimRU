@@ -15,6 +15,7 @@ import { CreateUserSubscriptionPlansBotsLambdas } from './RestLambdas/UserSubscr
 import { CreateUserSubscriptionPlansChannelsLambdas } from './RestLambdas/UserSubscriptionPlansChannel';
 
 import { CreateMasterManagerLambdas } from './RestLambdas/MasterManager';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 export class SubscriptionsRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
     constructor(
@@ -23,6 +24,7 @@ export class SubscriptionsRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            role: IRole;
         }
     ) {
         super(scope, id, props);

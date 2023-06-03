@@ -1,14 +1,23 @@
-import { Duration } from 'aws-cdk-lib';
-import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import { ITable, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { PolicyStatement, Effect } from 'aws-cdk-lib/aws-iam';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
 
 export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateUserSubscriptionPlansChannelsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
 
     //Вывод списка
     const ListUserSubscriptionPlansChannelsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansChannelsLambda', {
@@ -87,13 +96,16 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
         },
         layers: layers
     });
+
+    DeleteSubscriptionPlanChannelLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     GrantAccessToDDB(
         [ListUserSubscriptionPlansChannelsLambda, AddSubscriptionPlanChannelLambda, EditSubscriptionPlanChannelLambda, DeleteSubscriptionPlanChannelLambda, GetSubscriptionPlanChannelLambda],

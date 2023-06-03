@@ -5,9 +5,19 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateCalendarMeetingsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
 
     const ListMeetingsLambda = new NodejsFunction(that, 'ListMeetingsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'ListMeetingsLambda.ts'),
@@ -87,7 +97,8 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -130,6 +141,7 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         },
         layers: layers
     });
+    DeleteMeetingLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     GrantAccessToDDB([ListMeetingsLambda, AddMeetingLambda, GetMeetingLambda, EditMeetingLambda, DeleteMeetingLambda, ListMeetingParticipantsLambda, CheckAddMeetingSubscriptionLambda], tables);
 

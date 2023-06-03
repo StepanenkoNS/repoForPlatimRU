@@ -5,10 +5,20 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { PolicyStatement, Effect } from 'aws-cdk-lib/aws-iam';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
 
 export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[], tables: ITable[]) {
     //добавление ресурсов в шлюз
+    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateDigitalStoreCategories', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+
+    const statementSQSCascadeDeleteQueue = new PolicyStatement({
+        resources: [CascadeDeleteQueue.queueArn],
+        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+        effect: Effect.ALLOW
+    });
 
     //Вывод списка
     const ListDigitalStoreCategoriesLambda = new NodejsFunction(that, 'ListDigitalStoreCategoriesLambda', {
@@ -87,13 +97,16 @@ export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[],
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
         },
         layers: layers
     });
+
+    DeleteDigitalStoreCategoryLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     //предоставление доступа
 

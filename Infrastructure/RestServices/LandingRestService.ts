@@ -10,6 +10,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateBotSetLandingLambdas } from './RestLambdas/Landing';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class BotLandingRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -19,6 +20,7 @@ export class BotLandingRestServicesStack extends Stack {
 
         props: StackProps & {
             layerARNs: string[];
+            role: IRole;
         }
     ) {
         super(scope, id, props);

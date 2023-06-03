@@ -12,6 +12,7 @@ import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class PaymentIntegrationsStack extends Stack {
     constructor(
@@ -22,6 +23,7 @@ export class PaymentIntegrationsStack extends Stack {
             certificateARN: string;
             layerARNs: string[];
             enableAPICache: boolean;
+            role: IRole;
         }
     ) {
         super(scope, id, props);
