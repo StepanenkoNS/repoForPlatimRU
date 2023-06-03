@@ -20,29 +20,29 @@ export class PaymentIntegrationsStack extends Stack {
         id: string,
 
         props: StackProps & {
+            layers: ILayerVersion[];
+            lambdaRole: IRole;
             certificateARN: string;
-            layerARNs: string[];
             enableAPICache: boolean;
-            role: IRole;
         }
     ) {
         super(scope, id, props);
 
         const lambdaIntegrations: LambdaIntegrations[] = [];
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
+        // const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
+        // const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
+        //     tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
+        //     globalIndexes: botsIndexes
+        // });
+        // const layers: ILayerVersion[] = [];
+        // for (const layerARN of props.layerARNs) {
+        //     layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
+        // }
 
         const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.paymentIntegrations);
 
-        const modulLambdas = modulBankCallbacksLambdas(this, layers, [botsTable]);
+        const modulLambdas = modulBankCallbacksLambdas(this, props.layers, props.lambdaRole);
         lambdaIntegrations.push({
             rootResource: 'modul_ru',
             lambdas: modulLambdas

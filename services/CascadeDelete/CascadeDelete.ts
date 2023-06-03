@@ -6,53 +6,93 @@ import { CascadeDeleteProcessor } from '/opt/CascadeDeleteProcessor';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
-    console.log(event);
+    //console.log(event);
     for (const record of event.Records) {
         try {
-            console.log('record', record);
             const request = JSON.parse(record.body) as ICascadeDelete;
             console.log(request);
+
+            const paramKeys = { ...(request.keys as any) };
+
             switch (request.target) {
                 case ECascadeDeleteTarget.IContentPlanPost: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteContentPlanPost(params);
+                    await CascadeDeleteProcessor.DeleteContentPlanPost(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IContentPlan: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteContentPlan(params);
+                    await CascadeDeleteProcessor.DeleteContentPlan(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.ITelegramChannel: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteTelegramChannel(params);
+                    await CascadeDeleteProcessor.DeleteTelegramChannel(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IUserSubscriptionPlanChannel: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteUserSubsriptionPlanChannel(params);
+                    await CascadeDeleteProcessor.DeleteUserSubsriptionPlanChannel(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IUserSubscriptionPlanBot: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteUserSubscriptionPlanBot(params);
+                    await CascadeDeleteProcessor.DeleteUserSubscriptionPlanBot(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IDigitalStoreItem: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteUserDigitalStoreItem(params);
+                    await CascadeDeleteProcessor.DeleteUserDigitalStoreItem(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IDigitalStoreCategory: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteUserDigitalStoreCategory(params);
+                    await CascadeDeleteProcessor.DeleteUserDigitalStoreCategory(paramKeys);
                     break;
                 }
+                case ECascadeDeleteTarget.IDigitalStoreCategory_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_DigitalStoreCategories(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.ITelegramFile_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_TelegramFiles(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IPaymentOption_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_PaymentOptions(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.ITelegramChannel_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_Channels(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IUserSubscriptionPlanBot_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_BotSubscriptionPlans(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IUserSubscriptionPlanChannel_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_ChannelSubscriptionPlans(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.ICalendarMeeting_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_CalendarMeetings(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IBotAnalytics_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_Analytics(paramKeys);
+                    break;
+                }
+
+                case ECascadeDeleteTarget.IUserBotProfile_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_Users(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IPaymentInDB_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_Payments(paramKeys);
+                    break;
+                }
+
                 case ECascadeDeleteTarget.IMessagingBot: {
-                    const params = { ...(request.keys as any), ...{ botId: request.botId, masterId: request.masterId } };
-                    CascadeDeleteProcessor.DeleteBot(params);
+                    await CascadeDeleteProcessor.DeleteBot(paramKeys);
                     break;
                 }
+
+                // //
+
+                // await this.DeleteBot_Lists(ECascadeDeleteTarget.IPaymentInDB_ALL, key);
             }
         } catch (error) {
             console.log('Error in processing SQS consumer: ${record.body}', error);

@@ -12,16 +12,16 @@ import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelpe
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
-export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+    // const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
 
-    const statementSQSCascadeDeleteQueue = new PolicyStatement({
-        resources: [CascadeDeleteQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQSCascadeDeleteQueue = new PolicyStatement({
+    //     resources: [CascadeDeleteQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
     //Вывод списка
     const ListChannelsLambda = new NodejsFunction(that, 'ListChannelsLambda', {
@@ -31,6 +31,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -48,6 +49,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -65,6 +67,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -82,9 +85,10 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -92,7 +96,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         layers: layers
     });
 
-    DeleteChannelLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+    //DeleteChannelLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     ///////////миграция пользователей канала
     //очереди сообщений
@@ -124,6 +128,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             migrateChannelSecondQueueURL: migrateChannelSecondQueue.queueUrl,
@@ -144,6 +149,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
@@ -197,7 +203,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         effect: Effect.ALLOW
     });
 
-    MigrateChannelFirstStageLambda.addToRolePolicy(statementSQSforFirstLambda);
+    //MigrateChannelFirstStageLambda.addToRolePolicy(statementSQSforFirstLambda);
 
     //разрешаем втрой лямбде очереди для UpsertBotUser первой лямбде в следующую очередь во флоу и отправлять сообщения назад в ТГ
     const statementSQSforSecondLambda = new PolicyStatement({
@@ -206,11 +212,11 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], tables
         effect: Effect.ALLOW
     });
 
-    MigrateChannelSecondStageLambda.addToRolePolicy(statementSQSforSecondLambda);
+    //MigrateChannelSecondStageLambda.addToRolePolicy(statementSQSforSecondLambda);
 
     //SubscribeToSubscriptionPlanQueue
 
-    GrantAccessToDDB([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda, MigrateChannelFirstStageLambda, MigrateChannelSecondStageLambda], tables);
+    // GrantAccessToDDB([ListChannelsLambda, EditChannelLambda, DeleteChannelLambda, GetChannelLambda, MigrateChannelFirstStageLambda, MigrateChannelSecondStageLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

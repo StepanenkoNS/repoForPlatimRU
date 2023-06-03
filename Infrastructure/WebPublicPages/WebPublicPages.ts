@@ -23,30 +23,21 @@ export class WebPublicPagesStack extends Stack {
 
         props: StackProps & {
             certificateARN: string;
-            layerARNs: string[];
+
             enableAPICache: boolean;
-            role: IRole;
+            layers: ILayerVersion[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         const webTable = Table.fromTableName(this, 'imported-webTable', StaticEnvironment.DynamoDbTables.webTable.name);
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
-
         const webPublicPagesAPI = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.pagesDataSubDomain);
 
-        CreateHelpCenterLambdas(this, webPublicPagesAPI.root.addResource('help-center'), props.enableAPICache, layers, [webTable]);
+        CreateHelpCenterLambdas(this, webPublicPagesAPI.root.addResource('help-center'), props.enableAPICache, props.layers, props.lambdaRole);
 
-        CreatePublicPagesLambdas(this, webPublicPagesAPI.root.addResource('content'), props.enableAPICache, layers, [webTable]);
+        CreatePublicPagesLambdas(this, webPublicPagesAPI.root.addResource('content'), props.enableAPICache, props.layers, props.lambdaRole);
 
-        CreateGetBotLandingLambda(this, webPublicPagesAPI.root.addResource('bot-landing'), props.enableAPICache, layers, [botsTable]);
+        CreateGetBotLandingLambda(this, webPublicPagesAPI.root.addResource('bot-landing'), props.enableAPICache, props.layers, props.lambdaRole);
     }
 }

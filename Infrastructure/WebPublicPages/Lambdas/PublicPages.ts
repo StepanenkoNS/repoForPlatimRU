@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], tables: ITable[]) {
+export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     const getWebPageContentLambda = new NodejsFunction(that, 'GetWebPageContentLambda', {
@@ -15,6 +16,7 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
         handler: 'handler',
         functionName: 'react-Content-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
+        role: lambdaRole,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
@@ -30,6 +32,4 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
 
     const lambdaIntegrationWebPageContent = addLambdaIntegration(getWebPageContentLambda, enableAPICache);
     addMethod(rootResource, undefined, 'GET', lambdaIntegrationWebPageContent, enableAPICache);
-
-    GrantAccessToDDB([getWebPageContentLambda], tables);
 }

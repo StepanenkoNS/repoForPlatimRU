@@ -8,17 +8,17 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
-export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
     const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateContentPlansLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
 
-    const statementSQSCascadeDeleteQueue = new PolicyStatement({
-        resources: [CascadeDeleteQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQSCascadeDeleteQueue = new PolicyStatement({
+    //     resources: [CascadeDeleteQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
     //Вывод списка
     const ListContentPlansLambda = new NodejsFunction(that, 'ListContentPlansLambda', {
@@ -28,6 +28,7 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -45,6 +46,7 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -62,6 +64,7 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -79,6 +82,7 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -96,9 +100,10 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -108,9 +113,9 @@ export function CreateContentPlansLambdas(that: any, layers: ILayerVersion[], ta
 
     //предоставление доступа
 
-    DeleteContentPlanLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+    // DeleteContentPlanLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
-    GrantAccessToDDB([ListContentPlansLambda, AddContentPlanLambda, EditContentPlanLambda, DeleteContentPlanLambda, GetContentPlanLambda], tables);
+    // GrantAccessToDDB([ListContentPlansLambda, AddContentPlanLambda, EditContentPlanLambda, DeleteContentPlanLambda, GetContentPlanLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

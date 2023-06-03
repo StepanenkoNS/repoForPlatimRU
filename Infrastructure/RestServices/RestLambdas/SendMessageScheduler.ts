@@ -9,11 +9,11 @@ import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironm
 import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
-export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const SendMessageSchedulerQueueFirstDLQ = Queue.fromQueueArn(
         that,
         'imported-SendMessageSchedulerQueueFirstDLQ-forSendMessageScheduler',
@@ -46,6 +46,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -70,13 +71,13 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
     targets.addLambdaPermission(eventRuleSendMessages, SendMessageSchedullerFirstStageLambda);
 
     //разрешаем пушить первой лямбде в следующую очередь во флоу
-    const statementSQSforFirstLambda = new PolicyStatement({
-        resources: [SendMessageSchedulerQueueFirst.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQSforFirstLambda = new PolicyStatement({
+    //     resources: [SendMessageSchedulerQueueFirst.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    SendMessageSchedullerFirstStageLambda.addToRolePolicy(statementSQSforFirstLambda);
+    // SendMessageSchedullerFirstStageLambda.addToRolePolicy(statementSQSforFirstLambda);
 
     //Вторая Лямбда - получает из SQS батч с сообщениями в разрезе бот/пользователей и процессит дальше
     const SendMessageSchedullerSecondStageLambda = new NodejsFunction(that, 'SendMessage-Scheduller-Second-Stage', {
@@ -86,6 +87,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
@@ -97,14 +99,14 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         layers: layers
     });
 
-    //разрешаем пушить второй лямбде во вторую очередь
-    const statementSQSforSecondLamda = new PolicyStatement({
-        resources: [SendMessageSchedulerQueueSecond.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // //разрешаем пушить второй лямбде во вторую очередь
+    // const statementSQSforSecondLamda = new PolicyStatement({
+    //     resources: [SendMessageSchedulerQueueSecond.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    SendMessageSchedullerSecondStageLambda.addToRolePolicy(statementSQSforSecondLamda);
+    // SendMessageSchedullerSecondStageLambda.addToRolePolicy(statementSQSforSecondLamda);
 
     //добавляем для второй лямбды event sourcing, ссылающийся на первую очередь
     const eventSourceForSecondStageLambda = new SqsEventSource(SendMessageSchedulerQueueFirst, {
@@ -130,6 +132,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         //reservedConcurrentExecutions: 1,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -155,5 +158,5 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], tables:
     SendMessageSender.addEventSource(eventSourceForSenderStageLambda);
     SendMessageSender.addEventSource(eventSourceForSenderStageLambdaDLQ);
 
-    GrantAccessToDDB([SendMessageSchedullerFirstStageLambda, SendMessageSchedullerSecondStageLambda, SendMessageSender], tables);
+    // GrantAccessToDDB([SendMessageSchedullerFirstStageLambda, SendMessageSchedullerSecondStageLambda, SendMessageSender], tables);
 }

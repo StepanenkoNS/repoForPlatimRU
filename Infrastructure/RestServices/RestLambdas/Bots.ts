@@ -9,19 +9,11 @@ import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironm
 import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
-import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
-export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+
+export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
-
-    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-forCreateBotsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
-
-    const statementSQSCascadeDeleteQueue = new PolicyStatement({
-        resources: [CascadeDeleteQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
 
     const ListBotsLambda = new NodejsFunction(that, 'ListBotsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Bots', 'ListBotsLambda.ts'),
@@ -30,6 +22,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
@@ -49,6 +42,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -67,6 +61,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -85,6 +80,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
@@ -104,6 +100,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
@@ -123,6 +120,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
@@ -142,11 +140,12 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -154,10 +153,10 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], tables: IT
         layers: layers
     });
 
-    DeleteBotLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
-    GrantAccessToRoute53([AddBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
+    // DeleteBotLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+    // GrantAccessToRoute53([AddBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda]);
 
-    GrantAccessToDDB([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda], tables);
+    // GrantAccessToDDB([ListBotsLambda, AddBotLambda, GetBotLambda, EditBotLambda, DeleteBotLambda, RegisterBotLambda, UnRegisterBotLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

@@ -8,11 +8,11 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
-export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForPaymentProcessor', DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn);
 
     const paymentProcessorIncomingRequestQueueDLQ = Queue.fromQueueArn(that, 'imported-PaymentProcessorQueue', DynamicEnvironment.SQS.PaymentProcessorQueue.dlqSQS_arn);
@@ -43,6 +43,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
@@ -64,6 +65,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
@@ -76,21 +78,21 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
         layers: layers
     });
 
-    const statementSQS = new PolicyStatement({
-        resources: [
-            paymentProcessorIncomingRequestQueueDLQ.queueArn,
-            paymentProcessorIncomingRequestQueue.queueArn,
-            paymentProcessorConfirmationQueueDLQ.queueArn,
-            paymentProcessorConfirmationQueue.queueArn,
-            SendMessageSchedulerQueueSecond.queueArn,
-            SubscribeToSubscriptionPlanQueue.queueArn
-        ],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQS = new PolicyStatement({
+    //     resources: [
+    //         paymentProcessorIncomingRequestQueueDLQ.queueArn,
+    //         paymentProcessorIncomingRequestQueue.queueArn,
+    //         paymentProcessorConfirmationQueueDLQ.queueArn,
+    //         paymentProcessorConfirmationQueue.queueArn,
+    //         SendMessageSchedulerQueueSecond.queueArn,
+    //         SubscribeToSubscriptionPlanQueue.queueArn
+    //     ],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    paymentProcessorIncomingRequestsLambda.addToRolePolicy(statementSQS);
-    paymentProcessorincomingConfirmationRequestRequestsLambda.addToRolePolicy(statementSQS);
+    // paymentProcessorIncomingRequestsLambda.addToRolePolicy(statementSQS);
+    // paymentProcessorincomingConfirmationRequestRequestsLambda.addToRolePolicy(statementSQS);
 
     const eventSourceIncomingEvent = new SqsEventSource(paymentProcessorIncomingRequestQueue, {
         enabled: true,
@@ -122,5 +124,5 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], tables: ITa
     paymentProcessorincomingConfirmationRequestRequestsLambda.addEventSource(eventSourceConfirmationEvent);
     paymentProcessorincomingConfirmationRequestRequestsLambda.addEventSource(eventSourceConfirmationEventDlq);
 
-    GrantAccessToDDB([paymentProcessorIncomingRequestsLambda, paymentProcessorincomingConfirmationRequestRequestsLambda], tables);
+    // GrantAccessToDDB([paymentProcessorIncomingRequestsLambda, paymentProcessorincomingConfirmationRequestRequestsLambda], tables);
 }

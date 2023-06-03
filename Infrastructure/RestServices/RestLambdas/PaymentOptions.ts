@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //вывод список опций оплаты
@@ -18,6 +19,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -35,6 +37,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -52,6 +55,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -69,6 +73,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -86,6 +91,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -97,7 +103,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
 
     //Добавление политик
 
-    GrantAccessToDDB([ListPaymentOptionsLambda, AddPaymentOptionLambda, DeletePaymentOptionLambda, EditPaymentOptionLambda, GetPaymentOptionLambda], tables);
+    // GrantAccessToDDB([ListPaymentOptionsLambda, AddPaymentOptionLambda, DeletePaymentOptionLambda, EditPaymentOptionLambda, GetPaymentOptionLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

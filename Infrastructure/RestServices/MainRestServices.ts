@@ -26,8 +26,8 @@ export class MainRestServicesStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layerARNs: string[];
-            role: IRole;
+            layers: ILayerVersion[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
@@ -38,45 +38,41 @@ export class MainRestServicesStack extends Stack {
             tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
             globalIndexes: botsIndexes
         });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
 
-        const botLambdas = CreateBotsLambdas(this, layers, [botsTable]);
+        const botLambdas = CreateBotsLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'Bots',
             lambdas: botLambdas
         });
 
-        const botCommands = CreateBotCommandsLambdas(this, layers, [botsTable]);
+        const botCommands = CreateBotCommandsLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'BotCommands',
             lambdas: botCommands
         });
-        const channelLambdas = CreateChannelsLambdas(this, layers, [botsTable]);
+        const channelLambdas = CreateChannelsLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'Channels',
             lambdas: channelLambdas
         });
 
-        const meetingLambdas = CreateCalendarMeetingsLambdas(this, layers, [botsTable]);
+        const meetingLambdas = CreateCalendarMeetingsLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'CalendarMeeting',
             lambdas: meetingLambdas
         });
 
-        const paymentOptionsLambdas = CreatePaymentOptionsLambdas(this, layers, [botsTable]);
+        const paymentOptionsLambdas = CreatePaymentOptionsLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'PaymentOptions',
             lambdas: paymentOptionsLambdas
         });
 
-        const cascadeDeleteLambdas = CreateCascadeDelete(this, layers, [botsTable]);
+        const cascadeDeleteLambdas = CreateCascadeDelete(this, props.layers, props.lambdaRole);
     }
 }

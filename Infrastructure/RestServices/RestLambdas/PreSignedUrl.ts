@@ -7,8 +7,9 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //Вывод одного элемента
@@ -19,6 +20,7 @@ export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[]
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -28,9 +30,9 @@ export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[]
         layers: layers
     });
 
-    GrantAccessToS3([GetPresignedUrlLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
+    // GrantAccessToS3([GetPresignedUrlLambda], [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]);
 
-    GrantAccessToDDB([GetPresignedUrlLambda], tables);
+    // GrantAccessToDDB([GetPresignedUrlLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

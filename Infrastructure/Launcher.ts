@@ -16,15 +16,15 @@ import { GatewayServiceStack } from './RestServices/GateWayService';
 
 import { PaymentIntegrationsStack } from './PaymentIntegrations/PaymentIntegrations';
 import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
-import { RoleServices } from './RestServices/RoleService/RoleService';
+import { DeploymentHelper } from './RestServices/DeploymentHelper/DeploymentHelperStack';
 
 const app = new App();
 
 const lambdaRestIntegrations: LambdaIntegrations[] = [];
 const lambdaCRMIntegrations: LambdaIntegrations[] = [];
 
-const roleService = new RoleServices(app, StaticEnvironment.StackName.RolesHelperStack.toString(), {
-    stackName: StaticEnvironment.StackName.RolesHelperStack.toString(),
+const roleService = new DeploymentHelper(app, StaticEnvironment.StackName.DeploymentHelperStack.toString(), {
+    stackName: StaticEnvironment.StackName.DeploymentHelperStack.toString(),
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -34,8 +34,8 @@ const roleService = new RoleServices(app, StaticEnvironment.StackName.RolesHelpe
 const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebTokenService.toString(), {
     stackName: StaticEnvironment.StackName.WebTokenService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
-    layers: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -45,9 +45,10 @@ const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebT
 const webPublicPagesStack = new WebPublicPagesStack(app, StaticEnvironment.StackName.WebPublicPages.toString(), {
     stackName: StaticEnvironment.StackName.WebPublicPages.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     enableAPICache: false,
-    role: roleService.lambdaRole,
+
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -59,8 +60,8 @@ webPublicPagesStack.addDependency(tokenService);
 const mainRestServicesStack = new MainRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceMain.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceMain.toString(),
 
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -74,8 +75,8 @@ mainRestServicesStack.addDependency(webPublicPagesStack);
 const filesRestServicesStack = new FilesRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceFiles.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceFiles.toString(),
 
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -88,8 +89,8 @@ filesRestServicesStack.addDependency(mainRestServicesStack);
 const messagesAndPaymentsRestServicesStack = new MessagesAndPaymentsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceMessagesAndPayments.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceMessagesAndPayments.toString(),
 
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -102,8 +103,8 @@ messagesAndPaymentsRestServicesStack.addDependency(filesRestServicesStack);
 const plansAndPostsRestServicesStack = new PlansAndPostsRestServicesStack(app, StaticEnvironment.StackName.WebRestServicePlansAndPosts.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServicePlansAndPosts.toString(),
 
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -116,9 +117,8 @@ plansAndPostsRestServicesStack.addDependency(messagesAndPaymentsRestServicesStac
 
 const subscriptionsRestServicesStack = new SubscriptionsRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceSubscriptions.toString(),
-
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -131,8 +131,8 @@ subscriptionsRestServicesStack.addDependency(plansAndPostsRestServicesStack);
 const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceCRM.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceCRM.toString(),
 
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -144,8 +144,8 @@ cRMRestServicesStack.addDependency(tokenService);
 
 const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceLanding.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceLanding.toString(),
-    role: roleService.lambdaRole,
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
         region: StaticEnvironment.GlobalAWSEnvironment.region
@@ -159,8 +159,8 @@ const gatewayRestServiceStack = new GatewayServiceStack(app, StaticEnvironment.S
     stackName: StaticEnvironment.StackName.WebRestGatewayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     lambdaIntegrations: lambdaRestIntegrations,
-    role: roleService.lambdaRole,
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     subDomain: StaticEnvironment.WebResources.subDomains.apiBackend.backendAPISubdomain,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
@@ -174,8 +174,8 @@ const gatewayCRMServiceStack = new GatewayServiceStack(app, StaticEnvironment.St
     stackName: StaticEnvironment.StackName.WebCRMGatewayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     lambdaIntegrations: lambdaCRMIntegrations,
-    role: roleService.lambdaRole,
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     subDomain: StaticEnvironment.WebResources.subDomains.apiBackend.crmAPISubdomain,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,
@@ -188,8 +188,8 @@ gatewayCRMServiceStack.addDependency(cRMRestServicesStack);
 const paymentIntegrationsStack = new PaymentIntegrationsStack(app, StaticEnvironment.StackName.PaymentIntegrations.toString(), {
     stackName: StaticEnvironment.StackName.PaymentIntegrations.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
-    layerARNs: [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.TypesLayer, DynamicEnvironment.Layers.I18NLayerARN],
-    role: roleService.lambdaRole,
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
     enableAPICache: false,
     env: {
         account: StaticEnvironment.GlobalAWSEnvironment.account,

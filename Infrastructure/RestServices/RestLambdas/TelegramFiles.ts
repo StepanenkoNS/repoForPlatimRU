@@ -79,12 +79,12 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], l
         layers: layers
     });
 
-    GrantAccessToDDB([ListTelegramFilesLambda, EditTelegramFileLambda, DeleteTelegramFileLambda, GetTelegramFileLambda], tables);
+    // GrantAccessToDDB([ListTelegramFilesLambda, EditTelegramFileLambda, DeleteTelegramFileLambda, GetTelegramFileLambda], tables);
 
-    GrantAccessToS3(
-        [ListTelegramFilesLambda, EditTelegramFileLambda, DeleteTelegramFileLambda, GetTelegramFileLambda],
-        [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
-    );
+    // GrantAccessToS3(
+    //     [ListTelegramFilesLambda, EditTelegramFileLambda, DeleteTelegramFileLambda, GetTelegramFileLambda],
+    //     [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
+    // );
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

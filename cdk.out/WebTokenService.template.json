@@ -1,92 +1,5 @@
 {
  "Resources": {
-  "TokenServiceLambdaServiceRoleBC560DEB": {
-   "Type": "AWS::IAM::Role",
-   "Properties": {
-    "AssumeRolePolicyDocument": {
-     "Statement": [
-      {
-       "Action": "sts:AssumeRole",
-       "Effect": "Allow",
-       "Principal": {
-        "Service": "lambda.amazonaws.com"
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "ManagedPolicyArns": [
-     {
-      "Fn::Join": [
-       "",
-       [
-        "arn:",
-        {
-         "Ref": "AWS::Partition"
-        },
-        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-       ]
-      ]
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "WebTokenService/TokenServiceLambda/ServiceRole/Resource"
-   }
-  },
-  "TokenServiceLambdaServiceRoleDefaultPolicy87F48249": {
-   "Type": "AWS::IAM::Policy",
-   "Properties": {
-    "PolicyDocument": {
-     "Statement": [
-      {
-       "Action": [
-        "dynamodb:BatchGetItem",
-        "dynamodb:GetRecords",
-        "dynamodb:GetShardIterator",
-        "dynamodb:Query",
-        "dynamodb:GetItem",
-        "dynamodb:Scan",
-        "dynamodb:ConditionCheckItem",
-        "dynamodb:BatchWriteItem",
-        "dynamodb:PutItem",
-        "dynamodb:UpdateItem",
-        "dynamodb:DeleteItem",
-        "dynamodb:DescribeTable"
-       ],
-       "Effect": "Allow",
-       "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":dynamodb:us-east-1:993738567487:table/bots"
-          ]
-         ]
-        },
-        {
-         "Ref": "AWS::NoValue"
-        }
-       ]
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "PolicyName": "TokenServiceLambdaServiceRoleDefaultPolicy87F48249",
-    "Roles": [
-     {
-      "Ref": "TokenServiceLambdaServiceRoleBC560DEB"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "WebTokenService/TokenServiceLambda/ServiceRole/DefaultPolicy/Resource"
-   }
-  },
   "TokenServiceLambdaA04CF86C": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
@@ -94,18 +7,12 @@
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
      "S3Key": "2c6ea3b48438b73aaccfba7a35f321734a4e8b52c1cf164337717ac93c039aa8.zip"
     },
-    "Role": {
-     "Fn::GetAtt": [
-      "TokenServiceLambdaServiceRoleBC560DEB",
-      "Arn"
-     ]
-    },
+    "Role": "arn:aws:iam::993738567487:role/LambdaProjectRole",
     "Environment": {
      "Variables": {
       "accessTokenExpirationMinutes": "5",
       "refreshTokenExpirationDays": "365",
       "AllowUsers": "",
-      "fifo_queues": "false",
       "LOG_LEVEL": "info",
       "NODE_ENV": "production",
       "botFatherId": "5645439521",
@@ -134,17 +41,13 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:669",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:396",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:351",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:677",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:404",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:354",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:63"
     ],
     "Runtime": "nodejs16.x"
    },
-   "DependsOn": [
-    "TokenServiceLambdaServiceRoleDefaultPolicy87F48249",
-    "TokenServiceLambdaServiceRoleBC560DEB"
-   ],
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
     "aws:asset:path": "asset.2c6ea3b48438b73aaccfba7a35f321734a4e8b52c1cf164337717ac93c039aa8",
@@ -1173,7 +1076,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hQ6Bpu5YhTsCqop2RSb0SaOKqTkCo6r8vSRmwKQe/F8fPz85Uvr3LyQguPFblaVzrvey2DtRJFMjkW4Ui5HZdDWZfws5SiUeWmxSW3iqnyQoNRnYF1Sg+vm2KOdVaXSMdUC94tgNmdCyzGAKXc69O6ObAKAZ52YWCu2osxtZo5sB6UVPFckVVgQ5tegCNrsDhBa6yWyWB4NlljU42HjBTirx1YoFNTVcTquPtEwsDV8n7AH4nT87W6A5UxuQN3fcyNBnwF4fCvIbk+kEWZEDbDZj0+olF6RzcYQ1No20Vs/+uetGSd/g6k11WoKK2HBpGtEXX9yLtMTq+CTwb+/Su8WFMz47MI/GH5i2ddYltL+KvyiO/nKcTGc7oyFqP27AybVAWQ/wBgm2WkCkCAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hQ6Bpu5YhTsCqop2RSb0SaOKqTkCo6r8vSRmwKQe/F/vl2c5Uvr3LyQguPFblaVzrvey2DtRJFMjkW4Ui5HZdDWZfws5SiUeWmxSW3iqnyQqe7YAZHcsshsDl3KsTujkwikEqu49ve1cEnGNrNHNgvaipYrmiqkCHNhVoMLIrqMZYmmJOtVbXpEyoF9DoChxe4Cq7VTIJPbus0UnzgJlS5K0TC2xquprgEG+fWBi4SkYD+J08db9Gd6AyJm/ovpfBZMBfHIR5DWmyB1mQAW03YFL1E4tP5+AOa2gabauY/XfVi5a8w9eZ7LICFbXlYBjRFl3fi7Tr2PHtgefGPr1rfBjTsyPzSPyheUtnXWLbi/ir8sgv5+lEhjM6stbjNqxMG5TFEH8AYF6UPykCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

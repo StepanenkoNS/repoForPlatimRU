@@ -8,9 +8,9 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
-import { Role } from 'aws-cdk-lib/aws-iam';
+import { IRole, Role } from 'aws-cdk-lib/aws-iam';
 
-export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //Вывод списка
@@ -22,6 +22,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -39,6 +40,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -56,6 +58,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -73,6 +76,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -90,6 +94,7 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -99,12 +104,12 @@ export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], ta
         layers: layers
     });
 
-    GrantAccessToDDB([ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda], tables);
+    // GrantAccessToDDB([ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda], tables);
 
-    GrantAccessToS3(
-        [ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda],
-        [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
-    );
+    // GrantAccessToS3(
+    //     [ListMessageFilesLambda, AddMessageFileLambda, EditMessageFileLambda, DeleteMessageFileLambda, GetMessageFileLambda],
+    //     [StaticEnvironment.S3.buckets.botsBucketName, StaticEnvironment.S3.buckets.tempUploadsBucketName]
+    // );
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

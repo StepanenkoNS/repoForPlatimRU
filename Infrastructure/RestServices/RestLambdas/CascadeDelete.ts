@@ -10,10 +10,10 @@ import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from '/opt/
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 
-export function CreateCascadeDelete(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateCascadeDelete(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
     const DeleteScheduledPostQueue = Queue.fromQueueArn(
         that,
@@ -25,19 +25,17 @@ export function CreateCascadeDelete(that: any, layers: ILayerVersion[], tables: 
 
     const CascadeDeleteQueueDLQ = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueueDLQ-forCreateCascadeDelete', DynamicEnvironment.SQS.CascadeDeleteQueue.dlqSQS_arn);
 
-    const cascadeDeleteTopic = Topic.fromTopicArn(that, 'imported-CascadeDeleteTopic-forCreateCascadeDelete', DynamicEnvironment.SNS.CascadeDeleteTopic);
+    // const statementSQS = new PolicyStatement({
+    //     resources: [DeleteScheduledPostQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    const statementSQS = new PolicyStatement({
-        resources: [DeleteScheduledPostQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
-
-    const statementSNS = new PolicyStatement({
-        resources: [cascadeDeleteTopic.topicArn],
-        actions: ['sns:piblish'],
-        effect: Effect.ALLOW
-    });
+    // const statementSNS = new PolicyStatement({
+    //     resources: [cascadeDeleteTopic.topicArn],
+    //     actions: ['sns:piblish'],
+    //     effect: Effect.ALLOW
+    // });
 
     const CascadeDeleteLambda = new NodejsFunction(that, 'CascadeDeleteLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CascadeDelete', 'CascadeDelete.ts'),
@@ -46,12 +44,13 @@ export function CreateCascadeDelete(that: any, layers: ILayerVersion[], tables: 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl,
-            cascadeDeleteTopic: cascadeDeleteTopic.topicArn
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -59,8 +58,8 @@ export function CreateCascadeDelete(that: any, layers: ILayerVersion[], tables: 
         layers: layers
     });
 
-    CascadeDeleteLambda.addToRolePolicy(statementSQS);
-    CascadeDeleteLambda.addToRolePolicy(statementSNS);
+    // CascadeDeleteLambda.addToRolePolicy(statementSQS);
+    // CascadeDeleteLambda.addToRolePolicy(statementSNS);
 
     const eventSourceForCascadeDeleteLambda = new SqsEventSource(CascadeDeleteQueue, {
         enabled: true,
@@ -76,6 +75,4 @@ export function CreateCascadeDelete(that: any, layers: ILayerVersion[], tables: 
 
     CascadeDeleteLambda.addEventSource(eventSourceForCascadeDeleteLambda);
     CascadeDeleteLambda.addEventSource(eventSourceForCascadeDeleteLambdaDLQ);
-
-    GrantAccessToDDB([CascadeDeleteLambda], tables);
 }

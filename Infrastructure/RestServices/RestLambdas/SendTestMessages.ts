@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //Отправка сообщения себе
@@ -18,6 +19,7 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -35,6 +37,7 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -52,6 +55,7 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -61,7 +65,7 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], ta
         layers: layers
     });
 
-    GrantAccessToDDB([SendTestMessageLambda, SendTestFileLambda, SendDirectMessageFromAdminLambda], tables);
+    //GrantAccessToDDB([SendTestMessageLambda, SendTestFileLambda, SendDirectMessageFromAdminLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

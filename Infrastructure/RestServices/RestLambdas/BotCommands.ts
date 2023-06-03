@@ -6,14 +6,16 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     const ListBotCommandsLambda = new NodejsFunction(that, 'ListBotCommandsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'BotCommands', 'ListBotCommandsLambda.ts'),
         handler: 'handler',
         functionName: 'react-BotCommands-List-Lambda',
+        role: lambdaRole,
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -30,6 +32,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tab
     const GetBotCommandLambda = new NodejsFunction(that, 'GetBotCommandLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'BotCommands', 'GetBotCommandLambda.ts'),
         handler: 'handler',
+        role: lambdaRole,
         functionName: 'react-BotCommands-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
@@ -51,6 +54,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tab
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -68,6 +72,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tab
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
@@ -87,6 +92,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tab
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -95,8 +101,6 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], tab
         },
         layers: layers
     });
-
-    GrantAccessToDDB([ListBotCommandsLambda, AddBotCommandLambda, GetBotCommandLambda, EditBotCommandLambda, DeleteBotCommandLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

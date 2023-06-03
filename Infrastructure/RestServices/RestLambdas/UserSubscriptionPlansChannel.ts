@@ -5,20 +5,10 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
-import { PolicyStatement, Effect } from 'aws-cdk-lib/aws-iam';
+import { PolicyStatement, Effect, IRole } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 
-export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
-    //добавление ресурсов в шлюз
-
-    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateUserSubscriptionPlansChannelsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
-
-    const statementSQSCascadeDeleteQueue = new PolicyStatement({
-        resources: [CascadeDeleteQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
-
+export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //Вывод списка
     const ListUserSubscriptionPlansChannelsLambda = new NodejsFunction(that, 'ListUserSubscriptionPlansChannelsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'ListUserSubscriptionPlansLambda.ts'),
@@ -27,6 +17,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -44,6 +35,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -61,6 +53,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -78,6 +71,7 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -95,9 +89,10 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -105,12 +100,12 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         layers: layers
     });
 
-    DeleteSubscriptionPlanChannelLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+    // DeleteSubscriptionPlanChannelLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
-    GrantAccessToDDB(
-        [ListUserSubscriptionPlansChannelsLambda, AddSubscriptionPlanChannelLambda, EditSubscriptionPlanChannelLambda, DeleteSubscriptionPlanChannelLambda, GetSubscriptionPlanChannelLambda],
-        tables
-    );
+    // GrantAccessToDDB(
+    //     [ListUserSubscriptionPlansChannelsLambda, AddSubscriptionPlanChannelLambda, EditSubscriptionPlanChannelLambda, DeleteSubscriptionPlanChannelLambda, GetSubscriptionPlanChannelLambda],
+    //     tables
+    // );
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

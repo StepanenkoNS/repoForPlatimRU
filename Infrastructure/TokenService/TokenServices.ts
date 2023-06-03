@@ -20,7 +20,7 @@ export class TokenServiceStack extends Stack {
         props: StackProps & {
             certificateARN: string;
             layers: ILayerVersion[];
-            role: IRole;
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
@@ -39,6 +39,7 @@ export class TokenServiceStack extends Stack {
             functionName: this.stackName + '-Lambda',
             runtime: StaticEnvironment.LambdaSettinds.runtime,
             logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+            role: props.lambdaRole,
             environment: {
                 accessTokenExpirationMinutes: StaticEnvironment.TokenService.accessTokenExpirationMinutes.toString(),
                 refreshTokenExpirationDays: StaticEnvironment.TokenService.refreshTokenExpirationDays.toString(),

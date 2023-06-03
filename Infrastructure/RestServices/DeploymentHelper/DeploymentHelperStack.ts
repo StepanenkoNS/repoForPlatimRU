@@ -13,7 +13,7 @@ import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import { CreateCRMLambdas } from './CRMLambdas/CRM';
 import { IRole, Role } from 'aws-cdk-lib/aws-iam';
 
-export class RoleServices extends Stack {
+export class DeploymentHelper extends Stack {
     lambdaRole: IRole;
     layers: ILayerVersion[];
     constructor(

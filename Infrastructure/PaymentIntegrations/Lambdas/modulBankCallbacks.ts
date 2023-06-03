@@ -7,12 +7,12 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
-export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'ModulPaymentCallBack.ts'),
         handler: 'handler',
@@ -20,6 +20,7 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], ta
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
 
@@ -33,8 +34,6 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], ta
         },
         layers: layers
     });
-
-    GrantAccessToDDB([ModulPaymentCallBackLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
 

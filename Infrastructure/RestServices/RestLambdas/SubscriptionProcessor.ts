@@ -9,11 +9,11 @@ import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironm
 import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
-export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const expireSubscriptionQueue = Queue.fromQueueArn(
         that,
         'imported-expireSubscriptionQueue-ForCreateSubscriptionProcessor',
@@ -88,6 +88,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         memorySize: 256,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
@@ -106,6 +107,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         memorySize: 256,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
@@ -154,6 +156,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
@@ -174,6 +177,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
@@ -187,23 +191,23 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         layers: layers
     });
 
-    const statementSQSmessage = new PolicyStatement({
-        resources: [SendMessageSchedulerQueueSecond.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQSmessage = new PolicyStatement({
+    //     resources: [SendMessageSchedulerQueueSecond.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    const statementSQS_ContentPlanQueue = new PolicyStatement({
-        resources: [SubscribeToContentPlanQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQS_ContentPlanQueue = new PolicyStatement({
+    //     resources: [SubscribeToContentPlanQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQSmessage);
-    SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQSmessage);
+    // SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQSmessage);
+    // SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQSmessage);
 
-    SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQS_ContentPlanQueue);
-    SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQS_ContentPlanQueue);
+    // SubscriptionProcessorContentPlanLambda.addToRolePolicy(statementSQS_ContentPlanQueue);
+    // SubscriptionProcessorSubscriptionPlanLambda.addToRolePolicy(statementSQS_ContentPlanQueue);
 
     const subscriptionEvent = new SqsEventSource(SubscribeToSubscriptionPlanQueue, {
         enabled: true,
@@ -243,6 +247,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         reservedConcurrentExecutions: 1,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
@@ -273,6 +278,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         reservedConcurrentExecutions: 1,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
@@ -295,14 +301,14 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     );
     targets.addLambdaPermission(eventRuleBots, expiteBotSubscriptionLambda);
 
-    const statementSQSexpireSubscriptionQueue = new PolicyStatement({
-        resources: [expireSubscriptionQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQSexpireSubscriptionQueue = new PolicyStatement({
+    //     resources: [expireSubscriptionQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // // });
 
-    expiteBotSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
-    expiteChannelSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
+    // expiteBotSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
+    // expiteChannelSubscriptionLambda.addToRolePolicy(statementSQSexpireSubscriptionQueue);
 
     const PomponaSubscriptionCleanUpProcessor = new NodejsFunction(that, 'PomponaSubscriptionCleanUpProcessor', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'PomponaSubscriptionCleanUpProcessor.ts'),
@@ -312,6 +318,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         reservedConcurrentExecutions: 1,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -341,6 +348,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
         reservedConcurrentExecutions: 1,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -365,17 +373,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     expireUserSubscriptionItemLambda.addEventSource(expireSubscriptionItemEvent);
     expireUserSubscriptionItemLambda.addEventSource(expireSubscriptionItemEventDLQ);
 
-    GrantAccessToDDB(
-        [
-            SubscriptionProcessorContentPlanLambda,
-            SubscriptionProcessorSubscriptionPlanLambda,
-            PomponaSubscriptionCleanUpProcessor,
-            SubscriptionProcessorAddScheduledPostLambda,
-            SubscriptionProcessorDeleteScheduledPostLambda,
-            expireUserSubscriptionItemLambda,
-            expiteBotSubscriptionLambda,
-            expiteChannelSubscriptionLambda
-        ],
-        tables
-    );
+    // GrantAccessToDDB(
+    //     [
+    //         SubscriptionProcessorContentPlanLambda,
+    //         SubscriptionProcessorSubscriptionPlanLambda,
+    //         PomponaSubscriptionCleanUpProcessor,
+    //         SubscriptionProcessorAddScheduledPostLambda,
+    //         SubscriptionProcessorDeleteScheduledPostLambda,
+    //         expireUserSubscriptionItemLambda,
+    //         expiteBotSubscriptionLambda,
+    //         expiteChannelSubscriptionLambda
+    //     ],
+    //     tables
+    // );
 }

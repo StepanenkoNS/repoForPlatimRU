@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //Вывод списка
@@ -18,6 +19,7 @@ export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], t
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -34,6 +36,7 @@ export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], t
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -44,7 +47,7 @@ export function CreateBotSetLandingLambdas(that: any, layers: ILayerVersion[], t
     });
     //предоставление доступа
 
-    GrantAccessToDDB([UpdateBotLandingPage, GetBotLandingPrivateLambda], tables);
+    //GrantAccessToDDB([UpdateBotLandingPage, GetBotLandingPrivateLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

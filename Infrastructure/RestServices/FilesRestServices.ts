@@ -22,7 +22,7 @@ export class FilesRestServicesStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layerARNs: string[];
+            layers: ILayerVersion[];
             lambdaRole: IRole;
         }
     ) {
@@ -35,22 +35,18 @@ export class FilesRestServicesStack extends Stack {
         //     tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
         //     globalIndexes: botsIndexes
         // });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
 
         // const messageFilesLambdas = CreateMessageFilesLambdas(this, layers, [botsTable]);
         // this.lambdaIntegrations.push({
         //     rootResource: 'MessageFiles',
         //     lambdas: messageFilesLambdas
         // });
-        const telegramFilesLambdas = CreateTelegramFilesLambdas(this, layers, props.lambdaRole);
+        const telegramFilesLambdas = CreateTelegramFilesLambdas(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'TelegramFiles',
             lambdas: telegramFilesLambdas
         });
-        const preSignedUrlLambdas = CreateGetPresignedUrlsLambdas(this, layers, props.lambdaRole);
+        const preSignedUrlLambdas = CreateGetPresignedUrlsLambdas(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'PreSignedUrls',
             lambdas: preSignedUrlLambdas

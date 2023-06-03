@@ -27,50 +27,40 @@ export class MessagesAndPaymentsRestServicesStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layerARNs: string[];
-            role: IRole;
+            layers: ILayerVersion[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
         // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
-
-        const sendMessagesLambas = CreateSendMessagesLambdas(this, layers, [botsTable]);
+        const sendMessagesLambas = CreateSendMessagesLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'SendTestMessage',
             lambdas: sendMessagesLambas
         });
 
-        const digitalStoreCategoryLambda = CreateDigitalStoreCategories(this, layers, [botsTable]);
+        const digitalStoreCategoryLambda = CreateDigitalStoreCategories(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'DigitalStoreCategories',
             lambdas: digitalStoreCategoryLambda
         });
 
-        const digitalStoreItemsLambdas = CreateDigitalStoreItems(this, layers, [botsTable]);
+        const digitalStoreItemsLambdas = CreateDigitalStoreItems(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'DigitalStoreItems',
             lambdas: digitalStoreItemsLambdas
         });
 
-        SendMessageScheduler(this, layers, [botsTable]);
+        SendMessageScheduler(this, props.layers, props.lambdaRole);
 
-        PaymentProcessor(this, layers, [botsTable]);
+        PaymentProcessor(this, props.layers, props.lambdaRole);
 
-        CreateSubscriptionProcessor(this, layers, [botsTable]);
+        CreateSubscriptionProcessor(this, props.layers, props.lambdaRole);
 
-        const modulLambdas = PaymentsModul(this, layers, [botsTable]);
+        const modulLambdas = PaymentsModul(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'modul_ru',
             lambdas: modulLambdas

@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     const GetBotLandingPublicLambda = new NodejsFunction(that, 'GetBotLandingPublic', {
@@ -16,6 +17,7 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
         functionName: 'react-BotLanding-GetPublic-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        role: lambdaRole,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -28,6 +30,4 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
 
     const lambdaIntegrationWebPageContent = addLambdaIntegration(GetBotLandingPublicLambda, enableAPICache);
     addMethod(rootResource, undefined, 'GET', lambdaIntegrationWebPageContent, enableAPICache);
-
-    GrantAccessToDDB([GetBotLandingPublicLambda], tables);
 }

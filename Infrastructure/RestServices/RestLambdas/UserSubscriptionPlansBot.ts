@@ -8,20 +8,19 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
-export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
-    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateUserSubscriptionPlansBotsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+    // const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateUserSubscriptionPlansBotsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
 
-    const statementSQSCascadeDeleteQueue = new PolicyStatement({
-        resources: [CascadeDeleteQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
-    CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl;
+    // const statementSQSCascadeDeleteQueue = new PolicyStatement({
+    //     resources: [CascadeDeleteQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
     const AddDeleteContentPlanFromSubscriptionQueue = Queue.fromQueueArn(
         that,
@@ -43,6 +42,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -60,6 +60,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -77,6 +78,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
@@ -95,6 +97,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
@@ -112,6 +115,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -143,10 +147,11 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl,
-            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -154,30 +159,30 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         layers: layers
     });
 
-    DeleteSubscriptionPlanBotLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+    //DeleteSubscriptionPlanBotLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     //разрешаем пушить лямбдам в очередь добавления контент планов
-    const statementSQStoAddContentPlanPost = new PolicyStatement({
-        resources: [AddDeleteContentPlanFromSubscriptionQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQStoAddContentPlanPost = new PolicyStatement({
+    //     resources: [AddDeleteContentPlanFromSubscriptionQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
-    DeleteSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
-    AddSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
-    EditSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
+    // DeleteSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
+    // AddSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
+    // EditSubscriptionPlanBotLambda.addToRolePolicy(statementSQStoAddContentPlanPost);
 
-    GrantAccessToDDB(
-        [
-            ListUserSubscriptionPlansBotsLambda,
-            AddSubscriptionPlanBotLambda,
-            EditSubscriptionPlanBotLambda,
-            DeleteSubscriptionPlanBotLambda,
-            GetSubscriptionPlanBotLambda,
-            AddDeleteContentPlanFromSubscriptionLambda
-        ],
-        tables
-    );
+    // GrantAccessToDDB(
+    //     [
+    //         ListUserSubscriptionPlansBotsLambda,
+    //         AddSubscriptionPlanBotLambda,
+    //         EditSubscriptionPlanBotLambda,
+    //         DeleteSubscriptionPlanBotLambda,
+    //         GetSubscriptionPlanBotLambda,
+    //         AddDeleteContentPlanFromSubscriptionLambda
+    //     ],
+    //     tables
+    // );
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

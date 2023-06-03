@@ -20,19 +20,14 @@ export class CRMRestServicesStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layerARNs: string[];
+            layers: ILayerVersion[];
             lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
 
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
-
-        const crmLambdas = CreateCRMLambdas(this, layers, props.lambdaRole);
+        const crmLambdas = CreateCRMLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'CRM',

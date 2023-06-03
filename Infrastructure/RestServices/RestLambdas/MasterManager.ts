@@ -5,8 +5,9 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //Вывод одного элемента
@@ -34,6 +35,7 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -51,6 +53,7 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
@@ -63,7 +66,7 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], t
 
     //Добавление политик
 
-    GrantAccessToDDB([SubscribeToPaidSubscriptionLambda, ListMasterManagerSubscriptionsLambda], tables);
+    //GrantAccessToDDB([SubscribeToPaidSubscriptionLambda, ListMasterManagerSubscriptionsLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     // returnArray.push({

@@ -19,24 +19,24 @@ export class BotLandingRestServicesStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layerARNs: string[];
-            role: IRole;
+            layers: ILayerVersion[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
+        // const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
+        // const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
+        //     tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
+        //     globalIndexes: botsIndexes
+        // });
+        // const layers: ILayerVersion[] = [];
+        // for (const layerARN of props.layerARNs) {
+        //     layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
+        // }
 
-        const landingLambdas = CreateBotSetLandingLambdas(this, layers, [botsTable]);
+        const landingLambdas = CreateBotSetLandingLambdas(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'Landing',
             lambdas: landingLambdas

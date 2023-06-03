@@ -21,31 +21,21 @@ export class PlansAndPostsRestServicesStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layerARNs: string[];
-            role: IRole;
+            layers: ILayerVersion[];
+            lambdaRole: IRole;
         }
     ) {
         super(scope, id, props);
         this.lambdaIntegrations = [];
         // const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
 
-        const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-            tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-            globalIndexes: botsIndexes
-        });
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of props.layerARNs) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
-
-        const contenPlanPostsLamdas = CreateContentPlanPostsLambdas(this, layers, [botsTable]);
+        const contenPlanPostsLamdas = CreateContentPlanPostsLambdas(this, props.layers, props.lambdaRole);
 
         this.lambdaIntegrations.push({
             rootResource: 'ContentPlanPosts',
             lambdas: contenPlanPostsLamdas
         });
-        const contenPlansLamdas = CreateContentPlansLambdas(this, layers, [botsTable]);
+        const contenPlansLamdas = CreateContentPlansLambdas(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'ContentPlans',
             lambdas: contenPlansLamdas

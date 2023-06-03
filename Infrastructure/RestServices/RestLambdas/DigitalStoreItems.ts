@@ -7,19 +7,19 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
-import { PolicyStatement, Effect } from 'aws-cdk-lib/aws-iam';
+import { PolicyStatement, Effect, IRole } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 
-export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
-    const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateDigitalStoreItems', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
+    // const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateDigitalStoreItems', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
 
-    const statementSQSCascadeDeleteQueue = new PolicyStatement({
-        resources: [CascadeDeleteQueue.queueArn],
-        actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-        effect: Effect.ALLOW
-    });
+    // const statementSQSCascadeDeleteQueue = new PolicyStatement({
+    //     resources: [CascadeDeleteQueue.queueArn],
+    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
+    //     effect: Effect.ALLOW
+    // });
 
     //Вывод списка
     const ListDigitalStoreItemsLambda = new NodejsFunction(that, 'ListDigitalStoreItemsLambda', {
@@ -29,6 +29,7 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -46,6 +47,7 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -63,6 +65,7 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -80,6 +83,7 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -97,6 +101,7 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -114,9 +119,10 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
-            CascadeDeleteQueueURL: CascadeDeleteQueue.queueUrl
+            CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -124,14 +130,14 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], tabl
         layers: layers
     });
 
-    DeleteDigitalStoreItemLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
+    //DeleteDigitalStoreItemLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
 
     //предоставление доступа
 
-    GrantAccessToDDB(
-        [ListDigitalStoreItemsLambda, AddDigitalStoreItemLambda, EditDigitalStoreItemLambda, DeleteDigitalStoreItemLambda, GetDigitalStoreItemLambda, ListDigitalStoreItemsForContentPlanPostLambda],
-        tables
-    );
+    // GrantAccessToDDB(
+    //     [ListDigitalStoreItemsLambda, AddDigitalStoreItemLambda, EditDigitalStoreItemLambda, DeleteDigitalStoreItemLambda, GetDigitalStoreItemLambda, ListDigitalStoreItemsForContentPlanPostLambda],
+    //     tables
+    // );
 
     const returnArray: LambdaAndResource[] = [];
 

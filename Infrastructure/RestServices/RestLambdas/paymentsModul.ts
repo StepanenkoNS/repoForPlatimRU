@@ -8,11 +8,11 @@ import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironmen
 import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
-export function PaymentsModul(that: any, layers: ILayerVersion[], tables: ITable[]) {
+export function PaymentsModul(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const ModulPaymentGenerateDataLambda = new NodejsFunction(that, 'ModulPaymentGenerateData', {
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'ModulPaymentGenerateData.ts'),
         handler: 'handler',
@@ -20,6 +20,7 @@ export function PaymentsModul(that: any, layers: ILayerVersion[], tables: ITable
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
 
@@ -34,7 +35,7 @@ export function PaymentsModul(that: any, layers: ILayerVersion[], tables: ITable
         layers: layers
     });
 
-    GrantAccessToDDB([ModulPaymentGenerateDataLambda], tables);
+    //GrantAccessToDDB([ModulPaymentGenerateDataLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

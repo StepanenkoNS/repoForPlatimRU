@@ -6,8 +6,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
 import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], tables: ITable[]) {
+export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     const getHCLangingLambda = new NodejsFunction(that, 'GetHCLandingLambda', {
@@ -15,6 +16,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         handler: 'handler',
         functionName: 'react-HelpCenter-Landing-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
+        role: lambdaRole,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
@@ -36,6 +38,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         handler: 'handler',
         functionName: 'react-HelpCenter-Subcategory-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
+        role: lambdaRole,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
@@ -57,6 +60,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         functionName: 'react-HelpCenter-Article-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        role: lambdaRole,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
@@ -71,5 +75,4 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
 
     const lambdaIntegrationHCArticle = addLambdaIntegration(getHCArticleLambda, enableAPICache);
     addMethod(rootResource, 'article', 'GET', lambdaIntegrationHCArticle, enableAPICache);
-    GrantAccessToDDB([getHCLangingLambda, getHCsubcategoryLambda, getHCArticleLambda], tables);
 }
