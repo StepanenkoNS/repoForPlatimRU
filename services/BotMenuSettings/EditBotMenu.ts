@@ -1,6 +1,6 @@
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-//@ts-ignore
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
 //@ts-ignore
@@ -10,10 +10,12 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { ETelegramBotCommand, IMessagingBotCommand } from '/opt/MessagingBotManagerTypes';
+import { ETelegramBotCommand, IBotMenuSettings, IMessagingBotCommand } from '/opt/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { IBotGeneralKey, IGeneralItemKey } from '/opt/GeneralTypes';
+import { BotMenuSettings } from '/opt/BotMenuSettings';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -25,30 +27,33 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     let bodyObject = ValidateIncomingEventBody(event, [
-        { key: 'id', datatype: 'string' },
         { key: 'botId', datatype: 'number(positiveInteger)' },
-        { key: 'text', datatype: 'string' }
+        { key: 'subscriptionsMenu', datatype: 'object', objectKeys: [] },
+        { key: 'digitalStoreMenu', datatype: 'object', objectKeys: [] },
+        { key: 'meetingsMenu', datatype: 'object', objectKeys: [] },
+        { key: 'feedBackMenu', datatype: 'object', objectKeys: [] },
+        { key: 'languageMenu', datatype: 'object', objectKeys: [] }
     ]);
     if (bodyObject.success === false) {
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
-    if (
-        !Object.values(ETelegramBotCommand)
-            .filter((v) => isNaN(Number(v)))
-            .includes(bodyObject.data.id)
-    ) {
-        console.log('Error: mailformed id');
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
-    }
 
-    const command: IMessagingBotCommand = {
+    const potentialCommand: IBotMenuSettings = {
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
-        id: TextHelper.SanitizeToDirectText(bodyObject.data.id) as any,
-        text: TextHelper.RemoveUnsupportedHTMLTags(bodyObject.data.text)
+        subscriptionsMenu: bodyObject.data.subscriptionsMenu,
+        digitalStoreMenu: bodyObject.data.digitalStoreMenu,
+        meetingsMenu: bodyObject.data.meetingsMenu,
+        feedBackMenu: bodyObject.data.feedBackMenu,
+        languageMenu: bodyObject.data.languageMenu
     };
 
-    const result = await MessagingBotManager.AddMyBotCommand(command);
+    const schemaValidationResult = await SchemaValidator.BotMenuSettings_Validator(potentialCommand);
+    if (schemaValidationResult.success == false || !schemaValidationResult.item) {
+        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+    }
+
+    const result = await BotMenuSettings.UpdateBotMenu(schemaValidationResult.item as any);
 
     const addResult = ParseItemResult(result);
 

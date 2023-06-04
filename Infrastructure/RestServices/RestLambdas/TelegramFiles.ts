@@ -19,6 +19,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], l
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -36,6 +37,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], l
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -53,6 +55,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], l
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -70,6 +73,7 @@ export function CreateTelegramFilesLambdas(that: any, layers: ILayerVersion[], l
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        role: lambdaRole,
         environment: {
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },

@@ -8,32 +8,15 @@ import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironm
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+export function CreateBotMenuSettingsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
-    const ListBotCommandsLambda = new NodejsFunction(that, 'ListBotCommandsLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'BotCommands', 'ListBotCommandsLambda.ts'),
-        handler: 'handler',
-        functionName: 'react-BotCommands-List-Lambda',
-        role: lambdaRole,
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
-        environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
-        },
-        bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
-        },
-        layers: layers
-    });
-
     //Вывод одного элемента
-    const GetBotCommandLambda = new NodejsFunction(that, 'GetBotCommandLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'BotCommands', 'GetBotCommandLambda.ts'),
+    const GetBotMenuSettingsLambda = new NodejsFunction(that, 'GetBotMenuSettingsLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'BotMenuSettings', 'GetBotMenu.ts'),
         handler: 'handler',
         role: lambdaRole,
-        functionName: 'react-BotCommands-Get-Lambda',
+        functionName: 'react-BotMenuSettings-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -47,10 +30,10 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lam
     });
 
     //редактирование
-    const EditBotCommandLambda = new NodejsFunction(that, 'EditBotCommandLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'BotCommands', 'EditBotCommandLambda.ts'),
+    const EditBotMenuSettingsLambda = new NodejsFunction(that, 'EditBotMenuSettingsLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'BotMenuSettings', 'EditBotMenu.ts'),
         handler: 'handler',
-        functionName: 'react-BotCommands-Edit-Lambda',
+        functionName: 'react-BotMenuSettings-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
         timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
@@ -67,19 +50,14 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lam
     });
 
     const returnArray: LambdaAndResource[] = [];
-    returnArray.push({
-        lambda: ListBotCommandsLambda,
-        resource: 'List',
-        httpMethod: 'GET'
-    });
 
     returnArray.push({
-        lambda: GetBotCommandLambda,
+        lambda: GetBotMenuSettingsLambda,
         resource: 'Get',
         httpMethod: 'GET'
     });
     returnArray.push({
-        lambda: EditBotCommandLambda,
+        lambda: EditBotMenuSettingsLambda,
         resource: 'Edit',
         httpMethod: 'PUT'
     });

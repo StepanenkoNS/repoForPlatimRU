@@ -1,14 +1,14 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
+import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { PublicWebPageManager } from '/opt/PublicWebPageManager';
 
 type Page = {
     pagePath: string;
-    locale: ESupportedLanguages;
+    locale: ESupportedLanguage;
     itemName?: string;
     pageId?: string;
 };

@@ -6,11 +6,11 @@ import { CascadeDeleteProcessor } from '/opt/CascadeDeleteProcessor';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];
-    //console.log(event);
+    console.log(event);
     for (const record of event.Records) {
         try {
             const request = JSON.parse(record.body) as ICascadeDelete;
-            console.log(request);
+            //console.log(request);
 
             const paramKeys = { ...(request.keys as any) };
 
@@ -47,6 +47,10 @@ export async function handler(event: SQSEvent): Promise<any> {
                     await CascadeDeleteProcessor.Delete_ALL_DigitalStoreCategories(paramKeys);
                     break;
                 }
+                case ECascadeDeleteTarget.IContentPlan_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_ContentPlans(paramKeys);
+                    break;
+                }
                 case ECascadeDeleteTarget.ITelegramFile_ALL: {
                     await CascadeDeleteProcessor.Delete_ALL_TelegramFiles(paramKeys);
                     break;
@@ -78,6 +82,18 @@ export async function handler(event: SQSEvent): Promise<any> {
 
                 case ECascadeDeleteTarget.IUserBotProfile_ALL: {
                     await CascadeDeleteProcessor.Delete_ALL_Users(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IPaymentInDB_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_Payments(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IPostRates: {
+                    await CascadeDeleteProcessor.DeleteContentPlanPostRates(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IScheduledPosts: {
+                    await CascadeDeleteProcessor.DeleteContentPlanPostSchedules(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IPaymentInDB_ALL: {

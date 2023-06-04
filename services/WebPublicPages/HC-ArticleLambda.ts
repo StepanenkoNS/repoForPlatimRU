@@ -7,13 +7,13 @@ import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParamet
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { defaultLocale, ESupportedLanguages } from '/opt/LocaleTypes';
+import { defaultLocale, ESupportedLanguage } from '/opt/LocaleTypes';
 //@ts-ignore
 import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from '/opt/LambdaHelpers/HCHelper';
 
 type Page = {
     pagePath: string;
-    locale: ESupportedLanguages;
+    locale: ESupportedLanguage;
     itemName?: string;
     pageId?: string;
 };

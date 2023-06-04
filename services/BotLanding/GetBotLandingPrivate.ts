@@ -1,7 +1,7 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguages } from '/opt/LocaleTypes';
+import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
 import { GetLandingSubdomainFromOrigin, SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 

@@ -8,8 +8,8 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { ETelegramBotCommand } from '/opt/MessagingBotManagerTypes';
+import { BotCommands } from '/opt/BotCommands';
+import { ETelegramBotCommand } from '/opt/BotCommandsTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -32,7 +32,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         console.log('Error: mailformed id');
         return ReturnRestApiResult(422, { error: 'Error: mailformed id' }, false, origin, renewedToken);
     }
-    const result = await MessagingBotManager.GetMyBotCommand({
+    const result = await BotCommands.GetMyBotCommand({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
         id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!) as any
