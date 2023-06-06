@@ -77,8 +77,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                             console.log('sending SQS', sqsRequest);
                             await SQSHelper.SendSQSMessage({
                                 QueueUrl: process.env.SubscribeToSubscriptionPlanQueueURL!,
-                                message: sqsRequest,
-                                messageGroupId: 'BOTID#' + sqsRequest.botId.toString() + '#CHATID#' + sqsRequest.chatId
+                                message: sqsRequest
                             });
                         } catch (error) {
                             console.log('Error:IncomingPaymentConfirmationHandler:SubscribeToSubscriptionPlanQueueURL: queue message', error);

@@ -3,7 +3,8 @@ import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionMa
 import { ClusterCount } from '/opt/GeneralTypes';
 
 export async function handler(): Promise<any> {
-    for (let i = 0; i < ClusterCount; i++) {
+    const max = ClusterCount;
+    for (let i = 0; i < max; i++) {
         await MessagingBotSubscriptionManager.SchedullerFirstStage(i);
     }
 }

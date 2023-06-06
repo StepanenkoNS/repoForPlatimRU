@@ -7,10 +7,36 @@ import { LogOut, ReturnResult } from '/opt/AuthHelpers/ReturnResult';
 import { ValidateTokenFromCookies } from '/opt/AuthHelpers/ValidateTokenFromCookies';
 //@ts-ignore
 import { TelegramUserProfile, PomponaRole } from '/opt/AuthTypes';
+import { MasterManager } from '/opt/MasterManager';
+import { RefreshTokenFromCookie } from '/opt/AuthHelpers/RefreshToken';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));
+    // const master = await MasterManager.UpsertMaster({
+    //     masterId: Number(userProfile.id),
+    //     photoUrl: userProfile.photo_url,
+    //     userName: userProfile.username
+    // });
 
+    // if (master.success === false || !master.data) {
+    //     const err = {
+    //         error: JSON.stringify({ error: 'BotManager.GetOrCreate error' })
+    //     };
+    //     console.log('Error:ValidateTokenFromCookies\n', err);
+    //     throw err;
+    // }
+    // masterData = master.data;
+
+    // userProfile.pomponaSubscription = masterData.pomponaSubscription;
+
+    // if (master.data.banned === true) {
+    //     const err = {
+    //         error: JSON.stringify({ error: 'user is banned' })
+    //     };
+    //     console.log('Error:ValidateTokenFromCookies', err);
+    //     throw err;
+    // }
     if (!event) {
         const result = {
             error: 'Error: event is not defined'
@@ -82,6 +108,17 @@ export async function handler(event: APIGatewayEvent) {
             if (validateTokenResult.userProfile.id === 199163834) {
                 role = PomponaRole.superadmin;
             }
+
+            const master = await MasterManager.UpsertMaster({
+                masterId: Number(validateTokenResult.userProfile.id),
+                photoUrl: validateTokenResult.userProfile.photo_url,
+                userName: validateTokenResult.userProfile.username
+            });
+
+            if (master.success === false || !master.data) {
+                return ReturnResult(422, { error: 'master is undefined' }, origin);
+            }
+
             const userProfile: TelegramUserProfile = {
                 id: validateTokenResult.userProfile.id,
                 first_name: validateTokenResult.userProfile.first_name,
@@ -90,15 +127,13 @@ export async function handler(event: APIGatewayEvent) {
                 username: validateTokenResult.userProfile.username,
                 language: validateTokenResult.userProfile.language,
                 role: role,
-                pomponaSubscription: validateTokenResult.userProfile.pomponaSubscription
+                pomponaSubscription: PomponaSubscriptionsProcessor.TurnSubscriptionIntoShort(master.data.pomponaSubscription)
             };
-            if (validateTokenResult.context.renewedAccessToken) {
-                return ReturnResult(201, { userProfile: userProfile }, origin, {
-                    accessToken: validateTokenResult.context.renewedAccessToken
-                });
-            } else {
-                return ReturnResult(200, { userProfile: userProfile }, origin);
-            }
+            const tokens = RefreshTokenFromCookie(userProfile);
+
+            return ReturnResult(201, { userProfile: userProfile }, origin, {
+                accessToken: tokens.accessToken
+            });
         }
     }
 

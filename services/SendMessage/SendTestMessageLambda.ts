@@ -46,7 +46,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const trigger = bodyObject.data.trigger as PostTrigger;
-    let message: ITelegramNaivMessageContent = bodyObject.data.message;
+    const message: ITelegramNaivMessageContent = bodyObject.data.message;
 
     const msgContent = {
         masterId: Number(telegramUser.id),
@@ -55,7 +55,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         contentPlanPostId: TextHelper.SanitizeToDirectText(bodyObject.data.contentPlanPostId),
         interaction: bodyObject.data.interaction,
         message: message,
-        trigger: bodyObject.data.trigger
+        trigger: trigger
     };
 
     const result = await MessageSender.SendTestContentPlanMessage(msgContent);

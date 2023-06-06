@@ -57,7 +57,7 @@
                 "AllowUsers": "",
                 "AddScheduledPostQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionScheduler-Scheduler-AddPost.fifo",
                 "DeleteScheduledPostQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionScheduler-Scheduler-DeletePost.fifo",
-                "SendMessageSchedulerQueueFirstURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-First-Queue.fifo",
+
                 "SendMessageSchedulerQueueSecondURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-Second-Queue.fifo",
                 "migrateChannelFirstQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/migrateChannel-firstStage.fifo",
                 "migrateChannelSecondQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/migrateChannel-secondStage.fifo",
@@ -68,7 +68,8 @@
                 "modulKey": "0DF051D1538CD086EC0A0F52ECFD84F3",
                 "coolDownPeriodMinutes": "0",
                 "AddContentPlanToSubscriptionQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/SubscriptionScheduler-ContentPlanToFromSubscription.fifo",
-                "CascadeDeleteQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/CascadeDeleteQueue"
+                "CascadeDeleteQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/CascadeDeleteQueue",
+                "SendMessageSchedulerQueueFirstURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-First-Queue"
             }
         }
     ]

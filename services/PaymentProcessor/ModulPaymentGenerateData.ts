@@ -29,7 +29,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     try {
         let bodyObject = ValidateIncomingEventBody(event, [
             { key: 'lengthInDays', datatype: 'number(positiveInteger)' },
-            { key: 'subscriptionPlan', datatype: ['PAIDCHANNEL', 'PAIDBOT'] },
+            { key: 'subscriptionPlan', datatype: ['PAIDCHANNEL', 'PAIDBOT', 'BASIC'] },
             { key: 'subscriptionLevel', datatype: 'number(positiveInteger)' },
             { key: 'pricePaid', datatype: 'number(positiveInteger)' },
             { key: 'currency', datatype: SupportedCurrenciesArray }

@@ -25,17 +25,16 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         'imported-SendMessageSchedulerQueueFirst-forSendMessageScheduler',
         DynamicEnvironment.SQS.SendMessageSchedulerQueue.First.basicSQS_arn
     );
+    const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(
+        that,
+        'imported-SendMessageSchedulerQueueSecond-forSendMessageScheduler',
+        DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn
+    );
 
     const SendMessageSchedulerQueueSecondDLQ = Queue.fromQueueArn(
         that,
         'imported-SendMessageSchedulerQueueSecondDLQ-forSendMessageScheduler',
         DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.dlqSQS_arn
-    );
-
-    const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(
-        that,
-        'imported-SendMessageSchedulerQueueSecond-forSendMessageScheduler',
-        DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn
     );
 
     //Первая Лямбда - вызывется EB раз минуту и собирает зашедуленные сообщения для последующей отправки

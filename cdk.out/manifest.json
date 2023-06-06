@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d0e21a1bb6043842fdcbce096d54f7edad802c4d870bf1720f48dc132b5df3e6.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0bc581e54885027d9640c9015adf18c11afc6e20cc3ff516cc3f44f864e4407f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -76,7 +76,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9a96bedee9143854821d1424ea1ae79122524cec65785c5a03cd10d7f97e05e7.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/25f2e0c250f5b5ce47c48038932f2f6807394891a35c8d8faf618e6649c7c7ff.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -340,7 +340,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/1cd755d06f1cd80969951b77b6591da626e267c11f934dcc800f9169f6620bb6.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/fb9b4b34637b0eb17fe075b5e691225a71ea6a269a6522964ec7b19c71b95980.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -719,7 +719,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a741bd678d495b27a8a8771a8bc4710e9cf28714288d1eb8a42e0012c856d65a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/b1c7a8e1dfffc295db33ca62d95786dace95c2bab06485600faa9c41293a8a14.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1139,6 +1139,42 @@
             "data": "EditBotMenuSettingsLambdaLogRetentionD38C743D"
           }
         ],
+        "/WebRestServiceMain/ListNewNotificationsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListNewNotificationsLambdaEE68088F"
+          }
+        ],
+        "/WebRestServiceMain/ListNewNotificationsLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListNewNotificationsLambdaLogRetentionD023A7E4"
+          }
+        ],
+        "/WebRestServiceMain/AddNotificationLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddNotificationLambda90B1785F"
+          }
+        ],
+        "/WebRestServiceMain/AddNotificationLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddNotificationLambdaLogRetention36BFC071"
+          }
+        ],
+        "/WebRestServiceMain/AddNotificationLambda/SqsEventSource:WebRestServiceMainimportednotificationsQueueForCreateNotificationsLambdas91A13A1A/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddNotificationLambdaSqsEventSourceWebRestServiceMainimportednotificationsQueueForCreateNotificationsLambdas91A13A1A7B44553B"
+          }
+        ],
+        "/WebRestServiceMain/AddNotificationLambda/SqsEventSource:WebRestServiceMainimportednotificationsQueueDLQForCreateNotificationsLambdas5D81228C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddNotificationLambdaSqsEventSourceWebRestServiceMainimportednotificationsQueueDLQForCreateNotificationsLambdas5D81228C2734672F"
+          }
+        ],
         "/WebRestServiceMain/CascadeDeleteLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1337,6 +1373,12 @@
             "data": "ExportsOutputFnGetAttEditBotMenuSettingsLambda54B828C0ArnA1EF425B"
           }
         ],
+        "/WebRestServiceMain/Exports/Output{\"Fn::GetAtt\":[\"ListNewNotificationsLambdaEE68088F\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttListNewNotificationsLambdaEE68088FArn054B8752"
+          }
+        ],
         "/WebRestServiceMain/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
@@ -1368,7 +1410,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/347837149c0b7ec58d69ee6f90ead8dfc33c2b7e602a9fbe63532bbfda3b81fe.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/4f01b70c58cf945e8bea22ced78095c32a6c7ce40e522536534fcd94dd5e95cb.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1531,7 +1573,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f4f0aa735dbcc21db93a761b8b02c14066c4432e0b6b6a409ab79fbbf7eae0d9.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/b6e7dd81fd769b8b4e25f2f644859c174bb8d82f7661ffc4c18762db1162873f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2186,7 +2228,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/da0b406d6674f02b9b8ec92a675fd3e73820b05c4bcef7f9c116671cd40e146a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e3fef3266cf82ff94381e3533612e2317ba1ee491ad2dc5b5478f4e77ad3efce.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2439,7 +2481,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/b7e5303b2ce5572dc9624632b2b813b9cde090aaf35fd541cabb4c81ecb83894.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0b782b2e33231212ff357563fc7780430e2ba3c833255245a5e83a63ce103165.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2752,7 +2794,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e337422b2248f518827a621221b306861631f6e02f4a438175fd7d97d3a06dbb.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/634dca740b7431485d7242b0e6af91882f9c2a6af13e808cdf3c06d65870876e.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3095,7 +3137,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/afa834af73f7633ba23523faad6d04d7ce228c9f9b24b7716fc2593f8456fdf9.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/686ae9302982e7cc008af828dc4d702bec1661fae0e25c38fe6c44030c6f946f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3204,7 +3246,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/8a8699c67c6e58dd4a13070a178adb15ff6fccab3d9cfa66396ae92aecc84aad.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a9eaa0a9553123e8ff0407a578aad05eebca07a5ba576b9c74f20c941c11fa04.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3259,7 +3301,7 @@
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A087f742c242164df1ee0c2f9256b57b34"
+            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A0e67a99db68e383ecc49adaa28d3a2d16"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -4022,6 +4064,42 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebRestGatewayServiceGWAPIBotMenuSettingsEditPUT78C2F563"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Notifications/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPINotifications1388921F"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Notifications/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPINotificationsOPTIONS8148C3D0"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Notifications/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPINotificationsList48A9404D"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Notifications/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPINotificationsListOPTIONS341C1F46"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Notifications/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..Notifications.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPINotificationsListGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETNotificationsList9E0B5696"
+          }
+        ],
+        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/Notifications/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebRestGatewayServiceGWAPINotificationsListGETAFBDA682"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/TelegramFiles/Resource": [
@@ -5801,7 +5879,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/998c48687603ce1e7a6c2c6d9dec09509a36ae9e4275683e18bfe64d3a73fbe7.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/399a803966a4e873de4227aadbe3ea3418d7e3cbc776e9e062b943b96eaacaed.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [

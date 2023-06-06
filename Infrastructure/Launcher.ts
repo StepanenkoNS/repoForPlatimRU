@@ -16,7 +16,7 @@ import { GatewayServiceStack } from './RestServices/GateWayService';
 
 import { PaymentIntegrationsStack } from './PaymentIntegrations/PaymentIntegrations';
 import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
-import { DeploymentHelper } from './RestServices/DeploymentHelper/DeploymentHelperStack';
+import { DeploymentHelper } from './DeploymentHelper/DeploymentHelperStack';
 
 const app = new App();
 

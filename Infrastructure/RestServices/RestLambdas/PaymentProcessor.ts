@@ -13,6 +13,7 @@ import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+    const notificationsQueue = Queue.fromQueueArn(that, 'imported-notificationsQueue-ForPaymentProcessor', DynamicEnvironment.SQS.notificationsQueue.basicSQS_arn);
     const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForPaymentProcessor', DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn);
 
     const paymentProcessorIncomingRequestQueueDLQ = Queue.fromQueueArn(that, 'imported-PaymentProcessorQueue', DynamicEnvironment.SQS.PaymentProcessorQueue.dlqSQS_arn);
@@ -48,6 +49,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
+            notificationsQueueURL: notificationsQueue.queueUrl,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -70,6 +72,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
+            notificationsQueueURL: notificationsQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -77,22 +80,6 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
         },
         layers: layers
     });
-
-    // const statementSQS = new PolicyStatement({
-    //     resources: [
-    //         paymentProcessorIncomingRequestQueueDLQ.queueArn,
-    //         paymentProcessorIncomingRequestQueue.queueArn,
-    //         paymentProcessorConfirmationQueueDLQ.queueArn,
-    //         paymentProcessorConfirmationQueue.queueArn,
-    //         SendMessageSchedulerQueueSecond.queueArn,
-    //         SubscribeToSubscriptionPlanQueue.queueArn
-    //     ],
-    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-    //     effect: Effect.ALLOW
-    // });
-
-    // paymentProcessorIncomingRequestsLambda.addToRolePolicy(statementSQS);
-    // paymentProcessorincomingConfirmationRequestRequestsLambda.addToRolePolicy(statementSQS);
 
     const eventSourceIncomingEvent = new SqsEventSource(paymentProcessorIncomingRequestQueue, {
         enabled: true,
@@ -123,6 +110,4 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
 
     paymentProcessorincomingConfirmationRequestRequestsLambda.addEventSource(eventSourceConfirmationEvent);
     paymentProcessorincomingConfirmationRequestRequestsLambda.addEventSource(eventSourceConfirmationEventDlq);
-
-    // GrantAccessToDDB([paymentProcessorIncomingRequestsLambda, paymentProcessorincomingConfirmationRequestRequestsLambda], tables);
 }

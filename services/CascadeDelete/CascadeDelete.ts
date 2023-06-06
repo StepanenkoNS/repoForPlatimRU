@@ -92,12 +92,24 @@ export async function handler(event: SQSEvent): Promise<any> {
                     await CascadeDeleteProcessor.DeleteContentPlanPostRates(paramKeys);
                     break;
                 }
+                case ECascadeDeleteTarget.IPostFeedBacks: {
+                    await CascadeDeleteProcessor.DeleteContentPlanPostFeedbacks(paramKeys);
+                    break;
+                }
                 case ECascadeDeleteTarget.IScheduledPosts: {
                     await CascadeDeleteProcessor.DeleteContentPlanPostSchedules(paramKeys);
                     break;
                 }
                 case ECascadeDeleteTarget.IPaymentInDB_ALL: {
                     await CascadeDeleteProcessor.Delete_ALL_Payments(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.IFeedBack_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_FeedBacks(paramKeys);
+                    break;
+                }
+                case ECascadeDeleteTarget.INotification_ALL: {
+                    await CascadeDeleteProcessor.Delete_ALL_Notifications(paramKeys);
                     break;
                 }
 
