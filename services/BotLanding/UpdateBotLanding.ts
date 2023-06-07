@@ -88,9 +88,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 case EBotLangingElementType.YOUTUBE: {
                     const element: IBotLandingElementYouTubeVideo = {
                         type: EBotLangingElementType.YOUTUBE,
-                        video_id: TextHelper.RemoveUnsupportedHTMLTags(value.video_id),
-                        height: Number(TextHelper.SanitizeToDirectText(value.height)),
-                        width: Number(TextHelper.SanitizeToDirectText(value.width))
+                        video_iframe: TextHelper.SanitizeYouTubeIFrame(value.video_iframe)
                     };
                     return element;
                 }
