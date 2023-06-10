@@ -71,7 +71,7 @@ export async function handler(event: SQSEvent): Promise<any> {
 
         filteredChannels.forEach(async (value, index) => {
             const item = value.item as ITelegramChannelCleaupRequest;
-            const result = await UserSubscriptionPlanChannel.ExpireChannelSubscription(client, {
+            const result = await UserSubscriptionPlanChannel.ProcessFailed_ExpireChannelSubscription(client, {
                 masterId: item.masterId,
                 botId: item.botId,
                 chatId: item.chatId,

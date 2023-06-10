@@ -68,7 +68,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         };
 
         const modulMerchantId = process.env.modulMerchantId!;
+        //
         const modulSuccess_url = process.env.modulSuccess_url!;
+        //const modulSuccess_url = 'https://pay.modulbank.ru/success';
+
         const modulCallback_url = process.env.modulCallback_url!;
 
         const modulKey = process.env.modulKey!;

@@ -240,7 +240,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     SubscriptionProcessorContentPlanLambda.addEventSource(contentEventDLQ);
 
     const expiteChannelSubscriptionLambda = new NodejsFunction(that, 'expiteChannelSubscriptionLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expiteChannelSubscriptionLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'processChannelSubscriptionsToExpireLambda.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Expire-ChannelSubsriptions',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -271,7 +271,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
     targets.addLambdaPermission(eventRuleChannels, expiteChannelSubscriptionLambda);
 
     const expiteBotSubscriptionLambda = new NodejsFunction(that, 'expiteBotSubscriptionLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expiteBotSubscriptionLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'processBotSubscriptionsToExpireLambda.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Expire-BotSubscriptions',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -358,20 +358,38 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         layers: layers
     });
 
+    const expireUserSubscriptionItemDLQLambda = new NodejsFunction(that, 'expireUserSubscriptionItemDLQLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expireUserSubscriptionItemDLQ.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-Expire-expireUserSubscriptionItemDLQ',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        reservedConcurrentExecutions: 1,
+        role: lambdaRole,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     const expireSubscriptionItemEvent = new SqsEventSource(expireSubscriptionQueue, {
         enabled: true,
         reportBatchItemFailures: true,
-        batchSize: 1
+        batchSize: 10
     });
 
     const expireSubscriptionItemEventDLQ = new SqsEventSource(expireSubscriptionQueueDLQ, {
         enabled: false,
         reportBatchItemFailures: true,
-        batchSize: 1
+        batchSize: 10
     });
 
     expireUserSubscriptionItemLambda.addEventSource(expireSubscriptionItemEvent);
-    expireUserSubscriptionItemLambda.addEventSource(expireSubscriptionItemEventDLQ);
+    expireUserSubscriptionItemDLQLambda.addEventSource(expireSubscriptionItemEventDLQ);
 
     // GrantAccessToDDB(
     //     [

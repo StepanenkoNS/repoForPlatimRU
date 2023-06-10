@@ -266,6 +266,23 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], lambdaRole:
         layers: layers
     });
 
+    const GetAdminChatMessagesLambda = new NodejsFunction(that, 'GetAdminChatMessagesLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CRM', 'GetAdminChatMessages.ts'),
+        handler: 'handler',
+        functionName: 'react-CRM-GetAdminChatMessages-Lambda',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        role: lambdaRole,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
     //предоставление доступа
     // GrantAccessToDDB(
     //     [
@@ -373,6 +390,12 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], lambdaRole:
     returnArray.push({
         lambda: ContentPlanPostRates,
         resource: 'ContentPlanPostRates',
+        httpMethod: 'GET'
+    });
+
+    returnArray.push({
+        lambda: GetAdminChatMessagesLambda,
+        resource: 'GetAdminChatMessages',
         httpMethod: 'GET'
     });
 

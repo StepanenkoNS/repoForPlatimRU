@@ -42,10 +42,10 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:714",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:434",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:379",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:70"
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:729",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:446",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:389",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
     ],
     "Runtime": "nodejs16.x"
    },
@@ -233,7 +233,7 @@
     "aws:cdk:path": "WebTokenService/WebTokenService-GWAPI/Account"
    }
   },
-  "WebTokenServiceGWAPIDeployment69CE11EB0f893aafd89a31f187ca2858dfc41bc9": {
+  "WebTokenServiceGWAPIDeployment69CE11EB132c0b844f318d9a0825e2f954b10e91": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -264,7 +264,7 @@
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
     "DeploymentId": {
-     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB0f893aafd89a31f187ca2858dfc41bc9"
+     "Ref": "WebTokenServiceGWAPIDeployment69CE11EB132c0b844f318d9a0825e2f954b10e91"
     },
     "MethodSettings": [
      {
@@ -297,6 +297,7 @@
     "RestApiId": {
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
+    "ApiKeyRequired": false,
     "AuthorizationType": "NONE",
     "Integration": {
      "IntegrationResponses": [
@@ -364,6 +365,7 @@
     "RestApiId": {
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
+    "ApiKeyRequired": false,
     "AuthorizationType": "NONE",
     "Integration": {
      "IntegrationResponses": [
@@ -538,6 +540,7 @@
     "RestApiId": {
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
+    "ApiKeyRequired": false,
     "AuthorizationType": "NONE",
     "Integration": {
      "IntegrationResponses": [
@@ -712,6 +715,7 @@
     "RestApiId": {
      "Ref": "WebTokenServiceGWAPIAFE5A254"
     },
+    "ApiKeyRequired": false,
     "AuthorizationType": "NONE",
     "Integration": {
      "IntegrationResponses": [
@@ -1077,7 +1081,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hQ6Bpu5YhTsCqop2RSb0SaOKqTkCo6r8vSRmwKQe/F/vl2c5Uvr3LyQguPFblaVzrvey2DtRJFMjkW4Ui5HZdDWZfws5SiUeWmxSW3iqnyQqe7YAZHcsshsDl3KsTujkwikEqu49ve1cEnGNrNHNgvaipYrmiqkCHNhVoMLIrqMZYmmJOtVbXpEyoF9DoChxe4Cq7VTIJPbus0UnzgJlS5K0TC2xquprgEG+fWBi4SkYD+J08db9Gd6AyJm/ovpfBZMBfHIR5DWmyB1mQAW03YFL1E4tP5+AOa2gabauY/XfVi5a8w9eZ7LICFbXlYBjRFl3fi7Tr2PHtgefGPr1rfBjTsyPzSPyheUtnXWLbi/ir8sgv5+lEhjM6stbjNqxMG5TFEH8AYF6UPykCAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hQ6BJu5ahnYBVRTsjk3olpYmrOgGhqv++JGXAphz8XuyXZztz+baQswlceKrK07TRB9nvHKiTKJDJdwpFyO37BsyhhL2lEmuW2xQ+vFVOkxW82AMzOpZZDIHLpVcndEtgFKNU9u/f9q4IOMfOaObABtFQxXJNVYEObSrQYGRfUIOxNMWcGq2uSZnQIKDVFTi8wFX262QSenZZq5PmATOlyFsnVtg2dDXBId4+sTBwlYxG8Dt56n6D7khlTN7QfS+jyYi/OAjzBtJkD7IiA9puwaTqJxafzsEdN9C22lYx++9qEB15h68L2WcFKurK0TCiHbphEGnXsePbA8+NfXrX+jCmZ0fmkfhD847OusRuEPFXZc0v5/lMhjOpWetpF1amDcpijD+RuvfpKQIAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

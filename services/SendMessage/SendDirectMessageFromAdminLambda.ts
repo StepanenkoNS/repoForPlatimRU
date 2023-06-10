@@ -34,6 +34,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'chatId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'message', datatype: 'object', objectKeys: [] }
+        // { key: 'userFeedBackId', datatype: 'string' },
+        // { key: 'replyToTelegramMessageId', datatype: 'number(positiveInteger)' }
     ]);
 
     if (bodyObject.success === false) {
