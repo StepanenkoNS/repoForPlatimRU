@@ -8,19 +8,19 @@ const event = {
         'accept-encoding': 'gzip, deflate, br',
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'content-type': 'application/x-www-form-urlencoded',
-        cookie: '_ym_uid=1682772854818099613; _ym_d=1682772854; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUU5qSFdJcDZtcWhteXFLNmVKcG9ZcThXNEoiLCJzdWJzY3JpcHRpb25QbGFuIjoiVFJJQUwiLCJEUyI6IjIwMjMtMDUtMjdUMTU6MjA6NDUuODgxWiIsIkRGIjoiMjAyNC0wNS0yNlQxNToyMDo0NS44ODFaIn0sImlhdCI6MTY4NTIwMDg3NywiZXhwIjoxNzE2NzM2ODc3fQ.pxtmjgLWg0QWn_WgQlp7nEO4peUbc7l9YbBT3x4Cjlc; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsibWFzdGVySWQiOjE5OTE2MzgzNCwiREYiOiIyMDI0LTA1LTI2VDE1OjIwOjQ1Ljg4MVoiLCJpZCI6IjJRTmpIV0lwNm1xaG15cUs2ZUpwb1lxOFc0SiIsImRhdGVQYWlkIjoiMjAyMy0wNS0yN1QxNToyMDo0NS44ODJaIiwic3Vic2NyaXB0aW9uUGxhbiI6IlRSSUFMIiwiRFMiOiIyMDIzLTA1LTI3VDE1OjIwOjQ1Ljg4MVoifSwiZmlyc3RfbmFtZSI6Ik5pY2siLCJ1c2VybmFtZSI6Ikxpa2VBSHVycmljYW5lIiwiaWF0IjoxNjg1MzUxNDY3LCJleHAiOjE2ODUzNTE3Njd9.K6rUi0eVA1XTtWjco0wD4DQVzqXr7inNVPMU2iIRUmc',
+        cookie: 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUW51dVFzdzFWOUx3WXUycFRFRjV2R2IxeDQiLCJzdWJzY3JpcHRpb25QbGFuIjoiVFJJQUwiLCJEUyI6IjIwMjMtMDYtMDVUMjE6NTE6MjguODE0WiIsIkRGIjoiMjAyMy0wNy0wNVQyMTo1MToyOC44MTRaIn0sImlhdCI6MTY4NjAwMzAwOCwiZXhwIjoxNzE3NTM5MDA4fQ.g7DZxj-brBXVLA_g_9jGOLtZH5eWkGqnNV0UJqtvHZU; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJwb21wb25hU3Vic2NyaXB0aW9uIjp7ImlkIjoiMlFzT1Nwdm15MFFVVlZ5WjRGZ29OeEoxdWVhIiwic3Vic2NyaXB0aW9uUGxhbiI6IlBBSURCT1QiLCJEUyI6IjIwMjMtMDYtMDVUMjI6MTM6NDEuMzAzWiIsIkRGIjoiMjAyNC0wNy0wNFQyMjoxMzo0MS4zMDNaIiwic3Vic2NyaXB0aW9uTGV2ZWwiOjJ9LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImlhdCI6MTY4NjU0MzQzNSwiZXhwIjoxNjg2NTQzNzM1fQ.Ixqg6_aH44biHDAXD_V2J5weFoxwOt8rAyeA717Mwyk',
         Host: 'secure-api.pompona.net',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
-        'sec-ch-ua': '"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"',
+        'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"macOS"',
         'sec-fetch-dest': 'empty',
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'cross-site',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
-        'X-Amzn-Trace-Id': 'Root=1-64746d4b-3374ea8332d324ba32220ac9',
-        'X-Forwarded-For': '176.232.63.145',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+        'X-Amzn-Trace-Id': 'Root=1-64869d4c-071458d65e218b0d616b65f9',
+        'X-Forwarded-For': '176.232.62.9',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
     },
@@ -30,20 +30,20 @@ const event = {
         'accept-language': ['en-GB,en-US;q=0.9,en;q=0.8'],
         'content-type': ['application/x-www-form-urlencoded'],
         cookie: [
-            '_ym_uid=1682772854818099613; _ym_d=1682772854; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInVzZXJuYW1lIjoiTGlrZUFIdXJyaWNhbmUiLCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUU5qSFdJcDZtcWhteXFLNmVKcG9ZcThXNEoiLCJzdWJzY3JpcHRpb25QbGFuIjoiVFJJQUwiLCJEUyI6IjIwMjMtMDUtMjdUMTU6MjA6NDUuODgxWiIsIkRGIjoiMjAyNC0wNS0yNlQxNToyMDo0NS44ODFaIn0sImlhdCI6MTY4NTIwMDg3NywiZXhwIjoxNzE2NzM2ODc3fQ.pxtmjgLWg0QWn_WgQlp7nEO4peUbc7l9YbBT3x4Cjlc; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJ6dXpvbmFTdWJzY3JpcHRpb24iOnsibWFzdGVySWQiOjE5OTE2MzgzNCwiREYiOiIyMDI0LTA1LTI2VDE1OjIwOjQ1Ljg4MVoiLCJpZCI6IjJRTmpIV0lwNm1xaG15cUs2ZUpwb1lxOFc0SiIsImRhdGVQYWlkIjoiMjAyMy0wNS0yN1QxNToyMDo0NS44ODJaIiwic3Vic2NyaXB0aW9uUGxhbiI6IlRSSUFMIiwiRFMiOiIyMDIzLTA1LTI3VDE1OjIwOjQ1Ljg4MVoifSwiZmlyc3RfbmFtZSI6Ik5pY2siLCJ1c2VybmFtZSI6Ikxpa2VBSHVycmljYW5lIiwiaWF0IjoxNjg1MzUxNDY3LCJleHAiOjE2ODUzNTE3Njd9.K6rUi0eVA1XTtWjco0wD4DQVzqXr7inNVPMU2iIRUmc'
+            'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUW51dVFzdzFWOUx3WXUycFRFRjV2R2IxeDQiLCJzdWJzY3JpcHRpb25QbGFuIjoiVFJJQUwiLCJEUyI6IjIwMjMtMDYtMDVUMjE6NTE6MjguODE0WiIsIkRGIjoiMjAyMy0wNy0wNVQyMTo1MToyOC44MTRaIn0sImlhdCI6MTY4NjAwMzAwOCwiZXhwIjoxNzE3NTM5MDA4fQ.g7DZxj-brBXVLA_g_9jGOLtZH5eWkGqnNV0UJqtvHZU; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJwb21wb25hU3Vic2NyaXB0aW9uIjp7ImlkIjoiMlFzT1Nwdm15MFFVVlZ5WjRGZ29OeEoxdWVhIiwic3Vic2NyaXB0aW9uUGxhbiI6IlBBSURCT1QiLCJEUyI6IjIwMjMtMDYtMDVUMjI6MTM6NDEuMzAzWiIsIkRGIjoiMjAyNC0wNy0wNFQyMjoxMzo0MS4zMDNaIiwic3Vic2NyaXB0aW9uTGV2ZWwiOjJ9LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImlhdCI6MTY4NjU0MzQzNSwiZXhwIjoxNjg2NTQzNzM1fQ.Ixqg6_aH44biHDAXD_V2J5weFoxwOt8rAyeA717Mwyk'
         ],
         Host: ['secure-api.pompona.net'],
         origin: ['http://localhost:8080'],
         referer: ['http://localhost:8080/'],
-        'sec-ch-ua': ['"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"'],
+        'sec-ch-ua': ['"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"'],
         'sec-ch-ua-mobile': ['?0'],
         'sec-ch-ua-platform': ['"macOS"'],
         'sec-fetch-dest': ['empty'],
         'sec-fetch-mode': ['cors'],
         'sec-fetch-site': ['cross-site'],
-        'User-Agent': ['Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'],
-        'X-Amzn-Trace-Id': ['Root=1-64746d4b-3374ea8332d324ba32220ac9'],
-        'X-Forwarded-For': ['176.232.63.145'],
+        'User-Agent': ['Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'],
+        'X-Amzn-Trace-Id': ['Root=1-64869d4c-071458d65e218b0d616b65f9'],
+        'X-Forwarded-For': ['176.232.62.9'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
@@ -52,54 +52,54 @@ const event = {
     pathParameters: null,
     stageVariables: null,
     requestContext: {
-        resourceId: 'iek9g8',
+        resourceId: '7bw1z2',
         authorizer: {
-            pomponaSubscription:
-                '{"masterId":199163834,"DF":"2024-05-26T15:20:45.881Z","id":"2QNjHWIp6mqhmyqK6eJpoYq8W4J","datePaid":"2023-05-27T15:20:45.882Z","subscriptionPlan":"TRIAL","DS":"2023-05-27T15:20:45.881Z"}',
             role: 'superadmin',
             principalId: '199163834',
             language: 'ru',
+            pomponaSubscription: '{"id":"2QsOSpvmy0QUVVyZ4FgoNxJ1uea","subscriptionPlan":"PAIDBOT","DS":"2023-06-05T22:13:41.303Z","DF":"2024-07-04T22:13:41.303Z","subscriptionLevel":2}',
             integrationLatency: 0,
             id: '199163834',
-            exp: '1685351767',
+            photo_url: 'https://t.me/i/userpic/320/DoQAgE8qIeUTYNunz_mwxXZcwuObFbcdDNXYeIKRBRo.jpg',
+            exp: '1686543735',
             first_name: 'Nick',
-            iat: '1685351467',
+            iat: '1686543435',
             username: 'LikeAHurricane'
         },
         resourcePath: '/SendTestMessage/SendTestMessage',
         httpMethod: 'POST',
-        extendedRequestId: 'FrYD0HdNIAMFpgw=',
-        requestTime: '29/May/2023:09:15:55 +0000',
+        extendedRequestId: 'GY2EEE1LIAMF3FA=',
+        requestTime: '12/Jun/2023:04:21:32 +0000',
         path: '/SendTestMessage/SendTestMessage',
         accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'SecureAPI',
         domainPrefix: 'secure-api',
-        requestTimeEpoch: 1685351755398,
-        requestId: '4589d53b-cfe1-4064-9cb7-d38ee53fe35f',
+        requestTimeEpoch: 1686543692924,
+        requestId: 'f3a906ea-e909-4843-9af6-6c70758d4718',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
             cognitoIdentityId: null,
             caller: null,
-            sourceIp: '176.232.63.145',
+            sourceIp: '176.232.62.9',
             principalOrgId: null,
             accessKey: null,
             cognitoAuthenticationType: null,
             cognitoAuthenticationProvider: null,
             userArn: null,
-            userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
+            userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
             user: null
         },
         domainName: 'secure-api.pompona.net',
-        apiId: 'lqn0tlx6vf'
+        apiId: 'gwzyb9icnh'
     },
-    body: '{"botId":5795087844,"message":{"text":"<p>asdfsadfads</p>\\n","attachments":[],"sendMethod":"sendMessage"},"interaction":{"type":"REQUESTPAY","DigitalStoreItemId":"{\\"digitalStoreCategoryId\\":\\"oH9TW2-UsIO-\\",\\"digitalStoreItemId\\":\\"wzXs8f6r5R88\\"}","buttonCaption":"asdfadsadfsad","DigitalStoreCategoryId":"oH9TW2-UsIO-"},"contentPlanId":"FREEPLAN","contentPlanPostId":"DRAFT","trigger":{"type":"SCHEDULE_DELAY","delay_days":0,"delay_hours":0,"delay_minutes":0}}',
+    body: '{"botId":5645439521,"message":{"text":"<p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><span>regular</span></p><p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><a href=\\"https://pompona.net\\" rel=\\"noopener\\" class=\\"PlaygroundEditorTheme__link\\"><span>link</span></a></p><p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><b><strong class=\\"PlaygroundEditorTheme__textBold\\">bold</strong></b></p><p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><i><em class=\\"PlaygroundEditorTheme__textItalic\\">italic</em></i></p><p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><u><span class=\\"PlaygroundEditorTheme__textUnderline\\">under</span></u></p><p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><s><span class=\\"PlaygroundEditorTheme__textStrikethrough\\">strike</span></s></p><p class=\\"PlaygroundEditorTheme__paragraph\\" dir=\\"ltr\\"><code><span class=\\"PlaygroundEditorTheme__textCode\\">code</span></code></p>","attachments":[],"sendMethod":"sendMessage"},"interaction":{"type":"NONE"},"contentPlanId":"FREEPLAN","contentPlanPostId":"DRAFT","trigger":{"type":"SCHEDULE_DELAY","delay_minutes":0,"delay_hours":0,"delay_days":0}}',
     isBase64Encoded: false
 };
 
 async function main() {
-    handler(event as any, '' as any);
+    handler(event as any);
 }
 
 main();

@@ -20,8 +20,11 @@ import { ETelegramSendMethods } from '/opt/TelegramTypes';
 
 //@ts-ignore
 import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { FeedBack } from '/opt/FeedBack';
+import { EAdminMessageType, IAddAdminMessage } from '/opt/FeedBackTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -42,22 +45,36 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
     }
 
-    const result = await MessageSender.SendPlainMessage({
+    const data: IAddAdminMessage = {
         masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
 
-        message: {
-            text: TextHelper.KeepOnlyTelegramTags(bodyObject.data.message.text),
-            attachments: (bodyObject.data.message.attachments as Array<ITelegramSimpleFile>).map((value) => {
-                return {
-                    id: TextHelper.SanitizeToDirectText(value.id),
-                    name: TextHelper.SanitizeToDirectText(value.name)
-                } as ITelegramSimpleFile;
-            }),
-            sendMethod: bodyObject.data.message.sendMethod
-        },
-        recipientChatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId))
-    });
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        chatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId)),
+        message: bodyObject.data.message,
+        replyToTelegramMessageId: bodyObject.data.replyToTelegramMessageId,
+        userFeedBackId: bodyObject.data.userFeedBackId
+    };
+
+    const answeredMessageType = bodyObject.data.answeredMessageType;
+
+    const result = await FeedBack.ReplyToUserFeedBackFromWeb(data, answeredMessageType);
+
+    // await MessageSender.SendPlainMessage({
+    //     masterId: Number(telegramUser.id),
+    //     botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+
+    //     message: {
+    //         text: TextHelper.KeepOnlyTelegramTags(bodyObject.data.message.text),
+    //         attachments: (bodyObject.data.message.attachments as Array<ITelegramSimpleFile>).map((value) => {
+    //             return {
+    //                 id: TextHelper.SanitizeToDirectText(value.id),
+    //                 name: TextHelper.SanitizeToDirectText(value.name)
+    //             } as ITelegramSimpleFile;
+    //         }),
+    //         sendMethod: bodyObject.data.message.sendMethod
+    //     },
+    //     recipientChatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId))
+    // });
 
     const sendResult = ParseSendMessageResult(result);
 
