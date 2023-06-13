@@ -2,15 +2,10 @@ import { CfnOutput, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
-import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
-import * as DynamicEnvironment from '../../../ReadmeAndConfig/DynamicEnvironment';
-import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
-//@ts-ignore
+import * as DynamicEnvironment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
-import { CreateCRMLambdas } from './CRMLambdas/CRM';
 import { IRole, Role } from 'aws-cdk-lib/aws-iam';
 
 export class DeploymentHelper extends Stack {

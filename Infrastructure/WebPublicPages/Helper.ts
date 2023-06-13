@@ -4,7 +4,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
-import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironment';
 import { ITable } from 'aws-cdk-lib/aws-dynamodb';
 
 export function GrantAccessToDDB(lambdas: NodejsFunction[], tables: ITable[]) {

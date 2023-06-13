@@ -4,11 +4,11 @@ import { ITable, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
-import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
+import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {

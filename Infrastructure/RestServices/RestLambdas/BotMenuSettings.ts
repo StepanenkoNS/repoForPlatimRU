@@ -2,8 +2,8 @@ import { ITable } from 'aws-cdk-lib/aws-dynamodb';
 import { ILayerVersion } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
-import * as DynamicEnvironment from '../../../../ReadmeAndConfig/DynamicEnvironment';
+import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';

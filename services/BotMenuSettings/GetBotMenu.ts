@@ -8,8 +8,6 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { ETelegramBotCommand } from '/opt/MessagingBotManagerTypes';
 import { IBotGeneralKey } from '/opt/GeneralTypes';
 import { BotMenuSettings } from '/opt/BotMenuSettings';
 

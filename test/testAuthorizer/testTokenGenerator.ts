@@ -7,9 +7,9 @@ const event = {
     headers: {
         accept: 'application/json, text/plain, */*',
         'accept-encoding': 'gzip, deflate, br',
-        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
-        'content-type': 'application/json',
-        cookie: 'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUW5ndTlNckJsZmFkQ0RMY0ZZeHY3UFo4Y1kiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNi0wNVQxOTo1NjoxOS43MjlaIiwiREYiOiIyMDIzLTA3LTA1VDE5OjU2OjE5LjcyOVoiLCJzdWJzY3JpcHRpb25MZXZlbCI6MX0sImlhdCI6MTY4NTk5NzQ4MywiZXhwIjoxNjg1OTk3NzgzfQ.Ur_ZfLY3k4vY3Fmw6diYsmLydgUnO9pxeomUfJ5Q1IY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUW5ndTlNckJsZmFkQ0RMY0ZZeHY3UFo4Y1kiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNi0wNVQxOTo1NjoxOS43MjlaIiwiREYiOiIyMDIzLTA3LTA1VDE5OjU2OjE5LjcyOVoiLCJzdWJzY3JpcHRpb25MZXZlbCI6MX0sImlhdCI6MTY4NTk5NzQ4MywiZXhwIjoxNzE3NTMzNDgzfQ.03v1IA3-Svj-Un-GIWIw5W4_fCCpcIf-coOQIc_RRvg',
+        'accept-language': 'en,tr;q=0.9,ru;q=0.8',
+        'content-type': 'application/x-www-form-urlencoded',
+        cookie: '_ym_uid=1685442074515823837; _ym_d=1685442074; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUXNPU3B2bXkwUVVWVnlaNEZnb054SjF1ZWEiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNi0wNVQyMjoxMzo0MS4zMDNaIiwiREYiOiIyMDI0LTA3LTA0VDIyOjEzOjQxLjMwM1oiLCJzdWJzY3JpcHRpb25MZXZlbCI6Mn0sImlhdCI6MTY4NjMxMTEzOSwiZXhwIjoxNzE3ODQ3MTM5fQ.j7utl-9XCDSqd5bfKyw7Fc2Xbc6PN_6HjHecIaSSeIM; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJwb21wb25hU3Vic2NyaXB0aW9uIjp7ImlkIjoiMlFzT1Nwdm15MFFVVlZ5WjRGZ29OeEoxdWVhIiwic3Vic2NyaXB0aW9uUGxhbiI6IlBBSURCT1QiLCJEUyI6IjIwMjMtMDYtMDVUMjI6MTM6NDEuMzAzWiIsIkRGIjoiMjAyNC0wNy0wNFQyMjoxMzo0MS4zMDNaIiwic3Vic2NyaXB0aW9uTGV2ZWwiOjJ9LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImlhdCI6MTY4NjU1NTMwOCwiZXhwIjoxNjg2NTU1NjA4fQ.LuCc0WYFzgBiKsFpZWOHhe9kaZSzrmVyeD038pVk2No',
         Host: 'auth.pompona.net',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
@@ -20,18 +20,18 @@ const event = {
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'cross-site',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-        'X-Amzn-Trace-Id': 'Root=1-647e47d7-1a9b663835954386065a4376',
-        'X-Forwarded-For': '176.232.63.145',
+        'X-Amzn-Trace-Id': 'Root=1-64875122-55e262692a7232936c074782',
+        'X-Forwarded-For': '176.232.62.9',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
     },
     multiValueHeaders: {
         accept: ['application/json, text/plain, */*'],
         'accept-encoding': ['gzip, deflate, br'],
-        'accept-language': ['en-GB,en-US;q=0.9,en;q=0.8'],
-        'content-type': ['application/json'],
+        'accept-language': ['en,tr;q=0.9,ru;q=0.8'],
+        'content-type': ['application/x-www-form-urlencoded'],
         cookie: [
-            'accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUW5ndTlNckJsZmFkQ0RMY0ZZeHY3UFo4Y1kiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNi0wNVQxOTo1NjoxOS43MjlaIiwiREYiOiIyMDIzLTA3LTA1VDE5OjU2OjE5LjcyOVoiLCJzdWJzY3JpcHRpb25MZXZlbCI6MX0sImlhdCI6MTY4NTk5NzQ4MywiZXhwIjoxNjg1OTk3NzgzfQ.Ur_ZfLY3k4vY3Fmw6diYsmLydgUnO9pxeomUfJ5Q1IY; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUW5ndTlNckJsZmFkQ0RMY0ZZeHY3UFo4Y1kiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNi0wNVQxOTo1NjoxOS43MjlaIiwiREYiOiIyMDIzLTA3LTA1VDE5OjU2OjE5LjcyOVoiLCJzdWJzY3JpcHRpb25MZXZlbCI6MX0sImlhdCI6MTY4NTk5NzQ4MywiZXhwIjoxNzE3NTMzNDgzfQ.03v1IA3-Svj-Un-GIWIw5W4_fCCpcIf-coOQIc_RRvg'
+            '_ym_uid=1685442074515823837; _ym_d=1685442074; refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImxhbmd1YWdlIjoicnUiLCJyb2xlIjoic3VwZXJhZG1pbiIsInBvbXBvbmFTdWJzY3JpcHRpb24iOnsiaWQiOiIyUXNPU3B2bXkwUVVWVnlaNEZnb054SjF1ZWEiLCJzdWJzY3JpcHRpb25QbGFuIjoiUEFJREJPVCIsIkRTIjoiMjAyMy0wNi0wNVQyMjoxMzo0MS4zMDNaIiwiREYiOiIyMDI0LTA3LTA0VDIyOjEzOjQxLjMwM1oiLCJzdWJzY3JpcHRpb25MZXZlbCI6Mn0sImlhdCI6MTY4NjMxMTEzOSwiZXhwIjoxNzE3ODQ3MTM5fQ.j7utl-9XCDSqd5bfKyw7Fc2Xbc6PN_6HjHecIaSSeIM; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5MTYzODM0LCJsYW5ndWFnZSI6InJ1Iiwicm9sZSI6InN1cGVyYWRtaW4iLCJwb21wb25hU3Vic2NyaXB0aW9uIjp7ImlkIjoiMlFzT1Nwdm15MFFVVlZ5WjRGZ29OeEoxdWVhIiwic3Vic2NyaXB0aW9uUGxhbiI6IlBBSURCT1QiLCJEUyI6IjIwMjMtMDYtMDVUMjI6MTM6NDEuMzAzWiIsIkRGIjoiMjAyNC0wNy0wNFQyMjoxMzo0MS4zMDNaIiwic3Vic2NyaXB0aW9uTGV2ZWwiOjJ9LCJmaXJzdF9uYW1lIjoiTmljayIsInBob3RvX3VybCI6Imh0dHBzOi8vdC5tZS9pL3VzZXJwaWMvMzIwL0RvUUFnRThxSWVVVFlOdW56X213eFhaY3d1T2JGYmNkRE5YWWVJS1JCUm8uanBnIiwidXNlcm5hbWUiOiJMaWtlQUh1cnJpY2FuZSIsImlhdCI6MTY4NjU1NTMwOCwiZXhwIjoxNjg2NTU1NjA4fQ.LuCc0WYFzgBiKsFpZWOHhe9kaZSzrmVyeD038pVk2No'
         ],
         Host: ['auth.pompona.net'],
         origin: ['http://localhost:8080'],
@@ -43,8 +43,8 @@ const event = {
         'sec-fetch-mode': ['cors'],
         'sec-fetch-site': ['cross-site'],
         'User-Agent': ['Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'],
-        'X-Amzn-Trace-Id': ['Root=1-647e47d7-1a9b663835954386065a4376'],
-        'X-Forwarded-For': ['176.232.63.145'],
+        'X-Amzn-Trace-Id': ['Root=1-64875122-55e262692a7232936c074782'],
+        'X-Forwarded-For': ['176.232.62.9'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
@@ -56,21 +56,21 @@ const event = {
         resourceId: 'b7bro6',
         resourcePath: '/getToken',
         httpMethod: 'POST',
-        extendedRequestId: 'GEApsGS1IAMF5Ow=',
-        requestTime: '05/Jun/2023:20:38:47 +0000',
+        extendedRequestId: 'GamdZFEyoAMFwqQ=',
+        requestTime: '12/Jun/2023:17:08:50 +0000',
         path: '/getToken',
         accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'GetToken',
         domainPrefix: 'auth',
-        requestTimeEpoch: 1685997527378,
-        requestId: 'c26dd906-9959-48ae-8f70-85fbf51b3e32',
+        requestTimeEpoch: 1686589730233,
+        requestId: '6d5db45c-0dc1-4b0f-b664-ee6dc3757304',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
             cognitoIdentityId: null,
             caller: null,
-            sourceIp: '176.232.63.145',
+            sourceIp: '176.232.62.9',
             principalOrgId: null,
             accessKey: null,
             cognitoAuthenticationType: null,
@@ -82,7 +82,7 @@ const event = {
         domainName: 'auth.pompona.net',
         apiId: 'zayyzfynk5'
     },
-    body: '{"id":199163834,"first_name":"Nick","photo_url":"https://t.me/i/userpic/320/DoQAgE8qIeUTYNunz_mwxXZcwuObFbcdDNXYeIKRBRo.jpg","username":"LikeAHurricane","language":"ru","role":"superadmin","pomponaSubscription":{"id":"2Qngu9MrBlfadCDLcFYxv7PZ8cY","subscriptionPlan":"PAIDBOT","DS":"2023-06-05T19:56:19.729Z","DF":"2023-07-05T19:56:19.729Z","subscriptionLevel":1}}',
+    body: '{"id":199163834,"first_name":"Nick","username":"LikeAHurricane","photo_url":"https://t.me/i/userpic/320/DoQAgE8qIeUTYNunz_mwxXZcwuObFbcdDNXYeIKRBRo.jpg","auth_date":1685443639,"hash":"de4a3955c6b4c17cd5af53e95ab18beb68210ffa3b2bfca4f1effc55bb6ab640"}',
     isBase64Encoded: false
 };
 

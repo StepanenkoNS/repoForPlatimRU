@@ -5,7 +5,7 @@ import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { ILayerVersion, LayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
-import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import * as route53 from 'aws-cdk-lib/aws-route53';
@@ -31,7 +31,6 @@ export class TokenServiceStack extends Stack {
         });
 
         const certificate = acm.Certificate.fromCertificateArn(this, 'imported-certificate', props.certificateARN);
-        const botsTable = Table.fromTableName(this, 'imported-BotsTable', StaticEnvironment.DynamoDbTables.botsTable.name);
 
         const TokenServiceLambda = new NodejsFunction(this, 'TokenServiceLambda', {
             entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaTokenService.ts'),
@@ -53,12 +52,12 @@ export class TokenServiceStack extends Stack {
             },
             layers: props.layers
         });
-        botsTable.grantReadWriteData(TokenServiceLambda);
 
         const TokenServiceAPIGW = new apigateway.LambdaRestApi(this, this.stackName + '-GWAPI', {
             restApiName: this.stackName + '-GWAPI',
             handler: TokenServiceLambda,
             proxy: false,
+
             deploy: true,
             deployOptions: {
                 stageName: 'GetToken',

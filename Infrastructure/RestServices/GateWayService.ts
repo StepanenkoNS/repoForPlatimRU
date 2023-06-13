@@ -3,8 +3,8 @@ import { Construct } from 'constructs';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
-import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
-import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
+import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironment';
+import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
@@ -13,7 +13,7 @@ import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import { createAPIandAuthorizer } from '/opt/DevHelpers/CreateAPIwithAuth';
 
 import { Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
-import { IRole } from 'aws-cdk-lib/aws-iam';
+import { IRole, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 
 export class GatewayServiceStack extends Stack {
     restServicesAPI: RestApi;
@@ -33,11 +33,13 @@ export class GatewayServiceStack extends Stack {
     ) {
         super(scope, id, props);
 
-        this.restServicesAPI = createAPIandAuthorizer(this, {
+        const result = createAPIandAuthorizer(this, {
             layers: props.layers,
             certificateARN: props.certificateARN,
             subDomainName: props.subDomain
         });
+
+        this.restServicesAPI = result.restServicesAPI;
 
         let resource: Resource | undefined = undefined;
         for (const item of props.lambdaIntegrations) {
@@ -45,9 +47,20 @@ export class GatewayServiceStack extends Stack {
 
             for (const lambda of item.lambdas) {
                 let res = resource;
+
                 if (lambda.resource) {
                     res = res.addResource(lambda.resource);
                 }
+
+                // lambda.lambda.addPermission('APIGateway', {
+                //     principal: new ServicePrincipal('apigateway.amazonaws.com'),
+                //     sourceArn: this.restServicesAPI.arnForExecuteApi('*')
+                // });
+                // lambda.lambda.addPermission(`${lambda.lambda.functionName}-AuthPermission`, {
+                //     principal: new ServicePrincipal('apigateway.amazonaws.com'),
+                //     sourceArn: result.authorizer.authorizerArn,
+                //     action: 'lambda:InvokeFunction'
+                // });
                 const lambdaIntegration = new apigateway.LambdaIntegration(lambda.lambda, {
                     allowTestInvoke: false
                 });

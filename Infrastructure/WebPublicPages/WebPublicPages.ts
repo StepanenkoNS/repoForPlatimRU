@@ -4,14 +4,14 @@ import { join } from 'path';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
-import * as StaticEnvironment from '../../../ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 import { CreateHelpCenterLambdas } from './Lambdas/HelpCenterLambdas';
 import { CreatePublicPagesLambdas } from './Lambdas/PublicPages';
 import { CreateGetBotLandingLambda } from './Lambdas/BotLandingPublic';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
-import * as DynamicEnvrionment from '../../../ReadmeAndConfig/DynamicEnvironment';
+import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { IRole } from 'aws-cdk-lib/aws-iam';

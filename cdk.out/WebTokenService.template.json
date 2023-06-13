@@ -7,7 +7,7 @@
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
      "S3Key": "0c4ecd80f3d298dd05fa77b0c9b64168ab3e9d24ee369162d11e71abce067210.zip"
     },
-    "Role": "arn:aws:iam::993738567487:role/LambdaProjectRole",
+    "Role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
     "Environment": {
      "Variables": {
       "accessTokenExpirationMinutes": "5",
@@ -26,6 +26,8 @@
       "managementBotTGWebHookSecretToken": "fQWdSALLubGyPkVUi1QpoYwo6OEDG1puT1OqROFVXSVew3vtec4CfRocBlYd",
       "botsTable": "bots",
       "sessionsTable": "telegramSessions",
+      "rawStatsTable": "rawStats",
+      "processedStatsTable": "processedStats",
       "region": "us-east-1",
       "s3BotsBucket": "bots-bucket",
       "allowedOrigins": "http://localhost,http://localhost:8080,http://localhost:8081,https://pompona.net,https://admin.pompona.net,https://*.pompona.net,http://127.0.0.1,pompona.net,*.pompona.net",
@@ -42,9 +44,9 @@
     "FunctionName": "WebTokenService-Lambda",
     "Handler": "index.handler",
     "Layers": [
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:732",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:450",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:391",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:738",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:456",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:395",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
     ],
     "Runtime": "nodejs16.x"
@@ -1081,7 +1083,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4hQ6BJu5ahnYBVRTsjk3olpYmrOgGhqv++JGXAphz8XuyXZztz+baQswlceKrK07TRB9nvHKiTKJDJdwpFyO37BsyhhL2lEmuW2xQ+vFVOkxW82AMzOpZZDIHLpVcndEtgFKNU9u/f9q4IOMfOaObABtFQxXJNVYEObSrQYGRfUIOxNMWcGq2uSZnQIKDVFTi8wFX262QSenZZq5PmATOlyFsnVtg2dDXBId4+sTBwlYxG8Dt56n6D7khlTN7QfS+jyYi/OAjzBtJkD7IiA9puwaTqJxafzsEdN9C22lYx++9qEB15h68L2WcFKurK0TCiHbphEGnXsePbA8+NfXrX+jCmZ0fmkfhD847OusRuEPFXZc0v5/lMhjOpWetpF1amDcpijD+RuvfpKQIAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11RwW7CMAz9Fu4h20CTdi1DOwGrinZGJvVKShNXdQJCVf99ScqATTn4vdgvz3Zm8m0uXyZw5qkqj9NG72W/daCOokAm3ykUIbfrGzD7EnaWSqxZblL48FY5TVbwfAfM6FhmMQQuF14d0S2AUYxS2b9/25si4Bw7o5kDG0RDFcsVVQU6tKlAg5F9QQ3G0hRzarS6JGVCg4BWV+DwDBfZr5JJ6NllrU6aO8yUIm+dWGLb0MUEh3j7wMLAVTIawe/kqfs1ugOVMXlFt72MJiP+4iDMG0iT3cmSDGi7AZOqH1h8Ogd3WEPbalvF7L+rQXTkHb7OZZ8VqKgrR8OItuiGQaRdx46vDzw29uld68OYnh2Ze+IPzTs66RK7QcRflTU/nWbPMpxJzVpPu7AybVAWY/wBUMDcECkCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/CDKMetadata/Default"

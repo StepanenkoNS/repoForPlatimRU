@@ -1,8 +1,8 @@
 import { App } from 'aws-cdk-lib';
 //@ts-ignore
-import * as StaticEnvironment from '../../ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../Core/ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
-import * as DynamicEnvironment from '../../ReadmeAndConfig/DynamicEnvironment';
+import * as DynamicEnvironment from '../../Core/ReadmeAndConfig/DynamicEnvironment';
 import { MainRestServicesStack } from './RestServices/MainRestServices';
 import { TokenServiceStack } from './TokenService/TokenServices';
 import { WebPublicPagesStack } from './WebPublicPages/WebPublicPages';

@@ -97,8 +97,8 @@ export async function handler(event: SQSEvent): Promise<any> {
 
             await SQSHelper.SendSQSMessageSmallBatch({
                 messages: arrayToSend,
-                messageGroupId: 'CHANNELID#' + request.channelId.toString(),
-                QueueUrl: process.env.migrateChannelSecondQueueURL!
+                QueueUrl: process.env.migrateChannelSecondQueueURL!,
+                fifo: false
             });
 
             await MessageSender.QueueSendPlainMessage({

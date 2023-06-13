@@ -59,23 +59,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const result = await FeedBack.ReplyToUserFeedBackFromWeb(data, answeredMessageType);
 
-    // await MessageSender.SendPlainMessage({
-    //     masterId: Number(telegramUser.id),
-    //     botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
-
-    //     message: {
-    //         text: TextHelper.KeepOnlyTelegramTags(bodyObject.data.message.text),
-    //         attachments: (bodyObject.data.message.attachments as Array<ITelegramSimpleFile>).map((value) => {
-    //             return {
-    //                 id: TextHelper.SanitizeToDirectText(value.id),
-    //                 name: TextHelper.SanitizeToDirectText(value.name)
-    //             } as ITelegramSimpleFile;
-    //         }),
-    //         sendMethod: bodyObject.data.message.sendMethod
-    //     },
-    //     recipientChatId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.chatId))
-    // });
-
     const sendResult = ParseSendMessageResult(result);
 
     const returnRestApiResult = ReturnRestApiResult(sendResult.code, sendResult.body, false, origin, renewedToken);

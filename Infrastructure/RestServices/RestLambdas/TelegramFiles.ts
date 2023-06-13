@@ -4,7 +4,7 @@ import { ITable, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import * as StaticEnvironment from '../../../../ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 //@ts-ignore
 import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
