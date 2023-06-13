@@ -60,27 +60,27 @@
       },
       "displayName": "DeploymentHelperStack"
     },
-    "WebTokenService.assets": {
+    "WebTokenAndGateWayService.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "WebTokenService.assets.json",
+        "file": "WebTokenAndGateWayService.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "WebTokenService": {
+    "WebTokenAndGateWayService": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://993738567487/us-east-1",
       "properties": {
-        "templateFile": "WebTokenService.template.json",
+        "templateFile": "WebTokenAndGateWayService.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/af1c802d98a355b99b830dc963ae4a902fceeb1e3d0238f2609c051450c7dd2d.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/5fffa25d756650847a213295da1f5d75027809748a0069569c725a2cd499a8d0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "WebTokenService.assets"
+          "WebTokenAndGateWayService.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
@@ -90,261 +90,261 @@
       },
       "dependencies": [
         "DeploymentHelperStack",
-        "WebTokenService.assets"
+        "WebTokenAndGateWayService.assets"
       ],
       "metadata": {
-        "/WebTokenService/TokenServiceLambda/Resource": [
+        "/WebTokenAndGateWayService/TokenServiceLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "TokenServiceLambdaA04CF86C"
           }
         ],
-        "/WebTokenService/TokenServiceLambda/LogRetention/Resource": [
+        "/WebTokenAndGateWayService/TokenServiceLambda/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "TokenServiceLambdaLogRetention9B6C5D33"
           }
         ],
-        "/WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+        "/WebTokenAndGateWayService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
           }
         ],
-        "/WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+        "/WebTokenAndGateWayService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
           }
         ],
-        "/WebTokenService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+        "/WebTokenAndGateWayService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIAFE5A254"
+            "data": "WebTokenAndGateWayServiceGWAPID9371ADF"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/CloudWatchRole/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/CloudWatchRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPICloudWatchRole2C04FD27"
+            "data": "WebTokenAndGateWayServiceGWAPICloudWatchRoleF52BC7B5"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Account": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Account": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIAccount852D4E01"
+            "data": "WebTokenAndGateWayServiceGWAPIAccount326511AD"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Deployment/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIDeployment69CE11EB132c0b844f318d9a0825e2f954b10e91"
+            "data": "WebTokenAndGateWayServiceGWAPIDeploymentDFC1B6DDd333c5319d82c92aa7d77e632f613db6"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/DeploymentStage.GetToken/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/DeploymentStage.GetToken/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIDeploymentStageGetToken89C1F5C5"
+            "data": "WebTokenAndGateWayServiceGWAPIDeploymentStageGetToken87CD786E"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Endpoint": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Endpoint": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIEndpoint9329497D"
+            "data": "WebTokenAndGateWayServiceGWAPIEndpoint1D83533C"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/OPTIONS/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIOPTIONSE6785683"
+            "data": "WebTokenAndGateWayServiceGWAPIOPTIONSAEF0CF2D"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/me/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/me/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPImeEE3FC695"
+            "data": "WebTokenAndGateWayServiceGWAPImeAD54E665"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/me/OPTIONS/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/me/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPImeOPTIONS8D7EB856"
+            "data": "WebTokenAndGateWayServiceGWAPImeOPTIONSB0D24EED"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/me/GET/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..me": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/me/GET/ApiPermission.WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B.GET..me": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPImeGETApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9GETme75CCC3CE"
+            "data": "WebTokenAndGateWayServiceGWAPImeGETApiPermissionWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27BGETme8E9659BF"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/me/GET/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..me": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/me/GET/ApiPermission.Test.WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B.GET..me": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPImeGETApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9GETmeC79145BB"
+            "data": "WebTokenAndGateWayServiceGWAPImeGETApiPermissionTestWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27BGETmeAF0C839F"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/me/GET/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/me/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPImeGET7190DC18"
+            "data": "WebTokenAndGateWayServiceGWAPImeGETD9DF21F8"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/getToken/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIgetTokenEA421B7E"
+            "data": "WebTokenAndGateWayServiceGWAPIgetTokenD0F1677C"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/OPTIONS/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/getToken/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIgetTokenOPTIONS544CC085"
+            "data": "WebTokenAndGateWayServiceGWAPIgetTokenOPTIONSCF86158F"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..getToken": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/getToken/POST/ApiPermission.WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B.POST..getToken": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIgetTokenPOSTApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9POSTgetToken4BC33A65"
+            "data": "WebTokenAndGateWayServiceGWAPIgetTokenPOSTApiPermissionWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27BPOSTgetToken8DF57EBE"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.POST..getToken": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/getToken/POST/ApiPermission.Test.WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B.POST..getToken": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIgetTokenPOSTApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9POSTgetToken637DCF76"
+            "data": "WebTokenAndGateWayServiceGWAPIgetTokenPOSTApiPermissionTestWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27BPOSTgetTokenFDCFE4EE"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/getToken/POST/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/getToken/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIgetTokenPOST249FA332"
+            "data": "WebTokenAndGateWayServiceGWAPIgetTokenPOST6CC7FE9D"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/logOut/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/logOut/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIlogOut3A11217E"
+            "data": "WebTokenAndGateWayServiceGWAPIlogOut85FCCC0C"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/logOut/OPTIONS/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/logOut/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIlogOutOPTIONS39CB2C79"
+            "data": "WebTokenAndGateWayServiceGWAPIlogOutOPTIONSCFFA9DB1"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/logOut/GET/ApiPermission.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..logOut": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/logOut/GET/ApiPermission.WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B.GET..logOut": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIlogOutGETApiPermissionWebTokenServiceWebTokenServiceGWAPID1F20FE9GETlogOut59AF7F53"
+            "data": "WebTokenAndGateWayServiceGWAPIlogOutGETApiPermissionWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27BGETlogOut8873001F"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/logOut/GET/ApiPermission.Test.WebTokenServiceWebTokenServiceGWAPID1F20FE9.GET..logOut": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/logOut/GET/ApiPermission.Test.WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B.GET..logOut": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIlogOutGETApiPermissionTestWebTokenServiceWebTokenServiceGWAPID1F20FE9GETlogOut3875EB3B"
+            "data": "WebTokenAndGateWayServiceGWAPIlogOutGETApiPermissionTestWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27BGETlogOut36065D34"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/Default/logOut/GET/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/Default/logOut/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIlogOutGET6FEB5543"
+            "data": "WebTokenAndGateWayServiceGWAPIlogOutGET00479A6F"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/WebTokenService-GWAPI-UsagePlan/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/WebTokenAndGateWayService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIWebTokenServiceGWAPIUsagePlanFFD4474E"
+            "data": "WebTokenAndGateWayServiceGWAPIWebTokenAndGateWayServiceGWAPIUsagePlan6C6D5B4A"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/WebTokenAndGateWayServiceGW-SubDomain/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIWebTokenServiceGWSubDomain771D640C"
+            "data": "WebTokenAndGateWayServiceGWAPIWebTokenAndGateWayServiceGWSubDomain96174157"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI/WebTokenServiceGW-SubDomain/Map:--=>WebTokenServiceWebTokenServiceGWAPID1F20FE9/Resource": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI/WebTokenAndGateWayServiceGW-SubDomain/Map:--=>WebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPIWebTokenServiceGWSubDomainMapWebTokenServiceWebTokenServiceGWAPID1F20FE968DF6B8B"
+            "data": "WebTokenAndGateWayServiceGWAPIWebTokenAndGateWayServiceGWSubDomainMapWebTokenAndGateWayServiceWebTokenAndGateWayServiceGWAPI6325B27B3B62D65C"
           }
         ],
-        "/WebTokenService/TokenServiceAPIGWARecord/Resource": [
+        "/WebTokenAndGateWayService/TokenServiceAPIGWARecord/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "TokenServiceAPIGWARecordE9A60854"
           }
         ],
-        "/WebTokenService/TokenServiceAPIGWARecord/DeleteExistingRecordSetCustomResource/Default": [
+        "/WebTokenAndGateWayService/TokenServiceAPIGWARecord/DeleteExistingRecordSetCustomResource/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "TokenServiceAPIGWARecordDeleteExistingRecordSetCustomResource3B5F67CF"
           }
         ],
-        "/WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+        "/WebTokenAndGateWayService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
           }
         ],
-        "/WebTokenService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+        "/WebTokenAndGateWayService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
           }
         ],
-        "/WebTokenService/WebTokenService-GWAPI-tokenApi": [
+        "/WebTokenAndGateWayService/WebTokenAndGateWayService-GWAPI-tokenApi": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebTokenServiceGWAPItokenApi"
+            "data": "WebTokenAndGateWayServiceGWAPItokenApi"
           }
         ],
-        "/WebTokenService/CDKMetadata/Default": [
+        "/WebTokenAndGateWayService/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/WebTokenService/BootstrapVersion": [
+        "/WebTokenAndGateWayService/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/WebTokenService/CheckBootstrapVersion": [
+        "/WebTokenAndGateWayService/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "WebTokenService"
+      "displayName": "WebTokenAndGateWayService"
     },
-    "WebPublicPages.assets": {
+    "WebPublicPagesAndGateWayService.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "WebPublicPages.assets.json",
+        "file": "WebPublicPagesAndGateWayService.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "WebPublicPages": {
+    "WebPublicPagesAndGateWayService": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://993738567487/us-east-1",
       "properties": {
-        "templateFile": "WebPublicPages.template.json",
+        "templateFile": "WebPublicPagesAndGateWayService.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/9f44894af1ae3a2096a9999a4db776e3e3625eef91387aa297df61d7b477d1ce.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/1b309ff1b06e3a23e8e0001ea57ba5771ce14efc64d0766b297649a0446dc30e.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "WebPublicPages.assets"
+          "WebPublicPagesAndGateWayService.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
@@ -353,355 +353,355 @@
         }
       },
       "dependencies": [
-        "WebTokenService",
+        "WebTokenAndGateWayService",
         "DeploymentHelperStack",
-        "WebPublicPages.assets"
+        "WebPublicPagesAndGateWayService.assets"
       ],
       "metadata": {
-        "/WebPublicPages/WebPublicPages-GWAPI/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPI914E312C"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIA82D268C"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/CloudWatchRole/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/CloudWatchRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPICloudWatchRoleBDCD59DD"
+            "data": "WebPublicPagesAndGateWayServiceGWAPICloudWatchRole56C9C463"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Account": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Account": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIAccountF17CE948"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIAccount120ACF73"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Deployment/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIDeployment14CEB65572c9c1df9d73824ca8cfad64eea8fec7"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIDeployment2631A90900e7fd5d6b05c1342e263800fafb3a40"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/DeploymentStage.pagesAPI/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/DeploymentStage.pagesAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIDeploymentStagepagesAPI5367D931"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIDeploymentStagepagesAPICE4DC7DB"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Endpoint": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Endpoint": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIEndpoint145EF0D8"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIEndpoint4B012656"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIOPTIONS758530DD"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIOPTIONS71FABE51"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenter296F8FB1"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenter39F05D12"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterOPTIONS53B7204A"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterOPTIONS7945FBA0"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/landing/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/landing/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterlanding02E546B4"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterlanding69BBC6AC"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/landing/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/landing/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterlandingOPTIONSC28556D2"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterlandingOPTIONS7C8AB2FC"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/landing/GET/ApiPermission.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..help-center.landing": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/landing/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..help-center.landing": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterlandingGETApiPermissionWebPublicPagesWebPublicPagesGWAPI3BEA04FDGEThelpcenterlandingBC472340"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterlandingGETApiPermissionWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGEThelpcenterlandingDA9BBA97"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/landing/GET/ApiPermission.Test.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..help-center.landing": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/landing/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..help-center.landing": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterlandingGETApiPermissionTestWebPublicPagesWebPublicPagesGWAPI3BEA04FDGEThelpcenterlanding39CD6ECC"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterlandingGETApiPermissionTestWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGEThelpcenterlandingC3C34BEB"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/landing/GET/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/landing/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterlandingGET33639599"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterlandingGET67CD7BA1"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/subcategory/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/subcategory/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcentersubcategoryD49C0FB0"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcentersubcategory04865793"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/subcategory/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/subcategory/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcentersubcategoryOPTIONS5A94FD6E"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcentersubcategoryOPTIONS75F51B57"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/subcategory/GET/ApiPermission.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..help-center.subcategory": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/subcategory/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..help-center.subcategory": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcentersubcategoryGETApiPermissionWebPublicPagesWebPublicPagesGWAPI3BEA04FDGEThelpcentersubcategory6BA3905A"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcentersubcategoryGETApiPermissionWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGEThelpcentersubcategoryE04C0EC5"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/subcategory/GET/ApiPermission.Test.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..help-center.subcategory": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/subcategory/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..help-center.subcategory": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcentersubcategoryGETApiPermissionTestWebPublicPagesWebPublicPagesGWAPI3BEA04FDGEThelpcentersubcategory6E7CE906"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcentersubcategoryGETApiPermissionTestWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGEThelpcentersubcategoryD8E4CA80"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/subcategory/GET/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/subcategory/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcentersubcategoryGET4E5B4A9C"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcentersubcategoryGET32DFD59F"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/article/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/article/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterarticleFAA8084E"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterarticleCA5E949E"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/article/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/article/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterarticleOPTIONSB008EC2A"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterarticleOPTIONS8690964B"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/article/GET/ApiPermission.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..help-center.article": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/article/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..help-center.article": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterarticleGETApiPermissionWebPublicPagesWebPublicPagesGWAPI3BEA04FDGEThelpcenterarticleD21282CA"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterarticleGETApiPermissionWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGEThelpcenterarticle3877C77F"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/article/GET/ApiPermission.Test.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..help-center.article": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/article/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..help-center.article": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterarticleGETApiPermissionTestWebPublicPagesWebPublicPagesGWAPI3BEA04FDGEThelpcenterarticleFD3D08A0"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterarticleGETApiPermissionTestWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGEThelpcenterarticleB7C44BB5"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/help-center/article/GET/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/help-center/article/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIhelpcenterarticleGETD402EA46"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIhelpcenterarticleGET3C5798F4"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/content/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIcontentC4B537BE"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIcontent9D87BB3F"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/content/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIcontentOPTIONSEF9EF590"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIcontentOPTIONSE211D7BB"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/content/GET/ApiPermission.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..content": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIcontentGETApiPermissionWebPublicPagesWebPublicPagesGWAPI3BEA04FDGETcontentF95BF1E3"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIcontentGETApiPermissionWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGETcontentA2E0B2AC"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/content/GET/ApiPermission.Test.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..content": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIcontentGETApiPermissionTestWebPublicPagesWebPublicPagesGWAPI3BEA04FDGETcontent5CBCED13"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIcontentGETApiPermissionTestWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGETcontent328B83F4"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/content/GET/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIcontentGET4A0EE41A"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIcontentGET5092AF28"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/bot-landing/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/bot-landing/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIbotlanding68916FE1"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIbotlanding522743B8"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/bot-landing/OPTIONS/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/bot-landing/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIbotlandingOPTIONS4D445E36"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIbotlandingOPTIONSA1CD8F7B"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/bot-landing/GET/ApiPermission.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..bot-landing": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/bot-landing/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..bot-landing": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIbotlandingGETApiPermissionWebPublicPagesWebPublicPagesGWAPI3BEA04FDGETbotlanding56C363BA"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIbotlandingGETApiPermissionWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGETbotlandingA665837B"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/bot-landing/GET/ApiPermission.Test.WebPublicPagesWebPublicPagesGWAPI3BEA04FD.GET..bot-landing": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/bot-landing/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..bot-landing": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIbotlandingGETApiPermissionTestWebPublicPagesWebPublicPagesGWAPI3BEA04FDGETbotlandingD96A8476"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIbotlandingGETApiPermissionTestWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6BGETbotlandingC2ACBE40"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/Default/bot-landing/GET/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/bot-landing/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIbotlandingGET46777035"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIbotlandingGETA0C68B8E"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/WebPublicPages-GWAPI-UsagePlan/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/WebPublicPagesAndGateWayService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIWebPublicPagesGWAPIUsagePlan782C470D"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIWebPublicPagesAndGateWayServiceGWAPIUsagePlan61CDFE23"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/WebPublicPages-GW-SubDomain/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/WebPublicPagesAndGateWayService-GW-SubDomain/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIWebPublicPagesGWSubDomainA8FAC5E9"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIWebPublicPagesAndGateWayServiceGWSubDomain7C1DBCFC"
           }
         ],
-        "/WebPublicPages/WebPublicPages-GWAPI/WebPublicPages-GW-SubDomain/Map:--=>WebPublicPagesWebPublicPagesGWAPI3BEA04FD/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/WebPublicPagesAndGateWayService-GW-SubDomain/Map:--=>WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesGWAPIWebPublicPagesGWSubDomainMapWebPublicPagesWebPublicPagesGWAPI3BEA04FDD6C0F1BA"
+            "data": "WebPublicPagesAndGateWayServiceGWAPIWebPublicPagesAndGateWayServiceGWSubDomainMapWebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B7A0D4BE1"
           }
         ],
-        "/WebPublicPages/WebPublicPages-ARecord/Resource": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-ARecord/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesARecord5A321B91"
+            "data": "WebPublicPagesAndGateWayServiceARecord38DBA779"
           }
         ],
-        "/WebPublicPages/WebPublicPages-ARecord/DeleteExistingRecordSetCustomResource/Default": [
+        "/WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-ARecord/DeleteExistingRecordSetCustomResource/Default": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebPublicPagesARecordDeleteExistingRecordSetCustomResource64903293"
+            "data": "WebPublicPagesAndGateWayServiceARecordDeleteExistingRecordSetCustomResource7FDFC98C"
           }
         ],
-        "/WebPublicPages/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+        "/WebPublicPagesAndGateWayService/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
           }
         ],
-        "/WebPublicPages/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+        "/WebPublicPagesAndGateWayService/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
           }
         ],
-        "/WebPublicPages/GetHCLandingLambda/Resource": [
+        "/WebPublicPagesAndGateWayService/GetHCLandingLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCLandingLambda7205BD53"
           }
         ],
-        "/WebPublicPages/GetHCLandingLambda/LogRetention/Resource": [
+        "/WebPublicPagesAndGateWayService/GetHCLandingLambda/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCLandingLambdaLogRetention685A1ACA"
           }
         ],
-        "/WebPublicPages/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+        "/WebPublicPagesAndGateWayService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
           }
         ],
-        "/WebPublicPages/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+        "/WebPublicPagesAndGateWayService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
           }
         ],
-        "/WebPublicPages/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+        "/WebPublicPagesAndGateWayService/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
           }
         ],
-        "/WebPublicPages/GetHCsubcategoryLambda/Resource": [
+        "/WebPublicPagesAndGateWayService/GetHCsubcategoryLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCsubcategoryLambdaDF64526C"
           }
         ],
-        "/WebPublicPages/GetHCsubcategoryLambda/LogRetention/Resource": [
+        "/WebPublicPagesAndGateWayService/GetHCsubcategoryLambda/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCsubcategoryLambdaLogRetention53EF89EC"
           }
         ],
-        "/WebPublicPages/GetHCArticleLambda/Resource": [
+        "/WebPublicPagesAndGateWayService/GetHCArticleLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCArticleLambda3857DD83"
           }
         ],
-        "/WebPublicPages/GetHCArticleLambda/LogRetention/Resource": [
+        "/WebPublicPagesAndGateWayService/GetHCArticleLambda/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetHCArticleLambdaLogRetention12CA6DC0"
           }
         ],
-        "/WebPublicPages/GetWebPageContentLambda/Resource": [
+        "/WebPublicPagesAndGateWayService/GetWebPageContentLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetWebPageContentLambdaA5F8923E"
           }
         ],
-        "/WebPublicPages/GetWebPageContentLambda/LogRetention/Resource": [
+        "/WebPublicPagesAndGateWayService/GetWebPageContentLambda/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetWebPageContentLambdaLogRetentionE06F2BD7"
           }
         ],
-        "/WebPublicPages/GetBotLandingPublic/Resource": [
+        "/WebPublicPagesAndGateWayService/GetBotLandingPublic/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetBotLandingPublic2B228A99"
           }
         ],
-        "/WebPublicPages/GetBotLandingPublic/LogRetention/Resource": [
+        "/WebPublicPagesAndGateWayService/GetBotLandingPublic/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "GetBotLandingPublicLogRetention9FCA9346"
           }
         ],
-        "/WebPublicPages/CDKMetadata/Default": [
+        "/WebPublicPagesAndGateWayService/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/WebPublicPages/BootstrapVersion": [
+        "/WebPublicPagesAndGateWayService/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/WebPublicPages/CheckBootstrapVersion": [
+        "/WebPublicPagesAndGateWayService/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "WebPublicPages"
+      "displayName": "WebPublicPagesAndGateWayService"
     },
     "WebRestServiceMain.assets": {
       "type": "cdk:asset-manifest",
@@ -719,7 +719,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e992f28f157f0e04e668eca095ae1b4becf94cbfe39d73664f09a738217d50f0.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f9f1064b1f898860d9b862a53ee88edf09c2cec0219084ab36efde0299d49717.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -732,7 +732,7 @@
         }
       },
       "dependencies": [
-        "WebPublicPages",
+        "WebPublicPagesAndGateWayService",
         "DeploymentHelperStack",
         "WebRestServiceMain.assets"
       ],
@@ -1410,7 +1410,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/068c2b3c632fa2509186e6d27c0bd9b340c445e56b8caeb38c03c9f25d5d3d7c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/84b783ef3668000af1a11242b388f87ca58bd8d405e154eb94ca70eb67b38132.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1573,7 +1573,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/2d5bb662e147ce9a864f34aa80f17ec74f7e33cf1cfffcd14ca87b99d80d8c28.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/669b30e3d9a39e68e7c1197e7dfdfda77df5597c15d9c40b48c8011019f4248d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2240,7 +2240,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/ee80a4f8ca721b2b9852a12e4e3569eeecb2221fab583bc3c7ade3c5cd53da42.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/661720dbac04be046940ea81bc95e4d224696bf76dfeb8e7c33794017087555d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2493,7 +2493,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/377663d7ddd24d0504bf3ca9c940ae9c4a07d2ccc75e0fcf7a19554800ea026a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/3010fbb5fe24366bb3f65736033cbcf9f3bfdc65b2df29f3ad40d620ff9eb4e0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2806,7 +2806,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c8fef76d8a5ef213009bfdc605bce477b7b82ab4979d7ebc43fe0a1586a2cf3f.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/7c5714921c2db515548f65a03bde43f76f6889a46e69df51d45d7d05a4309818.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2819,7 +2819,7 @@
         }
       },
       "dependencies": [
-        "WebTokenService",
+        "WebTokenAndGateWayService",
         "DeploymentHelperStack",
         "WebRestServiceCRM.assets"
       ],
@@ -3167,7 +3167,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/60af73161e85a621a5bff53eab6bbf25aeec3f21571b7598045c730cf2ee9fb4.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d542d832593549bb1a94cf06338d91328408c6e5d6ba8aba03bca16fe80e72bc.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3276,7 +3276,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/219286f026a2e3d5f474efec2104eab22aed3bbae77a5a4bc54031498e956f37.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0c1704011c24485889f475a3ecfda0424c015d01dfa1d7d04e68a16a51f977ce.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -5381,7 +5381,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/6719de973309bd36e0dd10d950e285d0da0f89f4e907769e53e5d5aedc437d9a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/827e7b4146f8393454544d5be0774a944ab170fc08d1b5ec79b6627d3b1b1bf3.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -5917,27 +5917,27 @@
       },
       "displayName": "WebCRMGatewayService"
     },
-    "PaymentIntegrations.assets": {
+    "PaymentIntegrationsAndGateWay.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "PaymentIntegrations.assets.json",
+        "file": "PaymentIntegrationsAndGateWay.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "PaymentIntegrations": {
+    "PaymentIntegrationsAndGateWay": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://993738567487/us-east-1",
       "properties": {
-        "templateFile": "PaymentIntegrations.template.json",
+        "templateFile": "PaymentIntegrationsAndGateWay.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e69704bbb13fd6c3da094fc63120b6beb403ddb10558237ef4c494de1235e166.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f19a1add2f4b717cfa1a746ec1f74100e04feffb1cf1eac3b2256f86e1c2e293.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "PaymentIntegrations.assets"
+          "PaymentIntegrationsAndGateWay.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
@@ -5948,179 +5948,179 @@
       "dependencies": [
         "WebRestGatewayService",
         "DeploymentHelperStack",
-        "PaymentIntegrations.assets"
+        "PaymentIntegrationsAndGateWay.assets"
       ],
       "metadata": {
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPI20BD0803"
+            "data": "PaymentIntegrationsAndGateWayGWAPI3FCE2609"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/CloudWatchRole/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/CloudWatchRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPICloudWatchRole57D0BD35"
+            "data": "PaymentIntegrationsAndGateWayGWAPICloudWatchRole80FD2ED0"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Account": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Account": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIAccountA255A895"
+            "data": "PaymentIntegrationsAndGateWayGWAPIAccount385DA38A"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Deployment/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIDeployment97BA9B805340c14aebdf8efbac33f04488b58228"
+            "data": "PaymentIntegrationsAndGateWayGWAPIDeployment04C49B89b8f00e1eab71f7ba8415aedf032c4db4"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/DeploymentStage.pagesAPI/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/DeploymentStage.pagesAPI/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIDeploymentStagepagesAPIAAC1B5C9"
+            "data": "PaymentIntegrationsAndGateWayGWAPIDeploymentStagepagesAPI69ECA298"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Endpoint": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Endpoint": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIEndpoint88C7B1FF"
+            "data": "PaymentIntegrationsAndGateWayGWAPIEndpointA0CC64A2"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/OPTIONS/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIOPTIONS40F567AE"
+            "data": "PaymentIntegrationsAndGateWayGWAPIOPTIONSA0B6D7C2"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/modul_ru/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPImodulru426BB484"
+            "data": "PaymentIntegrationsAndGateWayGWAPImodulru6DA7FFD5"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/OPTIONS/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/modul_ru/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPImodulruOPTIONSEF9B2F50"
+            "data": "PaymentIntegrationsAndGateWayGWAPImodulruOPTIONS0411BE59"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/modul_ru/callback/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPImodulrucallback854DB4B7"
+            "data": "PaymentIntegrationsAndGateWayGWAPImodulrucallback11C3F1F6"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/OPTIONS/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/modul_ru/callback/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPImodulrucallbackOPTIONSD8736160"
+            "data": "PaymentIntegrationsAndGateWayGWAPImodulrucallbackOPTIONSF9DFFB61"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/POST/ApiPermission.PaymentIntegrationsPaymentIntegrationsGWAPI9705733B.POST..modul_ru.callback": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/modul_ru/callback/POST/ApiPermission.PaymentIntegrationsAndGateWayPaymentIntegrationsAndGateWayGWAPI4B53A8DB.POST..modul_ru.callback": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPImodulrucallbackPOSTApiPermissionPaymentIntegrationsPaymentIntegrationsGWAPI9705733BPOSTmodulrucallback17545CEE"
+            "data": "PaymentIntegrationsAndGateWayGWAPImodulrucallbackPOSTApiPermissionPaymentIntegrationsAndGateWayPaymentIntegrationsAndGateWayGWAPI4B53A8DBPOSTmodulrucallback57B14BF1"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/Default/modul_ru/callback/POST/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/Default/modul_ru/callback/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPImodulrucallbackPOST1EA51054"
+            "data": "PaymentIntegrationsAndGateWayGWAPImodulrucallbackPOST531F22E2"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/PaymentIntegrations-GWAPI-UsagePlan/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/PaymentIntegrationsAndGateWay-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIPaymentIntegrationsGWAPIUsagePlanDA8AC01A"
+            "data": "PaymentIntegrationsAndGateWayGWAPIPaymentIntegrationsAndGateWayGWAPIUsagePlan954467BA"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/PaymentIntegrations-GW-SubDomain/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/PaymentIntegrationsAndGateWay-GW-SubDomain/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIPaymentIntegrationsGWSubDomainFF9D50E3"
+            "data": "PaymentIntegrationsAndGateWayGWAPIPaymentIntegrationsAndGateWayGWSubDomain1E3A800E"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-GWAPI/PaymentIntegrations-GW-SubDomain/Map:--=>PaymentIntegrationsPaymentIntegrationsGWAPI9705733B/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-GWAPI/PaymentIntegrationsAndGateWay-GW-SubDomain/Map:--=>PaymentIntegrationsAndGateWayPaymentIntegrationsAndGateWayGWAPI4B53A8DB/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsGWAPIPaymentIntegrationsGWSubDomainMapPaymentIntegrationsPaymentIntegrationsGWAPI9705733B1CF5C9A9"
+            "data": "PaymentIntegrationsAndGateWayGWAPIPaymentIntegrationsAndGateWayGWSubDomainMapPaymentIntegrationsAndGateWayPaymentIntegrationsAndGateWayGWAPI4B53A8DBD24CE202"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-ARecord/Resource": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-ARecord/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsARecord6DA33B24"
+            "data": "PaymentIntegrationsAndGateWayARecord82E12A5C"
           }
         ],
-        "/PaymentIntegrations/PaymentIntegrations-ARecord/DeleteExistingRecordSetCustomResource/Default": [
+        "/PaymentIntegrationsAndGateWay/PaymentIntegrationsAndGateWay-ARecord/DeleteExistingRecordSetCustomResource/Default": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PaymentIntegrationsARecordDeleteExistingRecordSetCustomResourceBC062570"
+            "data": "PaymentIntegrationsAndGateWayARecordDeleteExistingRecordSetCustomResourceC4CE7C79"
           }
         ],
-        "/PaymentIntegrations/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
+        "/PaymentIntegrationsAndGateWay/Custom::DeleteExistingRecordSetCustomResourceProvider/Role": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderRole03A7ED08"
           }
         ],
-        "/PaymentIntegrations/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
+        "/PaymentIntegrationsAndGateWay/Custom::DeleteExistingRecordSetCustomResourceProvider/Handler": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomDeleteExistingRecordSetCustomResourceProviderHandlerAD00231E"
           }
         ],
-        "/PaymentIntegrations/ModulPaymentCallBack/Resource": [
+        "/PaymentIntegrationsAndGateWay/ModulPaymentCallBack/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ModulPaymentCallBack85EC80ED"
           }
         ],
-        "/PaymentIntegrations/ModulPaymentCallBack/LogRetention/Resource": [
+        "/PaymentIntegrationsAndGateWay/ModulPaymentCallBack/LogRetention/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ModulPaymentCallBackLogRetention02669938"
           }
         ],
-        "/PaymentIntegrations/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+        "/PaymentIntegrationsAndGateWay/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
           }
         ],
-        "/PaymentIntegrations/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+        "/PaymentIntegrationsAndGateWay/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
           }
         ],
-        "/PaymentIntegrations/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+        "/PaymentIntegrationsAndGateWay/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
           }
         ],
-        "/PaymentIntegrations/CDKMetadata/Default": [
+        "/PaymentIntegrationsAndGateWay/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/PaymentIntegrations/BootstrapVersion": [
+        "/PaymentIntegrationsAndGateWay/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/PaymentIntegrations/CheckBootstrapVersion": [
+        "/PaymentIntegrationsAndGateWay/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "PaymentIntegrations"
+      "displayName": "PaymentIntegrationsAndGateWay"
     },
     "Tree": {
       "type": "cdk:tree",

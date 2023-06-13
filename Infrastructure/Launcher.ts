@@ -31,8 +31,8 @@ const roleService = new DeploymentHelper(app, StaticEnvironment.StackName.Deploy
     }
 });
 
-const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebTokenService.toString(), {
-    stackName: StaticEnvironment.StackName.WebTokenService.toString(),
+const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebTokenAndGateWayService.toString(), {
+    stackName: StaticEnvironment.StackName.WebTokenAndGateWayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layers: roleService.layers,
     lambdaRole: roleService.lambdaRole,
@@ -42,8 +42,8 @@ const tokenService = new TokenServiceStack(app, StaticEnvironment.StackName.WebT
     }
 });
 
-const webPublicPagesStack = new WebPublicPagesStack(app, StaticEnvironment.StackName.WebPublicPages.toString(), {
-    stackName: StaticEnvironment.StackName.WebPublicPages.toString(),
+const webPublicPagesStack = new WebPublicPagesStack(app, StaticEnvironment.StackName.WebPublicPagesAndGateWayService.toString(), {
+    stackName: StaticEnvironment.StackName.WebPublicPagesAndGateWayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layers: roleService.layers,
     lambdaRole: roleService.lambdaRole,
@@ -185,8 +185,8 @@ const gatewayCRMServiceStack = new GatewayServiceStack(app, StaticEnvironment.St
 
 gatewayCRMServiceStack.addDependency(cRMRestServicesStack);
 
-const paymentIntegrationsStack = new PaymentIntegrationsStack(app, StaticEnvironment.StackName.PaymentIntegrations.toString(), {
-    stackName: StaticEnvironment.StackName.PaymentIntegrations.toString(),
+const paymentIntegrationsStack = new PaymentIntegrationsStack(app, StaticEnvironment.StackName.PaymentIntegrationsAndGateWay.toString(), {
+    stackName: StaticEnvironment.StackName.PaymentIntegrationsAndGateWay.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layers: roleService.layers,
     lambdaRole: roleService.lambdaRole,

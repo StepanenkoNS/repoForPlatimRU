@@ -5,7 +5,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-     "S3Key": "0c4ecd80f3d298dd05fa77b0c9b64168ab3e9d24ee369162d11e71abce067210.zip"
+     "S3Key": "bcab624d36ae9bf53cf19d2665c34443722585ded37206ea41b4301c021a4ff9.zip"
     },
     "Role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
     "Environment": {
@@ -45,7 +45,7 @@
     "Handler": "index.handler",
     "Layers": [
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:738",
-     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:456",
+     "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:458",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:395",
      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
     ],
@@ -53,7 +53,7 @@
    },
    "Metadata": {
     "aws:cdk:path": "WebTokenService/TokenServiceLambda/Resource",
-    "aws:asset:path": "asset.0c4ecd80f3d298dd05fa77b0c9b64168ab3e9d24ee369162d11e71abce067210",
+    "aws:asset:path": "asset.bcab624d36ae9bf53cf19d2665c34443722585ded37206ea41b4301c021a4ff9",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
