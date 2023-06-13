@@ -24,8 +24,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' }
     ]);
     if (bodyObject.success === false) {
-        console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { error: 'Error: mailformed JSON body' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'Error: mailformed JSON body' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await FileS3Configurator.DeleteMessageFile({
@@ -34,7 +41,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
 
-    const deleteResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'DELETE',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

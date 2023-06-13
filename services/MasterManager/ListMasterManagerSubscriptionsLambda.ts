@@ -23,7 +23,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const result = await PomponaSubscriptionsProcessor.ListMySubsriptions(Number(telegramUser.id));
-    const listResults = ParseListResult(result);
+    const dataResult = ParseListResult(result);
 
-    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

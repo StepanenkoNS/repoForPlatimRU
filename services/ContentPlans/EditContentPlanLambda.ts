@@ -29,7 +29,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'description', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const contentPlan: IContentPlan = {
@@ -41,12 +49,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     };
 
     if (contentPlan.id === 'FREEPLAN' || contentPlan.id == 'PAIDPOST') {
-        return ReturnRestApiResult(403, { success: false, error: 'Reserved content plan ID. Action forbidden' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 403,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await ContentConfigurator.UpdateContentPlan(contentPlan);
 
-    const updateResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

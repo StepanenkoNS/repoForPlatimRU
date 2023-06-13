@@ -33,7 +33,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'interaction', datatype: 'object', objectKeys: [] }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const potentialContentPlanPost = {
@@ -53,12 +61,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const schemaValidationResult = await SchemaValidator.ContentPlanPost_Validator(potentialContentPlanPost);
     if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: schemaValidationResult.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await ContentConfigurator.UpdateContentPlanPost(schemaValidationResult.item as any);
 
-    const updateResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

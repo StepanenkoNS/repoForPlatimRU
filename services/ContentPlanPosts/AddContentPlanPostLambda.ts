@@ -39,7 +39,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'interaction', datatype: 'object', objectKeys: [] }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const potentialContentPlanPost: IContentPlanPost = {
@@ -56,7 +64,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const schemaValidationResult = await SchemaValidator.ContentPlanPost_Validator(potentialContentPlanPost);
     if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: schemaValidationResult.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const limitsValidationResult = await PomponaSubscriptionsProcessor.CheckSubscription_AddContentPlanPost({
@@ -69,16 +85,40 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     });
 
     if (limitsValidationResult.success == false || !limitsValidationResult.data) {
-        return ReturnRestApiResult(422, { error: 'not valid subscription data' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'not valid subscription data' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
-        return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 429,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'Subscription plan limits exceeded' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await ContentConfigurator.AddContentPlanPost(schemaValidationResult.item as any);
 
-    const addResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'ADD',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

@@ -33,7 +33,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'currency', datatype: SupportedCurrenciesArray }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     if (Number(telegramUser.id) === 199163834) {
@@ -45,9 +53,26 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             pricePaid: Number(TextHelper.SanitizeToDirectText(bodyObject.data.pricePaid)),
             currency: TextHelper.SanitizeToDirectText(bodyObject.data.currency) as any
         });
-        const addResult = ParseItemResult(result);
-        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+        const dataResult = ParseItemResult(result);
+
+        return await ReturnRestApiResult({
+            statusCode: dataResult.code,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: dataResult.body,
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
-    return ReturnRestApiResult(403, { success: false, error: 'forbidden' }, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: 403,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: { success: false, error: 'forbidden' },
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

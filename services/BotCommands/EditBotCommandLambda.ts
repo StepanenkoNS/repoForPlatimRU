@@ -33,9 +33,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (bodyObject.success === false) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'UPDATE',
+            method: 'EDIT',
             masterId: Number(telegramUser.id),
-            data: { error: bodyObject.error },
+            data: { success: false, error: bodyObject.error },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken
@@ -54,7 +54,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     const dataResult = ParseItemResult(result);
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'UPDATE',
+        method: 'EDIT',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

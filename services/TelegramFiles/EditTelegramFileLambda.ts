@@ -28,7 +28,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'tags', datatype: 'array' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const potentialMessageFile = {
@@ -41,13 +49,29 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const schemaValidationResult = await SchemaValidator.TelegramFile_Validator(potentialMessageFile);
     if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: schemaValidationResult.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     //если указан s3Key - то будем менять старый файл
     const result = await FileTelegramConfigurator.UpdateTelegramFile(schemaValidationResult.item as any);
 
-    const updateResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

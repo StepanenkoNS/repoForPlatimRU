@@ -20,7 +20,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     if (!ValidateStringParameters(event, ['botId'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ANALYTICS',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'QueryString parameters are invald' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await PomponaSubscriptionsProcessor.CheckSubscription_AddMeeting({
@@ -30,6 +38,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         },
         userJsonData: telegramUser
     });
-    const getResult = ParseItemResult(result);
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    const dataResult = ParseItemResult(result);
+
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'ANALYTICS',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

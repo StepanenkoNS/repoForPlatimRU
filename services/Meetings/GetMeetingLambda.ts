@@ -21,7 +21,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     if (!ValidateStringParameters(event, ['botId', 'id'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'QueryString parameters are invald' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await CalendarMeetingsConfiguratior.GetMyMeetingById({
@@ -31,6 +39,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
         }
     });
-    const getResult = ParseItemResult(result);
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    const dataResult = ParseItemResult(result);
+
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

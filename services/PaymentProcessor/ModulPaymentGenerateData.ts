@@ -35,7 +35,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             { key: 'currency', datatype: SupportedCurrenciesArray }
         ]);
         if (bodyObject.success === false) {
-            return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+            return await ReturnRestApiResult({
+                statusCode: 422,
+                method: 'EDIT',
+                masterId: Number(telegramUser.id),
+                data: { success: false, error: bodyObject.error },
+                withMapReplacer: false,
+                origin: origin,
+                renewedAccessToken: renewedToken
+            });
         }
 
         const potentialSubscription: IPomponaAddSubscription = {
@@ -49,7 +57,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
         const schemaValidationResult = await SchemaValidator.PomponaSubscriptionPaymentValidator(potentialSubscription);
         if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-            return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+            return await ReturnRestApiResult({
+                statusCode: 422,
+                method: 'EDIT',
+                masterId: Number(telegramUser.id),
+                data: { success: false, error: schemaValidationResult.error },
+                withMapReplacer: false,
+                origin: origin,
+                renewedAccessToken: renewedToken
+            });
         }
 
         const paymentInDb = await PaymentOptionsManager.AddPomponaPayment(schemaValidationResult.item as any, 'modulBank');
@@ -97,11 +113,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         };
         const result = await PomponaSubscriptionsProcessor.GenerateModulPayment(payment, modulKey);
 
-        const getResult = ParseItemResult(result);
-        return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+        const dataResult = ParseItemResult(result);
+
+        return await ReturnRestApiResult({
+            statusCode: dataResult.code,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: dataResult.body,
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     } catch (error) {
         console.log(error);
 
-        return ReturnRestApiResult(503, { success: false, error: error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 503,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 }

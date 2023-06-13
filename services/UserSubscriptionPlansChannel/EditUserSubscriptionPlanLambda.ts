@@ -39,12 +39,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'channelId', datatype: 'number(integer)' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
     if (bodyObject.data.lifeTime == false) {
         const step2 = ValidateIncomingEventBody(event, [{ key: 'lengthInDays', datatype: 'number(nonZeroPositiveInteger)' }]);
         if (step2.success === false) {
-            return ReturnRestApiResult(422, { success: false, error: 'lengthInDays should not be empty when lifeTime is false' }, false, origin, renewedToken);
+            return await ReturnRestApiResult({
+                statusCode: 422,
+                method: 'EDIT',
+                masterId: Number(telegramUser.id),
+                data: { success: false, error: 'lengthInDays should not be empty when lifeTime is false' },
+                withMapReplacer: false,
+                origin: origin,
+                renewedAccessToken: renewedToken
+            });
         }
     }
     try {
@@ -62,14 +78,39 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
         const schemaValidationResult = await SchemaValidator.UserSubscriptionPlanChannel_Validator(potentialItem);
         if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-            return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+            return await ReturnRestApiResult({
+                statusCode: 422,
+                method: 'EDIT',
+                masterId: Number(telegramUser.id),
+                data: { success: false, error: schemaValidationResult.error },
+                withMapReplacer: false,
+                origin: origin,
+                renewedAccessToken: renewedToken
+            });
         }
 
         const result = await UserSubscriptionPlanChannel.UpdateUserSubscriptionPlanChannel(schemaValidationResult.item as any);
 
-        const updateResult = ParseItemResult(result);
-        return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
+        const dataResult = ParseItemResult(result);
+
+        return await ReturnRestApiResult({
+            statusCode: dataResult.code,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: dataResult.body,
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     } catch (error) {
-        return ReturnRestApiResult(500, { success: false, error: 'Internal server error' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 500,
+            method: 'EDIT',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'Internal server error' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 }

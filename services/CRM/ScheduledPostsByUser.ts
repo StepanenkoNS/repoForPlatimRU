@@ -22,7 +22,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     if (!ValidateStringParameters(event, ['botId', 'id'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ANALYTICS',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'QueryString parameters are invald' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     let type: 'NEW' | 'CONFIRMED' | 'REJECTED' | undefined = undefined;
@@ -32,7 +40,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         if (tempType == 'NEW' || tempType == 'CONFIRMED' || tempType == 'REJECTED') {
             type = tempType;
         } else {
-            return ReturnRestApiResult(422, { error: 'Type parameter is invalid' }, false, origin, renewedToken);
+            return await ReturnRestApiResult({
+                statusCode: 422,
+                method: 'ANALYTICS',
+                masterId: Number(telegramUser.id),
+                data: { success: false, error: 'Type parameter is invalid' },
+                withMapReplacer: false,
+                origin: origin,
+                renewedAccessToken: renewedToken
+            });
         }
     }
 
@@ -42,7 +58,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
     });
 
-    const listResults = ParseListResult(result);
+    const dataResult = ParseListResult(result);
 
-    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'ANALYTICS',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

@@ -22,6 +22,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const result = await MasterManager.GetMaster(Number(telegramUser.id));
-    const getResult = ParseItemResult(result);
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    const dataResult = ParseItemResult(result);
+
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'GET',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

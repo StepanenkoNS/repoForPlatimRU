@@ -20,7 +20,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             statusCode: 422,
             method: 'GET',
             masterId: Number(telegramUser.id),
-            data: { error: 'Origin is incorrect' },
+            data: { success: false, error: 'Origin is incorrect' },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken
@@ -36,7 +36,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             statusCode: 422,
             method: 'GET',
             masterId: Number(telegramUser.id),
-            data: { error: 'QueryString parameters are invald' },
+            data: { success: false, error: 'QueryString parameters are invald' },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken

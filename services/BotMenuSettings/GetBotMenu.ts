@@ -24,9 +24,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (!ValidateStringParameters(event, ['botId'])) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'UPDATE',
+            method: 'GET',
             masterId: Number(telegramUser.id),
-            data: { error: 'QueryString parameters are invald' },
+            data: { success: false, error: 'QueryString parameters are invald' },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken
@@ -42,7 +42,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'UPDATE',
+        method: 'GET',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

@@ -26,11 +26,27 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'notes', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     if (TextHelper.SanitizeToDirectText(bodyObject.data.notes).length > 200) {
-        return ReturnRestApiResult(422, { success: false, error: 'notes exceeds 200 chars' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'notes exceeds 200 chars' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
     const key = {
         masterId: telegramUser.id,
@@ -42,7 +58,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         notes: TextHelper.SanitizeToDirectText(bodyObject.data.notes)
     });
 
-    const updateResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'EDIT',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

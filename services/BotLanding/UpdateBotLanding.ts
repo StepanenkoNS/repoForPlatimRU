@@ -41,7 +41,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (bodyObject.success === false) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'UPDATE',
+            method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
             withMapReplacer: false,
@@ -116,9 +116,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (schemaValidationResult.success == false || !schemaValidationResult.item) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'UPDATE',
+            method: 'EDIT',
             masterId: Number(telegramUser.id),
-            data: { error: schemaValidationResult.error },
+            data: { success: false, error: schemaValidationResult.error },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken
@@ -131,7 +131,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'UPDATE',
+        method: 'EDIT',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

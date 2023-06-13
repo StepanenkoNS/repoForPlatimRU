@@ -27,7 +27,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     if (!ValidateStringParameters(event, ['botId', 'chatId'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ANALYTICS',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'QueryString parameters are invald' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const key: IBotGeneralKeyWithUser = {
@@ -41,7 +49,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     };
     const result = await FeedBack.GetUserChatData(key, period);
 
-    const listResults = ParseItemResult(result);
+    const dataResult = ParseListResult(result);
 
-    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'ANALYTICS',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

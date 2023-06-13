@@ -1,6 +1,6 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -28,12 +28,12 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         pagePath = !queryParams['pagePath'] ? undefined : queryParams['pagePath'].toLowerCase();
     } else {
         console.log('query params not provided');
-        const returnObject = ReturnRestApiResult(422, { success: false, error: 'query params  not provided' }, false, origin);
+        const returnObject = ReturnBlankApiResult(422, { success: false, error: 'query params  not provided' }, origin);
         return returnObject as APIGatewayProxyResult;
     }
     if (pagePath === undefined) {
         console.log('query params not provided');
-        const returnObject = ReturnRestApiResult(422, { success: false, error: 'query param pagePath not provided' }, false, origin);
+        const returnObject = ReturnBlankApiResult(422, { success: false, error: 'query param pagePath not provided' }, origin);
         return returnObject as APIGatewayProxyResult;
     }
 
@@ -45,5 +45,5 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const getResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin);
+    return ReturnBlankApiResult(getResult.code, getResult.body, origin);
 }

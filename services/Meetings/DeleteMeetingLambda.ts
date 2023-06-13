@@ -28,7 +28,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     ]);
     if (bodyObject.success === false) {
         console.log('Error: mailformed JSON body');
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'DELETE',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await CalendarMeetingsConfiguratior.DeleteMeeting({
@@ -36,6 +44,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         id: TextHelper.SanitizeToDirectText(bodyObject.data.id) as any
     });
-    const deleteResult = ParseItemResult(result);
-    return ReturnRestApiResult(deleteResult.code, deleteResult.body, false, origin, renewedToken);
+    const dataResult = ParseItemResult(result);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'DELETE',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

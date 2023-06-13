@@ -33,7 +33,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'enabled', datatype: 'boolean' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const item: IDigitalStoreCategory = {
@@ -54,16 +62,42 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     });
 
     if (limitsValidationResult.success == false || !limitsValidationResult.data) {
-        return ReturnRestApiResult(422, { error: 'not valid subscription data' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'not valid subscription data' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     if (limitsValidationResult.success == true && limitsValidationResult.data.allow == false) {
-        return ReturnRestApiResult(429, { error: 'Subscription plan limits exceeded' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 429,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: 'Subscription plan limits exceeded' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await DigitalStoreManager.AddDigitalStoreCategory(item);
 
     const addResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    const dataResult = ParseItemResult(result);
+
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'ADD',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

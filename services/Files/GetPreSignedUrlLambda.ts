@@ -31,7 +31,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     ]);
 
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const s3Result = await S3Helper.GeneratePreSignedURL_Put(
@@ -44,9 +52,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     );
     console.log(s3Result);
 
-    const getResult = ParseItemResult(s3Result);
+    const dataResult = ParseItemResult(s3Result);
 
-    console.log('getResult', getResult);
-
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'GET',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

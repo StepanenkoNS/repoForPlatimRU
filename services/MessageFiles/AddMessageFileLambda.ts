@@ -31,14 +31,30 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'tags', datatype: 'array' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'GET',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const mediaType = S3Helper.GetMediaType(bodyObject.data.originalFileName);
     if (mediaType === false) {
-        const addResult = ParseItemResult(mediaType);
+        const dataResult = ParseItemResult(mediaType);
 
-        return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: dataResult.code,
+            method: 'ADD',
+            masterId: Number(telegramUser.id),
+            data: dataResult.body,
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const messageFile: IMessageFile = {
@@ -56,7 +72,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const result = await FileS3Configurator.AddMessageFile(messageFile);
 
-    const addResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'ADD',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }
