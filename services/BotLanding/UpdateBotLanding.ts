@@ -39,7 +39,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'elements', datatype: 'array' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { success: false, error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'UPDATE',
+            masterId: Number(telegramUser.id),
+            data: { success: false, error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const potentialBotLanding: IBotLanding = {
@@ -106,12 +114,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const schemaValidationResult = await SchemaValidator.BotLanding_Validator(potentialBotLanding);
     if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'UPDATE',
+            masterId: Number(telegramUser.id),
+            data: { error: schemaValidationResult.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await BotLanging.UpdateBotLanging(schemaValidationResult.item as any);
 
-    const updateResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(updateResult.code, updateResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'UPDATE',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

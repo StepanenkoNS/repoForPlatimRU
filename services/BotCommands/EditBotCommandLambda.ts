@@ -31,7 +31,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'text', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'UPDATE',
+            masterId: Number(telegramUser.id),
+            data: { error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const command: IMessagingBotCommand = {
@@ -43,7 +51,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const result = await BotCommands.UpdateMyBotCommand(command);
 
-    const addResult = ParseItemResult(result);
-
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    const dataResult = ParseItemResult(result);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'UPDATE',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

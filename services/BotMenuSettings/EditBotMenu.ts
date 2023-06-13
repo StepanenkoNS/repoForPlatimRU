@@ -35,7 +35,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'languageMenu', datatype: 'object', objectKeys: [] }
     ]);
     if (bodyObject.success === false) {
-        return ReturnRestApiResult(422, { error: bodyObject.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'UPDATE',
+            masterId: Number(telegramUser.id),
+            data: { error: bodyObject.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const potentialCommand: IBotMenuSettings = {
@@ -50,12 +58,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const schemaValidationResult = await SchemaValidator.BotMenuSettings_Validator(potentialCommand);
     if (schemaValidationResult.success == false || !schemaValidationResult.item) {
-        return ReturnRestApiResult(422, { error: schemaValidationResult.error }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'UPDATE',
+            masterId: Number(telegramUser.id),
+            data: { error: schemaValidationResult.error },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
 
     const result = await BotMenuSettings.UpdateBotMenu(schemaValidationResult.item as any);
 
-    const addResult = ParseItemResult(result);
+    const dataResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(addResult.code, addResult.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'UPDATE',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

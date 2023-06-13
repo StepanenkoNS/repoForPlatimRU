@@ -44,9 +44,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             }
         }
 
-        return ReturnBlankApiResult(201, { success: true });
+        return ReturnBlankApiResult(201, { success: true }, '');
     } catch (error) {
         console.log(error);
-        return ReturnBlankApiResult(201, { success: true });
+        return ReturnBlankApiResult(201, { success: true }, '');
     }
 }

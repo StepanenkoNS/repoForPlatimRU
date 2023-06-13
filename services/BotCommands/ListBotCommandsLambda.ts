@@ -21,12 +21,28 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
     if (!ValidateStringParameters(event, ['botId'])) {
-        return ReturnRestApiResult(422, { error: 'QueryString parameters are invald' }, false, origin, renewedToken);
+        return await ReturnRestApiResult({
+            statusCode: 422,
+            method: 'LIST',
+            masterId: Number(telegramUser.id),
+            data: { error: 'QueryString parameters are invald' },
+            withMapReplacer: false,
+            origin: origin,
+            renewedAccessToken: renewedToken
+        });
     }
-    [];
+
     const result = await BotCommands.ListMyBotCommands({ masterId: Number(telegramUser.id), botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)) });
 
-    const listResults = ParseListResult(result);
+    const dataResult = ParseListResult(result);
 
-    return ReturnRestApiResult(listResults.code, listResults.body, false, origin, renewedToken);
+    return await ReturnRestApiResult({
+        statusCode: dataResult.code,
+        method: 'LIST',
+        masterId: Number(telegramUser.id),
+        data: dataResult.body,
+        withMapReplacer: false,
+        origin: origin,
+        renewedAccessToken: renewedToken
+    });
 }

@@ -1,6 +1,6 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
 import { GetLandingSubdomainFromOrigin, SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -14,7 +14,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     let origin = SetOrigin(event);
 
     if (origin == '') {
-        return ReturnRestApiResult(422, { error: 'origin is incorrect' }, false, event.headers?.origin ? event.headers.origin : '', undefined);
+        return ReturnBlankApiResult(422, { error: 'origin is incorrect' }, '');
     }
 
     let subdomain = TextHelper.SanitizeToDirectText(GetLandingSubdomainFromOrigin(event));
@@ -26,5 +26,5 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     const result = await BotLanging.GetBotLangingPublic(subdomain);
     const getResult = ParseItemResult(result);
 
-    return ReturnRestApiResult(getResult.code, getResult.body, false, origin, undefined);
+    return ReturnBlankApiResult(getResult.code, getResult.body, origin);
 }
