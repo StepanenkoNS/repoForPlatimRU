@@ -9,6 +9,7 @@ import { ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnR
 
 import { MessageSender } from '/opt/MessageSender';
 import { IMessageSenderInput } from '/opt/ContentTypes';
+import { ETelegramUserStatus } from '/opt/MessagingBotManagerTypes';
 
 export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];
@@ -17,8 +18,13 @@ export async function handler(event: SQSEvent) {
         try {
             const body = JSON.parse(record.body) as IMessageSenderInput;
             const result = await MessageSender.SendQueuedMessage(body);
-            if (result.success === false) {
+
+            if (result.success === false || !result.data) {
                 throw 'SendQueuedMessage result is false';
+            }
+
+            if (![ETelegramUserStatus.OK, ETelegramUserStatus.BLOCKED].includes(result.data.status)) {
+                throw 'Error in sending message ' + result.data.status;
             }
         } catch (e) {
             console.log(`Error in processing SQS consumer: ${record.body}`);

@@ -10,6 +10,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { CrmManager } from '/opt/CrmManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -52,13 +53,19 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         }
     }
 
-    const result = await CrmManager.ListScheduledPostsByUser({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
+    const dataItems = await MessagingBotSubscriptionManager.ListScheduledMessagesByUser({
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+            chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
+        },
+        limit: 100
     });
 
-    const dataResult = ParseListResult(result);
+    const dataResult = ParseListResult({
+        success: true,
+        data: dataItems
+    });
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
