@@ -109,6 +109,12 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
     //очередь для отправки сообщений в ТГ о процессе
     const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(that, 'imported-schedulerSendQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn);
 
+    const ToggleUserBlockedStatusFifoQueue = Queue.fromQueueArn(
+        that,
+        'imported-ToggleUserBlockedStatusFifoQueue-CreateChannelsLambdas',
+        DynamicEnvironment.SQS.ToggleUserBlockedStatusFifo.basicSQS_arn
+    );
+
     //очереди для upsert user
     const SubscribeToSubscriptionPlanQueue = Queue.fromQueueArn(
         that,
@@ -155,6 +161,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
             API_ID: StaticEnvironment.Secrets.API_ID,
             API_HASH: StaticEnvironment.Secrets.API_HASH
         },

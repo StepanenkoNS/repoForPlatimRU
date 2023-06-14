@@ -1,6 +1,6 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
-import { SQS } from 'aws-sdk';
+
 import ksuid from 'ksuid';
 
 import { MessageSender } from '/opt/MessageSender';
@@ -12,8 +12,6 @@ import { ETelegramSendMethod } from '/opt/TelegramTypes';
 import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
 
 import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
-
-const sqs = new SQS({ region: process.env.region });
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

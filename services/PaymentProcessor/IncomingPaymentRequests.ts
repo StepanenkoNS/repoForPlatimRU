@@ -145,7 +145,8 @@ export async function handler(event: SQSEvent): Promise<any> {
                     updatedAt: addPaymentEventResult.updatedAt,
                     telegramMessageText: parsedInputData.telegramMessageText,
                     telegramFileId: parsedInputData.telegramFileId,
-                    telegramSendMethod: parsedInputData.telegramSendMethod
+                    telegramSendMethod: parsedInputData.telegramSendMethod,
+                    telegramMessageId: null
                 };
 
                 const sendResult = await MessageSender.SendPaymentMethodToAdmin(itemMessage);

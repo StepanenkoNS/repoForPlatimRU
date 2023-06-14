@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB } from '/opt/DevHelpers/AccessHelper';
+
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
@@ -14,6 +14,18 @@ import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+    const ToggleUserBlockedStatusFifoQueue = Queue.fromQueueArn(
+        that,
+        'imported-ToggleUserBlockedStatusFifoQueue-ForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.ToggleUserBlockedStatusFifo.basicSQS_arn
+    );
+
+    const ToggleUserBlockedStatusFifoDLQ = Queue.fromQueueArn(
+        that,
+        'imported-ToggleUserBlockedStatusFifoQueueDLQ-ForCreateSubscriptionProcessor',
+        DynamicEnvironment.SQS.ToggleUserBlockedStatusFifo.dlqSQS_arn
+    );
+
     const expireSubscriptionQueue = Queue.fromQueueArn(
         that,
         'imported-expireSubscriptionQueue-ForCreateSubscriptionProcessor',
@@ -98,6 +110,42 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         },
         layers: layers
     });
+
+    ////лямбда обрабатывающая изменение статуса на заблокировнный и обрабтно
+
+    const ToggleUserStatusChangeLambda = new NodejsFunction(that, 'SubscriptionProcessorToggleUserStatusChangeLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'ToggleUserStatusChangeLambda.ts'),
+        handler: 'handler',
+        functionName: 'subscriptionProcessor-ToggleUserStatusChange',
+        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+
+        role: lambdaRole,
+        environment: {
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
+        },
+        bundling: {
+            externalModules: ['aws-sdk', '/opt/*']
+        },
+        layers: layers
+    });
+
+    const ToggleUserBlockedStatusEvent = new SqsEventSource(ToggleUserBlockedStatusFifoQueue, {
+        enabled: true,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    const ToggleUserBlockedStatusEventDLQ = new SqsEventSource(ToggleUserBlockedStatusFifoDLQ, {
+        enabled: false,
+        reportBatchItemFailures: true,
+        batchSize: 1
+    });
+
+    ToggleUserStatusChangeLambda.addEventSource(ToggleUserBlockedStatusEvent);
+    ToggleUserStatusChangeLambda.addEventSource(ToggleUserBlockedStatusEventDLQ);
 
     const SubscriptionProcessorDeleteScheduledPostLambda = new NodejsFunction(that, 'SubscriptionProcessorDeleteScheduledPostLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'DeleteScheduledPost.ts'),

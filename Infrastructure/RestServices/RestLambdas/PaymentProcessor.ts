@@ -13,6 +13,8 @@ import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+    const ToggleUserBlockedStatusFifoQueue = Queue.fromQueueArn(that, 'imported-ToggleUserBlockedStatusFifoQueue-PaymentProcessor', DynamicEnvironment.SQS.ToggleUserBlockedStatusFifo.basicSQS_arn);
+
     const notificationsQueue = Queue.fromQueueArn(that, 'imported-notificationsQueue-ForPaymentProcessor', DynamicEnvironment.SQS.notificationsQueue.basicSQS_arn);
     const SendMessageSchedulerQueueSecond = Queue.fromQueueArn(that, 'imported-schedulerSendQueueForPaymentProcessor', DynamicEnvironment.SQS.SendMessageSchedulerQueue.Second.basicSQS_arn);
 
@@ -50,6 +52,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             notificationsQueueURL: notificationsQueue.queueUrl,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
@@ -73,6 +76,7 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             notificationsQueueURL: notificationsQueue.queueUrl,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {

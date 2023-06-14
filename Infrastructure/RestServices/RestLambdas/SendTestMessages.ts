@@ -4,12 +4,20 @@ import { ITable, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
+import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
 
 export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
+
+    const ToggleUserBlockedStatusFifoQueue = Queue.fromQueueArn(
+        that,
+        'imported-ToggleUserBlockedStatusFifoQueue-CreateSendMessagesLambdas',
+        DynamicEnvironment.SQS.ToggleUserBlockedStatusFifo.basicSQS_arn
+    );
 
     //Отправка сообщения себе
     const SendTestMessageLambda = new NodejsFunction(that, 'SendTestMessageLambda', {
@@ -21,7 +29,8 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], la
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -39,7 +48,8 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], la
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']
@@ -57,7 +67,8 @@ export function CreateSendMessagesLambdas(that: any, layers: ILayerVersion[], la
         timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

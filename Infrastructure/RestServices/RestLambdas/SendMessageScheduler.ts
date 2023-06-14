@@ -14,6 +14,12 @@ import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+    const ToggleUserBlockedStatusFifoQueue = Queue.fromQueueArn(
+        that,
+        'imported-ToggleUserBlockedStatusFifoQueue-SendMessageScheduler',
+        DynamicEnvironment.SQS.ToggleUserBlockedStatusFifo.basicSQS_arn
+    );
+
     const SendMessageSchedulerQueueFirstDLQ = Queue.fromQueueArn(
         that,
         'imported-SendMessageSchedulerQueueFirstDLQ-forSendMessageScheduler',
@@ -48,6 +54,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -90,6 +97,7 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         environment: {
             SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
@@ -134,7 +142,8 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         role: lambdaRole,
         //reservedConcurrentExecutions: 1,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl
         },
         bundling: {
             externalModules: ['aws-sdk', '/opt/*']

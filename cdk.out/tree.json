@@ -358,25 +358,25 @@
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
-            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
+            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
@@ -518,7 +518,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -527,9 +528,9 @@
                     "functionName": "WebTokenAndGateWayService-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x"
@@ -3684,7 +3685,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -3693,9 +3695,9 @@
                     "functionName": "react-HelpCenter-Landing-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -3948,7 +3950,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -3957,9 +3960,9 @@
                     "functionName": "react-HelpCenter-Subcategory-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4069,7 +4072,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4078,9 +4082,9 @@
                     "functionName": "react-HelpCenter-Article-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4190,7 +4194,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4199,9 +4204,9 @@
                     "functionName": "react-Content-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4310,7 +4315,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4319,9 +4325,9 @@
                     "functionName": "react-BotLanding-GetPublic-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4483,7 +4489,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4492,9 +4499,9 @@
                     "functionName": "react-Bots-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4747,7 +4754,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4756,9 +4764,9 @@
                     "functionName": "react-Bots-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4868,7 +4876,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4877,9 +4886,9 @@
                     "functionName": "react-Bots-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -4989,7 +4998,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -4998,9 +5008,9 @@
                     "functionName": "react-Bots-Register-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5110,7 +5120,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5119,9 +5130,9 @@
                     "functionName": "react-Bots-UnRegister-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5231,7 +5242,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5240,9 +5252,9 @@
                     "functionName": "react-Bots-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5352,7 +5364,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -5362,9 +5375,9 @@
                     "functionName": "react-Bots-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5473,7 +5486,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5482,9 +5496,9 @@
                     "functionName": "react-BotCommands-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5593,7 +5607,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5602,9 +5617,9 @@
                     "functionName": "react-BotCommands-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5714,7 +5729,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5723,9 +5739,9 @@
                     "functionName": "react-BotCommands-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5834,7 +5850,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5843,9 +5860,9 @@
                     "functionName": "react-Channels-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -5954,7 +5971,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -5963,9 +5981,9 @@
                     "functionName": "react-Channels-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -6074,7 +6092,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -6083,9 +6102,9 @@
                     "functionName": "react-Channels-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -6194,7 +6213,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -6204,9 +6224,9 @@
                     "functionName": "react-Channels-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -6371,7 +6391,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "migrateChannelSecondQueueURL": {
@@ -6406,9 +6427,9 @@
                     "functionName": "react-Channels-Migrate-first",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -6581,7 +6602,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "SubscribeToSubscriptionPlanQueueURL": {
@@ -6628,9 +6650,9 @@
                     "functionName": "react-Channels-Migrate-second",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -6803,7 +6825,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -6812,9 +6835,9 @@
                     "functionName": "react-Meetings-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -6923,7 +6946,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -6932,9 +6956,9 @@
                     "functionName": "react-Meetings-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7043,7 +7067,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7052,9 +7077,9 @@
                     "functionName": "react-Meetings-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7164,7 +7189,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7173,9 +7199,9 @@
                     "functionName": "react-Meetings-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7284,7 +7310,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -7294,9 +7321,9 @@
                     "functionName": "react-Meetings-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7405,7 +7432,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7414,9 +7442,9 @@
                     "functionName": "react-Meetings-ListParticipants-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7526,7 +7554,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7535,9 +7564,9 @@
                     "functionName": "react-Meetings-CheckLimits-AddMeeting-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7646,7 +7675,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7655,9 +7685,9 @@
                     "functionName": "react-PaymentOptions-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7766,7 +7796,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7775,9 +7806,9 @@
                     "functionName": "react-PaymentOptions-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -7886,7 +7917,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -7895,9 +7927,9 @@
                     "functionName": "react-PaymentOptions-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8006,7 +8038,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -8015,9 +8048,9 @@
                     "functionName": "react-PaymentOptions-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8126,7 +8159,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -8135,9 +8169,9 @@
                     "functionName": "react-PaymentOptions-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8246,7 +8280,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -8255,9 +8290,9 @@
                     "functionName": "react-BotMenuSettings-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8367,7 +8402,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -8376,9 +8412,9 @@
                     "functionName": "react-BotMenuSettings-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8503,7 +8539,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -8512,9 +8549,9 @@
                     "functionName": "react-Notifications-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8623,7 +8660,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -8632,9 +8670,9 @@
                     "functionName": "react-Notifications-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -8832,7 +8870,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "DeleteScheduledPostQueueURL": {
@@ -8854,9 +8893,9 @@
                     "functionName": "react-CascadeDelete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -9315,7 +9354,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -9324,9 +9364,9 @@
                     "functionName": "react-TelegramFiles-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -9578,7 +9618,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -9587,9 +9628,9 @@
                     "functionName": "react-TelegramFiles-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -9698,7 +9739,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -9707,9 +9749,9 @@
                     "functionName": "react-TelegramFiles-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -9818,7 +9860,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -9827,9 +9870,9 @@
                     "functionName": "react-TelegramFiles-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -9938,7 +9981,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -9947,9 +9991,9 @@
                     "functionName": "react-GetPresignedUrl-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -10152,7 +10196,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -10161,9 +10206,9 @@
                     "functionName": "react-SendMessages-SendTestMessage-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -10415,7 +10460,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -10424,9 +10470,9 @@
                     "functionName": "react-SendMessages-SendTestFile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -10535,7 +10581,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -10544,9 +10591,9 @@
                     "functionName": "react-SendMessages-SendDirectMessageFromAdmin-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -10655,7 +10702,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -10664,9 +10712,9 @@
                     "functionName": "react-DigitalStoreCategories-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -10775,7 +10823,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -10784,9 +10833,9 @@
                     "functionName": "react-DigitalStoreCategories-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -10895,7 +10944,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -10904,9 +10954,9 @@
                     "functionName": "react-DigitalStoreCategories-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11015,7 +11065,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -11024,9 +11075,9 @@
                     "functionName": "react-DigitalStoreCategories-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11135,7 +11186,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -11145,9 +11197,9 @@
                     "functionName": "react-DigitalStoreCategories-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11256,7 +11308,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -11265,9 +11318,9 @@
                     "functionName": "react-DigitalStoreItems-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11376,7 +11429,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -11385,9 +11439,9 @@
                     "functionName": "react-DigitalStoreItems-List-forContentPlanPost-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11496,7 +11550,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -11505,9 +11560,9 @@
                     "functionName": "react-DigitalStoreItems-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11616,7 +11671,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -11625,9 +11681,9 @@
                     "functionName": "react-DigitalStoreItems-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11736,7 +11792,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -11745,9 +11802,9 @@
                     "functionName": "react-DigitalStoreItems-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -11856,7 +11913,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -11866,9 +11924,9 @@
                     "functionName": "react-DigitalStoreItems-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -12021,7 +12079,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -12030,9 +12089,9 @@
                     "functionName": "SendMessage-Scheduller-First-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -12230,7 +12289,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -12239,9 +12299,9 @@
                     "functionName": "SendMessage-Scheduller-Second-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -12414,7 +12474,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -12423,9 +12484,9 @@
                     "functionName": "scheduler-SendMessageSender-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -12710,7 +12771,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -12719,9 +12781,9 @@
                     "functionName": "paymentProcessor-incomingRequests",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -12942,7 +13004,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -12951,9 +13014,9 @@
                     "functionName": "paymentProcessor-IncomingPaymentConfirmation",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -13214,7 +13277,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "SendMessageSchedulerQueueSecondURL": {
@@ -13235,9 +13299,9 @@
                     "functionName": "subscriptionProcessor-Scheduler-Add-New-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "memorySize": 256,
@@ -13411,7 +13475,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "SendMessageSchedulerQueueSecond": {
@@ -13432,9 +13497,9 @@
                     "functionName": "subscriptionProcessor-Scheduler-Delete-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "memorySize": 256,
@@ -13644,7 +13709,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -13653,9 +13719,9 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-ContentPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -13864,7 +13930,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -13873,9 +13940,9 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-SubscriptionPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -14048,7 +14115,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "expireSubscriptionQueueURL": {
@@ -14069,9 +14137,9 @@
                     "functionName": "subscriptionProcessor-Expire-ChannelSubsriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "reservedConcurrentExecutions": 1,
@@ -14246,7 +14314,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "expireSubscriptionQueueURL": {
@@ -14267,9 +14336,9 @@
                     "functionName": "subscriptionProcessor-Expire-BotSubscriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "reservedConcurrentExecutions": 1,
@@ -14444,7 +14513,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -14453,9 +14523,9 @@
                     "functionName": "subscriptionProcessor-Cleanup-Pompona",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "reservedConcurrentExecutions": 1,
@@ -14630,7 +14700,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -14639,9 +14710,9 @@
                     "functionName": "subscriptionProcessor-Expire-expireUserSubscriptionItem",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "reservedConcurrentExecutions": 1,
@@ -14783,7 +14854,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -14792,9 +14864,9 @@
                     "functionName": "subscriptionProcessor-Expire-expireUserSubscriptionItemDLQ",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "reservedConcurrentExecutions": 1,
@@ -14936,7 +15008,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "modulMerchantId": "46e90f0c-76da-4646-81ab-8890763b4316",
@@ -14949,9 +15022,9 @@
                     "functionName": "paymentProcessor-ModulPayment-generate",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -15258,7 +15331,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -15267,9 +15341,9 @@
                     "functionName": "react-ContentPlanPosts-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -15521,7 +15595,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -15530,9 +15605,9 @@
                     "functionName": "react-ContentPlanPosts-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -15641,7 +15716,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AddScheduledPostQueueURL": {
@@ -15674,9 +15750,9 @@
                     "functionName": "react-ContentPlanPosts-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -15785,7 +15861,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -15794,9 +15871,9 @@
                     "functionName": "react-ContentPlanPosts-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -15905,7 +15982,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AddScheduledPostQueueURL": {
@@ -15939,9 +16017,9 @@
                     "functionName": "react-ContentPlanPosts-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -16058,7 +16136,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -16067,9 +16146,9 @@
                     "functionName": "react-ContentPlans-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -16178,7 +16257,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -16187,9 +16267,9 @@
                     "functionName": "react-ContentPlans-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -16298,7 +16378,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -16307,9 +16388,9 @@
                     "functionName": "react-ContentPlans-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -16418,7 +16499,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -16427,9 +16509,9 @@
                     "functionName": "react-ContentPlans-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -16538,7 +16620,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -16548,9 +16631,9 @@
                     "functionName": "react-ContentPlans-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -16809,7 +16892,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -16818,9 +16902,9 @@
                     "functionName": "react-UserSubscriptionPlansBot-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17072,7 +17156,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -17081,9 +17166,9 @@
                     "functionName": "react-UserSubscriptionPlansBot-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17192,7 +17277,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AddDeleteContentPlanFromSubscriptionQueueURL": {
@@ -17213,9 +17299,9 @@
                     "functionName": "react-UserSubscriptionPlansBot-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17324,7 +17410,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AddDeleteContentPlanFromSubscriptionQueueURL": {
@@ -17345,9 +17432,9 @@
                     "functionName": "react-UserSubscriptionPlansBot-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17456,7 +17543,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -17465,9 +17553,9 @@
                     "functionName": "react-AddDeleteContentPlanFromSubscriptionLambda-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17640,7 +17728,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AddDeleteContentPlanFromSubscriptionQueueURL": {
@@ -17662,9 +17751,9 @@
                     "functionName": "react-UserSubscriptionPlansBot-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17773,7 +17862,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -17782,9 +17872,9 @@
                     "functionName": "react-UserSubscriptionPlansChannel-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -17893,7 +17983,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -17902,9 +17993,9 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -18013,7 +18104,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -18022,9 +18114,9 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -18133,7 +18225,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -18142,9 +18235,9 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -18253,7 +18346,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "CascadeDeleteTopic": "arn:aws:sns:us-east-1:993738567487:CascadeDeleteTopic.fifo",
@@ -18263,9 +18357,9 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -18375,7 +18469,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -18384,9 +18479,9 @@
                     "functionName": "react-MasterManager-SubscribeToPaidSubscription-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -18496,7 +18591,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -18505,9 +18601,9 @@
                     "functionName": "react-MasterManager-ListSubscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -18766,7 +18862,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -18775,9 +18872,9 @@
                     "functionName": "react-CRM-Users-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19029,7 +19126,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19038,9 +19136,9 @@
                     "functionName": "react-CRM-Bot-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19149,7 +19247,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19158,9 +19257,9 @@
                     "functionName": "react-CRM-Bot-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19269,7 +19368,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19278,9 +19378,9 @@
                     "functionName": "react-CRM-Channel-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19389,7 +19489,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19398,9 +19499,9 @@
                     "functionName": "react-CRM-Channel-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19509,7 +19610,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19518,9 +19620,9 @@
                     "functionName": "react-CRM-Bot-Payments-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19629,7 +19731,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19638,9 +19741,9 @@
                     "functionName": "react-CRM-Bot-Payments-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19749,7 +19852,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19758,9 +19862,9 @@
                     "functionName": "react-CRM-ScheduledPosts-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19869,7 +19973,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19878,9 +19983,9 @@
                     "functionName": "react-CRM-UserProfile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -19989,7 +20094,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -19998,9 +20104,9 @@
                     "functionName": "react-CRM-BanUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -20109,7 +20215,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -20118,9 +20225,9 @@
                     "functionName": "react-CRM-EditUserNotes-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -20229,7 +20336,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -20238,9 +20346,9 @@
                     "functionName": "react-CRM-GetMyBot-Analitics-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -20349,7 +20457,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -20358,9 +20467,9 @@
                     "functionName": "react-CRM-ContentPlanPostStats-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -20469,7 +20578,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -20478,9 +20588,9 @@
                     "functionName": "react-CRM-ContentPlanPostFeedBacks-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -20589,7 +20699,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -20598,9 +20709,9 @@
                     "functionName": "react-CRM-ContentPlanPostRates-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -20709,7 +20820,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -20718,9 +20830,9 @@
                     "functionName": "react-CRM-GetAdminChatMessages-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -21011,7 +21123,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -21020,9 +21133,9 @@
                     "functionName": "react-BotLanding-Update-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -21274,7 +21387,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
@@ -21283,9 +21397,9 @@
                     "functionName": "react-BotLanding-GetPrivate-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
@@ -41713,7 +41827,8 @@
                         "messagingBotAPIURL": "https://messagingbot-face.pompona.net",
                         "managementBotAPIURL": "https://managementbot-face.pompona.net",
                         "botTokenEncryptionSalt": "pxZQ53fqkZ1zlK1PiizXSDAj5jOrfvOpWXotobrN",
-                        "ClusterCount": "1",
+                        "ClusterCount_SendMessage": "1",
+                        "ClusterCount_Statistics": "1",
                         "coolDownPeriodMinutes": "1",
                         "masterUserProfileEncryptionSalt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
                         "modulMerchantId": "46e90f0c-76da-4646-81ab-8890763b4316",
@@ -41726,9 +41841,9 @@
                     "functionName": "paymentProcessor-ModulPayment-callback",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:742",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:461",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:398",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:743",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:463",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersTypes:399",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:72"
                     ],
                     "runtime": "nodejs16.x",
