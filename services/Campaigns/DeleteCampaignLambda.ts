@@ -9,7 +9,8 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/Lambda
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { ContentConfigurator } from '/opt/ContentConfigurator';
+//@ts-ignore
+import { CampaignManager } from '/opt/CampaignManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -20,29 +21,34 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
-
-    if (!ValidateStringParameters(event, ['botId'])) {
+    let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'id', datatype: 'string' }
+    ]);
+    if (bodyObject.success === false) {
+        console.log('Error: mailformed JSON body');
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'LIST',
+            method: 'DELETE',
             masterId: Number(telegramUser.id),
-            data: { success: false, error: 'QueryString parameters are invald' },
+            data: { success: false, error: bodyObject.error },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken
         });
     }
 
-    const result = await ContentConfigurator.ListMyBotContentPlans({
+    const result = await CampaignManager.DeleteCampaign({
         masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
+        id: TextHelper.SanitizeToDirectText(bodyObject.data.id)
     });
 
-    const dataResult = ParseListResult(result);
+    const dataResult = ParseItemResult(result);
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'LIST',
+        method: 'DELETE',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

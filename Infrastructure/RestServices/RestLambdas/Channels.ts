@@ -15,14 +15,6 @@ import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
-    // const CascadeDeleteQueue = Queue.fromQueueArn(that, 'imported-CascadeDeleteQueue-CreateChannelsLambdas', DynamicEnvironment.SQS.CascadeDeleteQueue.basicSQS_arn);
-
-    // const statementSQSCascadeDeleteQueue = new PolicyStatement({
-    //     resources: [CascadeDeleteQueue.queueArn],
-    //     actions: ['sqs:SendMessage', 'sqs:GetQueueAttributes', 'sqs:GetQueueUrl'],
-    //     effect: Effect.ALLOW
-    // });
-
     //Вывод списка
     const ListChannelsLambda = new NodejsFunction(that, 'ListChannelsLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'ListChannelsLambda.ts'),

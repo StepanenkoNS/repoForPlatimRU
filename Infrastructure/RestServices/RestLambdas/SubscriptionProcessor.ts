@@ -119,7 +119,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         functionName: 'subscriptionProcessor-ToggleUserStatusChange',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
         logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
 
         role: lambdaRole,
         environment: {

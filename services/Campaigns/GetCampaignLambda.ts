@@ -1,15 +1,15 @@
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
 
-import { ContentConfigurator } from '/opt/ContentConfigurator';
+//@ts-ignore
+import { CampaignManager } from '/opt/CampaignManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -21,10 +21,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
 
-    if (!ValidateStringParameters(event, ['botId'])) {
+    if (!ValidateStringParameters(event, ['id', 'botId'])) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'LIST',
+            method: 'GET',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'QueryString parameters are invald' },
             withMapReplacer: false,
@@ -33,16 +33,16 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         });
     }
 
-    const result = await ContentConfigurator.ListMyBotContentPlans({
+    const result = await CampaignManager.GetCampaignById({
         masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
+        id: TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!)
     });
-
-    const dataResult = ParseListResult(result);
+    const dataResult = ParseItemResult(result);
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'LIST',
+        method: 'GET',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

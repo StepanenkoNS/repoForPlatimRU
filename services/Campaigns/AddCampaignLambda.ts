@@ -11,7 +11,12 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 
+//@ts-ignore
+import { CampaignManager } from '/opt/CampaignManager';
+import { IAddCampaign } from '/opt/CampaignTypes';
+
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;
@@ -20,29 +25,39 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (event?.requestContext?.authorizer?.renewedAccessToken) {
         renewedToken = event.requestContext.authorizer.renewedAccessToken as string;
     }
+    let bodyObject = ValidateIncomingEventBody(event, [
+        { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
+        { key: 'name', datatype: 'string' },
 
-    if (!ValidateStringParameters(event, ['botId'])) {
+        { key: 'description', datatype: 'string' }
+    ]);
+    if (bodyObject.success === false) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'LIST',
+            method: 'ADD',
             masterId: Number(telegramUser.id),
-            data: { success: false, error: 'QueryString parameters are invald' },
+            data: { success: false, error: bodyObject.error },
             withMapReplacer: false,
             origin: origin,
             renewedAccessToken: renewedToken
         });
     }
 
-    const result = await ContentConfigurator.ListMyBotContentPlans({
+    const addCampaign: IAddCampaign = {
+        botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
-    });
+        name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        description: TextHelper.SanitizeToDirectText(bodyObject.data.description),
+        tags: bodyObject.data.tags
+    };
 
-    const dataResult = ParseListResult(result);
+    const result = await CampaignManager.AddCampaign(addCampaign);
+
+    const dataResult = ParseItemResult(result);
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'LIST',
+        method: 'ADD',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

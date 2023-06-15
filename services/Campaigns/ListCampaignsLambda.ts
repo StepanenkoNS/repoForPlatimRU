@@ -8,8 +8,8 @@ import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-
-import { ContentConfigurator } from '/opt/ContentConfigurator';
+//@ts-ignore
+import { CampaignManager } from '/opt/CampaignManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);
@@ -33,10 +33,21 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         });
     }
 
-    const result = await ContentConfigurator.ListMyBotContentPlans({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
-    });
+    let tags: string[] = [];
+
+    if (ValidateStringParameters(event, ['tags'])) {
+        if (event.queryStringParameters!.tags! !== '') {
+            tags = event.queryStringParameters!.tags!.split(',');
+        }
+    }
+
+    const result = await CampaignManager.ListCampaigns(
+        {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        },
+        tags
+    );
 
     const dataResult = ParseListResult(result);
 

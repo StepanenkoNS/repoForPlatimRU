@@ -20,6 +20,7 @@ import { CreateCascadeDelete } from './RestLambdas/CascadeDelete';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 import { CreateBotMenuSettingsLambdas } from './RestLambdas/BotMenuSettings';
 import { CreateNotificationsLambdas } from './RestLambdas/Notifications';
+import { CreateCampaignsLambdas } from './RestLambdas/Campaigns';
 
 export class MainRestServicesStack extends Stack {
     lambdaIntegrations: LambdaIntegrations[];
@@ -90,5 +91,11 @@ export class MainRestServicesStack extends Stack {
         });
 
         const cascadeDeleteLambdas = CreateCascadeDelete(this, props.layers, props.lambdaRole);
+
+        const campaigns = CreateCampaignsLambdas(this, props.layers, props.lambdaRole);
+        this.lambdaIntegrations.push({
+            rootResource: 'Campaigns',
+            lambdas: createNotificationsLambdas
+        });
     }
 }
