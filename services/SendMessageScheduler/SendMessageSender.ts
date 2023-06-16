@@ -8,8 +8,8 @@ import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData
 import { ParseListResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
 import { MessageSender } from 'opt/MessageSender';
-import { IMessageSenderInput } from 'opt/ContentTypes';
-import { ETelegramUserStatus } from 'opt/MessagingBotManagerTypes';
+import { IMessageSenderInput } from 'tgbot-project-types/TypesCompiled/ContentTypes';
+import { ETelegramUserStatus } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 
 export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];

@@ -7,13 +7,13 @@ import { GetLandingSubdomainFromOrigin, SetOrigin } from 'opt/LambdaHelpers/Orig
 
 import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 import { BotLanging } from 'opt/BotLanding';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
-import { IModulPaymentRequest, IModulReceiptItem, SupportedCurrenciesArray } from 'opt/PaymentTypes';
+import { IModulPaymentRequest, IModulReceiptItem, SupportedCurrenciesArray } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 import axios from 'axios';
 import ksuid from 'ksuid';
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
-import { IPomponaAddSubscription } from 'opt/MasterManagerTypes';
+import { IPomponaAddSubscription } from 'tgbot-project-types/TypesCompiled/MasterManagerTypes';
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

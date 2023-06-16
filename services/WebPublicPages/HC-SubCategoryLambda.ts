@@ -2,7 +2,7 @@ import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
-import { defaultMenuLanguage, ESupportedLanguage } from 'opt/LocaleTypes';
+import { defaultMenuLanguage, ESupportedLanguage } from 'tgbot-project-types/TypesCompiled/LocaleTypes';
 import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from 'opt/LambdaHelpers/HCHelper';
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 

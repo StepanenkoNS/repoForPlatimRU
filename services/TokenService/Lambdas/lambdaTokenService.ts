@@ -6,7 +6,7 @@ import { LogOut, ReturnResult } from 'opt/AuthHelpers/ReturnResult';
 //@ts-ignore
 import { ValidateTokenFromCookies } from 'opt/AuthHelpers/ValidateTokenFromCookies';
 //@ts-ignore
-import { TelegramUserProfile, PomponaRole } from 'opt/AuthTypes';
+import { TelegramUserProfile, PomponaRole } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 import { MasterManager } from 'opt/MasterManager';
 import { RefreshTokenFromCookie } from 'opt/AuthHelpers/RefreshToken';
 import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';

@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
@@ -10,7 +10,7 @@ import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingDat
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { IMessagingBot } from 'opt/MessagingBotManagerTypes';
+import { IMessagingBot } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from 'opt/MessagingBotManager';
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';

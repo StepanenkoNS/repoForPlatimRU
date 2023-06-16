@@ -1,6 +1,6 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
@@ -12,7 +12,7 @@ import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRe
 import { UserSubscriptionPlanBot } from 'opt/UserSubscriptionPlanBot';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
-import { IUserSubscriptionPlanBot } from 'opt/UserSubscriptionTypes';
+import { IUserSubscriptionPlanBot } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

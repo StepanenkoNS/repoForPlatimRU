@@ -11,17 +11,17 @@ import {
     //@ts-ignore
 } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { MessageSender } from 'opt/MessageSender';
-import { ITelegramSimpleFile } from 'opt/ContentTypes';
-import { ETelegramSendMethods } from 'opt/TelegramTypes';
+import { ITelegramSimpleFile } from 'tgbot-project-types/TypesCompiled/ContentTypes';
+import { ETelegramSendMethods } from 'tgbot-project-types/TypesCompiled/TelegramTypes';
 
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 import { FeedBack } from 'opt/FeedBack';
-import { EAdminMessageType, IAddAdminMessage } from 'opt/FeedBackTypes';
+import { EAdminMessageType, IAddAdminMessage } from 'tgbot-project-types/TypesCompiled/FeedBackTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

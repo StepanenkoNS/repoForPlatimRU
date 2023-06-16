@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguage } from 'opt/LocaleTypes';
+import { defaultMenuLanguage, ESupportedLanguage } from 'tgbot-project-types/TypesCompiled/LocaleTypes';
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { PublicWebPageManager } from 'opt/PublicWebPageManager';

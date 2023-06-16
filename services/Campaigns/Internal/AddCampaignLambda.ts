@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -11,7 +11,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 
 //@ts-ignore
 import { CampaignManager } from 'opt/CampaignManager';
-import { IAddCampaign } from 'opt/CampaignTypes';
+import { IAddCampaign } from 'tgbot-project-types/TypesCompiled/CampaignTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

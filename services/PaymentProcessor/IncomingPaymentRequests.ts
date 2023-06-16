@@ -3,12 +3,20 @@ import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 //@ts-ignore
-import { EPaymentOptionType, EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestForPaymentConfirmation, ISubscriptionPaymentInDB } from 'opt/PaymentTypes';
+import {
+    EPaymentOptionType,
+    EPaymentTarget,
+    IDigitalStorePaymentInDB,
+    IMeetingPaymentInDB,
+    IPaidPostPaymentInDB,
+    IRequestForPaymentConfirmation,
+    ISubscriptionPaymentInDB
+} from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 
 import { MessageSender } from 'opt/MessageSender';
-import { ETelegramUserStatus } from 'opt/MessagingBotManagerTypes';
+import { ETelegramUserStatus } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

@@ -8,7 +8,7 @@ import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingDat
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { S3Helper } from 'opt/S3/S3Utils';

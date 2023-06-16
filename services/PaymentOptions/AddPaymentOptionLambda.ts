@@ -1,9 +1,9 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
-import { EPaymentOptionType, IPaymentOption } from 'opt/PaymentTypes';
+import { EPaymentOptionType, IPaymentOption } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -12,7 +12,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaH
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
-import { ItemResponse } from 'opt/GeneralTypes';
+import { ItemResponse } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';

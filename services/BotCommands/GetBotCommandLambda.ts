@@ -6,10 +6,10 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 import { BotCommands } from 'opt/BotCommands';
-import { ETelegramBotCommand } from 'opt/BotCommandsTypes';
+import { ETelegramBotCommand } from 'tgbot-project-types/TypesCompiled/BotCommandsTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

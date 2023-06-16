@@ -7,7 +7,7 @@ import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData
 //@ts-ignore
 import { ParseListResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
-import { INotification } from 'opt/NotificationTypes';
+import { INotification } from 'tgbot-project-types/TypesCompiled/NotificationTypes';
 import { Notifications } from 'opt/Notificatications';
 
 export async function handler(event: SQSEvent) {

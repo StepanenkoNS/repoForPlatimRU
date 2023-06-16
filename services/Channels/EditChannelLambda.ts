@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -11,7 +11,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 //@ts-ignore
 import { ChannelManager } from 'opt/ChannelManager';
 
-import { ITelegramChannel } from 'opt/ChannelTypes';
+import { ITelegramChannel } from 'tgbot-project-types/TypesCompiled/ChannelTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

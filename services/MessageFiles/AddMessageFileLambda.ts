@@ -6,11 +6,11 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ParseListResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
 import { FileS3Configurator } from 'opt/FileS3Configurator';
 import { S3Helper } from 'opt/S3/S3Utils';
-import { IMessageFile } from 'opt/ContentTypes';
+import { IMessageFile } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 //@ts-ignore
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

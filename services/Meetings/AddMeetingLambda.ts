@@ -1,7 +1,7 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
@@ -16,7 +16,7 @@ import { TextHelper } from 'opt/TextHelpers/textHelper';
 //@ts-ignore
 import { CalendarMeetingsConfiguratior } from 'opt/CalendarMeetingsConfiguratior';
 
-import { IAddEditCalendarMeeting } from 'opt/CalendarMeetingTypes';
+import { IAddEditCalendarMeeting } from 'tgbot-project-types/TypesCompiled/CalendarMeetingTypes';
 import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';

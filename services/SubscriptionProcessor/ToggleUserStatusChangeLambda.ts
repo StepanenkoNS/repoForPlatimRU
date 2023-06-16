@@ -7,10 +7,10 @@ import { MessageSender } from 'opt/MessageSender';
 //@ts-ignore
 import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
-import { EScheduledMessageStatus, IScheduleContentPlan } from 'opt/ContentTypes';
-import { EAllowSendMessage, IUserStatusToggler } from 'opt/MessagingBotManagerTypes';
+import { EScheduledMessageStatus, IScheduleContentPlan } from 'tgbot-project-types/TypesCompiled/ContentTypes';
+import { EAllowSendMessage, IUserStatusToggler } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 import { message } from 'telegram/client';
 
 export async function handler(event: SQSEvent): Promise<any> {

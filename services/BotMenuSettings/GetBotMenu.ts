@@ -6,9 +6,9 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
-import { IBotGeneralKey } from 'opt/GeneralTypes';
+import { IBotGeneralKey } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
 import { BotMenuSettings } from 'opt/BotMenuSettings';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

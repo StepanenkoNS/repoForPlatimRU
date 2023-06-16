@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -10,7 +10,7 @@ import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaH
 import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ContentConfigurator } from 'opt/ContentConfigurator';
-import { IContentPlan } from 'opt/ContentTypes';
+import { IContentPlan } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

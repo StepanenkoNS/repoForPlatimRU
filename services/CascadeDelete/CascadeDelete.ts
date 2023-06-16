@@ -1,5 +1,5 @@
 import { SQSEvent } from 'aws-lambda';
-import { ECascadeDeleteTarget, ICascadeDelete } from 'opt/GeneralTypes';
+import { ECascadeDeleteTarget, ICascadeDelete } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
 
 //@ts-ignore
 import { CascadeDeleteProcessor } from 'opt/CascadeDeleteProcessor';

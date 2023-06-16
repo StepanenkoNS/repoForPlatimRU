@@ -6,9 +6,9 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
-import { IPaymentOption } from 'opt/PaymentTypes';
+import { IPaymentOption } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 //@ts-ignore

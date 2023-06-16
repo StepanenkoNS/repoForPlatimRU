@@ -6,7 +6,7 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 import { UserSubscriptionPlanBot } from 'opt/UserSubscriptionPlanBot';
 

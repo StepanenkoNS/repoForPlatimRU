@@ -4,7 +4,7 @@ import { SQSEvent } from 'aws-lambda';
 //@ts-ignore
 import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { PostTrigger } from 'opt/ContentTypes';
+import { PostTrigger } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

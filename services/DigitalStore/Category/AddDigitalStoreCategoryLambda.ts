@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -13,7 +13,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 import { DigitalStoreManager } from 'opt/DigitalStoreManager';
 
 import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
-import { IDigitalStoreCategory } from 'opt/DigitalStoreTypes';
+import { IDigitalStoreCategory } from 'tgbot-project-types/TypesCompiled/DigitalStoreTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

@@ -1,7 +1,7 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
@@ -11,7 +11,7 @@ import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingDat
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { CalendarMeetingsConfiguratior } from 'opt/CalendarMeetingsConfiguratior';
-import { IAddEditCalendarMeeting } from 'opt/CalendarMeetingTypes';
+import { IAddEditCalendarMeeting } from 'tgbot-project-types/TypesCompiled/CalendarMeetingTypes';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

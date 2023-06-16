@@ -2,7 +2,7 @@ import { SQSEvent } from 'aws-lambda';
 
 import { UserSubscriptionPlanChannel } from 'opt/UserSubscriptionPlanChannel';
 import { UserSubscriptionPlanBot } from 'opt/UserSubscriptionPlanBot';
-import { ITelegramBotCleaupRequest, ITelegramChannelCleaupRequest } from 'opt/TelegramTypes';
+import { ITelegramBotCleaupRequest, ITelegramChannelCleaupRequest } from 'tgbot-project-types/TypesCompiled/TelegramTypes';
 import { TelegramClient } from 'telegram';
 import { PomponaProcessor } from 'opt/PomponaProcessor';
 

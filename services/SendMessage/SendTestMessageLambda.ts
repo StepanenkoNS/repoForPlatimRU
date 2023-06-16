@@ -11,12 +11,12 @@ import {
     //@ts-ignore
 } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 import { MessageSender } from 'opt/MessageSender';
-import { ETelegramSendMethods } from 'opt/TelegramTypes';
-import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from 'opt/ContentTypes';
+import { ETelegramSendMethods } from 'tgbot-project-types/TypesCompiled/TelegramTypes';
+import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 

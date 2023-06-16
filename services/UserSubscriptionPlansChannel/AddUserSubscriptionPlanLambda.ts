@@ -6,14 +6,14 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
 
 import { UserSubscriptionPlanChannel } from 'opt/UserSubscriptionPlanChannel';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
-import { IUserSubscriptionPlanChannel } from 'opt/UserSubscriptionTypes';
+import { IUserSubscriptionPlanChannel } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

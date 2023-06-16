@@ -3,9 +3,9 @@ import { SQSEvent } from 'aws-lambda';
 import { LoadChannelParticipants } from './helpers/loadChannelParticipants';
 import { SQSHelper } from 'opt/SQS/SQSHelper';
 import { MessageSender } from 'opt/MessageSender';
-import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 import { UserSubscriptionPlanChannel } from 'opt/UserSubscriptionPlanChannel';
-import { ESupportedCurrency } from 'opt/PaymentTypes';
+import { ESupportedCurrency } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

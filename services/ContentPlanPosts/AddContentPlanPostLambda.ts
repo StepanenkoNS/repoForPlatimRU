@@ -2,7 +2,7 @@ import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
@@ -13,7 +13,7 @@ import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRe
 import { ContentConfigurator } from 'opt/ContentConfigurator';
 import ksuid from 'ksuid';
 import { SQS } from 'aws-sdk';
-import { IContentPlanPost } from 'opt/ContentTypes';
+import { IContentPlanPost } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';

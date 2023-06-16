@@ -3,15 +3,22 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 //@ts-ignore
-import { EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from 'opt/PaymentTypes';
+import {
+    EPaymentTarget,
+    IDigitalStorePaymentInDB,
+    IMeetingPaymentInDB,
+    IPaidPostPaymentInDB,
+    IRequestToConfirmPayment,
+    ISubscriptionPaymentInDB
+} from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 
 import { MessageSender } from 'opt/MessageSender';
 
-import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
-import { ISubscribeUserToSubscriptionPlan } from 'opt/UserSubscriptionTypes';
+import { ISubscribeUserToSubscriptionPlan } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
 //@ts-ignore
 import { MasterManager } from 'opt/MasterManager';
 import { SQSHelper } from 'opt/SQS/SQSHelper';

@@ -2,9 +2,9 @@ import { TextHelper } from 'opt/TextHelpers/textHelper';
 
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
-import { SupportedCurrenciesArray } from 'opt/PaymentTypes';
+import { SupportedCurrenciesArray } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 //@ts-ignore
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
