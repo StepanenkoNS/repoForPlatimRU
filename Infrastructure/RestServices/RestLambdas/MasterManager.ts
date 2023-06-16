@@ -15,15 +15,15 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], l
     //     entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'GetMasterManagerMeLambda.ts'),
     //     handler: 'handler',
     //     functionName: 'react-MasterManager-GetMe-Lambda',
-    //     runtime: StaticEnvironment.LambdaSettinds.runtime,
-    //     logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-    //     timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+    //     runtime: StaticEnvironment.LambdaSettings.runtime,
+    //     logRetention: StaticEnvironment.LambdaSettings.logRetention,
+    //     timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
     //     environment: {
     //         WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-    //         ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+    //         ...StaticEnvironment.LambdaSettings.EnvironmentVariables
     //     },
     //     bundling: {
-    //         externalModules: ['aws-sdk', 'opt/*']
+    //         externalModules: StaticEnvironment.LambdaSettings.externalModules
     //     },
     //     layers: layers
     // });
@@ -32,16 +32,16 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], l
         entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'SubscribeToPaidSubscriptionLambda.ts'),
         handler: 'handler',
         functionName: 'react-MasterManager-SubscribeToPaidSubscription-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -50,16 +50,16 @@ export function CreateMasterManagerLambdas(that: any, layers: ILayerVersion[], l
         entry: join(__dirname, '..', '..', '..', 'services', 'MasterManager', 'ListMasterManagerSubscriptionsLambda.ts'),
         handler: 'handler',
         functionName: 'react-MasterManager-ListSubscriptions-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

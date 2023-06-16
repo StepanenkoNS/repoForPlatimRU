@@ -121,7 +121,7 @@
         //     { "transform": "transformer-module" },
         // ]
     },
-    "exclude": ["cdk.out", "./dist"],
+    "exclude": ["cdk.out", "./dist", "opt", "/opt"],
     "ts-node": {
         "require": ["tsconfig-paths/register"]
     }

@@ -4,7 +4,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { defaultMenuLanguage, ESupportedLanguage } from 'tgbot-project-types/TypesCompiled/LocaleTypes';
 import { ReturnArticlesAsArray, ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from 'opt/LambdaHelpers/HCHelper';
 import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
-import { ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ReturnBlankApiResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
 type Page = {
     pagePath: string;
@@ -65,11 +65,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         }
         const ResultObject = { categories: categoriesArray, allArticles: articlesArray, popularArticles: popularArticlesArray };
 
-        const returnObject = ReturnRestApiResult(200, ResultObject, true, origin);
-        return returnObject as APIGatewayProxyResult;
+        return ReturnBlankApiResult(200, { success: true, data: ResultObject }, origin);
     } catch (error) {
         console.log('DynamoDB error\n', error);
-        const returnObject = ReturnRestApiResult(422, { error: 'Database error' }, false, origin);
-        return returnObject as APIGatewayProxyResult;
+
+        return ReturnBlankApiResult(422, { success: false, error: 'DB error' }, origin);
     }
 }

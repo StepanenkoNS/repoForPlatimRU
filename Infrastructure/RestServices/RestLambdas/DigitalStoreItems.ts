@@ -26,15 +26,15 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lamb
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'ListDigitalStoreItemsLambda.ts'),
         handler: 'handler',
         functionName: 'react-DigitalStoreItems-List-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -44,15 +44,15 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lamb
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'ListDigitalStoreItemsForContentPlanPostLambda.ts'),
         handler: 'handler',
         functionName: 'react-DigitalStoreItems-List-forContentPlanPost-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -62,15 +62,15 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lamb
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'GetDigitalStoreItemLambda.ts'),
         handler: 'handler',
         functionName: 'react-DigitalStoreItems-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -80,15 +80,15 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lamb
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'AddDigitalStoreItemLambda.ts'),
         handler: 'handler',
         functionName: 'react-DigitalStoreItems-Add-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -98,15 +98,15 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lamb
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'EditDigitalStoreItemLambda.ts'),
         handler: 'handler',
         functionName: 'react-DigitalStoreItems-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -116,16 +116,16 @@ export function CreateDigitalStoreItems(that: any, layers: ILayerVersion[], lamb
         entry: join(__dirname, '..', '..', '..', 'services', 'DigitalStore', 'Item', 'DeleteDigitalStoreItemLambda.ts'),
         handler: 'handler',
         functionName: 'react-DigitalStoreItems-Delete-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

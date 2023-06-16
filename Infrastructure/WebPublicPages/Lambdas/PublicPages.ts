@@ -15,17 +15,17 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'WebPages-GetPageContent.ts'),
         handler: 'handler',
         functionName: 'react-Content-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
         role: lambdaRole,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,
 
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

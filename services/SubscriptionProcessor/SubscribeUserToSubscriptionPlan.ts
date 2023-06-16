@@ -9,9 +9,10 @@ import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionMan
 
 import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
-import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayloadManager } from 'opt/TelegramCallbackPayloadManager';
+import { TelegramCallbackPayloadManager } from 'opt/TelegramCallbackPayloadManager';
 
 import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
+import { ETelegramCallbackTypeKey, PayloadType } from 'tgbot-project-types/TypesCompiled/TelegramTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

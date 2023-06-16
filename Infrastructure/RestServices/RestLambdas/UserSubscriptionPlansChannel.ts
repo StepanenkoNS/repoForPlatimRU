@@ -14,15 +14,15 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'ListUserSubscriptionPlansLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-List-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -32,15 +32,15 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'GetUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -50,15 +50,15 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'AddUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Add-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -68,15 +68,15 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'EditUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -86,16 +86,16 @@ export function CreateUserSubscriptionPlansChannelsLambdas(that: any, layers: IL
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansChannel', 'DeleteUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansChannel-Delete-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

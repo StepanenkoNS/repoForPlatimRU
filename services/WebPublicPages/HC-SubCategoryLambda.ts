@@ -1,6 +1,6 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ReturnBlankApiResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
 import { defaultMenuLanguage, ESupportedLanguage } from 'tgbot-project-types/TypesCompiled/LocaleTypes';
 import { ReturnArticlesMapFromDB, ReturnCategoriesAsArray, ReturnCategoriesMapFromDB } from 'opt/LambdaHelpers/HCHelper';
@@ -33,8 +33,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     if (!category || !locale) {
         console.log('category  not provided');
-        const returnObject = ReturnRestApiResult(422, { error: 'category or subcategory not provided' }, false, origin);
-        return returnObject as APIGatewayProxyResult;
+
+        return ReturnBlankApiResult(422, { success: false, error: 'category or subcategory not provided' }, origin);
     }
     try {
         const mapArticles = await ReturnArticlesMapFromDB(locale);
@@ -50,11 +50,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             activeTab: subcategory || filteredData[0].subCategories[0].slug
         };
 
-        const returnObject = ReturnRestApiResult(200, ResultObject, true, origin);
-        return returnObject as APIGatewayProxyResult;
+        return ReturnBlankApiResult(200, { success: true, data: ResultObject }, origin);
     } catch (error) {
         console.log('DynamoDB error\n', error);
-        const returnObject = ReturnRestApiResult(422, { error: 'Database error' }, false, origin);
-        return returnObject as APIGatewayProxyResult;
+        return ReturnBlankApiResult(422, { success: false, error: 'DB error' }, origin);
     }
 }

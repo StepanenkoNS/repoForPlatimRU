@@ -8,7 +8,6 @@ import {
     EPaymentTarget,
     IDigitalStorePaymentInDB,
     IMeetingPaymentInDB,
-    IPaidPostPaymentInDB,
     IRequestForPaymentConfirmation,
     ISubscriptionPaymentInDB
 } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
@@ -16,7 +15,7 @@ import {
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 
 import { MessageSender } from 'opt/MessageSender';
-import { ETelegramUserStatus } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
+import { ETelegramUserStatus } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

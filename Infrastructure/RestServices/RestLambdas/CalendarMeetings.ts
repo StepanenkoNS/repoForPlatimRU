@@ -23,15 +23,15 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'ListMeetingsLambda.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-List-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -41,15 +41,15 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'GetMeetingLambda.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -59,15 +59,15 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'AddMeetingLambda.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-Add-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -77,17 +77,17 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'EditMeetingLambda.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -97,16 +97,16 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'DeleteMeetingLambda.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-Delete-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -116,15 +116,15 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'ListMeetingParticipants.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-ListParticipants-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -134,17 +134,17 @@ export function CreateCalendarMeetingsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'Meetings', 'CheckAddMeetingSubscriptionLambda.ts'),
         handler: 'handler',
         functionName: 'react-Meetings-CheckLimits-AddMeeting-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
             WebAppBotsSubdomainDistributionDomainName: DynamicEnvironment.CloudFront.WebAppBotsSubdomainDistributionDomainName,
 
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

@@ -96,17 +96,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'AddScheduledPost.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Scheduler-Add-New-Post',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         memorySize: 256,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -117,17 +117,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'ToggleUserStatusChangeLambda.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-ToggleUserStatusChange',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
 
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -151,17 +151,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'DeleteScheduledPost.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Scheduler-Delete-Post',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         memorySize: 256,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -201,19 +201,19 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscribeUserToContentPlan.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Subscribe-User-To-ContentPlan',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
 
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -222,19 +222,19 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'SubscribeUserToSubscriptionPlan.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Subscribe-User-To-SubscriptionPlan',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
 
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -291,17 +291,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'processChannelSubscriptionsToExpireLambda.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Expire-ChannelSubsriptions',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         reservedConcurrentExecutions: 1,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -322,17 +322,17 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'processBotSubscriptionsToExpireLambda.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Expire-BotSubscriptions',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         reservedConcurrentExecutions: 1,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -362,16 +362,16 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'PomponaSubscriptionCleanUpProcessor.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Cleanup-Pompona',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         reservedConcurrentExecutions: 1,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -392,16 +392,16 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expireUserSubscriptionItem.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Expire-expireUserSubscriptionItem',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
         reservedConcurrentExecutions: 1,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -410,16 +410,16 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'expireUserSubscriptionItemDLQ.ts'),
         handler: 'handler',
         functionName: 'subscriptionProcessor-Expire-expireUserSubscriptionItemDLQ',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
         reservedConcurrentExecutions: 1,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

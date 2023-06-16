@@ -40,15 +40,15 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'ListContentPlanPostsLambda.ts'),
         handler: 'handler',
         functionName: 'react-ContentPlanPosts-List-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -58,15 +58,15 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'GetContentPlanPostLambda.ts'),
         handler: 'handler',
         functionName: 'react-ContentPlanPosts-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -76,17 +76,17 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'AddContentPlanPostLambda.ts'),
         handler: 'handler',
         functionName: 'react-ContentPlanPosts-Add-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             AddScheduledPostQueueURL: AddScheduledPostQueue.queueUrl,
             DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -97,15 +97,15 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'EditContentPlanPostLambda.ts'),
         handler: 'handler',
         functionName: 'react-ContentPlanPosts-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MEDIUM,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -115,18 +115,18 @@ export function CreateContentPlanPostsLambdas(that: any, layers: ILayerVersion[]
         entry: join(__dirname, '..', '..', '..', 'services', 'ContentPlanPosts', 'DeleteContentPlanPostLambda.ts'),
         handler: 'handler',
         functionName: 'react-ContentPlanPosts-Delete-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             AddScheduledPostQueueURL: AddScheduledPostQueue.queueUrl,
             DeleteScheduledPostQueueURL: DeleteScheduledPostQueue.queueUrl,
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

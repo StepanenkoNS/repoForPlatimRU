@@ -6,8 +6,11 @@ import { GetLandingSubdomainFromOrigin, SetOrigin } from 'opt/LambdaHelpers/Orig
 //@ts-ignore
 
 import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
-import { BotLanging } from 'opt/BotLanding';
+
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
+
+//@ts-ignore
+import { BotLanging } from 'opt/BotLanding';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));

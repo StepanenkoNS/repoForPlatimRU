@@ -1,6 +1,5 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-//@ts-ignore
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore

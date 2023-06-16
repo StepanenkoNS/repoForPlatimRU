@@ -15,15 +15,15 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
         entry: join(__dirname, '..', '..', '..', 'services', 'BotLanding', 'GetBotLandingPublic.ts'),
         handler: 'handler',
         functionName: 'react-BotLanding-GetPublic-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
         role: lambdaRole,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

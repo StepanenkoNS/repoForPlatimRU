@@ -2,7 +2,6 @@
 import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-//@ts-ignore
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
@@ -12,6 +11,7 @@ import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingDat
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
+//@ts-ignore
 import { BotCommands } from 'opt/BotCommands';
 import { IMessagingBotCommand } from 'tgbot-project-types/TypesCompiled/BotCommandsTypes';
 

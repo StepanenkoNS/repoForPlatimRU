@@ -39,15 +39,15 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'ListUserSubscriptionPlansLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-List-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -57,15 +57,15 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'GetUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -75,16 +75,16 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'AddUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Add-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -94,16 +94,16 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'EditUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -112,15 +112,15 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         entry: join(__dirname, '..', '..', '..', 'services', 'SubscriptionProcessor', 'AddDeleteContentPlanFromSubscription.ts'),
         handler: 'handler',
         functionName: 'react-AddDeleteContentPlanFromSubscriptionLambda-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -144,17 +144,17 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
         entry: join(__dirname, '..', '..', '..', 'services', 'UserSubscriptionPlansBot', 'DeleteUserSubscriptionPlanLambda.ts'),
         handler: 'handler',
         functionName: 'react-UserSubscriptionPlansBot-Delete-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl,
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

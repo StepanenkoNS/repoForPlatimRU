@@ -12,7 +12,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 import { ContentConfigurator } from 'opt/ContentConfigurator';
 //@ts-ignore
 import { CampaignManager } from 'opt/CampaignManager';
-import { ICampaign } from '../../../TGBot-CoreLayers/LambdaLayers/Types/CampaignTypes';
+import { ICampaign } from 'tgbot-project-types/TypesCompiled/CampaignTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

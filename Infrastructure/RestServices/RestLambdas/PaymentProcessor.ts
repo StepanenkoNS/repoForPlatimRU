@@ -43,9 +43,9 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'IncomingPaymentRequests.ts'),
         handler: 'handler',
         functionName: 'paymentProcessor-incomingRequests',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
@@ -54,10 +54,10 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
             notificationsQueueURL: notificationsQueue.queueUrl,
             ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
 
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -67,9 +67,9 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'IncomingPaymentConfirmation.ts'),
         handler: 'handler',
         functionName: 'paymentProcessor-IncomingPaymentConfirmation',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
@@ -77,10 +77,10 @@ export function PaymentProcessor(that: any, layers: ILayerVersion[], lambdaRole:
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             notificationsQueueURL: notificationsQueue.queueUrl,
             ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

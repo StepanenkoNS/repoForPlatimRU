@@ -7,11 +7,12 @@ import { MessageSender } from 'opt/MessageSender';
 //@ts-ignore
 import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
+import { EAllowSendMessage, ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
-import { EScheduledMessageStatus, IScheduleContentPlan } from 'tgbot-project-types/TypesCompiled/ContentTypes';
-import { EAllowSendMessage, IUserStatusToggler } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
+import { IScheduleContentPlan } from 'tgbot-project-types/TypesCompiled/ContentTypes';
+import { IUserStatusToggler } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 import { message } from 'telegram/client';
+import { EScheduledMessageStatus } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

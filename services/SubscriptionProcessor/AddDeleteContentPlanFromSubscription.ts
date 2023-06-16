@@ -4,7 +4,6 @@ import { SQSEvent } from 'aws-lambda';
 //@ts-ignore
 import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { PostTrigger } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 import { IAddDeleteContentPlanFromSubscription } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {

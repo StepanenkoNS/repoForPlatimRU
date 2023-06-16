@@ -36,8 +36,8 @@ export class TokenServiceStack extends Stack {
             entry: join(__dirname, '..', '..', 'services', 'TokenService', 'Lambdas', 'lambdaTokenService.ts'),
             handler: 'handler',
             functionName: this.stackName + '-Lambda',
-            runtime: StaticEnvironment.LambdaSettinds.runtime,
-            logRetention: StaticEnvironment.LambdaSettinds.logRetention,
+            runtime: StaticEnvironment.LambdaSettings.runtime,
+            logRetention: StaticEnvironment.LambdaSettings.logRetention,
             role: props.lambdaRole,
             environment: {
                 accessTokenExpirationMinutes: StaticEnvironment.TokenService.accessTokenExpirationMinutes.toString(),
@@ -45,10 +45,10 @@ export class TokenServiceStack extends Stack {
 
                 AllowUsers: StaticEnvironment.TokenService.AllowUsers,
 
-                ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+                ...StaticEnvironment.LambdaSettings.EnvironmentVariables
             },
             bundling: {
-                externalModules: ['aws-sdk', 'opt/*']
+                externalModules: StaticEnvironment.LambdaSettings.externalModules
             },
             layers: props.layers
         });

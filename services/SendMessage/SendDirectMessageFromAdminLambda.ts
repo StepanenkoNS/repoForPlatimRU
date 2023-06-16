@@ -13,15 +13,8 @@ import {
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
-//@ts-ignore
-import { MessageSender } from 'opt/MessageSender';
-import { ITelegramSimpleFile } from 'tgbot-project-types/TypesCompiled/ContentTypes';
-import { ETelegramSendMethods } from 'tgbot-project-types/TypesCompiled/TelegramTypes';
-
-//@ts-ignore
-import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 import { FeedBack } from 'opt/FeedBack';
-import { EAdminMessageType, IAddAdminMessage } from 'tgbot-project-types/TypesCompiled/FeedBackTypes';
+import { IAddAdminMessage } from 'tgbot-project-types/TypesCompiled/FeedBackTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

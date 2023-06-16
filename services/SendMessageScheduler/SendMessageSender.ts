@@ -9,7 +9,7 @@ import { ParseListResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRe
 
 import { MessageSender } from 'opt/MessageSender';
 import { IMessageSenderInput } from 'tgbot-project-types/TypesCompiled/ContentTypes';
-import { ETelegramUserStatus } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
+import { ETelegramUserStatus } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
 export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];

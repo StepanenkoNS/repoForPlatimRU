@@ -3,14 +3,7 @@ import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 //@ts-ignore
-import {
-    EPaymentTarget,
-    IDigitalStorePaymentInDB,
-    IMeetingPaymentInDB,
-    IPaidPostPaymentInDB,
-    IRequestToConfirmPayment,
-    ISubscriptionPaymentInDB
-} from 'tgbot-project-types/TypesCompiled/PaymentTypes';
+import { EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 
 import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 

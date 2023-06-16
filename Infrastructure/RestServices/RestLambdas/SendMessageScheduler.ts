@@ -48,17 +48,17 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessage-Scheduller-First-Stage.ts'),
         handler: 'handler',
         functionName: 'SendMessage-Scheduller-First-Stage',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
             ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -90,18 +90,18 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessage-Scheduller-Second-Stage.ts'),
         handler: 'handler',
         functionName: 'SendMessage-Scheduller-Second-Stage',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
             SendMessageSchedulerQueueFirstURL: SendMessageSchedulerQueueFirst.queueUrl,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl,
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -136,17 +136,17 @@ export function SendMessageScheduler(that: any, layers: ILayerVersion[], lambdaR
         entry: join(__dirname, '..', '..', '..', 'services', 'SendMessagescheduler', 'SendMessageSender.ts'),
         handler: 'handler',
         functionName: 'scheduler-SendMessageSender-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         //reservedConcurrentExecutions: 1,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             ToggleUserBlockedStatusQueueURL: ToggleUserBlockedStatusFifoQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

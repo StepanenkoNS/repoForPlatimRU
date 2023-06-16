@@ -5,7 +5,7 @@ import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 import { ValidateIncomingArray, ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult, ReturnBlankApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { defaultLocale, ESupportedLanguage } from 'tgbot-project-types/TypesCompiled/LocaleTypes';
 //@ts-ignore
@@ -33,8 +33,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         article = !queryParams['article'] ? undefined : queryParams['article'];
     } else {
         console.log('query params not provided');
-        const returnObject = ReturnRestApiResult(422, { error: 'query params  not provided' }, false, origin);
-        return returnObject as APIGatewayProxyResult;
+
+        return ReturnBlankApiResult(422, { success: false, error: 'query params  not provided' }, origin);
     }
 
     try {
@@ -49,11 +49,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
         const ResultObject = { activeArticle, activeSubcategory, categories: categoriesArray, articles: activeSubcategory.articles }; // { categories: categoriesArray, allArticles: articlesArray, popularArticles: popularArticlesArray };
 
-        const returnObject = ReturnRestApiResult(200, ResultObject, true, origin);
-        return returnObject as APIGatewayProxyResult;
+        return ReturnBlankApiResult(200, { success: true, data: ResultObject }, origin);
     } catch (error) {
         console.log('DynamoDB error\n', error);
-        const returnObject = ReturnRestApiResult(422, { error: 'Database error' }, false, origin);
-        return returnObject as APIGatewayProxyResult;
+
+        return ReturnBlankApiResult(422, { success: false, error: 'DB error' }, origin);
     }
 }

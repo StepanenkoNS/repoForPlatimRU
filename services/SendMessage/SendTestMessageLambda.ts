@@ -15,10 +15,10 @@ import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/Au
 
 //@ts-ignore
 import { MessageSender } from 'opt/MessageSender';
-import { ETelegramSendMethods } from 'tgbot-project-types/TypesCompiled/TelegramTypes';
-import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from 'tgbot-project-types/TypesCompiled/ContentTypes';
+
 //@ts-ignore
 import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { PostTrigger, ITelegramNaivMessageContent } from 'tgbot-project-types/TypesCompiled/ContentTypesPrimitives';
 
 //@ts-ignore
 

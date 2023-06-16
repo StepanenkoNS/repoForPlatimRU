@@ -20,15 +20,15 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'ListChannelsLambda.ts'),
         handler: 'handler',
         functionName: 'react-Channels-List-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -38,15 +38,15 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'GetChannelLambda.ts'),
         handler: 'handler',
         functionName: 'react-Channels-Get-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SHORT,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -56,15 +56,15 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'EditChannelLambda.ts'),
         handler: 'handler',
         functionName: 'react-Channels-Edit-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MEDIUM,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -74,16 +74,16 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'DeleteChannelLambda.ts'),
         handler: 'handler',
         functionName: 'react-Channels-Delete-Lambda',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MEDIUM,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MEDIUM,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -123,19 +123,19 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'MigrateChannelFirstStage.ts'),
         handler: 'handler',
         functionName: 'react-Channels-Migrate-first',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.MAX,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.MAX,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             migrateChannelSecondQueueURL: migrateChannelSecondQueue.queueUrl,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
             API_ID: StaticEnvironment.Secrets.API_ID,
             API_HASH: StaticEnvironment.Secrets.API_HASH
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
@@ -144,12 +144,12 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
         entry: join(__dirname, '..', '..', '..', 'services', 'Channels', 'MigrateChannelSecondStage.ts'),
         handler: 'handler',
         functionName: 'react-Channels-Migrate-second',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
             SubscribeToSubscriptionPlanQueueURL: SubscribeToSubscriptionPlanQueue.queueUrl,
             SubscribeToContentPlanQueueURL: SubscribeToContentPlanQueue.queueUrl,
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl,
@@ -158,7 +158,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             API_HASH: StaticEnvironment.Secrets.API_HASH
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });

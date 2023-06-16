@@ -17,12 +17,12 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], la
         entry: join(__dirname, '..', '..', '..', 'services', 'PaymentProcessor', 'ModulPaymentCallBack.ts'),
         handler: 'handler',
         functionName: 'paymentProcessor-ModulPayment-callback',
-        runtime: StaticEnvironment.LambdaSettinds.runtime,
-        logRetention: StaticEnvironment.LambdaSettinds.logRetention,
-        timeout: StaticEnvironment.LambdaSettinds.timeout.SMALL,
+        runtime: StaticEnvironment.LambdaSettings.runtime,
+        logRetention: StaticEnvironment.LambdaSettings.logRetention,
+        timeout: StaticEnvironment.LambdaSettings.timeout.SMALL,
         role: lambdaRole,
         environment: {
-            ...StaticEnvironment.LambdaSettinds.EnvironmentVariables,
+            ...StaticEnvironment.LambdaSettings.EnvironmentVariables,
 
             modulMerchantId: StaticEnvironment.PaymentGateways.modulBank.MerchantId,
             modulSuccess_url: StaticEnvironment.PaymentGateways.modulBank.success_url,
@@ -30,7 +30,7 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], la
             modulKey: StaticEnvironment.PaymentGateways.modulBank.TestKey
         },
         bundling: {
-            externalModules: ['aws-sdk', 'opt/*']
+            externalModules: StaticEnvironment.LambdaSettings.externalModules
         },
         layers: layers
     });
