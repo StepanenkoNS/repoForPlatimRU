@@ -7,10 +7,10 @@ import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aw
 import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
-import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from 'opt/DevHelpers/AccessHelper';
 import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
-import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
+import { CreateAPIwithOutAuth } from 'opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 

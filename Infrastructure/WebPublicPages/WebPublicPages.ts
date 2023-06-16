@@ -10,10 +10,10 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import { CreateHelpCenterLambdas } from './Lambdas/HelpCenterLambdas';
 import { CreatePublicPagesLambdas } from './Lambdas/PublicPages';
 import { CreateGetBotLandingLambda } from './Lambdas/BotLandingPublic';
-import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { ReturnGSIs } from 'opt/DevHelpers/AccessHelper';
 import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
-import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
+import { CreateAPIwithOutAuth } from 'opt/DevHelpers/CreateAPIwithOutAuth';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export class WebPublicPagesStack extends Stack {

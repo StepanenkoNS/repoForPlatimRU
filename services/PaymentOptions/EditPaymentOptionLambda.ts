@@ -1,18 +1,18 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
-import { IPaymentOption } from '/opt/PaymentTypes';
+import { IPaymentOption } from 'opt/PaymentTypes';
 
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

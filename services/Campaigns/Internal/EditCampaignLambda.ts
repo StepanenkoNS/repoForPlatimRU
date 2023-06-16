@@ -1,17 +1,17 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
-import { ContentConfigurator } from '/opt/ContentConfigurator';
+import { ContentConfigurator } from 'opt/ContentConfigurator';
 //@ts-ignore
-import { CampaignManager } from '/opt/CampaignManager';
+import { CampaignManager } from 'opt/CampaignManager';
 import { ICampaign } from '../../../TGBot-CoreLayers/LambdaLayers/Types/CampaignTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

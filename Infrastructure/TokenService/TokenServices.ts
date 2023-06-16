@@ -48,7 +48,7 @@ export class TokenServiceStack extends Stack {
                 ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
             },
             bundling: {
-                externalModules: ['aws-sdk', '/opt/*']
+                externalModules: ['aws-sdk', 'opt/*']
             },
             layers: props.layers
         });

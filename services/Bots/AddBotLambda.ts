@@ -1,23 +1,23 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { IMessagingBot } from '/opt/MessagingBotManagerTypes';
+import { IMessagingBot } from 'opt/MessagingBotManagerTypes';
 //@ts-ignore
-import { MessagingBotManager } from '/opt/MessagingBotManager';
+import { MessagingBotManager } from 'opt/MessagingBotManager';
 //@ts-ignore
-import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event.body);

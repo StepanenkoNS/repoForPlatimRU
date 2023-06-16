@@ -1,16 +1,16 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 import ksuid from 'ksuid';
 
-import { MessageSender } from '/opt/MessageSender';
+import { MessageSender } from 'opt/MessageSender';
 //@ts-ignore
-import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
 
-import { EScheduledMessageStatus, IScheduleContentPlan } from '/opt/ContentTypes';
-import { EAllowSendMessage, IUserStatusToggler } from '/opt/MessagingBotManagerTypes';
+import { EScheduledMessageStatus, IScheduleContentPlan } from 'opt/ContentTypes';
+import { EAllowSendMessage, IUserStatusToggler } from 'opt/MessagingBotManagerTypes';
 import { message } from 'telegram/client';
 
 export async function handler(event: SQSEvent): Promise<any> {

@@ -5,7 +5,7 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
@@ -23,7 +23,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lam
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -41,7 +41,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lam
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -61,7 +61,7 @@ export function CreateBotCommandsLambdas(that: any, layers: ILayerVersion[], lam
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

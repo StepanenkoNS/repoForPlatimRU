@@ -1,24 +1,24 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 //@ts-ignore
-import { EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from '/opt/PaymentTypes';
+import { EPaymentTarget, IDigitalStorePaymentInDB, IMeetingPaymentInDB, IPaidPostPaymentInDB, IRequestToConfirmPayment, ISubscriptionPaymentInDB } from 'opt/PaymentTypes';
 
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
 
-import { MessageSender } from '/opt/MessageSender';
+import { MessageSender } from 'opt/MessageSender';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
 
-import { ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
+import { ISubscribeUserToSubscriptionPlan } from 'opt/UserSubscriptionTypes';
 //@ts-ignore
-import { MasterManager } from '/opt/MasterManager';
-import { SQSHelper } from '/opt/SQS/SQSHelper';
-import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
-import { DigitalStoreManager } from '/opt/DigitalStoreManager';
-import { CalendarMeetingsConfiguratior } from '/opt/CalendarMeetingsConfiguratior';
-import { ContentConfigurator } from '/opt/ContentConfigurator';
+import { MasterManager } from 'opt/MasterManager';
+import { SQSHelper } from 'opt/SQS/SQSHelper';
+import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
+import { DigitalStoreManager } from 'opt/DigitalStoreManager';
+import { CalendarMeetingsConfiguratior } from 'opt/CalendarMeetingsConfiguratior';
+import { ContentConfigurator } from 'opt/ContentConfigurator';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

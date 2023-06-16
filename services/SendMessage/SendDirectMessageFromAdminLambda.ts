@@ -1,27 +1,27 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, DataValidationParameter } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody, DataValidationParameter } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import {
     ParseSendMessageResult,
     ReturnRestApiResult
     //@ts-ignore
-} from '/opt/LambdaHelpers/ReturnRestApiResult';
+} from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
 //@ts-ignore
-import { MessageSender } from '/opt/MessageSender';
-import { ITelegramSimpleFile } from '/opt/ContentTypes';
-import { ETelegramSendMethods } from '/opt/TelegramTypes';
+import { MessageSender } from 'opt/MessageSender';
+import { ITelegramSimpleFile } from 'opt/ContentTypes';
+import { ETelegramSendMethods } from 'opt/TelegramTypes';
 
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
-import { FeedBack } from '/opt/FeedBack';
-import { EAdminMessageType, IAddAdminMessage } from '/opt/FeedBackTypes';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { FeedBack } from 'opt/FeedBack';
+import { EAdminMessageType, IAddAdminMessage } from 'opt/FeedBackTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

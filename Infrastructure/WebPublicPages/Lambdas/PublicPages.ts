@@ -25,7 +25,7 @@ export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Res
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

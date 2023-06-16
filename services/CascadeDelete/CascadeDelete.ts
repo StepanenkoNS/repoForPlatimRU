@@ -1,8 +1,8 @@
 import { SQSEvent } from 'aws-lambda';
-import { ECascadeDeleteTarget, ICascadeDelete } from '/opt/GeneralTypes';
+import { ECascadeDeleteTarget, ICascadeDelete } from 'opt/GeneralTypes';
 
 //@ts-ignore
-import { CascadeDeleteProcessor } from '/opt/CascadeDeleteProcessor';
+import { CascadeDeleteProcessor } from 'opt/CascadeDeleteProcessor';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

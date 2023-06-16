@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 
@@ -29,7 +29,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -48,7 +48,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -67,7 +67,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -87,7 +87,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -107,7 +107,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -127,7 +127,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -148,7 +148,7 @@ export function CreateBotsLambdas(that: any, layers: ILayerVersion[], lambdaRole
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

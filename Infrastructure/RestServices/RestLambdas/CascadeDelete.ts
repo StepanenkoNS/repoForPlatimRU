@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToRoute53, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
@@ -53,7 +53,7 @@ export function CreateCascadeDelete(that: any, layers: ILayerVersion[], lambdaRo
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

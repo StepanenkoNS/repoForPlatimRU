@@ -1,21 +1,21 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
-import { EPaymentOptionType, IPaymentOption } from '/opt/PaymentTypes';
+import { EPaymentOptionType, IPaymentOption } from 'opt/PaymentTypes';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
-import { ItemResponse } from '/opt/GeneralTypes';
+import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
+import { ItemResponse } from 'opt/GeneralTypes';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
-import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

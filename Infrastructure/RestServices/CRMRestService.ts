@@ -7,7 +7,7 @@ import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnviro
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from 'opt/DevHelpers/AccessHelper';
 //@ts-ignore
 
 import { CreateCRMLambdas } from './CRMLambdas/CRM';

@@ -1,15 +1,15 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 
-import { MessageSender } from '/opt/MessageSender';
+import { MessageSender } from 'opt/MessageSender';
 //@ts-ignore
-import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
 
-import { IScheduleContentPlan } from '/opt/ContentTypes';
+import { IScheduleContentPlan } from 'opt/ContentTypes';
 
 const sqs = new SQS({ region: process.env.region });
 

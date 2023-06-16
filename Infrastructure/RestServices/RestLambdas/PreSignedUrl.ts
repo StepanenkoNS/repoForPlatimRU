@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
-import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
@@ -25,7 +25,7 @@ export function CreateGetPresignedUrlsLambdas(that: any, layers: ILayerVersion[]
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

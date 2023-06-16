@@ -1,19 +1,19 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
-import { IDigitalStoreItem } from '/opt/DigitalStoreTypes';
+import { IDigitalStoreItem } from 'opt/DigitalStoreTypes';
 //@ts-ignore
-import { DigitalStoreManager } from '/opt/DigitalStoreManager';
+import { DigitalStoreManager } from 'opt/DigitalStoreManager';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

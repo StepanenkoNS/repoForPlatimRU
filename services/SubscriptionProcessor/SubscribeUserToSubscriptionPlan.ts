@@ -1,17 +1,17 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 import ksuid from 'ksuid';
 
-import { MessageSender } from '/opt/MessageSender';
+import { MessageSender } from 'opt/MessageSender';
 
-import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
+import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
 
-import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayloadManager } from '/opt/TelegramCallbackPayloadManager';
+import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayloadManager } from 'opt/TelegramCallbackPayloadManager';
 
-import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
+import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from 'opt/UserSubscriptionTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

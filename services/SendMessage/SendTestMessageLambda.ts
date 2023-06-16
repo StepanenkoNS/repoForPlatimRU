@@ -1,24 +1,24 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import {
     ParseSendMessageResult,
     ReturnRestApiResult
     //@ts-ignore
-} from '/opt/LambdaHelpers/ReturnRestApiResult';
+} from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
 //@ts-ignore
-import { MessageSender } from '/opt/MessageSender';
-import { ETelegramSendMethods } from '/opt/TelegramTypes';
-import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from '/opt/ContentTypes';
+import { MessageSender } from 'opt/MessageSender';
+import { ETelegramSendMethods } from 'opt/TelegramTypes';
+import { EPostTriggerType, ITelegramNaivMessageContent, PostTrigger } from 'opt/ContentTypes';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 
 //@ts-ignore
 

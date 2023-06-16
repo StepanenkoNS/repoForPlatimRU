@@ -23,7 +23,7 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

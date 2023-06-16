@@ -8,7 +8,7 @@ import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvir
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
 //@ts-ignore
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
@@ -28,7 +28,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -46,7 +46,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -64,7 +64,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -83,7 +83,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -135,7 +135,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             API_HASH: StaticEnvironment.Secrets.API_HASH
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -158,7 +158,7 @@ export function CreateChannelsLambdas(that: any, layers: ILayerVersion[], lambda
             API_HASH: StaticEnvironment.Secrets.API_HASH
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

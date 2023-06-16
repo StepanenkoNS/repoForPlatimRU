@@ -1,13 +1,13 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
-import { GetLandingSubdomainFromOrigin, SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { defaultMenuLanguage, ESupportedLanguage } from 'opt/LocaleTypes';
+import { GetLandingSubdomainFromOrigin, SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 
-import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
-import { BotLanging } from '/opt/BotLanding';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { BotLanging } from 'opt/BotLanding';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));

@@ -1,20 +1,20 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import {
     ParseSendMessageResult,
     ReturnRestApiResult
     //@ts-ignore
-} from '/opt/LambdaHelpers/ReturnRestApiResult';
+} from 'opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
-import { MessageSender } from '/opt/MessageSender';
-import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
+import { MessageSender } from 'opt/MessageSender';
+import { ETelegramSendMethod } from 'opt/TelegramTypesPrimitive';
 //@ts-ignore
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

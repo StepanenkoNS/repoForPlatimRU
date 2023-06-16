@@ -1,6 +1,6 @@
 import { SQSEvent } from 'aws-lambda';
-import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { defaultLocale } from '/opt/LocaleTypes';
+import { MessagingBotManager } from 'opt/MessagingBotManager';
+import { defaultLocale } from 'opt/LocaleTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

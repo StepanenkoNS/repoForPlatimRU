@@ -11,7 +11,8 @@
         "deploy:token": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebTokenService'",
         "deploy:sub": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebRestServiceSubscriptions'",
         "deploy:main": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebRestServiceMain'",
-        "git": "git add . ; git commit -m \"automated commit\" ; git push "
+        "git": "git add . ; git commit -m \"automated commit\" ; git push ",
+        "postInstall": "npm install --upgrade github:StepanenkoNS/TGBot-CoreTypes"
     },
     "repository": {
         "type": "git",
@@ -62,6 +63,8 @@
         "sanitize-html": "^2.10.0",
         "telegram": "^2.16.4",
         "telegram-format": "^2.1.0",
+        "tgbot-lambda-layers": "github:StepanenkoNS/TGBot-CoreTypes",
+        "tgbot-project-types": "github:StepanenkoNS/TGBot-CoreTypes",
         "url-utm-params": "^0.1.0",
         "uuid": "^9.0.0"
     }

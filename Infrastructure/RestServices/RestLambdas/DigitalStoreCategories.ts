@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 import { PolicyStatement, Effect, IRole } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 
@@ -33,7 +33,7 @@ export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[],
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -51,7 +51,7 @@ export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[],
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -69,7 +69,7 @@ export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[],
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -87,7 +87,7 @@ export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[],
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -106,7 +106,7 @@ export function CreateDigitalStoreCategories(that: any, layers: ILayerVersion[],
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

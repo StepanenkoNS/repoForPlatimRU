@@ -5,7 +5,7 @@ import { ILayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
@@ -24,7 +24,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -42,7 +42,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -60,7 +60,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -78,7 +78,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -96,7 +96,7 @@ export function CreatePaymentOptionsLambdas(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

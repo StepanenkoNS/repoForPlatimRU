@@ -1,10 +1,10 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { defaultMenuLanguage, ESupportedLanguage } from 'opt/LocaleTypes';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { PublicWebPageManager } from '/opt/PublicWebPageManager';
+import { PublicWebPageManager } from 'opt/PublicWebPageManager';
 
 type Page = {
     pagePath: string;

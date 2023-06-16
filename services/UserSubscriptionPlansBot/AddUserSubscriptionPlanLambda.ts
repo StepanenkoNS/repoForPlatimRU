@@ -1,17 +1,17 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
+import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
 
-import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
+import { UserSubscriptionPlanBot } from 'opt/UserSubscriptionPlanBot';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
-import { IUserSubscriptionPlanBot } from '/opt/UserSubscriptionTypes';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { IUserSubscriptionPlanBot } from 'opt/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);

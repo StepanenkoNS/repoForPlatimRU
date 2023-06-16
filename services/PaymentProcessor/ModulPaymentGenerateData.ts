@@ -1,20 +1,20 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
 
-import { GetLandingSubdomainFromOrigin, SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { GetLandingSubdomainFromOrigin, SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 
-import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
-import { BotLanging } from '/opt/BotLanding';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
-import { IModulPaymentRequest, IModulReceiptItem, SupportedCurrenciesArray } from '/opt/PaymentTypes';
+import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { BotLanging } from 'opt/BotLanding';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
+import { IModulPaymentRequest, IModulReceiptItem, SupportedCurrenciesArray } from 'opt/PaymentTypes';
 import axios from 'axios';
 import ksuid from 'ksuid';
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
-import { IPomponaAddSubscription } from '/opt/MasterManagerTypes';
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
+import { IPomponaAddSubscription } from 'opt/MasterManagerTypes';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));

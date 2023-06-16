@@ -1,10 +1,10 @@
 import { SQSEvent } from 'aws-lambda';
 
-import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
-import { UserSubscriptionPlanBot } from '/opt/UserSubscriptionPlanBot';
-import { ITelegramBotCleaupRequest, ITelegramChannelCleaupRequest } from '/opt/TelegramTypes';
+import { UserSubscriptionPlanChannel } from 'opt/UserSubscriptionPlanChannel';
+import { UserSubscriptionPlanBot } from 'opt/UserSubscriptionPlanBot';
+import { ITelegramBotCleaupRequest, ITelegramChannelCleaupRequest } from 'opt/TelegramTypes';
 import { TelegramClient } from 'telegram';
-import { PomponaProcessor } from '/opt/PomponaProcessor';
+import { PomponaProcessor } from 'opt/PomponaProcessor';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
@@ -47,7 +47,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -65,7 +65,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -84,7 +84,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -103,7 +103,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
             AddDeleteContentPlanFromSubscriptionQueueURL: AddDeleteContentPlanFromSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -120,7 +120,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -154,7 +154,7 @@ export function CreateUserSubscriptionPlansBotsLambdas(that: any, layers: ILayer
             CascadeDeleteTopic: DynamicEnvironment.SNS.CascadeDeleteTopicARN
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

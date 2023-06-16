@@ -25,7 +25,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -47,7 +47,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -68,7 +68,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });

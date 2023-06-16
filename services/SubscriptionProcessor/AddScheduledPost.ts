@@ -1,10 +1,10 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 //@ts-ignore
-import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
 
-import { PostTrigger } from '/opt/ContentTypes';
+import { PostTrigger } from 'opt/ContentTypes';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

@@ -1,15 +1,15 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent } from 'aws-lambda';
 //@ts-ignore
-import { CreateNewTokens } from '/opt/AuthHelpers/GetNewToken';
-import { LogOut, ReturnResult } from '/opt/AuthHelpers/ReturnResult';
+import { CreateNewTokens } from 'opt/AuthHelpers/GetNewToken';
+import { LogOut, ReturnResult } from 'opt/AuthHelpers/ReturnResult';
 //@ts-ignore
-import { ValidateTokenFromCookies } from '/opt/AuthHelpers/ValidateTokenFromCookies';
+import { ValidateTokenFromCookies } from 'opt/AuthHelpers/ValidateTokenFromCookies';
 //@ts-ignore
-import { TelegramUserProfile, PomponaRole } from '/opt/AuthTypes';
-import { MasterManager } from '/opt/MasterManager';
-import { RefreshTokenFromCookie } from '/opt/AuthHelpers/RefreshToken';
-import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
+import { TelegramUserProfile, PomponaRole } from 'opt/AuthTypes';
+import { MasterManager } from 'opt/MasterManager';
+import { RefreshTokenFromCookie } from 'opt/AuthHelpers/RefreshToken';
+import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));

@@ -1,13 +1,13 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
+import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
-import { defaultMenuLanguage, ESupportedLanguage } from '/opt/LocaleTypes';
-import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { defaultMenuLanguage, ESupportedLanguage } from 'opt/LocaleTypes';
+import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 
-import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
-import { TelegramUserFromAuthorizer } from '/opt/AuthTypes';
-import { BotLanging } from '/opt/BotLanding';
+import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { TelegramUserFromAuthorizer } from 'opt/AuthTypes';
+import { BotLanging } from 'opt/BotLanding';
 import {
     BotLandingElementType,
     EBotLangingElementType,
@@ -18,9 +18,9 @@ import {
     IBotLandingElementTelegramButton,
     IBotLandingElementText,
     IBotLandingElementYouTubeVideo
-} from '/opt/BotLandingTypes';
+} from 'opt/BotLandingTypes';
 //@ts-ignore
-import { SchemaValidator } from '/opt/YUP/SchemaValidator';
+import { SchemaValidator } from 'opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(JSON.stringify(event));

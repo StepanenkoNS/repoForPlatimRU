@@ -106,7 +106,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             SendMessageSchedulerQueueSecondURL: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -127,7 +127,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -161,7 +161,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             SendMessageSchedulerQueueSecond: SendMessageSchedulerQueueSecond.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -213,7 +213,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -234,7 +234,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -301,7 +301,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -332,7 +332,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             expireSubscriptionQueueURL: expireSubscriptionQueue.queueUrl
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -371,7 +371,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -401,7 +401,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
@@ -419,7 +419,7 @@ export function CreateSubscriptionProcessor(that: any, layers: ILayerVersion[], 
             ...StaticEnvironment.LambdaSettinds.EnvironmentVariables
         },
         bundling: {
-            externalModules: ['aws-sdk', '/opt/*']
+            externalModules: ['aws-sdk', 'opt/*']
         },
         layers: layers
     });
