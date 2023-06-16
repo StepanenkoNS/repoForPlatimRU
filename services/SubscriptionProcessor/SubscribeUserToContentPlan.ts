@@ -7,7 +7,7 @@ import { MessageSender } from '/opt/MessageSender';
 //@ts-ignore
 import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
+import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
 
 import { IScheduleContentPlan } from '/opt/ContentTypes';
 

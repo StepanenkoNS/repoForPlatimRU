@@ -3,7 +3,7 @@ import { SQSEvent } from 'aws-lambda';
 import { LoadChannelParticipants } from './helpers/loadChannelParticipants';
 import { SQSHelper } from '/opt/SQS/SQSHelper';
 import { MessageSender } from '/opt/MessageSender';
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
+import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
 import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 import { ESupportedCurrency } from '/opt/PaymentTypes';
 

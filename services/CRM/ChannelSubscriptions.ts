@@ -24,7 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (!ValidateStringParameters(event, ['botId'])) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'GET',
+            method: 'ANALYTICS',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'QueryString parameters are invald' },
             withMapReplacer: false,
@@ -34,8 +34,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     }
 
     const result = await CrmManager.ListMyChannelsSubscriptions({
-        masterId: Number(telegramUser.id),
-        botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        key: {
+            masterId: Number(telegramUser.id),
+            botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
+        }
     });
 
     const dataResult = ParseListResult(result);

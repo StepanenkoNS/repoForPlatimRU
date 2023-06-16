@@ -24,7 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (!ValidateStringParameters(event, ['botId', 'contentPlanId', 'contentPlanPostId'])) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'GET',
+            method: 'ANALYTICS',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'QueryString parameters are invald' },
             withMapReplacer: false,

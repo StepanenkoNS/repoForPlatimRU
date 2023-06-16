@@ -28,7 +28,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (bodyObject.success === false) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'GET',
+            method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
             withMapReplacer: false,
@@ -40,7 +40,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (TextHelper.SanitizeToDirectText(bodyObject.data.notes).length > 200) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'GET',
+            method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'notes exceeds 200 chars' },
             withMapReplacer: false,

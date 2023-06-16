@@ -7,9 +7,9 @@ import { MessageSender } from '/opt/MessageSender';
 
 import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
+import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
 
-import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayload } from '/opt/TelegramCallbackPayload';
+import { ETelegramCallbackTypeKey, PayloadType, TelegramCallbackPayloadManager } from '/opt/TelegramCallbackPayloadManager';
 
 import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 
@@ -84,7 +84,7 @@ export async function handler(event: SQSEvent): Promise<any> {
                             [
                                 {
                                     text: 'Join',
-                                    callback_data: TelegramCallbackPayload.EncodePayload(callbackDataJoin)
+                                    callback_data: TelegramCallbackPayloadManager.EncodePayload(callbackDataJoin)
                                 }
                             ]
                         ]

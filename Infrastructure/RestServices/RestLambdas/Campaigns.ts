@@ -15,7 +15,7 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
 
     //Вывод списка
     const ListCampaignsLambda = new NodejsFunction(that, 'ListCampaignsLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'ListCampaignsLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'ListCampaignsLambda.ts'),
         handler: 'handler',
         functionName: 'react-Campaigns-List-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -33,7 +33,7 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
 
     //Вывод одного элемента
     const GetCampaignLambda = new NodejsFunction(that, 'GetCampaignLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'GetCampaignLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'GetCampaignLambda.ts'),
         handler: 'handler',
         functionName: 'react-Campaigns-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -51,7 +51,7 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
 
     //Добавление
     const AddCampaignLambda = new NodejsFunction(that, 'AddCampaignLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'AddCampaignLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'AddCampaignLambda.ts'),
         handler: 'handler',
         functionName: 'react-Campaigns-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -69,7 +69,7 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
 
     //редактирование
     const EditCampaignLambda = new NodejsFunction(that, 'EditCampaignLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'EditCampaignLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'EditCampaignLambda.ts'),
         handler: 'handler',
         functionName: 'react-Campaigns-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,
@@ -87,7 +87,7 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
 
     //удаление
     const DeleteCampaignLambda = new NodejsFunction(that, 'DeleteCampaignLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'DeleteCampaignLambda.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'DeleteCampaignLambda.ts'),
         handler: 'handler',
         functionName: 'react-Campaigns-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettinds.runtime,

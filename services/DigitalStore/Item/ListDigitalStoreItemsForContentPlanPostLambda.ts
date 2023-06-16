@@ -46,7 +46,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     return await ReturnRestApiResult({
         statusCode: dataResult.code,
-        method: 'EDIT',
+        method: 'LIST',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
         withMapReplacer: false,

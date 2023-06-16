@@ -94,7 +94,7 @@ export class MainRestServicesStack extends Stack {
 
         const campaigns = CreateCampaignsLambdas(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
-            rootResource: 'Campaigns',
+            rootResource: 'CampaignsInternal',
             lambdas: createNotificationsLambdas
         });
     }

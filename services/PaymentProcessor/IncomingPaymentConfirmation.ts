@@ -9,7 +9,7 @@ import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 import { MessageSender } from '/opt/MessageSender';
 
-import { ETelegramSendMethod } from '/opt/TelegramTypes';
+import { ETelegramSendMethod } from '/opt/TelegramTypesPrimitive';
 
 import { ISubscribeUserToSubscriptionPlan } from '/opt/UserSubscriptionTypes';
 //@ts-ignore

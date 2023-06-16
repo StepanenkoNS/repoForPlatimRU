@@ -24,7 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     if (!ValidateStringParameters(event, ['botId', 'id'])) {
         return await ReturnRestApiResult({
             statusCode: 422,
-            method: 'GET',
+            method: 'ANALYTICS',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'QueryString parameters are invald' },
             withMapReplacer: false,
@@ -42,7 +42,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         } else {
             return await ReturnRestApiResult({
                 statusCode: 422,
-                method: 'EDIT',
+                method: 'ANALYTICS',
                 masterId: Number(telegramUser.id),
                 data: { success: false, error: 'Type parameter is invalid' },
                 withMapReplacer: false,
