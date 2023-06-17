@@ -2,7 +2,7 @@ import { SQSEvent } from 'aws-lambda';
 import { ECascadeDeleteTarget, ICascadeDelete } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
 
 //@ts-ignore
-import { CascadeDeleteProcessor } from 'opt/CascadeDeleteProcessor';
+import { CascadeDeleteProcessor } from '/opt/CascadeDeleteProcessor';
 
 export async function handler(event: SQSEvent): Promise<any> {
     const batchItemFailures: any[] = [];

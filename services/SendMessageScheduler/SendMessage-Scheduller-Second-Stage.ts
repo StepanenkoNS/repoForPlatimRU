@@ -1,6 +1,6 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
-import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 export async function handler(event: SQSEvent) {
     const batchItemFailures: any[] = [];

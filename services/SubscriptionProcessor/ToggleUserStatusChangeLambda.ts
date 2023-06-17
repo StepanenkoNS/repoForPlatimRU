@@ -1,11 +1,11 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 import ksuid from 'ksuid';
 
-import { MessageSender } from 'opt/MessageSender';
+import { MessageSender } from '/opt/MessageSender';
 //@ts-ignore
-import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 import { EAllowSendMessage, ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
@@ -29,9 +29,8 @@ export async function handler(event: SQSEvent): Promise<any> {
                     botId: request.botId,
                     chatId: request.chatId
                 },
-                filter: {
-                    status: EScheduledMessageStatus.BLOCKED,
-                    operator: request.allowSendMessage == EAllowSendMessage.RESTRICT ? ' <> ' : ' = '
+                filterByBlocked: {
+                    status: request.allowSendMessage
                 }
             });
             const promises: Promise<any>[] = [];

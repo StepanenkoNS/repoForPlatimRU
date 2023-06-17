@@ -1,23 +1,23 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
 import {
     ParseSendMessageResult,
     ReturnRestApiResult
     //@ts-ignore
-} from 'opt/LambdaHelpers/ReturnRestApiResult';
+} from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
-import { MessageSender } from 'opt/MessageSender';
+import { MessageSender } from '/opt/MessageSender';
 
 //@ts-ignore
-import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 import { PostTrigger, ITelegramNaivMessageContent } from 'tgbot-project-types/TypesCompiled/ContentTypesPrimitives';
 
 //@ts-ignore

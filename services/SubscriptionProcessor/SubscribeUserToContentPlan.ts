@@ -1,11 +1,11 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 import { SQS } from 'aws-sdk';
 import ksuid from 'ksuid';
 
-import { MessageSender } from 'opt/MessageSender';
+import { MessageSender } from '/opt/MessageSender';
 //@ts-ignore
-import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 

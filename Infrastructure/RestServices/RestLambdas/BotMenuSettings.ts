@@ -5,7 +5,7 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
-import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
 export function CreateBotMenuSettingsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {

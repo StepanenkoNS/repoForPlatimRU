@@ -1,8 +1,8 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 //@ts-ignore
-import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 import { PostTrigger } from 'tgbot-project-types/TypesCompiled/ContentTypesPrimitives';
 

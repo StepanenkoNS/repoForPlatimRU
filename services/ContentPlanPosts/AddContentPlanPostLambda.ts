@@ -1,22 +1,22 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
-import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { ContentConfigurator } from 'opt/ContentConfigurator';
+import { ContentConfigurator } from '/opt/ContentConfigurator';
 import ksuid from 'ksuid';
 import { SQS } from 'aws-sdk';
 import { IContentPlanPost } from 'tgbot-project-types/TypesCompiled/ContentTypes';
-import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
-import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 //@ts-ignore
 
 const sqs = new SQS({ region: process.env.region });

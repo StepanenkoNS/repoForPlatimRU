@@ -7,7 +7,7 @@ import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 //@ts-ignore
-import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, GrantAccessToS3, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { IRole, Role } from 'aws-cdk-lib/aws-iam';
 
 export function CreateMessageFilesLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {

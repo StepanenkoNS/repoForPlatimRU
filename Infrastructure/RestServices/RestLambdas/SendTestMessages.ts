@@ -6,7 +6,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
-import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 

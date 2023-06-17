@@ -1,21 +1,21 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
-import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { ETelegramBotCommand, IBotMenuSettings, IMessagingBotCommand } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 //@ts-ignore
-import { MessagingBotManager } from 'opt/MessagingBotManager';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { IBotGeneralKey, IGeneralItemKey } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
-import { BotMenuSettings } from 'opt/BotMenuSettings';
-import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { BotMenuSettings } from '/opt/BotMenuSettings';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

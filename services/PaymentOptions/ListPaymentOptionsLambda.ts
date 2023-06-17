@@ -1,14 +1,14 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
-import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseListResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseListResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
-import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     const origin = SetOrigin(event);

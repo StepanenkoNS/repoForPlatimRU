@@ -7,7 +7,7 @@ import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnviro
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 //@ts-ignore
-import { LambdaIntegrations, ReturnGSIs } from 'opt/DevHelpers/AccessHelper';
+import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 
 import { CreateBotsLambdas } from './RestLambdas/Bots';
 
@@ -92,10 +92,10 @@ export class MainRestServicesStack extends Stack {
 
         const cascadeDeleteLambdas = CreateCascadeDelete(this, props.layers, props.lambdaRole);
 
-        const campaigns = CreateCampaignsLambdas(this, props.layers, props.lambdaRole);
+        const campaignsLambdas = CreateCampaignsLambdas(this, props.layers, props.lambdaRole);
         this.lambdaIntegrations.push({
             rootResource: 'CampaignsInternal',
-            lambdas: createNotificationsLambdas
+            lambdas: campaignsLambdas
         });
     }
 }

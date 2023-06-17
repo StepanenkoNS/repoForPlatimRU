@@ -1,15 +1,15 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { SQSEvent } from 'aws-lambda';
 
 import ksuid from 'ksuid';
 
-import { MessageSender } from 'opt/MessageSender';
+import { MessageSender } from '/opt/MessageSender';
 
-import { MessagingBotSubscriptionManager } from 'opt/MessagingBotSubscriptionManager';
+import { MessagingBotSubscriptionManager } from '/opt/MessagingBotSubscriptionManager';
 
 import { ETelegramSendMethod } from 'tgbot-project-types/TypesCompiled/TelegramTypesPrimitive';
 
-import { TelegramCallbackPayloadManager } from 'opt/TelegramCallbackPayloadManager';
+import { TelegramCallbackPayloadManager } from '/opt/TelegramCallbackPayloadManager';
 
 import { IChannelSubscription, ISubscribeUserToSubscriptionPlan } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
 import { ETelegramCallbackTypeKey, PayloadType } from 'tgbot-project-types/TypesCompiled/TelegramTypes';

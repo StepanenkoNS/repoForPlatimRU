@@ -1,15 +1,15 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 //@ts-ignore
-import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseListResult, ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
-import { FileS3Configurator } from 'opt/FileS3Configurator';
+import { ParseListResult, ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+import { FileS3Configurator } from '/opt/FileS3Configurator';
 
-import { S3Helper } from 'opt/S3/S3Utils';
+import { S3Helper } from '/opt/S3/S3Utils';
 import { IMessageFile } from 'tgbot-project-types/TypesCompiled/ContentTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {

@@ -1,20 +1,20 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
-import { GetLandingSubdomainFromOrigin, SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { GetLandingSubdomainFromOrigin, SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
 
-import { ValidateIncomingEventBody, ValidateStringParameters } from 'opt/LambdaHelpers/ValidateIncomingData';
-import { BotLanging } from 'opt/BotLanding';
+import { ValidateIncomingEventBody, ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingData';
+import { BotLanging } from '/opt/BotLanding';
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
-import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 import { IModulPaymentRequest, IModulReceiptItem, SupportedCurrenciesArray } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
 import axios from 'axios';
 import ksuid from 'ksuid';
-import { PaymentOptionsManager } from 'opt/PaymentOptionsManager';
+import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 import { IPomponaAddSubscription } from 'tgbot-project-types/TypesCompiled/MasterManagerTypes';
-import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log('event', JSON.stringify(event));

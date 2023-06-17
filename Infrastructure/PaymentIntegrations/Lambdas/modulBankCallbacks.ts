@@ -10,7 +10,7 @@ import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnv
 import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { GrantAccessToDDB, LambdaAndResource } from 'opt/DevHelpers/AccessHelper';
+import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
 export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {

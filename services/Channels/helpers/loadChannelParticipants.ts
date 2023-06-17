@@ -1,7 +1,7 @@
 import { TelegramClient, Api, Logger } from 'telegram';
 import { LogLevel } from 'telegram/extensions/Logger';
 import { StringSession } from 'telegram/sessions';
-import { MessagingBotManager } from 'opt/MessagingBotManager';
+import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { ArrayResponse } from 'tgbot-project-types/TypesCompiled/GeneralTypes';
 
 export async function LoadChannelParticipants(data: { channelId: number; masterId: number; botId: number }) {

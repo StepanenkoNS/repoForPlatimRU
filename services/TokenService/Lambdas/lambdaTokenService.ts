@@ -1,45 +1,21 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
 import { APIGatewayEvent } from 'aws-lambda';
 
 //@ts-ignore
-import { LogOut, ReturnResult } from 'opt/AuthHelpers/ReturnResult';
+import { LogOut, ReturnResult } from '/opt/AuthHelpers/ReturnResult';
 
 import { TelegramUserProfile, PomponaRole } from 'tgbot-project-types/TypesCompiled/AuthTypes';
-import { MasterManager } from 'opt/MasterManager';
+import { MasterManager } from '/opt/MasterManager';
 
-import { PomponaSubscriptionsProcessor } from 'opt/PomponaSubscriptionsProcessor';
+import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 //@ts-ignore
-import { ValidateTokenFromCookies } from 'opt/AuthHelpers/ValidateTokenFromCookies';
+import { ValidateTokenFromCookies } from '/opt/AuthHelpers/ValidateTokenFromCookies';
 //@ts-ignore
-import { CreateNewTokens } from 'opt/AuthHelpers/GetNewToken';
-import { RefreshTokenFromCookie } from 'opt/AuthHelpers/RefreshToken';
+import { CreateNewTokens } from '/opt/AuthHelpers/GetNewToken';
+import { RefreshTokenFromCookie } from '/opt/AuthHelpers/RefreshToken';
 
 export async function handler(event: APIGatewayEvent) {
     console.log('event\n', JSON.stringify(event));
-    // const master = await MasterManager.UpsertMaster({
-    //     masterId: Number(userProfile.id),
-    //     photoUrl: userProfile.photo_url,
-    //     userName: userProfile.username
-    // });
 
-    // if (master.success === false || !master.data) {
-    //     const err = {
-    //         error: JSON.stringify({ error: 'BotManager.GetOrCreate error' })
-    //     };
-    //     console.log('Error:ValidateTokenFromCookies\n', err);
-    //     throw err;
-    // }
-    // masterData = master.data;
-
-    // userProfile.pomponaSubscription = masterData.pomponaSubscription;
-
-    // if (master.data.banned === true) {
-    //     const err = {
-    //         error: JSON.stringify({ error: 'user is banned' })
-    //     };
-    //     console.log('Error:ValidateTokenFromCookies', err);
-    //     throw err;
-    // }
     if (!event) {
         const result = {
             error: 'Error: event is not defined'

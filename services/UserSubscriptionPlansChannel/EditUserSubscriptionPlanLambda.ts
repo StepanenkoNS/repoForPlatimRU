@@ -1,18 +1,18 @@
-import { TextHelper } from 'opt/TextHelpers/textHelper';
+import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { TelegramUserFromAuthorizer } from 'tgbot-project-types/TypesCompiled/AuthTypes';
 
 //@ts-ignore
-import { SetOrigin } from 'opt/LambdaHelpers/OriginHelper';
+import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
 //@ts-ignore
-import { ValidateIncomingEventBody } from 'opt/LambdaHelpers/ValidateIncomingData';
+import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingData';
 //@ts-ignore
-import { ParseItemResult, ReturnRestApiResult } from 'opt/LambdaHelpers/ReturnRestApiResult';
+import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { ESupportedCurrency } from 'tgbot-project-types/TypesCompiled/PaymentTypes';
-import { UserSubscriptionPlanChannel } from 'opt/UserSubscriptionPlanChannel';
+import { UserSubscriptionPlanChannel } from '/opt/UserSubscriptionPlanChannel';
 //@ts-ignore
-import { SchemaValidator } from 'opt/YUP/SchemaValidator';
+import { SchemaValidator } from '/opt/YUP/SchemaValidator';
 import { IUserSubscriptionPlanChannel } from 'tgbot-project-types/TypesCompiled/UserSubscriptionTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
