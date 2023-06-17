@@ -10,13 +10,14 @@ import { FilesRestServicesStack } from './RestServices/FilesRestServices';
 import { MessagesAndPaymentsRestServicesStack } from './RestServices/MessagesAndPaymentsRestServices';
 import { PlansAndPostsRestServicesStack } from './RestServices/PlansAndPostsRestServices';
 import { SubscriptionsRestServicesStack } from './RestServices/SubscriptionsRestService';
-import { CRMRestServicesStack } from './RestServices/CRMRestService';
+import { CRMRestServicesStack } from './CRMServices/CRMRestService';
 import { BotLandingRestServicesStack } from './RestServices/LandingRestService';
-import { GatewayServiceStack } from './RestServices/GateWayService';
+import { GatewayServiceStack } from './GateWays/GateWayService';
 
 import { PaymentIntegrationsStack } from './PaymentIntegrations/PaymentIntegrations';
 import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
 import { DeploymentHelper } from './DeploymentHelper/DeploymentHelperStack';
+import { CRMCampaignsStack } from './CRMServices/CRMCampaigns';
 
 const app = new App();
 
@@ -141,6 +142,18 @@ const cRMRestServicesStack = new CRMRestServicesStack(app, StaticEnvironment.Sta
 lambdaCRMIntegrations.push(...cRMRestServicesStack.lambdaIntegrations);
 
 cRMRestServicesStack.addDependency(tokenService);
+
+const cRMCampaignsStack = new CRMCampaignsStack(app, StaticEnvironment.StackName.WebRestServiceCRMCampaigns.toString(), {
+    stackName: StaticEnvironment.StackName.WebRestServiceCRMCampaigns.toString(),
+
+    layers: roleService.layers,
+    lambdaRole: roleService.lambdaRole,
+    env: {
+        account: StaticEnvironment.GlobalAWSEnvironment.account,
+        region: StaticEnvironment.GlobalAWSEnvironment.region
+    }
+});
+lambdaCRMIntegrations.push(...cRMCampaignsStack.lambdaIntegrations);
 
 const botLandingRestServicesStack = new BotLandingRestServicesStack(app, StaticEnvironment.StackName.WebRestServiceLanding.toString(), {
     stackName: StaticEnvironment.StackName.WebRestServiceLanding.toString(),

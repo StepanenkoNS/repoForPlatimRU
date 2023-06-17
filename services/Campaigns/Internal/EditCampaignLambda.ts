@@ -12,7 +12,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 import { ContentConfigurator } from '/opt/ContentConfigurator';
 //@ts-ignore
 import { CampaignManager } from '/opt/CampaignManager';
-import { ICampaign } from 'tgbot-project-types/TypesCompiled/CampaignTypes';
+import { ICampaignInternal } from 'tgbot-project-types/TypesCompiled/CampaignTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -28,6 +28,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'id', datatype: 'string' },
         { key: 'name', datatype: 'string' },
+        { key: 'tags', datatype: 'array' },
         { key: 'description', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
@@ -36,13 +37,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
     }
 
-    const campaign: ICampaign = {
+    const campaign: ICampaignInternal = {
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
@@ -60,7 +61,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'EDIT',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

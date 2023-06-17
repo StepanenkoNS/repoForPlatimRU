@@ -283,28 +283,6 @@ export function CreateCRMLambdas(that: any, layers: ILayerVersion[], lambdaRole:
         layers: layers
     });
 
-    //предоставление доступа
-    // GrantAccessToDDB(
-    //     [
-    //         crmListMyUsersLambda,
-    //         crmChannelSubscriptionsLambda,
-    //         crmBotSubscriptionsLambda,
-    //         crmUserProfileLambda,
-    //         crmEditUserNotesLambda,
-    //         crmBanLambda,
-    //         crmBotSubscriptionsByUserLambda,
-    //         crmChannelSubscriptionsByUserLambda,
-    //         botPaymentsLambda,
-    //         botPaymentsByUserLambda,
-    //         scheduledPostsByUserLambda,
-    //         GetMyBotAnalitics,
-    //         GetContentPlanPostStats,
-    //         ContentPlanPostFeedBacks,
-    //         ContentPlanPostRates
-    //     ],
-    //     tables
-    // );
-
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({
         lambda: crmListMyUsersLambda,

@@ -6,18 +6,17 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
-import { Queue } from 'aws-cdk-lib/aws-sqs';
-import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+export function CreateCampaignsInternalLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     //добавление ресурсов в шлюз
 
     //Вывод списка
-    const ListCampaignsLambda = new NodejsFunction(that, 'ListCampaignsLambda', {
+    const ListCampaignsLambda = new NodejsFunction(that, 'ListCampaignsInternalLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'ListCampaignsLambda.ts'),
         handler: 'handler',
-        functionName: 'react-Campaigns-List-Lambda',
+        functionName: 'react-CampaignsInternal-List-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
@@ -32,10 +31,10 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
     });
 
     //Вывод одного элемента
-    const GetCampaignLambda = new NodejsFunction(that, 'GetCampaignLambda', {
+    const GetCampaignLambda = new NodejsFunction(that, 'GetCampaignInternalLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'GetCampaignLambda.ts'),
         handler: 'handler',
-        functionName: 'react-Campaigns-Get-Lambda',
+        functionName: 'react-CampaignsInternal-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
@@ -50,10 +49,10 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
     });
 
     //Добавление
-    const AddCampaignLambda = new NodejsFunction(that, 'AddCampaignLambda', {
+    const AddCampaignLambda = new NodejsFunction(that, 'AddCampaignInternalLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'AddCampaignLambda.ts'),
         handler: 'handler',
-        functionName: 'react-Campaigns-Add-Lambda',
+        functionName: 'react-CampaignsInternal-Add-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
@@ -68,10 +67,10 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
     });
 
     //редактирование
-    const EditCampaignLambda = new NodejsFunction(that, 'EditCampaignLambda', {
+    const EditCampaignLambda = new NodejsFunction(that, 'EditCampaignInternalLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'EditCampaignLambda.ts'),
         handler: 'handler',
-        functionName: 'react-Campaigns-Edit-Lambda',
+        functionName: 'react-CampaignsInternal-Edit-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
@@ -86,10 +85,10 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
     });
 
     //удаление
-    const DeleteCampaignLambda = new NodejsFunction(that, 'DeleteCampaignLambda', {
+    const DeleteCampaignLambda = new NodejsFunction(that, 'DeleteCampaignInternalLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Campaigns', 'Internal', 'DeleteCampaignLambda.ts'),
         handler: 'handler',
-        functionName: 'react-Campaigns-Delete-Lambda',
+        functionName: 'react-CampaignsInternal-Delete-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
@@ -103,12 +102,6 @@ export function CreateCampaignsLambdas(that: any, layers: ILayerVersion[], lambd
         },
         layers: layers
     });
-
-    //предоставление доступа
-
-    // DeleteCampaignLambda.addToRolePolicy(statementSQSCascadeDeleteQueue);
-
-    // GrantAccessToDDB([ListCampaignsLambda, AddCampaignLambda, EditCampaignLambda, DeleteCampaignLambda, GetCampaignLambda], tables);
 
     const returnArray: LambdaAndResource[] = [];
     returnArray.push({

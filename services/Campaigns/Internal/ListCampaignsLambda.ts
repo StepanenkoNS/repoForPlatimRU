@@ -27,7 +27,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'LIST',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'QueryString parameters are invald' },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -41,13 +41,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         }
     }
 
-    const result = await CampaignManager.ListCampaigns(
-        {
+    const result = await CampaignManager.ListCampaigns({
+        key: {
             masterId: Number(telegramUser.id),
             botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!))
         },
-        tags
-    );
+        tags: tags
+    });
 
     const dataResult = ParseListResult(result);
 
@@ -56,7 +56,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'LIST',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

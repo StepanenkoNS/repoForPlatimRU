@@ -40,7 +40,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'ANALYTICS',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

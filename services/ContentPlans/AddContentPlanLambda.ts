@@ -37,7 +37,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -64,7 +64,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'not valid subscription data' },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -76,7 +76,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'Subscription plan limits exceeded' },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -91,7 +91,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'ADD',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

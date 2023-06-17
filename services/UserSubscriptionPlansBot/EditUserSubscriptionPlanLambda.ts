@@ -43,7 +43,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -56,7 +56,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 method: 'EDIT',
                 masterId: Number(telegramUser.id),
                 data: { success: false, error: 'lengthInDays should not be empty when lifeTime is false' },
-                withMapReplacer: false,
+
                 origin: origin,
                 renewedAccessToken: renewedToken
             });
@@ -84,7 +84,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 method: 'EDIT',
                 masterId: Number(telegramUser.id),
                 data: { success: false, error: schemaValidationResult.error },
-                withMapReplacer: false,
+
                 origin: origin,
                 renewedAccessToken: renewedToken
             });
@@ -99,7 +99,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: dataResult.body,
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -109,7 +109,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'Internal server error' },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });

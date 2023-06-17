@@ -11,7 +11,7 @@ import { ParseItemResult, ParseItemResult, ParseItemResult, ParseListResult, Par
 
 //@ts-ignore
 import { CampaignManager } from '/opt/CampaignManager';
-import { IAddCampaign } from 'tgbot-project-types/TypesCompiled/CampaignTypes';
+import { IAddCampaignInternal } from 'tgbot-project-types/TypesCompiled/CampaignTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     console.log(event);
@@ -26,7 +26,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
-
+        { key: 'tags', datatype: 'array' },
         { key: 'description', datatype: 'string' }
     ]);
     if (bodyObject.success === false) {
@@ -35,13 +35,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
     }
 
-    const addCampaign: IAddCampaign = {
+    const addCampaign: IAddCampaignInternal = {
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
@@ -58,7 +58,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'ADD',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

@@ -13,7 +13,7 @@ import { ValidateIncomingEventBody } from '/opt/LambdaHelpers/ValidateIncomingDa
 //@ts-ignore
 import { ParseItemResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { IMessagingBot } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
+import { IAddMessagingBot, IMessagingBot } from 'tgbot-project-types/TypesCompiled/MessagingBotManagerTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 //@ts-ignore
@@ -39,7 +39,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -51,12 +51,12 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'Token is empty' },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
     }
-    const potentialBot: IMessagingBot = {
+    const potentialBot: IAddMessagingBot = {
         masterId: Number(telegramUser.id),
         token: TextHelper.SanitizeToDirectText(bodyObject.data.token),
         id: Number(TextHelper.SanitizeToDirectText(bodyObject.data.id))
@@ -69,7 +69,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: validationResult.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -88,7 +88,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: validationResult.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -100,7 +100,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'ADD',
             masterId: Number(telegramUser.id),
             data: { success: false, error: validationResult.error },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -115,7 +115,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'ADD',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

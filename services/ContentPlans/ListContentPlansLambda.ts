@@ -27,7 +27,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'LIST',
             masterId: Number(telegramUser.id),
             data: { success: false, error: 'QueryString parameters are invald' },
-            withMapReplacer: false,
+
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         method: 'LIST',
         masterId: Number(telegramUser.id),
         data: dataResult.body,
-        withMapReplacer: false,
+
         origin: origin,
         renewedAccessToken: renewedToken
     });

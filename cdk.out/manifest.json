@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c1037d7c3b89e27003e825c1b4d54ce6cd094f976fe0b307ebade4efd8ea9d64.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f4805691a47df3897830d35fe1b53a95c78aa1fc419ce0840a0503da45519126.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -76,7 +76,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/5526c3c73ea0bf3cd95326e2eda02ba4e138f892623a8bedd95d37c9234dc332.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/c7269aa12310782b2029c5e4b9feb5ff692d7a4970b78a5fb655ad9d97760285.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -340,7 +340,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f456634f68650faf6c581980cb4ee17edc9b5f476506872b2af602e874de4443.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/0583fe185ace55a3d4fc48f926db8121e7cf46b2c1adb72ee261ff0b9c2831de.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -719,7 +719,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d5213edc7498e0e66aedeb4f7ccff5f3c25d2c32c9a04ab9d540d9bbcbb1cdac.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/426e00838896ae9913e86cef840d3af6870b36fdb78f7b89941c2002df99ad2c.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1199,66 +1199,6 @@
             "data": "CascadeDeleteLambdaSqsEventSourceWebRestServiceMainimportedCascadeDeleteQueueDLQforCreateCascadeDelete91E058E246A02E00"
           }
         ],
-        "/WebRestServiceMain/ListCampaignsLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListCampaignsLambdaCD83A7AF"
-          }
-        ],
-        "/WebRestServiceMain/ListCampaignsLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ListCampaignsLambdaLogRetentionB996E76E"
-          }
-        ],
-        "/WebRestServiceMain/GetCampaignLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GetCampaignLambdaB920E4C7"
-          }
-        ],
-        "/WebRestServiceMain/GetCampaignLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GetCampaignLambdaLogRetention952F788F"
-          }
-        ],
-        "/WebRestServiceMain/AddCampaignLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AddCampaignLambda84CA7EBA"
-          }
-        ],
-        "/WebRestServiceMain/AddCampaignLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AddCampaignLambdaLogRetentionCEAAAC5A"
-          }
-        ],
-        "/WebRestServiceMain/EditCampaignLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "EditCampaignLambda3FE859A8"
-          }
-        ],
-        "/WebRestServiceMain/EditCampaignLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "EditCampaignLambdaLogRetention92D2BE5F"
-          }
-        ],
-        "/WebRestServiceMain/DeleteCampaignLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteCampaignLambda9A95BBBC"
-          }
-        ],
-        "/WebRestServiceMain/DeleteCampaignLambda/LogRetention/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DeleteCampaignLambdaLogRetentionE169CA52"
-          }
-        ],
         "/WebRestServiceMain/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -1439,36 +1379,6 @@
             "data": "ExportsOutputFnGetAttListNewNotificationsLambdaEE68088FArn054B8752"
           }
         ],
-        "/WebRestServiceMain/Exports/Output{\"Fn::GetAtt\":[\"ListCampaignsLambdaCD83A7AF\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttListCampaignsLambdaCD83A7AFArn2BE00B4B"
-          }
-        ],
-        "/WebRestServiceMain/Exports/Output{\"Fn::GetAtt\":[\"GetCampaignLambdaB920E4C7\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttGetCampaignLambdaB920E4C7ArnAC66B44E"
-          }
-        ],
-        "/WebRestServiceMain/Exports/Output{\"Fn::GetAtt\":[\"AddCampaignLambda84CA7EBA\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttAddCampaignLambda84CA7EBAArn97CA3D51"
-          }
-        ],
-        "/WebRestServiceMain/Exports/Output{\"Fn::GetAtt\":[\"EditCampaignLambda3FE859A8\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttEditCampaignLambda3FE859A8Arn39184C85"
-          }
-        ],
-        "/WebRestServiceMain/Exports/Output{\"Fn::GetAtt\":[\"DeleteCampaignLambda9A95BBBC\",\"Arn\"]}": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ExportsOutputFnGetAttDeleteCampaignLambda9A95BBBCArn3C7CF783"
-          }
-        ],
         "/WebRestServiceMain/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
@@ -1500,7 +1410,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/7cc540c4f3bc2c94c6937a4792ea4aa3891bef7d2f973f560e73b7d9d926bece.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/293e4b30c69de07d82359d36e3577f4315860ddfe382a154dec2eb8a97cdae1f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1663,7 +1573,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d4b45de27855ac12fcce1c1a90e5dd52093631c23f6a9279304edff1d7587cec.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/29cfc2fd9380a6c5e3b85db43977706fb9eebc858ad48b534b7531759883e465.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2354,7 +2264,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/64b55591e87b08f873a7fa8bc7225f2193971827a15c52d8dd49628c23e3e860.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/d528f7aa1be105689f5ad5a05717a2d740f8640258c7513fda910057ecf80c95.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2607,7 +2517,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/e5c3f10a95934d7dcc5db52cd1d9d245abf69db14eb640ff39c3729d74e2bb6c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/cbeec1ab11b1e061f7d8d064b855ac66744f08149942cc6a8da90c2de84c9114.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -2920,7 +2830,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/77967be6ba4f66bdb09acda2a8825e1e2ed0782cb93c1c56899a2383b59974ae.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/5be24ae840d02543385a534dbcea8f91dc94867988108eb8aeb10560cd5d9c06.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3265,6 +3175,258 @@
       },
       "displayName": "WebRestServiceCRM"
     },
+    "WebRestServiceCRMCampaigns.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "WebRestServiceCRMCampaigns.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "WebRestServiceCRMCampaigns": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://993738567487/us-east-1",
+      "properties": {
+        "templateFile": "WebRestServiceCRMCampaigns.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/2d8eb2536eda62e79cf068149bb415d25e2d9afbb95a3873e471f8b138352751.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "WebRestServiceCRMCampaigns.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-lookup-role-993738567487-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "DeploymentHelperStack",
+        "WebRestServiceCRMCampaigns.assets"
+      ],
+      "metadata": {
+        "/WebRestServiceCRMCampaigns/ListCampaignsInternalLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListCampaignsInternalLambda5F179309"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/ListCampaignsInternalLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListCampaignsInternalLambdaLogRetention3A9870FD"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/GetCampaignInternalLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetCampaignInternalLambda54A78C80"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/GetCampaignInternalLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetCampaignInternalLambdaLogRetentionD1257F30"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/AddCampaignInternalLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddCampaignInternalLambda4BE5231D"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/AddCampaignInternalLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddCampaignInternalLambdaLogRetentionCAA00592"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/EditCampaignInternalLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditCampaignInternalLambda8358F0FC"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/EditCampaignInternalLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditCampaignInternalLambdaLogRetention798473A4"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/DeleteCampaignInternalLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteCampaignInternalLambdaBDCD5E62"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/DeleteCampaignInternalLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteCampaignInternalLambdaLogRetention97C92B0E"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/ListCampaignsUTMLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListCampaignsUTMLambda5E201332"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/ListCampaignsUTMLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListCampaignsUTMLambdaLogRetentionBCE45A2D"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/GetCampaignUTMLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetCampaignUTMLambda4C3748F8"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/GetCampaignUTMLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetCampaignUTMLambdaLogRetentionA7988BDA"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/AddCampaignUTMLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddCampaignUTMLambda3881BFE4"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/AddCampaignUTMLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddCampaignUTMLambdaLogRetentionB0111275"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/EditCampaignUTMLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditCampaignUTMLambda1DBDCD9B"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/EditCampaignUTMLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EditCampaignUTMLambdaLogRetention1E90B7B4"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/DeleteCampaignUTMLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteCampaignUTMLambda6830D57F"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/DeleteCampaignUTMLambda/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteCampaignUTMLambdaLogRetention65D56273"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"ListCampaignsInternalLambda5F179309\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttListCampaignsInternalLambda5F179309ArnDFDC3EC9"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"GetCampaignInternalLambda54A78C80\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttGetCampaignInternalLambda54A78C80Arn374F6942"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"AddCampaignInternalLambda4BE5231D\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttAddCampaignInternalLambda4BE5231DArn7322D633"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"EditCampaignInternalLambda8358F0FC\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttEditCampaignInternalLambda8358F0FCArn958F057E"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"DeleteCampaignInternalLambdaBDCD5E62\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttDeleteCampaignInternalLambdaBDCD5E62Arn135FDC31"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"ListCampaignsUTMLambda5E201332\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttListCampaignsUTMLambda5E201332Arn6E090721"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"GetCampaignUTMLambda4C3748F8\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttGetCampaignUTMLambda4C3748F8Arn56AB3FEA"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"AddCampaignUTMLambda3881BFE4\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttAddCampaignUTMLambda3881BFE4Arn30747FB3"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"EditCampaignUTMLambda1DBDCD9B\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttEditCampaignUTMLambda1DBDCD9BArn8D6DD865"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/Exports/Output{\"Fn::GetAtt\":[\"DeleteCampaignUTMLambda6830D57F\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttDeleteCampaignUTMLambda6830D57FArnA4C65688"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/WebRestServiceCRMCampaigns/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "WebRestServiceCRMCampaigns"
+    },
     "WebRestServiceLanding.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
@@ -3281,7 +3443,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/a584f589470b8683a7bbf5f585baaa7ad938acb87cd8e5fa61305220dca70469.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/34dcea80128e6998d823bc79271cb3f2422c52b823ea71a903942f6418b5dcbf.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3390,7 +3552,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/1ecebc24a3746be3b2e8db5094e1bfb400ad88d7234a1da82cf1941550bfd9ad.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/aa6db5eea5ea5cfc8d74f2d3a07b0c84d7aeb523a5ed4d99cb0e7d957d9382ee.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -3445,7 +3607,7 @@
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A0f2475b27eadd88f62160814e99b9c40d"
+            "data": "WebRestGatewayServiceGWAPIDeploymentDC8FF3A09c8950a40586535062f2c3dad2cd024c"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -4244,138 +4406,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "WebRestGatewayServiceGWAPINotificationsListGETAFBDA682"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternal197B7333"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalOPTIONS3E0C549F"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/List/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalList8720D49C"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/List/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalListOPTIONS7CA1B130"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/List/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CampaignsInternal.List": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalListGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETCampaignsInternalListC149EEF8"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/List/GET/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalListGETB2B369C2"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Get/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalGet5FA597D8"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Get/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalGetOPTIONSF0ED3AE0"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Get/GET/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.GET..CampaignsInternal.Get": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalGetGETApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DGETCampaignsInternalGet1329A75A"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Get/GET/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalGetGETFB81DE9A"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Add/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalAddD9C5BFCD"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Add/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalAddOPTIONSD42A21C2"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Add/POST/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.POST..CampaignsInternal.Add": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalAddPOSTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPOSTCampaignsInternalAdd54CC5DA8"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Add/POST/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalAddPOST1DEF277E"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Edit/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalEdit1BB270BF"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Edit/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalEditOPTIONSEF32C9CA"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Edit/PUT/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.PUT..CampaignsInternal.Edit": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalEditPUTApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DPUTCampaignsInternalEditC2D1F1E8"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Edit/PUT/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalEditPUT6D71A81C"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Delete/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalDelete5745B9B9"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Delete/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalDeleteOPTIONSE33A7AEF"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Delete/DELETE/ApiPermission.WebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6D.DELETE..CampaignsInternal.Delete": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalDeleteDELETEApiPermissionWebRestGatewayServiceWebRestGatewayServiceGWAPI98E19A6DDELETECampaignsInternalDeleteE5724E99"
-          }
-        ],
-        "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/CampaignsInternal/Delete/DELETE/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WebRestGatewayServiceGWAPICampaignsInternalDeleteDELETED6075617"
           }
         ],
         "/WebRestGatewayService/WebRestGatewayService-GWAPI/Default/TelegramFiles/Resource": [
@@ -5627,7 +5657,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/827e7b4146f8393454544d5be0774a944ab170fc08d1b5ec79b6627d3b1b1bf3.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/f104592ce2036bb8d8f26e777ee66ac682d6091f2f27df4414c5dd5ac10ecf23.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -5641,6 +5671,7 @@
       },
       "dependencies": [
         "WebRestServiceCRM",
+        "WebRestServiceCRMCampaigns",
         "WebCRMGatewayService.assets"
       ],
       "metadata": {
@@ -5677,7 +5708,7 @@
         "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "WebCRMGatewayServiceGWAPIDeployment559132D8abe7a0bfba5cbb5a017caa6717b53433"
+            "data": "WebCRMGatewayServiceGWAPIDeployment559132D84d9626abd84e251c475936f8b4edc8c6"
           }
         ],
         "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/DeploymentStage.SecureAPI/Resource": [
@@ -6094,6 +6125,270 @@
             "data": "WebCRMGatewayServiceGWAPICRMGetAdminChatMessagesGET4B7B7E15"
           }
         ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternal152D2F66"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalOPTIONS3E2FEF71"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalList9FC19650"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalListOPTIONSDF3036AF"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/List/GET/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.GET..CampaignsInternal.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalListGETApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4GETCampaignsInternalList4B27A51C"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalListGETAECF1EDE"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Get/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalGetCF7B8A1B"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Get/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalGetOPTIONS065EE60C"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Get/GET/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.GET..CampaignsInternal.Get": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalGetGETApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4GETCampaignsInternalGet8929D176"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Get/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalGetGETE276267F"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Add/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalAdd6FE8C26E"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Add/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalAddOPTIONS28CEA546"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Add/POST/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.POST..CampaignsInternal.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalAddPOSTApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4POSTCampaignsInternalAdd0CF3C0DF"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Add/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalAddPOSTFB7C630B"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Edit/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalEditE843DDC6"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Edit/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalEditOPTIONS972BA014"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Edit/PUT/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.PUT..CampaignsInternal.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalEditPUTApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4PUTCampaignsInternalEdit8D25F4A2"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Edit/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalEditPUT89101860"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalDelete1828BBA4"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Delete/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalDeleteOPTIONS06D77F19"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Delete/DELETE/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.DELETE..CampaignsInternal.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalDeleteDELETEApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4DELETECampaignsInternalDelete5183D1AB"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsInternal/Delete/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsInternalDeleteDELETEA5DA5582"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTM8EBF191C"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMOPTIONS98D06266"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/List/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMListBACD78A4"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/List/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMListOPTIONS8C1B7497"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/List/GET/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.GET..CampaignsUTM.List": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMListGETApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4GETCampaignsUTMListD1B866C6"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/List/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMListGETD5FB5387"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Get/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMGetCE881C32"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Get/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMGetOPTIONSD6585DC4"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Get/GET/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.GET..CampaignsUTM.Get": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMGetGETApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4GETCampaignsUTMGet6ADF4A26"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Get/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMGetGETC67A9D01"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Add/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMAddE87354A0"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Add/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMAddOPTIONSB26DFBD3"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Add/POST/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.POST..CampaignsUTM.Add": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMAddPOSTApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4POSTCampaignsUTMAdd1FEC2DCA"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Add/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMAddPOST21F9AF7D"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Edit/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMEdit07D4AF59"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Edit/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMEditOPTIONSB1E08975"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Edit/PUT/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.PUT..CampaignsUTM.Edit": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMEditPUTApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4PUTCampaignsUTMEdit7EE97B1C"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Edit/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMEditPUT8E13F1E0"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMDeleteDF42971C"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Delete/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMDeleteOPTIONSC59A170D"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Delete/DELETE/ApiPermission.WebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4.DELETE..CampaignsUTM.Delete": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMDeleteDELETEApiPermissionWebCRMGatewayServiceWebCRMGatewayServiceGWAPI968BDFD4DELETECampaignsUTMDelete940187F3"
+          }
+        ],
+        "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/Default/CampaignsUTM/Delete/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebCRMGatewayServiceGWAPICampaignsUTMDeleteDELETEC362A770"
+          }
+        ],
         "/WebCRMGatewayService/WebCRMGatewayService-GWAPI/WebCRMGatewayService-GWAPI-UsagePlan/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -6179,7 +6474,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-deploy-role-993738567487-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::993738567487:role/cdk-hnb659fds-cfn-exec-role-993738567487-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/df9b0ad69a97a53e1fe80d4d00369de4c0e9fdb1f4648b03d8bf27458f52b277.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-993738567487-us-east-1/36e743c06b41482ab6b6bfae8ffb407262316116f69da8d1ac8b7e937cebbec7.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
