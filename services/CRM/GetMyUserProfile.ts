@@ -38,7 +38,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     const result = await MessagingBotManager.GetBotUser({
         masterId: Number(telegramUser.id),
         botId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.botId!)),
-        id: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
+        chatId: Number(TextHelper.SanitizeToDirectText(event.queryStringParameters!.id!))
     });
 
     const dataResult = ParseItemResult(result);

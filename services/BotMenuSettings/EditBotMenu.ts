@@ -41,7 +41,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             method: 'EDIT',
             masterId: Number(telegramUser.id),
             data: { success: false, error: bodyObject.error },
-
             origin: origin,
             renewedAccessToken: renewedToken
         });
@@ -55,7 +54,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         meetingsMenu: bodyObject.data.meetingsMenu,
         feedBackMenu: bodyObject.data.feedBackMenu,
         languageMenu: bodyObject.data.languageMenu,
-        unknownCommandAnswer: bodyObject.data.ForwardToAdmin
+        unknownCommandAnswer: bodyObject.data.unknownCommandAnswer
     };
 
     const schemaValidationResult = await SchemaValidator.BotMenuSettings_Validator(potentialCommand);

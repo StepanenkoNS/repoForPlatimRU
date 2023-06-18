@@ -26,6 +26,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     let bodyObject = ValidateIncomingEventBody(event, [
         { key: 'botId', datatype: 'number(nonZeroPositiveInteger)' },
         { key: 'name', datatype: 'string' },
+        { key: 'urlId', datatype: 'string' },
+
         { key: 'tags', datatype: 'array' },
         { key: 'description', datatype: 'string' }
     ]);
@@ -45,6 +47,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         botId: Number(TextHelper.SanitizeToDirectText(bodyObject.data.botId)),
         masterId: Number(telegramUser.id),
         name: TextHelper.SanitizeToDirectText(bodyObject.data.name),
+        urlId: TextHelper.SanitizeToDirectText(bodyObject.data.urlId),
         description: TextHelper.SanitizeToDirectText(bodyObject.data.description),
         tags: bodyObject.data.tags
     };
