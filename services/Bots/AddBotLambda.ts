@@ -20,7 +20,7 @@ import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
-    console.log(event.body);
+    console.log(event);
     const origin = SetOrigin(event);
 
     const telegramUser = event.requestContext.authorizer as TelegramUserFromAuthorizer;

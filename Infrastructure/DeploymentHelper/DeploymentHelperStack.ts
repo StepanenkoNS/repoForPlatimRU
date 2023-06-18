@@ -22,7 +22,11 @@ export class DeploymentHelper extends Stack {
         const lambdaRole = Role.fromRoleArn(this, 'lambdaRole-imported', DynamicEnvironment.IAMroles.lambdaRole);
         this.lambdaRole = lambdaRole;
         const layers: ILayerVersion[] = [];
-        for (const layerARN of [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN, DynamicEnvironment.Layers.I18NLayerARN]) {
+        for (const layerARN of [
+            DynamicEnvironment.Layers.ModelsLayerARN,
+            DynamicEnvironment.Layers.UtilsLayerARN
+            //    DynamicEnvironment.Layers.I18NLayerARN
+        ]) {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
