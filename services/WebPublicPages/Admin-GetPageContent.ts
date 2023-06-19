@@ -25,7 +25,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     const queryParams = event.queryStringParameters;
     if (queryParams) {
         locale = !queryParams['locale'] ? fallbackLocale : queryParams['locale'].toLowerCase();
-        pagePath = !queryParams['pagePath'] ? undefined : queryParams['pagePath'].toLowerCase();
+        pagePath = !queryParams['pagePath'] ? undefined : queryParams['pagePath'];
     } else {
         console.log('query params not provided');
         const returnObject = ReturnBlankApiResult(422, { success: false, error: 'query params  not provided' }, origin);
@@ -39,11 +39,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
     const result = await PublicWebPageManager.GetPublicWebPageContent({
         locale: locale,
-        PKPostfix: 'publicPages',
+        PKPostfix: 'adminContent',
         pagePath: pagePath
     });
 
     const getResult = ParseItemResult(result);
+    console.log('getResult', getResult);
+    const blankResult = ReturnBlankApiResult(getResult.code, getResult.body, origin);
+    console.log('blankResult', blankResult);
 
-    return ReturnBlankApiResult(getResult.code, getResult.body, origin);
+    return blankResult;
 }

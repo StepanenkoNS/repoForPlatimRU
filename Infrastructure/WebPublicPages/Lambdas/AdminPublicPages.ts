@@ -14,7 +14,7 @@ export function CreateAdminPublicPagesLambdas(that: any, rootResource: apigatewa
     const getWebPageContentLambda = new NodejsFunction(that, 'GetWebPageContentLambda', {
         entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'Admin-GetPageContent.ts'),
         handler: 'handler',
-        functionName: 'react-Content-Get-Lambda',
+        functionName: 'react-PublicPage-adminContent-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         role: lambdaPublicPagesRole,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
