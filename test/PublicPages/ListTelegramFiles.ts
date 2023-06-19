@@ -1,4 +1,4 @@
-import { handler } from 'services/WebPublicPages/WebPages-GetPageContent';
+import { handler } from 'services/WebPublicPages/Admin-GetPageContent';
 const event = {
     resource: '/content',
     path: '/content',

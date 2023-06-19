@@ -8,15 +8,15 @@ import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvir
 import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreatePublicPagesLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaRole: IRole) {
+export function CreateAdminPublicPagesLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaPublicPagesRole: IRole) {
     //добавление ресурсов в шлюз
 
     const getWebPageContentLambda = new NodejsFunction(that, 'GetWebPageContentLambda', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'WebPages-GetPageContent.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'WebPublicPages', 'Admin-GetPageContent.ts'),
         handler: 'handler',
         functionName: 'react-Content-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
-        role: lambdaRole,
+        role: lambdaPublicPagesRole,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {

@@ -380,25 +380,25 @@
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
+          "lambdaPublicPagesRole-imported": {
+            "id": "lambdaPublicPagesRole-imported",
+            "path": "DeploymentHelperStack/lambdaPublicPagesRole-imported",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74",
-            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498",
+            "path": "DeploymentHelperStack/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
@@ -502,7 +502,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "73a0a9cb5b717e60703cc25e94f0d5c124f0370d7c5309ceb275ef954bf16d6c.zip"
+                      "s3Key": "9576bb8c44b29373c3090c50b1ecc97400b3ff920b9cc90085c8a5c1c712ff53.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -542,9 +542,8 @@
                     "functionName": "WebTokenAndGateWayService-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x"
                   }
@@ -2079,7 +2078,7 @@
                           "Ref": "WebPublicPagesAndGateWayServiceGWAPIA82D268C"
                         },
                         "deploymentId": {
-                          "Ref": "WebPublicPagesAndGateWayServiceGWAPIDeployment2631A90900e7fd5d6b05c1342e263800fafb3a40"
+                          "Ref": "WebPublicPagesAndGateWayServiceGWAPIDeployment2631A909732ca6355c6bc0299f5a8777ba94eb2c"
                         },
                         "methodSettings": [
                           {
@@ -2963,13 +2962,13 @@
                       "version": "2.83.1"
                     }
                   },
-                  "content": {
-                    "id": "content",
-                    "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content",
+                  "adminContent": {
+                    "id": "adminContent",
+                    "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/Resource",
+                        "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -2979,7 +2978,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "content",
+                            "pathPart": "adminContent",
                             "restApiId": {
                               "Ref": "WebPublicPagesAndGateWayServiceGWAPIA82D268C"
                             }
@@ -2992,17 +2991,17 @@
                       },
                       "OPTIONS": {
                         "id": "OPTIONS",
-                        "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/OPTIONS",
+                        "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/OPTIONS",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/OPTIONS/Resource",
+                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/OPTIONS/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "OPTIONS",
                                 "resourceId": {
-                                  "Ref": "WebPublicPagesAndGateWayServiceGWAPIcontent9D87BB3F"
+                                  "Ref": "WebPublicPagesAndGateWayServiceGWAPIadminContentE74ECA58"
                                 },
                                 "restApiId": {
                                   "Ref": "WebPublicPagesAndGateWayServiceGWAPIA82D268C"
@@ -3057,11 +3056,11 @@
                       },
                       "GET": {
                         "id": "GET",
-                        "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET",
+                        "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/GET",
                         "children": {
-                          "ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content": {
-                            "id": "ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content",
-                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content",
+                          "ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..adminContent": {
+                            "id": "ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..adminContent",
+                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/GET/ApiPermission.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..adminContent",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -3089,7 +3088,7 @@
                                       {
                                         "Ref": "WebPublicPagesAndGateWayServiceGWAPIDeploymentStagepagesAPICE4DC7DB"
                                       },
-                                      "/GET/content"
+                                      "/GET/adminContent"
                                     ]
                                   ]
                                 }
@@ -3100,9 +3099,9 @@
                               "version": "2.83.1"
                             }
                           },
-                          "ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content": {
-                            "id": "ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content",
-                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..content",
+                          "ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..adminContent": {
+                            "id": "ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..adminContent",
+                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/GET/ApiPermission.Test.WebPublicPagesAndGateWayServiceWebPublicPagesAndGateWayServiceGWAPIFD4A1B6B.GET..adminContent",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -3126,7 +3125,7 @@
                                       {
                                         "Ref": "WebPublicPagesAndGateWayServiceGWAPIA82D268C"
                                       },
-                                      "/test-invoke-stage/GET/content"
+                                      "/test-invoke-stage/GET/adminContent"
                                     ]
                                   ]
                                 }
@@ -3139,13 +3138,13 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/content/GET/Resource",
+                            "path": "WebPublicPagesAndGateWayService/WebPublicPagesAndGateWayService-GWAPI/Default/adminContent/GET/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "GET",
                                 "resourceId": {
-                                  "Ref": "WebPublicPagesAndGateWayServiceGWAPIcontent9D87BB3F"
+                                  "Ref": "WebPublicPagesAndGateWayServiceGWAPIadminContentE74ECA58"
                                 },
                                 "restApiId": {
                                   "Ref": "WebPublicPagesAndGateWayServiceGWAPIA82D268C"
@@ -3670,9 +3669,9 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "92694aee8339cb15db64fce01db2f3d2f6b2d8bad34d60448234ac1d478c651a.zip"
+                      "s3Key": "d7dddd6426e48480c7fae39290f3e5e4aa7436cb5c9e08426d36d672b578f529.zip"
                     },
-                    "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
+                    "role": "arn:aws:iam::993738567487:role/LambdaPublicPagesRole",
                     "environment": {
                       "variables": {
                         "webTable": "web",
@@ -3708,9 +3707,8 @@
                     "functionName": "react-HelpCenter-Landing-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -3934,9 +3932,9 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a6fee1fb0008155171785097a13293869637ce068b72c2628f6737e010e18e33.zip"
+                      "s3Key": "23032067e870e914236e40197bc9fdfb94bd584095f4390a02ca76f9eade670a.zip"
                     },
-                    "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
+                    "role": "arn:aws:iam::993738567487:role/LambdaPublicPagesRole",
                     "environment": {
                       "variables": {
                         "webTable": "web",
@@ -3972,9 +3970,8 @@
                     "functionName": "react-HelpCenter-Subcategory-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4055,9 +4052,9 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d2819679fe65ebc615a330765cf5df400f6a918a731a742944daa812c8cfbe59.zip"
+                      "s3Key": "a36621ef90ccf06e892afbb29069a62a789787067a52d4df6038601381da2b43.zip"
                     },
-                    "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
+                    "role": "arn:aws:iam::993738567487:role/LambdaPublicPagesRole",
                     "environment": {
                       "variables": {
                         "webTable": "web",
@@ -4093,9 +4090,8 @@
                     "functionName": "react-HelpCenter-Article-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4176,9 +4172,9 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "083ec998aea49a97628442704fafc185ca8e6607ef2b542db50a53b91472c03f.zip"
+                      "s3Key": "b1513abc3e207febf688269937c5786edff5f3a1cf78fe248e4f8786846b76f7.zip"
                     },
-                    "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
+                    "role": "arn:aws:iam::993738567487:role/LambdaPublicPagesRole",
                     "environment": {
                       "variables": {
                         "webTable": "web",
@@ -4214,9 +4210,8 @@
                     "functionName": "react-Content-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4297,9 +4292,9 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "bf97245a19962373c8d35310138f1eb35615903450ff8aadb7b994664466c0d4.zip"
+                      "s3Key": "78861d3f32e14487446c3586bb633cb12e2149e001c6aacd26715580eb32df88.zip"
                     },
-                    "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
+                    "role": "arn:aws:iam::993738567487:role/LambdaPublicPagesRole",
                     "environment": {
                       "variables": {
                         "LOG_LEVEL": "info",
@@ -4334,9 +4329,8 @@
                     "functionName": "react-BotLanding-GetPublic-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4469,7 +4463,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "8a3bbd32b192d2cc1ccca22f802d9c449b5815ae6894017b49774005f9fc9b3b.zip"
+                      "s3Key": "8754aed9149b081f99745edad38a8d5fefc3ec9a67f8cdae0b04f36c39e64d01.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -4507,9 +4501,8 @@
                     "functionName": "react-Bots-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4733,7 +4726,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "724989a07b1f269d449e31d2b3834438abe4598d17c14a827e97d8b72ae116ff.zip"
+                      "s3Key": "f1c5c8e7b777f3cb58d5ab3540677dc78a28c70bf79b4f45c7fc00662780dfe2.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -4771,9 +4764,8 @@
                     "functionName": "react-Bots-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4854,7 +4846,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "9ff070ca191704ea3aaa936a350671044f33018bd50eae33ded72376e7f4790b.zip"
+                      "s3Key": "1398c28ef1647a47000a58797171e7ba1e4785171ca03a708b0a8bc10d457e90.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -4892,9 +4884,8 @@
                     "functionName": "react-Bots-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -4975,7 +4966,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "097a73e7801b0a607fae75bf371a578f58e5aa1ef49967d76912fb17ed98f926.zip"
+                      "s3Key": "fb24e2071477aec91e0a291d8d5c1024a829330b75b3845162e009a685919bc3.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5013,9 +5004,8 @@
                     "functionName": "react-Bots-Register-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5096,7 +5086,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "daae04e7ffb9e96374f2c675415ecbaf49b9f434783e3834041963cfe047d60d.zip"
+                      "s3Key": "6cd38c0aa81d1da06ba0b9801fcf0070962df69a368c9545553a87f6c5ab1e06.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5134,9 +5124,8 @@
                     "functionName": "react-Bots-UnRegister-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5217,7 +5206,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "94848b79660afeb25e3b2f6295f13ebe7039cdfa8cf834c1cd5199a340197dd8.zip"
+                      "s3Key": "bf526512d789d994139dabca98217e221a6702d8f9b74586bf85154b577b93ff.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5255,9 +5244,8 @@
                     "functionName": "react-Bots-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5338,7 +5326,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a5090756a922b00db32a94f65f580409efdfb7a2452a4d8aa06d6fbf61981e11.zip"
+                      "s3Key": "08d204d9647feaa62cbac13236af4aeae86cb4b20b3cd598acc0f0a3e6f24589.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5377,9 +5365,8 @@
                     "functionName": "react-Bots-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5460,7 +5447,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "e1a79a3bb6efc9e974ff7548583c50d80e71fc1ef8c54a01d5b8b71d0b2ae7cd.zip"
+                      "s3Key": "421fe55c4f173802a18acda91d42d95aa9b3e2d01720bbe4b3fbf69419f5a75b.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5497,9 +5484,8 @@
                     "functionName": "react-BotCommands-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5580,7 +5566,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d7a517796769ccf54b7bc75c02a57334ee4c262da68a00a91d27856b801125b1.zip"
+                      "s3Key": "ddcdee24d8b65742867c2704777fc3f25d536370d93206bf62a34dda9b873283.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5617,9 +5603,8 @@
                     "functionName": "react-BotCommands-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5700,7 +5685,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "905117fd15a8352601e81eed35be75c66ea47f993c0cefe6f28060e0d849e14c.zip"
+                      "s3Key": "087cd377069e46e05ebc8743b994b745477e300c1bde298fd17c648a683a01fd.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5738,9 +5723,8 @@
                     "functionName": "react-BotCommands-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5821,7 +5805,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ec0479d66e2a6085c5be00466a5dacb5bd2e6c4027062288b4241049e840e52d.zip"
+                      "s3Key": "7a14d49ef69ff75964dd05030515af89a353b572b5915ccdd2593003b38bb264.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5858,9 +5842,8 @@
                     "functionName": "react-Channels-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -5941,7 +5924,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "f3286b0019edee3d5525f4048ac5789dbd660a816a4f9777ac028e7b428a5a75.zip"
+                      "s3Key": "f05cc781126721d606be7a6835f789e32b28c90c9e1a866cb443ec5ba845bc02.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -5978,9 +5961,8 @@
                     "functionName": "react-Channels-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -6061,7 +6043,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "95e3c030ac6a3bdc5cbff067ee938173d904b9e6545d03cbf385ed9e17f987ff.zip"
+                      "s3Key": "174862e6d8b3aa6b4e975bd0f09df857d66f6a822932fd258b9e45cf12c7fe89.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -6098,9 +6080,8 @@
                     "functionName": "react-Channels-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -6181,7 +6162,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "831a5ae629a90c4a081a2408e51a328de0f287523efbb73218f455d47ff43256.zip"
+                      "s3Key": "5571b517a5f12075a810837e8026e780d312fb1e04dbed89c9cf0ad4afb1caa1.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -6219,9 +6200,8 @@
                     "functionName": "react-Channels-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -6366,7 +6346,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "bdda088026dd857b3f785d7b5518e7202c7332abd1d2b78c607e3bd21eb92b7e.zip"
+                      "s3Key": "635486f48e82690f13387b2a09bd96237f6e6dcf0504721d96c7494faaa2825a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -6429,9 +6409,8 @@
                     "functionName": "react-Channels-Migrate-first",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -6576,7 +6555,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "41618a3fea64674dab444c41562cb5579040969b7b2b27097e9892c93be01576.zip"
+                      "s3Key": "e7a29fe7e3579ba3610146cf50b6c9d52baa60a4da94585b6150a34c5b71027b.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -6663,9 +6642,8 @@
                     "functionName": "react-Channels-Migrate-second",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -6810,7 +6788,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "30575999793ad8bea02985d18ddee7351ea783b725634f7cc77c0211ae5dd5c4.zip"
+                      "s3Key": "a32884c022bf8d220bbc0b153ff341177a30958aa33ebd5d16a4dadda3b3a724.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -6847,9 +6825,8 @@
                     "functionName": "react-Meetings-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -6930,7 +6907,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "db3d9bdf8c9b5e0aac14d53d321b1246eec5281aafc5ae86d14ed7f14b48471d.zip"
+                      "s3Key": "ab6428bd6b35e9b77f118b3ef5fe141f01fad544a719aebab4dbccfecd819604.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -6967,9 +6944,8 @@
                     "functionName": "react-Meetings-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7050,7 +7026,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ad05cbae491c2da2cd2fbc4349d707f4b6d10b1dff4499bc8b25d8b587cf96bf.zip"
+                      "s3Key": "c1f9c10b494de36d1e70481ee048ae4c0368977d3cce2ed29ce18fb42db7dff8.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7087,9 +7063,8 @@
                     "functionName": "react-Meetings-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7170,7 +7145,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "eefc7dfcfdde1f548adcfcc2fe24364ab722a1cec08907b2b2a520abde75baf0.zip"
+                      "s3Key": "e85c18bfe8f53ce59e06d5731ba26dbefc5bf2b768534446b05ca9a3c0e41106.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7208,9 +7183,8 @@
                     "functionName": "react-Meetings-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7291,7 +7265,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d4504589b734f01a48bf51db9f1e5210e4872876a26f8968db5725c8eb997ccd.zip"
+                      "s3Key": "0747d203b5f3a0d74684e7d2e95b59800f15359f6bb4bc095b28d336d9cc0998.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7329,9 +7303,8 @@
                     "functionName": "react-Meetings-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7412,7 +7385,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "60d15adf3d89c33acfdd4b86a87a3e77a193c67c8d7f7f5504b3cc4d0215949c.zip"
+                      "s3Key": "115a6d28b0e91ebc9a9700b295435df939e9af77d3a33225512b258815ebdc81.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7449,9 +7422,8 @@
                     "functionName": "react-Meetings-ListParticipants-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7532,7 +7504,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "5b37ce721d9a88796402a4b9b0ededc0abd2c039d8b57ba5470cf5443b68c064.zip"
+                      "s3Key": "7dcf0f697b1ebbd31518d90114ad08e4dd5a728944d7a3e717cf14576a525715.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7570,9 +7542,8 @@
                     "functionName": "react-Meetings-CheckLimits-AddMeeting-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7653,7 +7624,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "c756722bef44913f3fcb85e1b0b2cbc93dc12c9e0d456ff1c17a3b6dd0541e96.zip"
+                      "s3Key": "0a730387cfae8f820cf7c1caa9c112870d98c1a8285b3731237d9aaff5bff560.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7690,9 +7661,8 @@
                     "functionName": "react-PaymentOptions-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7773,7 +7743,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "be847df6133b6585fcdab498572acdf89963b43d7f57903e12efe24ead1fffc7.zip"
+                      "s3Key": "1739526e29ab1d2b3a7bafa00f5afcd7358e723fa45b38c7ce449e8a8eba3096.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7810,9 +7780,8 @@
                     "functionName": "react-PaymentOptions-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -7893,7 +7862,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "34476bea56a902fae1e7ad0f3e563eaac02088e432e363f2c5e8cad76eab8240.zip"
+                      "s3Key": "0f748651b125b679a1c5d32aa46374dd4ced375f100659827001f1fdda582d21.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -7930,9 +7899,8 @@
                     "functionName": "react-PaymentOptions-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8013,7 +7981,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "b79662bcfba1e346e535da97314a63171b15f83838c5c3bd8bba04f2db0a739c.zip"
+                      "s3Key": "fe7896a42d3342c6ca1896f3dd489fb520722b0c6e63c9c51e29c79ecd146755.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8050,9 +8018,8 @@
                     "functionName": "react-PaymentOptions-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8133,7 +8100,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d31221f33efef76c0492edcf2202b88d3b85bec7d357fefb2a88ebf1f50832c6.zip"
+                      "s3Key": "81396c705b8e36fdb121218124f874deb49dafdb712a7b2755911f5e307c465e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8170,9 +8137,8 @@
                     "functionName": "react-PaymentOptions-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8253,7 +8219,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "564e588f070bc90abff8e5fc7685f15fe4e8119351d7a86591213324f9bd957a.zip"
+                      "s3Key": "af8f6c1ab32f140f3f6b1ed98206d130ce6b6cce6a93e9fc787d878eb04ff6e4.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8290,9 +8256,8 @@
                     "functionName": "react-BotMenuSettings-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8373,7 +8338,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d38fdbb418a790e75ab94425de0ffefb3fb09e118d84f197a4c16ce41a870307.zip"
+                      "s3Key": "cb4b83a5127a2f51b710b7917d7b31fb6c526c93c8eeec692ddeccada2ee8d70.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8411,9 +8376,8 @@
                     "functionName": "react-BotMenuSettings-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8510,7 +8474,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "05b53476aa48b603e3ecc5e2ee656ffcf14b40a7aea58ab1fb083216797f3167.zip"
+                      "s3Key": "f41ab4835bfd09c7e2de01311dfd4ba8d4be6e61be91ce424a59e35450c87ade.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8547,9 +8511,8 @@
                     "functionName": "react-Notifications-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8630,7 +8593,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "26b455392fd9fad680f2b925fd9285bef4a19817769d98086bac076f2a446c61.zip"
+                      "s3Key": "f61bbfcf9122bf401ddbd1f307b4ce01502be27c81b941a27e4b6a5867b3697a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8667,9 +8630,8 @@
                     "functionName": "react-Notifications-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -8838,7 +8800,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "f76095eaee92a8ce78071a738bf8198d1d6f7d3ed004a37ce7fcb4755015ec0d.zip"
+                      "s3Key": "93dad576c548fb7b1ad4a429a52cf059e2f8d930c88d358a0e4af7b76cdb175b.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -8889,9 +8851,8 @@
                     "functionName": "react-CascadeDelete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -9322,7 +9283,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "21805a1ecc7d47d9b5d0afc23e33b6e1ea03bacf939f4563872bcdf043878432.zip"
+                      "s3Key": "81445ed84001da54d7a477a326ec619686de4eb1c5cddc2083c620c22484b5ac.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -9359,9 +9320,8 @@
                     "functionName": "react-TelegramFiles-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -9585,7 +9545,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "88887e65badef9bf3d9dbba66a9f17a5335e2e34e9a388a0fbe2285ffd451342.zip"
+                      "s3Key": "2d625cd77374105b05264a145f087d93a036585a591138a3cb0f5e6d09122f14.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -9622,9 +9582,8 @@
                     "functionName": "react-TelegramFiles-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -9705,7 +9664,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "4457d05f67b6d3ff6b60becd7b37d5269c9266dbad678696a8fc1277a496f3a7.zip"
+                      "s3Key": "9feb952767ceff09357098297706bdf212542232028ade49423ee4322abf5518.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -9742,9 +9701,8 @@
                     "functionName": "react-TelegramFiles-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -9825,7 +9783,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "40086c1101b31ffa2f05cf5b1855bf52fc34a493b07a0686e8cfd3366f92cd85.zip"
+                      "s3Key": "4463347f9c9f8896df24782457a25ede055c90d1189df6ebe55f8f6606bf4ca3.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -9862,9 +9820,8 @@
                     "functionName": "react-TelegramFiles-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -9945,7 +9902,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "701ae7490556934ee8ce7bf961c65de12da054bdb2c1f9f36782555874c34b69.zip"
+                      "s3Key": "89480ed5f7f66d80b791adf11253eef64e5b0e6d0e758a1524aa062b7aee0dd3.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -9982,9 +9939,8 @@
                     "functionName": "react-GetPresignedUrl-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10167,7 +10123,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "c247b2fbf5323215865b2908e765dbf62b8cf6db583a4ed2a3c8a7e98f223ebd.zip"
+                      "s3Key": "f390cfe9440a1aeacc5c18e027a2e833f3917cdc2568f58aeca172c8d706f144.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -10216,9 +10172,8 @@
                     "functionName": "react-SendMessages-SendTestMessage-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -10442,7 +10397,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "067a9a8afac34282105688c36a5bf2d73309ae042bb39db8ba5c05912b83adf3.zip"
+                      "s3Key": "585d52b25c7b58842a51781a6fecd86db74cc4b46754e47311427bb3ad73d0e8.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -10491,9 +10446,8 @@
                     "functionName": "react-SendMessages-SendTestFile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -10574,7 +10528,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "f3d37965c097412acf8deb532619f8ecf8de4f93aea24f09d1fab02824c7ba2c.zip"
+                      "s3Key": "994ad315593a3375eedd379315aba64d614261b0e653900127252433f76524a4.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -10623,9 +10577,8 @@
                     "functionName": "react-SendMessages-SendDirectMessageFromAdmin-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -10706,7 +10659,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "648500295d91c0a720a4ed85252ab6452dc9f16d427a057ba8e9aaef66d6e25f.zip"
+                      "s3Key": "3c2c533bf76dc20f177232a94bbdf64fee195a8f832a25917ea163d21876de0a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -10743,9 +10696,8 @@
                     "functionName": "react-DigitalStoreCategories-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10826,7 +10778,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "1849938002e4f61cc534b77e93087bc475a49bd03247c94886f3040a6af97431.zip"
+                      "s3Key": "2ec3c56563eabb2c42ac09a3571749b86df06128618e446e8df58bc002d73e54.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -10863,9 +10815,8 @@
                     "functionName": "react-DigitalStoreCategories-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -10946,7 +10897,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "98aa138b0571c8565b9706f6c7f3b7ba3c0724a0c64fc2757f4d5eb4fd40659b.zip"
+                      "s3Key": "c541c334d9c8c2221768bc08c1e56f0b75ee558f0517867adf073a0fc521327c.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -10983,9 +10934,8 @@
                     "functionName": "react-DigitalStoreCategories-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11066,7 +11016,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "2937a8b1295bffa8b1b7e4a8558bbf95ba0f7fc7f45f49ef26504b4aa88d2b7e.zip"
+                      "s3Key": "95cc18bfb3ea860a941286b8cc4e221c443ebb34b01a1629acb55a23073d5cda.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11103,9 +11053,8 @@
                     "functionName": "react-DigitalStoreCategories-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11186,7 +11135,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "78a5ede2c2124a95c98598b1929c5a0ca5fe8926300f24d690e06f39a15b50b1.zip"
+                      "s3Key": "c475c466102c2866e8d714e8f8f3ced97a5b965fdfbfad928bae052bcd5c3538.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11224,9 +11173,8 @@
                     "functionName": "react-DigitalStoreCategories-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11307,7 +11255,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "bb372055a75d28a32313f8b62fa88bf6cdbf84733cc75e6bc07b6e9e64ffb297.zip"
+                      "s3Key": "589d33c4088214fcb2473819c8614e40b57cf6f8349eb53cd2715c539970e836.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11344,9 +11292,8 @@
                     "functionName": "react-DigitalStoreItems-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11427,7 +11374,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "0d701e4c25b15e5d5b07ecbbc63dbce8a5276dd06bc28770016ab9f0fd1bcad3.zip"
+                      "s3Key": "0e4377e10b9fa6d85476e6b46e34cbbf20c289fde7268bb8406b6480af772a08.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11464,9 +11411,8 @@
                     "functionName": "react-DigitalStoreItems-List-forContentPlanPost-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11547,7 +11493,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "fb783cbd643a92b75c255153d427c6d67371570baf0dd77ba7fb7c7955f8351d.zip"
+                      "s3Key": "643e6c5f864d8bd463399731101c2a35414df3dd8d324d068962ee97d7752cb9.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11584,9 +11530,8 @@
                     "functionName": "react-DigitalStoreItems-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11667,7 +11612,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "35dcd9a1a364488f49302fce08edd0bdab1c690e8a923e0136fbb4936a8d31cc.zip"
+                      "s3Key": "b88148981abba9221c805413fbb3720f4204608241794385c4e5284a3476f473.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11704,9 +11649,8 @@
                     "functionName": "react-DigitalStoreItems-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11787,7 +11731,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a02b190b070a1b293bcb91a33d29102dce9f68b8bd2d3b9106be215375f78b3b.zip"
+                      "s3Key": "c4e13e395cbf700287ed7f5139501377dcaae951bb3e0182f4bb76c97bbabb8a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11824,9 +11768,8 @@
                     "functionName": "react-DigitalStoreItems-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -11907,7 +11850,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "7f7150ae4300af4143545d356990d2671508904aea2986e3deeb3acbb662ed44.zip"
+                      "s3Key": "ac96dca7d1a8d05fa552b78dcf3527e05eb69862d49207fea937b7c4b141f735.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -11945,9 +11888,8 @@
                     "functionName": "react-DigitalStoreItems-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -12068,7 +12010,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "0f0a02ea67b546909d994e8b731f35c7d5339e7f80e502a7382a30ecebe9554c.zip"
+                      "s3Key": "7f1346db187c407f903dd5a3a8e1219f599aa6a64284f1e64b9a98c574f89576.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -12129,9 +12071,8 @@
                     "functionName": "SendMessage-Scheduller-First-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -12277,7 +12218,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ae6ee481b0af564e88bb378ee6ad708367d7e8da5b2386177cc232021daff698.zip"
+                      "s3Key": "263c5c2f492ba5306e84a8ee77c54d8f64fb9ce5090b56e6ced42afb4b5c65f4.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -12350,9 +12291,8 @@
                     "functionName": "SendMessage-Scheduller-Second-Stage",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -12497,7 +12437,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "006930440ba931ec3818da800047cd84c1cb7fca655f680b6706fa03b9adbb9e.zip"
+                      "s3Key": "3527b0cbcfcc896cbd39aef1663331ad09d86ffee4617816ece78ebfcae7e243.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -12546,9 +12486,8 @@
                     "functionName": "scheduler-SendMessageSender-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -12765,7 +12704,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "874689db8dd509586c64b9993385b0bc7f4f310339078843e78886d8557ddb0e.zip"
+                      "s3Key": "66d3246181e790fa93dcf363b78f7c18161a09c6b94c7c78518a6bac3215bc05.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -12862,9 +12801,8 @@
                     "functionName": "paymentProcessor-incomingRequests",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -13009,7 +12947,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "12d3c4565171ee1d400deb91a15ba153b1002e98a1055c3d387515ff6aef1568.zip"
+                      "s3Key": "dd873e39b21cb52cf9a84eb3b544b13dfd8af1cf40baa7cad8b1797a6b025a33.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -13106,9 +13044,8 @@
                     "functionName": "paymentProcessor-IncomingPaymentConfirmation",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -13357,7 +13294,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "96a83a4c3bee773be673eecbbf695b428eb620f6b94118affaa19c42355b2ac2.zip"
+                      "s3Key": "b5b6d840b9c741d01b8694a637d54309852268658d6edf0424434c96e34988e0.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -13406,9 +13343,8 @@
                     "functionName": "subscriptionProcessor-Scheduler-Add-New-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "memorySize": 256,
                     "runtime": "nodejs16.x",
@@ -13554,7 +13490,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "15c04bd3d82a05f88013459a5f74e5792c6612e205559e7e633efde5bc789f7b.zip"
+                      "s3Key": "ea2fc380586ca870ea39254c9d5145bf0db8a36a45eeb6273b3dc909a9b9ef71.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -13603,9 +13539,8 @@
                     "functionName": "subscriptionProcessor-ToggleUserStatusChange",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -13750,7 +13685,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "da66a76609d1f4d1f31b11a8f9d76c28f4ca70daab735327f479474642b38315.zip"
+                      "s3Key": "e2d0ad23ae33a11bbb2d30c34894151f24638e5cf46b3e57b402c6eb2ae3bb7b.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -13799,9 +13734,8 @@
                     "functionName": "subscriptionProcessor-Scheduler-Delete-Post",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "memorySize": 256,
                     "runtime": "nodejs16.x",
@@ -13947,7 +13881,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "3c7981eef83a69911f814712a5000866c9126733a4a0bdec35ee1a058746500a.zip"
+                      "s3Key": "5bfcf448759334e70926a406162ab8772888a095f9a99e2ce2417ee19d83610a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -14020,9 +13954,8 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-ContentPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -14167,7 +14100,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "2ac122d75deb40c797786bb33cb358bffc1d42b79d393d8f7d9ecfda4e22f555.zip"
+                      "s3Key": "ffe6e5e77c9b6451f418c92aae5c07251e08282e0daa6c431424d53631e58d6a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -14240,9 +14173,8 @@
                     "functionName": "subscriptionProcessor-Subscribe-User-To-SubscriptionPlan",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -14387,7 +14319,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "68cc757bb73e0ce511194a6ab043d1b9e16d2731edf32daf0820d849ac5d0de3.zip"
+                      "s3Key": "76c8ac4959f626f7c606adacad8bd85744525f814fb2bb79dd43cab77634a767.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -14436,9 +14368,8 @@
                     "functionName": "subscriptionProcessor-Expire-ChannelSubsriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -14585,7 +14516,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "211c2be8e188cdbcb9544c17aae4d346ab7dd83009b995b5d5a467eb83052926.zip"
+                      "s3Key": "152cb590f9148ccb48a03ac91e5788eafe920863b860949a31cc95925ba5df39.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -14634,9 +14565,8 @@
                     "functionName": "subscriptionProcessor-Expire-BotSubscriptions",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -14783,7 +14713,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a8bcaa20a959ea69e2e571b50365ea702ca8b7c11198b8982a4eb491336281e1.zip"
+                      "s3Key": "9bdb88abf0ec0a56c527fbef5d2a62b96de8a14da8cc735b7e7a3f9fcb71ac89.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -14820,9 +14750,8 @@
                     "functionName": "subscriptionProcessor-Cleanup-Pompona",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -14969,7 +14898,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "951dd2d1ff187468261f86fb39f93bed2de9a9dbb4add8fec35f7640e58e9656.zip"
+                      "s3Key": "4b4a633807185c813eb105a0af4672453493cfb8aee1c7d680b55c0137b0ed58.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -15006,9 +14935,8 @@
                     "functionName": "subscriptionProcessor-Expire-expireUserSubscriptionItem",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -15122,7 +15050,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "3d133f9cca54e0b182e4052ca7dfcdb83c17f364762fcb1568e2712b7d204c5b.zip"
+                      "s3Key": "5aa38032571312a460f182f0ba4036f3524991cafda1bf58ceae8807089bc23b.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -15159,9 +15087,8 @@
                     "functionName": "subscriptionProcessor-Expire-expireUserSubscriptionItemDLQ",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "reservedConcurrentExecutions": 1,
                     "runtime": "nodejs16.x",
@@ -15275,7 +15202,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "8ed2997edd8e8679b04b65f09bce91e903e39a0be1557ab1e77b869c1903ec6e.zip"
+                      "s3Key": "0e491251921408258c91889815d8776ae50d530ef98d1f76279ec89646917bca.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -15316,9 +15243,8 @@
                     "functionName": "paymentProcessor-ModulPayment-generate",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
@@ -15597,7 +15523,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ae353148543f29962c48fd7cd7079c0d5feddb3cf8a27ea353197d4472af5945.zip"
+                      "s3Key": "b4f59af1cb7672700a94f81b9e48195aeefd2b169ba6e3501303c9751c8ff0ca.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -15634,9 +15560,8 @@
                     "functionName": "react-ContentPlanPosts-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -15860,7 +15785,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "26bc0325cd580d3dde091cf9e5a37162269fa9611f9c31e8a62c6dc8ab219103.zip"
+                      "s3Key": "1e7d877d0f3a6340283ac6a708430f185792015d4adbd3b4d34df8abd18f7027.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -15897,9 +15822,8 @@
                     "functionName": "react-ContentPlanPosts-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -15980,7 +15904,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "717e65d2a3c5993cce4352562c66c0bb139b53eaf999f30fa83be3e12cd031bf.zip"
+                      "s3Key": "3b57253b7bc1ebe57d910d8395320dc5f83167c74d764f0475852b17d7dc42a9.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16041,9 +15965,8 @@
                     "functionName": "react-ContentPlanPosts-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16124,7 +16047,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "7398c78186e56d81777e146464ec90255b34de1438d05f665fef8c5780947092.zip"
+                      "s3Key": "c7e6c2b3312be4720044faf69ffc7b70900120d29433e372e8f9baeee9921f45.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16161,9 +16084,8 @@
                     "functionName": "react-ContentPlanPosts-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 60
@@ -16244,7 +16166,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a26117bf32f85f821fbd1ad910eccdcd0c073e2ad9592394c6965bf8d143ac75.zip"
+                      "s3Key": "ec2bc73371234c51cbb8caf3cf885c27a76c22f12517eaed098acc57c8197206.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16306,9 +16228,8 @@
                     "functionName": "react-ContentPlanPosts-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16397,7 +16318,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "81772c3dc0347edbc239142c4d72dec3299cf3ac80515d240ec6c30b076e7ed3.zip"
+                      "s3Key": "02420ba1a5344b032e7b7cf42a968eba933203daaca23e93a28ca8937c2c9503.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16434,9 +16355,8 @@
                     "functionName": "react-ContentPlans-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16517,7 +16437,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "16cb85c3801fb19f70e5f64f72c29884d58123d0b9198255157eb31e4b8d8db8.zip"
+                      "s3Key": "d4f4888ecf3d4ed05abab78ea3fa516386e2443e28639e00da77b8192132affb.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16554,9 +16474,8 @@
                     "functionName": "react-ContentPlans-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16637,7 +16556,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "6636c875ba9a13d593837152194f90822f374ff3ea5d0c26ba4daa256fe0ee78.zip"
+                      "s3Key": "69a9c43d02bd0c60c007533228db7a6684629227e5a57cb9dd59cdd4317f6156.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16674,9 +16593,8 @@
                     "functionName": "react-ContentPlans-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16757,7 +16675,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "12273893de381d83b14fb4fcc3eb90424edef3a1f4ee36ba61725077e55705b8.zip"
+                      "s3Key": "129cdd5ba580918aacf7afade89c57a7e602d8e678a1216dedb13f28da0f87c3.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16794,9 +16712,8 @@
                     "functionName": "react-ContentPlans-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -16877,7 +16794,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ca387206d8345c76e91de51adcebc9c2f5d282b5129f547c72d6597242dc302a.zip"
+                      "s3Key": "fad8b4e520e6c590997a2b278ad8ae671f740abe86c4a1a5d20d8ee915cb858e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -16915,9 +16832,8 @@
                     "functionName": "react-ContentPlans-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -17148,7 +17064,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d1bacd1bab19f9cf80d8d19c0572351e2fc19355201f0e3a8a4725b6cc888fb3.zip"
+                      "s3Key": "68012917b313bf737abe68be321fe47b6d3e2a7d0942f670e99904986e853c3a.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -17185,9 +17101,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -17411,7 +17326,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "91b911e6a0bf16f80ad637237afffa94aa3c564817c38204409f1cecbcb20d52.zip"
+                      "s3Key": "ccad74546c8e5266f59fcd6af132ae77113b924c98debf7363496ac57b02bb65.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -17448,9 +17363,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -17531,7 +17445,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "54829b900b474b3e8d5d500c2de251f2fd34cc6d99cedc01666209eab0ccb58b.zip"
+                      "s3Key": "bb26cdeb44ad32f2422d8cad5f51f7f1c0e475f6c77c6bbc119744a5fb339921.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -17580,9 +17494,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -17663,7 +17576,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "e615e2abc4aeeb586217f3b6099ebae644285165c78b9b70f39d9b95ea26d456.zip"
+                      "s3Key": "82a587b7c24d92866d1685d9678a358b076a20564d5b2d45f67da149eb4c18b2.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -17712,9 +17625,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -17795,7 +17707,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ed854f9f3f6120922b314001544321cfe60f7c2db5477bb21b365d93797a5ff5.zip"
+                      "s3Key": "5d1fa46cc93b0afe1618f5c5150c931051feab9bb3182bf75296316e27066777.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -17832,9 +17744,8 @@
                     "functionName": "react-AddDeleteContentPlanFromSubscriptionLambda-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 900
@@ -17979,7 +17890,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "9b9c84d59b9da21e9ccbe5a70908f4e61422d623cece505939c704b813259855.zip"
+                      "s3Key": "278e81f4254896de462bbecfe02c07e56d3ed265f09ed0b07f5087537272ace8.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18029,9 +17940,8 @@
                     "functionName": "react-UserSubscriptionPlansBot-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18112,7 +18022,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "30424edd0b1aea01e95af3cd95ffd5bf43388ceceaaffc2c67ba10f0e2631f04.zip"
+                      "s3Key": "da4d4c14701e052a7cadb112bf4eb5ad8c4be261a9f592b14e48554a9c7a1f3e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18149,9 +18059,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18232,7 +18141,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "745727859c7fd930b0c8c403ee1f5504c4f50656e8bc499e958491f91d86f1dc.zip"
+                      "s3Key": "7ffb32e6b13f167221f286cf1cd92d771a3b7f1818612a4928cf33cd78792ff3.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18269,9 +18178,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18352,7 +18260,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "05358ce2321e4e0a71d752692f74fde42580116ba38698f86321c84726fdca9c.zip"
+                      "s3Key": "28cacbd424202db5c5606811b2cada675d221fec365e9b1470f106049c646bde.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18389,9 +18297,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18472,7 +18379,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d911338dce1926e67e1e9144b88f84ed3eb39c3ab38975fb0c33977cb28c2271.zip"
+                      "s3Key": "0aec1c5d10a120b384e66936f02c63065e6fdf768a27b5efb6a18933d5814334.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18509,9 +18416,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18592,7 +18498,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "0b0c5f28c4cf479fb6fbacb39a0cc508a8e221b7078e75e87cbb86037c4ffd77.zip"
+                      "s3Key": "c0c44176dd7102f9d9e9fcbc52c4ceb1f03621ca1d12b059d9e676dc78feb3e5.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18630,9 +18536,8 @@
                     "functionName": "react-UserSubscriptionPlansChannel-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18713,7 +18618,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a8cbbc3a7bd6912144dc6ca899bd8d483b539b9f41db1016011c1dd29f8bfa47.zip"
+                      "s3Key": "a26981f5c7c3e21a75e306942f4737b331fe74fdd97526aa99a185dbcb7f5854.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18751,9 +18656,8 @@
                     "functionName": "react-MasterManager-SubscribeToPaidSubscription-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -18834,7 +18738,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "980fd3515e2e0336fd1243c1f1a78b7f7024c520f2d320caa0e89c8be5d03150.zip"
+                      "s3Key": "928054e5d1e9d9c1c5a30f95d77612b271447b16fe83e73e0705e3a6abf3197e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -18872,9 +18776,8 @@
                     "functionName": "react-MasterManager-ListSubscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19105,7 +19008,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "87d97430c893537233b44c29350b861ddd3be32cc3a5714939ec9cdbb371077b.zip"
+                      "s3Key": "c562959a026f17ee96f2823324aada4503d30680e4ec389494ed91e24150cf5d.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -19142,9 +19045,8 @@
                     "functionName": "react-CRM-Users-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19368,7 +19270,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "0c6590f82a199bcd9bf248c2d69b39193130ddcffcdf690abd51c6d37db679f9.zip"
+                      "s3Key": "3fc9934d79ffea2eb4434bc2b939298ec82bd786d4fcd94afb5972a69d17a651.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -19405,9 +19307,8 @@
                     "functionName": "react-CRM-Bot-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19488,7 +19389,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "cd0dc968c9036400b07016309a834ca1fb132f7df7f9b703f4fe444e85b591d9.zip"
+                      "s3Key": "7706d78f8b119434ae938c14d9bb9a175eae389e4dbb8829edb992913681b7a1.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -19525,9 +19426,8 @@
                     "functionName": "react-CRM-Bot-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19608,7 +19508,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "6cb9dd4295eda53808367cbd6ff35063b00f294589bf8c3fc8ec8aa513a438cc.zip"
+                      "s3Key": "16bd293f5d8ad8fdda5e27189e3e1fc9b67601b99f678f81de63c29fc67c00dd.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -19645,9 +19545,8 @@
                     "functionName": "react-CRM-Channel-Subscriptions-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19728,7 +19627,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "9665684ab0a1c6d574955e49bbc5a0ad8ef2c82173c395b5c00674639cd44905.zip"
+                      "s3Key": "40a33e3e4a74cece05ce1b52eaba216668442dc682d1dc361eb4f417485c145c.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -19765,9 +19664,8 @@
                     "functionName": "react-CRM-Channel-Subscriptions-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19848,7 +19746,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "64f54e96af533d55581961e8f4c40518f43339af72a80306b276cf2432779767.zip"
+                      "s3Key": "e97d83bc0cba9c49509238822ca88d741e1b978b0b05b84d6f5ad9a9a1494347.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -19885,9 +19783,8 @@
                     "functionName": "react-CRM-Bot-Payments-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -19968,7 +19865,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "ca547e554fd05c4f242168bcbdc69e25bb4ab9231c6ed7237ebae4fe5d8bb2a2.zip"
+                      "s3Key": "5bdb317f3bfdf0cf1ea23d3396b3216546069bb006421bdd1393308a559c2712.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20005,9 +19902,8 @@
                     "functionName": "react-CRM-Bot-Payments-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20088,7 +19984,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "d57969460442dfc1c21e0a3960083e63890a60a218b4a806d0fbb239ece63e3e.zip"
+                      "s3Key": "d72e12be28c229991b80afdb1ab49df5062625cc400db01313fe334c8b1f7d2d.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20125,9 +20021,8 @@
                     "functionName": "react-CRM-ScheduledPosts-ByUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20208,7 +20103,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "12867bc989d12636e0f0a913e19a0e904f86ed04678dbdea62834160c045274e.zip"
+                      "s3Key": "3b0367c4e283be26c19fa554ea38d14da309ed2584c90300e7a90990779f5986.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20245,9 +20140,8 @@
                     "functionName": "react-CRM-UserProfile-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20328,7 +20222,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "e6e9b0c84d65dc9ad5004c10a7128dfd4060c4d105fa429eca026816a67bdad6.zip"
+                      "s3Key": "4c8c54d1d03239d9c738dfcde02b63e0cab2106b7ed8c71e8aca336f7500d406.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20365,9 +20259,8 @@
                     "functionName": "react-CRM-BanUser-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20448,7 +20341,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "46d6e84ced8523285d9b76c6486e9e96ab4fab425b8a026b9896637513df966f.zip"
+                      "s3Key": "f9f591e02e365543666e01feb3e57c798df7bd98889cd23065080f0ea9368d46.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20485,9 +20378,8 @@
                     "functionName": "react-CRM-EditUserNotes-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20568,7 +20460,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "80c295eb808fec01992a2065c604647bec9201963d5e68a1c6a1a6bf212056e2.zip"
+                      "s3Key": "0b89a53beed7c239b4493a1a8e467bc8fadafbcdd29a69b993dd50123e3471c6.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20605,9 +20497,8 @@
                     "functionName": "react-CRM-GetMyBot-Analitics-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20688,7 +20579,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "cf25f757450b51b1d0a9a0a182f862cc2dab36fbece63a9cc38dc8770b7420aa.zip"
+                      "s3Key": "5e0e366c43579b9b744c7583d9e946e7c9c11c1a864aa201e0e657897de12e84.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20725,9 +20616,8 @@
                     "functionName": "react-CRM-ContentPlanPostStats-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20808,7 +20698,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "fa6d003bb7ddf79e9eeede4123e9e8c3d8371d98a8431cac42a63e3eab8ac3ad.zip"
+                      "s3Key": "aca6392715ccb791a89c19dc9f7b3fb6f9530a957e367ac4efc15e04b5dc2d6e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20845,9 +20735,8 @@
                     "functionName": "react-CRM-ContentPlanPostFeedBacks-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -20928,7 +20817,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "8623d94f2238b5fdf1110eca07246b3768c276e742f5d3f69efe59320af970d7.zip"
+                      "s3Key": "635913965302cbf0d094da2f0e858ea0f479f6ff703c9e3a4c67e64371ec376e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -20965,9 +20854,8 @@
                     "functionName": "react-CRM-ContentPlanPostRates-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21048,7 +20936,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "cf8b723bfe59c849f588627ad6700cdd138fcab84013db8991f2b750bcfb7e61.zip"
+                      "s3Key": "1c5152674b1a7d6fed10f67a135d5a68e800eeca2e1d4cdda320f2bc198f8e58.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -21085,9 +20973,8 @@
                     "functionName": "react-CRM-GetAdminChatMessages-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21350,7 +21237,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "06b6cf606e83a310b6005787e58b9652c642170d0a06421192647676e2b460a4.zip"
+                      "s3Key": "089bdc21401b5ef62542e796c1a3739e0aec604a6bf4a2abb31b164eae052e8f.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -21387,9 +21274,8 @@
                     "functionName": "react-CampaignsInternal-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21613,7 +21499,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "e577175f3449a86da578db3b2ee68bb37d7d906643e95c1d29fb0df72db2c734.zip"
+                      "s3Key": "297c8f9f589f792224ca94618358810b28d69ee55b1902e63d24ff294d41e28b.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -21650,9 +21536,8 @@
                     "functionName": "react-CampaignsInternal-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21733,7 +21618,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "3a8d084f52f5e1de65f850c7843bc9bc39bc0ec9f7130b5374c993a12ec1f0d7.zip"
+                      "s3Key": "ccac15e359f2f06deec8579bb9624b5fb8ac36fee89f4733cd14bed282a77334.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -21770,9 +21655,8 @@
                     "functionName": "react-CampaignsInternal-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21853,7 +21737,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "9fc262d2c6e3a6f7f6621a56618cb8063ee493b3b7fef2a1829a96dace844116.zip"
+                      "s3Key": "c04b20a63791309b5853f376394b6144c738cc469e92e5459be358cd75c36c5f.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -21890,9 +21774,8 @@
                     "functionName": "react-CampaignsInternal-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -21973,7 +21856,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "401d6c657e883757c17ee3be4360d6607f1a16714cdd98f4ddf4b204e50ba6b6.zip"
+                      "s3Key": "ea2e1a5dc5320c17864aff10ec01b34b64a2a1f6801c844066a092836939a0f9.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22011,9 +21894,8 @@
                     "functionName": "react-CampaignsInternal-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22094,7 +21976,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "a7395106e286e7c317e863b48b0eb023cef94a2d5201a2d801dda39186c1dda9.zip"
+                      "s3Key": "6a0d11040bc120c736e7b94d3c99ee038351dd1afe859c6f9fbacf2dd232cc7e.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22131,9 +22013,8 @@
                     "functionName": "react-CampaignsUTM-List-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22214,7 +22095,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "052163020cf568c3e9179b3a6337dd2332e33f30a4d4c2a9c08469645888e829.zip"
+                      "s3Key": "be0c123aad920c25a64667f29278d836b8a39215d524fb471c35823e3e65eb2c.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22251,9 +22132,8 @@
                     "functionName": "react-CampaignsUTM-Get-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22334,7 +22214,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "7ced73317262ee5a039dbdd72033ed40e5119b655ba4b8ea9f450a935ff9abeb.zip"
+                      "s3Key": "b3249d00cbda1a25fa34d35975cb6fc0fddf80ae1968f603702b527f426f45b8.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22371,9 +22251,8 @@
                     "functionName": "react-CampaignsUTM-Add-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22454,7 +22333,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "f60e193a9643398abfd6ab52bc17fbbf1653c23a0790e2ec6679a9b619a1ec7a.zip"
+                      "s3Key": "7fd9e2aa2b2bd7f40bb8f3f8c84db0063485893ecdd031ce5e1700220cb1c187.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22491,9 +22370,8 @@
                     "functionName": "react-CampaignsUTM-Edit-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22574,7 +22452,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "03db897af9d84ae7006ed3363082fd82f4e1540b646a566494cd4846fcd63ae6.zip"
+                      "s3Key": "885b655deb81ce33d113f0389d01428c3dc83ddc50a6f4cbe62feb92e2ab5ab7.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22612,9 +22490,8 @@
                     "functionName": "react-CampaignsUTM-Delete-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -22829,7 +22706,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "84a9c3647856fe1d1747ed8f3ec08a930916d272a4b3f0e680f08879b65baf2a.zip"
+                      "s3Key": "aa5dcd0c4fe5ade88a0a960683431c5649d9b3d0b2b0036d3f23441235545301.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -22866,9 +22743,8 @@
                     "functionName": "react-BotLanding-Update-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -23092,7 +22968,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "fa5c834352528d65c8a37a421fce1608003dc1e3aefc96324488addbe8ce5ae6.zip"
+                      "s3Key": "a298597cf247cd96b94642cd1837a4889a7281065939ca5b6f21b924382e0342.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -23129,9 +23005,8 @@
                     "functionName": "react-BotLanding-GetPrivate-Lambda",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 5
@@ -45597,7 +45472,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": "cdk-hnb659fds-assets-993738567487-us-east-1",
-                      "s3Key": "c25162ed86d99b0c4eb680aca4a1d999543c0880db79d7746da69118b3cf2591.zip"
+                      "s3Key": "dbbe610fca92fd2742a755913b58ff7f768fb50a726ab8d29a23645cff69d453.zip"
                     },
                     "role": "arn:aws:iam::993738567487:role/LambdaBasicRole",
                     "environment": {
@@ -45638,9 +45513,8 @@
                     "functionName": "paymentProcessor-ModulPayment-callback",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:789",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:497",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersI18N:74"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:790",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:498"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15

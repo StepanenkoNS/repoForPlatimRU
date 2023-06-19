@@ -8,7 +8,7 @@ import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvir
 import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaRole: IRole) {
+export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaPublicPagesRole: IRole) {
     //добавление ресурсов в шлюз
 
     const GetBotLandingPublicLambda = new NodejsFunction(that, 'GetBotLandingPublic', {
@@ -17,7 +17,7 @@ export function CreateGetBotLandingLambda(that: any, rootResource: apigateway.Re
         functionName: 'react-BotLanding-GetPublic-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
-        role: lambdaRole,
+        role: lambdaPublicPagesRole,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {
             ...StaticEnvironment.LambdaSettings.EnvironmentVariables

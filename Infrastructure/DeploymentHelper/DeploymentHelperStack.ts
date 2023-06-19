@@ -10,6 +10,7 @@ import { IRole, Role } from 'aws-cdk-lib/aws-iam';
 
 export class DeploymentHelper extends Stack {
     lambdaRole: IRole;
+    lambdaPublicPagesRole: IRole;
     layers: ILayerVersion[];
     constructor(
         scope: Construct,
@@ -21,6 +22,10 @@ export class DeploymentHelper extends Stack {
 
         const lambdaRole = Role.fromRoleArn(this, 'lambdaRole-imported', DynamicEnvironment.IAMroles.lambdaRole);
         this.lambdaRole = lambdaRole;
+
+        const lambdaPublicPagesRole = Role.fromRoleArn(this, 'lambdaPublicPagesRole-imported', DynamicEnvironment.IAMroles.lambdaPublicPagesRole);
+        this.lambdaPublicPagesRole = lambdaPublicPagesRole;
+
         const layers: ILayerVersion[] = [];
         for (const layerARN of [
             DynamicEnvironment.Layers.ModelsLayerARN,

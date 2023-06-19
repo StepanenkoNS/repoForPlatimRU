@@ -8,7 +8,7 @@ import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvir
 import { addLambdaIntegration, addMethod, GrantAccessToDDB } from '../Helper';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
-export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaRole: IRole) {
+export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Resource, enableAPICache: boolean, layers: ILayerVersion[], lambdaPublicPagesRole: IRole) {
     //добавление ресурсов в шлюз
 
     const getHCLangingLambda = new NodejsFunction(that, 'GetHCLandingLambda', {
@@ -16,7 +16,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         handler: 'handler',
         functionName: 'react-HelpCenter-Landing-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
-        role: lambdaRole,
+        role: lambdaPublicPagesRole,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {
@@ -38,7 +38,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         handler: 'handler',
         functionName: 'react-HelpCenter-Subcategory-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
-        role: lambdaRole,
+        role: lambdaPublicPagesRole,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {
@@ -60,7 +60,7 @@ export function CreateHelpCenterLambdas(that: any, rootResource: apigateway.Reso
         functionName: 'react-HelpCenter-Article-Get-Lambda',
         runtime: StaticEnvironment.LambdaSettings.runtime,
         logRetention: StaticEnvironment.LambdaSettings.logRetention,
-        role: lambdaRole,
+        role: lambdaPublicPagesRole,
         timeout: StaticEnvironment.LambdaSettings.timeout.SHORT,
         environment: {
             webTable: StaticEnvironment.DynamoDbTables.webTable.name,

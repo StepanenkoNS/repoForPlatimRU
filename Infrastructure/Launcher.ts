@@ -47,7 +47,7 @@ const webPublicPagesStack = new WebPublicPagesStack(app, StaticEnvironment.Stack
     stackName: StaticEnvironment.StackName.WebPublicPagesAndGateWayService.toString(),
     certificateARN: DynamicEnvironment.Certificates.domainCertificateARN,
     layers: roleService.layers,
-    lambdaRole: roleService.lambdaRole,
+    lambdaPublicPagesRole: roleService.lambdaPublicPagesRole,
     enableAPICache: false,
 
     env: {

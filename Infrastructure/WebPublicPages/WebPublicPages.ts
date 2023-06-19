@@ -8,7 +8,7 @@ import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironm
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 import { CreateHelpCenterLambdas } from './Lambdas/HelpCenterLambdas';
-import { CreatePublicPagesLambdas } from './Lambdas/PublicPages';
+import { CreateAdminPublicPagesLambdas } from './Lambdas/AdminPublicPages';
 import { CreateGetBotLandingLambda } from './Lambdas/BotLandingPublic';
 import { ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
 import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
@@ -26,7 +26,7 @@ export class WebPublicPagesStack extends Stack {
 
             enableAPICache: boolean;
             layers: ILayerVersion[];
-            lambdaRole: IRole;
+            lambdaPublicPagesRole: IRole;
         }
     ) {
         super(scope, id, props);
@@ -34,10 +34,10 @@ export class WebPublicPagesStack extends Stack {
 
         const webPublicPagesAPI = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.pagesDataSubDomain);
 
-        CreateHelpCenterLambdas(this, webPublicPagesAPI.root.addResource('help-center'), props.enableAPICache, props.layers, props.lambdaRole);
+        CreateHelpCenterLambdas(this, webPublicPagesAPI.root.addResource('help-center'), props.enableAPICache, props.layers, props.lambdaPublicPagesRole);
 
-        CreatePublicPagesLambdas(this, webPublicPagesAPI.root.addResource('content'), props.enableAPICache, props.layers, props.lambdaRole);
+        CreateAdminPublicPagesLambdas(this, webPublicPagesAPI.root.addResource('adminContent'), props.enableAPICache, props.layers, props.lambdaPublicPagesRole);
 
-        CreateGetBotLandingLambda(this, webPublicPagesAPI.root.addResource('bot-landing'), props.enableAPICache, props.layers, props.lambdaRole);
+        CreateGetBotLandingLambda(this, webPublicPagesAPI.root.addResource('bot-landing'), props.enableAPICache, props.layers, props.lambdaPublicPagesRole);
     }
 }
