@@ -1,5 +1,5 @@
 {
-    "name": "tgbot-react-backend",
+    "name": "",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -7,16 +7,12 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon --exec 'ts-node' tsconfig-paths/register test/playground/testBot/testChatBot.ts",
         "deploy:all": "npx aws-cdk deploy --require-approval never --all --outputs-file ./cdk-outputs.json",
-        "deploy:gw": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebGatewayService'",
-        "deploy:token": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebTokenService'",
-        "deploy:sub": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebRestServiceSubscriptions'",
-        "deploy:main": "npx aws-cdk deploy --require-approval never --outputs-file ./cdk-outputs.json  'WebRestServiceMain'",
         "git": "git add . ; git commit -m \"automated commit\" ; git push ",
         "postInstall": "npm install --upgrade github:StepanenkoNS/TGBot-CoreTypes"
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com-personal:StepanenkoNS/TGBot-project.git"
+        "url": "git@github.com-personal:StepanenkoNS/tgbot-back-payments.git"
     },
     "keywords": [],
     "author": "",

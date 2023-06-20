@@ -4,15 +4,15 @@ import { join } from 'path';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
-import * as StaticEnvironment from '../../../Core/ReadmeAndConfig/StaticEnvironment';
+import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
 import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
-import * as DynamicEnvrionment from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
+import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
-import { IRole } from 'aws-cdk-lib/aws-iam';
+import { IRole, Role } from 'aws-cdk-lib/aws-iam';
 
 export class PaymentIntegrationsStack extends Stack {
     constructor(
@@ -20,29 +20,24 @@ export class PaymentIntegrationsStack extends Stack {
         id: string,
 
         props: StackProps & {
-            layers: ILayerVersion[];
-            lambdaRole: IRole;
             certificateARN: string;
             enableAPICache: boolean;
         }
     ) {
         super(scope, id, props);
 
-        const lambdaIntegrations: LambdaIntegrations[] = [];
+        const lambdaRole = Role.fromRoleArn(this, 'lambdaRole-imported', DynamicEnvironment.IAMroles.lambdaRole);
 
-        // const botsIndexes = ReturnGSIs(StaticEnvironment.DynamoDbTables.botsTable.GSICount);
-        // const botsTable = Table.fromTableAttributes(this, 'imported-BotsTable', {
-        //     tableArn: DynamicEnvrionment.DynamoDbTables.botsTable.arn,
-        //     globalIndexes: botsIndexes
-        // });
-        // const layers: ILayerVersion[] = [];
-        // for (const layerARN of props.layerARNs) {
-        //     layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        // }
+        const layers: ILayerVersion[] = [];
+        for (const layerARN of [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN]) {
+            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
+        }
+
+        const lambdaIntegrations: LambdaIntegrations[] = [];
 
         const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.paymentIntegrations);
 
-        const modulLambdas = modulBankCallbacksLambdas(this, props.layers, props.lambdaRole);
+        const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaRole);
         lambdaIntegrations.push({
             rootResource: 'modul_ru',
             lambdas: modulLambdas
