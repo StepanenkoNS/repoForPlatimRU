@@ -16,9 +16,9 @@
               "version": "2.83.1"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:829": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:829",
-            "path": "back-payments-PaymentIntegrationsAndGateWay/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:829",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:832": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:832",
+            "path": "back-payments-PaymentIntegrationsAndGateWay/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:832",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.83.1"
@@ -863,7 +863,7 @@
                     "functionName": "paymentProcessor-ModulPayment-callback",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:829",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:832",
                       "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:508"
                     ],
                     "runtime": "nodejs16.x",
