@@ -1,7 +1,7 @@
-import { TextHelper } from '/opt/TextHelpers/textHelper';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-import { ParseItemResult, ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
+//@ts-ignore
+import { ReturnBlankApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
@@ -36,7 +36,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 masterId: paymentInDb.data.masterId,
                 lengthInDays: paymentInDb.data.lengthInDays,
                 subscriptionPlan: paymentInDb.data.subscriptionPlan,
-                subscriptionLevel: paymentInDb.data.subscriptionLevel,
+
                 pricePaid: paymentInDb.data.price,
                 currency: paymentInDb.data.currency
             });
