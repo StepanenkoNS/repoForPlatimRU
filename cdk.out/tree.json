@@ -16,17 +16,17 @@
               "version": "2.86.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:856": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:856",
-            "path": "back-payments-PaymentIntegrationsAndGateWay/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:856",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:858": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:858",
+            "path": "back-payments-PaymentIntegrationsAndGateWay/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersModel:858",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.86.0"
             }
           },
-          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:510": {
-            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:510",
-            "path": "back-payments-PaymentIntegrationsAndGateWay/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:510",
+          "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:512": {
+            "id": "importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:512",
+            "path": "back-payments-PaymentIntegrationsAndGateWay/importedarn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:512",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.86.0"
@@ -863,8 +863,8 @@
                     "functionName": "paymentProcessor-ModulPayment-callback",
                     "handler": "index.handler",
                     "layers": [
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:856",
-                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:510"
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersModel:858",
+                      "arn:aws:lambda:us-east-1:993738567487:layer:LayersUtils:512"
                     ],
                     "runtime": "nodejs16.x",
                     "timeout": 15
