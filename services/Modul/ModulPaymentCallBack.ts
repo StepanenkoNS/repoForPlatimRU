@@ -19,7 +19,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const signature = PomponaSubscriptionsProcessor.GetSignature(modulKey, paramObject);
 
         if (signature == paramObject.signature) {
-            console.log('success');
             const paymentInDb = await PaymentOptionsManager.ConfirmPomponaPayment({
                 masterId: Number(paramObject.client_id),
                 paymentId: paramObject.order_id,
@@ -44,6 +43,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             if (result.success == false || !result.data) {
                 throw 'cant add subscription';
             }
+        } else {
+            throw 'Error: signature is invalid';
         }
 
         return ReturnBlankApiResult(201, { success: true }, '');
