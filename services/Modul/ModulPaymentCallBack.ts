@@ -6,6 +6,8 @@ import { ReturnBlankApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
+import { EPaymentStatus } from 'tgbot-project-types/TypesCompiled/paymentTypes';
+
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     try {
         console.log('event', JSON.stringify(event));
@@ -24,7 +26,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 paymentId: paramObject.order_id,
                 transactionId: paramObject.transaction_id,
                 gatewayId: 'modulBank',
-                paymentResult: paramObject.state == 'COMPLETE' ? 'CONFIRMED' : 'REJECTED'
+                paymentResult: paramObject.state == 'COMPLETE' ? EPaymentStatus.CONFIRMED : EPaymentStatus.REJECTED
             });
 
             if (paymentInDb.success == false || !paymentInDb.data) {
