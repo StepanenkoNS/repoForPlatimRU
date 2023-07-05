@@ -1,16 +1,11 @@
-import { CfnOutput, Duration } from 'aws-cdk-lib';
-import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import { ITable, Table } from 'aws-cdk-lib/aws-dynamodb';
-import { ILayerVersion, Runtime, StartingPosition } from 'aws-cdk-lib/aws-lambda';
+import { ILayerVersion } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 import * as StaticEnvironment from '../../../../../Core/ReadmeAndConfig/StaticEnvironment';
-import * as DynamicEnvironment from '../../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
-import { Effect, IRole, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Queue } from 'aws-cdk-lib/aws-sqs';
-import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { GrantAccessToDDB, LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { IRole } from 'aws-cdk-lib/aws-iam';
+
+import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
 export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
     const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {

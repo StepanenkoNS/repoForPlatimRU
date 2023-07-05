@@ -1,13 +1,13 @@
-import { CfnOutput, Duration, Fn, Stack, StackProps } from 'aws-cdk-lib';
+import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { join } from 'path';
+
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
-import { ILayerVersion, LayerVersion, Permission, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { ILayerVersion, LayerVersion } from 'aws-cdk-lib/aws-lambda';
 import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
-import { Table } from 'aws-cdk-lib/aws-dynamodb';
 
-import { LambdaIntegrations, ReturnGSIs } from '/opt/DevHelpers/AccessHelper';
+//@ts-ignore
+import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
 import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
