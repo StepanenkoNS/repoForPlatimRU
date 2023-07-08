@@ -13,6 +13,12 @@ async function main() {
     if (!EEnvironment) {
         throw 'Environment is not defined';
     }
+
+    const LayerArns = await LayersVersions(environment);
+    if (!LayerArns) {
+        throw 'Layers undefined';
+    }
+
     const certificateARN = await CertificateARN(environment, StaticEnvironment(environment).WebResources.mainDomainName);
     if (!certificateARN) {
         throw 'CertificateARN is undefined';
