@@ -5,11 +5,11 @@ import { StackPropsWithConfig } from '/opt/DevHelpers/AWSEnvConfig';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { ILayerVersion, LayerVersion } from 'aws-cdk-lib/aws-lambda';
-import {StaticEnvironment}from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
+import { StaticEnvironment } from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 //@ts-ignore
 import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
-import {DynamicEnvironment}from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
+import { DynamicEnvironment } from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
@@ -27,16 +27,16 @@ export class PaymentIntegrationsStack extends Stack {
     ) {
         super(scope, id, props);
 
-        const lambdaRole = Role.fromRoleArn(this, 'lambdaRole-imported', DynamicEnvironment.IAMroles.lambdaRole);
+        const lambdaRole = Role.fromRoleArn(this, 'lambdaRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaRole);
 
         const layers: ILayerVersion[] = [];
-        for (const layerARN of [DynamicEnvironment.Layers.ModelsLayerARN, DynamicEnvironment.Layers.UtilsLayerARN]) {
+        for (const layerARN of [DynamicEnvironment(props.environment).Layers.ModelsLayerARN, DynamicEnvironment(props.environment).Layers.UtilsLayerARN]) {
             layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
         }
 
         const lambdaIntegrations: LambdaIntegrations[] = [];
 
-        const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment.WebResources.subDomains.apiBackend.paymentIntegrations);
+        const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment(props.environment).WebResources.subDomains.apiBackend.paymentIntegrations);
 
         const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaRole);
         lambdaIntegrations.push({
