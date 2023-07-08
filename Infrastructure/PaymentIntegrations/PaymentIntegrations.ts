@@ -27,18 +27,19 @@ export class PaymentIntegrationsStack extends Stack {
     ) {
         super(scope, id, props);
 
-        const lambdaRole = Role.fromRoleArn(this, 'lambdaRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaRole);
+        const lambdaBasicRole = Role.fromRoleArn(this, 'lambdaBasicRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaBasicRole);
 
-        const layers: ILayerVersion[] = [];
-        for (const layerARN of [DynamicEnvironment(props.environment).Layers.ModelsLayerARN, DynamicEnvironment(props.environment).Layers.UtilsLayerARN]) {
-            layers.push(LayerVersion.fromLayerVersionArn(this, 'imported' + layerARN, layerARN));
-        }
+        const layers: ILayerVersion[] = [
+            LayerVersion.fromLayerVersionArn(this, `importedLayer-${this.stackName}-Models`, props.LayerArns.LayersModel),
+            LayerVersion.fromLayerVersionArn(this, `importedLayer-${this.stackName}-Utils`, props.LayerArns.LayersUtils),
+            LayerVersion.fromLayerVersionArn(this, `importedLayer-${this.stackName}-i18N`, props.LayerArns.LayersI18N)
+        ];
 
         const lambdaIntegrations: LambdaIntegrations[] = [];
 
         const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment(props.environment).WebResources.subDomains.apiBackend.paymentIntegrations);
 
-        const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaRole);
+        const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaBasicRole);
         lambdaIntegrations.push({
             rootResource: 'modul_ru',
             lambdas: modulLambdas

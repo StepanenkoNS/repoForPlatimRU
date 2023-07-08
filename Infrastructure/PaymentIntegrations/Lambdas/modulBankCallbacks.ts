@@ -7,7 +7,7 @@ import { IRole } from 'aws-cdk-lib/aws-iam';
 
 import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
-export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaRole: IRole) {
+export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole) {
     const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Modul', 'ModulPaymentCallBack.ts'),
         handler: 'handler',
@@ -15,7 +15,7 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], la
         runtime: StaticEnvironment(props.environment).LambdaSettings.runtime,
         logRetention: StaticEnvironment(props.environment).LambdaSettings.logRetention,
         timeout: StaticEnvironment(props.environment).LambdaSettings.timeout.SMALL,
-        role: lambdaRole,
+        role: lambdaBasicRole,
         environment: {
             ...StaticEnvironment(props.environment).LambdaSettings.EnvironmentVariables,
 
