@@ -1,14 +1,15 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import { StackPropsWithConfig } from '/opt/DevHelpers/AWSEnvConfig';
 
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 import { ILayerVersion, LayerVersion } from 'aws-cdk-lib/aws-lambda';
-import * as StaticEnvironment from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
+import {StaticEnvironment}from '../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 //@ts-ignore
 import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
-import * as DynamicEnvironment from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
+import {DynamicEnvironment}from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
@@ -19,7 +20,7 @@ export class PaymentIntegrationsStack extends Stack {
         scope: Construct,
         id: string,
 
-        props: StackProps & {
+        props: StackPropsWithConfig & {
             certificateARN: string;
             enableAPICache: boolean;
         }

@@ -1,7 +1,7 @@
 import { ILayerVersion } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import * as StaticEnvironment from '../../../../../Core/ReadmeAndConfig/StaticEnvironment';
+import {StaticEnvironment}from '../../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 import { IRole } from 'aws-cdk-lib/aws-iam';
 
