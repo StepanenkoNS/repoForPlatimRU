@@ -4,10 +4,11 @@ import { join } from 'path';
 import { StaticEnvironment } from '../../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 import { IRole } from 'aws-cdk-lib/aws-iam';
+import { EEnvironment } from '/opt/DevHelpers/AWSEnvConfig';
 
 import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 
-export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole) {
+export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole, environment: EEnvironment) {
     const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {
         entry: join(__dirname, '..', '..', '..', 'services', 'Modul', 'ModulPaymentCallBack.ts'),
         handler: 'handler',

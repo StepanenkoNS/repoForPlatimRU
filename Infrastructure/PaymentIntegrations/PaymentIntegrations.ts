@@ -20,10 +20,10 @@ export class PaymentIntegrationsStack extends Stack {
         scope: Construct,
         id: string,
 
-        props: StackPropsWithConfig & {
-            certificateARN: string;
-            enableAPICache: boolean;
-        }
+        props: StackPropsWithConfigAndLayers &
+            StackPropsWithCertificate & {
+                enableAPICache: boolean;
+            }
     ) {
         super(scope, id, props);
 
@@ -39,7 +39,7 @@ export class PaymentIntegrationsStack extends Stack {
 
         const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment(props.environment).WebResources.subDomains.apiBackend.paymentIntegrations);
 
-        const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaBasicRole);
+        const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
         lambdaIntegrations.push({
             rootResource: 'modul_ru',
             lambdas: modulLambdas
