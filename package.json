@@ -6,8 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon --exec 'ts-node' tsconfig-paths/register test/playground/testBot/testChatBot.ts",
-        "deploy-test": "npx aws-cdk deploy -c config=test --profile=test --require-approval never --all --outputs-file cdk-outputs.json ",
-        "deploy-prod": "npx aws-cdk deploy -c config=prod --profile=prod --require-approval never --all --outputs-file cdk-outputs.json ",
+        "deploy-test:all": "npx aws-cdk deploy -c config=test --profile=test --require-approval never --all --outputs-file cdk-outputs.json ",
+        "deploy-prod:all": "npx aws-cdk deploy -c config=prod --profile=prod --require-approval never --all --outputs-file cdk-outputs.json ",
         "git": "git add . ; git commit -m \"automated commit\" ; git push ",
         "postInstall": "npm uninstall github:StepanenkoNS/TGBot-CoreTypes && npm install github:StepanenkoNS/TGBot-CoreTypes"
     },
