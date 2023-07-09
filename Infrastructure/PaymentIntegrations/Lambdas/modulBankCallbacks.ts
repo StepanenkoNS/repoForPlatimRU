@@ -13,20 +13,20 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], la
         entry: join(__dirname, '..', '..', '..', 'services', 'Modul', 'ModulPaymentCallBack.ts'),
         handler: 'handler',
         functionName: 'paymentProcessor-ModulPayment-callback',
-        runtime: StaticEnvironment(props.environment).LambdaSettings.runtime,
-        logRetention: StaticEnvironment(props.environment).LambdaSettings.logRetention,
-        timeout: StaticEnvironment(props.environment).LambdaSettings.timeout.SMALL,
+        runtime: StaticEnvironment(environment).LambdaSettings.runtime,
+        logRetention: StaticEnvironment(environment).LambdaSettings.logRetention,
+        timeout: StaticEnvironment(environment).LambdaSettings.timeout.SMALL,
         role: lambdaBasicRole,
         environment: {
-            ...StaticEnvironment(props.environment).LambdaSettings.EnvironmentVariables,
+            ...StaticEnvironment(environment).LambdaSettings.EnvironmentVariables,
 
-            modulMerchantId: StaticEnvironment(props.environment).PaymentGateways.modulBank.MerchantId,
-            modulSuccess_url: StaticEnvironment(props.environment).PaymentGateways.modulBank.success_url,
-            modulCallback_url: StaticEnvironment(props.environment).PaymentGateways.modulBank.callback_url,
-            modulKey: StaticEnvironment(props.environment).PaymentGateways.modulBank.TestKey
+            modulMerchantId: StaticEnvironment(environment).PaymentGateways.modulBank.MerchantId,
+            modulSuccess_url: StaticEnvironment(environment).PaymentGateways.modulBank.success_url,
+            modulCallback_url: StaticEnvironment(environment).PaymentGateways.modulBank.callback_url,
+            modulKey: StaticEnvironment(environment).PaymentGateways.modulBank.key
         },
         bundling: {
-            externalModules: StaticEnvironment(props.environment).LambdaSettings.externalModules
+            externalModules: StaticEnvironment(environment).LambdaSettings.externalModules
         },
         layers: layers
     });

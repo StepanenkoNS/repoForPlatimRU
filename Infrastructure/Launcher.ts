@@ -2,9 +2,11 @@ import { App } from 'aws-cdk-lib';
 //@ts-ignore
 import { StaticEnvironment } from '../../../Core/ReadmeAndConfig/StaticEnvironment';
 //@ts-ignore
-import { DynamicEnvironment } from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
+import { CertificateARN, DynamicEnvironment, LayersVersions } from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
 import { PaymentIntegrationsStack } from './PaymentIntegrations/PaymentIntegrations';
+import { EEnvironment, getConfig } from '/opt/DevHelpers/AWSEnvConfig';
+import { StackName } from '../../../Core/ReadmeAndConfig/globalTypes';
 
 async function main() {
     const app = new App();
@@ -26,8 +28,9 @@ async function main() {
 
     const paymentIntegrationsStack = new PaymentIntegrationsStack(app, StackName.PaymentIntegrationsAndGateWay.toString(), {
         stackName: StackName.PaymentIntegrationsAndGateWay.toString(),
-        certificateARN: DynamicEnvironment(props.environment).Certificates.domainCertificateARN,
-
+        certificateARN,
+        environment,
+        LayerArns,
         enableAPICache: false,
         env: {
             account: StaticEnvironment(environment).AwsSettings.account,

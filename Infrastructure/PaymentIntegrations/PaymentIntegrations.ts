@@ -1,6 +1,7 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { Stack } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { StackPropsWithConfig } from '/opt/DevHelpers/AWSEnvConfig';
+//@ts-ignore
+import { StackPropsWithCertificate, StackPropsWithConfigAndLayers } from '/opt/DevHelpers/AWSEnvConfig';
 
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
@@ -13,7 +14,7 @@ import { DynamicEnvironment } from '../../../../Core/ReadmeAndConfig/DynamicEnvi
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
-import { IRole, Role } from 'aws-cdk-lib/aws-iam';
+import { Role } from 'aws-cdk-lib/aws-iam';
 
 export class PaymentIntegrationsStack extends Stack {
     constructor(
@@ -37,7 +38,13 @@ export class PaymentIntegrationsStack extends Stack {
 
         const lambdaIntegrations: LambdaIntegrations[] = [];
 
-        const paymentsApi = CreateAPIwithOutAuth(this, props.enableAPICache, props.certificateARN, StaticEnvironment(props.environment).WebResources.subDomains.apiBackend.paymentIntegrations);
+        const paymentsApi = CreateAPIwithOutAuth(
+            this,
+            props.enableAPICache,
+            props.certificateARN,
+            StaticEnvironment(props.environment).WebResources.subDomains.apiBackend.paymentIntegrations,
+            props.environment
+        );
 
         const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
         lambdaIntegrations.push({
