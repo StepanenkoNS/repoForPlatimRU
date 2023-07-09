@@ -28,7 +28,9 @@ export class PaymentIntegrationsStack extends Stack {
     ) {
         super(scope, id, props);
 
-        const lambdaBasicRole = Role.fromRoleArn(this, 'lambdaBasicRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaBasicRole);
+        const lambdaBasicRole = Role.fromRoleArn(this, 'lambdaBasicRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaBasicRole,{
+            mutable: false
+        });
 
         const layers: ILayerVersion[] = [
             LayerVersion.fromLayerVersionArn(this, `importedLayer-${this.stackName}-Models`, props.LayerArns.LayersModel),
