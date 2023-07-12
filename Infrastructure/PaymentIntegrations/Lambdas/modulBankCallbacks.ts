@@ -4,7 +4,7 @@ import { join } from 'path';
 import { StaticEnvironment } from '../../../../../Core/ReadmeAndConfig/StaticEnvironment';
 
 import { IRole } from 'aws-cdk-lib/aws-iam';
-import { EEnvironment } from '/opt/DevHelpers/AWSEnvConfig';
+import { EEnvironment } from 'tgbot-project-types/TypesCompiled/generalTypes';
 
 import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 

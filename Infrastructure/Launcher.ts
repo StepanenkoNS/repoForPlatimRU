@@ -5,8 +5,9 @@ import { StaticEnvironment } from '../../../Core/ReadmeAndConfig/StaticEnvironme
 import { CertificateARN, DynamicEnvironment, LayersVersions } from '../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
 import { PaymentIntegrationsStack } from './PaymentIntegrations/PaymentIntegrations';
-import { EEnvironment, getConfig } from '/opt/DevHelpers/AWSEnvConfig';
+import { getConfig } from '/opt/DevHelpers/AWSEnvConfig';
 import { StackName } from '../../../Core/ReadmeAndConfig/globalTypes';
+import { EEnvironment } from 'tgbot-project-types/TypesCompiled/generalTypes';
 
 async function main() {
     const app = new App();
