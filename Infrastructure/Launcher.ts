@@ -13,7 +13,7 @@ async function main() {
     const app = new App();
 
     const environment = getConfig(app) as EEnvironment;
-    if (!EEnvironment) {
+   if (!environment) {
         throw 'Environment is not defined';
     }
 
