@@ -1,8 +1,8 @@
 import { handler } from '../../services/Modul/ModulPaymentCallBack';
 
 const event = {
-    resource: '/modul_ru/callback',
-    path: '/modul_ru/callback',
+    resource: '/modulRu/callback',
+    path: '/modulRu/callback',
     httpMethod: 'POST',
     headers: {
         Accept: '*/*',
@@ -32,11 +32,11 @@ const event = {
     stageVariables: null,
     requestContext: {
         resourceId: 'vdvyhb',
-        resourcePath: '/modul_ru/callback',
+        resourcePath: '/modulRu/callback',
         httpMethod: 'POST',
         extendedRequestId: 'HlCVNE2EIAMFe1g=',
         requestTime: '05/Jul/2023:07:10:12 +0000',
-        path: '/modul_ru/callback',
+        path: '/modulRu/callback',
         accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'pagesAPI',
