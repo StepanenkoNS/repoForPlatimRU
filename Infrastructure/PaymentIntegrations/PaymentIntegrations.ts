@@ -28,7 +28,7 @@ export class PaymentIntegrationsStack extends Stack {
     ) {
         super(scope, id, props);
 
-        const lambdaBasicRole = Role.fromRoleArn(this, 'lambdaBasicRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaBasicRole,{
+        const lambdaBasicRole = Role.fromRoleArn(this, 'lambdaBasicRole-imported', DynamicEnvironment(props.environment).IAMroles.lambdaBasicRole, {
             mutable: false
         });
 
@@ -50,7 +50,7 @@ export class PaymentIntegrationsStack extends Stack {
 
         const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
         lambdaIntegrations.push({
-            rootResource: 'modul_ru',
+            rootResource: 'modulRu',
             lambdas: modulLambdas
         });
 
