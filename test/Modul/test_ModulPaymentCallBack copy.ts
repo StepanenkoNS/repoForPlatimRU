@@ -11,8 +11,8 @@ import { EPaymentStatus } from 'tgbot-project-types/TypesCompiled/paymentTypes';
 export async function handler(): Promise<APIGatewayProxyResult> {
     try {
         const paymentInDb = await PaymentOptionsManager.ConfirmPomponaPayment({
-            masterId: 199163834,
-            paymentId: '2TpTyflXrTPqComQFAD1YCDuZ0Q',
+            masterId: 1862254,
+            paymentId: '2UPFCGCZJZRoE8AseWfkhR8dsJh',
             transactionId: 'admin_payment',
             gatewayId: 'modulBank',
             paymentResult: EPaymentStatus.CONFIRMED
@@ -26,6 +26,7 @@ export async function handler(): Promise<APIGatewayProxyResult> {
             masterId: paymentInDb.data.masterId,
             lengthInDays: paymentInDb.data.lengthInDays,
             subscriptionPlan: paymentInDb.data.subscriptionPlan,
+            userName: 'radiojoy',
 
             pricePaid: paymentInDb.data.price,
             currency: paymentInDb.data.currency
