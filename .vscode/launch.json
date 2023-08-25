@@ -71,9 +71,9 @@
                 "CascadeDeleteQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/CascadeDeleteQueue",
                 "SendMessageSchedulerQueueFirstURL": "https://sqs.us-east-1.amazonaws.com/993738567487/scheduler-SendMessage-First-Queue",
                 "ToggleUserBlockedStatusQueueURL": "https://sqs.us-east-1.amazonaws.com/993738567487/toggleUserBlockedStatus.fifo",
-                "botsTable": "bots-prod",
-                "processedStatsTable": "processedStats-prod",
-                "rawStatsTable": "rawStats-prod",
+                "botsTable": "bots-test",
+                "processedStatsTable": "processedStats-test",
+                "rawStatsTable": "rawStats-test",
                 "AWS_REGION": "us-east-1"
             }
         }

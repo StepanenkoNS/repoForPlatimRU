@@ -37,7 +37,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 masterId: paymentInDb.data.masterId,
                 lengthInDays: paymentInDb.data.lengthInDays,
                 subscriptionPlan: paymentInDb.data.subscriptionPlan,
-
                 pricePaid: paymentInDb.data.price,
                 currency: paymentInDb.data.currency
             });
