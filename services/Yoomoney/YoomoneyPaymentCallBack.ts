@@ -21,9 +21,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
         const notififation = Object.fromEntries(params.entries()) as unknown as IYooMoneyNotification;
 
+        const paymentHash = CryptoJS.SHA1(notififation.label + process.env.openDataHashKey!).toString(CryptoJS.enc.Hex);
+
         const paymentKey = {
             paymentId: notififation.label,
-            hash: CryptoJS.AES.encrypt(notififation.label, process.env.openDataHashKey!).toString()
+            hash: paymentHash
         };
 
         const payment = await PaymentOptionsManager.GetPaymentRequestForPublic(paymentKey);
@@ -40,7 +42,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             throw 'currency is not RUB';
         }
 
-        if (payment.price !== Number(notififation.amount)) {
+        //проверка цены - юмани удерживают 1-3% за комиссию
+        if (Number(payment.price) * 0.97 >= Number(notififation.amount) && Number(payment.price) <= Number(notififation.amount)) {
             throw 'price does not equal amount';
         }
 
