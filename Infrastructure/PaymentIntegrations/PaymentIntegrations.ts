@@ -16,6 +16,7 @@ import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
 import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
 import { Role } from 'aws-cdk-lib/aws-iam';
 import { GetClientPaymentDetailsLambdas } from './Lambdas/clientPaymentDetails';
+import { yoomoneyCallbacksLambdas } from './Lambdas/yoomoneyCallbacks';
 
 export class PaymentIntegrationsStack extends Stack {
     constructor(
@@ -53,6 +54,12 @@ export class PaymentIntegrationsStack extends Stack {
         lambdaIntegrations.push({
             rootResource: 'modulRu',
             lambdas: modulLambdas
+        });
+
+        const yoomoneyLambdas = yoomoneyCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
+        lambdaIntegrations.push({
+            rootResource: 'yoomoneyRU',
+            lambdas: yoomoneyLambdas
         });
 
         const getClientPaymentDetailsLambdas = GetClientPaymentDetailsLambdas(this, layers, lambdaBasicRole, props.environment);

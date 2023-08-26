@@ -1,3 +1,4 @@
+import CryptoJS from 'crypto-js';
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
 //@ts-ignore
@@ -18,7 +19,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const paramObject = Object.fromEntries(params.entries());
         const modulKey = process.env.modulKey!;
 
-        const signature = PomponaSubscriptionsProcessor.GetSignature(modulKey, paramObject);
+        const signature = PomponaSubscriptionsProcessor.GetSignature(modulKey, paramObject, 'signature');
 
         if (signature == paramObject.signature) {
             const paymentInDb = await PaymentOptionsManager.ConfirmPomponaPayment({

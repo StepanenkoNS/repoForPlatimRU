@@ -7,7 +7,7 @@ const event = {
     headers: {
         accept: 'application/json, text/plain, */*',
         'accept-encoding': 'gzip, deflate, br',
-        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'accept-language': 'en,tr;q=0.9,ru;q=0.8',
         Host: 'payments.zuzona.com',
         origin: 'http://localhost:8080',
         referer: 'http://localhost:8080/',
@@ -18,7 +18,7 @@ const event = {
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'cross-site',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
-        'X-Amzn-Trace-Id': 'Root=1-64e7b504-2adcac6b0f6d251500bd9345',
+        'X-Amzn-Trace-Id': 'Root=1-64e9aa82-425d3bc204321fce548e5982',
         'X-Forwarded-For': '176.232.61.202',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
@@ -26,7 +26,7 @@ const event = {
     multiValueHeaders: {
         accept: ['application/json, text/plain, */*'],
         'accept-encoding': ['gzip, deflate, br'],
-        'accept-language': ['en-GB,en-US;q=0.9,en;q=0.8'],
+        'accept-language': ['en,tr;q=0.9,ru;q=0.8'],
         Host: ['payments.zuzona.com'],
         origin: ['http://localhost:8080'],
         referer: ['http://localhost:8080/'],
@@ -37,20 +37,18 @@ const event = {
         'sec-fetch-mode': ['cors'],
         'sec-fetch-site': ['cross-site'],
         'User-Agent': ['Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36'],
-        'X-Amzn-Trace-Id': ['Root=1-64e7b504-2adcac6b0f6d251500bd9345'],
+        'X-Amzn-Trace-Id': ['Root=1-64e9aa82-425d3bc204321fce548e5982'],
         'X-Forwarded-For': ['176.232.61.202'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
     queryStringParameters: {
-        botUUID: '2UFOYSnkAjrPAr5t4zYzWULkhlY',
-        masterId: '199163834',
-        paymentId: '2UQvDC764pGl8AXUbUTLF5UbY9r'
+        hash: '2UVnqIdRflNM7GAz86RcbGIvFDA',
+        paymentId: '2UVnqIdRflNM7GAz86RcbGIvFDA'
     },
     multiValueQueryStringParameters: {
-        botUUID: ['2UFOYSnkAjrPAr5t4zYzWULkhlY'],
-        masterId: ['199163834'],
-        paymentId: ['2UQvDC764pGl8AXUbUTLF5UbY9r']
+        hash: ['2UVnqIdRflNM7GAz86RcbGIvFDA'],
+        paymentId: ['2UVnqIdRflNM7GAz86RcbGIvFDA']
     },
     pathParameters: null,
     stageVariables: null,
@@ -58,15 +56,15 @@ const event = {
         resourceId: 'j51uor',
         resourcePath: '/clientPaymentDetails',
         httpMethod: 'GET',
-        extendedRequestId: 'KLk4sEg6IAMEBTg=',
-        requestTime: '24/Aug/2023:19:52:36 +0000',
+        extendedRequestId: 'KQeUfF-foAMEh2g=',
+        requestTime: '26/Aug/2023:07:32:18 +0000',
         path: '/clientPaymentDetails',
         accountId: '818186882185',
         protocol: 'HTTP/1.1',
         stage: 'pagesAPI',
         domainPrefix: 'payments',
-        requestTimeEpoch: 1692906756104,
-        requestId: '3f73093a-d7c1-47a0-8dea-9c44361b7162',
+        requestTimeEpoch: 1693035138890,
+        requestId: 'de2cea9b-2775-494e-a3ef-a50d939d762d',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,

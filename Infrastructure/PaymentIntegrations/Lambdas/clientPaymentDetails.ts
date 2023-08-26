@@ -7,8 +7,12 @@ import { IRole } from 'aws-cdk-lib/aws-iam';
 import { EEnvironment } from 'tgbot-project-types/TypesCompiled/generalTypes';
 
 import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { DynamicEnvironment } from '../../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
 export function GetClientPaymentDetailsLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole, environment: EEnvironment) {
+    const PaymentProcessorConfirmation = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmation-paymentDetails', DynamicEnvironment(environment).sqs.PaymentProcessor_Confirmation.basic_arn);
+
     const GetClientPaymentDetailsLambda = new NodejsFunction(that, 'GetClientPaymentDetails', {
         entry: join(__dirname, '..', '..', '..', 'services', 'GetClientPaymentDetails', 'GetClientPaymentDetails.ts'),
         handler: 'handler',
@@ -19,11 +23,7 @@ export function GetClientPaymentDetailsLambdas(that: any, layers: ILayerVersion[
         role: lambdaBasicRole,
         environment: {
             ...StaticEnvironment(environment).LambdaSettings.EnvironmentVariables,
-
-            modulMerchantId: StaticEnvironment(environment).PaymentGateways.modulBank.MerchantId,
-            modulSuccess_url: StaticEnvironment(environment).PaymentGateways.modulBank.success_url,
-            modulCallback_url: StaticEnvironment(environment).PaymentGateways.modulBank.callback_url,
-            modulKey: StaticEnvironment(environment).PaymentGateways.modulBank.key
+            paymentProcessorConfirmationRequestQueueURL: PaymentProcessorConfirmation.queueUrl
         },
         bundling: {
             externalModules: StaticEnvironment(environment).LambdaSettings.externalModules
