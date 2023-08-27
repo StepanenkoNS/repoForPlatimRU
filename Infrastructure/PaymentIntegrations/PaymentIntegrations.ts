@@ -17,6 +17,7 @@ import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
 import { Role } from 'aws-cdk-lib/aws-iam';
 import { GetClientPaymentDetailsLambdas } from './Lambdas/clientPaymentDetails';
 import { yoomoneyCallbacksLambdas } from './Lambdas/yoomoneyCallbacks';
+import { robokassaCallbacksLambdas } from './Lambdas/robokassaCallbacks';
 
 export class PaymentIntegrationsStack extends Stack {
     constructor(
@@ -60,6 +61,12 @@ export class PaymentIntegrationsStack extends Stack {
         lambdaIntegrations.push({
             rootResource: 'yoomoneyRU',
             lambdas: yoomoneyLambdas
+        });
+
+        const robokassaLambdas = robokassaCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
+        lambdaIntegrations.push({
+            rootResource: 'robokassaRU',
+            lambdas: robokassaLambdas
         });
 
         const getClientPaymentDetailsLambdas = GetClientPaymentDetailsLambdas(this, layers, lambdaBasicRole, props.environment);

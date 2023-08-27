@@ -27,7 +27,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 paymentId: paramObject.order_id,
                 transactionId: paramObject.transaction_id,
                 gatewayId: 'modulBank',
-                paymentResult: paramObject.state == 'COMPLETE' ? EPaymentStatus.CONFIRMED : EPaymentStatus.REJECTED
+                paymentResult: paramObject.state == 'COMPLETE' ? EPaymentStatus.CONFIRMED : EPaymentStatus.REJECTED,
+                externalDetails: {
+                    dt: new Date().toISOString(),
+                    externalJSON: JSON.stringify(paramObject)
+                }
             });
 
             if (paymentInDb.success == false || !paymentInDb.data) {

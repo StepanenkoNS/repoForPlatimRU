@@ -88,7 +88,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             masterId: payment.masterId,
             chatId: payment.chatId,
             id: payment.id.toString(),
-            action: 'Confirm' as TelegramActionKey
+            action: 'Confirm' as TelegramActionKey,
+            externalDetails: {
+                dt: new Date().toISOString(),
+                externalJSON: JSON.stringify(notififation)
+            }
         };
 
         const sqsResult = await SQSHelper.SendSQSMessage({

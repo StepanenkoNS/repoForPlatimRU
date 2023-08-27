@@ -12,7 +12,10 @@ import { ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Re
 import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
 
 import { TextHelper } from '/opt/TextHelpers/textHelper';
-import { EPaymentStatus, IPaymentOptionKey } from 'tgbot-project-types/TypesCompiled/paymentTypes';
+import { EPaymentOptionProviderId, EPaymentStatus, IPaymentOptionKey, IPaymentOptionType_RU_ROBOKASSA } from 'tgbot-project-types/TypesCompiled/paymentTypes';
+//@ts-ignore
+import { MessagingBotManager } from '/opt/MessagingBotManager';
+import { IBotGeneralKey, ILooseString } from 'tgbot-project-types/TypesCompiled/generalTypes';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     try {
@@ -58,10 +61,40 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const paymentOption = await PaymentOptionsManager.GetMyPaymentOptionById(paymentOptionKey);
 
         if (paymentOption.success == false || !paymentOption.data) {
-            return ReturnBlankApiResult(422, { success: false, data: { error: 'Error: paymentOption data not found' } }, origin);
+            const error = 'Error: paymentOption data not found';
+            console.log(error);
+            return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
         }
 
-        return ReturnBlankApiResult(200, { data: { paymentDetails: payment, paymentOption: paymentOption.data } }, origin);
+        const botKey: IBotGeneralKey = {
+            masterId: payment.masterId,
+            botUUID: payment.botUUID
+        };
+
+        const bot = await MessagingBotManager.GetMyBot(botKey);
+
+        if (bot.success == false || !bot.data) {
+            const error = 'Error: bot not found';
+            console.log(error);
+            return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
+        }
+
+        let additionalParams: ILooseString = {};
+        if (paymentOption.data.type.optionProviderId == EPaymentOptionProviderId.RU_ROBOKASSA) {
+            const decyptedPaymentOption = await PaymentOptionsManager.GetDecryptedPaymentOption(paymentOptionKey);
+
+            if (decyptedPaymentOption.success == false || !decyptedPaymentOption.data) {
+                const error = 'Error: decrypted data not found';
+                console.log(error);
+                return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
+            }
+            const password1 = (decyptedPaymentOption.data.type as IPaymentOptionType_RU_ROBOKASSA).password1;
+            const hashString = `${paymentOption.data.type.shopId}:${payment.price.toString()}::${password1}`;
+            const hash = CryptoJS.MD5(hashString).toString();
+            additionalParams.SignatureValue = hash;
+        }
+
+        return ReturnBlankApiResult(200, { data: { paymentDetails: payment, paymentOption: paymentOption.data, botName: bot.data.name, additionalParams: additionalParams } }, origin);
     } catch (error) {
         console.log(error);
         return ReturnBlankApiResult(403, { success: false, data: { error: error } }, '');

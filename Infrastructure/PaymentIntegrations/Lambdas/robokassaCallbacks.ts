@@ -10,13 +10,13 @@ import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { DynamicEnvironment } from '../../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
-export function yoomoneyCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole, environment: EEnvironment) {
-    const PaymentProcessorConfirmation = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmation-yooumoney', DynamicEnvironment(environment).sqs.PaymentProcessor_Confirmation.basic_arn);
+export function robokassaCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole, environment: EEnvironment) {
+    const PaymentProcessorConfirmation = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmation-robokassa', DynamicEnvironment(environment).sqs.PaymentProcessor_Confirmation.basic_arn);
 
-    const YoomoneyPaymentCallBackLambda = new NodejsFunction(that, 'YoomoneyPaymentCallBack', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Yoomoney', 'YoomoneyPaymentCallBack.ts'),
+    const RobokassaPaymentCallBackLambda = new NodejsFunction(that, 'RobokassaPaymentCallBack', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'Robokassa', 'RobokassaPaymentCallBack.ts'),
         handler: 'handler',
-        functionName: 'paymentProcessor-YoomoneyPayment-callback',
+        functionName: 'paymentProcessor-RobokassaPayment-callback',
         runtime: StaticEnvironment(environment).LambdaSettings.runtime,
         logRetention: StaticEnvironment(environment).LambdaSettings.logRetention,
         timeout: StaticEnvironment(environment).LambdaSettings.timeout.SMALL,
@@ -34,7 +34,7 @@ export function yoomoneyCallbacksLambdas(that: any, layers: ILayerVersion[], lam
     const returnArray: LambdaAndResource[] = [];
 
     returnArray.push({
-        lambda: YoomoneyPaymentCallBackLambda,
+        lambda: RobokassaPaymentCallBackLambda,
         resource: 'callback',
         httpMethod: 'POST'
     });
