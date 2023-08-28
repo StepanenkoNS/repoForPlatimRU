@@ -5,7 +5,7 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ReturnBlankApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+import { PaymentManager } from '/opt/PaymentManager';
 
 import { EPaymentStatus } from 'tgbot-project-types/TypesCompiled/paymentTypes';
 
@@ -22,7 +22,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const signature = PomponaSubscriptionsProcessor.GetSignature(modulKey, paramObject, 'signature');
 
         if (signature == paramObject.signature) {
-            const paymentInDb = await PaymentOptionsManager.ConfirmPomponaPayment({
+            const paymentInDb = await PaymentManager.ConfirmPomponaPayment({
                 masterId: Number(paramObject.client_id),
                 paymentId: paramObject.order_id,
                 transactionId: paramObject.transaction_id,

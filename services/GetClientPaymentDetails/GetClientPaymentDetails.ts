@@ -9,13 +9,16 @@ import { ValidateStringParameters } from '/opt/LambdaHelpers/ValidateIncomingDat
 //@ts-ignore
 import { ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+import { PaymentOptionManager } from '/opt/PaymentOptionManager';
+//@ts-ignore
+import { PaymentManager } from '/opt/PaymentManager';
 
 import { TextHelper } from '/opt/TextHelpers/textHelper';
-import { EPaymentOptionProviderId, EPaymentStatus, IPaymentOptionKey, IPaymentOptionType_RU_ROBOKASSA } from 'tgbot-project-types/TypesCompiled/paymentTypes';
+import { EPaymentOptionProviderId, EPaymentStatus, ESupportedCurrency, IPaymentOptionKey, IPaymentOptionType_RU_ROBOKASSA } from 'tgbot-project-types/TypesCompiled/paymentTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
 import { IBotGeneralKey, ILooseString } from 'tgbot-project-types/TypesCompiled/generalTypes';
+import axios, { AxiosRequestConfig } from 'axios';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     try {
@@ -45,7 +48,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             return ReturnBlankApiResult(403, { success: false, data: { error: error } }, origin);
         }
 
-        const payment = await PaymentOptionsManager.GetPaymentRequestForPublic(paymentKey);
+        const payment = await PaymentManager.GetPaymentRequestForPublicByStringId(paymentKey);
 
         if (!payment) {
             const error = 'Error: new payment not found';
@@ -58,7 +61,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             botUUID: payment.botUUID,
             id: payment.paymentOptionId
         };
-        const paymentOption = await PaymentOptionsManager.GetMyPaymentOptionById(paymentOptionKey);
+        const paymentOption = await PaymentOptionManager.GetMyPaymentOptionById(paymentOptionKey);
 
         if (paymentOption.success == false || !paymentOption.data) {
             const error = 'Error: paymentOption data not found';
@@ -80,18 +83,60 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         }
 
         let additionalParams: ILooseString = {};
-        if (paymentOption.data.type.optionProviderId == EPaymentOptionProviderId.RU_ROBOKASSA) {
-            const decyptedPaymentOption = await PaymentOptionsManager.GetDecryptedPaymentOption(paymentOptionKey);
 
-            if (decyptedPaymentOption.success == false || !decyptedPaymentOption.data) {
-                const error = 'Error: decrypted data not found';
-                console.log(error);
-                return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
+        switch (paymentOption.data.type.optionProviderId) {
+            case EPaymentOptionProviderId.RU_ROBOKASSA: {
+                const decyptedPaymentOption = await PaymentOptionManager.GetDecryptedPaymentOption(paymentOptionKey);
+
+                if (decyptedPaymentOption.success == false || !decyptedPaymentOption.data) {
+                    const error = 'Error: decrypted data not found';
+                    console.log(error);
+                    return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
+                }
+                const password1 = (decyptedPaymentOption.data.type as IPaymentOptionType_RU_ROBOKASSA).password1;
+
+                let hashString = '';
+                if (payment.currency == ESupportedCurrency.RUB) {
+                    hashString = `${paymentOption.data.type.shopId}:${payment.price.toString()}:${payment.paymentOrderN}:${password1}`;
+                } else {
+                    hashString = `${paymentOption.data.type.shopId}:${payment.price.toString()}:${payment.paymentOrderN}:${payment.currency}:${password1}`;
+                }
+
+                const hash = CryptoJS.MD5(hashString).toString();
+                additionalParams.SignatureValue = hash;
+                break;
             }
-            const password1 = (decyptedPaymentOption.data.type as IPaymentOptionType_RU_ROBOKASSA).password1;
-            const hashString = `${paymentOption.data.type.shopId}:${payment.price.toString()}::${password1}`;
-            const hash = CryptoJS.MD5(hashString).toString();
-            additionalParams.SignatureValue = hash;
+            case EPaymentOptionProviderId.CRYPTOCLOUD_PLUS: {
+                //'https://api.cryptocloud.plus/v1/invoice/create \'
+                try {
+                    const prodiderDetails = paymentOption.data.type;
+                    const url = 'https://api.cryptocloud.plus/v1/invoice/create';
+
+                    const axiosConfig: AxiosRequestConfig<any> = {};
+
+                    axiosConfig.withCredentials = true;
+                    axiosConfig.headers = {
+                        'Content-Type': 'application/json',
+                        Authorization: `Token ${prodiderDetails.APIKEY}`
+                    };
+                    const itemData = {
+                        shop_id: prodiderDetails.shopId,
+                        amount: payment.price,
+                        order_id: payment.id,
+                        currency: payment.currency
+                    };
+
+                    const result = await axios.post(url, JSON.stringify(itemData), { ...axiosConfig });
+                    console.log(result.data);
+                    if (result.data?.status == 'success' && result.data.day_url) {
+                        additionalParams.pay_url = result.data.day_url;
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return ReturnBlankApiResult(422, { success: false, data: { error: JSON.stringify(error) } }, origin);
+                }
+                break;
+            }
         }
 
         return ReturnBlankApiResult(200, { data: { paymentDetails: payment, paymentOption: paymentOption.data, botName: bot.data.name, additionalParams: additionalParams } }, origin);

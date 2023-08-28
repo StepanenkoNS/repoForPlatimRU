@@ -7,7 +7,9 @@ import { ReturnBlankApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 import { createHash, timingSafeEqual } from 'crypto';
 
 import { EPaymentOptionProviderId, ESupportedCurrency, IRequestToConfirmPayment, IYooMoneyNotification, IYooMoneyNotificationAndSecret } from 'tgbot-project-types/TypesCompiled/paymentTypes';
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+
+import { PaymentManager } from '/opt/PaymentManager';
+import { PaymentOptionManager } from '/opt/PaymentOptionManager';
 import { SQSHelper } from '/opt/SQS/SQSHelper';
 
 import { TelegramActionKey } from 'tgbot-project-types/TypesCompiled/telegramTypesPrimitive';
@@ -28,7 +30,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             hash: paymentHash
         };
 
-        const payment = await PaymentOptionsManager.GetPaymentRequestForPublic(paymentKey);
+        const payment = await PaymentManager.GetPaymentRequestForPublicByStringId(paymentKey);
 
         if (!payment) {
             throw 'NEW payment not found in DB';
@@ -47,7 +49,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             throw 'price does not equal amount';
         }
 
-        const paymentOption = await PaymentOptionsManager.GetDecryptedPaymentOption({
+        const paymentOption = await PaymentOptionManager.GetDecryptedPaymentOption({
             botUUID: payment.botUUID,
             masterId: payment.masterId,
             id: payment.paymentOptionId

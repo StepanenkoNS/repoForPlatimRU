@@ -13,11 +13,11 @@ import { LambdaIntegrations } from '/opt/DevHelpers/AccessHelper';
 import { DynamicEnvironment } from '../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 //@ts-ignore
 import { CreateAPIwithOutAuth } from '/opt/DevHelpers/CreateAPIwithOutAuth';
-import { modulBankCallbacksLambdas } from './Lambdas/modulBankCallbacks';
+
 import { Role } from 'aws-cdk-lib/aws-iam';
 import { GetClientPaymentDetailsLambdas } from './Lambdas/clientPaymentDetails';
-import { yoomoneyCallbacksLambdas } from './Lambdas/yoomoneyCallbacks';
-import { robokassaCallbacksLambdas } from './Lambdas/robokassaCallbacks';
+import { BasicPaymentCallbacksLambdas } from './Lambdas/basicCallbacks';
+import { PomponaPaymentCallbacksLambdas } from './Lambdas/pomponaCallbacks';
 
 export class PaymentIntegrationsStack extends Stack {
     constructor(
@@ -51,22 +51,16 @@ export class PaymentIntegrationsStack extends Stack {
             props.environment
         );
 
-        const modulLambdas = modulBankCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
+        const basicCallbackLambdas = BasicPaymentCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
         lambdaIntegrations.push({
-            rootResource: 'modulRu',
-            lambdas: modulLambdas
+            rootResource: 'callback',
+            lambdas: basicCallbackLambdas
         });
 
-        const yoomoneyLambdas = yoomoneyCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
+        const pomponaPaymentCallbacksLambdas = PomponaPaymentCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
         lambdaIntegrations.push({
-            rootResource: 'yoomoneyRU',
-            lambdas: yoomoneyLambdas
-        });
-
-        const robokassaLambdas = robokassaCallbacksLambdas(this, layers, lambdaBasicRole, props.environment);
-        lambdaIntegrations.push({
-            rootResource: 'robokassaRU',
-            lambdas: robokassaLambdas
+            rootResource: 'pompona',
+            lambdas: pomponaPaymentCallbacksLambdas
         });
 
         const getClientPaymentDetailsLambdas = GetClientPaymentDetailsLambdas(this, layers, lambdaBasicRole, props.environment);

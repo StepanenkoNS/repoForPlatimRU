@@ -1,4 +1,4 @@
-import { handler } from '../../services/Modul/ModulPaymentCallBack';
+import { handler } from '../../services/CallBack_pompona/Modul/ModulPaymentCallBack';
 
 const event = {
     resource: '/modulRu/callback',

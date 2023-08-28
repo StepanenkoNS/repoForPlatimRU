@@ -1,28 +1,24 @@
-import CryptoJS from 'crypto-js';
-
-import { handler } from '../../services/CallBack_basic/Yoomoney/YoomoneyPaymentCallBack';
+import { handler } from '../../services/Robokassa/RobokassaPaymentCallBack';
 
 const event = {
-    resource: '/yoomoneyRU/callback',
-    path: '/yoomoneyRU/callback',
+    resource: '/callback/robokassa',
+    path: '/callback/robokassa',
     httpMethod: 'POST',
     headers: {
-        Accept: '*/*',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         Host: 'payments.zuzona.com',
-        'User-Agent': 'AHC/2.1',
-        'X-Amzn-Trace-Id': 'Root=1-64e9db10-32783163066d37597de697d7',
-        'X-Forwarded-For': '77.75.157.42',
+        'User-Agent': '.NET Framework/v4.0.30319',
+        'X-Amzn-Trace-Id': 'Root=1-64ec58af-6f5fd1bd09ade1e765ceba1b',
+        'X-Forwarded-For': '185.59.216.65',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
     },
     multiValueHeaders: {
-        Accept: ['*/*'],
-        'Content-Type': ['application/x-www-form-urlencoded'],
+        'Content-Type': ['application/x-www-form-urlencoded; charset=utf-8'],
         Host: ['payments.zuzona.com'],
-        'User-Agent': ['AHC/2.1'],
-        'X-Amzn-Trace-Id': ['Root=1-64e9db10-32783163066d37597de697d7'],
-        'X-Forwarded-For': ['77.75.157.42'],
+        'User-Agent': ['.NET Framework/v4.0.30319'],
+        'X-Amzn-Trace-Id': ['Root=1-64ec58af-6f5fd1bd09ade1e765ceba1b'],
+        'X-Forwarded-For': ['185.59.216.65'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
     },
@@ -31,36 +27,36 @@ const event = {
     pathParameters: null,
     stageVariables: null,
     requestContext: {
-        resourceId: 'lno50w',
-        resourcePath: '/yoomoneyRU/callback',
+        resourceId: '1t4tj5',
+        resourcePath: '/callback/robokassa',
         httpMethod: 'POST',
-        extendedRequestId: 'KQ8qrGyMIAMEuJw=',
-        requestTime: '26/Aug/2023:10:59:28 +0000',
-        path: '/yoomoneyRU/callback',
+        extendedRequestId: 'KXLLaEt9IAMENeQ=',
+        requestTime: '28/Aug/2023:08:19:59 +0000',
+        path: '/callback/robokassa',
         accountId: '818186882185',
         protocol: 'HTTP/1.1',
         stage: 'pagesAPI',
         domainPrefix: 'payments',
-        requestTimeEpoch: 1693047568844,
-        requestId: '1fa086c5-ebab-460f-8e2e-8fd8c608f132',
+        requestTimeEpoch: 1693210799187,
+        requestId: '7f778248-d9b7-4288-a529-36750695d347',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
             cognitoIdentityId: null,
             caller: null,
-            sourceIp: '77.75.157.42',
+            sourceIp: '185.59.216.65',
             principalOrgId: null,
             accessKey: null,
             cognitoAuthenticationType: null,
             cognitoAuthenticationProvider: null,
             userArn: null,
-            userAgent: 'AHC/2.1',
+            userAgent: '.NET Framework/v4.0.30319',
             user: null
         },
         domainName: 'payments.zuzona.com',
         apiId: 'oyftl3dkne'
     },
-    body: 'notification_type=card-incoming&zip=&bill_id=&amount=9.70&firstname=&codepro=false&withdraw_amount=10.00&city=&unaccepted=false&label=2UVnqIdRflNM7GAz86RcbGIvFDA&building=&lastname=&datetime=2023-08-26T10%3A59%3A20Z&suite=&sender=&phone=&sha1_hash=660a0a77ac21df769248ad7a3aceca5a0731c646&street=&flat=&fathersname=&operation_label=2c7beeb9-0011-5000-9000-165ac6d53d6a&operation_id=746362760014136100&currency=643&email=',
+    body: 'out_summ=94.72&OutSum=94.72&inv_id=3&InvId=3&crc=40F88AAEF77B2F1F08CDBDFF0A4064C2&SignatureValue=40F88AAEF77B2F1F08CDBDFF0A4064C2&PaymentMethod=BankCard&IncSum=94.72&IncCurrLabel=BankCardPSR&IsTest=1&EMail=&Fee=0.0',
     isBase64Encoded: false
 };
 

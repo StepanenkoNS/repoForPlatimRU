@@ -4,13 +4,13 @@ import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { ReturnBlankApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 //@ts-ignore
 import { PomponaSubscriptionsProcessor } from '/opt/PomponaSubscriptionsProcessor';
-import { PaymentOptionsManager } from '/opt/PaymentOptionsManager';
+import { PaymentOptionManager } from '/opt/PaymentOptionManager';
 
 import { EPaymentStatus } from 'tgbot-project-types/TypesCompiled/paymentTypes';
 
 export async function handler(): Promise<APIGatewayProxyResult> {
     try {
-        const paymentInDb = await PaymentOptionsManager.ConfirmPomponaPayment({
+        const paymentInDb = await PaymentOptionManager.ConfirmPomponaPayment({
             masterId: 1862254,
             paymentId: '2UPFCGCZJZRoE8AseWfkhR8dsJh',
             transactionId: 'admin_payment',

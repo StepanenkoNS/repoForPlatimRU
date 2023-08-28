@@ -10,10 +10,13 @@ import { LambdaAndResource } from '/opt/DevHelpers/AccessHelper';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { DynamicEnvironment } from '../../../../../Core/ReadmeAndConfig/DynamicEnvironment';
 
-export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole, environment: EEnvironment) {
-    const PaymentProcessorConfirmation = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmation-modul', DynamicEnvironment(environment).sqs.PaymentProcessor_Confirmation.basic_arn);
+export function PomponaPaymentCallbacksLambdas(that: any, layers: ILayerVersion[], lambdaBasicRole: IRole, environment: EEnvironment) {
+    const returnArray: LambdaAndResource[] = [];
+
+    const PaymentProcessorConfirmation = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmation-pompona', DynamicEnvironment(environment).sqs.PaymentProcessor_Confirmation.basic_arn);
+
     const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {
-        entry: join(__dirname, '..', '..', '..', 'services', 'Modul', 'ModulPaymentCallBack.ts'),
+        entry: join(__dirname, '..', '..', '..', 'services', 'CallBack_pompona', 'Modul', 'ModulPaymentCallBack.ts'),
         handler: 'handler',
         functionName: 'paymentProcessor-ModulPayment-callback',
         runtime: StaticEnvironment(environment).LambdaSettings.runtime,
@@ -35,11 +38,9 @@ export function modulBankCallbacksLambdas(that: any, layers: ILayerVersion[], la
         layers: layers
     });
 
-    const returnArray: LambdaAndResource[] = [];
-
     returnArray.push({
         lambda: ModulPaymentCallBackLambda,
-        resource: 'callback',
+        resource: 'modul',
         httpMethod: 'POST'
     });
 
