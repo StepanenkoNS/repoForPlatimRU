@@ -14,25 +14,26 @@ import {
     IYooMoneyNotification,
     IYooMoneyNotificationAndSecret
 } from 'tgbot-project-types/TypesCompiled/paymentTypes';
+//@ts-ignore
 import { PaymentOptionManager } from '/opt/PaymentOptionManager';
 import { SQSHelper } from '/opt/SQS/SQSHelper';
 
 import { TelegramActionKey } from 'tgbot-project-types/TypesCompiled/telegramTypesPrimitive';
-import { PaymentManager } from '/opt/PaymentManager';
+//@ts-ignore
+import { PaymentCallBackManager } from '/opt/PaymentCallBackManager';
 
 //@ts-ignore
 import { SetOrigin } from '/opt/LambdaHelpers/OriginHelper';
+import { PaymentManager } from '/opt/PaymentManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     try {
         console.log('event', JSON.stringify(event));
         const origin = SetOrigin(event);
 
-        const queryString = event.body ? event.body : '';
-        const params = new URLSearchParams(queryString);
+        const params = new URLSearchParams(event.body ? event.body : '');
 
         const notififation = Object.fromEntries(params.entries()) as any;
-        console.log(notififation);
 
         const incomingHash = notififation.SignatureValue as string;
 
@@ -40,40 +41,31 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
         const price = Number(notififation.IncSum);
 
-        const payment = await PaymentManager.GetPaymentRequestForPublicByCounter(paymentCounterId);
+        const payment = await PaymentCallBackManager.GetPaymentByPublicCounter({
+            counter: paymentCounterId,
+            expectedProvider: EPaymentOptionProviderId.RU_ROBOKASSA
+        });
         if (!payment) {
-            throw 'NEW payment not found in DB';
+            throw 'PaymentError';
         }
 
-        if (payment.optionProviderId !== EPaymentOptionProviderId.RU_ROBOKASSA) {
-            throw 'this is not a RU_ROBOKASSA payment';
-        }
-
-        const paymentOption = await PaymentOptionManager.GetDecryptedPaymentOption({
-            botUUID: payment.botUUID,
-            masterId: payment.masterId,
-            id: payment.paymentOptionId
+        const paymentOption = await PaymentCallBackManager.GetPaymentOption({
+            key: {
+                botUUID: payment.botUUID,
+                masterId: payment.masterId,
+                id: payment.paymentOptionId
+            },
+            expectedProvider: EPaymentOptionProviderId.RU_ROBOKASSA
         });
 
-        if (paymentOption.success == false || !paymentOption.data) {
-            throw 'paymentOption not found';
+        if (!paymentOption) {
+            throw 'paymentOption not found or invalid';
         }
 
-        if (paymentOption.data.type.optionProviderId !== EPaymentOptionProviderId.RU_ROBOKASSA) {
-            throw 'paymentOption provider is not RU_ROBOKASSA';
-        }
+        const password2 = (paymentOption.type as IPaymentOptionType_RU_ROBOKASSA).password2;
 
-        const password2 = (paymentOption.data.type as IPaymentOptionType_RU_ROBOKASSA).password2;
+        const hashString = `${price.toString()}:${payment.paymentOrderN}:${password2}`;
 
-        let hashString = '';
-        hashString = `${price.toString()}:${payment.paymentOrderN}:${password2}`;
-        // if (payment.currency == ESupportedCurrency.RUB) {
-        //     hashString = `${price.toString()}:${payment.paymentOrderN}:${password2}`;
-        // } else {
-        //     hashString = `${price.toString()}:${payment.paymentOrderN}:${payment.currency}:${password2}`;
-        // }
-
-        //const hashString = `${paymentOption.data.type.shopId}:${payment.price.toString()}:${payment.paymentOrderN}:${payment.currency}:${password2}`;
         const hash = CryptoJS.MD5(hashString).toString().toUpperCase();
 
         if (incomingHash !== hash) {
@@ -82,21 +74,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             return ReturnBlankApiResult(403, { success: false, data: { error: error } }, origin);
         }
 
-        const sqsEvent: IRequestToConfirmPayment = {
-            botUUID: payment.botUUID,
-            masterId: payment.masterId,
-            chatId: payment.chatId,
-            id: payment.id.toString(),
-            action: 'Confirm' as TelegramActionKey,
-            externalDetails: {
-                dt: new Date().toISOString(),
-                externalJSON: JSON.stringify(notififation)
-            }
-        };
-
-        const sqsResult = await SQSHelper.SendSQSMessage({
-            message: sqsEvent,
-            QueueUrl: process.env.paymentProcessorConfirmationRequestQueueURL!
+        const sqsResult = await PaymentCallBackManager.QueuePaymentProcessing({
+            payment: payment,
+            externalData: notififation
         });
 
         if (sqsResult == false) {

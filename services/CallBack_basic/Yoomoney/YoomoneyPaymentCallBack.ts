@@ -6,64 +6,54 @@ import { ReturnBlankApiResult } from '/opt/LambdaHelpers/ReturnRestApiResult';
 
 import { createHash, timingSafeEqual } from 'crypto';
 
-import { EPaymentOptionProviderId, ESupportedCurrency, IRequestToConfirmPayment, IYooMoneyNotification, IYooMoneyNotificationAndSecret } from 'tgbot-project-types/TypesCompiled/paymentTypes';
+import {
+    EPaymentOptionProviderId,
+    ESupportedCurrency,
+    IPaymentOptionType_RU_YOOMONEY,
+    IRequestToConfirmPayment,
+    IYooMoneyNotification,
+    IYooMoneyNotificationAndSecret,
+    PaymentOptionType
+} from 'tgbot-project-types/TypesCompiled/paymentTypes';
 
 import { PaymentManager } from '/opt/PaymentManager';
 import { PaymentOptionManager } from '/opt/PaymentOptionManager';
 import { SQSHelper } from '/opt/SQS/SQSHelper';
 
 import { TelegramActionKey } from 'tgbot-project-types/TypesCompiled/telegramTypesPrimitive';
+import { PaymentCallBackManager } from '/opt/PaymentCallBackManager';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     try {
         console.log('event', JSON.stringify(event));
 
-        const queryString = event.body ? event.body : '';
-        const params = new URLSearchParams(queryString);
+        const params = new URLSearchParams(event.body ? event.body : '');
 
         const notififation = Object.fromEntries(params.entries()) as unknown as IYooMoneyNotification;
 
-        const paymentHash = CryptoJS.SHA1(notififation.label + process.env.openDataHashKey!).toString(CryptoJS.enc.Hex);
-
-        const paymentKey = {
+        const payment = await PaymentCallBackManager.GetPaymentByPublicStringId({
             paymentId: notififation.label,
-            hash: paymentHash
-        };
-
-        const payment = await PaymentManager.GetPaymentRequestForPublicByStringId(paymentKey);
+            expectedProvider: EPaymentOptionProviderId.RU_YOOMONEY
+        });
 
         if (!payment) {
             throw 'NEW payment not found in DB';
         }
 
-        if (payment.optionProviderId !== EPaymentOptionProviderId.RU_YOOMONEY) {
-            throw 'this is not a RU_YOOMONEY payment';
-        }
-
-        if (payment.currency !== ESupportedCurrency.RUB) {
-            throw 'currency is not RUB';
-        }
-
-        //проверка цены - юмани удерживают 1-3% за комиссию
-        if (Number(payment.price) * 0.97 >= Number(notififation.amount) && Number(payment.price) <= Number(notififation.amount)) {
-            throw 'price does not equal amount';
-        }
-
-        const paymentOption = await PaymentOptionManager.GetDecryptedPaymentOption({
-            botUUID: payment.botUUID,
-            masterId: payment.masterId,
-            id: payment.paymentOptionId
+        const paymentOption = await PaymentCallBackManager.GetPaymentOption({
+            key: {
+                botUUID: payment.botUUID,
+                masterId: payment.masterId,
+                id: payment.paymentOptionId
+            },
+            expectedProvider: EPaymentOptionProviderId.RU_YOOMONEY
         });
 
-        if (paymentOption.success == false || !paymentOption.data) {
-            throw 'paymentOption not found';
+        if (!paymentOption) {
+            throw 'paymentOption not found or invalid';
         }
 
-        if (paymentOption.data.type.optionProviderId !== EPaymentOptionProviderId.RU_YOOMONEY) {
-            throw 'paymentOption provider is not RU_YOOMONEY';
-        }
-
-        const secretKey = paymentOption.data.type.token;
+        const secretKey = (paymentOption.type as IPaymentOptionType_RU_YOOMONEY).token;
 
         const notificationWithSecret: IYooMoneyNotificationAndSecret = {
             ...notififation,
@@ -82,25 +72,12 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             throw 'Error:hash mistmach';
         }
 
-        //если дошли сюда то у нас на руках есть подтверденный платеж на правильную сумму от юмани
+        //если дошли сюда то у нас на руках есть подтверденный от юмани
         //теперь надо его запустить в процессинг
 
-        const sqsEvent: IRequestToConfirmPayment = {
-            botUUID: payment.botUUID,
-            masterId: payment.masterId,
-            chatId: payment.chatId,
-            id: payment.id.toString(),
-            action: 'Confirm' as TelegramActionKey,
-            externalDetails: {
-                dt: new Date().toISOString(),
-                externalJSON: JSON.stringify(notififation)
-            }
-        };
-
-        const sqsResult = await SQSHelper.SendSQSMessage({
-            message: sqsEvent,
-
-            QueueUrl: process.env.paymentProcessorConfirmationRequestQueueURL!
+        const sqsResult = await PaymentCallBackManager.QueuePaymentProcessing({
+            payment: payment,
+            externalData: notififation
         });
 
         if (sqsResult == false) {

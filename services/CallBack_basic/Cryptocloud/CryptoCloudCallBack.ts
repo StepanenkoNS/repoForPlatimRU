@@ -14,8 +14,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     try {
         console.log('event', JSON.stringify(event));
 
-        const queryString = event.body ? event.body : '';
-        const params = new URLSearchParams(queryString);
+        const params = new URLSearchParams(event.body ? event.body : '');
 
         const notififation = Object.fromEntries(params.entries()) as any;
         console.log(notififation);

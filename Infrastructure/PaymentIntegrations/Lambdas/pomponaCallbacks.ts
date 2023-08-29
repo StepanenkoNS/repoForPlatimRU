@@ -15,10 +15,10 @@ export function PomponaPaymentCallbacksLambdas(that: any, layers: ILayerVersion[
 
     const PaymentProcessorConfirmation = Queue.fromQueueArn(that, 'imported-PaymentProcessorConfirmation-pompona', DynamicEnvironment(environment).sqs.PaymentProcessor_Confirmation.basic_arn);
 
-    const ModulPaymentCallBackLambda = new NodejsFunction(that, 'ModulPaymentCallBack', {
+    const PomponaModulPaymentCallBackLambda = new NodejsFunction(that, 'PomponaModulPaymentCallBack', {
         entry: join(__dirname, '..', '..', '..', 'services', 'CallBack_pompona', 'Modul', 'ModulPaymentCallBack.ts'),
         handler: 'handler',
-        functionName: 'paymentProcessor-ModulPayment-callback',
+        functionName: 'paymentProcessor-Modul-Pompona-callback',
         runtime: StaticEnvironment(environment).LambdaSettings.runtime,
         logRetention: StaticEnvironment(environment).LambdaSettings.logRetention,
         timeout: StaticEnvironment(environment).LambdaSettings.timeout.SMALL,
@@ -26,10 +26,10 @@ export function PomponaPaymentCallbacksLambdas(that: any, layers: ILayerVersion[
         environment: {
             ...StaticEnvironment(environment).LambdaSettings.EnvironmentVariables,
 
-            modulMerchantId: StaticEnvironment(environment).PaymentGateways.modulBank.MerchantId,
-            modulSuccess_url: StaticEnvironment(environment).PaymentGateways.modulBank.success_url,
-            modulCallback_url: StaticEnvironment(environment).PaymentGateways.modulBank.callback_url,
-            modulKey: StaticEnvironment(environment).PaymentGateways.modulBank.key,
+            pomponaModulShopId: StaticEnvironment(environment).PomponaPaymentGateways.modulBank.shopId,
+            pomponaModulSuccess_url: StaticEnvironment(environment).PomponaPaymentGateways.modulBank.success_url,
+            pomponaModulCallback_url: StaticEnvironment(environment).PomponaPaymentGateways.modulBank.callback_url,
+            pomponaModulKey: StaticEnvironment(environment).PomponaPaymentGateways.modulBank.key,
             paymentProcessorConfirmationRequestQueueURL: PaymentProcessorConfirmation.queueUrl
         },
         bundling: {
@@ -39,7 +39,7 @@ export function PomponaPaymentCallbacksLambdas(that: any, layers: ILayerVersion[
     });
 
     returnArray.push({
-        lambda: ModulPaymentCallBackLambda,
+        lambda: PomponaModulPaymentCallBackLambda,
         resource: 'modul',
         httpMethod: 'POST'
     });
