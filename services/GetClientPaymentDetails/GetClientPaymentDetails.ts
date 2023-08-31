@@ -220,7 +220,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                         shopOrderId: payment.id,
                         successUrl: `https://t.me/${bot.data.name}`,
                         notificationUrl: `https://payments.${process.env.mainDomainName}/callback/platim_ru`,
-                        formLocale: 'en'
+                        formLocale: 'ru'
                     };
 
                     const stringified = JSON.stringify(itemData);
