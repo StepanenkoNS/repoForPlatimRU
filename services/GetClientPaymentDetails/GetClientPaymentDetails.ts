@@ -190,6 +190,54 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
                 break;
             }
+
+            case EPaymentOptionProviderId.RU_PLATIM: {
+                try {
+                    const providerDetails = paymentOption.type;
+                    const url = 'https://api.test.paydev.ru/api/v1/store/invoice';
+                    //const url = 'https://api.platim.ru/api/v1/store/invoice';
+
+                    const axiosConfig: AxiosRequestConfig<any> = {};
+                    //axiosConfig.withCredentials = true;
+                    axiosConfig.headers = {
+                        accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${providerDetails.token}`
+                    };
+                    const itemData = {
+                        goods: [
+                            {
+                                name: payment.paymentTarget,
+                                nameEn: payment.paymentTarget,
+                                description: payment.paymentTarget,
+                                currency: payment.currency,
+                                price: (payment.price * 100).toString(),
+                                quantity: '1',
+                                shopItemId: payment.paymentOrderN.toString()
+                            }
+                        ],
+                        //invoicePriceFixed: true,
+                        shopOrderId: payment.id,
+                        successUrl: `https://t.me/${bot.data.name}`,
+                        notificationUrl: `https://payments.${process.env.mainDomainName}/callback/platim_ru`,
+                        formLocale: 'en'
+                    };
+
+                    const stringified = JSON.stringify(itemData);
+
+                    const result = await axios.post(url, stringified, { ...axiosConfig });
+                    console.log(result.data);
+                    if (result.data && result.data.payFormUrl) {
+                        additionalParams = {
+                            payFormUrl: result.data.payFormUrl
+                        };
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return ReturnBlankApiResult(422, { success: false, data: { error: JSON.stringify(error) } }, origin);
+                }
+                break;
+            }
         }
 
         return ReturnBlankApiResult(200, { data: { paymentDetails: payment, paymentOption: paymentOption, botName: bot.data.name, additionalParams: additionalParams } }, origin);

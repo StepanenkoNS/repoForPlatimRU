@@ -87,6 +87,24 @@ export function BasicPaymentCallbacksLambdas(that: any, layers: ILayerVersion[],
         layers: layers
     });
 
+    const platimRUCallBackLambda = new NodejsFunction(that, 'PlatimRUCallBackLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CallBack_basic', 'PlatimRU', 'PlatimRUCallBack.ts'),
+        handler: 'handler',
+        functionName: 'paymentProcessor-PlatimRU-callback',
+        runtime: StaticEnvironment(environment).LambdaSettings.runtime,
+        logRetention: StaticEnvironment(environment).LambdaSettings.logRetention,
+        timeout: StaticEnvironment(environment).LambdaSettings.timeout.SMALL,
+        role: lambdaBasicRole,
+        environment: {
+            ...StaticEnvironment(environment).LambdaSettings.EnvironmentVariables,
+            paymentProcessorConfirmationRequestQueueURL: PaymentProcessorConfirmation.queueUrl
+        },
+        bundling: {
+            externalModules: StaticEnvironment(environment).LambdaSettings.externalModules
+        },
+        layers: layers
+    });
+
     returnArray.push({
         lambda: RobokassaPaymentCallBackLambda,
         resource: 'robokassa',
@@ -108,6 +126,12 @@ export function BasicPaymentCallbacksLambdas(that: any, layers: ILayerVersion[],
     returnArray.push({
         lambda: modulCallBackLambda,
         resource: 'modul',
+        httpMethod: 'POST'
+    });
+
+    returnArray.push({
+        lambda: platimRUCallBackLambda,
+        resource: 'platimRU',
         httpMethod: 'POST'
     });
 
