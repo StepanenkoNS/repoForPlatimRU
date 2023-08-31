@@ -17,7 +17,9 @@ import { PaymentManager } from '/opt/PaymentManager';
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import {
     EPaymentOptionProviderId,
+    EPaymentStatus,
     ESupportedCurrency,
+    IClientPaymentDetails,
     IModulPaymentRequest,
     IPaymentOptionKey,
     IPaymentOptionType_RU_MODUL_SendReceiptLong,
@@ -64,6 +66,17 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             return ReturnBlankApiResult(403, { success: false, data: { error: error } }, origin);
         }
 
+        const paymentExpitartionDate = new Date(payment.paymentInitTime);
+        paymentExpitartionDate.setTime(paymentExpitartionDate.getTime() + Number(process.env.userPaymentExpirationTimeInMinutes) * 60 * 1000);
+
+        if (paymentExpitartionDate.getTime() <= new Date().getTime()) {
+            const retData: IClientPaymentDetails = {
+                paymentIsExpired: true,
+                paymentDetails: payment
+            };
+            return ReturnBlankApiResult(200, { data: retData }, origin);
+        }
+
         const paymentOptionKey: IPaymentOptionKey = {
             masterId: payment.masterId,
             botUUID: payment.botUUID,
@@ -98,6 +111,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         let additionalParams: ILooseString = {};
 
         switch (paymentOption.type.optionProviderId) {
+            case EPaymentOptionProviderId.RU_YOOMONEY: {
+                additionalParams.walletId = paymentOption.type.walletId;
+                break;
+            }
+
             case EPaymentOptionProviderId.RU_ROBOKASSA: {
                 const password1 = (paymentOption.type as IPaymentOptionType_RU_ROBOKASSA).password1;
 
@@ -110,43 +128,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
                 const hash = CryptoJS.MD5(hashString).toString();
                 additionalParams.SignatureValue = hash;
-                break;
-            }
-            case EPaymentOptionProviderId.CRYPTOCLOUD_PLUS: {
-                //'https://api.cryptocloud.plus/v1/invoice/create \'
-                try {
-                    const prodiderDetails = paymentOption.type;
-                    const url = 'https://api.cryptocloud.plus/v1/invoice/create';
-
-                    const axiosConfig: AxiosRequestConfig<any> = {};
-
-                    axiosConfig.withCredentials = true;
-                    axiosConfig.headers = {
-                        'Content-Type': 'application/json',
-                        Authorization: `Token ${prodiderDetails.APIKEY}`
-                    };
-                    const itemData = {
-                        shop_id: prodiderDetails.shopId,
-                        amount: payment.price,
-                        order_id: payment.id,
-                        currency: payment.currency
-                    };
-
-                    const result = await axios.post(url, JSON.stringify(itemData), { ...axiosConfig });
-                    console.log(result.data);
-                    if (result.data?.status == 'success' && result.data.pay_url) {
-                        additionalParams = {
-                            pay_url: result.data.pay_url,
-                            currency: result.data.currency,
-                            invoice_id: result.data.invoice_id,
-                            amount: result.data.amount,
-                            amount_usd: result.data.amount_usd
-                        };
-                    }
-                } catch (error) {
-                    console.log(error);
-                    return ReturnBlankApiResult(422, { success: false, data: { error: JSON.stringify(error) } }, origin);
-                }
+                additionalParams.shopId = paymentOption.type.shopId;
                 break;
             }
             case EPaymentOptionProviderId.RU_MODUL: {
@@ -187,7 +169,45 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                     throw 'Error:PaymentCallBackManager.SignModulPayment failed';
                 }
                 additionalParams = { ...result.data };
+                additionalParams.shopId = paymentOption.type.shopId;
 
+                break;
+            }
+            case EPaymentOptionProviderId.CRYPTOCLOUD_PLUS: {
+                //'https://api.cryptocloud.plus/v1/invoice/create \'
+                try {
+                    const prodiderDetails = paymentOption.type;
+                    const url = 'https://api.cryptocloud.plus/v1/invoice/create';
+
+                    const axiosConfig: AxiosRequestConfig<any> = {};
+
+                    axiosConfig.withCredentials = true;
+                    axiosConfig.headers = {
+                        'Content-Type': 'application/json',
+                        Authorization: `Token ${prodiderDetails.APIKEY}`
+                    };
+                    const itemData = {
+                        shop_id: prodiderDetails.shopId,
+                        amount: payment.price,
+                        order_id: payment.id,
+                        currency: payment.currency
+                    };
+
+                    const result = await axios.post(url, JSON.stringify(itemData), { ...axiosConfig });
+                    console.log(result.data);
+                    if (result.data?.status == 'success' && result.data.pay_url) {
+                        additionalParams = {
+                            pay_url: result.data.pay_url,
+                            currency: result.data.currency,
+                            invoice_id: result.data.invoice_id,
+                            amount: result.data.amount,
+                            amount_usd: result.data.amount_usd
+                        };
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return ReturnBlankApiResult(422, { success: false, data: { error: JSON.stringify(error) } }, origin);
+                }
                 break;
             }
 
@@ -213,7 +233,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                                 currency: payment.currency,
                                 price: (payment.price * 100).toString(),
                                 quantity: '1',
-                                shopItemId: payment.paymentOrderN.toString()
+                                shopItemId: payment.paymentOrderN.toString() + payment.paymentOrderN.toString()
                             }
                         ],
                         //invoicePriceFixed: true,
@@ -226,7 +246,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                     const stringified = JSON.stringify(itemData);
 
                     const result = await axios.post(url, stringified, { ...axiosConfig });
-                    console.log(result.data);
+                    console.log('data from platim.ru', result.data);
                     if (result.data && result.data.payFormUrl) {
                         additionalParams = {
                             payFormUrl: result.data.payFormUrl
@@ -240,7 +260,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             }
         }
 
-        return ReturnBlankApiResult(200, { data: { paymentDetails: payment, paymentOption: paymentOption, botName: bot.data.name, additionalParams: additionalParams } }, origin);
+        const retData: IClientPaymentDetails = {
+            paymentIsExpired: false,
+            paymentDetails: payment,
+            botName: bot.data.name,
+            additionalParams: additionalParams
+        };
+
+        return ReturnBlankApiResult(200, { data: retData }, origin);
     } catch (error) {
         console.log(error);
         return ReturnBlankApiResult(403, { success: false, data: { error: error } }, '');
