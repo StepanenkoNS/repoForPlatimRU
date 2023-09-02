@@ -1,16 +1,16 @@
-import { handler } from '../../services/CallBack_basic/Modul/ModulPaymentCallBack';
+import { handler } from '../../../services/CallBack_pompona/Modul/ModulPaymentCallBack';
 
 const event = {
-    resource: '/callback/modul',
-    path: '/callback/modul',
+    resource: '/modulRu/callback',
+    path: '/modulRu/callback',
     httpMethod: 'POST',
     headers: {
         Accept: '*/*',
         'Accept-Encoding': 'gzip, deflate',
         'Content-Type': 'application/x-www-form-urlencoded',
-        Host: 'payments.zuzona.com',
+        Host: 'payments.pompona.net',
         'User-Agent': 'Python/3.6 aiohttp/3.4.4',
-        'X-Amzn-Trace-Id': 'Root=1-64edec41-33737fea1002e3663b29acde',
+        'X-Amzn-Trace-Id': 'Root=1-64a51754-398ce3013d9618c807006c49',
         'X-Forwarded-For': '185.137.76.39',
         'X-Forwarded-Port': '443',
         'X-Forwarded-Proto': 'https'
@@ -19,9 +19,9 @@ const event = {
         Accept: ['*/*'],
         'Accept-Encoding': ['gzip, deflate'],
         'Content-Type': ['application/x-www-form-urlencoded'],
-        Host: ['payments.zuzona.com'],
+        Host: ['payments.pompona.net'],
         'User-Agent': ['Python/3.6 aiohttp/3.4.4'],
-        'X-Amzn-Trace-Id': ['Root=1-64edec41-33737fea1002e3663b29acde'],
+        'X-Amzn-Trace-Id': ['Root=1-64a51754-398ce3013d9618c807006c49'],
         'X-Forwarded-For': ['185.137.76.39'],
         'X-Forwarded-Port': ['443'],
         'X-Forwarded-Proto': ['https']
@@ -31,18 +31,18 @@ const event = {
     pathParameters: null,
     stageVariables: null,
     requestContext: {
-        resourceId: 'r15gjg',
-        resourcePath: '/callback/modul',
+        resourceId: 'vdvyhb',
+        resourcePath: '/modulRu/callback',
         httpMethod: 'POST',
-        extendedRequestId: 'KbHaVGDooAMElzA=',
-        requestTime: '29/Aug/2023:13:01:53 +0000',
-        path: '/callback/modul',
-        accountId: '818186882185',
+        extendedRequestId: 'HlCVNE2EIAMFe1g=',
+        requestTime: '05/Jul/2023:07:10:12 +0000',
+        path: '/modulRu/callback',
+        accountId: '993738567487',
         protocol: 'HTTP/1.1',
         stage: 'pagesAPI',
         domainPrefix: 'payments',
-        requestTimeEpoch: 1693314113850,
-        requestId: 'eb02d0d6-8c11-49f8-ae42-3fe971821e61',
+        requestTimeEpoch: 1688541012210,
+        requestId: 'db94bbf4-8f4c-42a1-8109-4dd68a88b6a7',
         identity: {
             cognitoIdentityPoolId: null,
             accountId: null,
@@ -57,10 +57,10 @@ const event = {
             userAgent: 'Python/3.6 aiohttp/3.4.4',
             user: null
         },
-        domainName: 'payments.zuzona.com',
-        apiId: 'oyftl3dkne'
+        domainName: 'payments.pompona.net',
+        apiId: 'h08z9uckci'
     },
-    body: 'transaction_id=uQRoEVLlYS3bplHupttPqu&amount=10.00&original_amount=10.00&order_id=2UexsuksoNxGwHIpfyM8aZbUECG&state=COMPLETE&testing=1&pan_mask=513691%2A%2A%2A%2A%2A%2A1434&client_email=stepanenkons%40mail.ru&client_id=199163834&payment_method=card&created_datetime=2023-08-29+13%3A01%3A11&currency=RUB&merchant=c652ef1e-6eb6-41ff-ac1e-99c76a8a03d9&salt=BFF966A730762497A131BF4142CE1758&unix_timestamp=1693314079&signature=c99fd5db2ef28afdeda37f9f59d524aebfe006a5',
+    body: 'transaction_id=iOHDW73pGHQ8y5dyP5DISp&amount=5000.00&original_amount=5000.00&order_id=2S8uvBAnNFmv6thWgfMdgEWnheg&state=COMPLETE&testing=1&pan_mask=513691%2A%2A%2A%2A%2A%2A1434&client_email=stepanenkons%40mail.ru&client_id=199163834&payment_method=card&created_datetime=2023-07-05+07%3A06%3A06&currency=RUB&merchant=46e90f0c-76da-4646-81ab-8890763b4316&salt=69262AB725165A7B4172708390CBC6A5&unix_timestamp=1688540774&signature=239c42b12e98140c71d77bdecfcf92bcd11b09c0',
     isBase64Encoded: false
 };
 

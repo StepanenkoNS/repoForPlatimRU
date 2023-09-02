@@ -1,4 +1,5 @@
 import CryptoJS from 'crypto-js';
+import { ESupportedLanguage } from 'tgbot-project-types/TypesCompiled/localeTypes';
 
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 //@ts-ignore
@@ -13,6 +14,7 @@ import { ReturnBlankApiResult, ReturnRestApiResult } from '/opt/LambdaHelpers/Re
 import { PaymentOptionManager } from '/opt/PaymentOptionManager';
 //@ts-ignore
 import { PaymentManager } from '/opt/PaymentManager';
+import { IMessagingBot, IAddMessagingBot, IMessagingBot_DDB, IUserBotProfile } from 'tgbot-project-types/TypesCompiled/messagingBotManagerTypes';
 
 import { TextHelper } from '/opt/TextHelpers/textHelper';
 import {
@@ -21,15 +23,17 @@ import {
     ESupportedCurrency,
     IClientPaymentDetails,
     IModulPaymentRequest,
+    IPaymentOption,
     IPaymentOptionKey,
     IPaymentOptionType_RU_MODUL_SendReceiptLong,
     IPaymentOptionType_RU_ROBOKASSA
 } from 'tgbot-project-types/TypesCompiled/paymentTypes';
 //@ts-ignore
 import { MessagingBotManager } from '/opt/MessagingBotManager';
-import { DefaultDates, DefaultPeriods, EEnvironment, IBotGeneralKey, ILooseString } from 'tgbot-project-types/TypesCompiled/generalTypes';
+import { DefaultDates, DefaultPeriods, EEnvironment, IBotGeneralKey, IBotGeneralKeyWithUser, ILooseString } from 'tgbot-project-types/TypesCompiled/generalTypes';
 import axios, { AxiosRequestConfig } from 'axios';
 import { PaymentCallBackManager } from '/opt/PaymentCallBackManager';
+import { MessagingBotUser } from '/opt/MessagingBotUser';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
     try {
@@ -67,7 +71,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         }
 
         const paymentExpitartionDate = new Date(payment.paymentInitTime);
-        paymentExpitartionDate.setTime(paymentExpitartionDate.getTime() + Number(process.env.userPaymentExpirationTimeInMinutes) * 60 * 1000);
+        paymentExpitartionDate.setTime(paymentExpitartionDate.getTime() + Number(process.env.userPaymentExpirationTimeInMinutes) * DefaultPeriods.oneMinute);
 
         if (paymentExpitartionDate.getTime() <= new Date().getTime()) {
             const retData: IClientPaymentDetails = {
@@ -77,38 +81,67 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             return ReturnBlankApiResult(200, { data: retData }, origin);
         }
 
+        const promises = [];
+
         const paymentOptionKey: IPaymentOptionKey = {
             masterId: payment.masterId,
             botUUID: payment.botUUID,
             id: payment.paymentOptionId
         };
-        const tempPaymentOption = await PaymentOptionManager.GetDecryptedPaymentOption(paymentOptionKey);
+        const tempPaymentOptionPromise = PaymentOptionManager.GetDecryptedPaymentOption(paymentOptionKey);
 
-        if (tempPaymentOption.success == false || !tempPaymentOption.data) {
-            const error = 'Error: paymentOption data not found';
-            console.log(error);
-            return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
-        }
+        promises.push(tempPaymentOptionPromise);
 
-        const paymentOption = tempPaymentOption.data;
-
-        if (paymentOption.type.optionProviderId !== payment.optionProviderId) {
-            throw 'Error: Payment and PaymentOption providers does not match';
-        }
         const botKey: IBotGeneralKey = {
             masterId: payment.masterId,
             botUUID: payment.botUUID
         };
 
-        const bot = await MessagingBotManager.GetMyBot(botKey);
+        const botPromise = MessagingBotManager.GetMyBot(botKey);
+        promises.push(botPromise);
 
-        if (bot.success == false || !bot.data) {
+        const userKey: IBotGeneralKeyWithUser = {
+            masterId: payment.masterId,
+            botUUID: payment.botUUID,
+            chatId: payment.chatId
+        };
+
+        const userPromise = MessagingBotUser.GetBotUser(userKey);
+        promises.push(userPromise);
+
+        const promisesResult = await Promise.all(promises);
+
+        if (promisesResult[0].success == false || !promisesResult[0].data) {
+            const error = 'Error: paymentOption data not found';
+            console.log(error);
+            return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
+        }
+
+        const paymentOption = promisesResult[0].data as unknown as IPaymentOption;
+
+        if (paymentOption.type.optionProviderId !== payment.optionProviderId) {
+            throw 'Error: Payment and PaymentOption providers does not match';
+        }
+
+        if (promisesResult[1].success == false || !promisesResult[1].data) {
             const error = 'Error: bot not found';
             console.log(error);
             return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
         }
 
+        const bot = promisesResult[1].data as unknown as IMessagingBot;
+
+        if (promisesResult[2].success == false || !promisesResult[2].data) {
+            const error = 'Error: user not found';
+            console.log(error);
+            return ReturnBlankApiResult(422, { success: false, data: { error: error } }, origin);
+        }
+
+        const user = promisesResult[2].data as unknown as IUserBotProfile;
+
         let additionalParams: ILooseString = {};
+
+        const userLocale = user.menuLanguage == ESupportedLanguage.ru ? ESupportedLanguage.ru : ESupportedLanguage.en;
 
         switch (paymentOption.type.optionProviderId) {
             case EPaymentOptionProviderId.RU_YOOMONEY: {
@@ -153,9 +186,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                     merchant: prodiderDetails.shopId,
                     amount: payment.price * 1,
                     order_id: payment.id,
-                    salt: bot.data.id,
+                    salt: bot.id,
                     description: payment.paymentTarget,
-                    success_url: `https://t.me/${bot.data.name}`,
+                    success_url: `https://t.me/${bot.name}`,
                     testing: process.env.environmentKey == EEnvironment.prod ? 0 : 1,
                     callback_url: `https://payments.${process.env.mainDomainName}/callback/modul`,
                     receipt_items: item ? [item] : undefined,
@@ -233,20 +266,23 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                                 currency: payment.currency,
                                 price: (payment.price * 100).toString(),
                                 quantity: '1',
-                                shopItemId: payment.paymentOrderN.toString() + payment.paymentOrderN.toString()
+                                shopItemId: payment.id
                             }
                         ],
                         //invoicePriceFixed: true,
                         shopOrderId: payment.id,
-                        successUrl: `https://t.me/${bot.data.name}`,
+                        successUrl: `https://t.me/${bot.name}`,
                         notificationUrl: `https://payments.${process.env.mainDomainName}/callback/platim_ru`,
-                        formLocale: 'ru'
+                        formLocale: userLocale.toString()
                     };
 
                     const stringified = JSON.stringify(itemData);
 
+                    console.log('data to send from platim.ru', itemData);
+
                     const result = await axios.post(url, stringified, { ...axiosConfig });
-                    console.log('data from platim.ru', result.data);
+
+                    console.log('received data from platim.ru', result.data);
                     if (result.data && result.data.payFormUrl) {
                         additionalParams = {
                             payFormUrl: result.data.payFormUrl
@@ -263,11 +299,12 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const retData: IClientPaymentDetails = {
             paymentIsExpired: false,
             paymentDetails: payment,
-            botName: bot.data.name,
-            additionalParams: additionalParams
+            botName: bot.name,
+            additionalParams: additionalParams,
+            userLocale: userLocale
         };
 
-        return ReturnBlankApiResult(200, { data: retData }, origin);
+        return ReturnBlankApiResult(200, { success: true, data: retData }, origin);
     } catch (error) {
         console.log(error);
         return ReturnBlankApiResult(403, { success: false, data: { error: error } }, '');

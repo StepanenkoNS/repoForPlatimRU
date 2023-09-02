@@ -131,7 +131,7 @@ export function BasicPaymentCallbacksLambdas(that: any, layers: ILayerVersion[],
 
     returnArray.push({
         lambda: platimRUCallBackLambda,
-        resource: 'platimRU',
+        resource: 'platim_ru',
         httpMethod: 'POST'
     });
 

@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js';
 
-import { handler } from '../../services/CallBack_basic/Yoomoney/YoomoneyPaymentCallBack';
+import { handler } from '../../../services/CallBack_basic/Yoomoney/YoomoneyPaymentCallBack';
 
 const event = {
     resource: '/yoomoneyRU/callback',

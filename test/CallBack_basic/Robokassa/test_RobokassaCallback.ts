@@ -1,4 +1,4 @@
-import { handler } from '../../services/Robokassa/RobokassaPaymentCallBack';
+import { handler } from '../../../services/Robokassa/RobokassaPaymentCallBack';
 
 const event = {
     resource: '/callback/robokassa',
