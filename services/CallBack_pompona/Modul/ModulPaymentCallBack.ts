@@ -24,7 +24,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         const notififation = Object.fromEntries(params.entries());
 
         //нам не надо никуда идти в бащу за секретным ключом - тк это не payment_option, она лежит в env_var
-        const modulKey = process.env.modulKey!;
+        const modulKey = process.env.pomponaModulKey!;
 
         const signature = PaymentCallBackManager.GetModulSignature(modulKey, notififation);
 
@@ -45,7 +45,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         });
 
         if (paymentInDb.success == false || !paymentInDb.data) {
-            throw 'no payment in DB';
+            throw `Error: ConfirmPomponaPayment is undefined ${notififation.order_id}`;
         }
 
         const result = await PomponaSubscriptionsProcessor.AddSubscription({
@@ -59,6 +59,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         if (result.success == false || !result.data) {
             throw 'cant add subscription';
         }
+
+        console.log('success result');
 
         return ReturnBlankApiResult(201, { success: true }, '');
     } catch (error) {
