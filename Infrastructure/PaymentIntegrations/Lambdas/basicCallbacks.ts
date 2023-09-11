@@ -105,6 +105,24 @@ export function BasicPaymentCallbacksLambdas(that: any, layers: ILayerVersion[],
         layers: layers
     });
 
+    const CryptoBotCallBackLambda = new NodejsFunction(that, 'CryptoBotCallBackLambda', {
+        entry: join(__dirname, '..', '..', '..', 'services', 'CallBack_basic', 'CryptoBot', 'CryptoBotPaymentCallBack.ts'),
+        handler: 'handler',
+        functionName: 'paymentProcessor-CryptoBot-callback',
+        runtime: StaticEnvironment(environment).LambdaSettings.runtime,
+        logRetention: StaticEnvironment(environment).LambdaSettings.logRetention,
+        timeout: StaticEnvironment(environment).LambdaSettings.timeout.SMALL,
+        role: lambdaBasicRole,
+        environment: {
+            ...StaticEnvironment(environment).LambdaSettings.EnvironmentVariables,
+            paymentProcessorConfirmationRequestQueueURL: PaymentProcessorConfirmation.queueUrl
+        },
+        bundling: {
+            externalModules: StaticEnvironment(environment).LambdaSettings.externalModules
+        },
+        layers: layers
+    });
+
     returnArray.push({
         lambda: RobokassaPaymentCallBackLambda,
         resource: 'robokassa',
@@ -132,6 +150,11 @@ export function BasicPaymentCallbacksLambdas(that: any, layers: ILayerVersion[],
     returnArray.push({
         lambda: platimRUCallBackLambda,
         resource: 'platim_ru',
+        httpMethod: 'POST'
+    });
+    returnArray.push({
+        lambda: CryptoBotCallBackLambda,
+        resource: 'cryptobot',
         httpMethod: 'POST'
     });
 

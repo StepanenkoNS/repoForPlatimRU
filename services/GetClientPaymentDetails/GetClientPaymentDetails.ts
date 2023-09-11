@@ -294,6 +294,52 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
                 }
                 break;
             }
+
+            case EPaymentOptionProviderId.CRYPTOBOT: {
+                try {
+                    const providerDetails = paymentOption.type;
+                    const url = 'https://testnet-pay.crypt.bot/createInvoice';
+
+                    const axiosConfig: AxiosRequestConfig<any> = {};
+                    //axiosConfig.withCredentials = true;
+                    axiosConfig.headers = {
+                        accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'Crypto-Pay-API-Token': '8626:AAeWDW6U69aIGf1faypH7s4k6UEC3xlhhVJ'
+                        //Authorization: `Bearer ${providerDetails.token}`
+                    };
+                    const itemData = {
+                        //
+                        asset: payment.currency,
+                        amount: payment.price.toString(),
+                        description: payment.paymentTarget,
+                        hidden_message: '', //Text of the message that will be shown to a user after the invoice is paid. Up to 2o48 characters.
+                        paid_btn_name: 'Return', //Optional. Name of the button that will be shown to a user after the invoice is paid.Supported names:
+                        paid_btn_url: `https://t.me/${bot.name}`,
+                        payload: JSON.stringify({
+                            paymentId: payment.id
+                        }),
+                        allow_comments: false,
+                        allow_anonymous: true,
+                        expires_in: (15 * DefaultPeriods.oneMinute) / 1000
+                    };
+
+                    const stringified = JSON.stringify(itemData);
+
+                    const result = await axios.post(url, stringified, { ...axiosConfig });
+
+                    console.log('received data from platim.ru', result.data);
+                    if (result.data && result.data.payFormUrl) {
+                        additionalParams = {
+                            payFormUrl: result.data.payFormUrl
+                        };
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return ReturnBlankApiResult(422, { success: false, data: { error: JSON.stringify(error) } }, origin);
+                }
+                break;
+            }
         }
 
         const retData: IClientPaymentDetails = {
